@@ -1,0 +1,544 @@
+{
+ "id": "b3_slide_foot",
+ "name": "Slide splashdown / Lava Stair foot",
+ "level": "b3",
+ "purpose": "The end of the Magma Glass Slide: a glass tube spirals down past a wall of lava and fires riders into a teal splash pool, while walkers arrive round the same shaft on the Lava Stair and watch.",
+ "floor_z": -67.0,
+ "ceiling_z": -50.0,
+ "footprint": [
+  [
+   140,
+   34
+  ],
+  [
+   162,
+   34
+  ],
+  [
+   162,
+   64
+  ],
+  [
+   140,
+   64
+  ]
+ ],
+ "ceiling_profile": {
+  "type": "open",
+  "min_z": -54.0,
+  "max_z": -50.0,
+  "note": "Under the east end of the b3_cavern vault; the slide shaft (r 9 at 150,50) opens through the roof toward B1."
+ },
+ "portals": [
+  {
+   "id": "p_b3_lazy_slide",
+   "to": "b3_lazy",
+   "at": [
+    141,
+    42
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b3_slide_shore",
+   "to": "b3_shore",
+   "at": [
+    151,
+    36.5
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b3_slide_foot_lava_stair",
+   "to": "lava_stair",
+   "at": [
+    148.07,
+    41.21
+   ],
+   "z": -67.0,
+   "width": 2.6,
+   "height": 2.6,
+   "bearing": 192.4,
+   "note": "Lava Stair landing door, facing SSW onto the deck west of the splash pool."
+  },
+  {
+   "id": "slide:glass_slide",
+   "to": "b1_slide_top",
+   "at": [
+    151.0,
+    47.0
+   ],
+   "z": -66.8,
+   "width": 3.6,
+   "walk": false,
+   "note": "Tube outlet into the splash pool (position is this file's proposal; the layout gives only the shaft)."
+  }
+ ],
+ "spine": [
+  [
+   141,
+   42,
+   -67
+  ],
+  [
+   145,
+   40.8,
+   -67
+  ],
+  [
+   148,
+   38.6,
+   -67
+  ],
+  [
+   151,
+   36.5,
+   -67
+  ]
+ ],
+ "spine_branches": [
+  {
+   "id": "stair_door",
+   "path": [
+    [
+     148.07,
+     41.21,
+     -67
+    ],
+    [
+     147.7,
+     39.5,
+     -67
+    ],
+    [
+     148,
+     38.6,
+     -67
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "slide_tube",
+  "at": [
+   150,
+   50,
+   -60
+  ],
+  "facing_deg": 150,
+  "dims": {
+   "r": 3.6,
+   "z_bottom": -66.8,
+   "visible_turns": 1.2,
+   "outlet": [
+    151.0,
+    47.0
+   ]
+  },
+  "why": "Concept 13: the clear tube with bronze ribs glowing orange from the lava wall behind it, a rider bursting out in spray. It is the ending of the fastest route down and the thing everyone at the foot turns to watch."
+ },
+ "anchored": [
+  {
+   "id": "lava_wall",
+   "asset": "lava_window",
+   "at": [
+    161.6,
+    51,
+    -67
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "w": 20,
+    "h": 14,
+    "y_span": [
+     41,
+     61
+    ]
+   },
+   "why": "Backlight for the hero (concept 13's lava behind glass on the right). It is intentionally the brightest surface here because it is what makes the tube glow; seen from the geyser's east tip along y 42 it is the orange beacon that pulls guests east."
+  },
+  {
+   "id": "splash_pool",
+   "asset": "splash_pool",
+   "at": [
+    154,
+    45,
+    -67.6
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "r": 4.5
+   },
+   "why": "Layout pool, clear of the Lava Stair foot."
+  },
+  {
+   "id": "stair_rail",
+   "asset": "railing",
+   "along": "stair:lava_stair",
+   "side": "open",
+   "dims": {
+    "h": 1.0
+   },
+   "why": "Open side of the Lava Stair's last turn and landing."
+  },
+  {
+   "id": "watch_bench",
+   "asset": "bench_stone",
+   "at": [
+    [
+     156.5,
+     37.0,
+     -67
+    ]
+   ],
+   "facing_deg": 330,
+   "why": "Watch the splashdowns, back to the shore wall."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_splash",
+   "kind": "still",
+   "z": -67.6,
+   "rim_z": -67.55,
+   "temp": 36,
+   "footprint": [
+    [
+     158.5,
+     45.0
+    ],
+    [
+     158.414,
+     45.878
+    ],
+    [
+     158.157,
+     46.722
+    ],
+    [
+     157.742,
+     47.5
+    ],
+    [
+     157.182,
+     48.182
+    ],
+    [
+     156.5,
+     48.742
+    ],
+    [
+     155.722,
+     49.157
+    ],
+    [
+     154.878,
+     49.414
+    ],
+    [
+     154.0,
+     49.5
+    ],
+    [
+     153.122,
+     49.414
+    ],
+    [
+     152.278,
+     49.157
+    ],
+    [
+     151.5,
+     48.742
+    ],
+    [
+     150.818,
+     48.182
+    ],
+    [
+     150.258,
+     47.5
+    ],
+    [
+     149.843,
+     46.722
+    ],
+    [
+     149.586,
+     45.878
+    ],
+    [
+     149.5,
+     45.0
+    ],
+    [
+     149.586,
+     44.122
+    ],
+    [
+     149.843,
+     43.278
+    ],
+    [
+     150.258,
+     42.5
+    ],
+    [
+     150.818,
+     41.818
+    ],
+    [
+     151.5,
+     41.258
+    ],
+    [
+     152.278,
+     40.843
+    ],
+    [
+     153.122,
+     40.586
+    ],
+    [
+     154.0,
+     40.5
+    ],
+    [
+     154.878,
+     40.586
+    ],
+    [
+     155.722,
+     40.843
+    ],
+    [
+     156.5,
+     41.258
+    ],
+    [
+     157.182,
+     41.818
+    ],
+    [
+     157.742,
+     42.5
+    ],
+    [
+     158.157,
+     43.278
+    ],
+    [
+     158.414,
+     44.122
+    ]
+   ],
+   "note": "Matches layout."
+  },
+  {
+   "id": "w_splash_out",
+   "kind": "flow",
+   "z_start": -67.65,
+   "z_end": -67.7,
+   "path": [
+    [
+     153.2,
+     40.6
+    ],
+    [
+     152.2,
+     37.2
+    ]
+   ],
+   "width": 0.4,
+   "note": "Overflow into the shore runnel, downhill to the sea."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b3_lazy_slide",
+   "see": "Orange lava wall straight ahead behind the glass helix; a rider shooting out into the pool.",
+   "target": [
+    158,
+    48,
+    -61
+   ]
+  },
+  {
+   "from": "p_b3_slide_foot_lava_stair",
+   "see": "Coming out of the stair door: the splash pool at your feet, and SE the cold blue light at the end of the shore path.",
+   "target": [
+    162,
+    34,
+    -65
+   ]
+  },
+  {
+   "from": "p_b3_slide_shore",
+   "see": "Looking back: the tube silhouetted against the lava.",
+   "target": [
+    150,
+    50,
+    -60
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    142.2,
+    41.8,
+    -65.4
+   ],
+   "target": [
+    154,
+    49,
+    -60
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    145.2,
+    40.0,
+    -65.4
+   ],
+   "target": [
+    153,
+    51,
+    -58
+   ],
+   "fov_v": 64
+  },
+  "concept": {
+   "pos": [
+    143.6,
+    38.8,
+    -65.4
+   ],
+   "target": [
+    153,
+    49,
+    -61
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/13-magma-glass-slide.jpg",
+   "match": "Low by the pool looking NE: walkway and lanterns lower left, steaming teal pool, the glass tube spiralling down centre-right, lava behind tall mullioned glass on the right, warm timber balconies (Lava Stair landings) receding left."
+  }
+ },
+ "lights": [
+  {
+   "asset": "pool_uplight",
+   "ring": [
+    154,
+    45
+   ],
+   "radius": 3.0,
+   "count": 5,
+   "z": -68.2,
+   "why": "Teal pool glow under the outlet."
+  },
+  {
+   "asset": "lantern_post",
+   "along": "spine",
+   "side": "left",
+   "spacing": [
+    4,
+    6
+   ],
+   "offset": 1.6,
+   "face": "path",
+   "avoid": [
+    "portals",
+    "water"
+   ],
+   "why": "Leads from the tube mouth to the shore path."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     146.41,
+     41.58,
+     -67
+    ],
+    [
+     149.73,
+     40.84,
+     -67
+    ],
+    [
+     152.4,
+     37.2,
+     -67
+    ]
+   ],
+   "why": "Flank the Lava Stair door (1.7 m either side) and mark the shore mouth."
+  },
+  {
+   "asset": "lantern_post",
+   "along": "stair:lava_stair",
+   "spacing": [
+    6,
+    8
+   ],
+   "side": "wall",
+   "at_landings": true,
+   "why": "Landings of the last turn (concept 13 balconies)."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "along": "water:w_splash",
+   "side": "out",
+   "spacing": [
+    1.2,
+    2.2
+   ],
+   "offset": 0.4,
+   "embed": 0.25,
+   "avoid": [
+    "portals",
+    "nav",
+    "stair"
+   ],
+   "rule": "skip the outlet arc"
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    2.0
+   ],
+   "density": 0.05,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     141.6,
+     60.5,
+     -67
+    ]
+   ],
+   "why": "Silhouette against the lava glow in the NW corner."
+  }
+ ],
+ "mood": {
+  "key": "orange lava through a glass helix",
+  "palette": "orange lava, teal pool, bronze ribs, amber lanterns",
+  "mist": "spray and steam at the outlet"
+ },
+ "waivers": [],
+ "layout_issues": []
+}

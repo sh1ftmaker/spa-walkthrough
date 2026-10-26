@@ -1,0 +1,269 @@
+{
+ "id": "b3_shore",
+ "name": "Shore path",
+ "level": "b3",
+ "purpose": "A short, low, dark walk along the cavern's south-east wall toward the sound of surf: the warm park falls behind, a cold blue light grows at the end, and a small black torii marks where the spring meets the sea.",
+ "floor_z": -67.0,
+ "ceiling_z": -62.5,
+ "footprint": [
+  [
+   156.472,
+   36.0
+  ],
+  [
+   164.0,
+   36.0
+  ],
+  [
+   164.0,
+   32.0
+  ],
+  [
+   155.528,
+   32.0
+  ],
+  [
+   149.106,
+   35.211
+  ],
+  [
+   150.894,
+   38.789
+  ]
+ ],
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -64.0,
+  "max_z": -62.5,
+  "note": "A rock overhang/cleft along the vault wall: 3 m in the middle, flaring to 4.5 m (ceiling_z -62.5) at the wave end for the torii."
+ },
+ "portals": [
+  {
+   "id": "p_b3_slide_shore",
+   "to": "b3_slide_foot",
+   "at": [
+    151,
+    36.5
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b3_shore_wave",
+   "to": "b3_wave",
+   "at": [
+    162,
+    34
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.6,
+   "note": "Beach top is -67.5: three 17 cm steps down just past the portal."
+  }
+ ],
+ "spine": [
+  [
+   151,
+   36.5,
+   -67
+  ],
+  [
+   153.5,
+   35.2,
+   -67
+  ],
+  [
+   156.5,
+   34.0,
+   -67
+  ],
+  [
+   162,
+   34,
+   -67
+  ]
+ ],
+ "hero": {
+  "asset": "torii_small",
+  "at": [
+   160.8,
+   34.0,
+   -67
+  ],
+  "facing_deg": 270,
+  "dims": {
+   "w": 3.4,
+   "h": 3.6
+  },
+  "why": "A sea torii marks the threshold from the spring's last pool to the open ocean; framed in it, the moonlit sea mouth is the brightest (cold) thing in this dark passage."
+ },
+ "anchored": [],
+ "water": [
+  {
+   "id": "w_shore_runnel",
+   "kind": "flow",
+   "z_start": -67.7,
+   "z_end": -67.9,
+   "path": [
+    [
+     152.0,
+     36.0
+    ],
+    [
+     156,
+     32.6
+    ],
+    [
+     163.5,
+     32.6
+    ]
+   ],
+   "width": 0.4,
+   "note": "Splash-pool overflow in a slot at the south wall foot, out onto the beach and down to the sea."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b3_slide_shore",
+   "see": "A dark low passage whose end glows cold blue-white: the sea mouth and moon through the torii.",
+   "target": [
+    199,
+    38,
+    -64
+   ]
+  },
+  {
+   "from": "p_b3_shore_wave",
+   "see": "Looking back: the orange of the lava wall at the far end.",
+   "target": [
+    161.6,
+    51,
+    -62
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    151.6,
+    36.2,
+    -65.4
+   ],
+   "target": [
+    180,
+    33.5,
+    -66
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    159.2,
+    34.1,
+    -65.4
+   ],
+   "target": [
+    199,
+    38,
+    -64
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "pos": [
+    155.0,
+    34.6,
+    -65.4
+   ],
+   "target": [
+    190,
+    34,
+    -65
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/20-wave-grotto.jpg",
+   "match": "The moonlit arch of 20 seen through a dark frame (torii and overhang), warm lantern pair at the sides."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_niche",
+   "along": "spine",
+   "side": "left",
+   "spacing": [
+    4,
+    6
+   ],
+   "snap": "wall",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Sparse ankle light only; long dark gaps so the blue end dominates."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     160.4,
+     35.8,
+     -67
+    ],
+    [
+     160.4,
+     32.3,
+     -67
+    ]
+   ],
+   "why": "Warm pair at the torii posts against the cold sea light."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "along": "water:w_shore_runnel",
+   "side": "out",
+   "spacing": [
+    2,
+    3.5
+   ],
+   "offset": 0.3,
+   "embed": 0.2,
+   "scale": [
+    0.4,
+    0.8
+   ],
+   "avoid": [
+    "nav",
+    "portals"
+   ]
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    0.5
+   ],
+   "density": 0.04,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ]
+  }
+ ],
+ "mood": {
+  "key": "cold blue at the end of a dark passage",
+  "palette": "dark basalt, two warm lanterns, moon-blue ahead",
+  "mist": "sea spray drifting in at the torii"
+ },
+ "waivers": [
+  {
+   "check": "no_empty_areas",
+   "where": "whole path",
+   "reason": "Darkness is the point here (contrast before the beach reveal)."
+  }
+ ],
+ "layout_issues": []
+}

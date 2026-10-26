@@ -1,0 +1,479 @@
+{
+ "id": "b1_slide_top",
+ "name": "Magma Glass Slide launch / Lava Stair head",
+ "level": "b1",
+ "purpose": "The thrill: a gallery round an open shaft where a clear glass tube spirals down past a wall of moving lava; riders cross a short bridge to the launch gate, walkers take the Lava Stair that winds round the tube, and everyone stops at the rail to look down.",
+ "floor_z": -20.0,
+ "ceiling_z": -12.0,
+ "ceiling_profile": {
+  "type": "dome",
+  "min_z": -13.5,
+  "max_z": -12.0,
+  "note": "Low carved dome over the shaft; lit orange from below by the lava glass."
+ },
+ "footprint": [
+  [
+   138,
+   40
+  ],
+  [
+   162,
+   40
+  ],
+  [
+   162,
+   60
+  ],
+  [
+   138,
+   60
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_south_slide",
+   "to": "b1_cor_south",
+   "at": [
+    138,
+    54
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b1_slide_top_lava_stair",
+   "to": "lava_stair",
+   "at": [
+    150.0,
+    59.0
+   ],
+   "width": 2.6,
+   "height": 2.6
+  },
+  {
+   "id": "p_b1_slide_launch",
+   "to": "glass_slide",
+   "at": [
+    146.4,
+    50
+   ],
+   "width": 1.6,
+   "height": 2.4
+  }
+ ],
+ "spine": [
+  [
+   138.0,
+   54.0,
+   -20.0
+  ],
+  [
+   139.6,
+   52.2,
+   -20.0
+  ],
+  [
+   140.9,
+   50.0,
+   -20.0
+  ],
+  [
+   143.6,
+   50.0,
+   -20.0
+  ],
+  [
+   145.3,
+   50.0,
+   -19.0
+  ],
+  [
+   146.4,
+   50.0,
+   -19.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "to_lava_stair",
+   "points": [
+    [
+     139.6,
+     52.2,
+     -20.0
+    ],
+    [
+     140.2,
+     57.0,
+     -20.0
+    ],
+    [
+     143.0,
+     59.0,
+     -20.0
+    ],
+    [
+     147.5,
+     59.1,
+     -20.0
+    ],
+    [
+     150.0,
+     59.0,
+     -20.0
+    ]
+   ],
+   "note": "Along the north gallery (1.6-1.7 m wide between the stair void and the wall)."
+  }
+ ],
+ "hero": {
+  "asset": "slide_tube",
+  "at": [
+   150.0,
+   50.0,
+   -19.0
+  ],
+  "facing_deg": 180,
+  "dims": {
+   "r": 3.6,
+   "tube_d": 1.1,
+   "z_bottom": -66.8
+  },
+  "why": "A clear glass helix dropping into a glowing shaft: the reason to come here. The lava glass on the south wall makes the water inside glow orange; the bridge, rails and lanterns all point at the tube mouth."
+ },
+ "anchored": [
+  {
+   "id": "lava_glass",
+   "asset": "lava_window",
+   "at": [
+    150.0,
+    40.3,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 20.0,
+    "h": 7.5
+   },
+   "why": "Concept 13 / B1 plan: lava behind thick glass beside the slide. Spans the room's south wall; propose it continues down the shaft's south half so the tube runs past lava all the way (coordinate with b2_lava_link and b3_slide_foot)."
+  },
+  {
+   "id": "launch_bridge",
+   "asset": "boardwalk",
+   "variant": "bridge with 6 steps up",
+   "at": [
+    143.65,
+    50.0,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "l": 5.5,
+    "w": 2.4,
+    "rise": 1.0
+   },
+   "why": "Crosses the Lava Stair void at bearing 270 (stair 4.8 m below there) from the west floor to the tube mouth."
+  },
+  {
+   "id": "launch_gate",
+   "asset": "slide_launch_gate",
+   "at": [
+    146.4,
+    50.0,
+    -19.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 1.4,
+    "h": 2.2
+   },
+   "why": "Bronze start gate, grab bar and water manifold at the tube mouth."
+  },
+  {
+   "id": "shaft_rail",
+   "asset": "railing",
+   "ring": [
+    150.0,
+    50.0
+   ],
+   "radius": 9.05,
+   "dims": {
+    "h": 1.05
+   },
+   "except_bearings": [
+    [
+     262,
+     278
+    ],
+    [
+     354,
+     6
+    ]
+   ],
+   "why": "Rail round the shaft edge, open only at the bridge and the stair head."
+  },
+  {
+   "id": "stair_rail",
+   "asset": "railing",
+   "along": [
+    [
+     147.4,
+     58.3
+    ],
+    [
+     152.6,
+     58.3
+    ]
+   ],
+   "dims": {
+    "h": 1.0
+   },
+   "why": "Inner rail on the void side of the stair-head gallery."
+  },
+  {
+   "id": "queue_bench",
+   "asset": "bench_stone",
+   "at": [
+    138.7,
+    45.0,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "l": 2.6
+   },
+   "why": "Waiting riders sit against the west wall facing the tube."
+  },
+  {
+   "id": "slide_board",
+   "asset": "sign_kanji",
+   "at": [
+    139.0,
+    56.8,
+    -20.0
+   ],
+   "facing_deg": 120,
+   "dims": {
+    "w": 0.6,
+    "h": 2.0
+   },
+   "text": "溶岩滑り台 · B3",
+   "why": "Board by the door: slide to B3 left, Lava Stair right."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_slide_tube",
+   "kind": "flow",
+   "z_top": -19.0,
+   "z_bottom": -66.8,
+   "inside": "slide_tube",
+   "temp": 36,
+   "note": "Water runs inside the tube only (manifold at the launch gate); no open surface in this room."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_south_slide",
+   "see": "Through the noren: orange light, the tube mouth and bridge straight ahead, lava glass to the right.",
+   "target": [
+    146.4,
+    50.0,
+    -18.4
+   ]
+  },
+  {
+   "from": "launch_bridge",
+   "at": [
+    143.6,
+    50.4
+   ],
+   "see": "Down the shaft: the tube spiralling past lava, the stair winding round it, lantern dots far below at B2 and B3.",
+   "target": [
+    151.0,
+    47.0,
+    -35.0
+   ]
+  },
+  {
+   "from": "p_b1_slide_top_lava_stair",
+   "see": "From the stair head, back across the shaft to the bridge and door.",
+   "target": [
+    139.0,
+    53.0,
+    -18.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    139.2,
+    53.6,
+    -18.4
+   ],
+   "target": [
+    150.0,
+    47.0,
+    -21.0
+   ],
+   "fov_v": 62
+  },
+  "reveal": {
+   "pos": [
+    143.8,
+    50.4,
+    -18.4
+   ],
+   "target": [
+    151.0,
+    47.0,
+    -27.0
+   ],
+   "fov_v": 65
+  },
+  "concept": {
+   "pos": [
+    139.6,
+    57.4,
+    -18.4
+   ],
+   "target": [
+    153.0,
+    44.0,
+    -24.0
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/13-magma-glass-slide.jpg",
+   "match": "Glass tube with bronze ribs spiralling down centre-left, the lava glass filling the right, lanterns and timber rail on the left edge, steam, everything lit orange."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lava_window",
+   "part": "emission",
+   "at": [
+    [
+     150.0,
+     40.3,
+     -16.0
+    ]
+   ],
+   "why": "Main light; the tube in front of it glows (hero group)."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     141.2,
+     50.0
+    ],
+    [
+     145.8,
+     50.0
+    ]
+   ],
+   "spacing": [
+    1.6,
+    2.0
+   ],
+   "height": [
+    2.6,
+    3.0
+   ],
+   "snap": "ceiling",
+   "why": "A short row of chochin over the bridge leads to the gate."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     148.3,
+     59.2,
+     -20.0
+    ],
+    [
+     151.8,
+     59.25,
+     -20.0
+    ],
+    [
+     138.8,
+     51.8,
+     -20.0
+    ],
+    [
+     138.8,
+     56.3,
+     -20.0
+    ]
+   ],
+   "face": "path",
+   "why": "Landing pair at the Lava Stair head and a pair inside the door; kept dim against the lava."
+  },
+  {
+   "asset": "lantern_post",
+   "ring": [
+    150.0,
+    50.0
+   ],
+   "radius": 9.3,
+   "spacing": [
+    7.0,
+    9.0
+   ],
+   "except_bearings": [
+    [
+     255,
+     285
+    ],
+    [
+     340,
+     20
+    ]
+   ],
+   "why": "Few posts on the rail; dark gaps let the lava own the room."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.2,
+    1.2
+   ],
+   "density": 0.04,
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored:shaft_rail",
+    "anchored:launch_bridge"
+   ],
+   "why": "Corners only; the shaft rim stays clear."
+  }
+ ],
+ "mood": {
+  "key": "glass tube against lava",
+  "palette": "orange lava, bronze, clear glass, black basalt, a few amber lanterns",
+  "mist": "Steam rising out of the shaft, lit orange."
+ },
+ "waivers": [
+  {
+   "check": "grid_centre",
+   "where": "slide_tube at (150,50)",
+   "reason": "The slide shaft is fixed at the H4 cell centre by layout.json."
+  },
+  {
+   "check": "hero_brightest",
+   "where": "slide_tube",
+   "reason": "The lava glass directly behind the tube is brighter per pixel; tube and lava read as one hero group (as concept 13)."
+  },
+  {
+   "check": "clearance",
+   "where": "north gallery to the stair head (x 143-150, y 58.3-60)",
+   "reason": "1.6-1.7 m clear between the stair void and the wall (>=1.2 m); widen by moving the north wall only if the treatment hall moves (see report)."
+  }
+ ],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

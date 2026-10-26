@@ -1,0 +1,296 @@
+{
+ "id": "b3_falls_gallery",
+ "name": "Gallery behind the curtain",
+ "level": "b3",
+ "purpose": "The walk behind Thunder Curtain Falls: a low carved gallery under the river where the whole south side is a moving wall of hot water lit amber from behind you, loud enough that nobody talks.",
+ "floor_z": -55.0,
+ "ceiling_z": -52.0,
+ "footprint": [
+  [
+   8,
+   76
+  ],
+  [
+   46,
+   76
+  ],
+  [
+   46,
+   80.5
+  ],
+  [
+   8,
+   80.5
+  ]
+ ],
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -52.3,
+  "max_z": -52.0,
+  "note": "Rock-cut 3 m roof, 7 m of rock to the river bed (-44.6). The south side is an open arcade of basalt piers for x 21-37 behind the sheet; rock elsewhere."
+ },
+ "portals": [
+  {
+   "id": "p_falls_gallery_w",
+   "to": "b3_falls",
+   "at": [
+    10.5,
+    76
+   ],
+   "z": -55.0,
+   "width": 2.4,
+   "height": 2.6,
+   "note": "falls_stair_1 arrives from the south up the west wall."
+  },
+  {
+   "id": "p_falls_gallery_e",
+   "to": "b3_falls",
+   "at": [
+    41.5,
+    76
+   ],
+   "z": -55.78,
+   "width": 2.4,
+   "height": 2.6,
+   "note": "falls_stair_2 leaves south through a rock-cut throat to the pool deck."
+  },
+  {
+   "id": "curtain_arcade",
+   "to": "b3_falls",
+   "at": [
+    29,
+    76
+   ],
+   "z": -55.0,
+   "width": 16.0,
+   "height": 3.0,
+   "walk": false,
+   "note": "Open behind the sheet (lip 23-35), piers every ~4 m."
+  }
+ ],
+ "spine": [
+  [
+   10.5,
+   76,
+   -55.0
+  ],
+  [
+   10.5,
+   78.5,
+   -55.0
+  ],
+  [
+   43,
+   78.5,
+   -55.0
+  ],
+  [
+   41.5,
+   76,
+   -55.78
+  ]
+ ],
+ "hero": {
+  "asset": "falls_sheet",
+  "ref": "b3_falls.hero",
+  "at": [
+   29,
+   76,
+   -53.5
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "w": 12,
+   "x_span": [
+    23,
+    35
+   ],
+   "seen_from": "behind"
+  },
+  "why": "The curtain seen from behind: a translucent, roaring wall of water lit by the lanterns at your back, with the teal pool glowing through it. It fills the whole open side and is the only bright, moving thing in a dark rock corridor."
+ },
+ "anchored": [
+  {
+   "id": "gallery_railing",
+   "asset": "railing",
+   "along": [
+    [
+     11.7,
+     77.2
+    ],
+    [
+     42,
+     77.2
+    ]
+   ],
+   "dims": {
+    "h": 1.05
+   },
+   "why": "Curtain side of the walkway; spray-wet hinoki rail as in concept 19."
+  },
+  {
+   "id": "spray_bench",
+   "asset": "bench_stone",
+   "at": [
+    [
+     29,
+     80.0,
+     -55.0
+    ]
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 4.0
+   },
+   "why": "A niche bench on the back wall dead centre behind the sheet: sit inside the waterfall."
+  }
+ ],
+ "water": [],
+ "water_note": "Spray and drip only (wet floor material); the sheet is w_thunder in b3_falls.",
+ "sightlines": [
+  {
+   "from": "p_falls_gallery_w",
+   "see": "Along the gallery: the amber lantern band on the left, the curtain glowing on the right, the exit lantern at the far end.",
+   "target": [
+    42,
+    78.5,
+    -54
+   ]
+  },
+  {
+   "from": "spray_bench",
+   "see": "Through the falling water: a blurred teal pool and the warm deck lanterns, the roar all around.",
+   "target": [
+    29,
+    55,
+    -59.5
+   ]
+  },
+  {
+   "from": "p_falls_gallery_e",
+   "see": "Down the throat: the pool deck lanterns and, beyond, the teal glow of the rimstone through the shaft's east throat.",
+   "target": [
+    48,
+    66,
+    -58
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    11.0,
+    78.5,
+    -53.4
+   ],
+   "target": [
+    36,
+    77,
+    -54.2
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    24,
+    78.5,
+    -53.4
+   ],
+   "target": [
+    26,
+    58,
+    -59.5
+   ],
+   "fov_v": 64
+  },
+  "concept": {
+   "pos": [
+    33,
+    79.2,
+    -53.4
+   ],
+   "target": [
+    27,
+    76,
+    -54
+   ],
+   "fov_v": 60,
+   "image": "lookbook/img/19-thunder-curtain.jpg",
+   "match": "The reverse of 19: from inside the gallery, the curtain fills the frame lit amber from behind the camera, railing and wet piers in the foreground, teal pool through the water."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     11,
+     79.9
+    ],
+    [
+     42.5,
+     79.9
+    ]
+   ],
+   "spacing": [
+    1.6,
+    2.4
+   ],
+   "height": [
+    2.2,
+    2.6
+   ],
+   "snap": "ceiling",
+   "why": "A dense warm band on the back wall: it backlights the curtain so the hero (in both spaces) is the brightest thing."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     12.2,
+     77.0,
+     -55.0
+    ],
+    [
+     42.6,
+     77.0,
+     -55.0
+    ]
+   ],
+   "why": "Mark both stair mouths."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    0.4
+   ],
+   "density": 0.03,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ],
+   "scale": [
+    0.3,
+    0.6
+   ]
+  }
+ ],
+ "mood": {
+  "key": "inside the waterfall",
+  "palette": "amber backlight, white-gold water, teal glow through it, black wet rock",
+  "mist": "spray everywhere, floor wet and reflective"
+ },
+ "waivers": [
+  {
+   "check": "no_empty_areas",
+   "where": "whole gallery",
+   "reason": "2.4 m walkway; the lantern band covers it."
+  }
+ ],
+ "layout_issues": []
+}

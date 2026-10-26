@@ -1,0 +1,362 @@
+{
+ "id": "s_spring",
+ "name": "Spring source and egg baskets",
+ "level": "summit",
+ "tier": "should",
+ "purpose": "Where every drop in Kazan-yu starts: a 44 °C pool boiling up through basalt, where guests tie their egg basket to a rope and lower it into the steam for tomorrow's breakfast.",
+ "floor_z": 121.5,
+ "ceiling_z": null,
+ "ceiling_profile": {
+  "type": "open",
+  "note": "Open sky; crater rock walls close north and west."
+ },
+ "footprint": [
+  [
+   56,
+   86
+  ],
+  [
+   75,
+   86
+  ],
+  [
+   75,
+   100
+  ],
+  [
+   77,
+   100
+  ],
+  [
+   77,
+   106
+  ],
+  [
+   56,
+   106
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_s_rim_spring",
+   "to": "s_rim",
+   "at": [
+    80,
+    101.7
+   ],
+   "width": 3.0,
+   "note": "Reached by spring_steps (9 risers, plan (81.5,101.7) -> (77,101.7)); the walk starts at the stair head."
+  }
+ ],
+ "spine": [
+  [
+   77.0,
+   101.7,
+   121.5
+  ],
+  [
+   72.5,
+   103.0,
+   121.5
+  ],
+  [
+   66.0,
+   104.5,
+   121.5
+  ],
+  [
+   59.0,
+   101.5,
+   121.5
+  ],
+  [
+   58.5,
+   93.0,
+   121.5
+  ],
+  [
+   63.0,
+   88.5,
+   121.5
+  ],
+  [
+   69.5,
+   88.8,
+   121.5
+  ],
+  [
+   73.8,
+   93.5,
+   121.5
+  ],
+  [
+   74.0,
+   99.0,
+   121.5
+  ],
+  [
+   75.5,
+   101.0,
+   121.5
+  ],
+  [
+   77.0,
+   101.7,
+   121.5
+  ]
+ ],
+ "hero": {
+  "asset": "egg_baskets",
+  "at": [
+   66.0,
+   96.0,
+   121.5
+  ],
+  "facing_deg": 180,
+  "dims": {
+   "span": 11.0,
+   "h": 4.5,
+   "baskets": 7
+  },
+  "why": "A timber gantry straddling the source with bamboo baskets on ropes swinging in the steam (30, 24): the one ritual object at the top of the mountain, lit by its own hanging lanterns."
+ },
+ "anchored": [
+  {
+   "id": "stair_head_toro",
+   "asset": "lantern_stone",
+   "at": [
+    75.8,
+    103.6,
+    121.5
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "h": 2.0
+   },
+   "why": "Marks the head of spring_steps."
+  },
+  {
+   "id": "source_marker",
+   "asset": "sign_kanji",
+   "at": [
+    73.8,
+    87.2,
+    121.5
+   ],
+   "facing_deg": 240,
+   "dims": {
+    "h": 1.8,
+    "text": "源泉 44 °C"
+   },
+   "why": "Source marker by the basket-rope cleats."
+  },
+  {
+   "id": "rill_bridge",
+   "asset": "bridge_slab",
+   "at": [
+    73.9,
+    94.4,
+    121.5
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "span": 1.2,
+    "w": 2.6
+   },
+   "why": "Carries the walk loop over the outflow rill."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_spring",
+   "kind": "still",
+   "z": 121.45,
+   "rim_z": 121.5,
+   "footprint": "layout:w_spring",
+   "temp": 44
+  },
+  {
+   "id": "w_spring_out",
+   "kind": "flow",
+   "z": 121.3,
+   "rim_z": 121.5,
+   "path": [
+    [
+     71.9,
+     95.2
+    ],
+    [
+     73.6,
+     94.5
+    ],
+    [
+     74.6,
+     94.0
+    ]
+   ],
+   "width": 0.6,
+   "note": "Outflow rill east; spills off a lip at (74.6, 94.0) on the spring terrace edge (x 75) into the kerbed channel that crosses the rim under rim_rill_bridge (s_rim w_rim_rill, 120.1), then to the pool inflow (120.03)."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_s_rim_spring",
+   "see": "From the stair head: the gantry and its baskets in a column of steam lit by hanging lanterns.",
+   "target": [
+    66.0,
+    96.0,
+    124.0
+   ]
+  },
+  {
+   "from": "hero",
+   "see": "East: the rill dropping toward the caldera pool's glow.",
+   "target": [
+    100.0,
+    85.0,
+    120.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    76.5,
+    101.6,
+    123.1
+   ],
+   "target": [
+    66.0,
+    96.0,
+    123.5
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    60.0,
+    90.0,
+    123.1
+   ],
+   "target": [
+    66.5,
+    97.0,
+    124.0
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "image": "lookbook/img/30-plan-summit.jpg",
+   "pos": [
+    74.0,
+    101.5,
+    123.1
+   ],
+   "target": [
+    62.0,
+    93.0,
+    122.5
+   ],
+   "fov_v": 58,
+   "match": "Plan 30's spring at eye height: round steaming teal pool, timber gantry with hanging bamboo baskets, ring of small lanterns, black crater rock behind."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_stone",
+   "ring": [
+    66.0,
+    96.0
+   ],
+   "radius": 8.6,
+   "spacing": [
+    4.0,
+    6.0
+   ],
+   "avoid": [
+    "portals",
+    "nav"
+   ],
+   "why": "Ring of small toro (plan 30)."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     61.5,
+     96.0
+    ],
+    [
+     70.5,
+     96.0
+    ]
+   ],
+   "spacing": [
+    3.0,
+    3.0
+   ],
+   "height": 4.0,
+   "snap": "gantry",
+   "why": "Lanterns on the gantry beam light the baskets and steam (hero brightest)."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "along": "water:w_spring",
+   "side": "out",
+   "spacing": [
+    0.9,
+    1.6
+   ],
+   "offset": 0.3,
+   "embed": 0.2,
+   "scale": [
+    0.5,
+    1.1
+   ],
+   "avoid": [
+    "nav"
+   ]
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.2,
+    2.0
+   ],
+   "density": 0.06,
+   "avoid": [
+    "nav",
+    "portals",
+    "water"
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     57.5,
+     104.5,
+     121.5
+    ],
+    [
+     57.5,
+     87.5,
+     121.5
+    ]
+   ],
+   "scale": [
+    0.8,
+    1.1
+   ]
+  }
+ ],
+ "mood": {
+  "key": "steam column over the baskets",
+  "palette": "white steam lit amber, teal source, black rock",
+  "mist": "dense steam rising, thickest of any summit space"
+ },
+ "waivers": []
+}

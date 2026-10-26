@@ -1,0 +1,918 @@
+{
+ "note": "Proxy = final bounding box in metres (w across X, d along forward +Y, h up), pivot at base centre. Generators must hit these dims. Unknown assets fall back to a 1 m cube and are flagged by checks. structural=true: built by the graybox/structure generators from layout.json, so no proxy box is placed. marker=true: shader/light marker, no proxy box (lights still emitted). frame=true: walk-through frame (portal arches, porches), exempt from the clearance check where the spine passes through it. deck=true: walkable deck proxy (slab at the top, open below). cluster_ok: may touch/interpenetrate other cluster_ok assets (rocks). host: lights and small props may sit inside it.",
+ "assets": {
+  "torii_basalt": {
+   "w": 9.0,
+   "d": 1.6,
+   "h": 8.5,
+   "snap": "ground",
+   "light": null,
+   "frame": true
+  },
+  "lava_window": {
+   "w": 34,
+   "d": 0.6,
+   "h": 12,
+   "snap": "wall",
+   "light": {
+    "kind": "area",
+    "watts": 4000,
+    "color_k": 1600
+   }
+  },
+  "lantern_hanging": {
+   "w": 0.45,
+   "d": 0.45,
+   "h": 0.7,
+   "snap": "ceiling",
+   "light": {
+    "kind": "point",
+    "watts": 25,
+    "color_k": 2200
+   },
+   "hang": true
+  },
+  "lantern_floor": {
+   "w": 0.45,
+   "d": 0.45,
+   "h": 1.05,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 30,
+    "color_k": 2400
+   }
+  },
+  "lantern_niche": {
+   "w": 0.3,
+   "d": 0.25,
+   "h": 0.35,
+   "snap": "wall",
+   "light": {
+    "kind": "point",
+    "watts": 10,
+    "color_k": 2300
+   }
+  },
+  "lantern_stone": {
+   "w": 0.7,
+   "d": 0.7,
+   "h": 1.6,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 15,
+    "color_k": 2300
+   }
+  },
+  "lantern_post": {
+   "w": 0.3,
+   "d": 0.3,
+   "h": 1.7,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 20,
+    "color_k": 2400
+   }
+  },
+  "slipper_cubbies": {
+   "w": 14,
+   "d": 0.5,
+   "h": 2.6,
+   "snap": "wall",
+   "light": null
+  },
+  "reception_counter": {
+   "w": 7,
+   "d": 1.0,
+   "h": 1.05,
+   "snap": "ground",
+   "light": null
+  },
+  "chozubachi": {
+   "w": 1.6,
+   "d": 1.6,
+   "h": 0.9,
+   "snap": "ground",
+   "light": null
+  },
+  "bridge_arched": {
+   "w": 3.2,
+   "d": 7.0,
+   "h": 1.6,
+   "snap": "ground",
+   "light": null,
+   "deck": true
+  },
+  "railing": {
+   "w": 1.5,
+   "d": 0.1,
+   "h": 1.0,
+   "snap": "ground",
+   "light": null,
+   "structural": true
+  },
+  "pine_bonsai": {
+   "w": 2.6,
+   "d": 2.6,
+   "h": 3.2,
+   "snap": "ground",
+   "light": null
+  },
+  "sakura_small": {
+   "w": 4.0,
+   "d": 4.0,
+   "h": 4.5,
+   "snap": "ground",
+   "light": null
+  },
+  "banner": {
+   "w": 1.0,
+   "d": 0.05,
+   "h": 4.0,
+   "snap": "ceiling",
+   "light": null,
+   "hang": true
+  },
+  "sign_kanji": {
+   "w": 0.9,
+   "d": 0.08,
+   "h": 2.4,
+   "snap": "wall",
+   "light": null
+  },
+  "rock_cluster": {
+   "w": 2.4,
+   "d": 1.8,
+   "h": 1.2,
+   "snap": "ground",
+   "light": null,
+   "embed": 0.25,
+   "cluster_ok": true
+  },
+  "boulder_rim": {
+   "w": 1.2,
+   "d": 1.0,
+   "h": 0.7,
+   "snap": "ground",
+   "light": null,
+   "embed": 0.2,
+   "cluster_ok": true
+  },
+  "stepping_stone": {
+   "w": 0.6,
+   "d": 0.6,
+   "h": 0.2,
+   "snap": "ground",
+   "light": null,
+   "cluster_ok": true
+  },
+  "lift_core": {
+   "w": 16,
+   "d": 16,
+   "h": 16,
+   "snap": "ground",
+   "light": null,
+   "structural": true
+  },
+  "pavilion_engawa": {
+   "w": 8,
+   "d": 5,
+   "h": 4.2,
+   "snap": "ground",
+   "light": {
+    "kind": "area",
+    "watts": 150,
+    "color_k": 2600
+   },
+   "host": true
+  },
+  "glowworm_ceiling": {
+   "w": 30,
+   "d": 30,
+   "h": 0.5,
+   "snap": "ceiling",
+   "light": {
+    "kind": "emissive",
+    "watts": 60,
+    "color_k": 9000
+   },
+   "host": true
+  },
+  "mirror_pool": {
+   "w": 24,
+   "d": 24,
+   "h": 0.4,
+   "snap": "ground",
+   "light": null
+  },
+  "steam_bench": {
+   "w": 2.0,
+   "d": 0.6,
+   "h": 0.5,
+   "snap": "ground",
+   "light": null
+  },
+  "fumarole_vent": {
+   "w": 1.6,
+   "d": 1.6,
+   "h": 0.6,
+   "snap": "ground",
+   "light": null
+  },
+  "treatment_room": {
+   "w": 6,
+   "d": 5,
+   "h": 3.2,
+   "snap": "ground",
+   "light": {
+    "kind": "area",
+    "watts": 80,
+    "color_k": 2700
+   },
+   "host": true
+  },
+  "ice_formation": {
+   "w": 6,
+   "d": 4,
+   "h": 8,
+   "snap": "ground",
+   "light": null
+  },
+  "slide_tube": {
+   "w": 10,
+   "d": 10,
+   "h": 48,
+   "snap": "ground",
+   "light": null
+  },
+  "kawagiri_pod": {
+   "w": 6.0,
+   "d": 6.0,
+   "h": 3.6,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 60,
+    "color_k": 2300
+   },
+   "host": true
+  },
+  "beam_pier": {
+   "w": 0.5,
+   "d": 0.5,
+   "h": 4.0,
+   "snap": "ground",
+   "light": null
+  },
+  "water_curtain": {
+   "w": 5.0,
+   "d": 0.1,
+   "h": 3.0,
+   "snap": "ceiling",
+   "light": null
+  },
+  "aqueduct": {
+   "w": 0.25,
+   "d": 2.0,
+   "h": 1.1,
+   "snap": "ground",
+   "light": null
+  },
+  "ramen_counter": {
+   "w": 12,
+   "d": 3,
+   "h": 2.6,
+   "snap": "ground",
+   "light": {
+    "kind": "area",
+    "watts": 300,
+    "color_k": 2700
+   },
+   "host": true
+  },
+  "kitchen_block": {
+   "w": 12,
+   "d": 8,
+   "h": 4,
+   "snap": "ground",
+   "light": {
+    "kind": "area",
+    "watts": 300,
+    "color_k": 3000
+   },
+   "host": true
+  },
+  "neon_sign": {
+   "w": 1.5,
+   "d": 0.1,
+   "h": 0.8,
+   "snap": "wall",
+   "light": {
+    "kind": "emissive",
+    "watts": 20,
+    "color_k": 0,
+    "color": "magenta"
+   }
+  },
+  "boat": {
+   "w": 1.8,
+   "d": 8.0,
+   "h": 1.2,
+   "snap": "water",
+   "light": {
+    "kind": "point",
+    "watts": 20,
+    "color_k": 2200
+   }
+  },
+  "boardwalk": {
+   "w": 3.0,
+   "d": 2.0,
+   "h": 0.3,
+   "snap": "ground",
+   "light": null,
+   "deck": true
+  },
+  "falls_sheet": {
+   "w": 18,
+   "d": 2,
+   "h": 17,
+   "snap": "ground",
+   "light": null
+  },
+  "rimstone_terrace": {
+   "w": 8,
+   "d": 6,
+   "h": 0.6,
+   "snap": "ground",
+   "light": null
+  },
+  "lava_tube": {
+   "w": 10,
+   "d": 10,
+   "h": 4.5,
+   "snap": "ground",
+   "light": null
+  },
+  "float_ring": {
+   "w": 1.3,
+   "d": 1.3,
+   "h": 0.3,
+   "snap": "water",
+   "light": null
+  },
+  "geyser_vent": {
+   "w": 4,
+   "d": 4,
+   "h": 1.0,
+   "snap": "ground",
+   "light": null
+  },
+  "splash_pool": {
+   "w": 10,
+   "d": 10,
+   "h": 0.6,
+   "snap": "ground",
+   "light": null
+  },
+  "beach": {
+   "w": 40,
+   "d": 40,
+   "h": 1,
+   "snap": "ground",
+   "light": null
+  },
+  "lounger": {
+   "w": 0.8,
+   "d": 2.0,
+   "h": 0.5,
+   "snap": "ground",
+   "light": null
+  },
+  "magma_glass_wall": {
+   "w": 80,
+   "d": 0.5,
+   "h": 7,
+   "snap": "wall",
+   "light": {
+    "kind": "area",
+    "watts": 6000,
+    "color_k": 1500
+   }
+  },
+  "bench_stone": {
+   "w": 2.4,
+   "d": 0.6,
+   "h": 0.45,
+   "snap": "ground",
+   "light": null
+  },
+  "caldera_rim": {
+   "w": 60,
+   "d": 40,
+   "h": 1.0,
+   "snap": "ground",
+   "light": null
+  },
+  "egg_baskets": {
+   "w": 6,
+   "d": 2.5,
+   "h": 3.5,
+   "snap": "ground",
+   "light": null
+  },
+  "moon_pavilion": {
+   "w": 10,
+   "d": 10,
+   "h": 7,
+   "snap": "ground",
+   "light": {
+    "kind": "area",
+    "watts": 200,
+    "color_k": 2600
+   },
+   "host": true
+  },
+  "cascade_pool": {
+   "w": 8,
+   "d": 6,
+   "h": 0.8,
+   "snap": "ground",
+   "light": null
+  },
+  "suite_module": {
+   "w": 16,
+   "d": 12,
+   "h": 3.2,
+   "snap": "ground",
+   "light": {
+    "kind": "area",
+    "watts": 120,
+    "color_k": 2600
+   },
+   "host": true
+  },
+  "cable_car": {
+   "w": 3,
+   "d": 4,
+   "h": 3,
+   "snap": "ground",
+   "light": null
+  },
+  "stair": {
+   "w": 2.4,
+   "d": 1.0,
+   "h": 0.2,
+   "snap": "ground",
+   "light": null,
+   "structural": true
+  },
+  "spiral_stair": {
+   "w": 16,
+   "d": 16,
+   "h": 1,
+   "snap": "ground",
+   "light": null,
+   "structural": true
+  },
+  "stalactite_cluster": {
+   "w": 2.0,
+   "d": 2.0,
+   "h": 3.0,
+   "snap": "ceiling",
+   "light": null,
+   "cluster_ok": true
+  },
+  "lantern_float": {
+   "w": 0.5,
+   "d": 0.5,
+   "h": 0.5,
+   "snap": "water",
+   "light": {
+    "kind": "point",
+    "watts": 8,
+    "color_k": 2300
+   }
+  },
+  "pool_uplight": {
+   "w": 0.3,
+   "d": 0.3,
+   "h": 0.05,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 15,
+    "color_k": 7000
+   },
+   "marker": true
+  },
+  "falls_uplight": {
+   "w": 0.3,
+   "d": 0.3,
+   "h": 0.05,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 40,
+    "color_k": 6500
+   },
+   "marker": true
+  },
+  "inflow_uplight": {
+   "w": 0.3,
+   "d": 0.3,
+   "h": 0.05,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 40,
+    "color_k": 6500
+   },
+   "marker": true
+  },
+  "oculus_glow": {
+   "w": 0.3,
+   "d": 0.3,
+   "h": 0.05,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 60,
+    "color_k": 1800
+   },
+   "marker": true
+  },
+  "noren_glow": {
+   "w": 0.3,
+   "d": 0.3,
+   "h": 0.05,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 10,
+    "color_k": 2600
+   },
+   "marker": true
+  },
+  "mist_card": {
+   "w": 4,
+   "d": 4,
+   "h": 0.6,
+   "snap": "water",
+   "light": null,
+   "marker": true
+  },
+  "spray_card": {
+   "w": 4,
+   "d": 4,
+   "h": 3,
+   "snap": "water",
+   "light": null,
+   "marker": true
+  },
+  "riverbed_glow": {
+   "w": 4,
+   "d": 4,
+   "h": 0.05,
+   "snap": "ground",
+   "light": null,
+   "marker": true
+  },
+  "light_shaft": {
+   "w": 1.5,
+   "d": 1.5,
+   "h": 6,
+   "snap": "ceiling",
+   "light": null,
+   "marker": true
+  },
+  "moon_sky": {
+   "w": 60,
+   "d": 1,
+   "h": 40,
+   "snap": "ground",
+   "light": null,
+   "marker": true
+  },
+  "portal_arch": {
+   "w": 5.0,
+   "d": 1.2,
+   "h": 3.4,
+   "snap": "ground",
+   "light": null,
+   "frame": true
+  },
+  "wall_trickle": {
+   "w": 1.2,
+   "d": 0.6,
+   "h": 2.5,
+   "snap": "wall",
+   "light": null
+  },
+  "spill_lip": {
+   "w": 4.0,
+   "d": 1.0,
+   "h": 0.4,
+   "snap": "ground",
+   "light": null
+  },
+  "steam_room_arch": {
+   "w": 6.0,
+   "d": 2.0,
+   "h": 4.0,
+   "snap": "ground",
+   "light": null,
+   "frame": true
+  },
+  "floor_paving": {
+   "w": 4,
+   "d": 4,
+   "h": 0.1,
+   "snap": "ground",
+   "light": null,
+   "structural": true
+  },
+  "hall_shell": {
+   "w": 4,
+   "d": 4,
+   "h": 3,
+   "snap": "ground",
+   "light": null,
+   "structural": true
+  },
+  "cave_shell": {
+   "w": 4,
+   "d": 4,
+   "h": 3,
+   "snap": "ground",
+   "light": null,
+   "structural": true
+  },
+  "mooring_post": {
+   "w": 0.35,
+   "d": 0.35,
+   "h": 0.9,
+   "snap": "ground",
+   "light": null
+  },
+  "massage_spout": {
+   "w": 1.0,
+   "d": 1.2,
+   "h": 2.6,
+   "snap": "wall",
+   "light": null
+  },
+  "sea_stack": {
+   "w": 5,
+   "d": 5,
+   "h": 9,
+   "snap": "ground",
+   "light": null,
+   "embed": 0.5,
+   "cluster_ok": true
+  },
+  "shoji_wall_bay": {
+   "w": 3.0,
+   "d": 0.4,
+   "h": 2.6,
+   "snap": "wall",
+   "light": {
+    "kind": "area",
+    "watts": 60,
+    "color_k": 2600
+   }
+  },
+  "slot_window": {
+   "w": 3.0,
+   "d": 0.6,
+   "h": 0.5,
+   "snap": "wall",
+   "light": null
+  },
+  "koi_pond": {
+   "w": 6,
+   "d": 6,
+   "h": 0.3,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 20,
+    "color_k": 6000
+   },
+   "host": true
+  },
+  "tsuboniwa": {
+   "w": 6,
+   "d": 5,
+   "h": 3,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 40,
+    "color_k": 2600
+   },
+   "host": true
+  },
+  "obsidian_monolith": {
+   "w": 1.4,
+   "d": 0.8,
+   "h": 3.0,
+   "snap": "ground",
+   "light": null
+  },
+  "junction_bell": {
+   "w": 0.8,
+   "d": 0.6,
+   "h": 1.8,
+   "snap": "ground",
+   "light": null
+  },
+  "slide_launch_gate": {
+   "w": 3,
+   "d": 2,
+   "h": 2.8,
+   "snap": "ground",
+   "light": null,
+   "frame": true
+  },
+  "header_tank": {
+   "w": 2.4,
+   "d": 1.4,
+   "h": 1.6,
+   "snap": "ground",
+   "light": null
+  },
+  "kawagiri_sign_gate": {
+   "w": 5.2,
+   "d": 0.8,
+   "h": 7.5,
+   "snap": "ground",
+   "light": {
+    "kind": "emissive",
+    "watts": 80,
+    "color_k": 0,
+    "color": "magenta"
+   },
+   "frame": true
+  },
+  "torii_small": {
+   "w": 3.4,
+   "d": 0.6,
+   "h": 3.6,
+   "snap": "ground",
+   "light": null,
+   "frame": true
+  },
+  "rock_window": {
+   "w": 2.5,
+   "d": 0.8,
+   "h": 1.6,
+   "snap": "wall",
+   "light": null
+  },
+  "geothermal_gauge": {
+   "w": 0.9,
+   "d": 0.5,
+   "h": 1.6,
+   "snap": "ground",
+   "light": null
+  },
+  "lava_crack_seam": {
+   "w": 0.4,
+   "d": 8,
+   "h": 0.1,
+   "snap": "ceiling",
+   "light": {
+    "kind": "emissive",
+    "watts": 40,
+    "color_k": 1600
+   },
+   "marker": true
+  },
+  "bridge_slab": {
+   "w": 2.6,
+   "d": 4.0,
+   "h": 0.9,
+   "snap": "ground",
+   "light": null,
+   "deck": true
+  },
+  "timber_passage": {
+   "w": 4.4,
+   "d": 6,
+   "h": 3.2,
+   "snap": "ground",
+   "light": null,
+   "frame": true,
+   "host": true
+  },
+  "genkan_porch": {
+   "w": 4.4,
+   "d": 4,
+   "h": 3.4,
+   "snap": "ground",
+   "light": null,
+   "frame": true,
+   "host": true
+  },
+  "yukata_shelves": {
+   "w": 6,
+   "d": 0.6,
+   "h": 2.4,
+   "snap": "wall",
+   "light": {
+    "kind": "area",
+    "watts": 80,
+    "color_k": 2700
+   }
+  },
+  "locker_bank": {
+   "w": 6,
+   "d": 0.6,
+   "h": 2.0,
+   "snap": "wall",
+   "light": null
+  },
+  "changing_booth_row": {
+   "w": 10,
+   "d": 1.6,
+   "h": 2.4,
+   "snap": "ground",
+   "light": null,
+   "host": true
+  },
+  "vanity_counter": {
+   "w": 4,
+   "d": 0.6,
+   "h": 0.9,
+   "snap": "wall",
+   "light": null
+  },
+  "towel_basket": {
+   "w": 0.6,
+   "d": 0.6,
+   "h": 0.5,
+   "snap": "ground",
+   "light": null
+  },
+  "culvert_grate": {
+   "w": 3,
+   "d": 1.2,
+   "h": 0.1,
+   "snap": "ground",
+   "light": null
+  },
+  "glass_oculus": {
+   "w": 7,
+   "d": 7,
+   "h": 0.15,
+   "snap": "ground",
+   "light": null
+  },
+  "momiji_small": {
+   "w": 4,
+   "d": 4,
+   "h": 4.5,
+   "snap": "ground",
+   "light": null
+  },
+  "rock_overhang": {
+   "w": 6,
+   "d": 3,
+   "h": 3,
+   "snap": "ceiling",
+   "light": null
+  },
+  "sake_counter": {
+   "w": 3,
+   "d": 0.8,
+   "h": 1.0,
+   "snap": "ground",
+   "light": null
+  },
+  "zabuton_cushion": {
+   "w": 0.6,
+   "d": 0.6,
+   "h": 0.1,
+   "snap": "ground",
+   "light": null
+  },
+  "stone_tub": {
+   "w": 2.6,
+   "d": 2.0,
+   "h": 0.6,
+   "snap": "ground",
+   "light": null,
+   "embed": 0.4
+  },
+  "kakehi_spout": {
+   "w": 0.2,
+   "d": 1.2,
+   "h": 1.4,
+   "snap": "ground",
+   "light": null
+  }
+ }
+}

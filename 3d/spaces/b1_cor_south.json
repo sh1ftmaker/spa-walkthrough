@@ -1,0 +1,464 @@
+{
+ "id": "b1_cor_south",
+ "name": "Mist corridor south",
+ "level": "b1",
+ "purpose": "The compressed way from the lift to the Magma Glass Slide: a warm mist corridor whose bend is lit by a single slot of moving lava behind glass, so the excitement starts before the slide room opens; a quiet door on the left leads to the treatments.",
+ "floor_z": -20.0,
+ "ceiling_z": -17.0,
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -17.6,
+  "max_z": -17.0,
+  "note": "3 m basalt barrel: compressed passage before the slide room's 8 m shaft hall."
+ },
+ "footprint": [
+  [
+   114.642,
+   57.953
+  ],
+  [
+   138.166,
+   55.993
+  ],
+  [
+   137.834,
+   52.007
+  ],
+  [
+   113.358,
+   54.047
+  ],
+  [
+   99.952,
+   62.297
+  ],
+  [
+   102.048,
+   65.703
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_lobby_south",
+   "to": "b1_lobby",
+   "at": [
+    101.5,
+    64
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b1_south_treat",
+   "to": "b1_treatment",
+   "at": [
+    124,
+    56
+   ],
+   "width": 2.0,
+   "height": 2.4
+  },
+  {
+   "id": "p_b1_south_slide",
+   "to": "b1_slide_top",
+   "at": [
+    138,
+    54
+   ],
+   "width": 4.0,
+   "height": 3.0
+  }
+ ],
+ "spine": [
+  [
+   101.5,
+   64.0,
+   -20.0
+  ],
+  [
+   105.0,
+   62.0,
+   -20.0
+  ],
+  [
+   109.5,
+   58.8,
+   -20.0
+  ],
+  [
+   113.8,
+   56.1,
+   -20.0
+  ],
+  [
+   120.0,
+   55.5,
+   -20.0
+  ],
+  [
+   124.0,
+   55.25,
+   -20.0
+  ],
+  [
+   131.0,
+   54.6,
+   -20.0
+  ],
+  [
+   138.0,
+   54.0,
+   -20.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "to_treatment",
+   "points": [
+    [
+     124.0,
+     55.25,
+     -20.0
+    ],
+    [
+     124.0,
+     57.2,
+     -20.0
+    ]
+   ],
+   "note": "Door in the north wall; ~3 m threshold through rock to the hall (y 60)."
+  }
+ ],
+ "hero": {
+  "asset": "lava_window",
+  "variant": "slot",
+  "at": [
+   114.2,
+   54.1,
+   -20.0
+  ],
+  "facing_deg": 315,
+  "dims": {
+   "w": 1.4,
+   "h": 2.4,
+   "sill": 0.3
+  },
+  "why": "Walking from the lobby you face the outside of the bend for 15 m: a narrow slot of thick glass with lava moving behind it, the first orange light since the arrival hall and a promise of the slide room; it glows on the water and the mist."
+ },
+ "anchored": [
+  {
+   "id": "treat_door",
+   "asset": "portal_arch",
+   "variant": "hinoki frame + noren",
+   "at": [
+    124.0,
+    57.05,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 2.0,
+    "h": 2.4
+   },
+   "why": "Treatment rooms door in the north wall."
+  },
+  {
+   "id": "treat_sign",
+   "asset": "sign_kanji",
+   "at": [
+    125.7,
+    56.95,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 0.5,
+    "h": 1.5
+   },
+   "text": "癒",
+   "why": "Small board beside the door."
+  },
+  {
+   "id": "slide_noren",
+   "asset": "banner",
+   "variant": "noren (vermilion)",
+   "at": [
+    137.6,
+    54.05,
+    -17.1
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 3.6,
+    "h": 1.0
+   },
+   "why": "Threshold into the slide hall; lit orange from behind."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_cor_south",
+   "kind": "still",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -20.2,
+   "path": [
+    [
+     101.5,
+     64.0
+    ],
+    [
+     105.0,
+     62.0
+    ],
+    [
+     109.5,
+     58.8
+    ],
+    [
+     113.8,
+     56.1
+    ],
+    [
+     120.0,
+     55.5
+    ],
+    [
+     124.0,
+     55.25
+    ],
+    [
+     131.0,
+     54.6
+    ],
+    [
+     138.0,
+     54.0
+    ]
+   ],
+   "width": 3.0,
+   "layout_ref": "w_b1_corridors",
+   "note": "Same -20.05 surface as the lobby side."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_lobby_south",
+   "see": "Down the diagonal to the orange lava slot at the bend; niches doubled in the water.",
+   "target": [
+    114.2,
+    54.1,
+    -18.8
+   ]
+  },
+  {
+   "from": "bend",
+   "at": [
+    114.5,
+    55.9
+   ],
+   "see": "Round the bend: the straight to the slide hall, its noren lit orange from behind.",
+   "target": [
+    138.0,
+    54.0,
+    -18.5
+   ]
+  },
+  {
+   "from": "p_b1_south_slide",
+   "see": "Coming back from the slide: the lava slot and the lobby drum's warm glow beyond.",
+   "target": [
+    101.5,
+    64.0,
+    -18.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    102.8,
+    63.3,
+    -18.4
+   ],
+   "target": [
+    114.2,
+    54.4,
+    -18.6
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    115.8,
+    55.85,
+    -18.4
+   ],
+   "target": [
+    138.0,
+    54.0,
+    -18.3
+   ],
+   "fov_v": 58
+  },
+  "concept": {
+   "pos": [
+    117.6,
+    55.7,
+    -18.4
+   ],
+   "target": [
+    138.0,
+    54.2,
+    -18.7
+   ],
+   "fov_v": 52,
+   "image": "lookbook/img/05-mist-corridor.jpg",
+   "match": "Corridor mood with a hot end: stepping stones, knee-high mist, ankle niches, and an orange glow (the slide hall) where it ends."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     101.5,
+     64.0
+    ],
+    [
+     105.0,
+     62.0
+    ],
+    [
+     109.5,
+     58.8
+    ],
+    [
+     112.0,
+     57.2
+    ]
+   ],
+   "side": "both",
+   "stagger": true,
+   "spacing": [
+    4.0,
+    5.5
+   ],
+   "snap": "wall",
+   "height": 0.25,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Warm niches up to 2 m before the bend; none near the slot so it is the brightest thing on the bend."
+  },
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     117.5,
+     55.7
+    ],
+    [
+     124.0,
+     55.25
+    ],
+    [
+     131.0,
+     54.6
+    ],
+    [
+     134.5,
+     54.3
+    ]
+   ],
+   "side": "both",
+   "stagger": true,
+   "spacing": [
+    4.5,
+    6.5
+   ],
+   "snap": "wall",
+   "height": 0.25,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Second run after the bend; stops 3.5 m before the slide hall so its orange spill reads."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     122.95,
+     56.9,
+     -20.0
+    ],
+    [
+     125.05,
+     56.85,
+     -20.0
+    ]
+   ],
+   "face": "path",
+   "why": "Pair flanking the treatment door."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "stepping_stone",
+   "along": "spine",
+   "side": "both",
+   "offset": 0.36,
+   "spacing": [
+    0.72,
+    0.86
+   ],
+   "jitter": 0.08,
+   "top_z": -20.0,
+   "scale": [
+    0.95,
+    1.15
+   ],
+   "variants": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+  },
+  {
+   "asset": "boulder_rim",
+   "along": "spine",
+   "side": "both",
+   "offset": 1.62,
+   "spacing": [
+    2.2,
+    4.0
+   ],
+   "embed": 0.12,
+   "scale": [
+    0.35,
+    0.7
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ],
+   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
+  }
+ ],
+ "mood": {
+  "key": "lava slot at the bend",
+  "palette": "amber niches, one orange slot, teal water, black basalt",
+  "mist": "Knee-high (0.4 m) layer over the whole pool, densest at the walls, thinning over the stones. Lit orange near the slot."
+ },
+ "waivers": [],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

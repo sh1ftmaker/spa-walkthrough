@@ -1,0 +1,380 @@
+{
+ "id": "b4_chamber",
+ "name": "Magma viewing chamber",
+ "level": "b4",
+ "purpose": "The hush zone at the bottom of the spa: guests sit in silence on long benches in front of a wall of thick glass with a slow lava sea beyond, and feel the mountain's own rumble.",
+ "floor_z": -100.0,
+ "ceiling_z": -92.0,
+ "ceiling_profile": {
+  "type": "vault",
+  "min_z": -93.0,
+  "max_z": -92.0,
+  "note": "Low flat basalt vault with timber beams over each glass bay; lowest at the north wall."
+ },
+ "footprint": [
+  [
+   40,
+   6
+  ],
+  [
+   122,
+   6
+  ],
+  [
+   122,
+   30
+  ],
+  [
+   48,
+   36
+  ],
+  [
+   40,
+   30
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b4_tunnel_chamber",
+   "to": "b4_tunnel",
+   "at": [
+    56,
+    34
+   ],
+   "width": 5.0,
+   "height": 3.4
+  }
+ ],
+ "spine": [
+  [
+   56,
+   34,
+   -100.0
+  ],
+  [
+   57.0,
+   27.0,
+   -100.0
+  ],
+  [
+   62.0,
+   19.0,
+   -100.0
+  ],
+  [
+   80.0,
+   17.0,
+   -100.0
+  ],
+  [
+   100.0,
+   17.0,
+   -100.0
+  ],
+  [
+   118.0,
+   17.5,
+   -100.0
+  ]
+ ],
+ "hero": {
+  "asset": "magma_glass_wall",
+  "at": [
+   81.0,
+   8.0,
+   -100.0
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "w": 82.0,
+   "h": 7.6,
+   "bay": 7.5
+  },
+  "why": "An 82 m wall of thick glass in bronze-framed bays with lava moving slowly beyond (23, 36): the only reason for the room, and by far its brightest light."
+ },
+ "anchored": [
+  {
+   "id": "deck",
+   "asset": "floor_paving",
+   "variant": "hinoki_deck",
+   "at": [
+    81.0,
+    16.65,
+    -100.0
+   ],
+   "dims": {
+    "w": 82.0,
+    "d": 14.7,
+    "h": 0.1
+   },
+   "area": [
+    [
+     40,
+     9.3
+    ],
+    [
+     122,
+     9.3
+    ],
+    [
+     122,
+     24
+    ],
+    [
+     40,
+     24
+    ]
+   ],
+   "why": "Timber floor along the glass (36); rock floor behind it."
+  },
+  {
+   "id": "bench_1",
+   "asset": "bench_stone",
+   "at": [
+    52.5,
+    22.6,
+    -100.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 4.5
+   },
+   "why": "Long low bench facing the glass, centred on a bay; benches alternate with empty bays so the floor stays open."
+  },
+  {
+   "id": "bench_2",
+   "asset": "bench_stone",
+   "at": [
+    67.5,
+    22.6,
+    -100.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 4.5
+   },
+   "why": "Long low bench facing the glass, centred on a bay; benches alternate with empty bays so the floor stays open."
+  },
+  {
+   "id": "bench_3",
+   "asset": "bench_stone",
+   "at": [
+    82.5,
+    22.6,
+    -100.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 4.5
+   },
+   "why": "Long low bench facing the glass, centred on a bay; benches alternate with empty bays so the floor stays open."
+  },
+  {
+   "id": "bench_4",
+   "asset": "bench_stone",
+   "at": [
+    97.5,
+    22.6,
+    -100.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 4.5
+   },
+   "why": "Long low bench facing the glass, centred on a bay; benches alternate with empty bays so the floor stays open."
+  },
+  {
+   "id": "bench_5",
+   "asset": "bench_stone",
+   "at": [
+    112.5,
+    22.6,
+    -100.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 4.5
+   },
+   "why": "Long low bench facing the glass, centred on a bay; benches alternate with empty bays so the floor stays open."
+  }
+ ],
+ "water": [],
+ "sightlines": [
+  {
+   "from": "p_b4_tunnel_chamber",
+   "see": "The whole glass wall opening up to the left and right, orange.",
+   "target": [
+    81.0,
+    8.0,
+    -96.0
+   ]
+  },
+  {
+   "from": "east end (118, 17.5)",
+   "see": "Back west: the tunnel mouth's amber lanterns, the way out.",
+   "target": [
+    56.0,
+    34.0,
+    -98.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    56.6,
+    32.5,
+    -98.4
+   ],
+   "target": [
+    70.0,
+    8.0,
+    -97.0
+   ],
+   "fov_v": 62
+  },
+  "reveal": {
+   "pos": [
+    60.0,
+    20.0,
+    -98.4
+   ],
+   "target": [
+    95.0,
+    8.0,
+    -96.5
+   ],
+   "fov_v": 68
+  },
+  "concept": {
+   "image": "lookbook/img/23-descent-v2.jpg",
+   "pos": [
+    81.0,
+    27.0,
+    -98.4
+   ],
+   "target": [
+    81.0,
+    8.0,
+    -96.6
+   ],
+   "fov_v": 60,
+   "match": "Square-on to the glass: repeated bronze-framed bays, lava filling every pane, a row of silhouettes along the rail, low timber ceiling beams, dark floor reflecting orange (B4 strip of 23)."
+  }
+ },
+ "lights": [
+  {
+   "asset": "magma_glass_wall",
+   "role": "hero emissive",
+   "note": "Lava light is the key light; everything else is a dim accent."
+  },
+  {
+   "asset": "lantern_post",
+   "along": [
+    [
+     42.0,
+     9.9
+    ],
+    [
+     120.0,
+     9.9
+    ]
+   ],
+   "spacing": [
+    7,
+    8
+   ],
+   "offset": 0.0,
+   "dim": 0.3,
+   "face": "hero",
+   "why": "Tiny low lanterns on the glass rail posts (36), dim enough to stay well below the lava."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     50.0,
+     33.0
+    ],
+    [
+     120.0,
+     28.3
+    ]
+   ],
+   "spacing": [
+    14,
+    16
+   ],
+   "offset": 0.0,
+   "dim": 0.5,
+   "face": "hero",
+   "why": "Pools behind alternate benches at the north wall; dark gaps between."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": [
+    [
+     41.0,
+     9.3
+    ],
+    [
+     121.0,
+     9.3
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 180,
+   "why": "Rail 1.3 m in front of the hot glass (36 draws a railing along the glass)."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    1.5
+   ],
+   "density": 0.04,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ],
+   "keep_north_of_y": 24.0,
+   "why": "Rock only at the north wall and ends; nothing between the benches and the glass."
+  },
+  {
+   "asset": "heartbeat_speaker",
+   "at": [
+    [
+     46.0,
+     28.0,
+     -100.0
+    ],
+    [
+     118.0,
+     26.0,
+     -100.0
+    ]
+   ],
+   "hidden": true,
+   "why": "Low-frequency 'heartbeat' (lookbook): audio emitters hidden in the north wall at both ends."
+  }
+ ],
+ "mood": {
+  "key": "lava beyond glass (orange, brightest)",
+  "palette": "orange lava, bronze frames, near-black timber, very dim amber accents",
+  "mist": "None; heat shimmer on the glass."
+ },
+ "waivers": [
+  {
+   "check": "spacing",
+   "where": "bench_1..bench_5",
+   "reason": "Benches sit on a 15 m rhythm (every other glass bay) on purpose; the bays are regular."
+  }
+ ]
+}

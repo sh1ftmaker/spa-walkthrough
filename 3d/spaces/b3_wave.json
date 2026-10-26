@@ -1,0 +1,502 @@
+{
+ "id": "b3_wave",
+ "name": "10 Wave Grotto beach",
+ "level": "b3",
+ "purpose": "The end of the water's journey: a black-sand beach inside a sea cave where slow heated waves roll in under a moonlit mouth; guests lie on loungers and watch the spring meet the ocean.",
+ "floor_z": -68.0,
+ "ceiling_z": -52.0,
+ "footprint": [
+  [
+   160,
+   16
+  ],
+  [
+   200,
+   14
+  ],
+  [
+   200,
+   62
+  ],
+  [
+   164,
+   64
+  ]
+ ],
+ "floor_note": "Beach z = -67.5 at the west wall sloping to -70.0 at the sea edge (w_sea footprint) and -70.6 under water. Camera z below use that slope.",
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -58.0,
+  "max_z": -52.0,
+  "note": "Stalactite-hung vault, lowest at the mouth arch where the fringe frames the sky (concept 20)."
+ },
+ "portals": [
+  {
+   "id": "p_b3_shore_wave",
+   "to": "b3_shore",
+   "at": [
+    162,
+    34
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.6
+  },
+  {
+   "id": "sea_mouth",
+   "to": "open sea",
+   "at": [
+    200,
+    38
+   ],
+   "z": -70.0,
+   "width": 26.0,
+   "height": 14.0,
+   "walk": false,
+   "note": "Arch on the east edge, open to sky and sea."
+  }
+ ],
+ "spine": [
+  [
+   162,
+   34,
+   -67.0
+  ],
+  [
+   163.6,
+   35.6,
+   -68.06
+  ],
+  [
+   164.4,
+   44,
+   -68.1
+  ],
+  [
+   165.4,
+   52,
+   -68.07
+  ],
+  [
+   167.2,
+   56.2,
+   -68.33
+  ]
+ ],
+ "spine_branches": [
+  {
+   "id": "south_beach",
+   "path": [
+    [
+     163.6,
+     33.0,
+     -68.09
+    ],
+    [
+     163.0,
+     26,
+     -68.01
+    ],
+    [
+     163.2,
+     19.2,
+     -68.12
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "beach",
+  "at": [
+   199.5,
+   38,
+   -70.0
+  ],
+  "facing_deg": 270,
+  "dims": {
+   "mouth_w": 26,
+   "mouth_h": 14,
+   "stacks": 3
+  },
+  "why": "The moonlit sea arch: cold silver light, rolling teal waves and sea stacks beyond. The only sky in the whole cavern; it ends the water's journey and is the brightest thing in view from the shore torii."
+ },
+ "anchored": [
+  {
+   "id": "beach_pavilion",
+   "asset": "pavilion_engawa",
+   "at": [
+    170,
+    59,
+    -67.5
+   ],
+   "facing_deg": 135,
+   "dims": {
+    "w": 10,
+    "d": 5.5,
+    "h": 4.5
+   },
+   "why": "Concept 20's warm timber lounge on the left (NW) with a lava glow inside: tea and towels on a raised deck over the beach."
+  },
+  {
+   "id": "sea_stacks",
+   "asset": "sea_stack",
+   "at": [
+    [
+     193,
+     22,
+     -70.0
+    ],
+    [
+     195.5,
+     53,
+     -70.0
+    ],
+    [
+     198,
+     31,
+     -70.0
+    ]
+   ],
+   "dims": {
+    "h": [
+     6,
+     11
+    ]
+   },
+   "why": "Dark rock stacks framing the mouth (20, right)."
+  },
+  {
+   "id": "pavilion_steps",
+   "asset": "stair",
+   "at": [
+    [
+     167.4,
+     56.4,
+     -68.36
+    ]
+   ],
+   "facing_deg": 315,
+   "dims": {
+    "w": 2.0,
+    "steps": 3
+   },
+   "why": "Beach to pavilion deck."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_sea",
+   "kind": "sea",
+   "z": -70.0,
+   "temp": 30,
+   "footprint": [
+    [
+     172,
+     20
+    ],
+    [
+     200,
+     16
+    ],
+    [
+     200,
+     60
+    ],
+    [
+     176,
+     58
+    ],
+    [
+     170,
+     40
+    ]
+   ],
+   "waves": {
+    "height": 0.5,
+    "period_s": 9,
+    "from_deg": 90
+   },
+   "note": "Matches layout: one level surface continuous with the open sea."
+  },
+  {
+   "id": "w_beach_stream",
+   "kind": "flow",
+   "z_start": -67.9,
+   "z_end": -70.0,
+   "path": [
+    [
+     163.6,
+     32.7
+    ],
+    [
+     167,
+     31.6
+    ],
+    [
+     171.1,
+     30.6
+    ]
+   ],
+   "width": 0.8,
+   "note": "Shore runnel braids across the sand into the sea: the spring's last metres."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b3_shore_wave",
+   "see": "The beach opens left and right; ahead the moonlit arch with sea stacks; left the warm pavilion.",
+   "target": [
+    200,
+    38,
+    -63
+   ]
+  },
+  {
+   "from": "beach_pavilion",
+   "see": "Down the beach past lanterns and loungers to the arch.",
+   "target": [
+    199,
+    30,
+    -64
+   ]
+  },
+  {
+   "from": [
+    172,
+    30
+   ],
+   "see": "From the waterline looking back west: the warm torii lanterns at the shore mouth.",
+   "target": [
+    160.8,
+    34,
+    -65.4
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    163.6,
+    34.6,
+    -66.47
+   ],
+   "target": [
+    199,
+    38,
+    -64
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    165.4,
+    44.0,
+    -66.78
+   ],
+   "target": [
+    198,
+    36,
+    -63
+   ],
+   "fov_v": 66
+  },
+  "concept": {
+   "pos": [
+    169.0,
+    20.6,
+    -67.76
+   ],
+   "target": [
+    180,
+    46,
+    -65
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/20-wave-grotto.jpg",
+   "match": "From the south end of the beach near the waterline looking NNE: loungers and lanterns on the upper beach to the left, the warm pavilion far left, wet black sand and foam centre, rolling teal waves, the moonlit arch with sea stacks on the right, stalactite fringe above."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     165.6,
+     18.5
+    ],
+    [
+     166.0,
+     30.5
+    ]
+   ],
+   "spacing": [
+    4.6,
+    5.6
+   ],
+   "offset": 0,
+   "face": "out",
+   "rule": "one between each lounger pair",
+   "why": "Concept 20: lanterns between the loungers; warm pools alternate with dark sand."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     167.2,
+     38.5
+    ],
+    [
+     168.4,
+     53
+    ]
+   ],
+   "spacing": [
+    4.6,
+    5.6
+   ],
+   "offset": 0,
+   "face": "out"
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     170,
+     59,
+     -63.4
+    ]
+   ],
+   "cluster": true,
+   "why": "Pavilion eaves."
+  },
+  {
+   "asset": "moon_sky",
+   "at": [
+    [
+     230,
+     40,
+     -48
+    ]
+   ],
+   "why": "Cold key light through the mouth (sky dome + moon card): the hero's light."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "lounger",
+   "along": [
+    [
+     165.6,
+     18.5
+    ],
+    [
+     166.0,
+     30.5
+    ]
+   ],
+   "spacing": [
+    2.3,
+    2.8
+   ],
+   "offset": 0.8,
+   "face": 90,
+   "rule": "pairs, side table + towel; seaward of the walk band (walk hugs the wall)",
+   "avoid": [
+    "nav"
+   ]
+  },
+  {
+   "asset": "lounger",
+   "along": [
+    [
+     167.2,
+     38.5
+    ],
+    [
+     168.4,
+     53
+    ]
+   ],
+   "spacing": [
+    2.3,
+    2.8
+   ],
+   "offset": 0.8,
+   "face": 110,
+   "rule": "pairs",
+   "avoid": [
+    "nav",
+    "portals"
+   ]
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "area",
+   "area": [
+    [
+     169,
+     20
+    ],
+    [
+     173,
+     20
+    ],
+    [
+     173,
+     56
+    ],
+    [
+     175,
+     58
+    ],
+    [
+     170,
+     58
+    ],
+    [
+     168.5,
+     40
+    ]
+   ],
+   "density": 0.03,
+   "embed": 0.3,
+   "scale": [
+    0.8,
+    1.8
+   ],
+   "why": "Wet black rocks at the waterline (20), never on the walk band."
+  },
+  {
+   "asset": "stalactite_cluster",
+   "snap": "ceiling",
+   "scatter": "edge_band",
+   "band": [
+    0,
+    8
+   ],
+   "density": 0.03,
+   "rule": "densest along the mouth arch"
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.2,
+    1.5
+   ],
+   "density": 0.04,
+   "avoid": [
+    "nav",
+    "portals",
+    "water"
+   ]
+  }
+ ],
+ "mood": {
+  "key": "moonlit sea mouth",
+  "palette": "cold moon silver, teal waves, black sand, warm lantern pools",
+  "mist": "sea spray at the mouth, low warm mist where the stream meets the sea"
+ },
+ "waivers": [],
+ "layout_issues": []
+}

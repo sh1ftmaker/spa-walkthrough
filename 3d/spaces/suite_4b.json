@@ -1,0 +1,1 @@
+{"id": "suite_4b", "template": "suite_template", "origin": [156, 94.0, 60.0], "floor_z": 60.0, "ceiling_z": 63.2, "portals": [{"id": "p_suite_4ab", "to": "suite_4a", "at": [156, 109.15], "width": 1.6}, {"id": "p_suite_4bc", "to": "suite_4c", "at": [174, 109.15], "width": 1.6}], "trickle": {"inflow_from": "summit north channel via the gully at x 173", "overflow_to": "suite_3b"}}

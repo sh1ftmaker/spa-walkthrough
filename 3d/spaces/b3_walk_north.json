@@ -1,0 +1,279 @@
+{
+ "id": "b3_walk_north",
+ "name": "North walk (lobby to rimstone)",
+ "level": "b3",
+ "purpose": "A roofed 4 m stair that climbs from the lobby to the terrace shelf: low roof, ankle lanterns, a runnel of warm water coming down beside you - the compression before the rimstone reveal.",
+ "floor_z": -67.0,
+ "ceiling_z": -58.0,
+ "footprint": [
+  [
+   70.828,
+   68.0
+  ],
+  [
+   67.414,
+   64.586
+  ],
+  [
+   64.586,
+   67.414
+  ],
+  [
+   69.172,
+   72.0
+  ],
+  [
+   78.0,
+   72.0
+  ],
+  [
+   78.0,
+   68.0
+  ]
+ ],
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -64.0,
+  "max_z": -58.5,
+  "note": "Timber-and-rock roofed gallery under the vault: roof 3.0 m above the treads all the way up (-64.0 at the lobby, -58.5 at the top landing)."
+ },
+ "floor_note": "The floor is north_walk_stair: 32 risers of 0.1719 from -67.0 at the lobby to -61.5 at the shelf, 3 runs / 2 landings, 3 m wide over the plan (66,66)-(70,70)-(78,70). Spine z below is linear along the plan.",
+ "portals": [
+  {
+   "id": "p_b3_lobby_walk",
+   "to": "b3_lobby",
+   "at": [
+    78,
+    70
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b3_walk_rim",
+   "to": "b3_rimstone",
+   "at": [
+    66,
+    66
+   ],
+   "z": -61.5,
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "stair:north_walk_stair",
+   "to": "b3_lobby b3_rimstone",
+   "at": [
+    78,
+    70
+   ],
+   "z": -67.0,
+   "width": 3.0,
+   "height": 3.0,
+   "note": "The whole passage is this stair."
+  }
+ ],
+ "spine": [
+  [
+   78,
+   70,
+   -67.0
+  ],
+  [
+   74,
+   70,
+   -65.39
+  ],
+  [
+   70,
+   70,
+   -63.78
+  ],
+  [
+   68,
+   68,
+   -62.64
+  ],
+  [
+   66,
+   66,
+   -61.5
+  ]
+ ],
+ "hero": {
+  "asset": "rock_window",
+  "at": [
+   71.8,
+   68.0,
+   -64.5
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "w": 2.4,
+   "h": 1.3,
+   "sill": 0.9
+  },
+  "why": "The gallery's only opening, cut in the south wall at the lower landing: it frames the steaming teal terraces lit from outside, so it is the brightest thing in a dim stair and pulls you up and round the corner."
+ },
+ "anchored": [
+  {
+   "id": "handrails",
+   "asset": "railing",
+   "along": "spine",
+   "side": "both",
+   "offset": 1.5,
+   "dims": {
+    "h": 0.95
+   },
+   "why": "Handrails on both flights."
+  },
+  {
+   "id": "top_sign",
+   "asset": "sign_kanji",
+   "at": [
+    67.4,
+    68.2,
+    -62.3
+   ],
+   "facing_deg": 135,
+   "dims": {
+    "h": 2.0
+   },
+   "text": "棚田 40-33 °C",
+   "why": "Temperature board as you step out onto the shelf."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_walk_runnel",
+   "kind": "flow",
+   "z_start": -61.55,
+   "z_end": -67.05,
+   "path": [
+    [
+     66.6,
+     66.9
+    ],
+    [
+     69.8,
+     70.9
+    ],
+    [
+     77.9,
+     71.4
+    ]
+   ],
+   "width": 0.3,
+   "note": "Stone runnel at the north wall foot, stepping down beside the treads in 0.17 m drops; from the top tier feed to the lobby basin."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b3_lobby_walk",
+   "see": "Up the stair: the teal window glowing at the landing, the runnel glinting.",
+   "target": [
+    71.8,
+    68.0,
+    -63.2
+   ]
+  },
+  {
+   "from": "p_b3_walk_rim",
+   "see": "Out onto the shelf: the terraces fall away below - the reveal.",
+   "target": [
+    64,
+    45,
+    -63.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    77.5,
+    70.2,
+    -65.2
+   ],
+   "target": [
+    71.8,
+    68.4,
+    -63.4
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    66.8,
+    66.8,
+    -60.36
+   ],
+   "target": [
+    62,
+    50,
+    -63
+   ],
+   "fov_v": 64
+  },
+  "concept": {
+   "pos": [
+    71.4,
+    70.6,
+    -62.74
+   ],
+   "target": [
+    71.8,
+    67.9,
+    -63.4
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/05-mist-corridor.jpg",
+   "match": "No B3 concept for this passage; borrow 05's mood: low dark gallery, warm niche lanterns at ankle height doubled in the runnel, one bright opening ahead."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_niche",
+   "along": "spine",
+   "side": "both",
+   "spacing": [
+    2.5,
+    3.5
+   ],
+   "offset": 1.9,
+   "snap": "wall",
+   "face": "path",
+   "why": "Low light only, dark between, so the window and the shelf beyond read as bright."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "rock_cluster",
+   "at": [
+    [
+     70.4,
+     71.6,
+     -63.94
+    ]
+   ],
+   "scale": [
+    0.4,
+    0.6
+   ],
+   "why": "One small wet rock at the landing corner where the runnel turns."
+  }
+ ],
+ "mood": {
+  "key": "dim climb toward a teal window",
+  "palette": "amber ankle light, dark timber roof, teal from outside",
+  "mist": "steam drifts in from the top end"
+ },
+ "waivers": [
+  {
+   "check": "no_empty_areas",
+   "where": "whole space",
+   "reason": "4 m passage; lights along both walls cover it."
+  }
+ ],
+ "layout_issues": []
+}

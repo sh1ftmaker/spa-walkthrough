@@ -1,0 +1,625 @@
+{
+ "id": "b1_junction_w",
+ "name": "Koi junction",
+ "level": "b1",
+ "purpose": "The corridor widens into a small round pond with black and gold koi under the mist and a bronze bell: a pause and a fork (north to the Mirror, west to the steam grotto and the Mist Steps).",
+ "floor_z": -20.0,
+ "ceiling_z": -16.5,
+ "ceiling_profile": {
+  "type": "dome",
+  "min_z": -17.2,
+  "max_z": -16.5,
+  "note": "Shallow carved dome, 3.5 m at the crown: a release after the 3 m corridors, still intimate."
+ },
+ "footprint": [
+  [
+   71.5,
+   74.0
+  ],
+  [
+   71.394,
+   75.073
+  ],
+  [
+   71.081,
+   76.105
+  ],
+  [
+   70.573,
+   77.056
+  ],
+  [
+   69.889,
+   77.889
+  ],
+  [
+   69.056,
+   78.573
+  ],
+  [
+   68.105,
+   79.081
+  ],
+  [
+   67.073,
+   79.394
+  ],
+  [
+   66.0,
+   79.5
+  ],
+  [
+   64.927,
+   79.394
+  ],
+  [
+   63.895,
+   79.081
+  ],
+  [
+   62.944,
+   78.573
+  ],
+  [
+   62.111,
+   77.889
+  ],
+  [
+   61.427,
+   77.056
+  ],
+  [
+   60.919,
+   76.105
+  ],
+  [
+   60.606,
+   75.073
+  ],
+  [
+   60.5,
+   74.0
+  ],
+  [
+   60.606,
+   72.927
+  ],
+  [
+   60.919,
+   71.895
+  ],
+  [
+   61.427,
+   70.944
+  ],
+  [
+   62.111,
+   70.111
+  ],
+  [
+   62.944,
+   69.427
+  ],
+  [
+   63.895,
+   68.919
+  ],
+  [
+   64.927,
+   68.606
+  ],
+  [
+   66.0,
+   68.5
+  ],
+  [
+   67.073,
+   68.606
+  ],
+  [
+   68.105,
+   68.919
+  ],
+  [
+   69.056,
+   69.427
+  ],
+  [
+   69.889,
+   70.111
+  ],
+  [
+   70.573,
+   70.944
+  ],
+  [
+   71.081,
+   71.895
+  ],
+  [
+   71.394,
+   72.927
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_junction_west",
+   "to": "b1_cor_west",
+   "at": [
+    62,
+    76
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "pi_mirror_junction_e",
+   "to": "b1_cor_mirror",
+   "at": [
+    71.45,
+    73.6
+   ],
+   "width": 4.0,
+   "height": 3.0,
+   "implied": true,
+   "note": "From the lobby (overlap with b1_cor_mirror)."
+  },
+  {
+   "id": "pi_mirror_junction_n",
+   "to": "b1_cor_mirror",
+   "at": [
+    67.4,
+    79.4
+   ],
+   "width": 4.0,
+   "height": 3.0,
+   "implied": true,
+   "note": "On to the Mirror."
+  }
+ ],
+ "spine": [
+  [
+   71.45,
+   73.6,
+   -20.0
+  ],
+  [
+   69.2,
+   75.3,
+   -20.0
+  ],
+  [
+   67.4,
+   79.4,
+   -20.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "to_west",
+   "points": [
+    [
+     69.2,
+     75.3,
+     -20.0
+    ],
+    [
+     65.4,
+     76.6,
+     -20.0
+    ],
+    [
+     62.0,
+     76.0,
+     -20.0
+    ]
+   ],
+   "note": "Branch to b1_cor_west (grotto, Mist Steps)."
+  }
+ ],
+ "hero": {
+  "asset": "koi_pond",
+  "at": [
+   64.0,
+   72.0,
+   -20.05
+  ],
+  "facing_deg": 45,
+  "dims": {
+   "r": 2.3,
+   "depth": 0.85
+  },
+  "why": "Lookbook: at junctions the corridor widens into ponds with koi. The pond sits in the quiet SW quarter, off the through-route, lit from below so the black and gold fish glow under the mist; it is the brightest, slowest thing here and it marks the fork."
+ },
+ "anchored": [
+  {
+   "id": "bell",
+   "asset": "junction_bell",
+   "at": [
+    69.95,
+    77.6,
+    -20.0
+   ],
+   "facing_deg": 225,
+   "dims": {
+    "h": 1.9
+   },
+   "why": "Lookbook: a small bell at each junction is the only sound allowed after 22:00. On the NE kerb where the route turns north, facing the pond."
+  },
+  {
+   "id": "toro",
+   "asset": "lantern_stone",
+   "at": [
+    61.45,
+    72.85,
+    -20.0
+   ],
+   "facing_deg": 75,
+   "dims": {
+    "h": 1.4
+   },
+   "why": "Stone lantern on the pond's west rim, doubled in the pond; seen from the lobby mouth."
+  },
+  {
+   "id": "pond_pine",
+   "asset": "pine_bonsai",
+   "at": [
+    65.7,
+    69.35,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "h": 1.8
+   },
+   "why": "Leans over the pond's south rim; silhouette against the underwater glow."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_junction_pool",
+   "kind": "still",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -20.2,
+   "path": [
+    [
+     71.45,
+     73.6
+    ],
+    [
+     69.2,
+     75.3
+    ],
+    [
+     67.4,
+     79.4
+    ]
+   ],
+   "width": 3.2,
+   "layout_ref": "w_b1_corridors",
+   "note": "Corridor pool continues through; same -20.05 surface."
+  },
+  {
+   "id": "w_koi_pond",
+   "kind": "still",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -20.9,
+   "footprint": [
+    [
+     64.0,
+     74.3
+    ],
+    [
+     64.71,
+     74.19
+    ],
+    [
+     65.35,
+     73.86
+    ],
+    [
+     65.86,
+     73.35
+    ],
+    [
+     66.19,
+     72.71
+    ],
+    [
+     66.3,
+     72.0
+    ],
+    [
+     66.19,
+     71.29
+    ],
+    [
+     65.86,
+     70.65
+    ],
+    [
+     65.35,
+     70.14
+    ],
+    [
+     64.71,
+     69.81
+    ],
+    [
+     64.0,
+     69.7
+    ],
+    [
+     63.29,
+     69.81
+    ],
+    [
+     62.65,
+     70.14
+    ],
+    [
+     62.14,
+     70.65
+    ],
+    [
+     61.81,
+     71.29
+    ],
+    [
+     61.7,
+     72.0
+    ],
+    [
+     61.81,
+     72.71
+    ],
+    [
+     62.14,
+     73.35
+    ],
+    [
+     62.65,
+     73.86
+    ],
+    [
+     63.29,
+     74.19
+    ]
+   ],
+   "layout_ref": "w_b1_corridors",
+   "note": "A deeper well in the same pool (one surface); low rim stones at -20.00 mark its edge."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "pi_mirror_junction_e",
+   "see": "Pond glow, toro and bell; the west branch opening on the left with steam light beyond.",
+   "target": [
+    64.0,
+    72.0,
+    -19.9
+   ]
+  },
+  {
+   "from": "p_b1_junction_west",
+   "see": "Arriving from the grotto: the bell and the lantern-lined north leg rising away.",
+   "target": [
+    67.0,
+    85.0,
+    -18.6
+   ]
+  },
+  {
+   "from": "pi_mirror_junction_n",
+   "see": "Returning from the Mirror: the pond and the warm lobby mouth to the east.",
+   "target": [
+    78.0,
+    72.0,
+    -18.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    71.0,
+    73.75,
+    -18.4
+   ],
+   "target": [
+    63.0,
+    72.0,
+    -19.7
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    69.0,
+    77.4,
+    -18.4
+   ],
+   "target": [
+    64.0,
+    72.0,
+    -20.0
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "pos": [
+    70.6,
+    75.6,
+    -18.4
+   ],
+   "target": [
+    60.6,
+    76.3,
+    -18.7
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/05-mist-corridor.jpg",
+   "match": "Mood, not geometry: mist on water, stepping stones curving away left into the west branch, toro and pond glow lower left, bell frame on the right, warm steam-grotto light at the end."
+  }
+ },
+ "lights": [
+  {
+   "asset": "koi_pond",
+   "part": "underwater_light",
+   "at": [
+    [
+     64.0,
+     72.0,
+     -20.85
+    ]
+   ],
+   "why": "Warm-teal uplight in the pond: the hero is the brightest thing."
+  },
+  {
+   "asset": "lantern_niche",
+   "along": "wall",
+   "spacing": [
+    3.2,
+    4.6
+   ],
+   "snap": "wall",
+   "height": 0.25,
+   "face": "in",
+   "avoid": [
+    "portals",
+    "hero",
+    1.0
+   ],
+   "why": "A sparse ring of ankle lights on the curved wall; none behind the pond so it stays the brightest."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    64.0,
+    72.0
+   ],
+   "radius": 2.45,
+   "spacing": [
+    0.7,
+    1.1
+   ],
+   "embed": 0.15,
+   "scale": [
+    0.35,
+    0.6
+   ],
+   "top_z": [
+    -20.0,
+    -19.85
+   ],
+   "avoid": [
+    "nav"
+   ]
+  },
+  {
+   "asset": "stepping_stone",
+   "along": [
+    [
+     71.45,
+     73.6
+    ],
+    [
+     69.2,
+     75.3
+    ],
+    [
+     67.4,
+     79.4
+    ]
+   ],
+   "side": "both",
+   "offset": 0.36,
+   "spacing": [
+    0.72,
+    0.86
+   ],
+   "jitter": 0.08,
+   "top_z": -20.0,
+   "scale": [
+    0.95,
+    1.15
+   ],
+   "variants": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+  },
+  {
+   "asset": "stepping_stone",
+   "along": [
+    [
+     69.2,
+     75.3
+    ],
+    [
+     65.4,
+     76.6
+    ],
+    [
+     62.0,
+     76.0
+    ]
+   ],
+   "side": "both",
+   "offset": 0.36,
+   "spacing": [
+    0.72,
+    0.86
+   ],
+   "jitter": 0.08,
+   "top_z": -20.0,
+   "scale": [
+    0.95,
+    1.15
+   ],
+   "variants": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "why": "Branch path west, curving north of the pond (keeps 1 m off its rim)."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    0.5
+   ],
+   "density": 0.04,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ]
+  }
+ ],
+ "mood": {
+  "key": "koi pond glow under mist",
+  "palette": "warm-teal pond light, black and gold koi, amber niches, bronze bell",
+  "mist": "Knee-high (0.4 m) layer over the whole pool, densest at the walls, thinning over the stones. Slightly thicker over the pond."
+ },
+ "waivers": [],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

@@ -1,0 +1,327 @@
+{
+ "id": "b2_falls_head",
+ "name": "Falls Stair head",
+ "level": "b2",
+ "purpose": "A small deck on the rim of the falls shaft where the roar arrives and the river is seen pouring over the lip; from here the Falls Stair starts down the shaft wall toward the walk behind the curtain.",
+ "floor_z": -40.0,
+ "ceiling_z": -32.0,
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -34.0,
+  "max_z": -32.0,
+  "note": "Rock overhang; open to the shaft void on the west and north."
+ },
+ "footprint": [
+  [
+   40,
+   58
+  ],
+  [
+   47,
+   58
+  ],
+  [
+   47,
+   70
+  ],
+  [
+   40,
+   70
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b2_core_falls",
+   "to": "b2_core",
+   "at": [
+    46.5,
+    64
+   ],
+   "width": 4.0,
+   "height": 3.0,
+   "note": "Compressed rock passage (4 x 3 m) before the falls reveal."
+  },
+  {
+   "id": "p_falls_stair_top",
+   "proposed": true,
+   "to": "falls_stair_1",
+   "at": [
+    43.0,
+    66.0
+   ],
+   "width": 2.4,
+   "height": null,
+   "note": "Top of falls_stair_1, descending south along x 43."
+  }
+ ],
+ "spine": [
+  [
+   46.5,
+   64,
+   -40.0
+  ],
+  [
+   45.6,
+   66.8,
+   -40.0
+  ],
+  [
+   44.0,
+   68.3,
+   -40.0
+  ],
+  [
+   42.6,
+   67.6,
+   -40.0
+  ],
+  [
+   43.0,
+   66.0,
+   -40.0
+  ]
+ ],
+ "hero": {
+  "asset": "falls_sheet",
+  "at": [
+   29.0,
+   76.0,
+   -43.0
+  ],
+  "facing_deg": 180,
+  "outside_ok": true,
+  "borrowed_from": "b2_river (thunder_lip)",
+  "why": "The whole river curling over the Thunder Curtain lip 12-15 m away and dropping 17 m into white spray: the loudest, whitest thing on the level. Placed by b2_river."
+ },
+ "anchored": [
+  {
+   "id": "stair_gate",
+   "asset": "sign_kanji",
+   "at": [
+    44.6,
+    66.4,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "height": 1.8,
+   "dims": {
+    "w": 0.4,
+    "h": 1.4
+   },
+   "variant": "滝_stair",
+   "why": "Small board at the stair head: 'Falls Stair, B3'."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_river",
+   "kind": "flow",
+   "ref": "b2_river",
+   "z": -42.934,
+   "note": "River beside the shaft just above the lip; lip at -43.0."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b2_core_falls",
+   "see": "Spray lit white by the stair lanterns, the river's last run to the lip.",
+   "target": [
+    30.0,
+    76.0,
+    -40.0
+   ]
+  },
+  {
+   "from": "p_falls_stair_top",
+   "see": "Down: the lantern line of the stair hugging the shaft wall, the teal plunge pool glowing far below.",
+   "target": [
+    29.0,
+    60.0,
+    -60.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    46.0,
+    64.0,
+    -38.4
+   ],
+   "target": [
+    30.0,
+    76.0,
+    -40.5
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    41.0,
+    69.0,
+    -38.4
+   ],
+   "target": [
+    29.0,
+    76.0,
+    -43.5
+   ],
+   "fov_v": 65
+  },
+  "concept": {
+   "image": "lookbook/img/29-river-section.jpg",
+   "pos": [
+    41.0,
+    66.8,
+    -38.4
+   ],
+   "target": [
+    24.0,
+    70.0,
+    -52.0
+   ],
+   "fov_v": 62,
+   "match": "Looking down and west: river curling over the lip, the curtain dropping into mist, the lit gallery behind the curtain far below, lanterns on the stair (falls portion of 29, mood of 19 from above)."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_post",
+   "at": [
+    [
+     41.3,
+     66.4
+    ],
+    [
+     44.7,
+     66.4
+    ]
+   ],
+   "why": "Pair at the stair head (landing dressing)."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     46.2,
+     62.0
+    ]
+   ],
+   "why": "One at the passage mouth."
+  },
+  {
+   "asset": "lantern_post",
+   "along": [
+    [
+     44.6,
+     65.5
+    ],
+    [
+     44.6,
+     58.2
+    ]
+   ],
+   "spacing": [
+    3.5,
+    4.5
+   ],
+   "face": "path",
+   "why": "Down the first flight; continues in b3 along falls_stair_1."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": [
+    [
+     40.2,
+     66.0
+    ],
+    [
+     40.2,
+     69.8
+    ],
+    [
+     46.8,
+     69.8
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": "out",
+   "why": "Overlook rail over the shaft (west) and toward the river (north)."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     41.7,
+     66.0
+    ],
+    [
+     41.7,
+     58.0
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 270,
+   "why": "West rail of the first flight of falls_stair_1 (landing dressing)."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     44.3,
+     66.0
+    ],
+    [
+     44.3,
+     58.0
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 90,
+   "why": "East rail of the first flight."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.2,
+    0.8
+   ],
+   "density": 0.06,
+   "avoid": [
+    "nav",
+    "portals",
+    "stairs"
+   ],
+   "why": "Wet rock at the passage wall."
+  }
+ ],
+ "mood": {
+  "key": "roar and white spray of the lip",
+  "palette": "white spray, teal water, sparse amber lanterns",
+  "mist": "Spray mist rising out of the shaft past the deck rail."
+ },
+ "waivers": [
+  {
+   "check": "footprint",
+   "where": "hero",
+   "reason": "Borrowed view: the lip is in b2_river."
+  },
+  {
+   "check": "clearance",
+   "where": "landing y 66-70",
+   "reason": "Landing is 4 m deep and 7 m wide with a U-turn onto the stair; 1.2 m corridor kept."
+  }
+ ]
+}

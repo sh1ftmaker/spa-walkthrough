@@ -1,1 +1,108 @@
 id,name,space,concept_images,detail_tier,identifying_features,lighting,materials,tri_budget_lod0-3,status,owner,notes
+cave_shell,Cave shell (walls/ceiling from footprint),all caves,05 15 16 17 19,far,"rough basalt walls, rock vault",lightmap,basalt_dry basalt_wet obsidian,per-space,planned,lead,generated from space footprint + ceiling profile
+hall_shell,Timber/rock hall shell,g_arrival g_changing b1_treatment b2_core,04 21,mid,"post-and-beam bays, coffered ceiling",lightmap,hinoki lacquer_dark basalt_dry paving_worn,per-space,planned,lead,
+floor_paving,Paved floor / deck surface,all,04,mid,large flagstones or deck boards,lightmap,paving_worn hinoki,per-space,planned,lead,
+torii_basalt,Basalt Gate torii,g_gate,04 01,hero,"two thick basalt posts, upswept kasagi crossbeam, nuki tie beam, central plaque",lightmap,basalt_dry obsidian bronze,12000/4800/1440/200,planned,lead,
+lava_window,Lava window (glass wall + lava beyond),g_arrival,04 01,hero,"tall mullioned glass wall, glowing lava field and lava falls behind",emissive+lightmap,lava_glass iron lava,10000/4000/1200/120,planned,lead,lava is a flow-map emissive surface
+lantern_hanging,Hanging paper lantern (chochin),many,04 06,close,"round ribbed paper body, dark top and bottom caps, cord",emissive,washi_backlit lacquer_dark rope,800/320/100/40,planned,lead,3-6 variants
+lantern_floor,Floor andon lantern,many,04 05 15,close,"square box, pyramidal cap, glowing washi panel, short legs",emissive,washi_backlit hinoki iron,900/360/110/60,planned,lead,light source for bakes
+lantern_niche,Ankle-height wall niche lantern,b1 corridors,05,close,"small box in a rock niche, glowing panel facing path",emissive,washi_backlit hinoki,400/160/60/30,planned,lead,
+lantern_stone,Stone toro lantern,outdoor/paths,01 11,mid,"stacked stone base, fire box with openings, curved roof cap, finial",lightmap+emissive,basalt_dry washi_backlit,2500/1000/300/100,planned,lead,
+lantern_post,Post lantern on a path,outdoor/boardwalks,14 18 20,mid,"timber post, small box head with glowing panel",emissive,hinoki washi_backlit,600/240/80/40,planned,lead,
+slipper_cubbies,Slipper wall cubbies,g_arrival,04,close,grid of wooden pigeonholes with slippers,lightmap,hinoki tatami,8000/3200/900/80,planned,lead,
+reception_counter,Reception counter,g_arrival,04,close,"long hinoki counter, stone top",lightmap,hinoki basalt_dry,3000/1200/360/60,planned,lead,
+chozubachi,Stone basin with bamboo spout,g_arrival,04,close,"carved round stone basin, bamboo pipe spout, ladle",lightmap,basalt_dry bamboo,3000/1200/360/80,planned,lead,
+bridge_arched,Arched timber bridge,g_arrival b3,04 14,mid,"arched deck, railings with posts, short stone abutments",lightmap,hinoki iron,5000/2000/600/120,planned,lead,
+railing,Railing (generator),all edges,all,mid,"1.0 m timber or iron railing, posts every ~1.5 m",lightmap,hinoki iron,per-metre,planned,lead,
+pine_bonsai,Bonsai / niwaki pine,g_arrival b1 g_gate,04 05,close,layered cloud foliage pads on twisted trunk,lightmap,bark foliage,6000/2400/700/150,planned,lead,needs foliage material (proposal)
+sakura_small,Small flowering tree,g_arrival b2,04 06 21,mid,"dark twisted trunk, pink blossom clusters",lightmap,bark blossom,8000/3200/900/200,planned,lead,
+banner,Hanging banner / noren,g_arrival b2,04 06,close,"long cloth panel with mountain crest, top rod",lightmap,noren,300/120/40/12,planned,lead,
+sign_kanji,Kanji signboard,g_arrival b2,04 06,close,vertical dark board with gold kanji,lightmap+emissive,lacquer_dark bronze,400/160/50/12,planned,lead,
+rock_cluster,Rock cluster (edge dressing),all caves,05 15,mid,2-5 glossy basalt rocks,lightmap,basalt_wet basalt_dry,3000/1200/360/80,planned,lead,5 variants
+boulder_rim,Pool rim boulders,pools,05 15 18,mid,rounded wet boulders along water edge,lightmap,basalt_wet,2500/1000/300/60,planned,lead,
+stepping_stone,Stepping stone,b1 corridors,05,close,"flat polished top, rough edge",lightmap,basalt_wet obsidian,300/120/40/12,planned,lead,8 variants
+spiral_stair,Spiral Stair helix (generator),spiral_stair,24 31 36,mid,"carved helical stone treads around lift core, landings",lightmap,basalt_dry paving_worn iron,per-turn,planned,lead,
+stair,Straight/switchback stair (generator),all,all,mid,"17 cm risers 29 cm treads, landings",lightmap,paving_worn hinoki,per-flight,planned,lead,
+lift_core,Main lift core + car,lift,24 31,mid,"glass/bronze car in a round core, doors per level",lightmap,bronze lava_glass,4000/1600/480/100,planned,lead,
+mist_pool_corridor,Mist corridor pool + edging,b1 corridors,05,close,"ankle-deep teal water, stone kerbs, niche lanterns",lightmap,water_still basalt_wet,per-space,planned,lead,
+pavilion_engawa,Timber pavilion with shoji,b1_mirror b1_treatment,15 05,mid,"engawa deck, shoji screens glowing, tiled roof edge",lightmap,hinoki washi_backlit lacquer_dark,15000/6000/1800/250,planned,lead,
+glowworm_ceiling,Glowworm ceiling,b1_mirror b3_lazy,15 12,hero,thousands of teal points and hanging threads on dark rock,emissive,glowworm,instanced points,planned,lead,
+mirror_pool,Obsidian Mirror pool basin,b1_mirror,15,hero,black still pool with low wet rock rim,planar reflection,water_still obsidian,6000/2400/700/100,planned,lead,planar reflection surface
+steam_bench,Hinoki bench + bucket and ladle,b1_grotto,16,close,"slatted bench, round bucket with hoops, ladle",lightmap,hinoki bronze,2000/800/240/50,planned,lead,
+fumarole_vent,Fumarole steam vent,b1_grotto b2_core,16,mid,"cracked rock mound, steam emitter",lightmap,basalt_dry ash_clay,1500/600/180/40,planned,lead,
+treatment_room,Treatment room module,b1_treatment,05,mid,"tatami room, massage bed, shoji front",lightmap,tatami hinoki washi,8000/3200/900/120,planned,lead,
+ice_formation,Glacier ice formation,b1_glacier,17,hero,"translucent blue ice columns, icicles, ice walls",lightmap,glacier_ice,15000/6000/1800/200,planned,lead,
+slide_tube,Magma Glass Slide tube (helix),slide,13,hero,"clear glass tube helix with bronze ribs, orange glow inside",emissive+probe,lava_glass bronze,20000/8000/2400/300,planned,lead,
+kawagiri_pod,Kawagiri dining pod,b2_kawagiri,06 07 08,hero,"timber platform on beams, low table, water curtain on 3 sides, paper lanterns",lightmap,hinoki lacquer_dark washi_backlit waterfall_sheet,12000/4800/1440/150,planned,lead,"12 pods, 4 variants"
+beam_pier,Timber beams and piers over water,b2_kawagiri,06 29,mid,"heavy posts, cross-bracing, beams",lightmap,hinoki_old iron,per-metre,planned,lead,
+water_curtain,Water curtain,b2_kawagiri,06,close,"thin falling sheet, parts on approach",shader,waterfall_sheet,200/80/40/8,planned,lead,shader cards
+aqueduct,Soy/tea aqueduct channel,b2_kawagiri,07 08,close,"small hinoki trough on thin stilts, sluice gate",lightmap,hinoki,per-metre,planned,lead,
+ramen_counter,Neon ramen counter,b2_core,09,hero,"long counter, stools, kitchen pass, neon kanji sign, steam",lightmap+emissive,hinoki lacquer_dark neon,15000/6000/1800/200,planned,lead,only magenta/cyan neon in Kawagiri
+kitchen_block,Kitchen with steam vent,b2_core,07,mid,"open kitchen, steam hood over fumarole",lightmap,iron hinoki,10000/4000/1200/150,planned,lead,
+neon_sign,Neon kanji sign,b2,06 09,close,"hand-bent tube kanji, magenta or cyan",emissive,neon,600/240/80/20,planned,lead,
+boat,Flat-bottomed river boat,b2_boat,06 23,mid,"long shallow hull, lantern on pole",probe (moving),hinoki_old iron,5000/2000/600/100,planned,lead,
+boardwalk,Boardwalk (generator),b2 b3,29 34 35,mid,"plank deck on posts, railing",lightmap,hinoki_old,per-metre,planned,lead,
+falls_sheet,Waterfall sheet (cards + spray),b3_falls,19,hero,"layered falling cards, spray, mist at base",shader,waterfall_sheet,per-fall,planned,lead,
+rimstone_terrace,Rimstone scallop terrace (generator),b3_rimstone,18,hero,"scalloped travertine rims, each pool spilling into the next",lightmap,rimstone water_still,per-terrace,planned,lead,
+lava_tube,Lazy river lava tube channel + roof,b3_lazy,12,hero,"tube vault with amber cracks, channel walls, float path",lightmap,basalt_dry lava,per-segment,planned,lead,
+float_ring,Woven float ring,b3_lazy,12,close,woven rattan torus,probe (moving),bamboo rope,600/240/80/30,planned,lead,
+geyser_vent,Geyser vent + stone seat ring,b3_geyser,14,hero,"central vent mound, ring of stone seats, timed jets",lightmap,basalt_wet rimstone,6000/2400/700/100,planned,lead,
+splash_pool,Slide splashdown pool,b3_slide_foot,13,mid,"round pool, tube outlet",lightmap,basalt_wet water_still,3000/1200/360/60,planned,lead,
+beach,Black sand beach + sea mouth,b3_wave,20,hero,"sand slope, sea arch, rock stacks beyond",lightmap,black_sand basalt_wet water_sea,per-space,planned,lead,
+lounger,Beach lounger,b3_wave,20,close,"low timber lounger, cushion",lightmap,hinoki noren,800/320/100/30,planned,lead,
+magma_glass_wall,Magma viewing glass wall,b4_chamber,36 23,hero,"long curved thick glass wall with bronze frames, lava sea beyond",emissive+lightmap,lava_glass bronze lava,10000/4000/1200/150,planned,lead,
+bench_stone,Stone/timber bench,b4 many,36,close,long low bench,lightmap,hinoki basalt_dry,800/320/100/30,planned,lead,
+caldera_rim,Caldera pool rim + infinity edge,s_pool,11,hero,"rock rim with lip, overflow sheets over the cliff",lightmap,basalt_wet water_still,per-space,planned,lead,
+egg_baskets,Spring egg baskets on a timber frame,s_spring,11 30,close,bamboo baskets on ropes from a timber gantry,lightmap,bamboo rope hinoki,4000/1600/480/80,planned,lead,
+moon_pavilion,Tsukimi moon pavilion,s_moon,11 32,hero,"hip roof pavilion on a deck, railings",lightmap,hinoki lacquer_dark,15000/6000/1800/250,planned,lead,
+cascade_pool,Cascade terrace pool (generator),south face,01 30,mid,stepped pool with stone lip and spill,lightmap,rimstone water_still basalt_wet,per-pool,planned,lead,
+suite_module,Cliff suite module,suites,21 32,mid,"timber facade with shoji, veranda, stone tub with trickle",lightmap,hinoki washi tatami basalt_wet,15000/6000/1800/250,planned,lead,"12 suites, 3 variants"
+cable_car,Cable lift car + stations,cable_lift,30 31,mid,"glass cabin, bronze frame, station roofs",probe (moving),bronze lava_glass,5000/2000/600/100,planned,lead,
+stalactite_cluster,stalactite cluster,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 2x2x3 m
+lantern_float,lantern float,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.5x0.5x0.5 m
+pool_uplight,pool uplight,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 0.3x0.3x0.05 m
+falls_uplight,falls uplight,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 0.3x0.3x0.05 m
+inflow_uplight,inflow uplight,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 0.3x0.3x0.05 m
+oculus_glow,oculus glow,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 0.3x0.3x0.05 m
+noren_glow,noren glow,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 0.3x0.3x0.05 m
+mist_card,mist card,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 4x4x0.6 m
+spray_card,spray card,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 4x4x3 m
+riverbed_glow,riverbed glow,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 4x4x0.05 m
+light_shaft,light shaft,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 1.5x1.5x6 m
+moon_sky,moon sky,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 60x1x40 m
+portal_arch,portal arch,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 5x1.2x3.4 m
+wall_trickle,wall trickle,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 1.2x0.6x2.5 m
+spill_lip,spill lip,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 4x1x0.4 m
+steam_room_arch,steam room arch,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 6x2x4 m
+mooring_post,mooring post,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.35x0.35x0.9 m
+massage_spout,massage spout,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 1x1.2x2.6 m
+sea_stack,sea stack,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 5x5x9 m
+shoji_wall_bay,shoji wall bay,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 3x0.4x2.6 m
+slot_window,slot window,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 3x0.6x0.5 m
+koi_pond,koi pond,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 6x6x0.3 m
+tsuboniwa,tsuboniwa,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 6x5x3 m
+obsidian_monolith,obsidian monolith,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 1.4x0.8x3 m
+junction_bell,junction bell,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.8x0.6x1.8 m
+slide_launch_gate,slide launch gate,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 3x2x2.8 m
+header_tank,header tank,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 2.4x1.4x1.6 m
+kawagiri_sign_gate,kawagiri sign gate,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 5.2x0.8x7.5 m
+torii_small,torii small,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 3.4x0.6x3.6 m
+rock_window,rock window,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 2.5x0.8x1.6 m
+geothermal_gauge,geothermal gauge,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.9x0.5x1.6 m
+lava_crack_seam,lava crack seam,see placements,,marker,proposed by space subagents,shader,,,planned,lead,proxy 0.4x8x0.1 m
+bridge_slab,bridge slab,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 2.6x4x0.9 m
+timber_passage,timber passage,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 4.4x6x3.2 m
+genkan_porch,genkan porch,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 4.4x4x3.4 m
+yukata_shelves,yukata shelves,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 6x0.6x2.4 m
+locker_bank,locker bank,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 6x0.6x2 m
+changing_booth_row,changing booth row,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 10x1.6x2.4 m
+vanity_counter,vanity counter,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 4x0.6x0.9 m
+towel_basket,towel basket,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.6x0.6x0.5 m
+culvert_grate,culvert grate,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 3x1.2x0.1 m
+glass_oculus,glass oculus,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 7x7x0.15 m
+momiji_small,momiji small,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 4x4x4.5 m
+rock_overhang,rock overhang,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 6x3x3 m
+sake_counter,sake counter,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 3x0.8x1 m
+zabuton_cushion,zabuton cushion,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.6x0.6x0.1 m
+stone_tub,stone tub,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 2.6x2x0.6 m
+kakehi_spout,kakehi spout,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.2x1.2x1.4 m

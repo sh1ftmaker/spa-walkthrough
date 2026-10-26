@@ -1,0 +1,972 @@
+{
+ "id": "b1_grotto",
+ "name": "06 Fumarole Steam Grotto",
+ "level": "b1",
+ "purpose": "A chain of natural steam rooms carved off one warm hall, 45 then 55 then 65 °C, each deeper (north-west) and hotter and brighter than the last; guests sweat, cool off with hinoki buckets and ladles, and leave by the north lane toward the glacier's cold.",
+ "floor_z": -20.0,
+ "ceiling_z": -9.0,
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -13.0,
+  "max_z": -9.0,
+  "note": "Rough steam-blackened vault 7-11 m; highest over the hall, ceiling slots above each room let warm lamp beams fall through the steam (concept 16). Rooms are low (arch 2.6 m, chamber 4 m)."
+ },
+ "footprint": [
+  [
+   40,
+   82
+  ],
+  [
+   62,
+   82
+  ],
+  [
+   62,
+   96
+  ],
+  [
+   80,
+   96
+  ],
+  [
+   80,
+   108
+  ],
+  [
+   62,
+   112
+  ],
+  [
+   40,
+   108
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_cor_grotto",
+   "to": "b1_cor_west",
+   "at": [
+    52,
+    82
+   ],
+   "width": 3.0,
+   "height": 2.6
+  },
+  {
+   "id": "p_b1_grotto_north",
+   "to": "b1_cor_north",
+   "at": [
+    78,
+    104
+   ],
+   "width": 3.0,
+   "height": 2.6
+  }
+ ],
+ "spine": [
+  [
+   52.0,
+   82.0,
+   -20.0
+  ],
+  [
+   53.2,
+   86.0,
+   -20.0
+  ],
+  [
+   54.6,
+   92.0,
+   -20.0
+  ],
+  [
+   55.2,
+   98.0,
+   -20.0
+  ],
+  [
+   57.4,
+   102.6,
+   -20.0
+  ],
+  [
+   63.0,
+   104.2,
+   -20.0
+  ],
+  [
+   70.0,
+   104.0,
+   -20.0
+  ],
+  [
+   78.0,
+   104.0,
+   -20.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "room_45",
+   "points": [
+    [
+     54.6,
+     92.0,
+     -20.0
+    ],
+    [
+     48.6,
+     92.0,
+     -20.0
+    ]
+   ]
+  },
+  {
+   "id": "room_55",
+   "points": [
+    [
+     55.2,
+     98.0,
+     -20.0
+    ],
+    [
+     48.6,
+     99.0,
+     -20.0
+    ]
+   ]
+  },
+  {
+   "id": "room_65",
+   "points": [
+    [
+     57.4,
+     102.6,
+     -20.0
+    ],
+    [
+     48.8,
+     105.0,
+     -20.0
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "steam_room_arch",
+  "at": [
+   48.8,
+   105.0,
+   -20.0
+  ],
+  "facing_deg": 80,
+  "dims": {
+   "w": 3.0,
+   "h": 2.6,
+   "wall_w": 6.0,
+   "depth": 8.3
+  },
+  "label": "65 °C",
+  "why": "The deepest, hottest chamber is the brightest: a thick warm beam falls through its steam, framed at the end of the receding chain 45 -> 55 -> 65 seen from the door. The eye and the body both go deeper (concept 16, lookbook)."
+ },
+ "anchored": [
+  {
+   "id": "arch_45",
+   "asset": "steam_room_arch",
+   "at": [
+    48.6,
+    92.0,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 3.2,
+    "h": 2.6,
+    "wall_w": 7.0,
+    "depth": 8.6
+   },
+   "label": "45 °C",
+   "why": "First and nearest chamber, largest pool."
+  },
+  {
+   "id": "arch_55",
+   "asset": "steam_room_arch",
+   "at": [
+    48.6,
+    99.0,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 3.0,
+    "h": 2.6,
+    "wall_w": 6.0,
+    "depth": 8.6
+   },
+   "label": "55 °C",
+   "why": "Second chamber; rock partitions between rooms come from the arch flanks."
+  },
+  {
+   "id": "lava_glass",
+   "asset": "lava_window",
+   "variant": "small",
+   "at": [
+    40.2,
+    85.0,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 5.0,
+    "h": 4.0
+   },
+   "why": "Concept 16 left: a panel of thick glass onto moving lava (the same body as the arrival hall's window above) warms the hall's SW corner."
+  },
+  {
+   "id": "kanji_tower",
+   "asset": "sign_kanji",
+   "variant": "tall lit tower",
+   "at": [
+    42.4,
+    88.15,
+    -20.0
+   ],
+   "facing_deg": 60,
+   "dims": {
+    "w": 1.1,
+    "h": 4.5
+   },
+   "text": "火山湯",
+   "why": "The lit timber sign tower beside the lava glass (concept 16)."
+  },
+  {
+   "id": "kakeyu",
+   "asset": "steam_bench",
+   "variant": "kakeyu station",
+   "at": [
+    57.6,
+    85.6,
+    -20.0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "l": 2.4
+   },
+   "why": "Pour-over station inside the door: rinse before the rooms; buckets and ladles (concept 16 foreground)."
+  },
+  {
+   "id": "vent_45",
+   "asset": "fumarole_vent",
+   "at": [
+    41.0,
+    92.0,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "why": "Steam source at the back of each room."
+  },
+  {
+   "id": "vent_55",
+   "asset": "fumarole_vent",
+   "at": [
+    41.0,
+    99.0,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "why": "Steam source."
+  },
+  {
+   "id": "vent_65",
+   "asset": "fumarole_vent",
+   "at": [
+    41.2,
+    105.2,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "scale": 1.3
+   },
+   "why": "Strongest vent in the hottest room."
+  },
+  {
+   "id": "vent_lane_1",
+   "asset": "fumarole_vent",
+   "at": [
+    66.0,
+    109.4,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "why": "Steam rolling along the north lane toward the exit."
+  },
+  {
+   "id": "vent_lane_2",
+   "asset": "fumarole_vent",
+   "at": [
+    73.8,
+    107.6,
+    -20.0
+   ],
+   "facing_deg": 200,
+   "why": "Second, smaller plume nearer the exit; offset from the first."
+  },
+  {
+   "id": "exit_arch",
+   "asset": "portal_arch",
+   "variant": "basalt + noren",
+   "at": [
+    77.6,
+    104.2,
+    -20.0
+   ],
+   "facing_deg": 260,
+   "dims": {
+    "w": 3.0,
+    "h": 2.6
+   },
+   "why": "The cool-down exit to the north corridor (and the glacier)."
+  },
+  {
+   "id": "entry_noren",
+   "asset": "banner",
+   "variant": "noren",
+   "at": [
+    52.0,
+    82.5,
+    -17.5
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 2.8,
+    "h": 0.9
+   },
+   "why": "Inside face of the steam door."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_grotto_45",
+   "kind": "still",
+   "z": -20.06,
+   "rim_z": -20.0,
+   "bed_z": -20.75,
+   "temp": 45,
+   "footprint": [
+    [
+     44.5,
+     94.6
+    ],
+    [
+     45.3,
+     94.47
+    ],
+    [
+     46.03,
+     94.1
+    ],
+    [
+     46.6,
+     93.53
+    ],
+    [
+     46.97,
+     92.8
+    ],
+    [
+     47.1,
+     92.0
+    ],
+    [
+     46.97,
+     91.2
+    ],
+    [
+     46.6,
+     90.47
+    ],
+    [
+     46.03,
+     89.9
+    ],
+    [
+     45.3,
+     89.53
+    ],
+    [
+     44.5,
+     89.4
+    ],
+    [
+     43.7,
+     89.53
+    ],
+    [
+     42.97,
+     89.9
+    ],
+    [
+     42.4,
+     90.47
+    ],
+    [
+     42.03,
+     91.2
+    ],
+    [
+     41.9,
+     92.0
+    ],
+    [
+     42.03,
+     92.8
+    ],
+    [
+     42.4,
+     93.53
+    ],
+    [
+     42.97,
+     94.1
+    ],
+    [
+     43.7,
+     94.47
+    ]
+   ],
+   "layout_ref": "w_grotto_pools"
+  },
+  {
+   "id": "w_grotto_55",
+   "kind": "still",
+   "z": -20.06,
+   "rim_z": -20.0,
+   "bed_z": -20.75,
+   "temp": 55,
+   "footprint": [
+    [
+     44.0,
+     101.4
+    ],
+    [
+     44.74,
+     101.28
+    ],
+    [
+     45.41,
+     100.94
+    ],
+    [
+     45.94,
+     100.41
+    ],
+    [
+     46.28,
+     99.74
+    ],
+    [
+     46.4,
+     99.0
+    ],
+    [
+     46.28,
+     98.26
+    ],
+    [
+     45.94,
+     97.59
+    ],
+    [
+     45.41,
+     97.06
+    ],
+    [
+     44.74,
+     96.72
+    ],
+    [
+     44.0,
+     96.6
+    ],
+    [
+     43.26,
+     96.72
+    ],
+    [
+     42.59,
+     97.06
+    ],
+    [
+     42.06,
+     97.59
+    ],
+    [
+     41.72,
+     98.26
+    ],
+    [
+     41.6,
+     99.0
+    ],
+    [
+     41.72,
+     99.74
+    ],
+    [
+     42.06,
+     100.41
+    ],
+    [
+     42.59,
+     100.94
+    ],
+    [
+     43.26,
+     101.28
+    ]
+   ],
+   "layout_ref": "w_grotto_pools"
+  },
+  {
+   "id": "w_grotto_65",
+   "kind": "still",
+   "z": -20.06,
+   "rim_z": -20.0,
+   "bed_z": -20.7,
+   "temp": 65,
+   "footprint": [
+    [
+     44.5,
+     107.0
+    ],
+    [
+     45.18,
+     106.88
+    ],
+    [
+     45.79,
+     106.53
+    ],
+    [
+     46.23,
+     106.0
+    ],
+    [
+     46.47,
+     105.35
+    ],
+    [
+     46.47,
+     104.65
+    ],
+    [
+     46.23,
+     104.0
+    ],
+    [
+     45.79,
+     103.47
+    ],
+    [
+     45.18,
+     103.12
+    ],
+    [
+     44.5,
+     103.0
+    ],
+    [
+     43.82,
+     103.12
+    ],
+    [
+     43.21,
+     103.47
+    ],
+    [
+     42.77,
+     104.0
+    ],
+    [
+     42.53,
+     104.65
+    ],
+    [
+     42.53,
+     105.35
+    ],
+    [
+     42.77,
+     106.0
+    ],
+    [
+     43.21,
+     106.53
+    ],
+    [
+     43.82,
+     106.88
+    ]
+   ],
+   "layout_ref": "w_grotto_pools"
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_cor_grotto",
+   "see": "Up the steamy hall: lantern pairs at the 45 and 55 arches, the 65 arch glowing hottest at the far end; lava glass on the left.",
+   "target": [
+    48.8,
+    105.0,
+    -18.6
+   ]
+  },
+  {
+   "from": "p_b1_grotto_north",
+   "see": "Arriving from the glacier: steam rolling along the north lane, the 65 glow to the west.",
+   "target": [
+    48.8,
+    105.0,
+    -18.6
+   ]
+  },
+  {
+   "from": "arch_65",
+   "at": [
+    50.0,
+    104.6
+   ],
+   "see": "East down the north lane to the exit arch and the cool niche lanterns of the return corridor.",
+   "target": [
+    78.0,
+    104.0,
+    -18.6
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    52.5,
+    83.6,
+    -18.4
+   ],
+   "target": [
+    48.8,
+    104.5,
+    -17.8
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    56.4,
+    89.6,
+    -18.4
+   ],
+   "target": [
+    45.5,
+    103.5,
+    -17.4
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "pos": [
+    58.6,
+    86.2,
+    -18.4
+   ],
+   "target": [
+    44.6,
+    101.0,
+    -17.2
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/16-steam-grotto.jpg",
+   "match": "Lava glass and the lit 火山湯 sign tower on the left, the kakeyu bucket and a steaming teal pool edge in the foreground, three rock arches with hanging 45°/55°/65° boards receding right-to-centre, warm beams through thick steam, lanterns flanking each arch."
+  }
+ },
+ "lights": [
+  {
+   "asset": "light_shaft",
+   "at": [
+    [
+     44.5,
+     92.0,
+     -16.0
+    ],
+    [
+     44.0,
+     99.0,
+     -16.0
+    ],
+    [
+     44.5,
+     105.0,
+     -16.0
+    ]
+   ],
+   "intensity": [
+    0.5,
+    0.7,
+    1.0
+   ],
+   "why": "One warm beam per room from a ceiling slot, strongest in the 65 room (hero brightest; light rises with temperature)."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     48.9,
+     94.3,
+     -20.0
+    ],
+    [
+     48.9,
+     89.7,
+     -20.0
+    ],
+    [
+     48.9,
+     101.1,
+     -20.0
+    ],
+    [
+     48.9,
+     96.9,
+     -20.0
+    ],
+    [
+     49.2,
+     106.9,
+     -20.0
+    ],
+    [
+     48.7,
+     103.0,
+     -20.0
+    ]
+   ],
+   "face": "path",
+   "why": "Lantern pairs flanking each arch (concept 16); spaced 7 m apart along the hall with dark rock between."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     63.0,
+     104.2
+    ],
+    [
+     70.0,
+     104.0
+    ],
+    [
+     76.0,
+     104.0
+    ]
+   ],
+   "side": "right",
+   "offset": 1.7,
+   "spacing": [
+    5.5,
+    7.0
+   ],
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "North lane: a few pools of light along the south side leading to the exit."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     44.5,
+     92.0,
+     -16.6
+    ],
+    [
+     44.0,
+     99.0,
+     -16.6
+    ],
+    [
+     44.5,
+     105.0,
+     -16.6
+    ]
+   ],
+   "snap": "ceiling",
+   "why": "A chochin inside each chamber, seen through its arch."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    44.5,
+    92.0
+   ],
+   "radius": 2.95,
+   "spacing": [
+    0.9,
+    1.5
+   ],
+   "embed": 0.15,
+   "scale": [
+    0.4,
+    0.8
+   ],
+   "avoid": [
+    "nav"
+   ]
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    44.0,
+    99.0
+   ],
+   "radius": 2.75,
+   "spacing": [
+    0.9,
+    1.5
+   ],
+   "embed": 0.15,
+   "scale": [
+    0.4,
+    0.8
+   ],
+   "avoid": [
+    "nav"
+   ]
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    44.5,
+    105.0
+   ],
+   "radius": 2.35,
+   "spacing": [
+    0.9,
+    1.5
+   ],
+   "embed": 0.15,
+   "scale": [
+    0.4,
+    0.8
+   ],
+   "avoid": [
+    "nav"
+   ]
+  },
+  {
+   "asset": "steam_bench",
+   "ring": [
+    44.5,
+    92.0
+   ],
+   "radius": 3.9000000000000004,
+   "count": 2,
+   "face": "hero_local",
+   "avoid": [
+    "nav",
+    "portals"
+   ],
+   "why": "Benches with buckets and ladles round each pool (inside the chamber)."
+  },
+  {
+   "asset": "steam_bench",
+   "ring": [
+    44.0,
+    99.0
+   ],
+   "radius": 3.7,
+   "count": 2,
+   "face": "hero_local",
+   "avoid": [
+    "nav",
+    "portals"
+   ]
+  },
+  {
+   "asset": "steam_bench",
+   "ring": [
+    44.5,
+    105.0
+   ],
+   "radius": 3.2,
+   "count": 1,
+   "face": "hero_local",
+   "avoid": [
+    "nav",
+    "portals"
+   ]
+  },
+  {
+   "asset": "steam_bench",
+   "along": [
+    [
+     64.0,
+     106.6
+    ],
+    [
+     76.0,
+     105.6
+    ]
+   ],
+   "spacing": [
+    5.0,
+    7.0
+   ],
+   "face": "path",
+   "snap": "ground",
+   "avoid": [
+    "nav",
+    "portals"
+   ],
+   "why": "Cool-down benches against the north lane's north wall."
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     43.0,
+     84.2,
+     -20.0
+    ]
+   ],
+   "why": "Potted pine at the foot of the lava glass, dark against it."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    2.2
+   ],
+   "density": 0.05,
+   "scale": [
+    0.5,
+    1.2
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "water",
+    "hero"
+   ]
+  }
+ ],
+ "mood": {
+  "key": "the 65 °C beam at the end of the arches",
+  "palette": "amber beams and lanterns, teal pools, white steam, black wet rock, one panel of orange lava",
+  "mist": "Thick white steam, densest in the rooms and pouring out of each arch; the hall stays readable at eye height."
+ },
+ "waivers": [],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

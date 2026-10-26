@@ -1,1 +1,390 @@
-[]
+[
+  {
+    "title": "Layout overlay: b1",
+    "kind": "graybox",
+    "image": "renders/plan/b1.jpg",
+    "space": "b1",
+    "agent": "lead",
+    "status": "pass",
+    "notes": "layout.json drawn over the painted plan (sections: all spaces cut through the lift). Rock check pass; walk graph reaches all spaces.",
+    "time": "2026-10-26T22:24:10Z"
+  },
+  {
+    "title": "Layout overlay: b2",
+    "kind": "graybox",
+    "image": "renders/plan/b2.jpg",
+    "space": "b2",
+    "agent": "lead",
+    "status": "pass",
+    "notes": "layout.json drawn over the painted plan (sections: all spaces cut through the lift). Rock check pass; walk graph reaches all spaces.",
+    "time": "2026-10-26T22:24:10Z"
+  },
+  {
+    "title": "Layout overlay: b3",
+    "kind": "graybox",
+    "image": "renders/plan/b3.jpg",
+    "space": "b3",
+    "agent": "lead",
+    "status": "pass",
+    "notes": "layout.json drawn over the painted plan (sections: all spaces cut through the lift). Rock check pass; walk graph reaches all spaces.",
+    "time": "2026-10-26T22:24:10Z"
+  },
+  {
+    "title": "Layout overlay: b4",
+    "kind": "graybox",
+    "image": "renders/plan/b4.jpg",
+    "space": "b4",
+    "agent": "lead",
+    "status": "pass",
+    "notes": "layout.json drawn over the painted plan (sections: all spaces cut through the lift). Rock check pass; walk graph reaches all spaces.",
+    "time": "2026-10-26T22:24:10Z"
+  },
+  {
+    "title": "Layout overlay: ground",
+    "kind": "graybox",
+    "image": "renders/plan/ground.jpg",
+    "space": "ground",
+    "agent": "lead",
+    "status": "pass",
+    "notes": "layout.json drawn over the painted plan (sections: all spaces cut through the lift). Rock check pass; walk graph reaches all spaces.",
+    "time": "2026-10-26T22:24:10Z"
+  },
+  {
+    "title": "Layout overlay: section-ew-y70",
+    "kind": "graybox",
+    "image": "renders/plan/section-ew-y70.jpg",
+    "space": "section-ew-y70",
+    "agent": "lead",
+    "status": "pass",
+    "notes": "layout.json drawn over the painted plan (sections: all spaces cut through the lift). Rock check pass; walk graph reaches all spaces.",
+    "time": "2026-10-26T22:24:10Z"
+  },
+  {
+    "title": "Layout overlay: section-ns-x90",
+    "kind": "graybox",
+    "image": "renders/plan/section-ns-x90.jpg",
+    "space": "section-ns-x90",
+    "agent": "lead",
+    "status": "pass",
+    "notes": "layout.json drawn over the painted plan (sections: all spaces cut through the lift). Rock check pass; walk graph reaches all spaces.",
+    "time": "2026-10-26T22:24:10Z"
+  },
+  {
+    "title": "Layout overlay: summit",
+    "kind": "graybox",
+    "image": "renders/plan/summit.jpg",
+    "space": "summit",
+    "agent": "lead",
+    "status": "pass",
+    "notes": "layout.json drawn over the painted plan (sections: all spaces cut through the lift). Rock check pass; walk graph reaches all spaces.",
+    "time": "2026-10-26T22:24:10Z"
+  },
+  {
+    "title": "Material library: contact sheet",
+    "kind": "material",
+    "image": "renders/materials/sheet.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "26 library materials + 3 variants under one lantern rig (Cycles/OptiX, AgX). Concept crops from 16, 22, 05, 21, 17, 18, 13, 09. KTX2 encoding pending owner OK.",
+    "time": "2026-10-26T22:50:37Z"
+  },
+  {
+    "title": "Material: wet basalt",
+    "kind": "material",
+    "image": "renders/materials/basalt_wet.jpg",
+    "concept": "../lookbook/img/16-steam-grotto.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "time": "2026-10-26T22:50:37Z"
+  },
+  {
+    "title": "Material: back-lit washi",
+    "kind": "material",
+    "image": "renders/materials/washi_backlit.jpg",
+    "concept": "../lookbook/img/22-brand-board.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "time": "2026-10-26T22:50:37Z"
+  },
+  {
+    "title": "Contact sheet: arrival hall (graybox, r1)",
+    "kind": "contact",
+    "image": "renders/contact/g_arrival/contact-r1.jpg",
+    "concept": "../lookbook/img/04-arrival-gate.jpg",
+    "space": "g_arrival",
+    "round": 1,
+    "agent": "lead",
+    "status": "review",
+    "time": "2026-10-26T22:50:37Z"
+  },
+  {
+    "title": "Material: Ash clay",
+    "kind": "material",
+    "image": "renders/materials/ash_clay.jpg",
+    "concept": "../lookbook/img/22-brand-board.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "stone \u00b7 tiling 2.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 2.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Bamboo",
+    "kind": "material",
+    "image": "renders/materials/bamboo.jpg",
+    "concept": "../lookbook/img/04-arrival-gate.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "wood_paper_cloth \u00b7 tiling 0.5 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 0.5, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Dry basalt",
+    "kind": "material",
+    "image": "renders/materials/basalt_dry.jpg",
+    "concept": "../lookbook/img/22-brand-board.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "stone \u00b7 tiling 2.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 2.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: basalt_dry__wetness1.0",
+    "kind": "material",
+    "image": "renders/materials/basalt_dry__wetness1.0.jpg",
+    "concept": null,
+    "agent": "matlib",
+    "status": "review",
+    "notes": " \u00b7 tiling ? m \u00b7 params {}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Black sand",
+    "kind": "material",
+    "image": "renders/materials/black_sand.jpg",
+    "concept": "../lookbook/img/20-wave-grotto.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "stone \u00b7 tiling 1.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 1.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Bronze",
+    "kind": "material",
+    "image": "renders/materials/bronze.jpg",
+    "concept": "../lookbook/img/04-arrival-gate.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "metal_ice_glass \u00b7 tiling 0.5 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.25, 'roughness_offset': 0.0, 'scale': 0.5, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Glacier ice",
+    "kind": "material",
+    "image": "renders/materials/glacier_ice.jpg",
+    "concept": "../lookbook/img/17-glacier-plunge.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "metal_ice_glass \u00b7 tiling 2.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.3, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 2.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Hinoki (aged)",
+    "kind": "material",
+    "image": "renders/materials/hinoki.jpg",
+    "concept": "../lookbook/img/05-mist-corridor.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "wood_paper_cloth \u00b7 tiling 0.5 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.15, 'roughness_offset': 0.0, 'scale': 0.5, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: hinoki__wear0.7",
+    "kind": "material",
+    "image": "renders/materials/hinoki__wear0.7.jpg",
+    "concept": null,
+    "agent": "matlib",
+    "status": "review",
+    "notes": " \u00b7 tiling ? m \u00b7 params {}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Iron (black patina)",
+    "kind": "material",
+    "image": "renders/materials/iron.jpg",
+    "concept": "../lookbook/img/04-arrival-gate.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "metal_ice_glass \u00b7 tiling 0.5 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.15, 'roughness_offset': 0.0, 'scale': 0.5, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Lacquered dark wood (urushi)",
+    "kind": "material",
+    "image": "renders/materials/lacquer_dark.jpg",
+    "concept": "../lookbook/img/06-kawagiri-restaurant.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "wood_paper_cloth \u00b7 tiling 1.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 1.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Lantern paper (emissive)",
+    "kind": "material",
+    "image": "renders/materials/lantern_paper.jpg",
+    "concept": "../lookbook/img/22-brand-board.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "light \u00b7 tiling 0.5 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 0.5, 'normal_strength': 1.0, 'emissive_level': 1.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Lava (molten, crusted)",
+    "kind": "material",
+    "image": "renders/materials/lava.jpg",
+    "concept": "../lookbook/img/13-magma-glass-slide.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "light \u00b7 tiling 2.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 2.0, 'normal_strength': 1.0, 'emissive_level': 1.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Thick lava glass",
+    "kind": "material",
+    "image": "renders/materials/lava_glass.jpg",
+    "concept": "../lookbook/img/13-magma-glass-slide.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "metal_ice_glass \u00b7 tiling 1.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 1.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Neon tube",
+    "kind": "material",
+    "image": "renders/materials/neon_tube.jpg",
+    "concept": "../lookbook/img/09-neon-ramen-counter.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "light \u00b7 tiling 0.2 m \u00b7 params {'tint': [1.0, 0.0137, 0.2747], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 0.2, 'normal_strength': 1.0, 'emissive_level': 1.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: neon_tube__cyan",
+    "kind": "material",
+    "image": "renders/materials/neon_tube__cyan.jpg",
+    "concept": null,
+    "agent": "matlib",
+    "status": "review",
+    "notes": " \u00b7 tiling ? m \u00b7 params {}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Noren cloth (indigo)",
+    "kind": "material",
+    "image": "renders/materials/noren.jpg",
+    "concept": "../lookbook/img/09-neon-ramen-counter.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "wood_paper_cloth \u00b7 tiling 0.25 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 0.25, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Polished obsidian",
+    "kind": "material",
+    "image": "renders/materials/obsidian.jpg",
+    "concept": "../lookbook/img/22-brand-board.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "stone \u00b7 tiling 1.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 1.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Worn paving",
+    "kind": "material",
+    "image": "renders/materials/paving.jpg",
+    "concept": "../lookbook/img/16-steam-grotto.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "stone \u00b7 tiling 2.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.35, 'wear': 0.3, 'roughness_offset': 0.0, 'scale': 2.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Rimstone / travertine",
+    "kind": "material",
+    "image": "renders/materials/rimstone.jpg",
+    "concept": "../lookbook/img/18-rimstone-terraces.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "stone \u00b7 tiling 1.5 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.45, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 1.5, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Rope (straw, twisted)",
+    "kind": "material",
+    "image": "renders/materials/rope.jpg",
+    "concept": "../lookbook/img/22-brand-board.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "wood_paper_cloth \u00b7 tiling 0.3 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 0.3, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Tatami",
+    "kind": "material",
+    "image": "renders/materials/tatami.jpg",
+    "concept": "../lookbook/img/21-private-suite.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "wood_paper_cloth \u00b7 tiling 0.5 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 0.5, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Washi paper",
+    "kind": "material",
+    "image": "renders/materials/washi.jpg",
+    "concept": "../lookbook/img/05-mist-corridor.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "wood_paper_cloth \u00b7 tiling 0.5 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 0.5, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: River water",
+    "kind": "material",
+    "image": "renders/materials/water_river.jpg",
+    "concept": "../lookbook/img/12-lava-tube-lazy-river.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "water \u00b7 tiling 3.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 3.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Sea water",
+    "kind": "material",
+    "image": "renders/materials/water_sea.jpg",
+    "concept": "../lookbook/img/20-wave-grotto.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "water \u00b7 tiling 6.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 6.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Still water",
+    "kind": "material",
+    "image": "renders/materials/water_still.jpg",
+    "concept": "../lookbook/img/15-obsidian-mirror.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "water \u00b7 tiling 4.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 4.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  },
+  {
+    "title": "Material: Waterfall sheet",
+    "kind": "material",
+    "image": "renders/materials/waterfall.jpg",
+    "concept": "../lookbook/img/19-thunder-curtain.jpg",
+    "agent": "matlib",
+    "status": "review",
+    "notes": "water \u00b7 tiling 2.0 m \u00b7 params {'tint': [1.0, 1.0, 1.0], 'wetness': 0.0, 'wear': 0.0, 'roughness_offset': 0.0, 'scale': 2.0, 'normal_strength': 1.0, 'emissive_level': 0.0}",
+    "time": "2026-10-26T22:50:56Z"
+  }
+]

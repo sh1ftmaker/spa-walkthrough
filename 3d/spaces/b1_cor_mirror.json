@@ -1,0 +1,667 @@
+{
+ "id": "b1_cor_mirror",
+ "name": "Mist corridor to the Mirror",
+ "level": "b1",
+ "purpose": "Kiri-no-Michi to the Mirror: a deliberately narrow, low, warm passage where guests walk barefoot on stepping stones through ankle-deep water and knee-high mist; voices drop, lanterns sit at ankle height, and for the whole last straight the only thing at the end is a dark arch leaking teal starlight.",
+ "floor_z": -20.0,
+ "ceiling_z": -17.0,
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -17.6,
+  "max_z": -17.0,
+  "note": "Carved basalt barrel, 2.4 m at the springing, 3.0 m at the crown, 4 m wide: the compressed passage before the Mirror's 13.5 m dome (layout note). Do not raise it."
+ },
+ "footprint": [
+  [
+   66.174,
+   72.326
+  ],
+  [
+   63.765,
+   94.0
+  ],
+  [
+   94.0,
+   94.0
+  ],
+  [
+   94.0,
+   90.0
+  ],
+  [
+   68.235,
+   90.0
+  ],
+  [
+   69.826,
+   75.674
+  ],
+  [
+   78.392,
+   73.961
+  ],
+  [
+   77.608,
+   70.039
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_lobby_cor",
+   "to": "b1_lobby",
+   "at": [
+    78,
+    72
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b1_cor_mirror",
+   "to": "b1_mirror",
+   "at": [
+    93.5,
+    92
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "pi_mirror_junction_e",
+   "to": "b1_junction_w",
+   "at": [
+    71.45,
+    73.6
+   ],
+   "width": 4.0,
+   "height": 3.0,
+   "implied": true,
+   "note": "Implied by the footprint overlap: the corridor runs through the koi junction."
+  },
+  {
+   "id": "pi_mirror_junction_n",
+   "to": "b1_junction_w",
+   "at": [
+    67.4,
+    79.4
+   ],
+   "width": 4.0,
+   "height": 3.0,
+   "implied": true
+  }
+ ],
+ "spine": [
+  [
+   78.0,
+   72.0,
+   -20.0
+  ],
+  [
+   74.0,
+   72.8,
+   -20.0
+  ],
+  [
+   71.45,
+   73.6,
+   -20.0
+  ],
+  [
+   69.2,
+   75.3,
+   -20.0
+  ],
+  [
+   67.4,
+   79.4,
+   -20.0
+  ],
+  [
+   66.9,
+   85.0,
+   -20.0
+  ],
+  [
+   66.5,
+   89.0,
+   -20.0
+  ],
+  [
+   67.6,
+   91.4,
+   -20.0
+  ],
+  [
+   70.0,
+   92.0,
+   -20.0
+  ],
+  [
+   76.0,
+   92.0,
+   -20.0
+  ],
+  [
+   82.0,
+   92.0,
+   -20.0
+  ],
+  [
+   88.0,
+   92.0,
+   -20.0
+  ],
+  [
+   93.5,
+   92.0,
+   -20.0
+  ]
+ ],
+ "segments": [
+  {
+   "id": "west_leg",
+   "from": [
+    78.0,
+    72.0
+   ],
+   "to": [
+    71.45,
+    73.6
+   ],
+   "len_m": 6.7,
+   "role": "mouth: noren, then the hush"
+  },
+  {
+   "id": "junction",
+   "from": [
+    71.45,
+    73.6
+   ],
+   "to": [
+    67.4,
+    79.4
+   ],
+   "role": "owned by b1_junction_w (koi pond, bell)"
+  },
+  {
+   "id": "north_leg",
+   "from": [
+    67.4,
+    79.4
+   ],
+   "to": [
+    67.6,
+    91.4
+   ],
+   "len_m": 12.0,
+   "role": "climb of rhythm: lantern pools, one wall trickle, warm corner lantern ahead"
+  },
+  {
+   "id": "east_straight",
+   "from": [
+    67.6,
+    91.4
+   ],
+   "to": [
+    93.5,
+    92.0
+   ],
+   "len_m": 26.0,
+   "role": "the concept-05 view; lanterns stop 7 m short of the arch so the teal leak reads"
+  }
+ ],
+ "hero": {
+  "asset": "portal_arch",
+  "at": [
+   93.4,
+   92.0,
+   -20.0
+  ],
+  "facing_deg": 270,
+  "dims": {
+   "w": 4.0,
+   "h": 3.0,
+   "depth": 1.2
+  },
+  "variant": "basalt, no noren",
+  "shared_with": "b1_mirror (place once)",
+  "why": "The corridor exists to delay the Mirror. For the whole 26 m straight the vanishing point is this rough basalt arch, unlit on this side, with the glowworm dome's teal light leaking through it and doubled in the corridor water: the eye and the feet both go there. The last 7 m have no lanterns so the leak is the brightest thing in view."
+ },
+ "anchored": [
+  {
+   "id": "mouth_noren",
+   "asset": "banner",
+   "variant": "noren",
+   "at": [
+    77.4,
+    72.1,
+    -17.05
+   ],
+   "facing_deg": 95,
+   "dims": {
+    "w": 3.6,
+    "h": 1.1
+   },
+   "why": "Split noren at the lobby mouth: the threshold into the quiet zone (snap ceiling; bottom edge at 1.95 m clear)."
+  },
+  {
+   "id": "shoji_bay_1",
+   "asset": "shoji_wall_bay",
+   "at": [
+    73.6,
+    93.75,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 1.8,
+    "h": 2.4,
+    "d": 0.4
+   },
+   "why": "Concept 05 left side: a glowing shoji set into the north wall of the straight. Off-rhythm with the niches."
+  },
+  {
+   "id": "shoji_bay_2",
+   "asset": "shoji_wall_bay",
+   "at": [
+    82.7,
+    93.75,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 2.4,
+    "h": 2.4,
+    "d": 0.4
+   },
+   "why": "Second, wider bay 9 m on; the gap between them stays dark rock."
+  },
+  {
+   "id": "trickle_n",
+   "asset": "wall_trickle",
+   "at": [
+    64.95,
+    84.5,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 0.8,
+    "h": 2.6
+   },
+   "why": "Threads of water down the west wall of the north leg (concept 05 right): sound marker halfway up the leg."
+  },
+  {
+   "id": "trickle_s",
+   "asset": "wall_trickle",
+   "at": [
+    78.8,
+    90.25,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 1.4,
+    "h": 2.6
+   },
+   "why": "On the south wall of the straight opposite the dark gap between the two shoji bays."
+  },
+  {
+   "id": "corner_lantern",
+   "asset": "lantern_floor",
+   "at": [
+    64.45,
+    93.35,
+    -20.0
+   ],
+   "facing_deg": 135,
+   "dims": {
+    "h": 1.0
+   },
+   "why": "Warm marker in the outside corner of the turn: seen the whole way up the north leg, tells you where it bends."
+  },
+  {
+   "id": "bonsai_1",
+   "asset": "pine_bonsai",
+   "at": [
+    71.9,
+    93.45,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "h": 1.2
+   },
+   "why": "On the kerb beside the first shoji bay, as in concept 05."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_cor_mirror",
+   "kind": "still",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -20.2,
+   "path": [
+    [
+     78.0,
+     72.0
+    ],
+    [
+     74.0,
+     72.8
+    ],
+    [
+     66.9,
+     85.0
+    ],
+    [
+     66.5,
+     89.0
+    ],
+    [
+     67.6,
+     91.4
+    ],
+    [
+     70.0,
+     92.0
+    ],
+    [
+     76.0,
+     92.0
+    ],
+    [
+     82.0,
+     92.0
+    ],
+    [
+     88.0,
+     92.0
+    ],
+    [
+     93.5,
+     92.0
+    ]
+   ],
+   "width": 3.0,
+   "layout_ref": "w_b1_corridors",
+   "note": "Wall-to-wall ankle-deep pool (bed -20.20) with 0.5 m dry kerbs; continuous with the junction pond and the Mirror's surface. Junction stretch belongs to b1_junction_w."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_lobby_cor",
+   "see": "Down the short west leg to the koi junction: underwater pond glow and the bell frame, the bend to the right hidden.",
+   "target": [
+    64.0,
+    72.0,
+    -19.8
+   ]
+  },
+  {
+   "from": "pi_mirror_junction_n",
+   "see": "Up the north leg to the warm corner lantern at the turn; trickle sound on the left.",
+   "target": [
+    64.45,
+    93.35,
+    -19.0
+   ]
+  },
+  {
+   "from": "corner",
+   "at": [
+    67.0,
+    92.0
+   ],
+   "see": "The 26 m straight: shoji glow left, niches doubled in the water, then darkness and the teal leak of the Mirror arch.",
+   "target": [
+    93.5,
+    92.0,
+    -18.4
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    77.0,
+    72.25,
+    -18.4
+   ],
+   "target": [
+    64.0,
+    73.6,
+    -19.2
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    67.2,
+    91.8,
+    -18.4
+   ],
+   "target": [
+    93.5,
+    92.0,
+    -18.3
+   ],
+   "fov_v": 55
+  },
+  "concept": {
+   "pos": [
+    70.4,
+    91.55,
+    -18.4
+   ],
+   "target": [
+    93.5,
+    92.4,
+    -18.6
+   ],
+   "fov_v": 52,
+   "image": "lookbook/img/05-mist-corridor.jpg",
+   "match": "Looking east down the straight from behind a walker: glowing shoji bays and a bonsai on the left kerb, wet rock and a wall trickle on the right, two staggered rows of stepping stones in teal water, knee-high mist, niche lanterns doubled in the water, the far end dissolving into mist with a cool glimmer."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     78.0,
+     72.0
+    ],
+    [
+     74.0,
+     72.8
+    ],
+    [
+     66.9,
+     85.0
+    ],
+    [
+     66.5,
+     89.0
+    ],
+    [
+     67.6,
+     91.4
+    ],
+    [
+     76.0,
+     92.0
+    ],
+    [
+     86.5,
+     92.0
+    ]
+   ],
+   "side": "both",
+   "stagger": true,
+   "spacing": [
+    4.0,
+    6.0
+   ],
+   "snap": "wall",
+   "height": 0.25,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Stagger left/right, 4-6 m: pools of light with dark gaps; the run stops at x 86.5 (7 m before the arch) so the last stretch is dark and the Mirror's teal leak is the brightest thing ahead. Skips the junction stretch (lit by the pond)."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     76.8,
+     70.75,
+     -20.0
+    ],
+    [
+     77.2,
+     73.55,
+     -20.0
+    ]
+   ],
+   "face": "path",
+   "why": "Pair flanking the lobby mouth, behind the noren."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "stepping_stone",
+   "along": "spine",
+   "side": "both",
+   "offset": 0.36,
+   "spacing": [
+    0.72,
+    0.86
+   ],
+   "jitter": 0.08,
+   "top_z": -20.0,
+   "scale": [
+    0.95,
+    1.15
+   ],
+   "variants": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+  },
+  {
+   "asset": "boulder_rim",
+   "along": [
+    [
+     78.0,
+     72.0
+    ],
+    [
+     74.0,
+     72.8
+    ],
+    [
+     71.45,
+     73.6
+    ],
+    [
+     69.2,
+     75.3
+    ],
+    [
+     67.4,
+     79.4
+    ],
+    [
+     66.9,
+     85.0
+    ],
+    [
+     66.5,
+     89.0
+    ],
+    [
+     67.6,
+     91.4
+    ],
+    [
+     70.0,
+     92.0
+    ],
+    [
+     76.0,
+     92.0
+    ],
+    [
+     82.0,
+     92.0
+    ],
+    [
+     87.5,
+     92.0
+    ]
+   ],
+   "side": "both",
+   "offset": 1.62,
+   "spacing": [
+    2.2,
+    4.0
+   ],
+   "embed": 0.12,
+   "scale": [
+    0.35,
+    0.7
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "space:b1_junction_w"
+   ],
+   "why": "Low wet rocks at the kerb; stops 6 m before the arch (dark approach)."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    0.45
+   ],
+   "density": 0.03,
+   "snap": "ground",
+   "scale": [
+    0.3,
+    0.6
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "space:b1_junction_w",
+    "anchored:shoji_bay_1",
+    "anchored:shoji_bay_2"
+   ],
+   "why": "Sparse glossy rocks on the kerbs only."
+  }
+ ],
+ "mood": {
+  "key": "the teal leak at the end of the straight",
+  "palette": "amber ankle lanterns and shoji glow, teal water, black wet basalt; cool teal only at the far arch",
+  "mist": "Knee-high (0.4 m) layer over the whole pool, densest at the walls, thinning over the stones."
+ },
+ "waivers": [
+  {
+   "check": "no_empty_areas",
+   "where": "last 7 m before p_b1_cor_mirror",
+   "reason": "Intentional dark gap so the Mirror's light reads from the corridor; it is 4 m wide, so never more than 2 m from a wall."
+  }
+ ],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

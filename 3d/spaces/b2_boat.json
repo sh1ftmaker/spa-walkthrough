@@ -1,0 +1,506 @@
+{
+ "id": "b2_boat",
+ "name": "Boat landing",
+ "level": "b2",
+ "purpose": "Where the lantern-lit river boat ties up: guests climb a ladder-stair from a floating pontoon to the deck and get their first full view of Kawagiri glowing over the water.",
+ "floor_z": -40.0,
+ "ceiling_z": -30.0,
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -33.0,
+  "max_z": -30.0,
+  "note": "Low rock vault; highest over the water so boat lantern poles clear it."
+ },
+ "footprint": [
+  [
+   122,
+   64
+  ],
+  [
+   142,
+   64
+  ],
+  [
+   142,
+   80
+  ],
+  [
+   122,
+   80
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b2_core_boat",
+   "to": "b2_core",
+   "at": [
+    122,
+    68
+   ],
+   "width": 4.0,
+   "height": 3.2
+  },
+  {
+   "id": "p_b2_boat_board",
+   "to": "b2_boardwalk",
+   "at": [
+    141,
+    76
+   ],
+   "width": 3.5,
+   "height": 3.0
+  },
+  {
+   "id": "p_b2_boat_lava",
+   "to": "b2_lava_link",
+   "at": [
+    135,
+    65.5
+   ],
+   "width": 3.5,
+   "height": 2.8
+  },
+  {
+   "id": "p_b2_river_boat",
+   "proposed": true,
+   "to": "river_boat",
+   "at": [
+    130.0,
+    77.2
+   ],
+   "width": 2.4,
+   "height": null,
+   "note": "Pontoon edge where the boat moors (connection river_boat)."
+  }
+ ],
+ "spine": [
+  [
+   122,
+   68,
+   -40.0
+  ],
+  [
+   128.0,
+   69.0,
+   -40.0
+  ],
+  [
+   134.0,
+   72.2,
+   -40.0
+  ],
+  [
+   141,
+   76,
+   -40.0
+  ]
+ ],
+ "branches": [
+  {
+   "id": "br8",
+   "why": "Passage to the Lava Stair.",
+   "points": [
+    [
+     128.0,
+     69.0,
+     -40.0
+    ],
+    [
+     135,
+     65.5,
+     -40.0
+    ]
+   ]
+  },
+  {
+   "id": "br9",
+   "why": "Ladder-stair down to the pontoon: 12 risers of 0.167 m, deck -40 to pontoon -42.0.",
+   "points": [
+    [
+     130.0,
+     70.5,
+     -40.0
+    ],
+    [
+     130.0,
+     73.4,
+     -40.0
+    ],
+    [
+     130.0,
+     76.6,
+     -42.0
+    ],
+    [
+     130.0,
+     77.2,
+     -42.0
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "boat",
+  "at": [
+   128.0,
+   79.0,
+   -42.411
+  ],
+  "facing_deg": 270,
+  "dims": {
+   "l": 7.0,
+   "w": 1.8
+  },
+  "why": "The flat-bottomed boat is how the lookbook says you arrive at Kawagiri (20:00). Moored bow-downstream at the pontoon with its lantern on a pole lit, it is the brightest warm point on the dark water and the thing the ladder-stair leads you down to; framed through the core door against the river."
+ },
+ "anchored": [
+  {
+   "id": "ladder_stair",
+   "asset": "stair",
+   "at": [
+    130.0,
+    75.0,
+    -41.0
+   ],
+   "facing_deg": 0,
+   "from": [
+    130.0,
+    73.4,
+    -40.0
+   ],
+   "to": [
+    130.0,
+    76.6,
+    -42.0
+   ],
+   "dims": {
+    "w": 2.4,
+    "risers": 12,
+    "riser": 0.167,
+    "tread": 0.29
+   },
+   "why": "Ladder-stair from the deck down to the pontoon (lookbook 'climb up a ladder-stair to the deck')."
+  },
+  {
+   "id": "pontoon",
+   "asset": "boardwalk",
+   "variant": "pontoon",
+   "at": [
+    132.0,
+    77.3,
+    -42.0
+   ],
+   "dims": {
+    "w": 16.0,
+    "d": 1.4,
+    "h": 0.4
+   },
+   "area": [
+    [
+     124.0,
+     76.6
+    ],
+    [
+     140.0,
+     76.6
+    ],
+    [
+     140.0,
+     78.0
+    ],
+    [
+     124.0,
+     78.0
+    ]
+   ],
+   "z": -42.0,
+   "why": "Floating hinoki pontoon 0.41 m above the water (surface -42.411 here), on the bank side of the boat route."
+  },
+  {
+   "id": "boat_2",
+   "asset": "boat",
+   "at": [
+    136.0,
+    79.0,
+    -42.411
+   ],
+   "facing_deg": 265,
+   "dims": {
+    "l": 7.0,
+    "w": 1.8
+   },
+   "why": "Second boat, unlit, slightly askew: the landing is in use."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_river",
+   "kind": "flow",
+   "ref": "b2_river",
+   "z": -42.411,
+   "rim_z": null,
+   "note": "Owned by b2_river; surface at x 130. Pontoon top -42.0."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b2_core_boat",
+   "see": "Boat lantern and pontoon lanterns below; the river dark beyond.",
+   "target": [
+    128.0,
+    79.0,
+    -41.6
+   ]
+  },
+  {
+   "from": "pontoon (138, 77.4)",
+   "see": "West along the river: Kawagiri's two pod rows on beams, curtains glowing, the neon 川霧 gate (concept 06).",
+   "target": [
+    90.0,
+    86.0,
+    -38.5
+   ]
+  },
+  {
+   "from": "p_b2_boat_lava",
+   "see": "Orange glow from the slide shaft at the end of a short low passage.",
+   "target": [
+    148.6,
+    53.3,
+    -39.0
+   ]
+  },
+  {
+   "from": "p_b2_boat_board",
+   "see": "A line of post lanterns receding east along the bank to the white inflow cascade.",
+   "target": [
+    192.5,
+    97.6,
+    -37.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    123.0,
+    68.5,
+    -38.4
+   ],
+   "target": [
+    128.5,
+    78.5,
+    -41.6
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    130.0,
+    73.0,
+    -38.4
+   ],
+   "target": [
+    128.0,
+    79.0,
+    -41.8
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "image": "lookbook/img/06-kawagiri-restaurant.jpg",
+   "pos": [
+    139.0,
+    77.4,
+    -40.4
+   ],
+   "floor_z": -42.0,
+   "target": [
+    80.0,
+    86.0,
+    -37.5
+   ],
+   "fov_v": 55,
+   "match": "'Kawagiri from the river landing': low over teal rushing water and wet black rocks, the restaurant on heavy beams receding along the river, water curtains glowing between red chochin, neon 川霧 at the near end, mist rising."
+  }
+ },
+ "lights": [
+  {
+   "asset": "boat",
+   "role": "hero lantern on pole",
+   "note": "Boat lantern is the brightest warm source here."
+  },
+  {
+   "asset": "lantern_post",
+   "along": [
+    [
+     124.5,
+     77.8
+    ],
+    [
+     139.5,
+     77.8
+    ]
+   ],
+   "spacing": [
+    3.5,
+    4.5
+   ],
+   "offset": 0.0,
+   "face": "water",
+   "why": "Low post lanterns on the pontoon edge: doubled in the water."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": "spine",
+   "side": "right",
+   "spacing": [
+    6,
+    8
+   ],
+   "offset": 1.6,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ]
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     129.0,
+     73.8
+    ],
+    [
+     131.0,
+     73.8
+    ]
+   ],
+   "height": 2.6,
+   "why": "Pair over the top of the ladder-stair."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": [
+    [
+     122.2,
+     74.4
+    ],
+    [
+     128.8,
+     74.4
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 0,
+   "why": "Deck edge over the bank, west of the ladder-stair."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     131.2,
+     74.4
+    ],
+    [
+     139.4,
+     76.2
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 0,
+   "why": "Deck edge over the bank, east of the ladder-stair."
+  },
+  {
+   "asset": "mooring_post",
+   "at": [
+    [
+     125.0,
+     78.0,
+     -42.0
+    ],
+    [
+     132.0,
+     78.0,
+     -42.0
+    ],
+    [
+     139.0,
+     78.0,
+     -42.0
+    ]
+   ],
+   "why": "Bollards with rope where the boats tie up."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    1.8
+   ],
+   "density": 0.06,
+   "avoid": [
+    "nav",
+    "portals"
+   ],
+   "why": "South wall rock."
+  },
+  {
+   "asset": "boulder_rim",
+   "along": [
+    [
+     122.5,
+     75.2
+    ],
+    [
+     139.0,
+     77.4
+    ]
+   ],
+   "spacing": [
+    1.5,
+    2.5
+   ],
+   "offset": 0.0,
+   "embed": 0.4,
+   "scale": [
+    0.6,
+    1.2
+   ],
+   "avoid": [
+    "anchored:ladder_stair",
+    "anchored:pontoon",
+    0.4
+   ],
+   "why": "Wet boulders under the deck edge, between bank and pontoon."
+  },
+  {
+   "asset": "banner",
+   "variant": "noren_indigo",
+   "at": [
+    [
+     122.3,
+     68.0,
+     -40.0
+    ]
+   ],
+   "facing_deg": 90,
+   "why": "Noren at the core door: the restaurant begins here."
+  }
+ ],
+ "mood": {
+  "key": "boat lantern on dark water; Kawagiri glowing downstream to the west",
+  "palette": "amber lanterns only (no neon placed here; the Kawagiri neon is seen at a distance), teal water, black rock",
+  "mist": "Low mist on the river, thinning at the pontoon."
+ },
+ "waivers": []
+}

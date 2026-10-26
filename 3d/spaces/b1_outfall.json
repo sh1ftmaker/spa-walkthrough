@@ -1,0 +1,400 @@
+{
+ "id": "b1_outfall",
+ "name": "Outfall to the river (J2)",
+ "level": "b1",
+ "purpose": "A cold vestibule between the glacier and the return corridor where all of B1's corridor water slides east over a basalt lip into a dark shaft toward the river 22 m below; you hear it before you see it, and a cold updraft lifts the mist.",
+ "floor_z": -20.0,
+ "ceiling_z": -17.0,
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -17.6,
+  "max_z": -17.0,
+  "note": "3 m basalt barrel; opens upward into the shaft void over the lip (east end)."
+ },
+ "footprint": [
+  [
+   166,
+   98
+  ],
+  [
+   194,
+   98
+  ],
+  [
+   194,
+   102
+  ],
+  [
+   166,
+   102
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_north_outfall",
+   "to": "b1_cor_north",
+   "at": [
+    165.5,
+    100.2
+   ],
+   "width": 3.0,
+   "height": 2.6
+  },
+  {
+   "id": "p_b1_glacier_outfall",
+   "to": "b1_glacier",
+   "at": [
+    170,
+    97
+   ],
+   "width": 3.0,
+   "height": 2.6
+  }
+ ],
+ "spine": [
+  [
+   165.5,
+   100.2,
+   -20.0
+  ],
+  [
+   168.0,
+   100.1,
+   -20.0
+  ],
+  [
+   170.0,
+   99.4,
+   -20.0
+  ],
+  [
+   170.0,
+   97.0,
+   -20.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "to_lip",
+   "points": [
+    [
+     168.0,
+     100.1,
+     -20.0
+    ],
+    [
+     178.0,
+     100.0,
+     -20.0
+    ],
+    [
+     189.6,
+     100.0,
+     -20.0
+    ]
+   ],
+   "note": "Dead-end viewing spur to the rail at the lip."
+  }
+ ],
+ "hero": {
+  "asset": "spill_lip",
+  "variant": "shaft weir",
+  "at": [
+   191.6,
+   100.0,
+   -20.0
+  ],
+  "facing_deg": 90,
+  "dims": {
+   "w": 3.0,
+   "drop": 22.0
+  },
+  "why": "Where B1's water leaves: the pool slides over a polished lip into blackness, lit from below so the sheet glows; the sound carries down the corridor. It is the only bright thing at the end of a dark spur."
+ },
+ "anchored": [
+  {
+   "id": "lip_rail",
+   "asset": "railing",
+   "along": [
+    [
+     190.4,
+     98.6
+    ],
+    [
+     190.4,
+     101.4
+    ]
+   ],
+   "dims": {
+    "h": 1.05
+   },
+   "why": "Stops walkers 1 m short of the lip."
+  },
+  {
+   "id": "lip_toro",
+   "asset": "lantern_stone",
+   "at": [
+    189.4,
+    101.45,
+    -20.0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "h": 1.2
+   },
+   "why": "One low toro on the kerb by the rail."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_outfall_run",
+   "kind": "flow",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -20.2,
+   "path": [
+    [
+     166.0,
+     100.0
+    ],
+    [
+     191.6,
+     100.0
+    ]
+   ],
+   "width": 3.0,
+   "layout_ref": "w_b1_corridors",
+   "note": "Corridor water moving east (barely perceptible) to the lip."
+  },
+  {
+   "id": "w_outfall_fall",
+   "kind": "fall",
+   "z_top": -20.05,
+   "z_bottom": -42.0,
+   "at": [
+    192.0,
+    100.0
+   ],
+   "width": 3.0,
+   "layout_ref": "w_outfall",
+   "note": "Matches layout w_outfall (192,100)."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_north_outfall",
+   "see": "East down the dark spur to the glowing sheet at the lip; sound of falling water.",
+   "target": [
+    191.6,
+    100.0,
+    -20.3
+   ]
+  },
+  {
+   "from": "p_b1_glacier_outfall",
+   "see": "The warm noren and niches of the return corridor to the west.",
+   "target": [
+    150.0,
+    109.0,
+    -18.6
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    167.0,
+    100.2,
+    -18.4
+   ],
+   "target": [
+    191.6,
+    100.0,
+    -19.2
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    188.6,
+    100.5,
+    -18.4
+   ],
+   "target": [
+    192.6,
+    99.8,
+    -23.0
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "pos": [
+    169.0,
+    99.6,
+    -18.4
+   ],
+   "target": [
+    191.6,
+    100.2,
+    -18.9
+   ],
+   "fov_v": 52,
+   "image": "lookbook/img/25-water-journey.jpg",
+   "match": "Mood of the water-journey diagram at B1: water leaving the level through a lit opening; corridor stones and mist in the foreground, a glowing sheet falling into darkness at the end."
+  }
+ },
+ "lights": [
+  {
+   "asset": "spill_lip",
+   "part": "under_sheet_light",
+   "at": [
+    [
+     191.9,
+     100.0,
+     -21.0
+    ]
+   ],
+   "why": "Hero brightest."
+  },
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     166.0,
+     100.0
+    ],
+    [
+     185.0,
+     100.0
+    ]
+   ],
+   "side": "both",
+   "stagger": true,
+   "spacing": [
+    5.0,
+    7.0
+   ],
+   "snap": "wall",
+   "height": 0.25,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Few niches, stopping 6 m short of the lip."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "stepping_stone",
+   "along": [
+    [
+     165.5,
+     100.2
+    ],
+    [
+     168.0,
+     100.1
+    ],
+    [
+     189.6,
+     100.0
+    ]
+   ],
+   "side": "both",
+   "offset": 0.36,
+   "spacing": [
+    0.72,
+    0.86
+   ],
+   "jitter": 0.08,
+   "top_z": -20.0,
+   "scale": [
+    0.95,
+    1.15
+   ],
+   "variants": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+  },
+  {
+   "asset": "stepping_stone",
+   "along": [
+    [
+     170.0,
+     99.4
+    ],
+    [
+     170.0,
+     97.0
+    ]
+   ],
+   "side": "both",
+   "offset": 0.36,
+   "spacing": [
+    0.72,
+    0.86
+   ],
+   "jitter": 0.08,
+   "top_z": -20.0,
+   "scale": [
+    0.95,
+    1.15
+   ],
+   "variants": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+  },
+  {
+   "asset": "boulder_rim",
+   "along": [
+    [
+     166.0,
+     100.0
+    ],
+    [
+     189.0,
+     100.0
+    ]
+   ],
+   "side": "both",
+   "offset": 1.62,
+   "spacing": [
+    2.2,
+    4.0
+   ],
+   "embed": 0.12,
+   "scale": [
+    0.35,
+    0.7
+   ],
+   "avoid": [
+    "nav",
+    "portals"
+   ],
+   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
+  }
+ ],
+ "mood": {
+  "key": "glowing sheet falling into the dark",
+  "palette": "cold teal water, black basalt, one warm under-light",
+  "mist": "Low mist dragged east and lifted by the shaft updraft at the lip."
+ },
+ "waivers": [],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

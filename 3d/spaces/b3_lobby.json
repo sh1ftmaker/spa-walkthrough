@@ -1,0 +1,637 @@
+{
+ "id": "b3_lobby",
+ "name": "B3 lift lobby",
+ "level": "b3",
+ "purpose": "The B3 hub: the lift and the Spiral Stair deliver guests into a low, warm ring hall where they hear the whole cavern before they see it, rinse at a spring basin, and choose west (terraces, falls) or south-east (the lava tube).",
+ "floor_z": -67.0,
+ "ceiling_z": -58.0,
+ "footprint": [
+  [
+   102.5,
+   70.0
+  ],
+  [
+   102.26,
+   72.439
+  ],
+  [
+   101.548,
+   74.784
+  ],
+  [
+   100.393,
+   76.945
+  ],
+  [
+   98.839,
+   78.839
+  ],
+  [
+   96.945,
+   80.393
+  ],
+  [
+   94.784,
+   81.548
+  ],
+  [
+   92.439,
+   82.26
+  ],
+  [
+   90.0,
+   82.5
+  ],
+  [
+   87.561,
+   82.26
+  ],
+  [
+   85.216,
+   81.548
+  ],
+  [
+   83.055,
+   80.393
+  ],
+  [
+   81.161,
+   78.839
+  ],
+  [
+   79.607,
+   76.945
+  ],
+  [
+   78.452,
+   74.784
+  ],
+  [
+   77.74,
+   72.439
+  ],
+  [
+   77.5,
+   70.0
+  ],
+  [
+   77.74,
+   67.561
+  ],
+  [
+   78.452,
+   65.216
+  ],
+  [
+   79.607,
+   63.055
+  ],
+  [
+   81.161,
+   61.161
+  ],
+  [
+   83.055,
+   59.607
+  ],
+  [
+   85.216,
+   58.452
+  ],
+  [
+   87.561,
+   57.74
+  ],
+  [
+   90.0,
+   57.5
+  ],
+  [
+   92.439,
+   57.74
+  ],
+  [
+   94.784,
+   58.452
+  ],
+  [
+   96.945,
+   59.607
+  ],
+  [
+   98.839,
+   61.161
+  ],
+  [
+   100.393,
+   63.055
+  ],
+  [
+   101.548,
+   65.216
+  ],
+  [
+   102.26,
+   67.561
+  ]
+ ],
+ "ceiling_profile": {
+  "type": "vault",
+  "min_z": -63.5,
+  "max_z": -58.0,
+  "note": "A low rock-and-timber ring canopy around the base of the core drum (3.5 m at the outer wall rising to 9 m at the drum). The drum itself continues up through it to the vault roof at -50 as a basalt column. Deliberately compressed: both exits open onto the big vault."
+ },
+ "portals": [
+  {
+   "id": "p_b3_lobby_walk",
+   "to": "b3_walk_north",
+   "at": [
+    78,
+    70
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b3_lobby_lazy",
+   "to": "b3_lazy",
+   "at": [
+    98,
+    60
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b3_lobby_lift",
+   "to": "main_lift",
+   "at": [
+    83.41,
+    65.47
+   ],
+   "z": -67.0,
+   "width": 1.8,
+   "height": 2.4,
+   "bearing": 235.5,
+   "note": "Lift door on the SW of the drum; a bridge over the stair well joins it to the car (88.19, 68.75)."
+  },
+  {
+   "id": "p_b3_lobby_spiral_stair",
+   "to": "spiral_stair",
+   "at": [
+    96.59,
+    74.53
+   ],
+   "z": -67.0,
+   "width": 2.6,
+   "height": 2.6,
+   "bearing": 55.5,
+   "note": "Spiral Stair landing door on the NE of the drum, opposite the lift door."
+  }
+ ],
+ "spine": [
+  [
+   78,
+   70,
+   -67
+  ],
+  [
+   79.75,
+   70.0,
+   -67
+  ],
+  [
+   80.71,
+   65.67,
+   -67
+  ],
+  [
+   83.41,
+   62.15,
+   -67
+  ],
+  [
+   86.49,
+   60.37,
+   -67
+  ],
+  [
+   90.0,
+   59.75,
+   -67
+  ],
+  [
+   93.51,
+   60.37,
+   -67
+  ],
+  [
+   95.88,
+   61.6,
+   -67
+  ],
+  [
+   98,
+   60,
+   -67
+  ]
+ ],
+ "spine_branches": [
+  {
+   "id": "stair_door",
+   "note": "Spiral Stair door (NE) round the east side to the SE exit.",
+   "path": [
+    [
+     96.59,
+     74.53,
+     -67
+    ],
+    [
+     98.4,
+     75.88,
+     -67
+    ],
+    [
+     100.25,
+     70.0,
+     -67
+    ],
+    [
+     98.88,
+     64.88,
+     -67
+    ],
+    [
+     95.88,
+     61.6,
+     -67
+    ]
+   ]
+  },
+  {
+   "id": "lift_door",
+   "path": [
+    [
+     83.41,
+     65.47,
+     -67
+    ],
+    [
+     83.41,
+     62.15,
+     -67
+    ]
+   ],
+   "note": "Lift door straight out to the ring walk."
+  }
+ ],
+ "hero": {
+  "asset": "lift_core",
+  "at": [
+   90,
+   70,
+   -67
+  ],
+  "facing_deg": 235.5,
+  "dims": {
+   "r": 8,
+   "stair_door_bearing": 55.5
+  },
+  "why": "The bronze lift doors and the glowing mouth of the Spiral Stair are the one fixed point through all five levels: the first thing you see and the thing you must find again. In a deliberately dim ring it is ringed by the brightest lanterns."
+ },
+ "anchored": [
+  {
+   "id": "spring_basin",
+   "asset": "chozubachi",
+   "at": [
+    80.4,
+    72.8,
+    -67
+   ],
+   "facing_deg": 110,
+   "dims": {
+    "r": 0.7
+   },
+   "why": "Fed by the runnel that comes down walk_north from the top terrace: guests rinse before the pools and see the water's direction (uphill = the terraces)."
+  },
+  {
+   "id": "sign_west",
+   "asset": "sign_kanji",
+   "at": [
+    78.41,
+    66.89,
+    -67
+   ],
+   "facing_deg": 75,
+   "dims": {
+    "h": 2.2
+   },
+   "text": "棚田 滝 (terraces, falls)",
+   "why": "Wayfinding at the west exit, readable from the core door."
+  },
+  {
+   "id": "sign_se",
+   "asset": "sign_kanji",
+   "at": [
+    94.1,
+    58.72,
+    -67
+   ],
+   "facing_deg": 340,
+   "dims": {
+    "h": 2.2
+   },
+   "text": "溶岩洞 間欠泉 (lava tube, geyser)",
+   "why": "Wayfinding at the south-east exit."
+  },
+  {
+   "id": "benches",
+   "asset": "bench_stone",
+   "at": [
+    [
+     84.35,
+     79.79,
+     -67
+    ],
+    [
+     90,
+     81.3,
+     -67
+    ]
+   ],
+   "facing_deg": [
+    150,
+    180
+   ],
+   "why": "Waiting seats against the north wall, clear of both exits and both drum doors."
+  },
+  {
+   "id": "lift_bridge",
+   "asset": "boardwalk",
+   "along": [
+    [
+     88.19,
+     68.75
+    ],
+    [
+     83.41,
+     65.47
+    ]
+   ],
+   "dims": {
+    "w": 1.8,
+    "rail_h": 1.0
+   },
+   "z": -67.0,
+   "why": "Layout: the lift door is reached over the Spiral Stair well; railed bridge."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_lobby_runnel",
+   "kind": "flow",
+   "z_start": -67.05,
+   "z_end": -67.2,
+   "path": [
+    [
+     78,
+     71.4
+    ],
+    [
+     80.1,
+     72.5
+    ]
+   ],
+   "width": 0.3,
+   "note": "End of the walk_north runnel into the basin; the basin drains under the floor to the lazy river (-67.45)."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b3_lobby_lift",
+   "see": "Out of the lift: two lit exits: west, teal steam of the terraces up the roofed stair; south-east, the amber mouth of the lava tube.",
+   "target": [
+    78,
+    70,
+    -65.5
+   ]
+  },
+  {
+   "from": "p_b3_lobby_walk",
+   "see": "Up the walk_north stair: a framed teal window halfway, steam beyond.",
+   "target": [
+    66,
+    66,
+    -60
+   ]
+  },
+  {
+   "from": "p_b3_lobby_lazy",
+   "see": "Into the tube: amber cracks, floating lanterns, the north bridge.",
+   "target": [
+    110,
+    57,
+    -65.5
+   ]
+  },
+  {
+   "from": "p_b3_lobby_spiral_stair",
+   "see": "Off the stair, round the east side of the ring: the amber tube mouth at the SE exit.",
+   "target": [
+    98,
+    60,
+    -65.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    96.6,
+    61.6,
+    -65.4
+   ],
+   "target": [
+    83.6,
+    65.6,
+    -65.4
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    82.9,
+    63.3,
+    -65.4
+   ],
+   "target": [
+    70,
+    69,
+    -64.5
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "pos": [
+    92.5,
+    59.9,
+    -65.4
+   ],
+   "target": [
+    84.0,
+    65.8,
+    -65.2
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/35-plan-b3-aqua-cavern.jpg",
+   "match": "No eye-level concept exists; the plan shows a round stone landing ringed by lanterns around the lift drum with decks leaving west and south-east. Frame the drum door with the lantern ring and the west exit's glow, mood of 04's lantern clusters."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_hanging",
+   "ring": [
+    90,
+    70
+   ],
+   "radius": 8.8,
+   "spacing": [
+    1.4,
+    2.0
+   ],
+   "height": [
+    2.6,
+    3.4
+   ],
+   "snap": "ceiling",
+   "cluster": true,
+   "why": "Brightest ring hugging the core: the hero glows."
+  },
+  {
+   "asset": "lantern_niche",
+   "ring": [
+    90,
+    70
+   ],
+   "radius": 12.2,
+   "spacing": [
+    3,
+    4.5
+   ],
+   "snap": "wall",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Ankle-height pools on the outer wall with dark gaps between."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     79.6,
+     67.6,
+     -67
+    ],
+    [
+     79.6,
+     72.4,
+     -67
+    ],
+    [
+     96.0,
+     59.4,
+     -67
+    ],
+    [
+     99.4,
+     62.2,
+     -67
+    ]
+   ],
+   "why": "Flank both exits."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     98.4,
+     72.8,
+     -67
+    ],
+    [
+     95.2,
+     76.6,
+     -67
+    ]
+   ],
+   "why": "Flank the Spiral Stair door."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "banner",
+   "at": [
+    [
+     78.6,
+     70,
+     -67
+    ],
+    [
+     97.6,
+     60.6,
+     -67
+    ]
+   ],
+   "snap": "ceiling",
+   "height": 2.2,
+   "dims": {
+    "bottom_z_above_floor": 2.15
+   },
+   "why": "Indigo noren over each exit (indigo = cavern robes, lookbook); hems at 2.15 m to keep door clearance."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.2,
+    1.0
+   ],
+   "density": 0.03,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     93.97,
+     80.9,
+     -67
+    ]
+   ],
+   "why": "One dark pine on the north wall, framed by the Spiral Stair door."
+  }
+ ],
+ "mood": {
+  "key": "warm drum, two glowing exits",
+  "palette": "amber lanterns, bronze lift doors, black basalt, a teal hint west",
+  "mist": "none inside; mist drifts in at the west exit"
+ },
+ "waivers": [],
+ "layout_issues": [],
+ "stair_landings": [
+  {
+   "connection": "north_walk_stair",
+   "at": [
+    78,
+    70
+   ],
+   "z": -67.0
+  }
+ ]
+}

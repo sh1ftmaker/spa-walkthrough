@@ -1,0 +1,375 @@
+{
+ "id": "g_road",
+ "name": "Approach road",
+ "level": "ground",
+ "tier": "must",
+ "purpose": "The threshold from the outside world: a short lantern-lined causeway where the roar of the flank falls on the left and the lit torii dead ahead tell you that you have arrived.",
+ "floor_z": 0.0,
+ "ceiling_z": null,
+ "ceiling_profile": {
+  "type": "open",
+  "note": "Open sky. Black rock flank rises steeply on the north side (left); the south side drops to the cascade pools and the sea."
+ },
+ "footprint": [
+  [
+   14.495,
+   58.465
+  ],
+  [
+   13.505,
+   51.535
+  ],
+  [
+   -0.495,
+   53.535
+  ],
+  [
+   0.495,
+   60.465
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_world_road",
+   "to": "outside",
+   "at": [
+    0.0,
+    57.0
+   ],
+   "width": 7.0,
+   "note": "Spawn edge (west edge of the grid); not in layout.json portals."
+  },
+  {
+   "id": "p_road_gate",
+   "to": "g_gate",
+   "at": [
+    13,
+    55
+   ],
+   "width": 7.0
+  }
+ ],
+ "spine": [
+  [
+   0.5,
+   57.0,
+   0
+  ],
+  [
+   4.5,
+   56.4,
+   0
+  ],
+  [
+   9.0,
+   55.8,
+   0
+  ],
+  [
+   13.0,
+   55.0,
+   0
+  ]
+ ],
+ "hero": {
+  "asset": "falls_sheet",
+  "at": [
+   3.2,
+   61.6,
+   -0.5
+  ],
+  "facing_deg": 180,
+  "dims": {
+   "w": 3.5,
+   "h": 14,
+   "lip_z": 13.5
+  },
+  "outside_ok": "The falls drop down the flank 1-2 m north of the road edge into a plunge pool; only the spray reaches the road.",
+  "why": "The south-branch cascade comes off the west flank right beside the road: a white, roaring, uplit sheet on the left that the road crosses on a slab bridge. It is the first water you meet and the brightest moving thing until the torii; it says 'the spring runs through everything' before you see a building."
+ },
+ "anchored": [
+  {
+   "id": "road_bridge",
+   "asset": "bridge_slab",
+   "at": [
+    4.5,
+    56.4,
+    0
+   ],
+   "facing_deg": 98,
+   "dims": {
+    "span": 4.0,
+    "w": 7.0,
+    "parapet_h": 0.9
+   },
+   "why": "Carries the road over the stream between the plunge pool (north) and the A4 falls (south). Low basalt parapets double as the road railing over the water."
+  },
+  {
+   "id": "road_marker",
+   "asset": "sign_kanji",
+   "at": [
+    1.2,
+    59.3,
+    0
+   ],
+   "facing_deg": 278,
+   "dims": {
+    "h": 2.4,
+    "w": 0.6,
+    "material": "basalt stele, gilt 火山湯"
+   },
+   "why": "Carved stone marker at the grid edge: the brand appears once, quietly, before the gate (lookbook: materials first, logo second)."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_road_plunge",
+   "kind": "still",
+   "part_of": "w_cascade",
+   "z": -0.55,
+   "rim_z": -0.5,
+   "path": [
+    [
+     1.5,
+     60.6
+    ],
+    [
+     5.0,
+     60.3
+    ]
+   ],
+   "width": 2.6,
+   "outside_ok": "Plunge pool sits just north of the road edge (y 60-63).",
+   "note": "Proposed: catches the flank falls."
+  },
+  {
+   "id": "w_road_stream",
+   "kind": "flow",
+   "part_of": "w_cascade",
+   "z": -0.6,
+   "rim_z": 0.0,
+   "path": [
+    [
+     3.5,
+     60.0
+    ],
+    [
+     4.5,
+     56.4
+    ],
+    [
+     5.5,
+     52.9
+    ]
+   ],
+   "width": 2.4,
+   "note": "Proposed: runs under road_bridge (0.6 m below the deck), then leaves the road south and drops off the A4 lip (12.4, 35.5, -0.65) into g_cascade pool P1 (-2.05). Channel between runs outside all footprints along the gate court west edge: (6.5, 48) -> (10.5, 40)."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_world_road",
+   "see": "Torii posts lit from below, framing the warm porch of the hall 40 m east; the falls white on the left.",
+   "target": [
+    19.0,
+    55.0,
+    6.0
+   ]
+  },
+  {
+   "from": "road_bridge",
+   "see": "Looking left: the falls and its steam column uplit teal; looking right: the cascade pools glowing below.",
+   "target": [
+    3.2,
+    63.0,
+    5.0
+   ]
+  },
+  {
+   "from": "p_road_gate",
+   "see": "The torii fills the frame; through it, banners and hanging lanterns on the porch.",
+   "target": [
+    37.0,
+    55.0,
+    3.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    0.8,
+    57.0,
+    1.6
+   ],
+   "target": [
+    19.0,
+    55.0,
+    5.5
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    5.5,
+    56.2,
+    1.6
+   ],
+   "target": [
+    3.2,
+    63.0,
+    5.5
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "image": "lookbook/img/31-plan-ground.jpg",
+   "pos": [
+    1.5,
+    56.0,
+    1.6
+   ],
+   "target": [
+    24.0,
+    55.5,
+    3.0
+   ],
+   "fov_v": 50,
+   "match": "Plan 31's approach road at eye height: two converging rows of warm post lanterns on railings, the dark torii silhouette at the end against the lit hall front."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_post",
+   "along": "spine",
+   "side": "both",
+   "spacing": [
+    3.2,
+    4.2
+   ],
+   "offset": 3.1,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Two converging rows (ground plan 31) are the eye-leading line to the torii; spacing tight because the road is short."
+  },
+  {
+   "asset": "falls_uplight",
+   "at": [
+    [
+     3.2,
+     60.4,
+     -0.45
+    ]
+   ],
+   "outside_ok": "In the plunge pool just north of the road edge.",
+   "why": "Teal-white uplight at the plunge pool so the falls read at night (hero brightest)."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": [
+    [
+     0.6,
+     60.3
+    ],
+    [
+     2.4,
+     60.0
+    ]
+   ],
+   "height": 1.0,
+   "material": "basalt posts + timber rail",
+   "why": "Edge over the plunge pool before the bridge."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     6.6,
+     59.4
+    ],
+    [
+     14.4,
+     58.3
+    ]
+   ],
+   "height": 1.0
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     -0.4,
+     53.7
+    ],
+    [
+     2.6,
+     53.2
+    ]
+   ],
+   "height": 1.0
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     6.6,
+     52.6
+    ],
+    [
+     13.4,
+     51.6
+    ]
+   ],
+   "height": 1.0,
+   "why": "South edge drops toward the cascade pools."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    0.8
+   ],
+   "density": 0.08,
+   "side": "north",
+   "avoid": [
+    "nav",
+    "portals",
+    "water"
+   ],
+   "snap": "ground",
+   "embed": 0.15
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     12.6,
+     58.6,
+     0
+    ]
+   ],
+   "scale": [
+    1.4,
+    1.6
+   ],
+   "why": "A single windswept pine where the road meets the gate court, dark against the lantern glow."
+  }
+ ],
+ "mood": {
+  "key": "falls on the left, torii ahead",
+  "palette": "blue-hour sky, amber post lanterns, white-teal falls, wet black road",
+  "mist": "spray drifting across the bridge"
+ },
+ "waivers": [
+  {
+   "check": "hero_inside_footprint",
+   "where": "hero falls_sheet",
+   "reason": "The falls stand 1.5 m beyond the road's north edge; the road is only 7 m wide."
+  }
+ ]
+}

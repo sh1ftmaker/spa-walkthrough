@@ -1,0 +1,845 @@
+{
+ "id": "b3_lazy",
+ "name": "02 Lava Tube Lazy River",
+ "level": "b3",
+ "purpose": "A slow 38 °C float on woven rings around the geyser island inside a low lava tube: amber light leaks from cracks, glowworms speckle the vault, paper lanterns bob at the edges, and every few minutes the geyser roars through the openings.",
+ "floor_z": -67.0,
+ "ceiling_z": -63.0,
+ "footprint": [
+  [
+   142.5,
+   42.0
+  ],
+  [
+   142.149,
+   44.894
+  ],
+  [
+   141.105,
+   47.717
+  ],
+  [
+   139.394,
+   50.399
+  ],
+  [
+   137.057,
+   52.874
+  ],
+  [
+   134.153,
+   55.081
+  ],
+  [
+   130.752,
+   56.967
+  ],
+  [
+   126.939,
+   58.484
+  ],
+  [
+   122.807,
+   59.595
+  ],
+  [
+   118.458,
+   60.272
+  ],
+  [
+   114.0,
+   60.5
+  ],
+  [
+   109.542,
+   60.272
+  ],
+  [
+   105.193,
+   59.595
+  ],
+  [
+   101.061,
+   58.484
+  ],
+  [
+   97.248,
+   56.967
+  ],
+  [
+   93.847,
+   55.081
+  ],
+  [
+   90.943,
+   52.874
+  ],
+  [
+   88.606,
+   50.399
+  ],
+  [
+   86.895,
+   47.717
+  ],
+  [
+   85.851,
+   44.894
+  ],
+  [
+   85.5,
+   42.0
+  ],
+  [
+   85.851,
+   39.106
+  ],
+  [
+   86.895,
+   36.283
+  ],
+  [
+   88.606,
+   33.601
+  ],
+  [
+   90.943,
+   31.126
+  ],
+  [
+   93.847,
+   28.919
+  ],
+  [
+   97.248,
+   27.033
+  ],
+  [
+   101.061,
+   25.516
+  ],
+  [
+   105.193,
+   24.405
+  ],
+  [
+   109.542,
+   23.728
+  ],
+  [
+   114.0,
+   23.5
+  ],
+  [
+   118.458,
+   23.728
+  ],
+  [
+   122.807,
+   24.405
+  ],
+  [
+   126.939,
+   25.516
+  ],
+  [
+   130.752,
+   27.033
+  ],
+  [
+   134.153,
+   28.919
+  ],
+  [
+   137.057,
+   31.126
+  ],
+  [
+   139.394,
+   33.601
+  ],
+  [
+   141.105,
+   36.283
+  ],
+  [
+   142.149,
+   39.106
+  ]
+ ],
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -63.5,
+  "max_z": -63.0,
+  "note": "The roof is the lava_tube ASSET, not shell (under the b3_cavern vault). It covers the channel and the outer towpath on the west, south and east arcs; it is open on the north arc between x 104 and 124 and above both bridges, so the geyser plume is seen from the water."
+ },
+ "portals": [
+  {
+   "id": "p_b3_lobby_lazy",
+   "to": "b3_lobby",
+   "at": [
+    98,
+    60
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b3_lazy_geyser_n",
+   "to": "b3_geyser",
+   "at": [
+    114,
+    52
+   ],
+   "z": -67.0,
+   "width": 3.0,
+   "height": 4.0,
+   "note": "North bridge lands on the island here."
+  },
+  {
+   "id": "p_b3_lazy_geyser_s",
+   "to": "b3_geyser",
+   "at": [
+    114,
+    32
+   ],
+   "z": -67.0,
+   "width": 3.0,
+   "height": 4.0,
+   "note": "South bridge."
+  },
+  {
+   "id": "p_b3_lazy_slide",
+   "to": "b3_slide_foot",
+   "at": [
+    141,
+    42
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0,
+   "note": "East tube mouth."
+  },
+  {
+   "id": "p_b3_rim_lazy",
+   "to": "b3_rimstone",
+   "at": [
+    88,
+    32
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.0,
+   "note": "West mouth to the rimstone stair foot."
+  }
+ ],
+ "spine": [
+  [
+   98,
+   60,
+   -67.0
+  ],
+  [
+   93.56,
+   53.71,
+   -67.0
+  ],
+  [
+   100.25,
+   57.16,
+   -67.0
+  ],
+  [
+   114.0,
+   59.5,
+   -67.0
+  ],
+  [
+   125.62,
+   57.86,
+   -67.0
+  ],
+  [
+   135.07,
+   53.25,
+   -67.0
+  ],
+  [
+   139.84,
+   47.99,
+   -67.0
+  ],
+  [
+   141,
+   42,
+   -67.0
+  ]
+ ],
+ "spine_branches": [
+  {
+   "id": "south_arc",
+   "path": [
+    [
+     88,
+     32,
+     -67.0
+    ],
+    [
+     91.2,
+     32.21,
+     -67.0
+    ],
+    [
+     98.23,
+     27.66,
+     -67.0
+    ],
+    [
+     114.0,
+     24.5,
+     -67.0
+    ],
+    [
+     129.77,
+     27.66,
+     -67.0
+    ],
+    [
+     137.82,
+     33.25,
+     -67.0
+    ],
+    [
+     141.08,
+     38.96,
+     -67.0
+    ],
+    [
+     141,
+     42,
+     -67.0
+    ]
+   ],
+   "note": "Rimstone mouth -> south bridge foot -> east mouth along the outer towpath."
+  },
+  {
+   "id": "west_arc",
+   "path": [
+    [
+     93.56,
+     53.71,
+     -67.0
+    ],
+    [
+     88.16,
+     47.99,
+     -67.0
+    ],
+    [
+     86.5,
+     42.0,
+     -67.0
+    ],
+    [
+     88.16,
+     36.01,
+     -67.0
+    ],
+    [
+     91.2,
+     32.21,
+     -67.0
+    ]
+   ],
+   "note": "Joins the lobby entry to the rimstone mouth along the west towpath."
+  }
+ ],
+ "hero": {
+  "asset": "lava_tube",
+  "at": [
+   100,
+   30.6,
+   -63.3
+  ],
+  "facing_deg": 60,
+  "dims": {
+   "channel_w": 6.0,
+   "towpath_w": 2.0,
+   "vault_h": 4.0,
+   "loop_m": 120
+  },
+  "why": "The tube itself is the attraction (concept 12): a ribbed basalt vault with amber lava cracks and glowworms receding round the SW curve. From the rimstone mouth the curve vanishes in light, the brightest and deepest view in the space. (Lookbook's 600 m = 5 laps of this 120 m loop.)"
+ },
+ "anchored": [
+  {
+   "id": "bridge_n",
+   "asset": "bridge_arched",
+   "at": [
+    114,
+    55.5,
+    -67.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "span": 9.0,
+    "w": 3.0,
+    "rise": 1.5
+   },
+   "why": "Carries the walk over the channel onto the island; crown -65.5 leaves 1.7 m over the water for floaters. Tube roof open above it."
+  },
+  {
+   "id": "bridge_s",
+   "asset": "bridge_arched",
+   "at": [
+    114,
+    28.5,
+    -67.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "span": 9.0,
+    "w": 3.0,
+    "rise": 1.5
+   },
+   "why": "Second island crossing; frames the vanishing tube from the west (concept 12's distant bridge)."
+  },
+  {
+   "id": "entry_steps",
+   "asset": "stair",
+   "at": [
+    [
+     101.2,
+     56.4,
+     -67.0
+    ],
+    [
+     126.5,
+     25.7,
+     -67.0
+    ]
+   ],
+   "facing_deg": [
+    200,
+    0
+   ],
+   "dims": {
+    "w": 2.0,
+    "steps": 4
+   },
+   "why": "Two step-ins into the channel from the outer towpath (near the lobby and on the south arc)."
+  },
+  {
+   "id": "float_rings",
+   "asset": "float_ring",
+   "along": "water:w_lazy",
+   "spacing": [
+    7,
+    12
+   ],
+   "moving": true,
+   "why": "Woven rings drifting with the current (probe-lit, not baked)."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_lazy",
+   "kind": "flow",
+   "z_start": -67.45,
+   "z_end": -67.5,
+   "bed_z": -68.4,
+   "temp": 38,
+   "width": 6.0,
+   "path": [
+    [
+     137.5,
+     42.0
+    ],
+    [
+     137.211,
+     44.112
+    ],
+    [
+     136.35,
+     46.172
+    ],
+    [
+     134.939,
+     48.129
+    ],
+    [
+     133.012,
+     49.935
+    ],
+    [
+     130.617,
+     51.546
+    ],
+    [
+     127.813,
+     52.922
+    ],
+    [
+     124.669,
+     54.029
+    ],
+    [
+     121.262,
+     54.839
+    ],
+    [
+     117.676,
+     55.334
+    ],
+    [
+     114.0,
+     55.5
+    ],
+    [
+     110.324,
+     55.334
+    ],
+    [
+     106.738,
+     54.839
+    ],
+    [
+     103.331,
+     54.029
+    ],
+    [
+     100.187,
+     52.922
+    ],
+    [
+     97.383,
+     51.546
+    ],
+    [
+     94.988,
+     49.935
+    ],
+    [
+     93.061,
+     48.129
+    ],
+    [
+     91.65,
+     46.172
+    ],
+    [
+     90.789,
+     44.112
+    ],
+    [
+     90.5,
+     42.0
+    ],
+    [
+     90.789,
+     39.888
+    ],
+    [
+     91.65,
+     37.828
+    ],
+    [
+     93.061,
+     35.871
+    ],
+    [
+     94.988,
+     34.065
+    ],
+    [
+     97.383,
+     32.454
+    ],
+    [
+     100.187,
+     31.078
+    ],
+    [
+     103.331,
+     29.971
+    ],
+    [
+     106.738,
+     29.161
+    ],
+    [
+     110.324,
+     28.666
+    ],
+    [
+     114.0,
+     28.5
+    ],
+    [
+     117.676,
+     28.666
+    ],
+    [
+     121.262,
+     29.161
+    ],
+    [
+     124.669,
+     29.971
+    ],
+    [
+     127.813,
+     31.078
+    ],
+    [
+     130.617,
+     32.454
+    ],
+    [
+     133.012,
+     34.065
+    ],
+    [
+     134.939,
+     35.871
+    ],
+    [
+     136.35,
+     37.828
+    ],
+    [
+     137.211,
+     39.888
+    ]
+   ],
+   "note": "Copied from layout. Flow loops with the centreline order; inflow from w_rim_out on the SW arc, outflow at the east to the splash pool level."
+  },
+  {
+   "id": "w_rim_in",
+   "kind": "flow",
+   "z_start": -66.9,
+   "z_end": -67.45,
+   "path": [
+    [
+     91.6,
+     32.4
+    ],
+    [
+     93.8,
+     34.2
+    ]
+   ],
+   "width": 0.8,
+   "note": "Rimstone outflow spilling over a rock lip into the channel."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b3_lobby_lazy",
+   "see": "The tube curving both ways; ahead-right the north bridge with the geyser plume rising behind it through the roof opening.",
+   "target": [
+    114,
+    44,
+    -58
+   ]
+  },
+  {
+   "from": "p_b3_rim_lazy",
+   "see": "The long SW curve receding in amber and glowworm light, the south bridge framed at the end (concept 12).",
+   "target": [
+    114,
+    28.5,
+    -65.5
+   ]
+  },
+  {
+   "from": "bridge_n",
+   "see": "From the crown: the geyser and its seat ring below; east along the channel, the orange glow of the slide cave through the east mouth.",
+   "target": [
+    150,
+    50,
+    -60
+   ]
+  },
+  {
+   "from": "p_b3_lazy_slide",
+   "see": "Looking out of the tube's east mouth: the lava wall's orange behind the glass slide.",
+   "target": [
+    161.6,
+    51,
+    -60
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    98.4,
+    57.0,
+    -65.4
+   ],
+   "target": [
+    114,
+    57.5,
+    -65
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    114,
+    57.5,
+    -63.9
+   ],
+   "target": [
+    114,
+    42,
+    -60
+   ],
+   "fov_v": 64
+  },
+  "concept": {
+   "pos": [
+    126.5,
+    26.8,
+    -65.4
+   ],
+   "target": [
+    111,
+    28.4,
+    -65.2
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/12-lava-tube-lazy-river.jpg",
+   "match": "Low along the south arc looking west: rings and floating lanterns in teal water, ribbed vault with amber cracks and glowworms converging to the vanishing curve, the south bridge and a lit island pavilion in the distance."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_float",
+   "along": "water:w_lazy",
+   "side": "both",
+   "spacing": [
+    3,
+    6
+   ],
+   "offset": 2.4,
+   "jitter": 0.4,
+   "moored": true,
+   "why": "Moored floating washi lanterns along both channel edges (concept 12); centre of the channel stays dark for the rings."
+  },
+  {
+   "asset": "lantern_niche",
+   "along": "spine",
+   "side": "wall",
+   "spacing": [
+    5,
+    8
+   ],
+   "snap": "wall",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Sparse warm pools on the outer wall; dark gaps let the amber cracks lead."
+  },
+  {
+   "asset": "lantern_post",
+   "at": [
+    [
+     112.3,
+     59.6,
+     -67
+    ],
+    [
+     115.7,
+     59.6,
+     -67
+    ],
+    [
+     112.3,
+     24.4,
+     -67
+    ],
+    [
+     115.7,
+     24.4,
+     -67
+    ]
+   ],
+   "why": "Mark both bridge feet on the towpath."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     139.6,
+     39.7,
+     -67
+    ],
+    [
+     139.6,
+     44.3,
+     -67
+    ]
+   ],
+   "why": "East mouth to the slide cave."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    0.6
+   ],
+   "density": 0.05,
+   "avoid": [
+    "nav",
+    "portals",
+    "water"
+   ],
+   "why": "Only at the outer wall foot; towpath is 2 m."
+  },
+  {
+   "asset": "boulder_rim",
+   "along": "water:w_lazy",
+   "side": "in",
+   "spacing": [
+    1.5,
+    3.0
+   ],
+   "offset": 3.3,
+   "embed": 0.3,
+   "scale": [
+    0.7,
+    1.4
+   ],
+   "avoid": [
+    "portals"
+   ],
+   "why": "Wet black boulders on the island side of the channel (inner bank)."
+  },
+  {
+   "asset": "railing",
+   "along": "bridge_n bridge_s",
+   "side": "both",
+   "dims": {
+    "h": 1.0
+   }
+  }
+ ],
+ "mood": {
+  "key": "amber cracks + glowworm vault over teal water",
+  "palette": "teal water, amber cracks, cold glowworm dots, washi lanterns",
+  "mist": "low warm mist over the whole channel"
+ },
+ "waivers": [
+  {
+   "check": "no_empty_areas",
+   "where": "channel centre",
+   "reason": "Water: kept dark for floaters; lanterns line both edges."
+  }
+ ],
+ "layout_issues": []
+}

@@ -1,0 +1,614 @@
+{
+ "id": "b3_falls",
+ "name": "09 Thunder Curtain Falls basin",
+ "level": "b3",
+ "purpose": "The walkers' way into the Aqua Cavern: you come down the shaft walls, cross behind a 17 m curtain of 39 °C water, then sink into a steaming teal plunge pool where focused streams pound your shoulders.",
+ "floor_z": -59.5,
+ "ceiling_z": -40.0,
+ "footprint": [
+  [
+   8,
+   40
+  ],
+  [
+   46,
+   40
+  ],
+  [
+   46,
+   74.5
+  ],
+  [
+   38,
+   74.5
+  ],
+  [
+   38,
+   76
+  ],
+  [
+   8,
+   76
+  ]
+ ],
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -50.0,
+  "max_z": -40.0,
+  "note": "A tall shaft whose north wall (y 76) is the B2 river lip; open to -40 over the curtain, rock overhang down to -50 over the south deck. The east wall (x 46) carries the portal throat and, above it, the view arch into the great vault (b3_cavern)."
+ },
+ "portals": [
+  {
+   "id": "p_b3_falls_rim",
+   "to": "b3_rimstone",
+   "at": [
+    48,
+    66
+   ],
+   "z": -59.5,
+   "width": 4.0,
+   "height": 3.0,
+   "note": "Rock-cut throat in the shaft's east wall (x 46-50) leading out under the vault: the compressed passage before the terrace reveal. rimstone_stair starts here."
+  },
+  {
+   "id": "stair:falls_stair_1",
+   "to": "b2_falls_head",
+   "at": [
+    47.5,
+    66
+   ],
+   "z": -40.0,
+   "width": 2.4,
+   "height": 2.6,
+   "note": "Top of the Falls Stair (B2). Descends the east, south and west shaft walls to the gallery."
+  },
+  {
+   "id": "p_falls_gallery_w",
+   "to": "b3_falls_gallery",
+   "at": [
+    10.5,
+    76
+   ],
+   "z": -55.0,
+   "width": 2.4,
+   "height": 2.6,
+   "note": "Implied by falls_stair_1/falls_gallery: the stair's last run (x 10.5) enters the gallery."
+  },
+  {
+   "id": "p_falls_gallery_e",
+   "to": "b3_falls_gallery",
+   "at": [
+    41.5,
+    75.25
+   ],
+   "z": -55.9,
+   "width": 2.4,
+   "height": 2.6,
+   "note": "Implied by falls_stair_2: the stair leaves the gallery through a 1.5 m rock-cut throat (y 74.5-76, solid rock between the shaft notch and the gallery)."
+  },
+  {
+   "id": "stair:falls_stair_2",
+   "to": "b3_falls",
+   "at": [
+    41.5,
+    62
+   ],
+   "z": -59.5,
+   "width": 2.4,
+   "height": 2.6,
+   "note": "Foot of the stair onto the east deck (x 42.7-46 stays clear to the portal throat)."
+  },
+  {
+   "id": "p_b3_falls_arch",
+   "to": "b3_cavern",
+   "at": [
+    46,
+    61
+   ],
+   "z": -57.0,
+   "width": 24.0,
+   "height": 7.0,
+   "depth": 3.0,
+   "walk": false,
+   "note": "High view arch (y 49-73, sill -57): the curtain's glow and spray read across the great vault."
+  }
+ ],
+ "spine": [
+  [
+   47.5,
+   66,
+   -40.0
+  ],
+  [
+   43,
+   66,
+   -40.75
+  ],
+  [
+   43,
+   43,
+   -44.56
+  ],
+  [
+   11,
+   43,
+   -49.86
+  ],
+  [
+   10.5,
+   46,
+   -50.36
+  ],
+  [
+   10.5,
+   74,
+   -55.0
+  ],
+  [
+   10.5,
+   76,
+   -55.0
+  ]
+ ],
+ "spine_branches": [
+  {
+   "id": "stair_2_to_throat",
+   "note": "Continues after the gallery (b3_falls_gallery).",
+   "path": [
+    [
+     41.5,
+     75.25,
+     -55.98
+    ],
+    [
+     41.5,
+     74.5,
+     -56.17
+    ],
+    [
+     41.5,
+     62,
+     -59.5
+    ],
+    [
+     43.8,
+     63.2,
+     -59.5
+    ],
+    [
+     45.2,
+     65.4,
+     -59.5
+    ],
+    [
+     48,
+     66,
+     -59.5
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "falls_sheet",
+  "at": [
+   29,
+   76,
+   -60.05
+  ],
+  "facing_deg": 180,
+  "dims": {
+   "w": 12,
+   "x_span": [
+    23,
+    35
+   ],
+   "lip_z": -43.0,
+   "drop": 17.0,
+   "spray_r": 6
+  },
+  "why": "A 17 m sheet of hot water lit from behind by the gallery lanterns (b3_falls_gallery): it is the loudest, whitest, brightest thing in the shaft, the reason the stair exists, and the walkway behind it is the one place in the spa where you stand inside a waterfall."
+ },
+ "anchored": [
+  {
+   "id": "massage_spouts",
+   "asset": "massage_spout",
+   "at": [
+    [
+     39.0,
+     66.5,
+     -60.05
+    ],
+    [
+     39.0,
+     69.5,
+     -60.05
+    ],
+    [
+     39.0,
+     72.5,
+     -60.05
+    ]
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "seat_h": 0.45,
+    "drop": [
+     1.8,
+     3.4
+    ]
+   },
+   "why": "Lookbook 09: stone seats set under focused streams for a shoulder massage. Spouts come out of falls_stair_2's retaining wall over the east edge of the pool, as the arched spouts under the walkway in concept 19 (right side)."
+  },
+  {
+   "id": "rest_pavilion",
+   "asset": "pavilion_engawa",
+   "at": [
+    11.6,
+    58,
+    -59.5
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 4.5,
+    "d": 4.0,
+    "h": 3.8
+   },
+   "why": "Concept 19's timber building on the left: a robing/rest pavilion on the west deck facing the curtain, tucked under falls_stair_1 (which passes 7 m above)."
+  },
+  {
+   "id": "stair_railings",
+   "asset": "railing",
+   "along": "stair:falls_stair_1 stair:falls_stair_2",
+   "side": "open",
+   "dims": {
+    "h": 1.0
+   },
+   "why": "Open (shaft) side of every flight and landing."
+  },
+  {
+   "id": "pool_steps",
+   "asset": "boulder_rim",
+   "along": [
+    [
+     14,
+     46
+    ],
+    [
+     39.5,
+     46
+    ]
+   ],
+   "embed": 0.3,
+   "dims": {
+    "step": 0.25
+   },
+   "why": "The deck is at -59.5 and the rim at -60.0: two 25 cm wet-stone seat steps along the south rim, where guests sit facing the curtain."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_falls_pool",
+   "kind": "still",
+   "z": -60.05,
+   "rim_z": -60.0,
+   "footprint": [
+    [
+     14,
+     46
+    ],
+    [
+     39.5,
+     46
+    ],
+    [
+     39.5,
+     75.8
+    ],
+    [
+     14,
+     75.8
+    ]
+   ],
+   "temp": 39,
+   "note": "Matches layout. Its north edge (y 77) now runs 1 m past this footprint (y 76) under the gallery; see report."
+  },
+  {
+   "id": "w_thunder",
+   "kind": "fall",
+   "z_top": -43.0,
+   "z_bottom": -60.0,
+   "path": [
+    [
+     23,
+     76
+    ],
+    [
+     35,
+     76
+    ]
+   ],
+   "width": 0.8,
+   "temp": 39,
+   "note": "Lip = layout w_thunder (12 m, the river's width); the sheet throws 2-3 m forward and lands in w_falls_pool."
+  },
+  {
+   "id": "w_falls_out",
+   "kind": "flow",
+   "z_start": -60.1,
+   "z_end": -60.45,
+   "path": [
+    [
+     39.5,
+     67.4
+    ],
+    [
+     40.0,
+     67.4
+    ],
+    [
+     46,
+     67.4
+    ]
+   ],
+   "width": 0.6,
+   "note": "Overflow slot (culvert under falls_stair_2) along the north side of the portal throat to the top rimstone tier (-60.5): downhill."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "stair:falls_stair_1",
+   "see": "Straight down the shaft: the white curtain lit amber from behind, the teal pool 20 m below, lantern dots on every landing.",
+   "target": [
+    29,
+    76,
+    -52
+   ]
+  },
+  {
+   "from": "p_falls_gallery_w",
+   "see": "Stepping off the stair into the gallery mouth: the curtain's edge glowing amber on the right.",
+   "target": [
+    29,
+    76,
+    -54
+   ]
+  },
+  {
+   "from": "stair:falls_stair_2",
+   "see": "East through the portal throat: the first rimstone tiers glowing teal-white under the vault - the next space's light.",
+   "target": [
+    58,
+    62,
+    -61
+   ]
+  },
+  {
+   "from": "p_b3_falls_rim",
+   "see": "Looking back west (arriving from the terraces): the curtain face-on through the throat, mist rolling out at ankle height.",
+   "target": [
+    29,
+    76,
+    -55
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    45.4,
+    65.5,
+    -57.9
+   ],
+   "target": [
+    29,
+    75,
+    -53
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    41.5,
+    70.0,
+    -55.77
+   ],
+   "target": [
+    29,
+    75,
+    -53
+   ],
+   "fov_v": 64
+  },
+  "concept": {
+   "pos": [
+    27,
+    44.5,
+    -57.9
+   ],
+   "target": [
+    30,
+    76,
+    -51
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/19-thunder-curtain.jpg",
+   "match": "Low on the south deck looking north: the curtain centre frame, the gallery and its lanterns visible through/above the water, the timber pavilion on the left, arched spouts with seated bathers on the right, wet black rocks and an andon in the foreground, mist on the pool."
+  }
+ },
+ "lights": [
+  {
+   "asset": "pool_uplight",
+   "along": [
+    [
+     24,
+     74.0
+    ],
+    [
+     34,
+     74.0
+    ]
+   ],
+   "spacing": [
+    2.5,
+    3.5
+   ],
+   "z": -60.6,
+   "why": "Teal-white uplight in the plunge zone; makes the spray and the pool glow as in concept 19."
+  },
+  {
+   "asset": "lantern_post",
+   "along": "stair:falls_stair_1",
+   "spacing": [
+    7,
+    10
+   ],
+   "side": "wall",
+   "at_landings": true,
+   "why": "One lantern per landing: a dotted zigzag down the shaft walls."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     43.4,
+     61.0,
+     -59.5
+    ],
+    [
+     15.5,
+     44.2,
+     -59.5
+    ],
+    [
+     9.5,
+     44.5,
+     -59.5
+    ]
+   ],
+   "why": "Landing of falls_stair_2 and the two south deck corners."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     15,
+     44.6
+    ],
+    [
+     43,
+     44.6
+    ]
+   ],
+   "spacing": [
+    5,
+    7
+   ],
+   "offset": 0,
+   "face": "water",
+   "avoid": [
+    "portals",
+    "nav"
+   ],
+   "why": "Pools of light on the south deck with dark gaps between; points toward the curtain."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     45.3,
+     64.0,
+     -59.5
+    ],
+    [
+     45.3,
+     68.0,
+     -59.5
+    ]
+   ],
+   "why": "Flank the portal throat so the exit reads from across the pool."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "along": "water:w_falls_pool",
+   "side": "out",
+   "spacing": [
+    1.2,
+    2.4
+   ],
+   "offset": 0.4,
+   "embed": 0.25,
+   "scale": [
+    0.6,
+    1.4
+   ],
+   "avoid": [
+    "portals",
+    "nav",
+    "stair"
+   ]
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    29,
+    75.5
+   ],
+   "radius": [
+    7,
+    10
+   ],
+   "count": 9,
+   "embed": 0.6,
+   "scale": [
+    1.2,
+    2.2
+   ],
+   "snap": "water",
+   "why": "Big wet boulders breaking the plunge, as in 19."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    2.0
+   ],
+   "density": 0.06,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero",
+    "water"
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     9.6,
+     52,
+     -59.5
+    ],
+    [
+     9.6,
+     64,
+     -59.5
+    ]
+   ],
+   "why": "Dark silhouettes either side of the pavilion against the spray (19, left)."
+  },
+  {
+   "asset": "railing",
+   "along": "stair:falls_stair_2",
+   "side": "water"
+  }
+ ],
+ "mood": {
+  "key": "backlit white curtain",
+  "palette": "amber gallery band behind white water, teal pool, black wet basalt",
+  "mist": "thick spray column at the plunge, knee-high mist over the whole pool"
+ },
+ "waivers": []
+}

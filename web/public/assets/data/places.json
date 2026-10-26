@@ -1,0 +1,1264 @@
+{
+ "contract": 1,
+ "coords": "layout",
+ "places": [
+  {
+   "id": "g_road",
+   "name": "Approach road",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    7,
+    56,
+    1.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Approach road",
+    "pos": [
+     7,
+     56,
+     2.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "g_gate",
+   "name": "Basalt Gate forecourt",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    26.032,
+    53.678,
+    1.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Basalt Gate forecourt",
+    "pos": [
+     26.032,
+     53.678,
+     2.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "g_arrival",
+   "name": "Arrival hall (lava window)",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    70,
+    61,
+    1.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Arrival hall (lava window)",
+    "pos": [
+     70,
+     61,
+     2.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "g_changing",
+   "name": "Changing halls",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    120,
+    61,
+    1.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Changing halls",
+    "pos": [
+     120,
+     61,
+     2.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "g_terrace",
+   "name": "South terrace",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    90.264,
+    32.961,
+    1.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "South terrace",
+    "pos": [
+     90.264,
+     32.961,
+     2.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "g_cascade",
+   "name": "Cascade Terrace pools (lower)",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    34.874,
+    15.641,
+    0.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Cascade Terrace pools (lower)",
+    "pos": [
+     34.874,
+     15.641,
+     1.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "g_east",
+   "name": "East cliff terrace",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    151,
+    60,
+    1.6
+   ],
+   "yaw_deg": 0,
+   "pitch_deg": 0,
+   "label": {
+    "text": "East cliff terrace",
+    "pos": [
+     151,
+     60,
+     2.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "g_east_path",
+   "name": "Sea-cliff path round the NE shoulder",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    184.765,
+    80.041,
+    1.6
+   ],
+   "yaw_deg": 0,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Sea-cliff path round the NE shoulder",
+    "pos": [
+     184.765,
+     80.041,
+     2.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "g_north_ledge",
+   "name": "North cliff foot ledge",
+   "level": "ground",
+   "zone": "ground",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    161,
+    113.5,
+    1.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "North cliff foot ledge",
+    "pos": [
+     161,
+     113.5,
+     2.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_lobby",
+   "name": "B1 lift lobby",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    89.777,
+    69.777,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "B1 lift lobby",
+    "pos": [
+     89.777,
+     69.777,
+     -17.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_cor_mirror",
+   "name": "Mist corridor to the Mirror",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    74.851,
+    90.007,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_junction_w",
+   "name": "Koi junction",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    66,
+    74,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_cor_west",
+   "name": "Mist corridor west",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    54.847,
+    79.293,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_mirror",
+   "name": "05 Obsidian Mirror Float Pool",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "attraction",
+   "number": 5,
+   "pos": [
+    112,
+    92,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Obsidian Mirror Float Pool",
+    "pos": [
+     112,
+     92,
+     -17.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_grotto",
+   "name": "06 Fumarole Steam Grotto",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "attraction",
+   "number": 6,
+   "pos": [
+    56.868,
+    98.063,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Fumarole Steam Grotto",
+    "pos": [
+     56.868,
+     98.063,
+     -17.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_cor_north",
+   "name": "Return corridor (glacier to steam)",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    121.76,
+    113.254,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_cor_east",
+   "name": "Mist corridor east",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    147.8,
+    86.024,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_treatment",
+   "name": "Treatment rooms",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    140.528,
+    69.942,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Treatment rooms",
+    "pos": [
+     140.528,
+     69.942,
+     -17.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_glacier",
+   "name": "07 Glacier Plunge Ice Cave",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "attraction",
+   "number": 7,
+   "pos": [
+    180.473,
+    81.142,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Glacier Plunge Ice Cave",
+    "pos": [
+     180.473,
+     81.142,
+     -17.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_cor_south",
+   "name": "Mist corridor south",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    118.818,
+    56.924,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_slide_top",
+   "name": "Magma Glass Slide launch / Lava Stair head",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    150,
+    50,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Magma Glass Slide launch / Lava Stair head",
+    "pos": [
+     150,
+     50,
+     -17.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b1_outfall",
+   "name": "Outfall to the river (J2)",
+   "level": "b1",
+   "zone": "b1",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    180,
+    100,
+    -18.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b2_kawagiri",
+   "name": "Kawagiri restaurant",
+   "level": "b2",
+   "zone": "b2",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    83.856,
+    87.268,
+    -38.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Kawagiri restaurant",
+    "pos": [
+     83.856,
+     87.268,
+     -37.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b2_core",
+   "name": "Kawagiri core (lift, kitchen, ramen)",
+   "level": "b2",
+   "zone": "b2",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    84,
+    65,
+    -38.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Kawagiri core (lift, kitchen, ramen)",
+    "pos": [
+     84,
+     65,
+     -37.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b2_boat",
+   "name": "Boat landing",
+   "level": "b2",
+   "zone": "b2",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    132,
+    72,
+    -38.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Boat landing",
+    "pos": [
+     132,
+     72,
+     -37.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b2_boardwalk",
+   "name": "Riverside boardwalk",
+   "level": "b2",
+   "zone": "b2",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    167.863,
+    82.225,
+    -38.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Riverside boardwalk",
+    "pos": [
+     167.863,
+     82.225,
+     -37.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b2_lava_link",
+   "name": "Passage to the Lava Stair",
+   "level": "b2",
+   "zone": "b2",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    141.297,
+    62.335,
+    -38.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b2_falls_head",
+   "name": "Falls Stair head",
+   "level": "b2",
+   "zone": "b2",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    43.5,
+    64,
+    -38.4
+   ],
+   "yaw_deg": 0,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Falls Stair head",
+    "pos": [
+     43.5,
+     64,
+     -37.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b2_river",
+   "name": "Underground river channel",
+   "level": "b2",
+   "zone": "b2",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    105.301,
+    85.802,
+    -43
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_cavern",
+   "name": "Aqua Cavern vault (envelope)",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    102.144,
+    46.478,
+    -65.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_falls",
+   "name": "09 Thunder Curtain Falls basin",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "attraction",
+   "number": 9,
+   "pos": [
+    26.867,
+    57.847,
+    -57.9
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Thunder Curtain Falls basin",
+    "pos": [
+     26.867,
+     57.847,
+     -56.9
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_rimstone",
+   "name": "08 Rimstone Cascade Terraces",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "attraction",
+   "number": 8,
+   "pos": [
+    66.801,
+    48.003,
+    -58.4
+   ],
+   "yaw_deg": 0,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Rimstone Cascade Terraces",
+    "pos": [
+     66.801,
+     48.003,
+     -57.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_lobby",
+   "name": "B3 lift lobby",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    90,
+    70,
+    -65.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "B3 lift lobby",
+    "pos": [
+     90,
+     70,
+     -64.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_lazy",
+   "name": "02 Lava Tube Lazy River",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "attraction",
+   "number": 2,
+   "pos": [
+    114,
+    42,
+    -65.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Lava Tube Lazy River",
+    "pos": [
+     114,
+     42,
+     -64.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_geyser",
+   "name": "04 Geyser Plaza",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "attraction",
+   "number": 4,
+   "pos": [
+    114,
+    42,
+    -65.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Geyser Plaza",
+    "pos": [
+     114,
+     42,
+     -64.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_slide_foot",
+   "name": "Slide splashdown / Lava Stair foot",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    151,
+    49,
+    -65.4
+   ],
+   "yaw_deg": 0,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Slide splashdown / Lava Stair foot",
+    "pos": [
+     151,
+     49,
+     -64.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_shore",
+   "name": "Shore path",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    156.798,
+    34.642,
+    -65.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_wave",
+   "name": "10 Wave Grotto beach",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "attraction",
+   "number": 10,
+   "pos": [
+    180.969,
+    38.581,
+    -66.4
+   ],
+   "yaw_deg": 0,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Wave Grotto beach",
+    "pos": [
+     180.969,
+     38.581,
+     -65.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_walk_north",
+   "name": "North walk (lobby to rimstone)",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    71.484,
+    69.247,
+    -65.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_falls_gallery",
+   "name": "Gallery behind the curtain",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    27,
+    78.25,
+    -53.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b4_lobby",
+   "name": "B4 lift lobby",
+   "level": "b4",
+   "zone": "b4",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    90,
+    70,
+    -98.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "B4 lift lobby",
+    "pos": [
+     90,
+     70,
+     -97.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b4_tunnel",
+   "name": "Tunnel gallery",
+   "level": "b4",
+   "zone": "b4",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    59.725,
+    53.098,
+    -98.4
+   ],
+   "yaw_deg": 0,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b4_chamber",
+   "name": "Magma viewing chamber",
+   "level": "b4",
+   "zone": "b4",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    79.778,
+    19.556,
+    -98.4
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Magma viewing chamber",
+    "pos": [
+     79.778,
+     19.556,
+     -97.4
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "s_pool",
+   "name": "01 Caldera Crown Infinity Pool",
+   "level": "summit",
+   "zone": "summit",
+   "kind": "attraction",
+   "number": 1,
+   "pos": [
+    111.248,
+    82.558,
+    121.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Caldera Crown Infinity Pool",
+    "pos": [
+     111.248,
+     82.558,
+     122.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "s_spring",
+   "name": "Spring source and egg baskets",
+   "level": "summit",
+   "zone": "summit",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    68,
+    96,
+    123.1
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Spring source and egg baskets",
+    "pos": [
+     68,
+     96,
+     124.1
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "s_moon",
+   "name": "Tsukimi moon deck",
+   "level": "summit",
+   "zone": "summit",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    153,
+    91,
+    122.1
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Tsukimi moon deck",
+    "pos": [
+     153,
+     91,
+     123.1
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "s_rim",
+   "name": "Rim walk",
+   "level": "summit",
+   "zone": "summit",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    97.858,
+    105.713,
+    121.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Rim walk",
+    "pos": [
+     97.858,
+     105.713,
+     122.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "s_rim_west",
+   "name": "Terrace Path head",
+   "level": "summit",
+   "zone": "summit",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    60.384,
+    70.196,
+    121.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Terrace Path head",
+    "pos": [
+     60.384,
+     70.196,
+     122.6
+    ]
+   },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_1a",
+   "name": "Suite tier 1a",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    146,
+    100,
+    11.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_1b",
+   "name": "Suite tier 1b",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    164,
+    100,
+    11.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_1c",
+   "name": "Suite tier 1c",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    182,
+    100,
+    11.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_2a",
+   "name": "Suite tier 2a",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    146,
+    100,
+    27.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_2b",
+   "name": "Suite tier 2b",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    164,
+    100,
+    27.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_2c",
+   "name": "Suite tier 2c",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    182,
+    100,
+    27.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_3a",
+   "name": "Suite tier 3a",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    146,
+    100,
+    44.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_3b",
+   "name": "Suite tier 3b",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    164,
+    100,
+    44.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_3c",
+   "name": "Suite tier 3c",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    182,
+    100,
+    44.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_4a",
+   "name": "Suite tier 4a",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    146,
+    100,
+    61.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_4b",
+   "name": "Suite tier 4b",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    164,
+    100,
+    61.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "suite_4c",
+   "name": "Suite tier 4c",
+   "level": "cliff",
+   "zone": "cliff",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    182,
+    100,
+    61.6
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
+   "source": "layout-centroid"
+  }
+ ]
+}

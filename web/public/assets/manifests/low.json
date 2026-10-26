@@ -1,0 +1,2242 @@
+{
+ "contract": 1,
+ "tier": "low",
+ "source": "standin",
+ "generated": "2026-10-26T22:46:51.349Z",
+ "layout_sha": null,
+ "coords": {
+  "gltf": "three Y-up (X=x, Y=z, Z=-y)",
+  "json": "layout z-up (x east, y north, z up, metres)"
+ },
+ "color": {
+  "toneMapping": "AgX",
+  "exposureStops": 0,
+  "lightMapIntensity": 3.141592653589793
+ },
+ "start": {
+  "place": "g_gate"
+ },
+ "textures": {
+  "stone_floor": {
+   "uri": "tex/192705f106e0d6b2.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512
+  },
+  "basalt": {
+   "uri": "tex/2ea5c0b61eddf3f8.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512
+  },
+  "rock_ceiling": {
+   "uri": "tex/07a800d94b3e739a.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512
+  },
+  "wood": {
+   "uri": "tex/78a55f201bd5ab6e.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512
+  },
+  "pool_tile": {
+   "uri": "tex/4e027c2a3217647d.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512
+  },
+  "plaster": {
+   "uri": "tex/430612da0ea76847.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512
+  },
+  "water_normal": {
+   "uri": "tex/5f0ce0dcfc2c9205.ktx2",
+   "colorSpace": "linear",
+   "width": 256,
+   "height": 256
+  }
+ },
+ "materials": {
+  "stone_floor": {
+   "type": "standard",
+   "baseColorTexture": "stone_floor",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.72,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "basalt": {
+   "type": "standard",
+   "baseColorTexture": "basalt",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.82,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "rock_ceiling": {
+   "type": "standard",
+   "baseColorTexture": "rock_ceiling",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "plaster": {
+   "type": "standard",
+   "baseColorTexture": "plaster",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.85,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "wood": {
+   "type": "standard",
+   "baseColorTexture": "wood",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "pool_tile": {
+   "type": "standard",
+   "baseColorTexture": "pool_tile",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.3,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "rail": {
+   "type": "standard",
+   "baseColorTexture": null,
+   "color": [
+    0.32,
+    0.22,
+    0.14
+   ],
+   "roughness": 0.45,
+   "metalness": 0.7,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "lantern": {
+   "type": "standard",
+   "baseColorTexture": null,
+   "color": [
+    1,
+    0.85,
+    0.6
+   ],
+   "roughness": 0.6,
+   "metalness": 0,
+   "emissive": [
+    1,
+    0.62,
+    0.3
+   ],
+   "emissiveIntensity": 6,
+   "lightmap": false
+  },
+  "water": {
+   "type": "water",
+   "normalTexture": "water_normal"
+  }
+ },
+ "zones": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "neighbors": [
+    "c_spiral_stair",
+    "c_terrace_path",
+    "cliff"
+   ],
+   "preload": [
+    "b1",
+    "b2",
+    "b3",
+    "b4"
+   ],
+   "spaces": [
+    "g_road",
+    "g_gate",
+    "g_arrival",
+    "g_changing",
+    "g_terrace",
+    "g_cascade",
+    "g_east",
+    "g_east_path",
+    "g_north_ledge"
+   ],
+   "bounds": [
+    -2,
+    3,
+    201,
+    120
+   ],
+   "parts": [
+    {
+     "uri": "parts/8337395d1c6c5a41.glb",
+     "bytes": 137072,
+     "tris": 4308
+    }
+   ],
+   "walk": {
+    "uri": "parts/a63dc8b5f70ec1ab.glb",
+    "bytes": 14412,
+    "tris": 4140
+   },
+   "lightmaps": [
+    {
+     "id": "lm_ground",
+     "uri": "tex/f9987738bbcf382e.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 512,
+     "height": 256,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_g_road",
+     "space": "g_road",
+     "center": [
+      7,
+      56,
+      1.6
+     ],
+     "box_min": [
+      -0.495,
+      51.535,
+      -0.3
+     ],
+     "box_max": [
+      14.495,
+      60.465,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_gate",
+     "space": "g_gate",
+     "center": [
+      26.03,
+      53.68,
+      1.6
+     ],
+     "box_min": [
+      12,
+      40,
+      -0.3
+     ],
+     "box_max": [
+      40,
+      68,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_arrival",
+     "space": "g_arrival",
+     "center": [
+      70,
+      61,
+      1.6
+     ],
+     "box_min": [
+      40,
+      42,
+      -0.3
+     ],
+     "box_max": [
+      100,
+      80,
+      16
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_g_changing",
+     "space": "g_changing",
+     "center": [
+      120,
+      61,
+      1.6
+     ],
+     "box_min": [
+      100,
+      42,
+      -0.3
+     ],
+     "box_max": [
+      140,
+      80,
+      6
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_g_terrace",
+     "space": "g_terrace",
+     "center": [
+      90.26,
+      32.96,
+      1.6
+     ],
+     "box_min": [
+      30,
+      24,
+      -0.3
+     ],
+     "box_max": [
+      150,
+      42,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_cascade",
+     "space": "g_cascade",
+     "center": [
+      34.87,
+      15.64,
+      0.6
+     ],
+     "box_min": [
+      12,
+      4,
+      -1.3
+     ],
+     "box_max": [
+      62,
+      38,
+      7
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_east",
+     "space": "g_east",
+     "center": [
+      151,
+      60,
+      1.6
+     ],
+     "box_min": [
+      140,
+      42,
+      -0.3
+     ],
+     "box_max": [
+      162,
+      78,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_east_path",
+     "space": "g_east_path",
+     "center": [
+      184.77,
+      80.04,
+      1.6
+     ],
+     "box_min": [
+      159.724,
+      72.526,
+      -0.3
+     ],
+     "box_max": [
+      195.497,
+      110.1,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_north_ledge",
+     "space": "g_north_ledge",
+     "center": [
+      161,
+      113.5,
+      1.6
+     ],
+     "box_min": [
+      122,
+      108,
+      -0.3
+     ],
+     "box_max": [
+      200,
+      119,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "b1",
+   "name": "B1 Thermal",
+   "neighbors": [
+    "b2",
+    "c_lava_stair",
+    "c_spiral_stair"
+   ],
+   "preload": [
+    "b3",
+    "b4",
+    "ground"
+   ],
+   "spaces": [
+    "b1_lobby",
+    "b1_cor_mirror",
+    "b1_junction_w",
+    "b1_cor_west",
+    "b1_mirror",
+    "b1_grotto",
+    "b1_cor_north",
+    "b1_cor_east",
+    "b1_treatment",
+    "b1_glacier",
+    "b1_cor_south",
+    "b1_slide_top",
+    "b1_outfall"
+   ],
+   "bounds": [
+    39,
+    39,
+    199,
+    118
+   ],
+   "parts": [
+    {
+     "uri": "parts/ff80e021deb11f44.glb",
+     "bytes": 170296,
+     "tris": 5872
+    }
+   ],
+   "walk": {
+    "uri": "parts/5718f92ae9342e17.glb",
+    "bytes": 15372,
+    "tris": 4172
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b1",
+     "uri": "tex/800e12d510376b84.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 512,
+     "height": 256,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b1_lobby",
+     "space": "b1_lobby",
+     "center": [
+      89.78,
+      69.78,
+      -18.4
+     ],
+     "box_min": [
+      77.5,
+      57.5,
+      -20.3
+     ],
+     "box_max": [
+      102.5,
+      82.5,
+      -15.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_mirror",
+     "space": "b1_cor_mirror",
+     "center": [
+      74.85,
+      90.01,
+      -18.4
+     ],
+     "box_min": [
+      63.765,
+      70.039,
+      -20.3
+     ],
+     "box_max": [
+      94,
+      94,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_junction_w",
+     "space": "b1_junction_w",
+     "center": [
+      66,
+      74,
+      -18.4
+     ],
+     "box_min": [
+      60.5,
+      68.5,
+      -20.3
+     ],
+     "box_max": [
+      71.5,
+      79.5,
+      -16.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_west",
+     "space": "b1_cor_west",
+     "center": [
+      54.85,
+      79.29,
+      -18.4
+     ],
+     "box_min": [
+      46.889,
+      74.336,
+      -20.3
+     ],
+     "box_max": [
+      63.109,
+      82.497,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_mirror",
+     "space": "b1_mirror",
+     "center": [
+      112,
+      92,
+      -18.4
+     ],
+     "box_min": [
+      93,
+      73,
+      -20.3
+     ],
+     "box_max": [
+      131,
+      111,
+      -6.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_grotto",
+     "space": "b1_grotto",
+     "center": [
+      56.87,
+      98.06,
+      -18.4
+     ],
+     "box_min": [
+      40,
+      82,
+      -20.3
+     ],
+     "box_max": [
+      80,
+      112,
+      -9
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_north",
+     "space": "b1_cor_north",
+     "center": [
+      121.76,
+      113.25,
+      -18.4
+     ],
+     "box_min": [
+      76.52,
+      98.268,
+      -20.3
+     ],
+     "box_max": [
+      166.999,
+      117,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_east",
+     "space": "b1_cor_east",
+     "center": [
+      147.8,
+      86.02,
+      -18.4
+     ],
+     "box_min": [
+      129.368,
+      82.007,
+      -20.3
+     ],
+     "box_max": [
+      166.166,
+      91.897,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_treatment",
+     "space": "b1_treatment",
+     "center": [
+      140.53,
+      69.94,
+      -18.4
+     ],
+     "box_min": [
+      120,
+      60,
+      -20.3
+     ],
+     "box_max": [
+      160,
+      80,
+      -16
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_glacier",
+     "space": "b1_glacier",
+     "center": [
+      180.47,
+      81.14,
+      -18.4
+     ],
+     "box_min": [
+      164,
+      66,
+      -20.3
+     ],
+     "box_max": [
+      197.875,
+      96,
+      -8
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_south",
+     "space": "b1_cor_south",
+     "center": [
+      118.82,
+      56.92,
+      -18.4
+     ],
+     "box_min": [
+      99.952,
+      52.007,
+      -20.3
+     ],
+     "box_max": [
+      138.166,
+      65.703,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_slide_top",
+     "space": "b1_slide_top",
+     "center": [
+      150,
+      50,
+      -18.4
+     ],
+     "box_min": [
+      138,
+      40,
+      -20.3
+     ],
+     "box_max": [
+      162,
+      60,
+      -12
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_outfall",
+     "space": "b1_outfall",
+     "center": [
+      180,
+      100,
+      -18.4
+     ],
+     "box_min": [
+      166,
+      98,
+      -20.3
+     ],
+     "box_max": [
+      194,
+      102,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "b2",
+   "name": "B2 River",
+   "neighbors": [
+    "b1",
+    "b3",
+    "c_lava_stair",
+    "c_spiral_stair"
+   ],
+   "preload": [
+    "b4",
+    "ground"
+   ],
+   "spaces": [
+    "b2_kawagiri",
+    "b2_core",
+    "b2_boat",
+    "b2_boardwalk",
+    "b2_lava_link",
+    "b2_falls_head",
+    "b2_river"
+   ],
+   "bounds": [
+    23,
+    55,
+    206,
+    101
+   ],
+   "parts": [
+    {
+     "uri": "parts/1b58a9d2b2d04497.glb",
+     "bytes": 350560,
+     "tris": 12182
+    }
+   ],
+   "walk": {
+    "uri": "parts/27e86ad3b5169ab6.glb",
+    "bytes": 35388,
+    "tris": 10284
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b2",
+     "uri": "tex/8038e7e5ca674588.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 512,
+     "height": 128,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b2_kawagiri",
+     "space": "b2_kawagiri",
+     "center": [
+      83.86,
+      87.27,
+      -38.4
+     ],
+     "box_min": [
+      46,
+      74,
+      -40.3
+     ],
+     "box_max": [
+      122,
+      100,
+      -28
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_core",
+     "space": "b2_core",
+     "center": [
+      84,
+      65,
+      -38.4
+     ],
+     "box_min": [
+      46,
+      56,
+      -40.3
+     ],
+     "box_max": [
+      122,
+      74,
+      -28
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_boat",
+     "space": "b2_boat",
+     "center": [
+      132,
+      72,
+      -38.4
+     ],
+     "box_min": [
+      122,
+      64,
+      -40.3
+     ],
+     "box_max": [
+      142,
+      80,
+      -30
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_boardwalk",
+     "space": "b2_boardwalk",
+     "center": [
+      167.86,
+      82.23,
+      -38.4
+     ],
+     "box_min": [
+      139.576,
+      74.302,
+      -40.3
+     ],
+     "box_max": [
+      196.217,
+      88.736,
+      -32
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_lava_link",
+     "space": "b2_lava_link",
+     "center": [
+      141.3,
+      62.33,
+      -38.4
+     ],
+     "box_min": [
+      133.217,
+      56.999,
+      -40.3
+     ],
+     "box_max": [
+      149.4,
+      67.565,
+      -37
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_falls_head",
+     "space": "b2_falls_head",
+     "center": [
+      43.5,
+      64,
+      -38.4
+     ],
+     "box_min": [
+      40,
+      58,
+      -40.3
+     ],
+     "box_max": [
+      47,
+      70,
+      -32
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_river",
+     "space": "b2_river",
+     "center": [
+      105.3,
+      85.8,
+      -43
+     ],
+     "box_min": [
+      24.006,
+      71.006,
+      -44.9
+     ],
+     "box_max": [
+      204.999,
+      98.999,
+      -32
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "b3",
+   "name": "B3 Aqua Cavern",
+   "neighbors": [
+    "b2",
+    "c_lava_stair",
+    "c_spiral_stair"
+   ],
+   "preload": [
+    "b1",
+    "b4",
+    "ground"
+   ],
+   "spaces": [
+    "b3_cavern",
+    "b3_falls",
+    "b3_rimstone",
+    "b3_lobby",
+    "b3_lazy",
+    "b3_geyser",
+    "b3_slide_foot",
+    "b3_shore",
+    "b3_wave",
+    "b3_walk_north",
+    "b3_falls_gallery"
+   ],
+   "bounds": [
+    7,
+    11,
+    201,
+    85
+   ],
+   "parts": [
+    {
+     "uri": "parts/b23c0699daad8bb5.glb",
+     "bytes": 547016,
+     "tris": 18969
+    }
+   ],
+   "walk": {
+    "uri": "parts/e014cec37bbb1e1d.glb",
+    "bytes": 55628,
+    "tris": 16206
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b3",
+     "uri": "tex/7a419e633abc2369.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 512,
+     "height": 256,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b3_cavern",
+     "space": "b3_cavern",
+     "center": [
+      102.14,
+      46.48,
+      -65.4
+     ],
+     "box_min": [
+      46,
+      12,
+      -67.3
+     ],
+     "box_max": [
+      164,
+      84,
+      -50
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_falls",
+     "space": "b3_falls",
+     "center": [
+      26.87,
+      57.85,
+      -57.9
+     ],
+     "box_min": [
+      8,
+      40,
+      -59.8
+     ],
+     "box_max": [
+      46,
+      76,
+      -40
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_rimstone",
+     "space": "b3_rimstone",
+     "center": [
+      66.8,
+      48,
+      -58.4
+     ],
+     "box_min": [
+      50,
+      26,
+      -60.3
+     ],
+     "box_max": [
+      86,
+      74,
+      -50
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_lobby",
+     "space": "b3_lobby",
+     "center": [
+      90,
+      70,
+      -65.4
+     ],
+     "box_min": [
+      77.5,
+      57.5,
+      -67.3
+     ],
+     "box_max": [
+      102.5,
+      82.5,
+      -58
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_lazy",
+     "space": "b3_lazy",
+     "center": [
+      114,
+      42,
+      -65.4
+     ],
+     "box_min": [
+      85.5,
+      23.5,
+      -67.3
+     ],
+     "box_max": [
+      142.5,
+      60.5,
+      -63
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_geyser",
+     "space": "b3_geyser",
+     "center": [
+      114,
+      42,
+      -65.4
+     ],
+     "box_min": [
+      96,
+      33.5,
+      -67.3
+     ],
+     "box_max": [
+      132,
+      50.5,
+      -50
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_slide_foot",
+     "space": "b3_slide_foot",
+     "center": [
+      151,
+      49,
+      -65.4
+     ],
+     "box_min": [
+      140,
+      34,
+      -67.3
+     ],
+     "box_max": [
+      162,
+      64,
+      -50
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_shore",
+     "space": "b3_shore",
+     "center": [
+      156.8,
+      34.64,
+      -65.4
+     ],
+     "box_min": [
+      149.106,
+      32,
+      -67.3
+     ],
+     "box_max": [
+      164,
+      38.789,
+      -62.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_wave",
+     "space": "b3_wave",
+     "center": [
+      180.97,
+      38.58,
+      -66.4
+     ],
+     "box_min": [
+      160,
+      14,
+      -68.3
+     ],
+     "box_max": [
+      200,
+      64,
+      -52
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_walk_north",
+     "space": "b3_walk_north",
+     "center": [
+      71.48,
+      69.25,
+      -65.4
+     ],
+     "box_min": [
+      64.586,
+      64.586,
+      -67.3
+     ],
+     "box_max": [
+      78,
+      72,
+      -58
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_falls_gallery",
+     "space": "b3_falls_gallery",
+     "center": [
+      27,
+      78.25,
+      -53.4
+     ],
+     "box_min": [
+      8,
+      76,
+      -55.3
+     ],
+     "box_max": [
+      46,
+      80.5,
+      -52
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "b4",
+   "name": "B4 Magma",
+   "neighbors": [
+    "c_spiral_stair"
+   ],
+   "preload": [
+    "b1",
+    "b2",
+    "b3",
+    "ground"
+   ],
+   "spaces": [
+    "b4_lobby",
+    "b4_tunnel",
+    "b4_chamber"
+   ],
+   "bounds": [
+    39,
+    5,
+    123,
+    90
+   ],
+   "parts": [
+    {
+     "uri": "parts/21e63851a487ce3f.glb",
+     "bytes": 52512,
+     "tris": 1472
+    }
+   ],
+   "walk": {
+    "uri": "parts/012cd11863a3087b.glb",
+    "bytes": 4200,
+    "tris": 800
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b4",
+     "uri": "tex/2568746b2c75d246.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 256,
+     "height": 256,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b4_lobby",
+     "space": "b4_lobby",
+     "center": [
+      90,
+      70,
+      -98.4
+     ],
+     "box_min": [
+      76,
+      56,
+      -100.3
+     ],
+     "box_max": [
+      104,
+      84,
+      -90
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b4_tunnel",
+     "space": "b4_tunnel",
+     "center": [
+      59.72,
+      53.1,
+      -98.4
+     ],
+     "box_min": [
+      49.242,
+      33.209,
+      -100.3
+     ],
+     "box_max": [
+      77.832,
+      66.357,
+      -96.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b4_chamber",
+     "space": "b4_chamber",
+     "center": [
+      79.78,
+      19.56,
+      -98.4
+     ],
+     "box_min": [
+      40,
+      6,
+      -100.3
+     ],
+     "box_max": [
+      122,
+      36,
+      -92
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "summit",
+   "name": "Summit",
+   "neighbors": [
+    "c_cliff_stair_4",
+    "c_terrace_path"
+   ],
+   "preload": [],
+   "spaces": [
+    "s_pool",
+    "s_spring",
+    "s_moon",
+    "s_rim",
+    "s_rim_west"
+   ],
+   "bounds": [
+    44,
+    59,
+    165,
+    112
+   ],
+   "parts": [
+    {
+     "uri": "parts/18a29348c17075e6.glb",
+     "bytes": 54904,
+     "tris": 1454
+    }
+   ],
+   "walk": {
+    "uri": "parts/87da3474c2437149.glb",
+    "bytes": 6472,
+    "tris": 1378
+   },
+   "lightmaps": [
+    {
+     "id": "lm_summit",
+     "uri": "tex/f40382371349da89.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 256,
+     "height": 128,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_s_pool",
+     "space": "s_pool",
+     "center": [
+      111.25,
+      82.56,
+      121.6
+     ],
+     "box_min": [
+      80,
+      64,
+      119.7
+     ],
+     "box_max": [
+      142,
+      104,
+      128
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_s_spring",
+     "space": "s_spring",
+     "center": [
+      68,
+      96,
+      123.1
+     ],
+     "box_min": [
+      56,
+      86,
+      121.2
+     ],
+     "box_max": [
+      80,
+      106,
+      129.5
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_s_moon",
+     "space": "s_moon",
+     "center": [
+      153,
+      91,
+      122.1
+     ],
+     "box_min": [
+      142,
+      80,
+      120.2
+     ],
+     "box_max": [
+      164,
+      102,
+      128.5
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_s_rim",
+     "space": "s_rim",
+     "center": [
+      97.86,
+      105.71,
+      121.6
+     ],
+     "box_min": [
+      72.112,
+      60.25,
+      119.7
+     ],
+     "box_max": [
+      149.35,
+      110.764,
+      128
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_s_rim_west",
+     "space": "s_rim_west",
+     "center": [
+      60.38,
+      70.2,
+      121.6
+     ],
+     "box_min": [
+      45.311,
+      63.34,
+      119.7
+     ],
+     "box_max": [
+      75.553,
+      77.609,
+      128
+     ],
+     "cubemap": null,
+     "intensity": 1
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "cliff",
+   "name": "Cliff suites",
+   "neighbors": [
+    "c_cliff_stair_4",
+    "ground"
+   ],
+   "preload": [],
+   "spaces": [
+    "suite_1a",
+    "suite_1b",
+    "suite_1c",
+    "suite_2a",
+    "suite_2b",
+    "suite_2c",
+    "suite_3a",
+    "suite_3b",
+    "suite_3c",
+    "suite_4a",
+    "suite_4b",
+    "suite_4c"
+   ],
+   "bounds": [
+    121,
+    93,
+    191,
+    114
+   ],
+   "parts": [
+    {
+     "uri": "parts/1eadccd5a07a834b.glb",
+     "bytes": 492268,
+     "tris": 16404
+    }
+   ],
+   "walk": {
+    "uri": "parts/7d9faf687270578a.glb",
+    "bytes": 56468,
+    "tris": 16116
+   },
+   "lightmaps": [
+    {
+     "id": "lm_cliff",
+     "uri": "tex/6f8231d1d5c4149b.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 256,
+     "height": 64,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_suite_1a",
+     "space": "suite_1a",
+     "center": [
+      146,
+      100,
+      11.6
+     ],
+     "box_min": [
+      138,
+      94,
+      9.7
+     ],
+     "box_max": [
+      154,
+      106,
+      13.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_1b",
+     "space": "suite_1b",
+     "center": [
+      164,
+      100,
+      11.6
+     ],
+     "box_min": [
+      156,
+      94,
+      9.7
+     ],
+     "box_max": [
+      172,
+      106,
+      13.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_1c",
+     "space": "suite_1c",
+     "center": [
+      182,
+      100,
+      11.6
+     ],
+     "box_min": [
+      174,
+      94,
+      9.7
+     ],
+     "box_max": [
+      190,
+      106,
+      13.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_2a",
+     "space": "suite_2a",
+     "center": [
+      146,
+      100,
+      27.6
+     ],
+     "box_min": [
+      138,
+      94,
+      25.7
+     ],
+     "box_max": [
+      154,
+      106,
+      29.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_2b",
+     "space": "suite_2b",
+     "center": [
+      164,
+      100,
+      27.6
+     ],
+     "box_min": [
+      156,
+      94,
+      25.7
+     ],
+     "box_max": [
+      172,
+      106,
+      29.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_2c",
+     "space": "suite_2c",
+     "center": [
+      182,
+      100,
+      27.6
+     ],
+     "box_min": [
+      174,
+      94,
+      25.7
+     ],
+     "box_max": [
+      190,
+      106,
+      29.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_3a",
+     "space": "suite_3a",
+     "center": [
+      146,
+      100,
+      44.6
+     ],
+     "box_min": [
+      138,
+      94,
+      42.7
+     ],
+     "box_max": [
+      154,
+      106,
+      46.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_3b",
+     "space": "suite_3b",
+     "center": [
+      164,
+      100,
+      44.6
+     ],
+     "box_min": [
+      156,
+      94,
+      42.7
+     ],
+     "box_max": [
+      172,
+      106,
+      46.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_3c",
+     "space": "suite_3c",
+     "center": [
+      182,
+      100,
+      44.6
+     ],
+     "box_min": [
+      174,
+      94,
+      42.7
+     ],
+     "box_max": [
+      190,
+      106,
+      46.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_4a",
+     "space": "suite_4a",
+     "center": [
+      146,
+      100,
+      61.6
+     ],
+     "box_min": [
+      138,
+      94,
+      59.7
+     ],
+     "box_max": [
+      154,
+      106,
+      63.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_4b",
+     "space": "suite_4b",
+     "center": [
+      164,
+      100,
+      61.6
+     ],
+     "box_min": [
+      156,
+      94,
+      59.7
+     ],
+     "box_max": [
+      172,
+      106,
+      63.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_4c",
+     "space": "suite_4c",
+     "center": [
+      182,
+      100,
+      61.6
+     ],
+     "box_min": [
+      174,
+      94,
+      59.7
+     ],
+     "box_max": [
+      190,
+      106,
+      63.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "c_spiral_stair",
+   "name": "Carved Spiral Stair",
+   "neighbors": [
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "ground"
+   ],
+   "preload": [],
+   "spaces": [],
+   "bounds": [
+    82,
+    62,
+    98,
+    78
+   ],
+   "parts": [
+    {
+     "uri": "parts/3db068fbc6a6517c.glb",
+     "bytes": 414428,
+     "tris": 10996
+    }
+   ],
+   "walk": {
+    "uri": "parts/76319d5607e6de5e.glb",
+    "bytes": 40212,
+    "tris": 10996
+   },
+   "lightmaps": [
+    {
+     "id": "lm_c_spiral_stair",
+     "uri": "tex/1b38364c96aa3aa2.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 32,
+     "height": 32,
+     "uv": 1
+    }
+   ],
+   "probes": [],
+   "placements": []
+  },
+  {
+   "id": "c_lava_stair",
+   "name": "Lava Stair",
+   "neighbors": [
+    "b1",
+    "b2",
+    "b3"
+   ],
+   "preload": [],
+   "spaces": [],
+   "bounds": [
+    140,
+    40,
+    160,
+    60
+   ],
+   "parts": [
+    {
+     "uri": "parts/4e21d1c6748b838c.glb",
+     "bytes": 231100,
+     "tris": 5980
+    }
+   ],
+   "walk": {
+    "uri": "parts/75633913a8749e4f.glb",
+    "bytes": 23896,
+    "tris": 5980
+   },
+   "lightmaps": [
+    {
+     "id": "lm_c_lava_stair",
+     "uri": "tex/db3cb57544e2032e.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 64,
+     "height": 64,
+     "uv": 1
+    }
+   ],
+   "probes": [],
+   "placements": []
+  },
+  {
+   "id": "c_terrace_path",
+   "name": "Terrace Path",
+   "neighbors": [
+    "ground",
+    "summit"
+   ],
+   "preload": [],
+   "spaces": [],
+   "bounds": [
+    3,
+    63,
+    49,
+    119
+   ],
+   "parts": [
+    {
+     "uri": "parts/c4a474cb51acda4a.glb",
+     "bytes": 907032,
+     "tris": 29248
+    }
+   ],
+   "walk": {
+    "uri": "parts/f16e50bfdf677295.glb",
+    "bytes": 99724,
+    "tris": 29248
+   },
+   "lightmaps": [
+    {
+     "id": "lm_c_terrace_path",
+     "uri": "tex/a73477dfc470b11b.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 128,
+     "height": 128,
+     "uv": 1
+    }
+   ],
+   "probes": [],
+   "placements": []
+  },
+  {
+   "id": "c_cliff_stair_4",
+   "name": "cliff_stair_4",
+   "neighbors": [
+    "cliff",
+    "summit"
+   ],
+   "preload": [],
+   "spaces": [],
+   "bounds": [
+    121,
+    107,
+    143,
+    114
+   ],
+   "parts": [
+    {
+     "uri": "parts/b276be8689c023f3.glb",
+     "bytes": 525468,
+     "tris": 17248
+    }
+   ],
+   "walk": {
+    "uri": "parts/5721c0f833abdd29.glb",
+    "bytes": 60832,
+    "tris": 17248
+   },
+   "lightmaps": [
+    {
+     "id": "lm_c_cliff_stair_4",
+     "uri": "tex/46e508c92e5f9c5b.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 64,
+     "height": 16,
+     "uv": 1
+    }
+   ],
+   "probes": [],
+   "placements": []
+  }
+ ],
+ "water": [
+  {
+   "id": "w_spring",
+   "kind": "still",
+   "zone": "summit",
+   "z": 121.45,
+   "bed_z": 120.25,
+   "bounds": [
+    60,
+    90,
+    72,
+    102
+   ],
+   "planar": false,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_caldera",
+   "kind": "still",
+   "zone": "summit",
+   "z": 119.95,
+   "bed_z": 118.75,
+   "bounds": [
+    84,
+    68,
+    138,
+    100
+   ],
+   "planar": true,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_mirror",
+   "kind": "still",
+   "zone": "b1",
+   "z": -20.05,
+   "bed_z": -21.25,
+   "bounds": [
+    100,
+    80,
+    124,
+    104
+   ],
+   "planar": true,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_glacier",
+   "kind": "still",
+   "zone": "b1",
+   "z": -20.06,
+   "bed_z": -21.26,
+   "bounds": [
+    174,
+    76,
+    190,
+    92
+   ],
+   "planar": true,
+   "mist": 0.35,
+   "absorption": [
+    0.9,
+    0.25,
+    0.18
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_river",
+   "kind": "flow",
+   "zone": "b2",
+   "z": -42.5,
+   "bed_z": -44.6,
+   "bounds": [
+    26.39,
+    72.19,
+    200.43,
+    98.98
+   ],
+   "planar": true,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0.35
+  },
+  {
+   "id": "w_falls_pool",
+   "kind": "still",
+   "zone": "b3",
+   "z": -60.05,
+   "bed_z": -61.25,
+   "bounds": [
+    14,
+    46,
+    39.5,
+    77
+   ],
+   "planar": false,
+   "mist": 0.35,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_lazy",
+   "kind": "flow",
+   "zone": "b3",
+   "z": -67.475,
+   "bed_z": -68.4,
+   "bounds": [
+    87.5,
+    25.5,
+    140.47,
+    58.5
+   ],
+   "planar": false,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0.35
+  },
+  {
+   "id": "w_geyser",
+   "kind": "still",
+   "zone": "b3",
+   "z": -67.55,
+   "bed_z": -68.75,
+   "bounds": [
+    106,
+    38,
+    122,
+    46
+   ],
+   "planar": false,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_splash",
+   "kind": "still",
+   "zone": "b3",
+   "z": -67.6,
+   "bed_z": -68.8,
+   "bounds": [
+    149.5,
+    40.5,
+    158.5,
+    49.5
+   ],
+   "planar": false,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_sea",
+   "kind": "sea",
+   "zone": "b3",
+   "z": -70,
+   "bed_z": -74,
+   "bounds": [
+    170,
+    16,
+    200,
+    60
+   ],
+   "planar": true,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  }
+ ],
+ "places": "data/places.json",
+ "spaces": "data/aad313e7be7dd2c2.json",
+ "budget": {
+  "drawCalls": 150,
+  "triangles": 500000,
+  "textureMB": 250
+ }
+}

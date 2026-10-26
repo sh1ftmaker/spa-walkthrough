@@ -1,0 +1,326 @@
+{
+ "id": "b2_boardwalk",
+ "name": "Riverside boardwalk",
+ "level": "b2",
+ "purpose": "A narrow plank walk on the south bank following the boat route upstream to the river head, where the water arrives from B1 as a thundering white cascade.",
+ "floor_z": -40.0,
+ "ceiling_z": -32.0,
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -34.0,
+  "max_z": -32.0,
+  "note": "Overhanging bank wall on the south side; rock lowest over the walk (-34), opening up over the river."
+ },
+ "footprint": [
+  [
+   159.616,
+   82.708
+  ],
+  [
+   179.719,
+   86.729
+  ],
+  [
+   195.783,
+   88.736
+  ],
+  [
+   196.217,
+   85.264
+  ],
+  [
+   180.281,
+   83.271
+  ],
+  [
+   160.384,
+   79.292
+  ],
+  [
+   140.424,
+   74.302
+  ],
+  [
+   139.576,
+   77.698
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b2_boat_board",
+   "to": "b2_boat",
+   "at": [
+    141,
+    76
+   ],
+   "width": 3.5,
+   "height": 3.0
+  }
+ ],
+ "spine": [
+  [
+   140,
+   76,
+   -40.0
+  ],
+  [
+   160,
+   81,
+   -40.0
+  ],
+  [
+   180,
+   85,
+   -40.0
+  ],
+  [
+   196,
+   87,
+   -40.0
+  ]
+ ],
+ "hero": {
+  "asset": "falls_sheet",
+  "at": [
+   192.5,
+   97.6,
+   -42.0
+  ],
+  "facing_deg": 190,
+  "outside_ok": true,
+  "borrowed_from": "b2_river (j2_inflow)",
+  "why": "The river head: the B1 outfall drops out of a slot in the rock as a 10 m white-teal cascade. Every lantern on the walk leads to it, and its roar and spray end the walk. Placed by b2_river."
+ },
+ "anchored": [
+  {
+   "id": "boardwalk_deck",
+   "asset": "boardwalk",
+   "at": [
+    168.0,
+    82.6,
+    -40.0
+   ],
+   "path": [
+    [
+     140,
+     76
+    ],
+    [
+     160,
+     81
+    ],
+    [
+     180,
+     85
+    ],
+    [
+     196,
+     87
+    ]
+   ],
+   "z": -40.0,
+   "dims": {
+    "w": 3.5
+   },
+   "why": "Plank deck on posts along the bank (29, 34)."
+  },
+  {
+   "id": "head_bench",
+   "asset": "bench_stone",
+   "at": [
+    193.5,
+    85.9,
+    -40.0
+   ],
+   "facing_deg": 350,
+   "dims": {
+    "w": 2.0
+   },
+   "why": "One bench at the overlook facing the cascade."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_river",
+   "kind": "flow",
+   "ref": "b2_river",
+   "z": -42.14,
+   "z_at_x140": -42.352,
+   "z_at_x196": -42.023,
+   "note": "Owned by b2_river; deck -40 is 2-2.4 m above the water."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b2_boat_board",
+   "see": "Lantern posts receding east along the bank; the white cascade at the end.",
+   "target": [
+    192.5,
+    97.6,
+    -37.0
+   ]
+  },
+  {
+   "from": "head overlook (195, 87)",
+   "see": "Looking back west: the river running away to Kawagiri's neon gate and pod glow 75 m downstream.",
+   "target": [
+    121.0,
+    84.0,
+    -35.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    141.5,
+    76.4,
+    -38.4
+   ],
+   "target": [
+    180.0,
+    86.0,
+    -38.5
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    190.0,
+    86.2,
+    -38.4
+   ],
+   "target": [
+    192.5,
+    97.6,
+    -37.5
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "image": "lookbook/img/29-river-section.jpg",
+   "pos": [
+    150.0,
+    78.4,
+    -38.4
+   ],
+   "target": [
+    190.0,
+    92.0,
+    -38.0
+   ],
+   "fov_v": 55,
+   "match": "River-section mood: lantern posts along a dark plank walk, teal water rushing beside it under mist, the bank wall black and wet, white water ahead."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_post",
+   "along": "spine",
+   "side": "left",
+   "spacing": [
+    6,
+    8
+   ],
+   "offset": 1.4,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "River-side post lanterns, reflected in the water; they lead east to the cascade."
+  },
+  {
+   "asset": "lantern_niche",
+   "along": "spine",
+   "side": "right",
+   "spacing": [
+    10,
+    13
+   ],
+   "offset": 1.6,
+   "height": 0.3,
+   "snap": "wall",
+   "why": "Sparse ankle niches on the rock side, offset from the posts, so pools alternate side to side with dark gaps."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": [
+    [
+     140.3,
+     77.5
+    ],
+    [
+     160.3,
+     82.5
+    ],
+    [
+     180.2,
+     86.5
+    ],
+    [
+     195.8,
+     88.4
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": "out",
+   "why": "River-side railing (north edge)."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     195.95,
+     85.45
+    ],
+    [
+     195.8,
+     88.4
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 90,
+   "why": "East end closes as an overlook facing the cascade."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    0.4
+   ],
+   "density": 0.05,
+   "side": "south",
+   "avoid": [
+    "nav",
+    "portals"
+   ],
+   "why": "Bank wall rocks only on the wall side; the walk is 3.5 m."
+  }
+ ],
+ "mood": {
+  "key": "white inflow cascade at the end of a lantern line",
+  "palette": "amber post lanterns, teal water, white spray, black rock",
+  "mist": "River mist drifting over the rail; spray haze at the head."
+ },
+ "waivers": [
+  {
+   "check": "footprint",
+   "where": "hero",
+   "reason": "Borrowed view: the cascade stands over the river (b2_river), 11 m north of the walk."
+  },
+  {
+   "check": "no_empty_areas",
+   "where": "whole walk",
+   "reason": "3.5 m wide; posts every 6-8 m are the dressing."
+  }
+ ]
+}

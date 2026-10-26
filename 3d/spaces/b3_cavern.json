@@ -1,0 +1,625 @@
+{
+ "id": "b3_cavern",
+ "name": "Aqua Cavern vault (envelope)",
+ "level": "b3",
+ "walkable": false,
+ "purpose": "The big reveal: one black vault over the terraces, the lava tube, the geyser island and the slide foot, so that from every entry you see the whole water park at once and the geyser plume standing in the middle of it.",
+ "floor_z": -67.0,
+ "ceiling_z": -50.0,
+ "footprint": [
+  [
+   46,
+   14
+  ],
+  [
+   160,
+   12
+  ],
+  [
+   160,
+   16
+  ],
+  [
+   164,
+   64
+  ],
+  [
+   120,
+   82
+  ],
+  [
+   76,
+   84
+  ],
+  [
+   46,
+   80
+  ]
+ ],
+ "ceiling_profile": {
+  "type": "dome",
+  "min_z": -56.0,
+  "max_z": -50.0,
+  "note": "Domed: -56 where it meets the walls (6 m over the top terrace shelf, 11 m over the decks), crown -50 directly above the geyser. Two shafts pierce it: the core drum (90,70 r 8) runs up as a basalt column, and the slide shaft (150,50 r 9) opens toward B1 with orange light falling from above."
+ },
+ "portals": [
+  {
+   "id": "p_b3_falls_rim",
+   "to": "b3_falls",
+   "at": [
+    48,
+    66
+   ],
+   "z": -59.5,
+   "width": 4.0,
+   "height": 3.0,
+   "note": "Walkers' entry from the falls shaft."
+  },
+  {
+   "id": "p_b3_falls_arch",
+   "to": "b3_falls",
+   "at": [
+    46,
+    61
+   ],
+   "z": -57.0,
+   "width": 24.0,
+   "height": 7.0,
+   "depth": 3.0,
+   "walk": false,
+   "note": "High view arch (y 49-73, sill -57, top -50): the curtain's white glow and spray read across the vault."
+  },
+  {
+   "id": "p_b3_lobby_lift",
+   "to": "main_lift",
+   "at": [
+    83.41,
+    65.47
+   ],
+   "z": -67.0,
+   "width": 1.8,
+   "height": 2.4,
+   "bearing": 235.5,
+   "note": "Lift door on the SW of the drum; a bridge over the stair well joins it to the car (88.19, 68.75)."
+  },
+  {
+   "id": "p_b3_lobby_spiral_stair",
+   "to": "spiral_stair",
+   "at": [
+    96.59,
+    74.53
+   ],
+   "z": -67.0,
+   "width": 2.6,
+   "height": 2.6,
+   "bearing": 55.5,
+   "note": "Spiral Stair landing door on the NE of the drum, opposite the lift door."
+  },
+  {
+   "id": "p_b3_slide_foot_lava_stair",
+   "to": "lava_stair",
+   "at": [
+    148.07,
+    41.21
+   ],
+   "z": -67.0,
+   "width": 2.6,
+   "height": 2.6,
+   "bearing": 192.4,
+   "note": "Lava Stair landing door, facing SSW onto the deck west of the splash pool."
+  },
+  {
+   "id": "p_b3_shore_wave",
+   "to": "b3_wave",
+   "at": [
+    162,
+    34
+   ],
+   "z": -67.0,
+   "width": 4.0,
+   "height": 3.6
+  }
+ ],
+ "spine": [
+  [
+   48,
+   66,
+   -59.5
+  ],
+  [
+   58,
+   64,
+   -61.35
+  ],
+  [
+   66,
+   58,
+   -62.7
+  ],
+  [
+   74,
+   50,
+   -64.22
+  ],
+  [
+   80,
+   40,
+   -65.79
+  ],
+  [
+   84,
+   32,
+   -67.0
+  ],
+  [
+   91.4,
+   32,
+   -67
+  ],
+  [
+   98.23,
+   27.66,
+   -67
+  ],
+  [
+   114.0,
+   24.5,
+   -67
+  ],
+  [
+   114,
+   32,
+   -67
+  ],
+  [
+   114,
+   35.8,
+   -67
+  ],
+  [
+   124.6,
+   42,
+   -67
+  ],
+  [
+   130.5,
+   42,
+   -67
+  ],
+  [
+   141,
+   42,
+   -67
+  ],
+  [
+   145,
+   40.8,
+   -67
+  ],
+  [
+   148,
+   38.6,
+   -67
+  ],
+  [
+   151,
+   36.5,
+   -67
+  ],
+  [
+   156.5,
+   34.0,
+   -67
+  ],
+  [
+   162,
+   34,
+   -67
+  ]
+ ],
+ "spine_note": "The guest's water-order route through the vault: falls throat, rimstone stair, lava tube, south bridge, geyser island east tip (view only east: return over a bridge), tube east mouth, slide foot, shore. Sub-space files own the details.",
+ "hero": {
+  "asset": "geyser_vent",
+  "ref": "b3_geyser.hero",
+  "at": [
+   114,
+   42,
+   -58
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "plume_h": 14,
+   "plume_top_z": -53.5
+  },
+  "why": "The single focal point visible from all three main entries (falls throat 67 m, walk_north landing 55 m, Lava Stair foot 37 m): a 14 m teal column lit from below in the middle of the vault, rising into the densest glowworm 'starfield' at the crown. The falls are the better spectacle up close but their curtain faces south and is edge-on or hidden from the lobby side; the plume reads in the round from everywhere. Falls is the secondary beacon at the west end via p_b3_falls_arch."
+ },
+ "view_chain": [
+  {
+   "from": "b3_falls",
+   "at": [
+    45.5,
+    66,
+    -57.9
+   ],
+   "see": "b3_rimstone",
+   "target": [
+    64,
+    45,
+    -63.5
+   ],
+   "light": "teal terraces in steam"
+  },
+  {
+   "from": "b3_rimstone",
+   "at": [
+    84,
+    32,
+    -65.4
+   ],
+   "see": "b3_lazy",
+   "target": [
+    96,
+    33,
+    -64.5
+   ],
+   "light": "amber cracks at the tube mouth"
+  },
+  {
+   "from": "b3_lazy",
+   "at": [
+    114,
+    57.5,
+    -63.9
+   ],
+   "see": "b3_geyser",
+   "target": [
+    114,
+    42,
+    -58
+   ],
+   "light": "teal plume"
+  },
+  {
+   "from": "b3_geyser",
+   "at": [
+    130.5,
+    42,
+    -65.4
+   ],
+   "see": "b3_slide_foot",
+   "target": [
+    161.6,
+    51,
+    -60
+   ],
+   "light": "orange lava wall"
+  },
+  {
+   "from": "b3_slide_foot",
+   "at": [
+    150,
+    38,
+    -65.4
+   ],
+   "see": "b3_wave",
+   "target": [
+    199,
+    38,
+    -64
+   ],
+   "light": "moon-blue sea mouth"
+  }
+ ],
+ "anchored": [
+  {
+   "id": "core_column",
+   "asset": "lift_core",
+   "at": [
+    90,
+    70,
+    -67
+   ],
+   "facing_deg": 235.5,
+   "dims": {
+    "r": 8,
+    "top_z": -50
+   },
+   "why": "The lift/stair drum as a basalt column from floor to vault: the vault's fixed landmark."
+  },
+  {
+   "id": "slide_shaft_mouth",
+   "asset": "cave_shell",
+   "at": [
+    150,
+    50,
+    -50
+   ],
+   "dims": {
+    "r": 9,
+    "rule": "roof opening"
+   },
+   "why": "Orange glow falls through it from the slide above; a second beacon at the east end."
+  }
+ ],
+ "water": [],
+ "water_note": "No water of its own; all surfaces live in the sub-space files (w_rimstone, w_lazy, w_geyser, w_splash).",
+ "sightlines": [
+  {
+   "from": "p_b3_falls_rim",
+   "see": "Through the throat: terraces falling away and, 67 m off, the geyser plume over the tube roof.",
+   "target": [
+    114,
+    42,
+    -58
+   ]
+  },
+  {
+   "from": "p_b3_walk_rim",
+   "see": "Out of the roofed stair: the whole vault at once, terraces below, plume ESE, falls glow W.",
+   "target": [
+    114,
+    42,
+    -58
+   ]
+  },
+  {
+   "from": "p_b3_slide_foot_lava_stair",
+   "see": "From the stair door: the plume to the west over the tube, lava wall behind you.",
+   "target": [
+    114,
+    42,
+    -58
+   ]
+  },
+  {
+   "from": "p_b3_falls_arch",
+   "see": "From anywhere on the rimstone or the island west end: white spray glow at the west wall.",
+   "target": [
+    29,
+    76,
+    -52
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    50.5,
+    66,
+    -58.0
+   ],
+   "target": [
+    114,
+    42,
+    -58
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    66.8,
+    66.6,
+    -59.9
+   ],
+   "target": [
+    104,
+    44,
+    -58
+   ],
+   "fov_v": 72
+  },
+  "concept": {
+   "pos": [
+    114,
+    28.5,
+    -63.9
+   ],
+   "target": [
+    114,
+    62,
+    -56
+   ],
+   "fov_v": 75,
+   "image": "lookbook/img/29-river-section.jpg",
+   "match": "29's B3 band at eye level from the south bridge crown: falls white far left, rimstone steps, tube arch, geyser jets centre, orange slide glow right; a teal water band under a black vault dotted with lanterns."
+  }
+ },
+ "lights": [
+  {
+   "asset": "glowworm_ceiling",
+   "snap": "ceiling",
+   "scatter": "area",
+   "area": "roof",
+   "density_falloff": {
+    "center": [
+     114,
+     42
+    ],
+    "peak": 1.0,
+    "edge": 0.15
+   },
+   "avoid": [
+    {
+     "ring": [
+      150,
+      50
+     ],
+     "r": 12
+    },
+    {
+     "ring": [
+      90,
+      70
+     ],
+     "r": 9
+    }
+   ],
+   "why": "Teal starfield, densest above the plume (concept 14), thin over the lava end so orange and teal don't fight."
+  },
+  {
+   "asset": "lava_crack_seam",
+   "snap": "ceiling",
+   "along": [
+    [
+     [
+      62,
+      30
+     ],
+     [
+      100,
+      38
+     ]
+    ],
+    [
+     [
+      60,
+      74
+     ],
+     [
+      102,
+      50
+     ]
+    ],
+    [
+     [
+      120,
+      76
+     ],
+     [
+      118,
+      54
+     ]
+    ],
+    [
+     [
+      156,
+      20
+     ],
+     [
+      128,
+      36
+     ]
+    ]
+   ],
+   "rule": "4 seams radiating toward the crown, faint amber, stop 10 m short of it",
+   "why": "Amber cracks in the roof lead the eye inward to the plume; continuous with the tube's cracks below."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     52,
+     64
+    ],
+    [
+     60,
+     61
+    ],
+    [
+     68,
+     55
+    ],
+    [
+     76,
+     47
+    ],
+    [
+     86,
+     41
+    ],
+    [
+     96,
+     41
+    ]
+   ],
+   "spacing": [
+    3,
+    5
+   ],
+   "drop_z": [
+    -57.5,
+    -55.5
+   ],
+   "snap": "ceiling",
+   "rope": true,
+   "rule": "groups of 3-5 with 6-8 m dark gaps",
+   "why": "Long-cord lantern clusters over the rimstone stair, a dotted line from the falls throat toward the plume."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     100,
+     62
+    ],
+    [
+     124,
+     63
+    ],
+    [
+     140,
+     56
+    ]
+   ],
+   "spacing": [
+    4,
+    6
+   ],
+   "drop_z": [
+    -58,
+    -56
+   ],
+   "snap": "ceiling",
+   "rope": true,
+   "rule": "groups with dark gaps",
+   "why": "Arc over the north towpath leading from the lobby side to the slide cave."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "stalactite_cluster",
+   "snap": "ceiling",
+   "scatter": "edge_band",
+   "band": [
+    0,
+    12
+   ],
+   "density": 0.012,
+   "avoid": [
+    {
+     "ring": [
+      114,
+      42
+     ],
+     "r": 14
+    },
+    {
+     "ring": [
+      150,
+      50
+     ],
+     "r": 10
+    }
+   ],
+   "why": "Fringe the vault edges (concept 14); keep the crown over the plume clean."
+  },
+  {
+   "asset": "mist_layer",
+   "rule": "volumetric below -64 over all water, thickest over rimstone top and the geyser pool",
+   "why": "Low white mist on every water surface (art direction)."
+  }
+ ],
+ "mood": {
+  "key": "the whole water park under one black vault",
+  "palette": "teal water and plume, amber cracks and lanterns, glowworm dots, orange at the east end, moon-blue beyond",
+  "mist": "low over everything, steam columns at falls and geyser"
+ },
+ "waivers": [
+  {
+   "check": "hero_visibility",
+   "where": "from p_b3_lobby_lift / p_b3_lobby_spiral_stair",
+   "reason": "The lobby ring hall is deliberately enclosed; its reveal happens at the top of walk_north / the tube."
+  }
+ ],
+ "layout_issues": []
+}

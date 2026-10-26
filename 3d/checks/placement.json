@@ -1,0 +1,8345 @@
+{
+ "g_arrival": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [
+    [
+     "g_arrival:dressing0:30",
+     0.164
+    ]
+   ],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 8,
+   "warns": 0,
+   "worst": [
+    [
+     "g_arrival:dressing0:18",
+     "g_arrival:dressing1:0",
+     1.46
+    ],
+    [
+     "g_arrival:slippers",
+     "g_arrival:dressing3:9",
+     0.89
+    ],
+    [
+     "g_arrival:lights2:3",
+     "g_arrival:dressing0:25",
+     0.49
+    ],
+    [
+     "g_arrival:lights2:1",
+     "g_arrival:dressing0:21",
+     0.33
+    ],
+    [
+     "g_arrival:lights2:2",
+     "g_arrival:dressing0:24",
+     0.17
+    ],
+    [
+     "g_arrival:basin",
+     "g_arrival:basin_tree",
+     0.16
+    ],
+    [
+     "g_arrival:dressing0:2",
+     "g_arrival:dressing1:0",
+     0.08
+    ],
+    [
+     "g_arrival:hall_bridge",
+     "g_arrival:dressing0:9",
+     0.05
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.67
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "lights[0]": {
+     "n": 8,
+     "nn_mean": 1.47,
+     "cv": 0.2,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[1]": {
+     "n": 13,
+     "nn_mean": 4.3,
+     "cv": 0.12,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[2]": {
+     "n": 5,
+     "nn_mean": 7.52,
+     "cv": 0.08,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 31,
+     "nn_mean": 2.12,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 5,
+     "nn_mean": 8.0,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[3]": {
+     "n": 10,
+     "nn_mean": 9.3,
+     "cv": 0.67,
+     "clumps": 2,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 8152,
+   "reached": 7763,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b2_boardwalk": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b2_boardwalk:head_bench"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 7,
+     "nn_mean": 6.72,
+     "cv": 0.07,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[1]": {
+     "n": 5,
+     "nn_mean": 11.27,
+     "cv": 0.05,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 738,
+   "reached": 732,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b2_boat": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "worst": [
+    [
+     "b2_boat:pontoon",
+     "b2_boat:lights1:0",
+     0.09
+    ],
+    [
+     "b2_boat:pontoon",
+     "b2_boat:lights1:1",
+     0.09
+    ],
+    [
+     "b2_boat:pontoon",
+     "b2_boat:lights1:2",
+     0.09
+    ],
+    [
+     "b2_boat:boat_2",
+     "b2_boat:dressing2:1",
+     0.04
+    ],
+    [
+     "b2_boat:hero",
+     "b2_boat:dressing2:0",
+     0.03
+    ],
+    [
+     "b2_boat:hero",
+     "b2_boat:boat_2",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 1007,
+   "reached": 873,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b2_core": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 7,
+   "warns": 0,
+   "worst": [
+    [
+     "b2_core:kitchen",
+     "b2_core:header_tanks",
+     4.8
+    ],
+    [
+     "b2_core:kitchen",
+     "b2_core:kitchen_vent",
+     2.56
+    ],
+    [
+     "b2_core:kitchen",
+     "b2_core:dressing8:1",
+     0.87
+    ],
+    [
+     "b2_core:kitchen",
+     "b2_core:dressing8:0",
+     0.24
+    ],
+    [
+     "b2_core:dressing5:0",
+     "b2_core:dressing8:6",
+     0.11
+    ],
+    [
+     "b2_core:lights2:1",
+     "b2_core:dressing8:2",
+     0.08
+    ],
+    [
+     "b2_core:neon_kazan",
+     "b2_core:dressing8:1",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 10,
+   "warns": 0,
+   "blocked": [
+    "b2_core:lights4:0",
+    "b2_core:lights4:1"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     51.9,
+     62.8,
+     0.76
+    ],
+    [
+     "spine",
+     52.4,
+     62.6,
+     0.76
+    ],
+    [
+     "spine",
+     52.9,
+     62.5,
+     0.17
+    ],
+    [
+     "spine",
+     53.4,
+     62.5,
+     0.6
+    ],
+    [
+     "spine",
+     53.9,
+     62.5,
+     0.6
+    ],
+    [
+     "spine",
+     54.4,
+     62.5,
+     0.17
+    ],
+    [
+     "spine",
+     54.9,
+     62.5,
+     0.17
+    ],
+    [
+     "spine",
+     55.4,
+     62.5,
+     0.76
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.83
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 2,
+   "rules": {
+    "lights[1]": {
+     "n": 5,
+     "nn_mean": 3.24,
+     "cv": 0.09,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[2]": {
+     "n": 5,
+     "nn_mean": 3.72,
+     "cv": 0.04,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[3]": {
+     "n": 9,
+     "nn_mean": 6.78,
+     "cv": 0.78,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 8,
+     "nn_mean": 1.88,
+     "cv": 0.06,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[7]": {
+     "n": 9,
+     "nn_mean": 1.46,
+     "cv": 0.05,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[8]": {
+     "n": 8,
+     "nn_mean": 9.65,
+     "cv": 0.6,
+     "clumps": 2,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 4876,
+   "reached": 3700,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "b2_core:gate_sign",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b2_falls_head": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "worst": [
+    [
+     "b2_falls_head:stair_gate",
+     "b2_falls_head:lights0:1",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 146,
+   "reached": 126,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "bad": [
+    [
+     "b2_falls_head:stair_gate",
+     "no_wall"
+    ],
+    [
+     "b2_falls_head:lights0:0",
+     "no_ground"
+    ],
+    [
+     "b2_falls_head:lights2:0",
+     "no_ground"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b2_kawagiri": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "worst": [
+    [
+     "b2_kawagiri:dressing8:5",
+     "b2_kawagiri:dressing9:1",
+     4.11
+    ],
+    [
+     "b2_kawagiri:dressing8:3",
+     "b2_kawagiri:dressing9:1",
+     0.46
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "waived",
+   "fails": 3,
+   "warns": 0,
+   "blocked": [
+    "b2_kawagiri:gangway_east",
+    "b2_kawagiri:gangway_main",
+    "b2_kawagiri:spine_deck"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.44
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "waived",
+   "fails": 0,
+   "warns": 2,
+   "rules": {
+    "lights[1]": {
+     "n": 24,
+     "nn_mean": 4.1,
+     "cv": 0.27,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[2]": {
+     "n": 9,
+     "nn_mean": 3.92,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[6]": {
+     "n": 12,
+     "nn_mean": 5.54,
+     "cv": 0.07,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[7]": {
+     "n": 12,
+     "nn_mean": 5.8,
+     "cv": 0.06,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[8]": {
+     "n": 13,
+     "nn_mean": 4.63,
+     "cv": 0.72,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[10]": {
+     "n": 12,
+     "nn_mean": 9.2,
+     "cv": 0.23,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2824,
+   "reached": 20,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b2_lava_link": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 6,
+     "nn_mean": 3.01,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 339,
+   "reached": 212,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b2_river": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "waived",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b2_river:thunder_lip"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 1.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "dressing[1]": {
+     "n": 8,
+     "nn_mean": 2.49,
+     "cv": 0.09,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 25,
+     "nn_mean": 7.86,
+     "cv": 0.47,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 1662,
+   "reached": 0,
+   "walkable": false
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_cavern": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.42
+   }
+  },
+  "empty_areas": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "patches": [
+    [
+     82.0,
+     17.0
+    ]
+   ]
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[2]": {
+     "n": 12,
+     "nn_mean": 4.3,
+     "cv": 0.1,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[3]": {
+     "n": 8,
+     "nn_mean": 4.8,
+     "cv": 0.09,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 44,
+     "nn_mean": 5.86,
+     "cv": 0.46,
+     "clumps": 2,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 27416,
+   "reached": 26151,
+   "walkable": false
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_falls": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b3_falls:hero",
+     0.144
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 9,
+   "warns": 0,
+   "worst": [
+    [
+     "b3_falls:hero",
+     "b3_falls:dressing0:23",
+     1.69
+    ],
+    [
+     "b3_falls:hero",
+     "b3_falls:dressing0:20",
+     1.23
+    ],
+    [
+     "b3_falls:hero",
+     "b3_falls:dressing0:19",
+     1.04
+    ],
+    [
+     "b3_falls:hero",
+     "b3_falls:dressing0:17",
+     0.98
+    ],
+    [
+     "b3_falls:hero",
+     "b3_falls:dressing0:22",
+     0.87
+    ],
+    [
+     "b3_falls:hero",
+     "b3_falls:dressing0:18",
+     0.74
+    ],
+    [
+     "b3_falls:hero",
+     "b3_falls:dressing0:24",
+     0.65
+    ],
+    [
+     "b3_falls:hero",
+     "b3_falls:dressing0:21",
+     0.57
+    ],
+    [
+     "b3_falls:lights2:2",
+     "b3_falls:dressing2:0",
+     0.14
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 17,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": [
+    [
+     "spine",
+     47.5,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     47.0,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     46.5,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     46.0,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     45.5,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     45.0,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     44.5,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     44.0,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     43.5,
+     66.0,
+     0.6
+    ],
+    [
+     "spine",
+     43.0,
+     66.0,
+     0.6
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.58
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[3]": {
+     "n": 5,
+     "nn_mean": 5.85,
+     "cv": 0.05,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 45,
+     "nn_mean": 1.66,
+     "cv": 0.28,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 7,
+     "nn_mean": 9.46,
+     "cv": 0.84,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 5296,
+   "reached": 5017,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "bad": [
+    [
+     "b3_falls:massage_spouts#0",
+     "no_wall"
+    ],
+    [
+     "b3_falls:massage_spouts#1",
+     "no_wall"
+    ],
+    [
+     "b3_falls:massage_spouts#2",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_falls_gallery": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b3_falls_gallery:hero",
+     0.338
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b3_falls_gallery:lights1:1"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 16,
+     "nn_mean": 1.92,
+     "cv": 0.09,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 1194,
+   "reached": 595,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_geyser": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 20,
+   "warns": 0,
+   "worst": [
+    [
+     "b3_geyser:hero",
+     "b3_geyser:dressing0:6",
+     2.35
+    ],
+    [
+     "b3_geyser:hero",
+     "b3_geyser:dressing0:5",
+     1.9
+    ],
+    [
+     "b3_geyser:hero",
+     "b3_geyser:dressing0:3",
+     1.33
+    ],
+    [
+     "b3_geyser:hero",
+     "b3_geyser:dressing0:2",
+     1.21
+    ],
+    [
+     "b3_geyser:hero",
+     "b3_geyser:dressing0:7",
+     1.01
+    ],
+    [
+     "b3_geyser:hero",
+     "b3_geyser:dressing0:1",
+     0.91
+    ],
+    [
+     "b3_geyser:hero",
+     "b3_geyser:dressing0:4",
+     0.85
+    ],
+    [
+     "b3_geyser:anchored0:3",
+     "b3_geyser:anchored1:5",
+     0.72
+    ],
+    [
+     "b3_geyser:watch_pavilion",
+     "b3_geyser:dressing1:0",
+     0.64
+    ],
+    [
+     "b3_geyser:anchored0:2",
+     "b3_geyser:anchored1:4",
+     0.37
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.17
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[1]": {
+     "n": 7,
+     "nn_mean": 3.08,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 8,
+     "nn_mean": 1.36,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 1916,
+   "reached": 1756,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_lazy": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 17,
+   "warns": 0,
+   "worst": [
+    [
+     "b3_lazy:hero",
+     "b3_lazy:dressing1:32",
+     1.76
+    ],
+    [
+     "b3_lazy:hero",
+     "b3_lazy:anchored0:7",
+     1.69
+    ],
+    [
+     "b3_lazy:hero",
+     "b3_lazy:dressing1:30",
+     1.29
+    ],
+    [
+     "b3_lazy:hero",
+     "b3_lazy:dressing1:31",
+     0.71
+    ],
+    [
+     "b3_lazy:bridge_n",
+     "b3_lazy:anchored0:3",
+     0.51
+    ],
+    [
+     "b3_lazy:hero",
+     "b3_lazy:lights0:14",
+     0.25
+    ],
+    [
+     "b3_lazy:hero",
+     "b3_lazy:lights0:15",
+     0.25
+    ],
+    [
+     "b3_lazy:hero",
+     "b3_lazy:lights0:36",
+     0.25
+    ],
+    [
+     "b3_lazy:hero",
+     "b3_lazy:lights0:37",
+     0.25
+    ],
+    [
+     "b3_lazy:bridge_s",
+     "b3_lazy:lights0:40",
+     0.25
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "blocked": [
+    "b3_lazy:lights2:0",
+    "b3_lazy:lights3:1"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.17
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 45,
+     "nn_mean": 4.25,
+     "cv": 0.2,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[1]": {
+     "n": 48,
+     "nn_mean": 1.59,
+     "cv": 0.27,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 6564,
+   "reached": 6345,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_lobby": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "worst": [
+    [
+     "b3_lobby:benches#1",
+     "b3_lobby:dressing1:0",
+     1.0
+    ],
+    [
+     "b3_lobby:spring_basin",
+     "b3_lobby:lights2:1",
+     0.16
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "blocked": [
+    "b3_lobby:dressing0:0",
+    "b3_lobby:dressing0:1",
+    "b3_lobby:lights2:0"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 32,
+     "nn_mean": 1.73,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[1]": {
+     "n": 18,
+     "nn_mean": 3.99,
+     "cv": 0.08,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 1518,
+   "reached": 1476,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 11,
+   "warns": 0,
+   "bad": [
+    [
+     "b3_lobby:sign_se",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:2",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:3",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:5",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:6",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:7",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:8",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:9",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:14",
+     "no_wall"
+    ],
+    [
+     "b3_lobby:lights1:15",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_rimstone": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b3_rimstone:dressing2:12"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.03
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "rules": {
+    "lights[1]": {
+     "n": 15,
+     "nn_mean": 6.34,
+     "cv": 0.21,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[2]": {
+     "n": 7,
+     "nn_mean": 5.59,
+     "cv": 0.14,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 51,
+     "nn_mean": 1.94,
+     "cv": 0.21,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 14,
+     "nn_mean": 5.66,
+     "cv": 0.36,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[3]": {
+     "n": 8,
+     "nn_mean": 9.9,
+     "cv": 0.56,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": [
+    "b3_rimstone:dressing0:10",
+    "b3_rimstone:dressing2:11"
+   ]
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 998,
+   "reached": 330,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_shore": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "worst": [
+    [
+     "b3_shore:hero",
+     "b3_shore:lights1:1",
+     0.09
+    ],
+    [
+     "b3_shore:hero",
+     "b3_shore:lights1:0",
+     0.06
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.69
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 207,
+   "reached": 188,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_slide_foot": {
+  "contact": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b3_slide_foot:splash_pool",
+     0.129
+    ],
+    [
+     "b3_slide_foot:lights3:9",
+     0.17
+    ],
+    [
+     "b3_slide_foot:dressing0:1",
+     0.329
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 14,
+   "warns": 0,
+   "worst": [
+    [
+     "b3_slide_foot:hero",
+     "b3_slide_foot:splash_pool",
+     31.06
+    ],
+    [
+     "b3_slide_foot:dressing1:1",
+     "b3_slide_foot:dressing2:0",
+     3.42
+    ],
+    [
+     "b3_slide_foot:splash_pool",
+     "b3_slide_foot:dressing0:0",
+     1.2
+    ],
+    [
+     "b3_slide_foot:splash_pool",
+     "b3_slide_foot:dressing0:1",
+     1.2
+    ],
+    [
+     "b3_slide_foot:splash_pool",
+     "b3_slide_foot:dressing0:2",
+     1.2
+    ],
+    [
+     "b3_slide_foot:splash_pool",
+     "b3_slide_foot:dressing0:3",
+     1.2
+    ],
+    [
+     "b3_slide_foot:splash_pool",
+     "b3_slide_foot:dressing0:4",
+     1.2
+    ],
+    [
+     "b3_slide_foot:splash_pool",
+     "b3_slide_foot:dressing0:5",
+     1.2
+    ],
+    [
+     "b3_slide_foot:splash_pool",
+     "b3_slide_foot:dressing0:6",
+     1.2
+    ],
+    [
+     "b3_slide_foot:splash_pool",
+     "b3_slide_foot:lights2:1",
+     0.49
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.75
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[3]": {
+     "n": 16,
+     "nn_mean": 1.52,
+     "cv": 0.73,
+     "clumps": 4,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 7,
+     "nn_mean": 1.36,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[1]": {
+     "n": 7,
+     "nn_mean": 7.5,
+     "cv": 0.38,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2348,
+   "reached": 2185,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "b3_slide_foot:lava_wall",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_walk_north": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b3_walk_north:top_sign"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.97
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 6,
+     "nn_mean": 2.71,
+     "cv": 0.36,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 227,
+   "reached": 227,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "b3_walk_north:top_sign",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b3_wave": {
+  "contact": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "floating": [
+    [
+     "b3_wave:sea_stacks#1",
+     2.5
+    ]
+   ],
+   "sunk": [
+    [
+     "b3_wave:hero",
+     0.15
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 14,
+   "warns": 0,
+   "worst": [
+    [
+     "b3_wave:hero",
+     "b3_wave:sea_stacks#2",
+     25.0
+    ],
+    [
+     "b3_wave:beach_pavilion",
+     "b3_wave:dressing2:2",
+     5.32
+    ],
+    [
+     "b3_wave:dressing1:7",
+     "b3_wave:dressing2:3",
+     0.68
+    ],
+    [
+     "b3_wave:dressing0:1",
+     "b3_wave:dressing0:6",
+     0.24
+    ],
+    [
+     "b3_wave:dressing0:2",
+     "b3_wave:dressing0:7",
+     0.23
+    ],
+    [
+     "b3_wave:dressing0:4",
+     "b3_wave:dressing0:9",
+     0.23
+    ],
+    [
+     "b3_wave:dressing1:0",
+     "b3_wave:dressing1:6",
+     0.17
+    ],
+    [
+     "b3_wave:dressing0:3",
+     "b3_wave:dressing0:8",
+     0.13
+    ],
+    [
+     "b3_wave:dressing0:0",
+     "b3_wave:dressing0:5",
+     0.12
+    ],
+    [
+     "b3_wave:lights1:2",
+     "b3_wave:dressing1:4",
+     0.08
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b3_wave:beach_pavilion"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 8,
+   "patches": [
+    [
+     184.0,
+     47.0
+    ],
+    [
+     188.0,
+     35.0
+    ],
+    [
+     180.0,
+     31.0
+    ],
+    [
+     180.0,
+     40.0
+    ],
+    [
+     192.0,
+     41.0
+    ],
+    [
+     183.0,
+     55.0
+    ],
+    [
+     187.0,
+     29.0
+    ],
+    [
+     174.0,
+     33.0
+    ]
+   ]
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 3,
+   "rules": {
+    "dressing[0]": {
+     "n": 10,
+     "nn_mean": 1.64,
+     "cv": 0.02,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[1]": {
+     "n": 12,
+     "nn_mean": 1.68,
+     "cv": 0.04,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[3]": {
+     "n": 33,
+     "nn_mean": 3.63,
+     "cv": 0.41,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[4]": {
+     "n": 5,
+     "nn_mean": 11.85,
+     "cv": 0.7,
+     "clumps": 2,
+     "flag": "clumpy"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 7055,
+   "reached": 6308,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b4_chamber": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 1.0
+   }
+  },
+  "empty_areas": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 5,
+   "patches": [
+    [
+     74.0,
+     18.0
+    ],
+    [
+     104.0,
+     17.0
+    ],
+    [
+     88.0,
+     17.0
+    ],
+    [
+     118.0,
+     17.0
+    ],
+    [
+     61.0,
+     18.0
+    ]
+   ]
+  },
+  "spacing": {
+   "status": "waived",
+   "fails": 1,
+   "warns": 0,
+   "rules": {
+    "lights[1]": {
+     "n": 11,
+     "nn_mean": 7.33,
+     "cv": 0.03,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[2]": {
+     "n": 5,
+     "nn_mean": 15.03,
+     "cv": 0.03,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": [
+    "b4_chamber:lights1:9"
+   ]
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 8722,
+   "reached": 8699,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b4_lobby": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "worst": [
+    [
+     "b4_lobby:lights1:11",
+     "b4_lobby:dressing1:0",
+     0.08
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[1]": {
+     "n": 16,
+     "nn_mean": 4.05,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2448,
+   "reached": 2445,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b4_tunnel": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "worst": [
+    [
+     "b4_tunnel:lights1:1",
+     "b4_tunnel:dressing0:2",
+     0.07
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b4_tunnel:dressing0:0"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 12,
+     "nn_mean": 3.96,
+     "cv": 0.14,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 905,
+   "reached": 872,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_cor_east": {
+  "contact": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b1_cor_east:hero",
+     0.027
+    ],
+    [
+     "b1_cor_east:treat_door",
+     0.2
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 8,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_cor_east:hero",
+     "b1_cor_east:lights2:0",
+     15.8
+    ],
+    [
+     "b1_cor_east:bonsai_e",
+     "b1_cor_east:dressing0:2",
+     0.31
+    ],
+    [
+     "b1_cor_east:bonsai_e",
+     "b1_cor_east:dressing0:4",
+     0.31
+    ],
+    [
+     "b1_cor_east:bonsai_e",
+     "b1_cor_east:dressing0:3",
+     0.29
+    ],
+    [
+     "b1_cor_east:bonsai_e",
+     "b1_cor_east:dressing1:0",
+     0.27
+    ],
+    [
+     "b1_cor_east:bonsai_e",
+     "b1_cor_east:dressing0:1",
+     0.08
+    ],
+    [
+     "b1_cor_east:treat_door",
+     "b1_cor_east:lights1:0",
+     0.07
+    ],
+    [
+     "b1_cor_east:treat_door",
+     "b1_cor_east:lights1:1",
+     0.07
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b1_cor_east:bonsai_e"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "dressing[0]": {
+     "n": 90,
+     "nn_mean": 0.7,
+     "cv": 0.07,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[1]": {
+     "n": 19,
+     "nn_mean": 2.98,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 759,
+   "reached": 178,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "b1_cor_east:glacier_board",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_cor_mirror": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b1_cor_mirror:dressing0:20",
+     0.2
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_cor_mirror:bonsai_1",
+     "b1_cor_mirror:dressing0:39",
+     0.38
+    ],
+    [
+     "b1_cor_mirror:bonsai_1",
+     "b1_cor_mirror:dressing0:38",
+     0.32
+    ],
+    [
+     "b1_cor_mirror:bonsai_1",
+     "b1_cor_mirror:dressing0:40",
+     0.27
+    ],
+    [
+     "b1_cor_mirror:shoji_bay_1",
+     "b1_cor_mirror:dressing1:5",
+     0.25
+    ],
+    [
+     "b1_cor_mirror:bonsai_1",
+     "b1_cor_mirror:dressing0:37",
+     0.23
+    ],
+    [
+     "b1_cor_mirror:shoji_bay_1",
+     "b1_cor_mirror:bonsai_1",
+     0.2
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b1_cor_mirror:bonsai_1"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "dressing[0]": {
+     "n": 132,
+     "nn_mean": 0.71,
+     "cv": 0.11,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[1]": {
+     "n": 18,
+     "nn_mean": 3.01,
+     "cv": 0.15,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 884,
+   "reached": 281,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_cor_north": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_cor_north:trickle_basin",
+     "b1_cor_north:dressing0:160",
+     0.34
+    ],
+    [
+     "b1_cor_north:dressing0:211",
+     "b1_cor_north:dressing2:0",
+     0.28
+    ],
+    [
+     "b1_cor_north:hero",
+     "b1_cor_north:trickle_basin",
+     0.24
+    ],
+    [
+     "b1_cor_north:dressing0:55",
+     "b1_cor_north:dressing2:1",
+     0.18
+    ],
+    [
+     "b1_cor_north:trickle_basin",
+     "b1_cor_north:dressing0:159",
+     0.06
+    ],
+    [
+     "b1_cor_north:lights2:1",
+     "b1_cor_north:lights2:4",
+     0.03
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "blocked": [
+    "b1_cor_north:dressing2:0",
+    "b1_cor_north:dressing2:1",
+    "b1_cor_north:trickle_basin"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 1.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "rules": {
+    "lights[2]": {
+     "n": 6,
+     "nn_mean": 0.45,
+     "cv": 0.45,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 245,
+     "nn_mean": 0.7,
+     "cv": 0.08,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[1]": {
+     "n": 52,
+     "nn_mean": 2.92,
+     "cv": 0.16,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": [
+    "b1_cor_north:dressing0:145"
+   ]
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1818,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_cor_south": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b1_cor_south:treat_door",
+     0.2
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_cor_south:treat_door",
+     "b1_cor_south:lights2:0",
+     0.08
+    ],
+    [
+     "b1_cor_south:treat_door",
+     "b1_cor_south:lights2:1",
+     0.08
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.92
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "dressing[0]": {
+     "n": 99,
+     "nn_mean": 0.73,
+     "cv": 0.06,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[1]": {
+     "n": 19,
+     "nn_mean": 2.8,
+     "cv": 0.16,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 634,
+   "reached": 131,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_cor_west": {
+  "contact": {
+   "status": "fail",
+   "fails": 24,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b1_cor_west:grotto_door",
+     0.181
+    ],
+    [
+     "b1_cor_west:steps_toro_e",
+     0.197
+    ],
+    [
+     "b1_cor_west:steps_toro_w",
+     0.191
+    ],
+    [
+     "b1_cor_west:dressing0:2",
+     0.217
+    ],
+    [
+     "b1_cor_west:dressing0:3",
+     0.214
+    ],
+    [
+     "b1_cor_west:dressing0:4",
+     0.211
+    ],
+    [
+     "b1_cor_west:dressing0:5",
+     0.209
+    ],
+    [
+     "b1_cor_west:dressing0:6",
+     0.206
+    ],
+    [
+     "b1_cor_west:dressing0:7",
+     0.204
+    ],
+    [
+     "b1_cor_west:dressing0:8",
+     0.201
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_cor_west:hero",
+     "b1_cor_west:lights1:0",
+     3.2
+    ],
+    [
+     "b1_cor_west:grotto_door",
+     "b1_cor_west:dressing0:32",
+     0.13
+    ],
+    [
+     "b1_cor_west:lights2:0",
+     "b1_cor_west:dressing0:34",
+     0.1
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "blocked": [
+    "b1_cor_west:hero",
+    "b1_cor_west:lights1:0",
+    "b1_cor_west:lights2:0"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 1.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "dressing[0]": {
+     "n": 36,
+     "nn_mean": 0.73,
+     "cv": 0.08,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[1]": {
+     "n": 5,
+     "nn_mean": 2.81,
+     "cv": 0.16,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 105,
+   "reached": 7,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "b1_cor_west:grotto_board",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_glacier": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 17,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_glacier:dressing1:0",
+     "b1_glacier:dressing1:1",
+     17.79
+    ],
+    [
+     "b1_glacier:dressing1:2",
+     "b1_glacier:dressing1:3",
+     15.06
+    ],
+    [
+     "b1_glacier:hero",
+     "b1_glacier:lights0:0",
+     12.6
+    ],
+    [
+     "b1_glacier:hero",
+     "b1_glacier:lights0:1",
+     12.6
+    ],
+    [
+     "b1_glacier:hero",
+     "b1_glacier:lights0:2",
+     12.6
+    ],
+    [
+     "b1_glacier:hero",
+     "b1_glacier:lights0:3",
+     12.6
+    ],
+    [
+     "b1_glacier:hero",
+     "b1_glacier:lights0:4",
+     11.66
+    ],
+    [
+     "b1_glacier:lights0:1",
+     "b1_glacier:lights0:2",
+     11.59
+    ],
+    [
+     "b1_glacier:lights0:2",
+     "b1_glacier:lights0:3",
+     10.62
+    ],
+    [
+     "b1_glacier:lights0:3",
+     "b1_glacier:lights0:4",
+     10.14
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "blocked": [
+    "b1_glacier:dressing1:0",
+    "b1_glacier:dressing1:1",
+    "b1_glacier:lights4:0"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 1.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "lights[0]": {
+     "n": 5,
+     "nn_mean": 3.36,
+     "cv": 0.08,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 38,
+     "nn_mean": 1.27,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[2]": {
+     "n": 5,
+     "nn_mean": 16.0,
+     "cv": 0.51,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2737,
+   "reached": 2630,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_grotto": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 14,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_grotto:vent_lane_2",
+     "b1_grotto:dressing8:5",
+     0.76
+    ],
+    [
+     "b1_grotto:vent_55",
+     "b1_grotto:dressing4:1",
+     0.68
+    ],
+    [
+     "b1_grotto:vent_45",
+     "b1_grotto:dressing0:10",
+     0.58
+    ],
+    [
+     "b1_grotto:vent_55",
+     "b1_grotto:dressing1:5",
+     0.42
+    ],
+    [
+     "b1_grotto:dressing3:0",
+     "b1_grotto:dressing8:2",
+     0.36
+    ],
+    [
+     "b1_grotto:lights1:4",
+     "b1_grotto:dressing8:7",
+     0.2
+    ],
+    [
+     "b1_grotto:hero",
+     "b1_grotto:dressing8:7",
+     0.17
+    ],
+    [
+     "b1_grotto:dressing0:9",
+     "b1_grotto:dressing3:0",
+     0.09
+    ],
+    [
+     "b1_grotto:arch_45",
+     "b1_grotto:dressing0:2",
+     0.07
+    ],
+    [
+     "b1_grotto:vent_45",
+     "b1_grotto:dressing0:9",
+     0.07
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.5
+   }
+  },
+  "empty_areas": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "patches": [
+    [
+     56.0,
+     103.0
+    ]
+   ]
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 3,
+   "rules": {
+    "lights[1]": {
+     "n": 6,
+     "nn_mean": 2.93,
+     "cv": 0.34,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 15,
+     "nn_mean": 1.23,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[1]": {
+     "n": 14,
+     "nn_mean": 1.22,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[2]": {
+     "n": 12,
+     "nn_mean": 1.22,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[8]": {
+     "n": 10,
+     "nn_mean": 7.96,
+     "cv": 0.4,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 3212,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "b1_grotto:dressing8:4",
+     "no_ground"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_junction_w": {
+  "contact": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b1_junction_w:dressing2:8",
+     0.26
+    ],
+    [
+     "b1_junction_w:dressing2:17",
+     0.271
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 5,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_junction_w:pond_pine",
+     "b1_junction_w:dressing0:8",
+     0.27
+    ],
+    [
+     "b1_junction_w:pond_pine",
+     "b1_junction_w:dressing0:7",
+     0.15
+    ],
+    [
+     "b1_junction_w:toro",
+     "b1_junction_w:dressing0:1",
+     0.11
+    ],
+    [
+     "b1_junction_w:pond_pine",
+     "b1_junction_w:dressing0:6",
+     0.1
+    ],
+    [
+     "b1_junction_w:toro",
+     "b1_junction_w:dressing0:0",
+     0.05
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": [
+    [
+     "spine",
+     67.4,
+     79.4,
+     0.91
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.14
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "dressing[0]": {
+     "n": 15,
+     "nn_mean": 0.9,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[1]": {
+     "n": 19,
+     "nn_mean": 0.71,
+     "cv": 0.09,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 19,
+     "nn_mean": 0.72,
+     "cv": 0.1,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 200,
+   "reached": 196,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_lobby": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 5,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_lobby:bench_n2",
+     "b1_lobby:dressing1:0",
+     0.37
+    ],
+    [
+     "b1_lobby:bench_n2",
+     "b1_lobby:dressing0:4",
+     0.25
+    ],
+    [
+     "b1_lobby:dressing0:3",
+     "b1_lobby:dressing1:0",
+     0.24
+    ],
+    [
+     "b1_lobby:bench_n1",
+     "b1_lobby:dressing0:1",
+     0.15
+    ],
+    [
+     "b1_lobby:rill_spout",
+     "b1_lobby:dressing0:0",
+     0.14
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": [
+    [
+     "spine",
+     101.0,
+     63.9,
+     1.91
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 16,
+     "nn_mean": 2.55,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 8,
+     "nn_mean": 1.91,
+     "cv": 0.09,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 1378,
+   "reached": 1356,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_mirror": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_mirror:pine_se",
+     "b1_mirror:lights1:1",
+     3.55
+    ],
+    [
+     "b1_mirror:pavilion_se",
+     "b1_mirror:pine_se",
+     1.18
+    ],
+    [
+     "b1_mirror:lights1:0",
+     "b1_mirror:dressing1:2",
+     0.21
+    ],
+    [
+     "b1_mirror:lights1:0",
+     "b1_mirror:dressing0:41",
+     0.04
+    ],
+    [
+     "b1_mirror:lights0:6",
+     "b1_mirror:dressing0:13",
+     0.03
+    ],
+    [
+     "b1_mirror:lights1:1",
+     "b1_mirror:dressing0:12",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "b1_mirror:lights1:0"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.72
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "lights[0]": {
+     "n": 22,
+     "nn_mean": 3.63,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 52,
+     "nn_mean": 1.42,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[1]": {
+     "n": 8,
+     "nn_mean": 7.36,
+     "cv": 0.45,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2668,
+   "reached": 2477,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_outfall": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b1_outfall:dressing0:30",
+     0.3
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.81
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "dressing[0]": {
+     "n": 60,
+     "nn_mean": 0.7,
+     "cv": 0.08,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 13,
+     "nn_mean": 2.83,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 471,
+   "reached": 39,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_slide_top": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "b1_slide_top:launch_gate",
+     0.299
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_slide_top:lava_glass",
+     "b1_slide_top:lights0:0",
+     11.6
+    ],
+    [
+     "b1_slide_top:hero",
+     "b1_slide_top:lights1:2",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.33
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[3]": {
+     "n": 6,
+     "nn_mean": 8.07,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 957,
+   "reached": 863,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "b1_slide_top:hero",
+     "no_ground"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "b1_treatment": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "worst": [
+    [
+     "b1_treatment:room_s1",
+     "b1_treatment:dressing0:0",
+     0.42
+    ],
+    [
+     "b1_treatment:dressing0:2",
+     "b1_treatment:dressing1:4",
+     0.07
+    ],
+    [
+     "b1_treatment:n_noren",
+     "b1_treatment:dressing0:1",
+     0.03
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "blocked": [
+    "b1_treatment:dressing0:0",
+    "b1_treatment:dressing0:1"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[2]": {
+     "n": 9,
+     "nn_mean": 3.94,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[1]": {
+     "n": 5,
+     "nn_mean": 5.76,
+     "cv": 0.59,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2540,
+   "reached": 2516,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "g_cascade": {
+  "contact": {
+   "status": "fail",
+   "fails": 17,
+   "warns": 0,
+   "floating": [
+    [
+     "g_cascade:dressing1:5",
+     1.159
+    ],
+    [
+     "g_cascade:dressing1:12",
+     0.751
+    ],
+    [
+     "g_cascade:dressing2:16",
+     0.935
+    ],
+    [
+     "g_cascade:dressing3:3",
+     1.508
+    ],
+    [
+     "g_cascade:dressing4:5",
+     2.563
+    ],
+    [
+     "g_cascade:dressing4:7",
+     1.596
+    ],
+    [
+     "g_cascade:dressing4:13",
+     2.616
+    ],
+    [
+     "g_cascade:dressing4:16",
+     2.057
+    ],
+    [
+     "g_cascade:dressing4:17",
+     1.331
+    ]
+   ],
+   "sunk": [
+    [
+     "g_cascade:dressing1:2",
+     0.271
+    ],
+    [
+     "g_cascade:dressing1:7",
+     0.238
+    ],
+    [
+     "g_cascade:dressing1:11",
+     0.292
+    ],
+    [
+     "g_cascade:dressing1:13",
+     0.232
+    ],
+    [
+     "g_cascade:dressing2:19",
+     0.272
+    ],
+    [
+     "g_cascade:dressing3:2",
+     0.295
+    ],
+    [
+     "g_cascade:dressing4:3",
+     0.287
+    ],
+    [
+     "g_cascade:dressing7:7",
+     0.315
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 21,
+   "warns": 0,
+   "worst": [
+    [
+     "g_cascade:dressing6:0",
+     "g_cascade:dressing7:0",
+     2.4
+    ],
+    [
+     "g_cascade:dressing0:0",
+     "g_cascade:dressing1:5",
+     1.82
+    ],
+    [
+     "g_cascade:hero",
+     "g_cascade:dressing1:0",
+     1.36
+    ],
+    [
+     "g_cascade:dressing0:0",
+     "g_cascade:dressing1:6",
+     0.75
+    ],
+    [
+     "g_cascade:dressing0:0",
+     "g_cascade:dressing1:0",
+     0.69
+    ],
+    [
+     "g_cascade:dressing0:0",
+     "g_cascade:dressing7:4",
+     0.67
+    ],
+    [
+     "g_cascade:hero",
+     "g_cascade:dressing1:1",
+     0.66
+    ],
+    [
+     "g_cascade:dressing0:0",
+     "g_cascade:dressing7:6",
+     0.61
+    ],
+    [
+     "g_cascade:dressing0:0",
+     "g_cascade:dressing1:18",
+     0.48
+    ],
+    [
+     "g_cascade:dressing0:0",
+     "g_cascade:dressing1:7",
+     0.45
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 8,
+     "nn_mean": 6.57,
+     "cv": 0.1,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[1]": {
+     "n": 19,
+     "nn_mean": 1.36,
+     "cv": 0.2,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 20,
+     "nn_mean": 1.56,
+     "cv": 0.16,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[3]": {
+     "n": 21,
+     "nn_mean": 1.52,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[4]": {
+     "n": 26,
+     "nn_mean": 1.26,
+     "cv": 0.21,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[7]": {
+     "n": 12,
+     "nn_mean": 6.82,
+     "cv": 0.54,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 3755,
+   "reached": 2946,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "g_changing": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "worst": [
+    [
+     "g_changing:booths_north",
+     "g_changing:tokonoma",
+     1.3
+    ],
+    [
+     "g_changing:lockers_south",
+     "g_changing:lights4:1",
+     0.08
+    ],
+    [
+     "g_changing:lockers_south",
+     "g_changing:lights4:0",
+     0.04
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.78
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 6013,
+   "reached": 5477,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "g_east": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "worst": [
+    [
+     "g_east:lights1:2",
+     "g_east:dressing2:1",
+     0.09
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "g_east:exit_tree"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2930,
+   "reached": 2865,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "g_east_path": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "worst": [
+    [
+     "g_east_path:shoulder_bench",
+     "g_east_path:lights1:2",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "g_east_path:shoulder_bench"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 6,
+     "nn_mean": 9.04,
+     "cv": 0.11,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[1]": {
+     "n": 5,
+     "nn_mean": 9.17,
+     "cv": 0.12,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 729,
+   "reached": 727,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "g_east_path:overhang",
+     "no_ceiling"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "g_gate": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "worst": [
+    [
+     "g_gate:court_pine_n",
+     "g_gate:dressing4:1",
+     0.4
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 1.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "dressing[3]": {
+     "n": 11,
+     "nn_mean": 0.7,
+     "cv": 0.15,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[4]": {
+     "n": 5,
+     "nn_mean": 12.39,
+     "cv": 0.69,
+     "clumps": 2,
+     "flag": "clumpy"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2893,
+   "reached": 2715,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "g_north_ledge": {
+  "contact": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "g_north_ledge:basin_a",
+     0.142
+    ],
+    [
+     "g_north_ledge:basin_b",
+     0.142
+    ],
+    [
+     "g_north_ledge:basin_c",
+     0.142
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "worst": [
+    [
+     "g_north_ledge:hero",
+     "g_north_ledge:basin_b",
+     1.08
+    ],
+    [
+     "g_north_ledge:lights2:1",
+     "g_north_ledge:dressing2:4",
+     0.05
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "g_north_ledge:basin_c"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.83
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 6,
+     "nn_mean": 8.88,
+     "cv": 0.09,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[2]": {
+     "n": 7,
+     "nn_mean": 10.53,
+     "cv": 0.03,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 7,
+     "nn_mean": 10.97,
+     "cv": 0.35,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 3162,
+   "reached": 2941,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "g_north_ledge:dressing2:5",
+     "no_ground"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "g_road": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "g_road:lights0:2",
+     0.079
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "worst": [
+    [
+     "g_road:road_bridge",
+     "g_road:lights0:0",
+     0.09
+    ],
+    [
+     "g_road:road_bridge",
+     "g_road:lights0:2",
+     0.09
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 348,
+   "reached": 347,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "g_road:road_marker",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "g_terrace": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [
+    [
+     "g_terrace:dressing4:1",
+     1.804
+    ]
+   ],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "worst": [
+    [
+     "g_terrace:terrace_tree",
+     "g_terrace:dressing3:0",
+     2.08
+    ],
+    [
+     "g_terrace:lights1:7",
+     "g_terrace:dressing3:2",
+     0.05
+    ],
+    [
+     "g_terrace:lights1:9",
+     "g_terrace:dressing3:3",
+     0.05
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "g_terrace:hero"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.83
+   }
+  },
+  "empty_areas": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 2,
+   "patches": [
+    [
+     37.0,
+     33.0
+    ],
+    [
+     44.0,
+     29.0
+    ]
+   ]
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "lights[0]": {
+     "n": 12,
+     "nn_mean": 8.6,
+     "cv": 0.07,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[1]": {
+     "n": 13,
+     "nn_mean": 7.41,
+     "cv": 0.05,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 8,
+     "nn_mean": 12.84,
+     "cv": 0.03,
+     "clumps": 0,
+     "flag": "grid"
+    },
+    "dressing[4]": {
+     "n": 8,
+     "nn_mean": 15.24,
+     "cv": 0.83,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 7919,
+   "reached": 7736,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "s_moon": {
+  "contact": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "s_moon:lights1:0",
+     0.047
+    ],
+    [
+     "s_moon:lights1:1",
+     0.063
+    ],
+    [
+     "s_moon:lights1:2",
+     0.071
+    ],
+    [
+     "s_moon:lights1:3",
+     0.064
+    ],
+    [
+     "s_moon:lights1:4",
+     0.077
+    ],
+    [
+     "s_moon:lights1:5",
+     0.079
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "worst": [
+    [
+     "s_moon:hero",
+     "s_moon:sake_counter",
+     1.8
+    ],
+    [
+     "s_moon:moon_tree",
+     "s_moon:east_bench_2",
+     0.72
+    ],
+    [
+     "s_moon:sake_counter",
+     "s_moon:dressing2:4",
+     0.12
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "s_moon:hero"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 1.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "lights[0]": {
+     "n": 6,
+     "nn_mean": 3.6,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[1]": {
+     "n": 6,
+     "nn_mean": 6.01,
+     "cv": 0.08,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[2]": {
+     "n": 6,
+     "nn_mean": 1.68,
+     "cv": 0.0,
+     "clumps": 0,
+     "flag": "grid"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 1673,
+   "reached": 1648,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "s_pool": {
+  "contact": {
+   "status": "fail",
+   "fails": 9,
+   "warns": 0,
+   "floating": [
+    [
+     "s_pool:dressing0:0",
+     0.526
+    ],
+    [
+     "s_pool:dressing0:1",
+     0.024
+    ],
+    [
+     "s_pool:dressing0:3",
+     0.493
+    ],
+    [
+     "s_pool:dressing0:5",
+     0.646
+    ],
+    [
+     "s_pool:dressing0:7",
+     0.474
+    ],
+    [
+     "s_pool:dressing0:11",
+     0.28
+    ],
+    [
+     "s_pool:dressing0:15",
+     0.162
+    ],
+    [
+     "s_pool:dressing0:25",
+     0.291
+    ],
+    [
+     "s_pool:dressing0:28",
+     0.179
+    ]
+   ],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 9,
+   "warns": 0,
+   "worst": [
+    [
+     "s_pool:hero",
+     "s_pool:island_w_pine",
+     6.76
+    ],
+    [
+     "s_pool:hero",
+     "s_pool:island_w",
+     4.32
+    ],
+    [
+     "s_pool:island_e",
+     "s_pool:island_e_pine",
+     3.89
+    ],
+    [
+     "s_pool:island_w",
+     "s_pool:island_w_pine",
+     3.4
+    ],
+    [
+     "s_pool:hero",
+     "s_pool:dressing0:22",
+     0.71
+    ],
+    [
+     "s_pool:hero",
+     "s_pool:dressing0:23",
+     0.16
+    ],
+    [
+     "s_pool:hero",
+     "s_pool:dressing0:28",
+     0.1
+    ],
+    [
+     "s_pool:hero",
+     "s_pool:lights0:4",
+     0.08
+    ],
+    [
+     "s_pool:lights0:1",
+     "s_pool:dressing0:14",
+     0.05
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 2,
+   "warns": 0,
+   "blocked": [
+    "s_pool:inflow_spout",
+    "s_pool:lights2:0"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.67
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 5,
+     "nn_mean": 12.53,
+     "cv": 0.91,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[0]": {
+     "n": 29,
+     "nn_mean": 1.84,
+     "cv": 0.19,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 2933,
+   "reached": 2730,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "s_rim": {
+  "contact": {
+   "status": "fail",
+   "fails": 24,
+   "warns": 0,
+   "floating": [
+    [
+     "s_rim:dressing3:4",
+     0.372
+    ]
+   ],
+   "sunk": [
+    [
+     "s_rim:lights0:0",
+     0.117
+    ],
+    [
+     "s_rim:lights0:2",
+     0.154
+    ],
+    [
+     "s_rim:lights0:3",
+     0.08
+    ],
+    [
+     "s_rim:lights0:4",
+     0.042
+    ],
+    [
+     "s_rim:lights0:5",
+     0.045
+    ],
+    [
+     "s_rim:lights0:7",
+     0.035
+    ],
+    [
+     "s_rim:lights0:8",
+     0.034
+    ],
+    [
+     "s_rim:lights0:9",
+     0.17
+    ],
+    [
+     "s_rim:lights0:11",
+     0.021
+    ],
+    [
+     "s_rim:lights1:0",
+     0.27
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 17,
+   "warns": 0,
+   "worst": [
+    [
+     "s_rim:rim_rill_bridge",
+     "s_rim:dressing1:11",
+     6.0
+    ],
+    [
+     "s_rim:rim_rill_bridge",
+     "s_rim:dressing1:10",
+     1.87
+    ],
+    [
+     "s_rim:rim_rill_bridge",
+     "s_rim:lights1:2",
+     0.49
+    ],
+    [
+     "s_rim:lights1:0",
+     "s_rim:dressing3:0",
+     0.49
+    ],
+    [
+     "s_rim:lights1:4",
+     "s_rim:dressing3:12",
+     0.36
+    ],
+    [
+     "s_rim:dressing1:23",
+     "s_rim:dressing3:32",
+     0.16
+    ],
+    [
+     "s_rim:dressing1:22",
+     "s_rim:dressing3:31",
+     0.13
+    ],
+    [
+     "s_rim:lights1:5",
+     "s_rim:dressing3:14",
+     0.12
+    ],
+    [
+     "s_rim:rim_rill_bridge",
+     "s_rim:lights0:4",
+     0.09
+    ],
+    [
+     "s_rim:lights0:1",
+     "s_rim:dressing3:2",
+     0.09
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "s_rim:cliff_stair_toro"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[0]": {
+     "n": 12,
+     "nn_mean": 8.52,
+     "cv": 0.24,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "lights[1]": {
+     "n": 6,
+     "nn_mean": 17.24,
+     "cv": 0.01,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[1]": {
+     "n": 27,
+     "nn_mean": 4.61,
+     "cv": 0.1,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[3]": {
+     "n": 35,
+     "nn_mean": 4.3,
+     "cv": 0.32,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 1787,
+   "reached": 1756,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "s_rim:cliff_stair_sign",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "s_rim_west": {
+  "contact": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "floating": [],
+   "sunk": [
+    [
+     "s_rim_west:stele_toro",
+     0.205
+    ],
+    [
+     "s_rim_west:rest_bench",
+     0.099
+    ],
+    [
+     "s_rim_west:lights0:0",
+     0.095
+    ],
+    [
+     "s_rim_west:lights0:1",
+     0.146
+    ],
+    [
+     "s_rim_west:lights0:2",
+     0.156
+    ],
+    [
+     "s_rim_west:lights0:3",
+     0.155
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "s_rim_west:dressing2:0"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 447,
+   "reached": 422,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "s_rim_west:hero",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "s_spring": {
+  "contact": {
+   "status": "fail",
+   "fails": 12,
+   "warns": 0,
+   "floating": [
+    [
+     "s_spring:dressing1:0",
+     1.428
+    ],
+    [
+     "s_spring:dressing1:3",
+     0.73
+    ]
+   ],
+   "sunk": [
+    [
+     "s_spring:dressing0:0",
+     0.237
+    ],
+    [
+     "s_spring:dressing0:3",
+     0.292
+    ],
+    [
+     "s_spring:dressing0:4",
+     0.227
+    ],
+    [
+     "s_spring:dressing0:5",
+     0.339
+    ],
+    [
+     "s_spring:dressing0:13",
+     0.323
+    ],
+    [
+     "s_spring:dressing0:15",
+     0.34
+    ],
+    [
+     "s_spring:dressing0:17",
+     0.337
+    ],
+    [
+     "s_spring:dressing0:18",
+     0.29
+    ],
+    [
+     "s_spring:dressing0:19",
+     0.228
+    ],
+    [
+     "s_spring:dressing0:29",
+     0.313
+    ]
+   ]
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 3,
+   "warns": 0,
+   "worst": [
+    [
+     "s_spring:dressing1:4",
+     "s_spring:dressing2:1",
+     1.9
+    ],
+    [
+     "s_spring:lights0:0",
+     "s_spring:dressing1:0",
+     0.25
+    ],
+    [
+     "s_spring:source_marker",
+     "s_spring:dressing1:2",
+     0.07
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "blocked": [
+    "s_spring:lights0:0"
+   ],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "fraction": {
+    "entry": 1.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "dressing[0]": {
+     "n": 30,
+     "nn_mean": 1.07,
+     "cv": 0.13,
+     "clumps": 0,
+     "flag": "ok"
+    },
+    "dressing[1]": {
+     "n": 6,
+     "nn_mean": 5.54,
+     "cv": 0.69,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "samples": 985,
+   "reached": 6,
+   "walkable": true
+  },
+  "snap": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "bad": [
+    [
+     "s_spring:source_marker",
+     "no_wall"
+    ]
+   ]
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_template": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "worst": []
+  },
+  "clearance": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "blocked": [],
+   "low_ceiling": []
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "note": "no hero proxy or no cameras"
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_1a": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 5,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_1a:shoji_front",
+     "suite_1a:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_1a:hero",
+     "suite_1a:dressing4:0",
+     1.01
+    ],
+    [
+     "suite_1a:shoji_front",
+     "suite_1a:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_1a:hero",
+     "suite_1a:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_1a:lights3:0",
+     "suite_1a:lights3:2",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_1a:dressing3:0",
+    "suite_1a:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     139.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     139.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     140.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     140.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     141.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     141.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     142.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": [
+    "suite_1a:lights3:1"
+   ]
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1141,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_1b": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 5,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_1b:shoji_front",
+     "suite_1b:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_1b:hero",
+     "suite_1b:dressing4:0",
+     0.45
+    ],
+    [
+     "suite_1b:shoji_front",
+     "suite_1b:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_1b:hero",
+     "suite_1b:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_1b:lights3:2",
+     "suite_1b:lights3:5",
+     0.03
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_1b:dressing3:0",
+    "suite_1b:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     157.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     157.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     158.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     158.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     159.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     159.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     160.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[3]": {
+     "n": 6,
+     "nn_mean": 0.37,
+     "cv": 0.33,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1150,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_1c": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_1c:hero",
+     "suite_1c:dressing4:0",
+     2.7
+    ],
+    [
+     "suite_1c:shoji_front",
+     "suite_1c:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_1c:tub_bucket",
+     "suite_1c:dressing4:0",
+     0.9
+    ],
+    [
+     "suite_1c:shoji_front",
+     "suite_1c:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_1c:hero",
+     "suite_1c:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_1c:shoji_front",
+     "suite_1c:dressing4:0",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_1c:dressing3:0",
+    "suite_1c:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     175.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     175.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     176.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     176.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     177.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     177.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     178.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1135,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_2a": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 4,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_2a:shoji_front",
+     "suite_2a:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_2a:hero",
+     "suite_2a:dressing4:0",
+     0.45
+    ],
+    [
+     "suite_2a:shoji_front",
+     "suite_2a:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_2a:hero",
+     "suite_2a:tub_bucket",
+     0.12
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_2a:dressing3:0",
+    "suite_2a:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     139.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     139.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     140.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     140.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     141.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     141.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     142.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": [
+    "suite_2a:lights3:3"
+   ]
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1150,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_2b": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 7,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_2b:hero",
+     "suite_2b:dressing4:0",
+     2.7
+    ],
+    [
+     "suite_2b:shoji_front",
+     "suite_2b:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_2b:tub_bucket",
+     "suite_2b:dressing4:0",
+     0.9
+    ],
+    [
+     "suite_2b:shoji_front",
+     "suite_2b:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_2b:hero",
+     "suite_2b:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_2b:shoji_front",
+     "suite_2b:dressing4:0",
+     0.02
+    ],
+    [
+     "suite_2b:lights3:1",
+     "suite_2b:lights3:4",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_2b:dressing3:0",
+    "suite_2b:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     157.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     157.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     158.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     158.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     159.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     159.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     160.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[3]": {
+     "n": 6,
+     "nn_mean": 0.43,
+     "cv": 0.57,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1135,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_2c": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_2c:hero",
+     "suite_2c:dressing4:0",
+     3.49
+    ],
+    [
+     "suite_2c:shoji_front",
+     "suite_2c:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_2c:tub_bucket",
+     "suite_2c:dressing4:0",
+     0.44
+    ],
+    [
+     "suite_2c:shoji_front",
+     "suite_2c:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_2c:hero",
+     "suite_2c:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_2c:lights3:1",
+     "suite_2c:lights3:3",
+     0.03
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_2c:dressing3:0",
+    "suite_2c:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     175.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     175.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     176.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     176.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     177.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     177.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     178.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "lights[3]": {
+     "n": 5,
+     "nn_mean": 1.55,
+     "cv": 1.37,
+     "clumps": 2,
+     "flag": "clumpy"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1136,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_3a": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_3a:hero",
+     "suite_3a:dressing4:0",
+     2.7
+    ],
+    [
+     "suite_3a:shoji_front",
+     "suite_3a:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_3a:tub_bucket",
+     "suite_3a:dressing4:0",
+     0.9
+    ],
+    [
+     "suite_3a:shoji_front",
+     "suite_3a:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_3a:hero",
+     "suite_3a:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_3a:shoji_front",
+     "suite_3a:dressing4:0",
+     0.02
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_3a:dressing3:0",
+    "suite_3a:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     139.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     139.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     140.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     140.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     141.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     141.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     142.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "rules": {
+    "lights[3]": {
+     "n": 6,
+     "nn_mean": 2.47,
+     "cv": 0.65,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": [
+    "suite_3a:lights3:5"
+   ]
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1130,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_3b": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [
+    [
+     "suite_3b:veranda_seat",
+     1.295
+    ]
+   ],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 6,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_3b:hero",
+     "suite_3b:dressing4:0",
+     3.49
+    ],
+    [
+     "suite_3b:shoji_front",
+     "suite_3b:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_3b:tub_bucket",
+     "suite_3b:dressing4:0",
+     0.44
+    ],
+    [
+     "suite_3b:shoji_front",
+     "suite_3b:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_3b:hero",
+     "suite_3b:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_3b:lights3:1",
+     "suite_3b:lights3:3",
+     0.03
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_3b:dressing3:0",
+    "suite_3b:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     157.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     157.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     158.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     158.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     159.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     159.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     160.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "warn",
+   "fails": 0,
+   "warns": 1,
+   "rules": {
+    "lights[3]": {
+     "n": 5,
+     "nn_mean": 1.55,
+     "cv": 1.37,
+     "clumps": 2,
+     "flag": "clumpy"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1131,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_3c": {
+  "contact": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "floating": [
+    [
+     "suite_3c:veranda_seat",
+     1.285
+    ]
+   ],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 5,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_3c:hero",
+     "suite_3c:dressing4:0",
+     4.31
+    ],
+    [
+     "suite_3c:shoji_front",
+     "suite_3c:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_3c:shoji_front",
+     "suite_3c:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_3c:hero",
+     "suite_3c:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_3c:tub_bucket",
+     "suite_3c:dressing4:0",
+     0.04
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_3c:dressing3:0",
+    "suite_3c:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     175.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     175.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     176.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     176.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     177.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     177.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     178.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1130,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_4a": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 5,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_4a:hero",
+     "suite_4a:dressing4:0",
+     3.49
+    ],
+    [
+     "suite_4a:shoji_front",
+     "suite_4a:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_4a:tub_bucket",
+     "suite_4a:dressing4:0",
+     0.44
+    ],
+    [
+     "suite_4a:shoji_front",
+     "suite_4a:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_4a:hero",
+     "suite_4a:tub_bucket",
+     0.12
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_4a:dressing3:0",
+    "suite_4a:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     139.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     139.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     139.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     140.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     140.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     141.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     141.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     142.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {},
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1131,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_4b": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 5,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_4b:hero",
+     "suite_4b:dressing4:0",
+     4.31
+    ],
+    [
+     "suite_4b:shoji_front",
+     "suite_4b:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_4b:shoji_front",
+     "suite_4b:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_4b:hero",
+     "suite_4b:tub_bucket",
+     0.12
+    ],
+    [
+     "suite_4b:tub_bucket",
+     "suite_4b:dressing4:0",
+     0.04
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_4b:dressing3:0",
+    "suite_4b:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     157.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     157.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     157.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     158.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     158.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     159.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     159.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     160.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[3]": {
+     "n": 5,
+     "nn_mean": 1.88,
+     "cv": 0.61,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1130,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ },
+ "suite_4c": {
+  "contact": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "floating": [],
+   "sunk": []
+  },
+  "overlaps": {
+   "status": "fail",
+   "fails": 4,
+   "warns": 0,
+   "worst": [
+    [
+     "suite_4c:shoji_front",
+     "suite_4c:veranda_seat",
+     1.44
+    ],
+    [
+     "suite_4c:hero",
+     "suite_4c:dressing4:0",
+     0.72
+    ],
+    [
+     "suite_4c:shoji_front",
+     "suite_4c:tub_bucket",
+     0.3
+    ],
+    [
+     "suite_4c:hero",
+     "suite_4c:tub_bucket",
+     0.12
+    ]
+   ]
+  },
+  "clearance": {
+   "status": "fail",
+   "fails": 30,
+   "warns": 0,
+   "blocked": [
+    "suite_4c:dressing3:0",
+    "suite_4c:futon"
+   ],
+   "low_ceiling": [
+    [
+     "spine",
+     175.5,
+     105.5,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     105.0,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     104.5,
+     0.21
+    ],
+    [
+     "spine",
+     175.5,
+     104.0,
+     0.21
+    ],
+    [
+     "spine",
+     175.9,
+     103.7,
+     0.2
+    ],
+    [
+     "spine",
+     176.4,
+     103.5,
+     0.2
+    ],
+    [
+     "spine",
+     176.8,
+     103.2,
+     0.2
+    ],
+    [
+     "spine",
+     177.3,
+     103.0,
+     0.2
+    ],
+    [
+     "spine",
+     177.7,
+     102.7,
+     0.2
+    ],
+    [
+     "spine",
+     178.2,
+     102.5,
+     0.2
+    ]
+   ]
+  },
+  "water": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "hero_visible": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "fraction": {
+    "entry": 0.0
+   }
+  },
+  "empty_areas": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "patches": []
+  },
+  "spacing": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "rules": {
+    "lights[3]": {
+     "n": 5,
+     "nn_mean": 1.84,
+     "cv": 0.53,
+     "clumps": 0,
+     "flag": "ok"
+    }
+   },
+   "on_cell_centres": []
+  },
+  "scale": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "walk": {
+   "status": "fail",
+   "fails": 1,
+   "warns": 0,
+   "samples": 1133,
+   "reached": 0,
+   "walkable": true
+  },
+  "snap": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "bad": []
+  },
+  "unknown_assets": {
+   "status": "pass",
+   "fails": 0,
+   "warns": 0,
+   "ids": []
+  }
+ }
+}

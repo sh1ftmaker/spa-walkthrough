@@ -1,0 +1,547 @@
+{
+ "id": "g_changing",
+ "name": "Changing halls",
+ "level": "ground",
+ "tier": "must",
+ "purpose": "Shoes are already off; here you trade street clothes for undyed linen yukata in a hushed hinoki hall, collect your basalt key token and step out to the sea air.",
+ "floor_z": 0.0,
+ "ceiling_z": 6.0,
+ "ceiling_profile": {
+  "type": "flat",
+  "min_z": 2.8,
+  "max_z": 6.0,
+  "note": "Coffered hinoki ceiling at 6 m over the main hall; 2.8 m in the entry corridor (x 100-108, y 50-54) and the exit passage, 2.4 m inside the changing-booth rows."
+ },
+ "footprint": [
+  [
+   100,
+   42
+  ],
+  [
+   140,
+   42
+  ],
+  [
+   140,
+   80
+  ],
+  [
+   100,
+   80
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_hall_changing",
+   "to": "g_arrival",
+   "at": [
+    100,
+    52
+   ],
+   "width": 4.0,
+   "height": 3.2
+  },
+  {
+   "id": "p_changing_east",
+   "to": "g_east",
+   "at": [
+    140,
+    70
+   ],
+   "width": 3.0,
+   "height": 2.6,
+   "note": "Reached through exit_passage (3 m wide, 2.6 m high, 6 m long)."
+  }
+ ],
+ "spine": [
+  [
+   100.0,
+   52.0,
+   0
+  ],
+  [
+   108.0,
+   52.0,
+   0
+  ],
+  [
+   118.0,
+   52.0,
+   0
+  ],
+  [
+   128.0,
+   53.0,
+   0
+  ],
+  [
+   133.0,
+   56.5,
+   0
+  ],
+  [
+   131.0,
+   64.0,
+   0
+  ],
+  [
+   130.0,
+   70.0,
+   0
+  ],
+  [
+   134.0,
+   70.0,
+   0
+  ],
+  [
+   140.0,
+   70.0,
+   0
+  ]
+ ],
+ "branches": [
+  {
+   "id": "to_lockers",
+   "points": [
+    [
+     118.0,
+     52.0,
+     0
+    ],
+    [
+     120.0,
+     46.0,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "to_booths_north",
+   "points": [
+    [
+     131.0,
+     64.0,
+     0
+    ],
+    [
+     120.0,
+     70.0,
+     0
+    ],
+    [
+     112.0,
+     72.0,
+     0
+    ]
+   ]
+  }
+ ],
+ "shell_partitions": [
+  {
+   "id": "entry_corridor_n",
+   "line": [
+    [
+     100.0,
+     54.0
+    ],
+    [
+     108.0,
+     54.0
+    ]
+   ],
+   "h": 2.8,
+   "why": "Compressed corridor 4 m wide x 2.8 m high from the hall door."
+  },
+  {
+   "id": "entry_corridor_s",
+   "line": [
+    [
+     100.0,
+     50.0
+    ],
+    [
+     108.0,
+     50.0
+    ]
+   ],
+   "h": 2.8,
+   "note": "South of it, x 100-108 y 42-50: staff/linen store (closed)."
+  },
+  {
+   "id": "store_e",
+   "line": [
+    [
+     108.0,
+     42.0
+    ],
+    [
+     108.0,
+     50.0
+    ]
+   ],
+   "h": 6.0
+  }
+ ],
+ "hero": {
+  "asset": "yukata_shelves",
+  "at": [
+   139.5,
+   52.0,
+   0
+  ],
+  "facing_deg": 270,
+  "dims": {
+   "w": 14.0,
+   "h": 3.4,
+   "d": 0.6
+  },
+  "why": "A wall of folded undyed linen yukata in backlit hinoki cubbies, glowing like a washi lantern, sits dead on axis at the end of the low entry corridor. It is what you came here to do (change into the robe of this depth), it is the brightest surface in the hall, and it turns you toward the exit beside it."
+ },
+ "anchored": [
+  {
+   "id": "robe_counter",
+   "asset": "reception_counter",
+   "at": [
+    135.8,
+    52.0,
+    0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "w": 8.0,
+    "d": 0.9,
+    "h": 1.0
+   },
+   "why": "Attendant hands over the yukata and the basalt key token (lookbook); staff side between the counter and the shelves."
+  },
+  {
+   "id": "lockers_south",
+   "asset": "locker_bank",
+   "at": [
+    121.0,
+    42.35,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "len": 24.0,
+    "h": 2.2,
+    "d": 0.6
+   },
+   "why": "Along the south wall, out of the walk; basalt-token locks."
+  },
+  {
+   "id": "booths_north",
+   "asset": "changing_booth_row",
+   "at": [
+    118.0,
+    77.6,
+    0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "len": 30.0,
+    "d": 4.4,
+    "h": 2.4,
+    "booths": 15
+   },
+   "why": "Private booths with noren doors line the north wall (x 103-133); their lit noren are the second rhythm of light."
+  },
+  {
+   "id": "booths_west",
+   "asset": "changing_booth_row",
+   "at": [
+    102.2,
+    66.0,
+    0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "len": 14.0,
+    "d": 4.4,
+    "h": 2.4,
+    "booths": 7
+   },
+   "why": "West wall booths (y 59-73), clear of the entry corridor."
+  },
+  {
+   "id": "vanity_east",
+   "asset": "vanity_counter",
+   "at": [
+    139.6,
+    76.0,
+    0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "w": 6.0,
+    "d": 0.6,
+    "h": 0.8
+   },
+   "why": "Mirror and comb counter next to the exit; last look before going out."
+  },
+  {
+   "id": "exit_passage",
+   "asset": "timber_passage",
+   "at": [
+    137.0,
+    70.0,
+    0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "len": 6.0,
+    "w": 3.0,
+    "h": 2.6
+   },
+   "why": "Low dark hinoki passage to the east terrace: compression before the sea-cliff opening."
+  },
+  {
+   "id": "tokonoma",
+   "asset": "pine_bonsai",
+   "at": [
+    118.0,
+    74.6,
+    0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "h": 1.1,
+    "plinth": "lacquer dai 1.8 x 0.6"
+   },
+   "why": "A single bonsai on a lacquer stand at the head of the open floor: the hall's still point."
+  }
+ ],
+ "water": [],
+ "sightlines": [
+  {
+   "from": "p_hall_changing",
+   "see": "Down the low corridor: the glowing yukata wall on axis 40 m away.",
+   "target": [
+    139.5,
+    52.0,
+    1.8
+   ]
+  },
+  {
+   "from": "robe_counter",
+   "see": "North-east: the exit passage's end framing blue-hour sky and the lantern on the east terrace.",
+   "target": [
+    150.0,
+    72.0,
+    2.0
+   ]
+  },
+  {
+   "from": "p_changing_east",
+   "see": "Looking back: robe wall glow on the left, booth noren in a row.",
+   "target": [
+    139.5,
+    52.0,
+    1.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    101.0,
+    52.0,
+    1.6
+   ],
+   "target": [
+    139.5,
+    52.0,
+    1.8
+   ],
+   "fov_v": 55
+  },
+  "reveal": {
+   "pos": [
+    109.0,
+    53.0,
+    1.6
+   ],
+   "target": [
+    138.0,
+    54.0,
+    1.8
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "image": "lookbook/img/31-plan-ground.jpg",
+   "pos": [
+    113.0,
+    64.0,
+    1.6
+   ],
+   "target": [
+    135.0,
+    50.0,
+    1.2
+   ],
+   "fov_v": 60,
+   "match": "Plan 31's changing halls at eye height: warm hinoki lockers and counters, rows of small lights, polished dark floor; no concept painting exists, so mood from 04's slipper wall and 21's interior."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     100.5,
+     52.0
+    ],
+    [
+     108.0,
+     52.0
+    ]
+   ],
+   "side": "both",
+   "spacing": [
+    6.0,
+    6.0
+   ],
+   "offset": 1.6,
+   "face": "path",
+   "why": "Only two andon in the corridor: dim, so the robe wall is the reveal."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     112.0,
+     56.0
+    ],
+    [
+     130.0,
+     56.0
+    ]
+   ],
+   "spacing": [
+    5.0,
+    7.0
+   ],
+   "height": [
+    3.6,
+    4.2
+   ],
+   "why": "Pendant rhythm across the open floor leading east to the hero."
+  },
+  {
+   "asset": "noren_glow",
+   "along": "anchored:booths_north",
+   "spacing": [
+    2.0,
+    2.0
+   ],
+   "why": "Each booth's noren lit from behind: a soft band at the edge, not in the middle."
+  },
+  {
+   "asset": "noren_glow",
+   "along": "anchored:booths_west",
+   "spacing": [
+    2.0,
+    2.0
+   ]
+  },
+  {
+   "asset": "lantern_niche",
+   "along": "anchored:lockers_south",
+   "spacing": [
+    4.0,
+    6.0
+   ],
+   "height": 0.25,
+   "why": "Ankle lights under the lockers, darker band between."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     133.5,
+     72.2,
+     0
+    ]
+   ],
+   "face": 90,
+   "why": "One andon at the exit passage mouth."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "bench_stone",
+   "along": "anchored:lockers_south",
+   "spacing": [
+    5.0,
+    7.0
+   ],
+   "offset": 1.4,
+   "face": 0,
+   "dims": {
+    "len": 2.4,
+    "material": "hinoki slat"
+   }
+  },
+  {
+   "asset": "bench_stone",
+   "along": [
+    [
+     107.0,
+     60.0
+    ],
+    [
+     107.0,
+     72.0
+    ]
+   ],
+   "spacing": [
+    5.0,
+    6.0
+   ],
+   "offset": 0.0,
+   "face": 90,
+   "dims": {
+    "len": 2.0,
+    "material": "hinoki slat"
+   }
+  },
+  {
+   "asset": "towel_basket",
+   "scatter": "edge_band",
+   "band": [
+    0.4,
+    1.2
+   ],
+   "density": 0.02,
+   "min_dist": 4.0,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero",
+    3.0
+   ],
+   "snap": "ground"
+  },
+  {
+   "asset": "banner",
+   "at": [
+    [
+     108.2,
+     52.0,
+     2.6
+    ]
+   ],
+   "face": 90,
+   "why": "Noren at the corridor mouth (yukata indigo cloth, mountain crest)."
+  }
+ ],
+ "mood": {
+  "key": "backlit linen wall",
+  "palette": "warm hinoki, cream washi, undyed linen, black basalt floor with soft reflections",
+  "mist": "none"
+ },
+ "waivers": []
+}

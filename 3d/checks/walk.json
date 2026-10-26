@@ -1,0 +1,327 @@
+{
+ "result": "fail",
+ "start": [
+  24,
+  51,
+  0
+ ],
+ "res": 0.5,
+ "unreached": [
+  "b1_grotto",
+  "b1_cor_north",
+  "suite_1a",
+  "suite_1b",
+  "suite_1c",
+  "suite_2a",
+  "suite_2b",
+  "suite_2c",
+  "suite_3a",
+  "suite_3b",
+  "suite_3c",
+  "suite_4a",
+  "suite_4b",
+  "suite_4c"
+ ],
+ "spaces": {
+  "g_road": {
+   "samples": 348,
+   "reached": 347,
+   "walkable": true
+  },
+  "g_gate": {
+   "samples": 2893,
+   "reached": 2715,
+   "walkable": true
+  },
+  "g_arrival": {
+   "samples": 8152,
+   "reached": 7763,
+   "walkable": true
+  },
+  "g_changing": {
+   "samples": 6013,
+   "reached": 5477,
+   "walkable": true
+  },
+  "g_terrace": {
+   "samples": 7919,
+   "reached": 7736,
+   "walkable": true
+  },
+  "g_cascade": {
+   "samples": 3755,
+   "reached": 2946,
+   "walkable": true
+  },
+  "g_east": {
+   "samples": 2930,
+   "reached": 2865,
+   "walkable": true
+  },
+  "g_east_path": {
+   "samples": 729,
+   "reached": 727,
+   "walkable": true
+  },
+  "g_north_ledge": {
+   "samples": 3162,
+   "reached": 2941,
+   "walkable": true
+  },
+  "b1_lobby": {
+   "samples": 1378,
+   "reached": 1356,
+   "walkable": true
+  },
+  "b1_cor_mirror": {
+   "samples": 884,
+   "reached": 281,
+   "walkable": true
+  },
+  "b1_junction_w": {
+   "samples": 200,
+   "reached": 196,
+   "walkable": true
+  },
+  "b1_cor_west": {
+   "samples": 105,
+   "reached": 7,
+   "walkable": true
+  },
+  "b1_mirror": {
+   "samples": 2668,
+   "reached": 2477,
+   "walkable": true
+  },
+  "b1_grotto": {
+   "samples": 3212,
+   "reached": 0,
+   "walkable": true
+  },
+  "b1_cor_north": {
+   "samples": 1818,
+   "reached": 0,
+   "walkable": true
+  },
+  "b1_cor_east": {
+   "samples": 759,
+   "reached": 178,
+   "walkable": true
+  },
+  "b1_treatment": {
+   "samples": 2540,
+   "reached": 2516,
+   "walkable": true
+  },
+  "b1_glacier": {
+   "samples": 2737,
+   "reached": 2630,
+   "walkable": true
+  },
+  "b1_cor_south": {
+   "samples": 634,
+   "reached": 131,
+   "walkable": true
+  },
+  "b1_slide_top": {
+   "samples": 957,
+   "reached": 863,
+   "walkable": true
+  },
+  "b1_outfall": {
+   "samples": 471,
+   "reached": 39,
+   "walkable": true
+  },
+  "b2_kawagiri": {
+   "samples": 2824,
+   "reached": 20,
+   "walkable": true
+  },
+  "b2_core": {
+   "samples": 4876,
+   "reached": 3700,
+   "walkable": true
+  },
+  "b2_boat": {
+   "samples": 1007,
+   "reached": 873,
+   "walkable": true
+  },
+  "b2_boardwalk": {
+   "samples": 738,
+   "reached": 732,
+   "walkable": true
+  },
+  "b2_lava_link": {
+   "samples": 339,
+   "reached": 212,
+   "walkable": true
+  },
+  "b2_falls_head": {
+   "samples": 146,
+   "reached": 126,
+   "walkable": true
+  },
+  "b2_river": {
+   "samples": 1662,
+   "reached": 0,
+   "walkable": false
+  },
+  "b3_cavern": {
+   "samples": 27416,
+   "reached": 26151,
+   "walkable": false
+  },
+  "b3_falls": {
+   "samples": 5296,
+   "reached": 5017,
+   "walkable": true
+  },
+  "b3_rimstone": {
+   "samples": 998,
+   "reached": 330,
+   "walkable": true
+  },
+  "b3_lobby": {
+   "samples": 1518,
+   "reached": 1476,
+   "walkable": true
+  },
+  "b3_lazy": {
+   "samples": 6564,
+   "reached": 6345,
+   "walkable": true
+  },
+  "b3_geyser": {
+   "samples": 1916,
+   "reached": 1756,
+   "walkable": true
+  },
+  "b3_slide_foot": {
+   "samples": 2348,
+   "reached": 2185,
+   "walkable": true
+  },
+  "b3_shore": {
+   "samples": 207,
+   "reached": 188,
+   "walkable": true
+  },
+  "b3_wave": {
+   "samples": 7055,
+   "reached": 6308,
+   "walkable": true
+  },
+  "b3_walk_north": {
+   "samples": 227,
+   "reached": 227,
+   "walkable": true
+  },
+  "b3_falls_gallery": {
+   "samples": 1194,
+   "reached": 595,
+   "walkable": true
+  },
+  "b4_lobby": {
+   "samples": 2448,
+   "reached": 2445,
+   "walkable": true
+  },
+  "b4_tunnel": {
+   "samples": 905,
+   "reached": 872,
+   "walkable": true
+  },
+  "b4_chamber": {
+   "samples": 8722,
+   "reached": 8699,
+   "walkable": true
+  },
+  "s_pool": {
+   "samples": 2933,
+   "reached": 2730,
+   "walkable": true
+  },
+  "s_spring": {
+   "samples": 985,
+   "reached": 6,
+   "walkable": true
+  },
+  "s_moon": {
+   "samples": 1673,
+   "reached": 1648,
+   "walkable": true
+  },
+  "s_rim": {
+   "samples": 1787,
+   "reached": 1756,
+   "walkable": true
+  },
+  "s_rim_west": {
+   "samples": 447,
+   "reached": 422,
+   "walkable": true
+  },
+  "suite_1a": {
+   "samples": 1141,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_1b": {
+   "samples": 1150,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_1c": {
+   "samples": 1135,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_2a": {
+   "samples": 1150,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_2b": {
+   "samples": 1135,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_2c": {
+   "samples": 1136,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_3a": {
+   "samples": 1130,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_3b": {
+   "samples": 1131,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_3c": {
+   "samples": 1130,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_4a": {
+   "samples": 1131,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_4b": {
+   "samples": 1130,
+   "reached": 0,
+   "walkable": true
+  },
+  "suite_4c": {
+   "samples": 1133,
+   "reached": 0,
+   "walkable": true
+  }
+ }
+}

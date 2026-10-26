@@ -1,0 +1,497 @@
+{
+ "id": "s_rim",
+ "name": "Rim walk",
+ "level": "summit",
+ "tier": "should",
+ "purpose": "The crater-rim boardwalk that strings the summit together: from the cable station along the pool's west side to the spring, round the north to the Cliff Stair head and the moon deck, always with steam on one side and a drop or a rock wall on the other.",
+ "floor_z": 120.0,
+ "ceiling_z": null,
+ "ceiling_profile": {
+  "type": "open"
+ },
+ "footprint": [
+  [
+   79.47,
+   60.25
+  ],
+  [
+   72.112,
+   65.156
+  ],
+  [
+   74.273,
+   80.282
+  ],
+  [
+   78.382,
+   102.577
+  ],
+  [
+   83.231,
+   107.184
+  ],
+  [
+   120.057,
+   110.764
+  ],
+  [
+   149.35,
+   105.988
+  ],
+  [
+   149.35,
+   102.0
+  ],
+  [
+   145.85,
+   102.0
+  ],
+  [
+   145.85,
+   103.012
+  ],
+  [
+   119.943,
+   107.236
+  ],
+  [
+   84.769,
+   103.816
+  ],
+  [
+   81.618,
+   100.823
+  ],
+  [
+   77.727,
+   79.718
+  ],
+  [
+   75.888,
+   66.844
+  ],
+  [
+   80.53,
+   63.75
+  ],
+  [
+   98.0,
+   63.75
+  ],
+  [
+   98.0,
+   60.25
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_s_rim_west",
+   "to": "s_rim_west",
+   "at": [
+    75,
+    65
+   ],
+   "width": 3.5
+  },
+  {
+   "id": "p_rim_cable",
+   "to": "cable_lift",
+   "at": [
+    96.0,
+    60.0
+   ],
+   "width": 2.4,
+   "connection": "cable_lift",
+   "note": "Cable lift top station door."
+  },
+  {
+   "id": "p_s_rim_pool_sw",
+   "to": "s_pool",
+   "at": [
+    89,
+    63.6
+   ],
+   "width": 4.0
+  },
+  {
+   "id": "p_s_rim_spring",
+   "to": "s_spring",
+   "at": [
+    80,
+    101.7
+   ],
+   "width": 3.0,
+   "note": "Via spring_steps (rim 120.0 -> 121.5)."
+  },
+  {
+   "id": "p_s_rim_pool_n",
+   "to": "s_pool",
+   "at": [
+    103,
+    105.6
+   ],
+   "width": 4.0
+  },
+  {
+   "id": "p_rim_cliff_stair",
+   "to": "cliff_stair_4",
+   "at": [
+    140.0,
+    107.0
+   ],
+   "width": 2.0,
+   "connection": "cliff_stair_4",
+   "note": "Cliff Stair head at z 120 (cliff_stair_4 last plan point)."
+  },
+  {
+   "id": "p_s_rim_moon",
+   "to": "s_moon",
+   "at": [
+    147.6,
+    102
+   ],
+   "width": 3.0,
+   "note": "Via moon_steps (3 risers)."
+  }
+ ],
+ "spine": [
+  [
+   98.0,
+   62.0,
+   120.0
+  ],
+  [
+   89.0,
+   62.0,
+   120.0
+  ],
+  [
+   80.0,
+   62.0,
+   120.0
+  ],
+  [
+   74.0,
+   66.0,
+   120.0
+  ],
+  [
+   75.0,
+   73.0,
+   120.0
+  ],
+  [
+   76.0,
+   80.0,
+   120.0
+  ],
+  [
+   78.5,
+   93.5,
+   120.0
+  ],
+  [
+   80.0,
+   101.7,
+   120.0
+  ],
+  [
+   84.0,
+   105.5,
+   120.0
+  ],
+  [
+   103.0,
+   107.35,
+   120.0
+  ],
+  [
+   120.0,
+   109.0,
+   120.0
+  ],
+  [
+   134.0,
+   106.72,
+   120.0
+  ],
+  [
+   140.0,
+   105.74,
+   120.0
+  ],
+  [
+   147.6,
+   104.5,
+   120.0
+  ],
+  [
+   147.6,
+   102.0,
+   120.0
+  ]
+ ],
+ "hero": {
+  "asset": "cable_car",
+  "part": "top_station",
+  "at": [
+   96.0,
+   57.0,
+   120.0
+  ],
+  "facing_deg": 195,
+  "dims": {
+   "w": 7.0,
+   "d": 6.0,
+   "h": 5.0
+  },
+  "outside_ok": "Station platform cantilevers off the south cliff; its door opens onto the walk at (96, 60).",
+  "why": "The lit glass cabin docking at a timber-and-bronze station on the cliff lip (30) is the landmark at the rim's south end: seen from the Terrace Path head as the warm point beside the caldera glow, and the place cable riders step out."
+ },
+ "anchored": [
+  {
+   "id": "rim_rill_bridge",
+   "asset": "bridge_arched",
+   "at": [
+    78.5,
+    93.5,
+    120.0
+   ],
+   "facing_deg": 10,
+   "dims": {
+    "span": 3.0,
+    "w": 3.5,
+    "rise": 0.5
+   },
+   "why": "Low arched deck over the spring rill's kerbed channel where it crosses the west leg."
+  },
+  {
+   "id": "cliff_stair_toro",
+   "asset": "lantern_stone",
+   "at": [
+    142.6,
+    105.0,
+    120.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "h": 2.2
+   },
+   "why": "Marks the Cliff Stair head on the north arm."
+  },
+  {
+   "id": "cliff_stair_sign",
+   "asset": "sign_kanji",
+   "at": [
+    137.6,
+    105.0,
+    120.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "h": 1.8,
+    "text": "Cliff Stair · suites · ground"
+   },
+   "why": "Wayfinding at the stair head."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_rim_rill",
+   "kind": "flow",
+   "z": 120.1,
+   "rim_z": 120.3,
+   "path": [
+    [
+     77.0,
+     93.9
+    ],
+    [
+     80.3,
+     93.5
+    ]
+   ],
+   "width": 0.6,
+   "note": "Kerbed channel (kerbs to 120.3) under rim_rill_bridge: spring rill 121.3 -> 120.1 -> pool inflow 120.03 -> caldera 119.95."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_s_rim_west",
+   "see": "The cable station glow to the south-east, the caldera's steam lit teal beyond the low rim wall.",
+   "target": [
+    96.0,
+    60.0,
+    122.0
+   ]
+  },
+  {
+   "from": "p_rim_cable",
+   "see": "The infinity lip running east into cloud.",
+   "target": [
+    130.0,
+    68.0,
+    119.0
+   ]
+  },
+  {
+   "from": "west_leg",
+   "see": "The spring's steam column and basket lanterns above the retaining wall.",
+   "target": [
+    66.0,
+    96.0,
+    125.0
+   ]
+  },
+  {
+   "from": "p_rim_cliff_stair",
+   "see": "The moon pavilion's lit eaves past the end of the north arm.",
+   "target": [
+    155.0,
+    91.0,
+    124.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    76.0,
+    64.8,
+    121.6
+   ],
+   "target": [
+    96.0,
+    60.0,
+    122.0
+   ],
+   "fov_v": 58
+  },
+  "reveal": {
+   "pos": [
+    84.0,
+    62.0,
+    121.6
+   ],
+   "target": [
+    120.0,
+    80.0,
+    120.0
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "image": "lookbook/img/30-plan-summit.jpg",
+   "pos": [
+    112.0,
+    108.2,
+    121.6
+   ],
+   "target": [
+    100.0,
+    75.0,
+    120.0
+   ],
+   "fov_v": 55,
+   "match": "Plan 30's north boardwalk at eye height: lantern-lined hinoki walk on black rock, the caldera's islands and steam below to the left, the spring lanterns far right."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_post",
+   "along": "spine",
+   "side": "outer",
+   "spacing": [
+    6.0,
+    9.0
+   ],
+   "offset": 1.4,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "One row on the drop / rock side, the rail line made visible."
+  },
+  {
+   "asset": "lantern_stone",
+   "along": "spine",
+   "side": "inner",
+   "spacing": [
+    14.0,
+    20.0
+   ],
+   "offset": 1.4,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Occasional toro on the pool side; long dark gaps."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": "spine",
+   "side": "outer",
+   "offset": 1.6,
+   "height": 1.05,
+   "avoid": [
+    "portals"
+   ],
+   "note": "On the west leg (y 66-101) the outer side is the spring terrace's 1.5 m retaining wall: wall, not rail."
+  },
+  {
+   "asset": "boardwalk",
+   "along": "spine",
+   "width": 2.6,
+   "why": "Hinoki deck on the rock (plan 30)."
+  },
+  {
+   "asset": "pine_bonsai",
+   "along": "spine",
+   "side": "inner",
+   "spacing": [
+    18.0,
+    26.0
+   ],
+   "offset": 1.5,
+   "scale": [
+    0.7,
+    1.1
+   ],
+   "avoid": [
+    "portals"
+   ]
+  },
+  {
+   "asset": "rock_cluster",
+   "along": "spine",
+   "side": "both",
+   "spacing": [
+    4.0,
+    8.0
+   ],
+   "offset": 1.7,
+   "embed": 0.2,
+   "scale": [
+    0.4,
+    0.9
+   ],
+   "avoid": [
+    "portals"
+   ]
+  }
+ ],
+ "mood": {
+  "key": "lantern line on the crater lip",
+  "palette": "amber posts, teal steam glow inside, cold cloud sea outside",
+  "mist": "cloud drifting up the outer slope"
+ },
+ "waivers": [
+  {
+   "check": "hero_inside_footprint",
+   "where": "hero top_station",
+   "reason": "Rim band is 3.5 m wide; the station hangs on the cliff beside it."
+  }
+ ]
+}

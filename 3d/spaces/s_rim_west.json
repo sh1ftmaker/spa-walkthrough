@@ -1,0 +1,283 @@
+{
+ "id": "s_rim_west",
+ "name": "Terrace Path head",
+ "level": "summit",
+ "tier": "should",
+ "purpose": "The top of 706 steps: you come off the Terrace Path onto the crater lip, catch your breath at a carved summit stone, and see the caldera's steam and the cable station glow ahead.",
+ "floor_z": 120.0,
+ "ceiling_z": null,
+ "ceiling_profile": {
+  "type": "open"
+ },
+ "footprint": [
+  [
+   60.622,
+   71.637
+  ],
+  [
+   75.553,
+   66.66
+  ],
+  [
+   74.447,
+   63.34
+  ],
+  [
+   59.378,
+   68.363
+  ],
+  [
+   45.311,
+   74.391
+  ],
+  [
+   46.689,
+   77.609
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_rim_terrace_path",
+   "to": "terrace_path",
+   "at": [
+    46.0,
+    76.0
+   ],
+   "width": 2.4,
+   "connection": "terrace_path",
+   "note": "Top of the Terrace Path (plan point 0)."
+  },
+  {
+   "id": "p_s_rim_west",
+   "to": "s_rim",
+   "at": [
+    75,
+    65
+   ],
+   "width": 3.5
+  }
+ ],
+ "spine": [
+  [
+   46.0,
+   76.0,
+   120.0
+  ],
+  [
+   53.0,
+   73.0,
+   120.0
+  ],
+  [
+   60.0,
+   70.0,
+   120.0
+  ],
+  [
+   67.5,
+   67.5,
+   120.0
+  ],
+  [
+   75.0,
+   65.0,
+   120.0
+  ]
+ ],
+ "hero": {
+  "asset": "sign_kanji",
+  "variant": "summit_stele",
+  "at": [
+   63.0,
+   70.4,
+   120.0
+  ],
+  "facing_deg": 250,
+  "dims": {
+   "h": 2.8,
+   "w": 1.2,
+   "d": 0.7,
+   "text": "火山湯 頂 +120 m"
+  },
+  "why": "A rough basalt stele with gilt characters marking the summit: the reward for the climb and the natural pause, lit by toro, with the caldera steam rising behind it as you face east."
+ },
+ "anchored": [
+  {
+   "id": "path_top_toro",
+   "asset": "lantern_stone",
+   "at": [
+    47.8,
+    76.4,
+    120.0
+   ],
+   "facing_deg": 240,
+   "dims": {
+    "h": 2.4
+   },
+   "why": "Marks the Terrace Path head; seen from the flights below as the last light."
+  },
+  {
+   "id": "stele_toro",
+   "asset": "lantern_stone",
+   "at": [
+    65.2,
+    69.7,
+    120.0
+   ],
+   "facing_deg": 250,
+   "dims": {
+    "h": 1.8
+   },
+   "why": "Lights the stele face (hero brightest)."
+  },
+  {
+   "id": "rest_bench",
+   "asset": "bench_stone",
+   "at": [
+    55.5,
+    70.6,
+    120.0
+   ],
+   "facing_deg": 200,
+   "dims": {
+    "len": 2.4
+   },
+   "why": "Rest after the climb, facing back down over the cascades."
+  }
+ ],
+ "water": [],
+ "sightlines": [
+  {
+   "from": "p_rim_terrace_path",
+   "see": "The stele and its toro 18 m ahead; behind them the caldera steam glowing teal and the cable station's warm windows.",
+   "target": [
+    63.0,
+    70.4,
+    2.0
+   ]
+  },
+  {
+   "from": "p_s_rim_west",
+   "see": "Back down the flank: the Terrace Path's lantern zigzag and the cascade pools far below.",
+   "target": [
+    20.0,
+    90.0,
+    60.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    46.8,
+    75.8,
+    121.6
+   ],
+   "target": [
+    75.0,
+    65.0,
+    121.5
+   ],
+   "fov_v": 58
+  },
+  "reveal": {
+   "pos": [
+    58.0,
+    71.6,
+    121.6
+   ],
+   "target": [
+    63.0,
+    70.4,
+    121.6
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "image": "lookbook/img/30-plan-summit.jpg",
+   "pos": [
+    70.0,
+    66.8,
+    121.6
+   ],
+   "target": [
+    46.0,
+    76.0,
+    118.0
+   ],
+   "fov_v": 58,
+   "match": "Plan 30's Terrace Path head (D3): hinoki walk with lanterns dropping away down the west flank toward the cascade pools, cloud sea beyond."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_post",
+   "along": "spine",
+   "side": "right",
+   "spacing": [
+    6.0,
+    8.0
+   ],
+   "offset": 1.4,
+   "face": "path",
+   "avoid": [
+    "portals",
+    "hero"
+   ],
+   "why": "On the drop (south) side rail."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": "spine",
+   "side": "right",
+   "offset": 1.6,
+   "height": 1.05,
+   "avoid": [
+    "portals"
+   ],
+   "why": "South-west drop over the flank."
+  },
+  {
+   "asset": "rock_cluster",
+   "along": "spine",
+   "side": "left",
+   "spacing": [
+    3.0,
+    6.0
+   ],
+   "offset": 1.6,
+   "embed": 0.2,
+   "scale": [
+    0.4,
+    0.9
+   ],
+   "avoid": [
+    "hero",
+    2.0
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     50.5,
+     75.4,
+     120.0
+    ]
+   ],
+   "scale": [
+    0.8,
+    1.1
+   ],
+   "why": "Windswept pine at the head."
+  }
+ ],
+ "mood": {
+  "key": "summit stone against the steam",
+  "palette": "amber toro, teal steam glow, cold cloud sea",
+  "mist": "cloud drifting up the flank"
+ },
+ "waivers": []
+}

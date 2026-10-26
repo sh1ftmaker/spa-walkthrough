@@ -1,0 +1,715 @@
+{
+ "id": "b1_lobby",
+ "name": "B1 lift lobby",
+ "level": "b1",
+ "purpose": "B1 arrival: the lift and Spiral Stair let guests out into a low, warm ring of stone around a glowing bronze drum; the air turns humid, mist spills in from two corridor mouths, and they choose a way (west to the Mirror and steam, south-east to the slide and treatments).",
+ "floor_z": -20.0,
+ "ceiling_z": -15.5,
+ "ceiling_profile": {
+  "type": "vault",
+  "min_z": -16.3,
+  "max_z": -15.5,
+  "note": "Low carved ring vault between the lift drum (r 8) and the outer wall (r 12.5): 4.5 m at the drum, 3.7 m at the wall. Keeps B1's compressed register before the corridors."
+ },
+ "footprint": [
+  [
+   102.26,
+   72.439
+  ],
+  [
+   102.5,
+   70.0
+  ],
+  [
+   102.26,
+   67.561
+  ],
+  [
+   101.548,
+   65.216
+  ],
+  [
+   100.393,
+   63.055
+  ],
+  [
+   98.839,
+   61.161
+  ],
+  [
+   96.945,
+   59.607
+  ],
+  [
+   94.784,
+   58.452
+  ],
+  [
+   92.439,
+   57.74
+  ],
+  [
+   90.0,
+   57.5
+  ],
+  [
+   87.561,
+   57.74
+  ],
+  [
+   85.216,
+   58.452
+  ],
+  [
+   83.055,
+   59.607
+  ],
+  [
+   81.161,
+   61.161
+  ],
+  [
+   79.607,
+   63.055
+  ],
+  [
+   78.452,
+   65.216
+  ],
+  [
+   77.74,
+   67.561
+  ],
+  [
+   77.5,
+   70.0
+  ],
+  [
+   77.74,
+   72.439
+  ],
+  [
+   78.452,
+   74.784
+  ],
+  [
+   79.607,
+   76.945
+  ],
+  [
+   81.161,
+   78.839
+  ],
+  [
+   83.055,
+   80.393
+  ],
+  [
+   85.216,
+   81.548
+  ],
+  [
+   87.561,
+   82.26
+  ],
+  [
+   90.0,
+   82.5
+  ],
+  [
+   92.439,
+   82.26
+  ],
+  [
+   94.275,
+   81.703
+  ],
+  [
+   94.591,
+   81.175
+  ],
+  [
+   94.955,
+   80.611
+  ],
+  [
+   95.337,
+   80.059
+  ],
+  [
+   95.736,
+   79.52
+  ],
+  [
+   96.153,
+   78.995
+  ],
+  [
+   96.587,
+   78.483
+  ],
+  [
+   97.038,
+   77.986
+  ],
+  [
+   97.504,
+   77.504
+  ],
+  [
+   97.986,
+   77.038
+  ],
+  [
+   98.483,
+   76.587
+  ],
+  [
+   98.995,
+   76.153
+  ],
+  [
+   99.52,
+   75.736
+  ],
+  [
+   100.059,
+   75.337
+  ],
+  [
+   100.611,
+   74.955
+  ],
+  [
+   101.175,
+   74.591
+  ],
+  [
+   101.703,
+   74.275
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_lobby_cor",
+   "to": "b1_cor_mirror",
+   "at": [
+    78,
+    72
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b1_lobby_south",
+   "to": "b1_cor_south",
+   "at": [
+    101.5,
+    64
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b1_lobby_spiral_stair",
+   "to": "spiral_stair",
+   "at": [
+    83.72,
+    74.95
+   ],
+   "width": 2.6,
+   "height": 2.6
+  },
+  {
+   "id": "p_b1_lobby_lift",
+   "to": "main_lift",
+   "at": [
+    96.28,
+    65.05
+   ],
+   "width": 1.8,
+   "height": 2.4
+  }
+ ],
+ "spine": [
+  [
+   78.0,
+   72.0,
+   -20.0
+  ],
+  [
+   80.05,
+   72.67,
+   -20.0
+  ],
+  [
+   80.05,
+   67.33,
+   -20.0
+  ],
+  [
+   82.72,
+   62.72,
+   -20.0
+  ],
+  [
+   87.33,
+   60.05,
+   -20.0
+  ],
+  [
+   92.67,
+   60.05,
+   -20.0
+  ],
+  [
+   95.91,
+   61.56,
+   -20.0
+  ],
+  [
+   98.3,
+   63.4,
+   -20.0
+  ],
+  [
+   101.5,
+   64.0,
+   -20.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "to_spiral_stair",
+   "points": [
+    [
+     80.05,
+     72.67,
+     -20.0
+    ],
+    [
+     82.2,
+     73.9,
+     -20.0
+    ],
+    [
+     83.72,
+     74.95,
+     -20.0
+    ]
+   ]
+  },
+  {
+   "id": "to_lift",
+   "points": [
+    [
+     98.3,
+     63.4,
+     -20.0
+    ],
+    [
+     96.28,
+     65.05,
+     -20.0
+    ]
+   ]
+  },
+  {
+   "id": "quiet_arc",
+   "points": [
+    [
+     81.08,
+     75.15,
+     -20.0
+    ],
+    [
+     83.38,
+     77.89,
+     -20.0
+    ],
+    [
+     86.48,
+     79.68,
+     -20.0
+    ],
+    [
+     90.0,
+     80.3,
+     -20.0
+    ],
+    [
+     93.52,
+     79.68,
+     -20.0
+    ],
+    [
+     96.62,
+     77.89,
+     -20.0
+    ],
+    [
+     98.92,
+     75.15,
+     -20.0
+    ],
+    [
+     100.14,
+     71.79,
+     -20.0
+    ],
+    [
+     100.14,
+     68.21,
+     -20.0
+    ]
+   ],
+   "note": "North half of the ring (benches, rill): walkable loop, not the through-route."
+  }
+ ],
+ "hero": {
+  "asset": "lift_core",
+  "at": [
+   90.0,
+   70.0,
+   -20.0
+  ],
+  "facing_deg": 128,
+  "dims": {
+   "r": 8.0,
+   "h": 4.5
+  },
+  "why": "The lobby is a ring around B1's only fixed vertical link. A carved basalt drum with bronze ribs and tall glass slots (the lit car and spiral visible inside), ringed at its base by ankle lights: it is what both corridor mouths frame, the warmest thing in the ring, and the landmark every B1 route returns to."
+ },
+ "anchored": [
+  {
+   "id": "b1_board",
+   "asset": "sign_kanji",
+   "at": [
+    79.52,
+    76.05,
+    -20.0
+   ],
+   "facing_deg": 120,
+   "dims": {
+    "w": 0.9,
+    "h": 2.4
+   },
+   "text": "地下一階 · B1 · 34 °C",
+   "why": "The first thing read on stepping off the Spiral Stair: on the outer wall straight ahead of the stair door (bearing 308)."
+  },
+  {
+   "id": "bench_n1",
+   "asset": "bench_stone",
+   "at": [
+    90.79,
+    81.27,
+    -20.0
+   ],
+   "facing_deg": 184,
+   "dims": {
+    "l": 2.4
+   },
+   "why": "Quiet north half: wait for companions facing the drum."
+  },
+  {
+   "id": "bench_n2",
+   "asset": "bench_stone",
+   "at": [
+    85.22,
+    80.24,
+    -20.0
+   ],
+   "facing_deg": 155,
+   "dims": {
+    "l": 2.4
+   },
+   "why": "Second bench beside the rill, angled so the two are not a row."
+  },
+  {
+   "id": "rill_spout",
+   "asset": "chozubachi",
+   "at": [
+    93.68,
+    80.68,
+    -20.0
+   ],
+   "facing_deg": 199,
+   "dims": {
+    "r": 0.6
+   },
+   "why": "Bamboo spout and basin where the lobby rill rises; the only water sound in the lobby. Kept west of the clipped NE wall."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_b1_lobby_rill",
+   "kind": "flow",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -20.25,
+   "path": [
+    [
+     93.68,
+     81.32
+    ],
+    [
+     91.86,
+     81.75
+    ],
+    [
+     90.0,
+     81.9
+    ],
+    [
+     90.0,
+     81.9
+    ],
+    [
+     87.53,
+     81.64
+    ],
+    [
+     85.16,
+     80.87
+    ],
+    [
+     83.01,
+     79.63
+    ],
+    [
+     81.16,
+     77.96
+    ],
+    [
+     79.69,
+     75.95
+    ]
+   ],
+   "width": 0.6,
+   "layout_ref": "w_b1_corridors",
+   "note": "Narrow rill along the outer wall of the quiet north half, from the basin (bearing 19) west to the corridor pool at the west mouth. Same -20.05 surface as the corridors."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_lobby_spiral_stair",
+   "see": "Stepping off the stair: the west corridor mouth: noren, knee-high mist, niche lanterns doubled in the water; the koi junction's glow 12 m beyond.",
+   "target": [
+    66.0,
+    74.0,
+    -19.5
+   ]
+  },
+  {
+   "from": "p_b1_lobby_lift",
+   "see": "Out of the lift and over the bridge: the south-east corridor mouth almost straight ahead, its far bend tinted orange by the lava slot (first hint of the slide).",
+   "target": [
+    114.2,
+    54.1,
+    -18.8
+   ]
+  },
+  {
+   "from": "p_b1_lobby_cor",
+   "see": "Returning from the west: the lit drum and its ring of base lights.",
+   "target": [
+    90.0,
+    70.0,
+    -17.5
+   ]
+  },
+  {
+   "from": "p_b1_lobby_south",
+   "see": "Returning from the slide: drum and lantern pools on the outer wall leading round to the west mouth.",
+   "target": [
+    90.0,
+    70.0,
+    -17.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    78.61,
+    72.21,
+    -18.4
+   ],
+   "target": [
+    90.0,
+    70.0,
+    -17.2
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    83.3,
+    74.6,
+    -18.4
+   ],
+   "target": [
+    70.0,
+    73.9,
+    -18.8
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "pos": [
+    100.6,
+    64.6,
+    -18.4
+   ],
+   "target": [
+    86.5,
+    61.0,
+    -17.8
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/33-plan-b1-thermal.jpg",
+   "match": "The plan draws the lift as a round drum with a carved spiral, a timber ring and lanterns. At eye level: drum filling the right half, ring walk curving away left with lantern pools on the outer wall and dark gaps, wet black floor."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_niche",
+   "ring": [
+    90.0,
+    70.0
+   ],
+   "radius": 8.15,
+   "spacing": [
+    2.2,
+    2.8
+   ],
+   "snap": "wall",
+   "height": 0.25,
+   "face": "out",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Base ring under the drum: makes the hero the brightest thing in the room."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": "spine",
+   "side": "out",
+   "offset": 1.7,
+   "spacing": [
+    5.5,
+    7.5
+   ],
+   "face": "path",
+   "avoid": [
+    "portals",
+    "water"
+   ],
+   "why": "Pools of light on the outer wall with dark gaps between, leading round to the corridor mouths."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     81.54,
+     73.08,
+     -20.0
+    ],
+    [
+     83.11,
+     75.79,
+     -20.0
+    ],
+    [
+     97.95,
+     65.77,
+     -20.0
+    ],
+    [
+     96.02,
+     63.31,
+     -20.0
+    ]
+   ],
+   "face": "path",
+   "why": "Landing pairs flanking the Spiral Stair door (NW, 308) and the lift door (SE, 128)."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     82.59,
+     75.79,
+     -16.6
+    ],
+    [
+     97.41,
+     64.21,
+     -16.6
+    ]
+   ],
+   "snap": "ceiling",
+   "why": "One chochin over each door (stair NW, lift SE) marks it from across the ring."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "along": "water:w_b1_lobby_rill",
+   "side": "in",
+   "offset": 0.45,
+   "spacing": [
+    1.6,
+    2.6
+   ],
+   "embed": 0.1,
+   "scale": [
+    0.3,
+    0.55
+   ],
+   "avoid": [
+    "nav"
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     87.05,
+     81.01,
+     -20.0
+    ]
+   ],
+   "why": "Dark silhouette by the rill between the two benches."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.2,
+    0.9
+   ],
+   "density": 0.03,
+   "avoid": [
+    "nav",
+    "portals",
+    "water",
+    "hero"
+   ],
+   "why": "Edge only."
+  }
+ ],
+ "mood": {
+  "key": "lift drum (warm bronze, brightest)",
+  "palette": "amber lanterns, bronze and glass drum, black wet basalt, a thread of teal rill",
+  "mist": "None of its own; corridor mist spills in at the two mouths only."
+ },
+ "waivers": [
+  {
+   "check": "grid_centre",
+   "where": "lift_core at (90,70)",
+   "reason": "The lift is fixed at the E3 cell centre on every level (layout decision); everything else keeps off cell centres."
+  }
+ ],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

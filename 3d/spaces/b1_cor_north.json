@@ -1,0 +1,488 @@
+{
+ "id": "b1_cor_north",
+ "name": "Return corridor (glacier to steam)",
+ "level": "b1",
+ "purpose": "The direct return from the glacier's cold to the steam: a long, quiet mist corridor walked east to west with warm pools of light, a single thread of the spring's north branch falling into a basin at the elbow, and a knee-high slot of teal glowworm light from the Mirror halfway along.",
+ "floor_z": -20.0,
+ "ceiling_z": -17.0,
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -17.6,
+  "max_z": -17.0,
+  "note": "Carved basalt barrel, 2.4 m at the springing and 3.0 m at the crown: the compressed register of B1."
+ },
+ "footprint": [
+  [
+   87.115,
+   117.0
+  ],
+  [
+   140.536,
+   117.0
+  ],
+  [
+   166.999,
+   101.732
+  ],
+  [
+   165.001,
+   98.268
+  ],
+  [
+   139.464,
+   113.0
+  ],
+  [
+   88.885,
+   113.0
+  ],
+  [
+   79.48,
+   102.655
+  ],
+  [
+   76.52,
+   105.345
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_grotto_north",
+   "to": "b1_grotto",
+   "at": [
+    78,
+    104
+   ],
+   "width": 3.0,
+   "height": 2.6
+  },
+  {
+   "id": "p_b1_north_outfall",
+   "to": "b1_outfall",
+   "at": [
+    165.5,
+    100.2
+   ],
+   "width": 3.0,
+   "height": 2.6
+  }
+ ],
+ "spine": [
+  [
+   165.5,
+   100.2,
+   -20.0
+  ],
+  [
+   153.0,
+   107.5,
+   -20.0
+  ],
+  [
+   140.0,
+   115.0,
+   -20.0
+  ],
+  [
+   126.0,
+   115.0,
+   -20.0
+  ],
+  [
+   112.0,
+   115.0,
+   -20.0
+  ],
+  [
+   100.0,
+   115.0,
+   -20.0
+  ],
+  [
+   88.0,
+   115.0,
+   -20.0
+  ],
+  [
+   83.0,
+   109.5,
+   -20.0
+  ],
+  [
+   78.0,
+   104.0,
+   -20.0
+  ]
+ ],
+ "hero": {
+  "asset": "wall_trickle",
+  "variant": "ceiling thread + basin",
+  "at": [
+   140.0,
+   116.55,
+   -20.0
+  ],
+  "facing_deg": 150,
+  "dims": {
+   "w": 0.4,
+   "h": 3.0
+  },
+  "why": "Walking back from the glacier you face the elbow's outer wall for 30 m. Here the spring's north branch (which filled the cliff suites above) falls as one bright thread from a ceiling slot into a stone basin: a pause, the only falling water in a corridor, and it turns you west toward the steam."
+ },
+ "anchored": [
+  {
+   "id": "trickle_basin",
+   "asset": "chozubachi",
+   "at": [
+    139.6,
+    116.1,
+    -20.0
+   ],
+   "facing_deg": 150,
+   "dims": {
+    "r": 0.55
+   },
+   "why": "Catches the thread; overflows into the corridor pool."
+  },
+  {
+   "id": "mirror_slot",
+   "asset": "slot_window",
+   "at": [
+    112.0,
+    113.05,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 8.0,
+    "h": 0.45,
+    "sill": 0.3,
+    "rock": 2.0
+   },
+   "why": "Halfway along the 52 m straight: a knee-high glazed slot through 2 m of rock into the Mirror dome lets teal glowworm light leak onto the water. A second beat in a long corridor, seen only after the Mirror itself. Needs cutting in both shells."
+  },
+  {
+   "id": "grotto_glow_noren",
+   "asset": "banner",
+   "variant": "noren",
+   "at": [
+    78.6,
+    104.6,
+    -17.6
+   ],
+   "facing_deg": 45,
+   "dims": {
+    "w": 2.8,
+    "h": 0.9
+   },
+   "why": "Corridor-side face of the grotto door."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_cor_north",
+   "kind": "still",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -20.2,
+   "path": [
+    [
+     165.5,
+     100.2
+    ],
+    [
+     153.0,
+     107.5
+    ],
+    [
+     140.0,
+     115.0
+    ],
+    [
+     126.0,
+     115.0
+    ],
+    [
+     112.0,
+     115.0
+    ],
+    [
+     100.0,
+     115.0
+    ],
+    [
+     88.0,
+     115.0
+    ],
+    [
+     83.0,
+     109.5
+    ],
+    [
+     78.0,
+     104.0
+    ]
+   ],
+   "width": 3.0,
+   "layout_ref": "w_b1_corridors",
+   "note": "Same -20.05 surface; flows (imperceptibly) east toward the outfall."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_north_outfall",
+   "see": "Up the diagonal to the lit thread of water at the elbow.",
+   "target": [
+    140.0,
+    116.5,
+    -18.5
+   ]
+  },
+  {
+   "from": "elbow",
+   "at": [
+    138.5,
+    115.0
+   ],
+   "see": "West down the long straight: lantern pools, the teal slot halfway, steam glow from the grotto at the far end.",
+   "target": [
+    83.0,
+    109.5,
+    -18.6
+   ]
+  },
+  {
+   "from": "p_b1_grotto_north",
+   "see": "Leaving the grotto (reverse): niches leading away, the teal slot glow, a cold blue hint far east.",
+   "target": [
+    126.0,
+    115.0,
+    -18.6
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    163.6,
+    101.3,
+    -18.4
+   ],
+   "target": [
+    140.0,
+    115.5,
+    -18.6
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    147.0,
+    111.0,
+    -18.4
+   ],
+   "target": [
+    140.0,
+    116.5,
+    -18.4
+   ],
+   "fov_v": 58
+  },
+  "concept": {
+   "pos": [
+    136.0,
+    115.0,
+    -18.4
+   ],
+   "target": [
+    92.0,
+    115.0,
+    -18.6
+   ],
+   "fov_v": 52,
+   "image": "lookbook/img/05-mist-corridor.jpg",
+   "match": "Long straight in concept 05's mood: stones in teal water, knee-high mist, ankle niches doubled, the teal slot glowing low on the left, warm steam light at the far end."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     165.5,
+     100.2
+    ],
+    [
+     153.0,
+     107.5
+    ],
+    [
+     142.5,
+     113.6
+    ]
+   ],
+   "side": "both",
+   "stagger": true,
+   "spacing": [
+    4.5,
+    6.5
+   ],
+   "snap": "wall",
+   "height": 0.25,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Diagonal: niches stagger up to 3 m before the elbow; the hero thread is lit by its own downlight."
+  },
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     136.5,
+     115.0
+    ],
+    [
+     116.5,
+     115.0
+    ]
+   ],
+   "groups": {
+    "n": 2,
+    "inner": 1.4,
+    "gap": [
+     6.0,
+     8.0
+    ]
+   },
+   "side": "both",
+   "stagger": true,
+   "snap": "wall",
+   "height": 0.25,
+   "why": "Long straight: pairs of niches with 6-8 m dark gaps (pools and gaps), stopping 4.5 m short of the slot."
+  },
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     107.5,
+     115.0
+    ],
+    [
+     85.0,
+     112.3
+    ]
+   ],
+   "groups": {
+    "n": 2,
+    "inner": 1.4,
+    "gap": [
+     6.0,
+     8.0
+    ]
+   },
+   "side": "both",
+   "stagger": true,
+   "snap": "wall",
+   "height": 0.25,
+   "why": "Resumes after the slot to the grotto door."
+  },
+  {
+   "asset": "wall_trickle",
+   "part": "downlight",
+   "at": [
+    [
+     140.0,
+     116.3,
+     -17.1
+    ]
+   ],
+   "why": "Narrow warm beam on the thread: hero brightest."
+  },
+  {
+   "asset": "slot_window",
+   "part": "teal_spill",
+   "at": [
+    [
+     112.0,
+     113.2,
+     -19.6
+    ]
+   ],
+   "why": "Teal glowworm light from the Mirror (no fixture; comes from the dome)."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "stepping_stone",
+   "along": "spine",
+   "side": "both",
+   "offset": 0.36,
+   "spacing": [
+    0.72,
+    0.86
+   ],
+   "jitter": 0.08,
+   "top_z": -20.0,
+   "scale": [
+    0.95,
+    1.15
+   ],
+   "variants": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+  },
+  {
+   "asset": "boulder_rim",
+   "along": "spine",
+   "side": "both",
+   "offset": 1.62,
+   "spacing": [
+    2.2,
+    4.0
+   ],
+   "embed": 0.12,
+   "scale": [
+    0.35,
+    0.7
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored:mirror_slot"
+   ],
+   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     99.0,
+     116.5,
+     -20.0
+    ],
+    [
+     124.5,
+     113.5,
+     -20.0
+    ]
+   ],
+   "why": "Two silhouettes on alternate kerbs in the straight's dark gaps."
+  }
+ ],
+ "mood": {
+  "key": "thread of falling water at the elbow",
+  "palette": "amber niches, teal water, one teal slot, black basalt",
+  "mist": "Knee-high (0.4 m) layer over the whole pool, densest at the walls, thinning over the stones."
+ },
+ "waivers": [],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

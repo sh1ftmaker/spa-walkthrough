@@ -1,0 +1,244 @@
+{
+ "id": "b2_lava_link",
+ "name": "Passage to the Lava Stair",
+ "level": "b2",
+ "purpose": "A short, low, warming passage from the boat landing to the Lava Stair, where the orange of the glass slide shaft grows at the far end.",
+ "floor_z": -40.0,
+ "ceiling_z": -37.0,
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -37.3,
+  "max_z": -37.0,
+  "note": "3 m lava-tube passage, rounded; lowest at the walls. Already the compressed passage (3.5 x 3 m) before the shaft reveal."
+ },
+ "footprint": [
+  [
+   146.843,
+   61.535
+  ],
+  [
+   149.4,
+   60.001
+  ],
+  [
+   147.6,
+   56.999
+  ],
+  [
+   145.157,
+   58.465
+  ],
+  [
+   133.217,
+   64.435
+  ],
+  [
+   134.783,
+   67.565
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b2_boat_lava",
+   "to": "b2_boat",
+   "at": [
+    135,
+    65.5
+   ],
+   "width": 3.5,
+   "height": 2.8
+  },
+  {
+   "id": "p_b2_lava_link_lava_stair",
+   "to": "lava_stair",
+   "at": [
+    147.3,
+    58.59
+   ],
+   "width": 2.6,
+   "height": 2.6,
+   "note": "Lava Stair landing door (layout, bearing 342.6 from the shaft centre)."
+  }
+ ],
+ "spine": [
+  [
+   135,
+   65.5,
+   -40.0
+  ],
+  [
+   140.5,
+   62.75,
+   -40.0
+  ],
+  [
+   146.0,
+   60.0,
+   -40.0
+  ],
+  [
+   147.3,
+   58.59,
+   -40.0
+  ]
+ ],
+ "hero": {
+  "asset": "slide_tube",
+  "at": [
+   148.65,
+   53.34,
+   -40.0
+  ],
+  "facing_deg": 338,
+  "outside_ok": true,
+  "borrowed_from": "lava_stair / glass_slide",
+  "why": "The glass slide tube glowing orange in its shaft, seen through the far door: the whole passage is aimed at it and it is the brightest thing in view. Not placed by this file."
+ },
+ "anchored": [
+  {
+   "id": "stair_door",
+   "asset": "hall_shell",
+   "variant": "portal_frame",
+   "at": [
+    147.3,
+    58.59,
+    -40.0
+   ],
+   "facing_deg": 162.6,
+   "dims": {
+    "clear_w": 2.4,
+    "clear_h": 2.6,
+    "depth": 0.6
+   },
+   "why": "Bronze-and-timber door frame where the passage meets the Lava Stair; it frames the orange shaft."
+  }
+ ],
+ "water": [],
+ "sightlines": [
+  {
+   "from": "p_b2_boat_lava",
+   "see": "Orange glow and the curve of the glass tube through the far door.",
+   "target": [
+    148.65,
+    53.34,
+    -39.0
+   ]
+  },
+  {
+   "from": "p_b2_lava_link_lava_stair (looking back)",
+   "see": "Lantern-amber boat landing and a sliver of teal river.",
+   "target": [
+    128.0,
+    78.0,
+    -41.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    135.6,
+    65.2,
+    -38.4
+   ],
+   "target": [
+    148.65,
+    53.34,
+    -38.5
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    146.0,
+    60.0,
+    -38.4
+   ],
+   "target": [
+    148.65,
+    53.34,
+    -40.5
+   ],
+   "fov_v": 65
+  },
+  "concept": {
+   "image": "lookbook/img/13-magma-glass-slide.jpg",
+   "pos": [
+    146.9,
+    59.0,
+    -38.4
+   ],
+   "target": [
+    150.0,
+    50.0,
+    -44.0
+   ],
+   "fov_v": 62,
+   "match": "From the stair landing looking down into the shaft: the clear tube spiralling down with water glowing orange from the lava behind glass, bronze ring clamps, steam, lanterns on the stair rail."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_niche",
+   "along": "spine",
+   "side": "both",
+   "spacing": [
+    3.0,
+    4.0
+   ],
+   "offset": 1.5,
+   "height": 0.3,
+   "snap": "wall",
+   "face": "path",
+   "fade_toward": "p_b2_lava_link_lava_stair",
+   "why": "Ankle-height niches that get dimmer and sparser toward the shaft so the orange takes over."
+  },
+  {
+   "asset": "lantern_post",
+   "at": [
+    [
+     147.4,
+     60.1
+    ]
+   ],
+   "why": "One post lantern at the Lava Stair door (landing dressing)."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.1,
+    0.5
+   ],
+   "density": 0.08,
+   "avoid": [
+    "nav",
+    "portals"
+   ],
+   "scale": [
+    0.3,
+    0.6
+   ],
+   "why": "Small rock only; the passage is narrow."
+  }
+ ],
+ "mood": {
+  "key": "orange shaft glow at the end of a dark tube",
+  "palette": "dim amber niches, orange lava light, black basalt",
+  "mist": "Thin warm haze lit orange near the shaft door."
+ },
+ "waivers": [
+  {
+   "check": "footprint",
+   "where": "hero",
+   "reason": "Borrowed view: the slide tube lies in the shaft beyond the door, outside this corridor."
+  },
+  {
+   "check": "no_empty_areas",
+   "where": "whole passage",
+   "reason": "57 m2 corridor; lanterns every 3-4 m are the dressing."
+  }
+ ]
+}

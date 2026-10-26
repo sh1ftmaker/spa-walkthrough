@@ -1,0 +1,16 @@
+// Copies the Basis Universal transcoder (KTX2Loader) and the meshopt decoder is bundled by Vite.
+// The transcoder must be served next to the app (never from a CDN), so it lives in public/libs/basis/.
+import { mkdirSync, copyFileSync, existsSync, readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const here = dirname(fileURLToPath(import.meta.url));
+const web = join(here, '..');
+const src = join(web, 'node_modules/three/examples/jsm/libs/basis');
+const dst = join(web, 'public/libs/basis');
+mkdirSync(dst, { recursive: true });
+for (const f of ['basis_transcoder.js', 'basis_transcoder.wasm']) {
+  const a = join(src, f), b = join(dst, f);
+  if (!existsSync(a)) throw new Error(`missing ${a} (run npm install)`);
+  if (!existsSync(b) || !readFileSync(a).equals(readFileSync(b))) copyFileSync(a, b);
+}
+console.log('copy-libs: basis transcoder ->', dst);

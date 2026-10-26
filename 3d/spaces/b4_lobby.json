@@ -1,0 +1,520 @@
+{
+ "id": "b4_lobby",
+ "name": "B4 lift lobby",
+ "level": "b4",
+ "purpose": "The bottom of the mountain: the lift and the 588-step spiral end in a quiet round room of warm timber where voices drop, the floor is warm underfoot and a low rumble begins.",
+ "floor_z": -100.0,
+ "ceiling_z": -90.0,
+ "ceiling_profile": {
+  "type": "dome",
+  "min_z": -92.5,
+  "max_z": -90.0,
+  "note": "Low rock dome ring around the drum; 7.5 m at the wall, 10 m at the drum."
+ },
+ "footprint": [
+  [
+   104.0,
+   70.0
+  ],
+  [
+   103.731,
+   72.731
+  ],
+  [
+   102.934,
+   75.358
+  ],
+  [
+   101.641,
+   77.778
+  ],
+  [
+   99.899,
+   79.899
+  ],
+  [
+   97.778,
+   81.641
+  ],
+  [
+   95.358,
+   82.934
+  ],
+  [
+   92.731,
+   83.731
+  ],
+  [
+   90.0,
+   84.0
+  ],
+  [
+   87.269,
+   83.731
+  ],
+  [
+   84.642,
+   82.934
+  ],
+  [
+   82.222,
+   81.641
+  ],
+  [
+   80.101,
+   79.899
+  ],
+  [
+   78.359,
+   77.778
+  ],
+  [
+   77.066,
+   75.358
+  ],
+  [
+   76.269,
+   72.731
+  ],
+  [
+   76.0,
+   70.0
+  ],
+  [
+   76.269,
+   67.269
+  ],
+  [
+   77.066,
+   64.642
+  ],
+  [
+   78.359,
+   62.222
+  ],
+  [
+   80.101,
+   60.101
+  ],
+  [
+   82.222,
+   58.359
+  ],
+  [
+   84.642,
+   57.066
+  ],
+  [
+   87.269,
+   56.269
+  ],
+  [
+   90.0,
+   56.0
+  ],
+  [
+   92.731,
+   56.269
+  ],
+  [
+   95.358,
+   57.066
+  ],
+  [
+   97.778,
+   58.359
+  ],
+  [
+   99.899,
+   60.101
+  ],
+  [
+   101.641,
+   62.222
+  ],
+  [
+   102.934,
+   64.642
+  ],
+  [
+   103.731,
+   67.269
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b4_lobby_tunnel",
+   "to": "b4_tunnel",
+   "at": [
+    77,
+    64
+   ],
+   "width": 5.0,
+   "height": 3.4
+  },
+  {
+   "id": "p_b4_lobby_lift",
+   "to": "main_lift",
+   "at": [
+    83.53,
+    74.7
+   ],
+   "width": 1.8,
+   "height": 2.4,
+   "note": "Lift door at bearing 306 (NW), across a bridge over the well; the ring leads left to the tunnel."
+  },
+  {
+   "id": "p_b4_lobby_spiral_stair",
+   "to": "spiral_stair",
+   "at": [
+    96.47,
+    65.3
+   ],
+   "width": 2.6,
+   "height": 2.6,
+   "note": "Spiral foot door at bearing 126 (SE); the ring leads round the south past the gauge."
+  }
+ ],
+ "spine": [
+  [
+   83.53,
+   74.7,
+   -100.0
+  ],
+  [
+   80.5,
+   75.5,
+   -100.0
+  ],
+  [
+   78.6,
+   69.2,
+   -100.0
+  ],
+  [
+   78.2,
+   65.4,
+   -100.0
+  ],
+  [
+   77.4,
+   64.2,
+   -100.0
+  ]
+ ],
+ "branches": [
+  {
+   "id": "br10",
+   "why": "Spiral foot door round the south side to the tunnel mouth.",
+   "points": [
+    [
+     96.47,
+     65.3,
+     -100.0
+    ],
+    [
+     98.9,
+     63.53,
+     -100.0
+    ],
+    [
+     93.76,
+     59.66,
+     -100.0
+    ],
+    [
+     86.24,
+     59.66,
+     -100.0
+    ],
+    [
+     82.22,
+     62.22,
+     -100.0
+    ],
+    [
+     78.2,
+     65.4,
+     -100.0
+    ]
+   ]
+  },
+  {
+   "id": "br11",
+   "why": "Ring walk around the drum (benches, gauge).",
+   "points": [
+    [
+     78.6,
+     69.2,
+     -100.0
+    ],
+    [
+     80.3,
+     79.7,
+     -100.0
+    ],
+    [
+     90.0,
+     81.3,
+     -100.0
+    ],
+    [
+     99.7,
+     79.7,
+     -100.0
+    ],
+    [
+     101.3,
+     70.0,
+     -100.0
+    ],
+    [
+     99.7,
+     60.3,
+     -100.0
+    ],
+    [
+     90.0,
+     58.7,
+     -100.0
+    ],
+    [
+     80.3,
+     60.3,
+     -100.0
+    ],
+    [
+     78.2,
+     65.4,
+     -100.0
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "lift_core",
+  "at": [
+   90.0,
+   70.0,
+   -100.0
+  ],
+  "facing_deg": 306,
+  "dims": {
+   "r": 8.0
+  },
+  "why": "The glass-and-bronze car arrives here after 100 m of descent; the drum is ringed by the spiral's last turn and the radial hinoki floor points at it (36). It is the brightest object in the room and the reason the room is round."
+ },
+ "anchored": [
+  {
+   "id": "gauge",
+   "asset": "geothermal_gauge",
+   "at": [
+    80.7,
+    60.7,
+    -100.0
+   ],
+   "facing_deg": 45,
+   "dims": {
+    "h": 1.6,
+    "dial_r": 0.45
+   },
+   "why": "Brass gauge showing what the volcano is producing right now (lookbook extra), on the wall beside the tunnel mouth, facing the lift doors."
+  },
+  {
+   "id": "radial_floor",
+   "asset": "floor_paving",
+   "variant": "radial_hinoki",
+   "at": [
+    90.0,
+    70.0,
+    -100.0
+   ],
+   "dims": {
+    "w": 28.0,
+    "d": 28.0,
+    "h": 0.1
+   },
+   "ring": [
+    90.0,
+    70.0
+   ],
+   "radius": [
+    8.0,
+    14.0
+   ],
+   "why": "Radial timber boards around the drum (36)."
+  }
+ ],
+ "water": [],
+ "sightlines": [
+  {
+   "from": "p_b4_lobby_lift",
+   "see": "Off the bridge: the ring of lanterns curving left to the tunnel mouth, a faint orange tint inside it.",
+   "target": [
+    77.0,
+    64.0,
+    -98.5
+   ]
+  },
+  {
+   "from": "p_b4_lobby_spiral_stair",
+   "see": "Round the south of the drum: the brass gauge glinting and the tunnel mouth beyond it.",
+   "target": [
+    79.0,
+    61.5,
+    -98.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    82.0,
+    76.5,
+    -98.4
+   ],
+   "target": [
+    77.5,
+    64.5,
+    -98.6
+   ],
+   "fov_v": 65
+  },
+  "reveal": {
+   "pos": [
+    78.3,
+    64.6,
+    -98.4
+   ],
+   "target": [
+    90.0,
+    70.0,
+    -96.5
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "image": "lookbook/img/36-plan-b4-magma.jpg",
+   "pos": [
+    99.5,
+    79.0,
+    -98.4
+   ],
+   "target": [
+    82.0,
+    63.0,
+    -97.5
+   ],
+   "fov_v": 60,
+   "match": "Plan-only concept: match its mood at eye level: a ring of small lanterns around a dark drum with a lit lift, radial hinoki boards, rough basalt wall, the tunnel mouth glowing beyond."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lift_core",
+   "role": "hero emissive",
+   "note": "Lift car and door surround are the brightest."
+  },
+  {
+   "asset": "lantern_niche",
+   "ring": [
+    90.0,
+    70.0
+   ],
+   "radius": 13.6,
+   "spacing": 4.0,
+   "height": 0.4,
+   "snap": "wall",
+   "face": "hero",
+   "avoid": [
+    "portals",
+    "anchored:gauge",
+    1.0
+   ],
+   "why": "Ring of low wall lanterns (36): even pools around the room, dark between."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     79.0,
+     61.6
+    ],
+    [
+     76.6,
+     66.6
+    ]
+   ],
+   "why": "Pair at the tunnel mouth."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     81.8,
+     77.0
+    ]
+   ],
+   "height": 2.8,
+   "why": "At the lift door (landing dressing)."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     95.98,
+     62.88
+    ]
+   ],
+   "height": 2.8,
+   "why": "At the spiral foot door (landing dressing)."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "bench_stone",
+   "at": [
+    [
+     94.24,
+     81.65
+    ],
+    [
+     100.74,
+     76.2
+    ],
+    [
+     102.35,
+     68.92
+    ]
+   ],
+   "face": "hero",
+   "why": "Three benches on the north-east side, clear of both door routes, for people waiting for the lift."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.0,
+    0.6
+   ],
+   "density": 0.03,
+   "avoid": [
+    "nav",
+    "portals"
+   ],
+   "why": "Basalt only at the wall base."
+  }
+ ],
+ "mood": {
+  "key": "lit lift drum in a warm round room",
+  "palette": "amber lanterns, bronze, hinoki; first orange tint from the tunnel",
+  "mist": "None."
+ },
+ "waivers": [
+  {
+   "check": "grid_centre",
+   "where": "lift_core (hero) and radial_floor at (90, 70)",
+   "reason": "Main lift fixed at E3 centre by the spec; the radial floor is centred on it."
+  }
+ ]
+}

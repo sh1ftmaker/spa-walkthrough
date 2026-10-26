@@ -1,0 +1,873 @@
+{
+ "id": "b2_core",
+ "name": "Kawagiri core (lift, Mist Steps foot, kitchen, neon ramen counter)",
+ "level": "b2",
+ "purpose": "The landing hall of the river level: guests step off the lift or the Mist Steps into warm timber and steam, glimpse the curtains through the restaurant gate, then squeeze past the lift drum into the neon glow of the ramen counter.",
+ "floor_z": -40.0,
+ "ceiling_z": -28.0,
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -37.0,
+  "max_z": -28.0,
+  "note": "Rock cave up to -28 over the west plaza and the Mist Steps slot (open to B1 above x 47-60). A low timber soffit at -37 (3 m) over the passage south of the lift drum (x 82-98, y 56-62) compresses before the ramen reveal. The kitchen and counter sit under a hinoki roof at -35 with a steam hood rising through it to the rock."
+ },
+ "footprint": [
+  [
+   46,
+   56
+  ],
+  [
+   122,
+   56
+  ],
+  [
+   122,
+   74
+  ],
+  [
+   46,
+   74
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b2_core_kawagiri",
+   "to": "b2_kawagiri",
+   "at": [
+    70,
+    74
+   ],
+   "width": 6.0,
+   "height": 3.0,
+   "note": "Clear 4 m between noren posts, 3 m high."
+  },
+  {
+   "id": "p_b2_core_kawagiri_e",
+   "to": "b2_kawagiri",
+   "at": [
+    110,
+    74
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b2_core_boat",
+   "to": "b2_boat",
+   "at": [
+    122,
+    68
+   ],
+   "width": 4.0,
+   "height": 3.2
+  },
+  {
+   "id": "p_b2_core_falls",
+   "to": "b2_falls_head",
+   "at": [
+    46.5,
+    64
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b2_core_spiral_stair",
+   "to": "spiral_stair",
+   "at": [
+    98.0,
+    70.16
+   ],
+   "width": 2.6,
+   "height": 2.6,
+   "note": "Spiral landing door at bearing 88.9 (east): walkers come out beside the ramen counter."
+  },
+  {
+   "id": "p_b2_core_lift",
+   "to": "main_lift",
+   "at": [
+    82.0,
+    69.84
+   ],
+   "width": 1.8,
+   "height": 2.4,
+   "note": "Lift door at bearing 268.9 (west), across a bridge over the well: it opens toward the restaurant gate."
+  },
+  {
+   "id": "p_b2_mist_foot",
+   "proposed": true,
+   "to": "mist_steps",
+   "at": [
+    58.2,
+    64.69
+   ],
+   "width": 4.0,
+   "height": null,
+   "note": "Foot of flight 3 (descends southward), open above."
+  }
+ ],
+ "spine": [
+  [
+   46.5,
+   64,
+   -40.0
+  ],
+  [
+   53.0,
+   62.5,
+   -40.0
+  ],
+  [
+   58.2,
+   62.6,
+   -40.0
+  ],
+  [
+   66.0,
+   64.5,
+   -40.0
+  ],
+  [
+   70.0,
+   67.0,
+   -40.0
+  ],
+  [
+   77.0,
+   67.0,
+   -40.0
+  ],
+  [
+   81.0,
+   62.5,
+   -40.0
+  ],
+  [
+   90.0,
+   59.0,
+   -40.0
+  ],
+  [
+   98.5,
+   61.5,
+   -40.0
+  ],
+  [
+   101.5,
+   66.6,
+   -40.0
+  ],
+  [
+   110.0,
+   68.6,
+   -40.0
+  ],
+  [
+   122.0,
+   68.0,
+   -40.0
+  ]
+ ],
+ "branches": [
+  {
+   "id": "br3",
+   "why": "Restaurant gate.",
+   "points": [
+    [
+     70.0,
+     67.0,
+     -40.0
+    ],
+    [
+     70.0,
+     74.0,
+     -40.0
+    ]
+   ]
+  },
+  {
+   "id": "br4",
+   "why": "Lift door (west).",
+   "points": [
+    [
+     77.0,
+     67.0,
+     -40.0
+    ],
+    [
+     79.5,
+     69.7,
+     -40.0
+    ],
+    [
+     82.0,
+     69.84,
+     -40.0
+    ]
+   ]
+  },
+  {
+   "id": "br5",
+   "why": "Spiral Stair door (east), out to the ramen walkway.",
+   "points": [
+    [
+     98.0,
+     70.16,
+     -40.0
+    ],
+    [
+     100.5,
+     69.4,
+     -40.0
+    ],
+    [
+     104.0,
+     68.2,
+     -40.0
+    ],
+    [
+     110.0,
+     68.6,
+     -40.0
+    ]
+   ]
+  },
+  {
+   "id": "br6",
+   "why": "Mist Steps foot.",
+   "points": [
+    [
+     58.2,
+     62.6,
+     -40.0
+    ],
+    [
+     58.2,
+     64.69,
+     -40.0
+    ]
+   ]
+  },
+  {
+   "id": "br7",
+   "why": "East restaurant gangway.",
+   "points": [
+    [
+     110.0,
+     68.6,
+     -40.0
+    ],
+    [
+     110.0,
+     74.0,
+     -40.0
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "ramen_counter",
+  "at": [
+   111.5,
+   63.6,
+   -40.0
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "w": 15.0,
+   "d": 1.0,
+   "h": 1.05,
+   "stools": 14
+  },
+  "why": "The counter is open until 03:00 and is the warm, loud, neon heart of the level (09): a 15 m hinoki counter with the chef pulling noodles in steam, red ラーメン chochin, noren and one magenta/cyan 火山 sign. From the lift and the Mist Steps it is hidden behind the drum and revealed at the end of the low passage; walkers off the Spiral Stair (east door) get it at once. It is the brightest thing in the hall."
+ },
+ "anchored": [
+  {
+   "id": "lift",
+   "asset": "lift_core",
+   "at": [
+    90.0,
+    70.0,
+    -40.0
+   ],
+   "facing_deg": 268.9,
+   "dims": {
+    "r": 8.0
+   },
+   "why": "Main lift + Spiral Stair drum at E3 (fixed). At B2 its north third stands in the river as a pier (y 74-78). Lift door west (268.9) toward the restaurant gate, spiral door east (88.9) toward the ramen counter."
+  },
+  {
+   "id": "kitchen",
+   "asset": "kitchen_block",
+   "at": [
+    112.5,
+    59.3,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 17.0,
+    "d": 6.5,
+    "h": 4.0
+   },
+   "why": "Open kitchen against the south rock wall directly behind the counter (07, 09): cooks face the diners."
+  },
+  {
+   "id": "kitchen_vent",
+   "asset": "fumarole_vent",
+   "at": [
+    107.0,
+    58.0,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "r": 1.2
+   },
+   "why": "Jigoku-mushi: dumplings and vegetables steam over a real fumarole under a timber hood; its plume rises to the rock (plan 'STEAM VENT')."
+  },
+  {
+   "id": "header_tanks",
+   "asset": "header_tank",
+   "at": [
+    118.0,
+    59.5,
+    -35.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 3.0,
+    "d": 1.6,
+    "h": 1.4
+   },
+   "why": "Soy and tea header tanks on the kitchen roof feed every aqueduct by gravity (lookbook)."
+  },
+  {
+   "id": "neon_kazan",
+   "asset": "neon_sign",
+   "at": [
+    120.2,
+    62.8,
+    -40.0
+   ],
+   "facing_deg": 300,
+   "height": 3.0,
+   "dims": {
+    "w": 1.1,
+    "h": 2.6
+   },
+   "variant": "magenta_cyan_火山",
+   "why": "The one neon sign of the counter (09 right of centre) on the kitchen's NE post, turned toward the boat-landing door so arriving guests see it first."
+  },
+  {
+   "id": "gate_sign",
+   "asset": "sign_kanji",
+   "at": [
+    70.0,
+    73.6,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "height": 4.0,
+   "dims": {
+    "w": 5.0,
+    "h": 1.4
+   },
+   "variant": "川霧_gold",
+   "why": "Gold-leaf 川霧 board over the restaurant gate, facing the lift doors and the Mist Steps foot."
+  },
+  {
+   "id": "gate_noren",
+   "asset": "banner",
+   "at": [
+    70.0,
+    73.8,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 4.0,
+    "h": 1.6
+   },
+   "variant": "noren_indigo",
+   "why": "Indigo noren hung in the gate (3 m clear height): the compressed threshold before the deck."
+  },
+  {
+   "id": "passage_soffit",
+   "asset": "hall_shell",
+   "variant": "soffit",
+   "at": [
+    90.0,
+    58.8,
+    -37.0
+   ],
+   "dims": {
+    "w": 16.0,
+    "d": 5.6,
+    "h": 0.4
+   },
+   "area": [
+    [
+     82,
+     56
+    ],
+    [
+     98,
+     56
+    ],
+    [
+     98,
+     61.6
+    ],
+    [
+     82,
+     61.6
+    ]
+   ],
+   "z": -37.0,
+   "why": "3 m timber soffit in the 6 m gap between the drum and the south wall: compress, then the counter opens up."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_mist_steps",
+   "kind": "cascade",
+   "ref": "layout",
+   "z_top": -20.05,
+   "z_bottom": -42.83,
+   "note": "Thin sheet down the Mist Steps flights (x 47-60) into the river behind the north rail; listed so nothing is placed in its run-off channel along x 60-61."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b2_core_lift",
+   "see": "Across the well bridge the doors open west onto the plaza; the restaurant gate (indigo noren, 川霧 board, T7/T8 curtains glowing through it) is 20 degrees to the right.",
+   "target": [
+    70.0,
+    78.0,
+    -38.0
+   ]
+  },
+  {
+   "from": "p_b2_mist_foot",
+   "see": "The gate glow to the north-east and the lantern line leading east under the soffit.",
+   "target": [
+    70.0,
+    74.0,
+    -38.0
+   ]
+  },
+  {
+   "from": "p_b2_core_spiral_stair",
+   "see": "Straight out east: steam and red chochin over the counter, the 火山 neon at its far end; the east gate to the deck on the left.",
+   "target": [
+    113.0,
+    64.0,
+    -37.5
+   ]
+  },
+  {
+   "from": "passage east end (98.5, 61.5)",
+   "see": "The counter opens up: neon, chochin and steam (reveal).",
+   "target": [
+    111.5,
+    63.6,
+    -37.5
+   ]
+  },
+  {
+   "from": "p_b2_core_boat",
+   "see": "Boat lanterns bobbing at the pontoon below the landing deck.",
+   "target": [
+    128.0,
+    79.0,
+    -41.6
+   ]
+  },
+  {
+   "from": "p_b2_core_falls",
+   "see": "The falls-head lanterns and the white plume of mist rising out of the shaft beyond.",
+   "target": [
+    30.0,
+    75.0,
+    -38.0
+   ]
+  },
+  {
+   "from": "ramen stools",
+   "see": "Through the east gate: T11/T12 curtains and the river.",
+   "target": [
+    110.0,
+    80.0,
+    -38.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    60.0,
+    60.6,
+    -38.4
+   ],
+   "target": [
+    108.0,
+    62.2,
+    -38.5
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    99.5,
+    60.2,
+    -38.4
+   ],
+   "target": [
+    111.5,
+    63.6,
+    -37.6
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "image": "lookbook/img/09-neon-ramen-counter.jpg",
+   "pos": [
+    103.3,
+    65.6,
+    -38.4
+   ],
+   "target": [
+    113.0,
+    61.8,
+    -37.0
+   ],
+   "fov_v": 55,
+   "match": "From the west end of the stools looking along the counter: chef pulling noodles in steam behind the pass, red ラーメン chochin left, menu boards and black noren, the magenta/cyan 火山 neon at the far end, diners on stools receding, wet stone floor reflecting neon."
+  }
+ },
+ "lights": [
+  {
+   "asset": "ramen_counter",
+   "role": "hero emissive",
+   "note": "Counter under-glow, kitchen fire and the 火山 neon are the brightest things in the hall."
+  },
+  {
+   "asset": "lantern_hanging",
+   "variant": "red_chochin_ramen",
+   "along": [
+    [
+     104.5,
+     64.2
+    ],
+    [
+     118.5,
+     64.2
+    ]
+   ],
+   "spacing": [
+    3.0,
+    4.0
+   ],
+   "height": 2.8,
+   "snap": "ceiling",
+   "why": "Big red ラーメン chochin over the counter (09)."
+  },
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     82.0,
+     56.3
+    ],
+    [
+     98.0,
+     56.3
+    ]
+   ],
+   "spacing": [
+    3.0,
+    4.0
+   ],
+   "height": 0.3,
+   "snap": "wall",
+   "face": "path",
+   "why": "Only ankle-height niches in the low passage: dim, so the counter reads bright when it opens up."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": "spine",
+   "side": "both",
+   "spacing": [
+    6,
+    8
+   ],
+   "offset": 1.8,
+   "face": "path",
+   "avoid": [
+    "portals",
+    "hero",
+    "anchored:passage_soffit",
+    "anchored:lift",
+    1.0
+   ]
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     56.0,
+     63.2
+    ],
+    [
+     60.4,
+     63.2
+    ]
+   ],
+   "why": "Pair at the Mist Steps foot (landing dressing)."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     47.6,
+     61.6
+    ],
+    [
+     47.6,
+     66.4
+    ]
+   ],
+   "why": "Pair at the Falls Stair passage."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     81.0,
+     71.7
+    ],
+    [
+     81.0,
+     68.0
+    ]
+   ],
+   "height": 2.9,
+   "why": "Pair flanking the lift door (landing dressing)."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     99.0,
+     72.0
+    ],
+    [
+     99.0,
+     68.3
+    ]
+   ],
+   "height": 2.9,
+   "why": "Pair flanking the Spiral Stair door (landing dressing)."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "banner",
+   "variant": "noren_black_crest",
+   "along": [
+    [
+     104.5,
+     63.0
+    ],
+    [
+     118.5,
+     63.0
+    ]
+   ],
+   "spacing": [
+    1.8,
+    2.2
+   ],
+   "height": 2.9,
+   "face": 0,
+   "why": "Black crest noren over the kitchen pass (09)."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     46.5,
+     73.7
+    ],
+    [
+     67.0,
+     73.7
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 0,
+   "why": "River-bank rail on the core's north edge (gates and drum left open)."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     73.0,
+     73.7
+    ],
+    [
+     82.6,
+     73.7
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 0,
+   "why": "River-bank rail on the core's north edge (gates and drum left open)."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     97.4,
+     73.7
+    ],
+    [
+     108.0,
+     73.7
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 0,
+   "why": "River-bank rail on the core's north edge (gates and drum left open)."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     112.0,
+     73.7
+    ],
+    [
+     121.8,
+     73.7
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 0,
+   "why": "River-bank rail on the core's north edge (gates and drum left open)."
+  },
+  {
+   "asset": "bench_stone",
+   "at": [
+    [
+     51.0,
+     57.2,
+     -40.0
+    ],
+    [
+     66.0,
+     57.0,
+     -40.0
+    ]
+   ],
+   "facing_deg": 0,
+   "why": "Benches against the south wall of the west plaza where people wait for the lift or regroup after the Mist Steps."
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     63.0,
+     72.4,
+     -40.0
+    ],
+    [
+     77.0,
+     72.4,
+     -40.0
+    ]
+   ],
+   "why": "Flank the restaurant gate (plan C3/D3 greenery)."
+  },
+  {
+   "asset": "sign_kanji",
+   "variant": "menu_board",
+   "along": [
+    [
+     105.0,
+     62.4
+    ],
+    [
+     118.0,
+     62.4
+    ]
+   ],
+   "spacing": [
+    1.4,
+    1.8
+   ],
+   "height": 2.2,
+   "snap": "wall",
+   "why": "Vertical menu boards on the kitchen pass (09)."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    1.5
+   ],
+   "density": 0.05,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero",
+    "anchored:kitchen"
+   ]
+  },
+  {
+   "asset": "sakura_small",
+   "at": [
+    [
+     121.0,
+     72.6,
+     -40.0
+    ]
+   ],
+   "dims": {
+    "h": 4.0
+   },
+   "why": "Small blossom tree at the boat-landing door, lit by the neon."
+  }
+ ],
+ "mood": {
+  "key": "neon ramen counter (magenta/cyan, steam), red chochin",
+  "palette": "amber timber, red chochin, one magenta/cyan neon, white steam, black wet stone",
+  "mist": "Steam from the kitchen vent and the Mist Steps sheet; no floor mist on the dry hall."
+ },
+ "waivers": [
+  {
+   "check": "hero_visible",
+   "where": "entry camera (Mist Steps foot)",
+   "reason": "The counter is deliberately hidden behind the lift drum and revealed after the low passage; from the entry camera only its west end shows along the passage (likely under 30%). The reveal camera is the visibility test."
+  },
+  {
+   "check": "grid_centre",
+   "where": "lift at (90, 70)",
+   "reason": "Main lift position fixed by the spec at E3 centre."
+  }
+ ]
+}

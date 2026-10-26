@@ -1,0 +1,644 @@
+{
+ "id": "g_arrival",
+ "name": "Arrival hall (lava window)",
+ "level": "ground",
+ "purpose": "The first interior: shoes off, voices drop, and a wall of real lava glows through glass while a warm stream runs past the reception.",
+ "floor_z": 0.0,
+ "ceiling_z": 16.0,
+ "ceiling_profile": {
+  "type": "vault",
+  "min_z": 9.0,
+  "max_z": 16.0,
+  "note": "Carved basalt vault; timber post-and-beam bays along the south facade (9 m) rising to a rock vault over the north half (16 m). Raised from the spec's ~8 m to match the scale of concept 04 (logged)."
+ },
+ "footprint": [
+  [
+   40,
+   42
+  ],
+  [
+   100,
+   42
+  ],
+  [
+   100,
+   80
+  ],
+  [
+   40,
+   80
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_gate_hall",
+   "to": "g_gate",
+   "at": [
+    40,
+    55
+   ],
+   "width": 6.0,
+   "height": 4.5
+  },
+  {
+   "id": "p_hall_terrace",
+   "to": "g_terrace",
+   "at": [
+    60,
+    42
+   ],
+   "width": 5.0,
+   "height": 4.0
+  },
+  {
+   "id": "p_hall_changing",
+   "to": "g_changing",
+   "at": [
+    100,
+    52
+   ],
+   "width": 4.0,
+   "height": 3.2
+  },
+  {
+   "id": "p_g_arrival_spiral_stair",
+   "to": "spiral_stair",
+   "at": [
+    90.0,
+    62.0
+   ],
+   "width": 2.6,
+   "height": 2.6,
+   "note": "Stair landing door; helix starts at (90, 64.4) inside (a_start 270)."
+  },
+  {
+   "id": "p_g_arrival_lift",
+   "to": "main_lift",
+   "at": [
+    90.0,
+    78.0
+   ],
+   "width": 1.8,
+   "height": 2.4,
+   "note": "Lift door on the core's north face, reached by the 2 m strip between the core (r 8) and the north wall; bridge over the well to the car."
+  }
+ ],
+ "spine": [
+  [
+   40,
+   55,
+   0
+  ],
+  [
+   50,
+   57,
+   0
+  ],
+  [
+   60,
+   60,
+   0
+  ],
+  [
+   66,
+   62,
+   0.6
+  ],
+  [
+   72,
+   62,
+   0
+  ],
+  [
+   82,
+   58,
+   0
+  ],
+  [
+   90,
+   58,
+   0
+  ],
+  [
+   90,
+   62,
+   0
+  ]
+ ],
+ "hero": {
+  "asset": "lava_window",
+  "at": [
+   61,
+   79.6,
+   0
+  ],
+  "facing_deg": 180,
+  "dims": {
+   "w": 34,
+   "h": 12
+  },
+  "why": "A wall of moving lava behind thick glass is the reason the hall exists: it is the brightest, warmest thing in view from the door and pulls guests across the stream."
+ },
+ "anchored": [
+  {
+   "id": "hall_bridge",
+   "asset": "bridge_arched",
+   "at": [
+    66,
+    62,
+    0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "span": 7,
+    "w": 3.2,
+    "rise": 0.6
+   },
+   "why": "Carries the spine over the stream; frames the lava window from its crown."
+  },
+  {
+   "id": "slippers",
+   "asset": "slipper_cubbies",
+   "at": [
+    48,
+    42.6,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 14,
+    "h": 2.6,
+    "d": 0.5
+   },
+   "why": "Shoes come off at the door (lookbook); south wall left of the entrance as in 04."
+  },
+  {
+   "id": "reception",
+   "asset": "reception_counter",
+   "at": [
+    58,
+    47,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 7,
+    "d": 1.0,
+    "h": 1.05
+   },
+   "why": "Greets guests on the left after the slipper wall."
+  },
+  {
+   "id": "basin",
+   "asset": "chozubachi",
+   "at": [
+    74,
+    52,
+    0
+   ],
+   "facing_deg": 300,
+   "dims": {
+    "r": 0.8
+   },
+   "why": "Ritual hand-washing stop on the spine just before the lift."
+  },
+  {
+   "id": "basin_tree",
+   "asset": "sakura_small",
+   "at": [
+    76.5,
+    50,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "h": 4.5
+   },
+   "why": "Single blossom tree marks the basin (ground plan)."
+  },
+  {
+   "id": "spiral_door",
+   "asset": "lift_core",
+   "at": [
+    90,
+    70,
+    0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "r": 8
+   },
+   "why": "Spiral Stair and lift at E3; doorway faces the spine."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_hall_stream",
+   "kind": "flow",
+   "z": -0.35,
+   "rim_z": 0.0,
+   "path": [
+    [
+     46,
+     77
+    ],
+    [
+     54,
+     72
+    ],
+    [
+     62,
+     66
+    ],
+    [
+     66,
+     62
+    ],
+    [
+     70,
+     56
+    ],
+    [
+     72,
+     46
+    ]
+   ],
+   "width": 2.6,
+   "note": "Rises at a rock spill under the lava window (NW), runs SE under the bridge and sinks into a slot at the south wall toward B1."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_gate_hall",
+   "see": "Lava glow filling the north-east, the bridge crown on the spine, lanterns leading to it.",
+   "target": [
+    61,
+    79,
+    5
+   ]
+  },
+  {
+   "from": "p_hall_changing",
+   "see": "The lava window across the hall, the torii framed through the open west front.",
+   "target": [
+    40,
+    55,
+    3
+   ]
+  },
+  {
+   "from": "hall_bridge",
+   "see": "The lit spiral doorway to the east: the next space's warm light.",
+   "target": [
+    90,
+    62,
+    1.5
+   ]
+  },
+  {
+   "from": "p_hall_terrace",
+   "see": "Lava window straight ahead across the stream (north), bridge crown on the right.",
+   "target": [
+    61.0,
+    79.0,
+    5.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    42,
+    55,
+    1.6
+   ],
+   "target": [
+    64,
+    72,
+    4
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    58,
+    59.5,
+    1.6
+   ],
+   "target": [
+    61,
+    79,
+    5.5
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "image": "lookbook/img/04-arrival-gate.jpg",
+   "pos": [
+    88,
+    54,
+    1.6
+   ],
+   "target": [
+    44,
+    56,
+    5
+   ],
+   "fov_v": 55,
+   "match": "Looking back west: torii framed through the open west front, lava window on the right, stream and rocks lower right, slipper wall and lanterns on the left, wet reflective floor."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     42,
+     44
+    ],
+    [
+     56,
+     44
+    ]
+   ],
+   "spacing": [
+    1.4,
+    2.2
+   ],
+   "height": [
+    3.5,
+    6.5
+   ],
+   "snap": "ceiling",
+   "cluster": true,
+   "why": "Warm cluster over the slipper wall, as in 04."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": "spine",
+   "side": "both",
+   "spacing": [
+    5,
+    7
+   ],
+   "offset": 1.9,
+   "face": "path",
+   "avoid": [
+    "portals",
+    "water"
+   ]
+  },
+  {
+   "asset": "lantern_stone",
+   "along": "water:w_hall_stream",
+   "side": "right",
+   "spacing": [
+    7,
+    10
+   ],
+   "offset": 1.6,
+   "face": "water"
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     88.0,
+     61.4,
+     0
+    ],
+    [
+     92.0,
+     61.4,
+     0
+    ]
+   ],
+   "face": 180,
+   "why": "Pair flanking the Spiral Stair / lift doorway: the landing reads from the bridge."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     88.4,
+     79.3,
+     0
+    ],
+    [
+     91.6,
+     79.3,
+     0
+    ]
+   ],
+   "face": 0,
+   "why": "Pair at the lift door on the core's north face."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     96.0,
+     49.5
+    ],
+    [
+     96.0,
+     54.5
+    ]
+   ],
+   "spacing": [
+    1.6,
+    2.2
+   ],
+   "height": [
+    2.4,
+    2.8
+   ],
+   "why": "Low cluster marking the changing-hall doorway (3.2 m high) on the east wall."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "along": "water:w_hall_stream",
+   "side": "both",
+   "spacing": [
+    1.6,
+    3.0
+   ],
+   "offset": 1.4,
+   "embed": 0.2,
+   "scale": [
+    0.6,
+    1.3
+   ],
+   "avoid": [
+    "anchored",
+    "nav",
+    "portals"
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     50,
+     74,
+     0
+    ],
+    [
+     79,
+     74,
+     0
+    ]
+   ],
+   "why": "Dark silhouettes against the lava glow at each end of the window."
+  },
+  {
+   "asset": "banner",
+   "along": [
+    [
+     44,
+     79
+    ],
+    [
+     78,
+     79
+    ]
+   ],
+   "spacing": [
+    8,
+    8
+   ],
+   "height": 9,
+   "snap": "ceiling"
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    2.0
+   ],
+   "density": 0.05,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ]
+  },
+  {
+   "asset": "railing",
+   "ring": [
+    90.0,
+    70.0
+   ],
+   "radius": 8.3,
+   "arc_deg": [
+    200,
+    340
+   ],
+   "skip": "p_g_arrival_spiral_stair",
+   "height": 1.0,
+   "why": "Bronze rail round the lift core's south face either side of the doorway (landing of spiral_stair and main_lift)."
+  },
+  {
+   "asset": "sign_kanji",
+   "at": [
+    [
+     93.0,
+     61.6,
+     0
+    ]
+   ],
+   "face": 180,
+   "why": "Level board beside the lift door: 地上 Ground · B1-B4."
+  }
+ ],
+ "mood": {
+  "key": "lava window (orange, brightest)",
+  "palette": "amber lanterns, orange lava, teal stream, black wet stone",
+  "mist": "low steam over the stream only"
+ },
+ "waivers": [],
+ "tier": "must",
+ "draft_note": "Lead's worked example kept except: ceiling_z from layout (16), spiral/lift portals renamed to layout ids, branches (changing halls, terrace, lift door), landing lanterns and rail, terrace sightline.",
+ "branches": [
+  {
+   "id": "to_changing",
+   "points": [
+    [
+     82.0,
+     58.0,
+     0
+    ],
+    [
+     92.0,
+     54.0,
+     0
+    ],
+    [
+     100.0,
+     52.0,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "to_lift_door",
+   "points": [
+    [
+     90.0,
+     58.0,
+     0
+    ],
+    [
+     99.0,
+     62.0,
+     0
+    ],
+    [
+     99.5,
+     70.0,
+     0
+    ],
+    [
+     97.0,
+     76.5,
+     0
+    ],
+    [
+     90.0,
+     78.6,
+     0
+    ]
+   ],
+   "note": "Round the east side of the core (kept > 8 m from its centre) to the lift door at (90, 78)."
+  },
+  {
+   "id": "to_terrace",
+   "points": [
+    [
+     60.0,
+     60.0,
+     0
+    ],
+    [
+     64.0,
+     52.0,
+     0
+    ],
+    [
+     63.0,
+     45.0,
+     0
+    ],
+    [
+     60.0,
+     42.2,
+     0
+    ]
+   ],
+   "note": "Passes east of the reception counter (x 54.5-61.5) and 7 m west of the stream."
+  }
+ ]
+}

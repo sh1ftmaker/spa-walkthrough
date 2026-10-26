@@ -1,0 +1,825 @@
+{
+ "id": "b1_mirror",
+ "name": "05 Obsidian Mirror Float Pool",
+ "level": "b1",
+ "purpose": "The reveal of B1: out of a 3 m corridor into a 13.5 m dome where a perfectly still, black, salt-dense pool reflects a glowworm ceiling, so floating guests seem to hang in a starfield; people whisper and slow down.",
+ "floor_z": -20.0,
+ "ceiling_z": -6.5,
+ "ceiling_profile": {
+  "type": "dome",
+  "min_z": -13.0,
+  "max_z": -6.5,
+  "note": "Smooth-ish basalt dome (7 m at the wall springing, 13.5 m crown) carrying the glowworm field; dark and unlit except the worms so the reflection is clean."
+ },
+ "footprint": [
+  [
+   131.0,
+   92.0
+  ],
+  [
+   130.635,
+   95.707
+  ],
+  [
+   129.554,
+   99.271
+  ],
+  [
+   127.798,
+   102.556
+  ],
+  [
+   125.435,
+   105.435
+  ],
+  [
+   122.556,
+   107.798
+  ],
+  [
+   119.271,
+   109.554
+  ],
+  [
+   115.707,
+   110.635
+  ],
+  [
+   112.0,
+   111.0
+  ],
+  [
+   108.293,
+   110.635
+  ],
+  [
+   104.729,
+   109.554
+  ],
+  [
+   101.444,
+   107.798
+  ],
+  [
+   98.565,
+   105.435
+  ],
+  [
+   96.202,
+   102.556
+  ],
+  [
+   94.446,
+   99.271
+  ],
+  [
+   93.365,
+   95.707
+  ],
+  [
+   93.0,
+   92.0
+  ],
+  [
+   93.365,
+   88.293
+  ],
+  [
+   94.446,
+   84.729
+  ],
+  [
+   96.202,
+   81.444
+  ],
+  [
+   98.565,
+   78.565
+  ],
+  [
+   101.444,
+   76.202
+  ],
+  [
+   104.729,
+   74.446
+  ],
+  [
+   108.293,
+   73.365
+  ],
+  [
+   112.0,
+   73.0
+  ],
+  [
+   115.707,
+   73.365
+  ],
+  [
+   119.271,
+   74.446
+  ],
+  [
+   122.556,
+   76.202
+  ],
+  [
+   125.435,
+   78.565
+  ],
+  [
+   127.798,
+   81.444
+  ],
+  [
+   129.554,
+   84.729
+  ],
+  [
+   130.635,
+   88.293
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_cor_mirror",
+   "to": "b1_cor_mirror",
+   "at": [
+    93.5,
+    92
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b1_mirror_east",
+   "to": "b1_cor_east",
+   "at": [
+    130.5,
+    90
+   ],
+   "width": 4.0,
+   "height": 3.0
+  }
+ ],
+ "spine": [
+  [
+   93.5,
+   92.0,
+   -20.0
+  ],
+  [
+   98.0,
+   92.0,
+   -20.0
+  ],
+  [
+   98.84,
+   96.79,
+   -20.0
+  ],
+  [
+   101.28,
+   101.0,
+   -20.0
+  ],
+  [
+   105.0,
+   104.12,
+   -20.0
+  ],
+  [
+   109.57,
+   105.79,
+   -20.0
+  ],
+  [
+   114.43,
+   105.79,
+   -20.0
+  ],
+  [
+   119.0,
+   104.12,
+   -20.0
+  ],
+  [
+   122.72,
+   101.0,
+   -20.0
+  ],
+  [
+   125.16,
+   96.79,
+   -20.0
+  ],
+  [
+   126.0,
+   92.0,
+   -20.0
+  ],
+  [
+   127.6,
+   90.4,
+   -20.0
+  ],
+  [
+   130.5,
+   90.0,
+   -20.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "south_arc",
+   "points": [
+    [
+     98.0,
+     92.0,
+     -20.0
+    ],
+    [
+     98.84,
+     87.21,
+     -20.0
+    ],
+    [
+     101.28,
+     83.0,
+     -20.0
+    ],
+    [
+     105.0,
+     79.88,
+     -20.0
+    ],
+    [
+     109.57,
+     78.21,
+     -20.0
+    ],
+    [
+     114.43,
+     78.21,
+     -20.0
+    ],
+    [
+     119.0,
+     79.88,
+     -20.0
+    ],
+    [
+     122.72,
+     83.0,
+     -20.0
+    ],
+    [
+     125.16,
+     87.21,
+     -20.0
+    ],
+    [
+     126.0,
+     92.0,
+     -20.0
+    ]
+   ],
+   "note": "Rim walk continues round the south half (SE pavilion, lounge benches): a loop."
+  },
+  {
+   "id": "pool_steps",
+   "points": [
+    [
+     99.88,
+     99.0,
+     -20.0
+    ],
+    [
+     101.26,
+     98.2,
+     -20.0
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "mirror_pool",
+  "at": [
+   112.0,
+   92.0,
+   -20.05
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "r": 12.0,
+   "rim_w": 0.6
+  },
+  "why": "The reason the room exists: a black, dead-still float pool that doubles the glowworm dome, so the whole lower half of every view is stars. Everything else (low rim lanterns, pavilions, the dark arches) is kept dim and at the edge to protect that reflection."
+ },
+ "anchored": [
+  {
+   "id": "glowworms",
+   "asset": "glowworm_ceiling",
+   "at": [
+    112.0,
+    92.0,
+    -7.0
+   ],
+   "dims": {
+    "r": 17.5,
+    "density": "high over the pool, thinning to the wall"
+   },
+   "why": "The light source the hero reflects; threads hang lowest (to -10) over the pool centre."
+  },
+  {
+   "id": "pavilion_nw",
+   "asset": "pavilion_engawa",
+   "at": [
+    100.89,
+    104.34,
+    -20.0
+   ],
+   "facing_deg": 138,
+   "dims": {
+    "w": 6.0,
+    "d": 3.6,
+    "floor": 0.45
+   },
+   "why": "Concept 15 left: a shoji pavilion close on the left when you look east across the pool; its engawa meets the rim walk."
+  },
+  {
+   "id": "pavilion_se",
+   "asset": "pavilion_engawa",
+   "at": [
+    121.52,
+    78.4,
+    -20.0
+   ],
+   "facing_deg": 325,
+   "dims": {
+    "w": 6.0,
+    "d": 3.6,
+    "floor": 0.45
+   },
+   "why": "Concept 15 right: the far pavilion with a tree, across the pool from the entry."
+  },
+  {
+   "id": "pine_se",
+   "asset": "pine_bonsai",
+   "variant": "niwaki large",
+   "at": [
+    124.48,
+    80.76,
+    -20.0
+   ],
+   "facing_deg": 300,
+   "dims": {
+    "h": 3.2
+   },
+   "why": "The pale-lit tree beside the right pavilion in concept 15."
+  },
+  {
+   "id": "pool_steps",
+   "asset": "stair",
+   "variant": "pool entry, 4 steps",
+   "at": [
+    101.61,
+    98.0,
+    -20.0
+   ],
+   "facing_deg": 120,
+   "dims": {
+    "w": 1.8,
+    "steps": 4,
+    "riser": 0.17
+   },
+   "why": "Entry into the float pool on the NW rim, near the corridor; railing both sides."
+  },
+  {
+   "id": "pool_steps_rail",
+   "asset": "railing",
+   "at": [
+    101.61,
+    98.0,
+    -20.0
+   ],
+   "facing_deg": 120,
+   "dims": {
+    "h": 1.0,
+    "len": 1.8,
+    "sides": 2
+   },
+   "why": "Handrails for the pool steps."
+  },
+  {
+   "id": "east_arch",
+   "asset": "portal_arch",
+   "variant": "basalt",
+   "at": [
+    130.4,
+    90.0,
+    -20.0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "w": 4.0,
+    "h": 3.0
+   },
+   "why": "The far arch in concept 15: framed across the pool from the entry, with the glacier's cold light far beyond."
+  },
+  {
+   "id": "lounge_1",
+   "asset": "bench_stone",
+   "at": [
+    105.15,
+    77.32,
+    -20.0
+   ],
+   "facing_deg": 25,
+   "dims": {
+    "l": 2.6
+   },
+   "why": "Lounging on the quiet south arc, facing the pool."
+  },
+  {
+   "id": "lounge_2",
+   "asset": "bench_stone",
+   "at": [
+    99.39,
+    82.15,
+    -20.0
+   ],
+   "facing_deg": 52,
+   "dims": {
+    "l": 2.6
+   },
+   "why": "Second lounge, angled differently; away from the lobby touch-point."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_mirror",
+   "kind": "still",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -21.4,
+   "salt": true,
+   "temp": 35,
+   "footprint": [
+    [
+     112.0,
+     104.0
+    ],
+    [
+     114.34,
+     103.77
+    ],
+    [
+     116.59,
+     103.09
+    ],
+    [
+     118.67,
+     101.98
+    ],
+    [
+     120.49,
+     100.49
+    ],
+    [
+     121.98,
+     98.67
+    ],
+    [
+     123.09,
+     96.59
+    ],
+    [
+     123.77,
+     94.34
+    ],
+    [
+     124.0,
+     92.0
+    ],
+    [
+     123.77,
+     89.66
+    ],
+    [
+     123.09,
+     87.41
+    ],
+    [
+     121.98,
+     85.33
+    ],
+    [
+     120.49,
+     83.51
+    ],
+    [
+     118.67,
+     82.02
+    ],
+    [
+     116.59,
+     80.91
+    ],
+    [
+     114.34,
+     80.23
+    ],
+    [
+     112.0,
+     80.0
+    ],
+    [
+     109.66,
+     80.23
+    ],
+    [
+     107.41,
+     80.91
+    ],
+    [
+     105.33,
+     82.02
+    ],
+    [
+     103.51,
+     83.51
+    ],
+    [
+     102.02,
+     85.33
+    ],
+    [
+     100.91,
+     87.41
+    ],
+    [
+     100.23,
+     89.66
+    ],
+    [
+     100.0,
+     92.0
+    ],
+    [
+     100.23,
+     94.34
+    ],
+    [
+     100.91,
+     96.59
+    ],
+    [
+     102.02,
+     98.67
+    ],
+    [
+     103.51,
+     100.49
+    ],
+    [
+     105.33,
+     101.98
+    ],
+    [
+     107.41,
+     103.09
+    ],
+    [
+     109.66,
+     103.77
+    ]
+   ],
+   "layout_ref": "w_mirror",
+   "note": "Matches layout w_mirror (r 12, z -20.05, rim -20.00). Planar reflection; no underwater lights, no ripples except at the steps."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_cor_mirror",
+   "see": "Straight across the black pool to the east arch; glowworm stars above and below; the glacier's blue far beyond the arch.",
+   "target": [
+    130.5,
+    90.0,
+    -18.5
+   ]
+  },
+  {
+   "from": "p_b1_mirror_east",
+   "see": "Arriving from the east: NW pavilion glowing across the pool, the cor_mirror arch to its left.",
+   "target": [
+    100.0,
+    104.0,
+    -18.5
+   ]
+  },
+  {
+   "from": "rim_north",
+   "at": [
+    112.0,
+    106.0
+   ],
+   "see": "Down into the pool: the dome reflected, floaters among the stars.",
+   "target": [
+    112.0,
+    88.0,
+    -20.05
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    95.0,
+    92.0,
+    -18.4
+   ],
+   "target": [
+    124.0,
+    92.0,
+    -14.0
+   ],
+   "fov_v": 62
+  },
+  "reveal": {
+   "pos": [
+    101.28,
+    101.0,
+    -18.4
+   ],
+   "target": [
+    121.0,
+    84.5,
+    -12.0
+   ],
+   "fov_v": 64
+  },
+  "concept": {
+   "pos": [
+    99.2,
+    91.4,
+    -18.4
+   ],
+   "target": [
+    130.4,
+    90.0,
+    -17.4
+   ],
+   "fov_v": 58,
+   "image": "lookbook/img/15-obsidian-mirror.jpg",
+   "match": "Low across the black pool toward the east arch: NW pavilion close on the left, SE pavilion and pale niwaki on the right, a line of small lanterns along the far rim doubled in the water, glowworm dome reflected so the floaters hang in stars, a band of mist on the left rim."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_floor",
+   "variant": "small andon",
+   "ring": [
+    112.0,
+    92.0
+   ],
+   "radius": 12.75,
+   "spacing": [
+    3.0,
+    4.0
+   ],
+   "intensity": "low",
+   "face": "out",
+   "skip_arcs_deg": [
+    [
+     262,
+     282
+    ],
+    [
+     80,
+     100
+    ],
+    [
+     215,
+     245
+    ]
+   ],
+   "avoid": [
+    "portals",
+    "nav"
+   ],
+   "why": "A low line of small lanterns along the rim (concept 15), dimmed so they read as a string of points doubled in the water; gaps opposite both arches keep the arch views dark, and the SW arc stays dark."
+  },
+  {
+   "asset": "pavilion_engawa",
+   "part": "shoji_glow",
+   "at": [
+    [
+     100.89,
+     104.34,
+     -20.0
+    ],
+    [
+     121.52,
+     78.4,
+     -20.0
+    ]
+   ],
+   "intensity": "low",
+   "why": "Warm shoji glow from both pavilions, the only large warm areas."
+  },
+  {
+   "asset": "glowworm_ceiling",
+   "part": "emission",
+   "at": [
+    [
+     112.0,
+     92.0,
+     -7.0
+    ]
+   ],
+   "why": "Teal points: the hero's light."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    112.0,
+    92.0
+   ],
+   "radius": 12.25,
+   "spacing": [
+    1.0,
+    1.8
+   ],
+   "embed": 0.1,
+   "scale": [
+    0.35,
+    0.7
+   ],
+   "top_z": [
+    -20.0,
+    -19.7
+   ],
+   "avoid": [
+    "nav",
+    "anchored:pool_steps"
+   ],
+   "why": "Low wet rock rim (concept 15 foreground)."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    2.2
+   ],
+   "density": 0.05,
+   "scale": [
+    0.6,
+    1.4
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "water",
+    "anchored:pavilion_nw",
+    "anchored:pavilion_se"
+   ],
+   "why": "Rock at the dome's foot only; the deck middle stays open."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     95.4,
+     93.9,
+     -20.0
+    ],
+    [
+     95.4,
+     90.1,
+     -20.0
+    ]
+   ],
+   "face": "path",
+   "intensity": "low",
+   "why": "Pair just inside the west arch so the threshold has a floor, very dim."
+  }
+ ],
+ "mood": {
+  "key": "starfield in a black pool (teal glowworms, doubled)",
+  "palette": "teal glowworm points, black obsidian water, small amber lanterns and shoji glow kept low",
+  "mist": "A thin band on the west and north rims only; the pool centre is clear so the reflection is clean."
+ },
+ "waivers": [
+  {
+   "check": "hero_brightest",
+   "where": "mirror_pool",
+   "reason": "The hero is a reflective black surface; its brightness is the reflected glowworm field over a large area. Individual lantern points may out-measure it per pixel, so lanterns here are 'low' intensity and the bake should be judged on area luminance."
+  }
+ ],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

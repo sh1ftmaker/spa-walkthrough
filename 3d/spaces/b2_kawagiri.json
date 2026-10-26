@@ -1,0 +1,1398 @@
+{
+ "id": "b2_kawagiri",
+ "name": "Kawagiri 川霧 restaurant (deck and pods over the river)",
+ "level": "b2",
+ "purpose": "Dinner behind falling water: guests cross a gangway between two water curtains onto a long deck over the fast teal river, and each party disappears into its own lantern-lit pod while soy and tea arrive by tiny wooden aqueducts.",
+ "floor_z": -40.0,
+ "ceiling_z": -28.0,
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -32.0,
+  "max_z": -28.0,
+  "note": "Raw basalt vault, wet and black, lowest (-32) over the north bank and the lift drum, highest (-28) over the middle of the river. No roof over the spine deck so the curtains and the neon gate read against the dark rock; each pod has its own low hinoki roof (top about -36.8) carrying its ceiling trough."
+ },
+ "footprint": [
+  [
+   46.0,
+   74.0
+  ],
+  [
+   46.0,
+   100.0
+  ],
+  [
+   122.0,
+   100.0
+  ],
+  [
+   122.0,
+   74.0
+  ],
+  [
+   97.385,
+   74.0
+  ],
+  [
+   97.205,
+   74.318
+  ],
+  [
+   96.984,
+   74.667
+  ],
+  [
+   96.747,
+   75.004
+  ],
+  [
+   96.493,
+   75.329
+  ],
+  [
+   96.224,
+   75.641
+  ],
+  [
+   95.94,
+   75.94
+  ],
+  [
+   95.641,
+   76.224
+  ],
+  [
+   95.329,
+   76.493
+  ],
+  [
+   95.004,
+   76.747
+  ],
+  [
+   94.667,
+   76.984
+  ],
+  [
+   94.318,
+   77.205
+  ],
+  [
+   93.96,
+   77.408
+  ],
+  [
+   93.591,
+   77.594
+  ],
+  [
+   93.215,
+   77.761
+  ],
+  [
+   92.83,
+   77.909
+  ],
+  [
+   92.438,
+   78.038
+  ],
+  [
+   92.041,
+   78.148
+  ],
+  [
+   91.639,
+   78.239
+  ],
+  [
+   91.233,
+   78.309
+  ],
+  [
+   90.823,
+   78.36
+  ],
+  [
+   90.412,
+   78.39
+  ],
+  [
+   90.0,
+   78.4
+  ],
+  [
+   89.588,
+   78.39
+  ],
+  [
+   89.177,
+   78.36
+  ],
+  [
+   88.767,
+   78.309
+  ],
+  [
+   88.361,
+   78.239
+  ],
+  [
+   87.959,
+   78.148
+  ],
+  [
+   87.562,
+   78.038
+  ],
+  [
+   87.17,
+   77.909
+  ],
+  [
+   86.785,
+   77.761
+  ],
+  [
+   86.409,
+   77.594
+  ],
+  [
+   86.04,
+   77.408
+  ],
+  [
+   85.682,
+   77.205
+  ],
+  [
+   85.333,
+   76.984
+  ],
+  [
+   84.996,
+   76.747
+  ],
+  [
+   84.671,
+   76.493
+  ],
+  [
+   84.359,
+   76.224
+  ],
+  [
+   84.06,
+   75.94
+  ],
+  [
+   83.776,
+   75.641
+  ],
+  [
+   83.507,
+   75.329
+  ],
+  [
+   83.253,
+   75.004
+  ],
+  [
+   83.016,
+   74.667
+  ],
+  [
+   82.795,
+   74.318
+  ],
+  [
+   82.615,
+   74.0
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b2_core_kawagiri",
+   "to": "b2_core",
+   "at": [
+    70,
+    74
+   ],
+   "width": 6.0,
+   "height": 3.0,
+   "note": "Main way in. Clear opening 4.0 m between two noren posts inside the 6 m layout opening, 3 m high: the compressed threshold before the deck reveal."
+  },
+  {
+   "id": "p_b2_core_kawagiri_e",
+   "to": "b2_core",
+   "at": [
+    110,
+    74
+   ],
+   "width": 4.0,
+   "height": 3.0,
+   "note": "Ramen-side way in/out; the counter's neon is framed through it."
+  }
+ ],
+ "spine": [
+  [
+   70,
+   74,
+   -40.0
+  ],
+  [
+   70,
+   82,
+   -40.0
+  ],
+  [
+   70,
+   84,
+   -40.0
+  ],
+  [
+   90,
+   84,
+   -40.0
+  ],
+  [
+   110,
+   84,
+   -40.0
+  ],
+  [
+   110,
+   82,
+   -40.0
+  ],
+  [
+   110,
+   74,
+   -40.0
+  ]
+ ],
+ "branches": [
+  {
+   "id": "br1",
+   "why": "West end of the deck: overlook downstream toward the falls mist.",
+   "points": [
+    [
+     70,
+     84,
+     -40.0
+    ],
+    [
+     61.5,
+     84,
+     -40.0
+    ]
+   ]
+  },
+  {
+   "id": "br2",
+   "why": "East end of the deck: under the sign gate.",
+   "points": [
+    [
+     110,
+     84,
+     -40.0
+    ],
+    [
+     120.5,
+     84,
+     -40.0
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "kawagiri_sign_gate",
+  "at": [
+   121.0,
+   84.0,
+   -40.0
+  ],
+  "facing_deg": 270,
+  "dims": {
+   "w": 5.6,
+   "h": 7.5,
+   "span": 4.0
+  },
+  "why": "The deck is a 60 m straight vista and needs a terminus or the eye runs off into the dark. A heavy hinoki gate spans the east end of the deck carrying the 川霧 kanji in hand-bent magenta neon with a cyan crest (both faces lit, so it also reads from the boat landing), and its cross-beam carries the soy/tea aqueduct over the river from the kitchen header. It is the brightest thing in the space, the only large neon, and every lantern row on the deck converges on it."
+ },
+ "anchored": [
+  {
+   "id": "spine_deck",
+   "asset": "beam_pier",
+   "at": [
+    91.25,
+    84.0,
+    -40.0
+   ],
+   "path": [
+    [
+     61.0,
+     84.0
+    ],
+    [
+     121.5,
+     84.0
+    ]
+   ],
+   "z": -40.0,
+   "dims": {
+    "w": 4.0,
+    "pier_spacing": 6.0,
+    "beam_depth": 0.6
+   },
+   "why": "The spine deck on heavy posts and cross-braced beams standing in the river (concepts 06, 07). Piers sit on basalt footings; spacing 6 m so piers never land on pod gaps' sightlines to the water."
+  },
+  {
+   "id": "gangway_main",
+   "asset": "beam_pier",
+   "at": [
+    70.0,
+    78.0,
+    -40.0
+   ],
+   "path": [
+    [
+     70.0,
+     74.0
+    ],
+    [
+     70.0,
+     82.0
+    ]
+   ],
+   "z": -40.0,
+   "dims": {
+    "w": 3.0
+   },
+   "why": "Main gangway from the core across 8 m of water between T7 and T8; curtains fall 1.3-2.1 m either side of you."
+  },
+  {
+   "id": "gangway_east",
+   "asset": "beam_pier",
+   "at": [
+    110.0,
+    78.0,
+    -40.0
+   ],
+   "path": [
+    [
+     110.0,
+     74.0
+    ],
+    [
+     110.0,
+     82.0
+    ]
+   ],
+   "z": -40.0,
+   "dims": {
+    "w": 3.0
+   },
+   "why": "East gangway between T11 and T12, back to the ramen counter."
+  },
+  {
+   "id": "T1",
+   "asset": "kawagiri_pod",
+   "at": [
+    64.0,
+    89.0,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "North row pod T1 on beams over the river; open side and step face the spine deck, water curtains on the other three sides, aqueduct spouts at the back."
+  },
+  {
+   "id": "T2",
+   "asset": "kawagiri_pod",
+   "at": [
+    74.7,
+    89.0,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "North row pod T2 on beams over the river; open side and step face the spine deck, water curtains on the other three sides, aqueduct spouts at the back."
+  },
+  {
+   "id": "T3",
+   "asset": "kawagiri_pod",
+   "at": [
+    85.4,
+    89.0,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "North row pod T3 on beams over the river; open side and step face the spine deck, water curtains on the other three sides, aqueduct spouts at the back."
+  },
+  {
+   "id": "T4",
+   "asset": "kawagiri_pod",
+   "at": [
+    96.1,
+    89.0,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "North row pod T4 on beams over the river; open side and step face the spine deck, water curtains on the other three sides, aqueduct spouts at the back. Variant 'chef_table' (T4): the concept-08 table is staged here.",
+   "variant": "chef_table"
+  },
+  {
+   "id": "T5",
+   "asset": "kawagiri_pod",
+   "at": [
+    106.8,
+    89.0,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "North row pod T5 on beams over the river; open side and step face the spine deck, water curtains on the other three sides, aqueduct spouts at the back."
+  },
+  {
+   "id": "T6",
+   "asset": "kawagiri_pod",
+   "at": [
+    117.5,
+    89.0,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "North row pod T6 on beams over the river; open side and step face the spine deck, water curtains on the other three sides, aqueduct spouts at the back."
+  },
+  {
+   "id": "T7",
+   "asset": "kawagiri_pod",
+   "at": [
+    63.9,
+    79.0,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "South row pod T7 on beams over the river; open side faces the spine deck. Flanks the main gangway (x 68.5-71.5) so guests walk out between two curtains."
+  },
+  {
+   "id": "T8",
+   "asset": "kawagiri_pod",
+   "at": [
+    75.3,
+    79.0,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "South row pod T8 on beams over the river; open side faces the spine deck. Flanks the main gangway (x 68.5-71.5) so guests walk out between two curtains."
+  },
+  {
+   "id": "T9",
+   "asset": "kawagiri_pod",
+   "at": [
+    81.5,
+    79.0,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "South row pod T9 on beams over the river; open side faces the spine deck. Row breaks at x 84-96 for the lift drum (r 8, cut out of this footprint at r 8.4) which stands in the river here, as the plan's gap between T9 and T10."
+  },
+  {
+   "id": "T10",
+   "asset": "kawagiri_pod",
+   "at": [
+    98.5,
+    79.0,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "South row pod T10 on beams over the river; open side faces the spine deck. Row breaks at x 84-96 for the lift drum (r 8, cut out of this footprint at r 8.4) which stands in the river here, as the plan's gap between T9 and T10."
+  },
+  {
+   "id": "T11",
+   "asset": "kawagiri_pod",
+   "at": [
+    104.7,
+    79.0,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "South row pod T11 on beams over the river; open side faces the spine deck. Flanks the east gangway (x 108.5-111.5)."
+  },
+  {
+   "id": "T12",
+   "asset": "kawagiri_pod",
+   "at": [
+    115.3,
+    79.0,
+    -40.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 5.0,
+    "d": 5.0,
+    "h": 3.2
+   },
+   "why": "South row pod T12 on beams over the river; open side faces the spine deck. Flanks the east gangway (x 108.5-111.5)."
+  },
+  {
+   "id": "aqueduct_north",
+   "asset": "aqueduct",
+   "at": [
+    91.0,
+    94.0,
+    -37.1
+   ],
+   "path": [
+    [
+     121.0,
+     74.5,
+     -35.2
+    ],
+    [
+     121.0,
+     94.0,
+     -35.6
+    ],
+    [
+     61.0,
+     94.0,
+     -38.6
+    ]
+   ],
+   "dims": {
+    "channels": [
+     "soy",
+     "tea"
+    ],
+    "trough_w": 0.18
+   },
+   "why": "Soy and genmaicha run by gravity from the header tanks above the kitchen, over the river on the sign gate's beam, then west on thin stilts behind the north pods (1:20 fall) with a branch and sluice gate to every table (07, 08)."
+  },
+  {
+   "id": "aqueduct_south",
+   "asset": "aqueduct",
+   "at": [
+    90.0,
+    79.2,
+    -37.6
+   ],
+   "path": [
+    [
+     118.0,
+     74.5,
+     -36.6
+    ],
+    [
+     118.0,
+     75.6,
+     -36.7
+    ],
+    [
+     96.0,
+     75.6,
+     -37.4
+    ],
+    [
+     95.7,
+     79.2,
+     -37.5
+    ],
+    [
+     84.3,
+     79.2,
+     -37.8
+    ],
+    [
+     84.0,
+     75.6,
+     -37.9
+    ],
+    [
+     61.0,
+     75.6,
+     -38.6
+    ]
+   ],
+   "dims": {
+    "channels": [
+     "soy",
+     "tea"
+    ],
+    "trough_w": 0.18
+   },
+   "outside_ok": true,
+   "why": "South network behind T7-T12; between T9 and T10 it is bracketed to the river face of the lift drum (two corners lie 0.2 m inside the drum cut-out, on the drum wall), which makes the drum part of the restaurant instead of an obstacle."
+  },
+  {
+   "id": "neon_north_1",
+   "asset": "neon_sign",
+   "at": [
+    80.0,
+    99.4,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "height": 4.5,
+   "dims": {
+    "w": 1.0,
+    "h": 2.6
+   },
+   "variant": "magenta_食事処",
+   "why": "Small vertical neon on the north bank rock between T2 and T3, seen across the pods from the deck (06 left)."
+  },
+  {
+   "id": "neon_north_2",
+   "asset": "neon_sign",
+   "at": [
+    101.5,
+    99.4,
+    -40.0
+   ],
+   "facing_deg": 180,
+   "height": 5.0,
+   "dims": {
+    "w": 1.0,
+    "h": 2.8
+   },
+   "variant": "cyan_火山湯",
+   "why": "Cyan vertical sign between T4 and T5 (06 centre); neon stays small and paired with dark rock."
+  },
+  {
+   "id": "sakura_bank",
+   "asset": "sakura_small",
+   "at": [
+    112.5,
+    98.0,
+    -40.0
+   ],
+   "facing_deg": 200,
+   "dims": {
+    "h": 5.0
+   },
+   "why": "One blossom tree on the north bank behind the gate, lit magenta from below (06 top left): it backs the hero."
+  },
+  {
+   "id": "overlook_rail",
+   "asset": "railing",
+   "at": [
+    61.0,
+    84.0,
+    -40.0
+   ],
+   "facing_deg": 270,
+   "path": [
+    [
+     61.0,
+     82.0
+    ],
+    [
+     61.0,
+     86.0
+    ]
+   ],
+   "z": -40.0,
+   "why": "Closes the west end of the deck as an overlook toward the falls."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_river",
+   "kind": "flow",
+   "ref": "b2_river",
+   "z": -42.643,
+   "z_at_x46": -42.898,
+   "z_at_x122": -42.48,
+   "rim_z": null,
+   "path": [
+    [
+     118,
+     85
+    ],
+    [
+     64,
+     85
+    ],
+    [
+     46,
+     84
+    ]
+   ],
+   "width": 22.0,
+   "note": "Owned by b2_river (listed here so pods and piers know the surface). Deck -40 is about 2.5-2.9 m above the water."
+  },
+  {
+   "id": "w_curtains",
+   "kind": "fall",
+   "z_top": -36.9,
+   "z_bottom": -42.643,
+   "note": "Water curtains fall from each pod's ceiling trough past the floor gutter straight into the river (07 section A-A). They part for a few seconds when a server steps up."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b2_core_kawagiri",
+   "see": "Down a 3 m gangway between the T7 and T8 curtains; across the deck T1 and T2 glow behind their own curtains; mist on the river below.",
+   "target": [
+    70,
+    89,
+    -38.0
+   ]
+  },
+  {
+   "from": "spine landing (70, 84)",
+   "see": "East along the deck: pods both sides, red chochin pools and dark gaps, ending in the neon 川霧 gate.",
+   "target": [
+    121,
+    84,
+    -35.0
+   ]
+  },
+  {
+   "from": "west overlook (61.5, 84)",
+   "see": "Downstream over the Mist Steps' water sheets to the white plume rising off the Thunder Curtain lip.",
+   "target": [
+    29,
+    76,
+    -41.0
+   ]
+  },
+  {
+   "from": "p_b2_core_kawagiri_e (deck side)",
+   "see": "Through the east gangway: the ramen counter's magenta neon and steam (next space's light).",
+   "target": [
+    111.5,
+    63.6,
+    -37.0
+   ]
+  },
+  {
+   "from": "sign gate (120.5, 84)",
+   "see": "East up the river to the boardwalk lanterns and the boat landing glow.",
+   "target": [
+    150,
+    86,
+    -40.5
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    70.0,
+    75.5,
+    -38.4
+   ],
+   "target": [
+    70.0,
+    92.0,
+    -38.2
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    71.2,
+    84.6,
+    -38.4
+   ],
+   "target": [
+    121.0,
+    84.0,
+    -35.0
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "image": "lookbook/img/08-table-aqueduct.jpg",
+   "pos": [
+    96.1,
+    87.4,
+    -38.4
+   ],
+   "target": [
+    95.0,
+    91.2,
+    -39.1
+   ],
+   "fov_v": 50,
+   "match": "Inside the T4 chef_table pod: wet dark hinoki table in the foreground, the arched aqueduct with its sluice spout pouring soy into a dish and tea into a cup, the water curtain behind lit magenta/cyan, a small andon lantern, steam."
+  }
+ },
+ "lights": [
+  {
+   "asset": "kawagiri_sign_gate",
+   "role": "hero emissive",
+   "note": "Brightest source: neon 川霧 (magenta) + crest (cyan), both faces."
+  },
+  {
+   "asset": "lantern_hanging",
+   "variant": "red_chochin",
+   "at": [
+    [
+     61.7,
+     86.6
+    ],
+    [
+     66.3,
+     86.6
+    ],
+    [
+     72.4,
+     86.6
+    ],
+    [
+     77.0,
+     86.6
+    ],
+    [
+     83.1,
+     86.6
+    ],
+    [
+     87.7,
+     86.6
+    ],
+    [
+     93.8,
+     86.6
+    ],
+    [
+     98.4,
+     86.6
+    ],
+    [
+     104.5,
+     86.6
+    ],
+    [
+     109.1,
+     86.6
+    ],
+    [
+     115.2,
+     86.6
+    ],
+    [
+     119.8,
+     86.6
+    ],
+    [
+     61.6,
+     81.4
+    ],
+    [
+     66.2,
+     81.4
+    ],
+    [
+     73.0,
+     81.4
+    ],
+    [
+     77.6,
+     81.4
+    ],
+    [
+     79.2,
+     81.4
+    ],
+    [
+     83.8,
+     81.4
+    ],
+    [
+     96.2,
+     81.4
+    ],
+    [
+     100.8,
+     81.4
+    ],
+    [
+     102.4,
+     81.4
+    ],
+    [
+     107.0,
+     81.4
+    ],
+    [
+     113.0,
+     81.4
+    ],
+    [
+     117.6,
+     81.4
+    ]
+   ],
+   "height": 2.7,
+   "snap": "pod_eave",
+   "why": "Red chochin at the deck-side corners of each pod (06): each pod is a pool of light; the 1-11 m gaps between pods stay darker."
+  },
+  {
+   "asset": "lantern_post",
+   "along": "spine",
+   "side": "both",
+   "spacing": [
+    10.5,
+    11.5
+   ],
+   "offset": 1.85,
+   "face": "path",
+   "avoid": [
+    "portals",
+    "anchored:T1",
+    "anchored:T2",
+    "anchored:T3",
+    "anchored:T4",
+    "anchored:T5",
+    "anchored:T6",
+    "anchored:T7",
+    "anchored:T8",
+    "anchored:T9",
+    "anchored:T10",
+    "anchored:T11",
+    "anchored:T12"
+   ],
+   "dim": 0.6,
+   "why": "Low post lanterns on the deck rail only at the pod gaps, leading the eye east."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     68.2,
+     81.0
+    ],
+    [
+     71.8,
+     81.0
+    ],
+    [
+     108.2,
+     81.0
+    ],
+    [
+     111.8,
+     81.0
+    ]
+   ],
+   "why": "Pairs marking where each gangway lands on the deck."
+  },
+  {
+   "asset": "pod_interior",
+   "role": "warm washi panel glow inside each pod behind its curtain",
+   "note": "Part of kawagiri_pod; backlights the curtain so it reads as a glowing sheet from the deck and from the river."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": [
+    [
+     61.0,
+     82.0
+    ],
+    [
+     121.5,
+     82.0
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 180,
+   "avoid": [
+    "portals"
+   ],
+   "skip_at": "pod steps (x = pod centre +-1.2) and gangways",
+   "why": "Deck south edge rail (posts every 1.5 m), open at each pod step and gangway."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     61.0,
+     86.0
+    ],
+    [
+     121.5,
+     86.0
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 0,
+   "skip_at": "pod steps (x = pod centre +-1.2)",
+   "why": "Deck north edge rail."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     68.4,
+     74.6
+    ],
+    [
+     68.4,
+     81.6
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 270,
+   "why": "Main gangway rail, west; T7 curtain beyond."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     71.6,
+     74.6
+    ],
+    [
+     71.6,
+     81.6
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 90,
+   "why": "Main gangway rail, east; T8 curtain beyond."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     108.4,
+     74.6
+    ],
+    [
+     108.4,
+     81.6
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 270,
+   "why": "East gangway rail, west."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     111.6,
+     74.6
+    ],
+    [
+     111.6,
+     81.6
+    ]
+   ],
+   "spacing": [
+    1.5,
+    1.5
+   ],
+   "face": 90,
+   "why": "East gangway rail, east."
+  },
+  {
+   "asset": "banner",
+   "variant": "noren_short",
+   "at": [
+    [
+     64.0,
+     86.55
+    ],
+    [
+     74.7,
+     86.55
+    ],
+    [
+     85.4,
+     86.55
+    ],
+    [
+     96.1,
+     86.55
+    ],
+    [
+     106.8,
+     86.55
+    ],
+    [
+     117.5,
+     86.55
+    ],
+    [
+     63.9,
+     81.45
+    ],
+    [
+     75.3,
+     81.45
+    ],
+    [
+     81.5,
+     81.45
+    ],
+    [
+     98.5,
+     81.45
+    ],
+    [
+     104.7,
+     81.45
+    ],
+    [
+     115.3,
+     81.45
+    ]
+   ],
+   "height": 2.2,
+   "why": "Short noren over each pod's deck-side opening (06); the server parts it with the curtain."
+  },
+  {
+   "asset": "sign_kanji",
+   "variant": "pod_number",
+   "at": [
+    [
+     65.9,
+     86.7
+    ],
+    [
+     76.6,
+     86.7
+    ],
+    [
+     87.3,
+     86.7
+    ],
+    [
+     98.0,
+     86.7
+    ],
+    [
+     108.7,
+     86.7
+    ],
+    [
+     119.4,
+     86.7
+    ],
+    [
+     65.8,
+     81.3
+    ],
+    [
+     77.2,
+     81.3
+    ],
+    [
+     83.4,
+     81.3
+    ],
+    [
+     100.4,
+     81.3
+    ],
+    [
+     106.6,
+     81.3
+    ],
+    [
+     117.2,
+     81.3
+    ]
+   ],
+   "height": 1.6,
+   "scale": [
+    0.5,
+    0.5
+   ],
+   "why": "T1-T12 table boards on each pod's front post (07)."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "area",
+   "polygon": [
+    [
+     46,
+     96.3
+    ],
+    [
+     122,
+     96.3
+    ],
+    [
+     122,
+     100
+    ],
+    [
+     46,
+     100
+    ]
+   ],
+   "density": 0.06,
+   "snap": "ground",
+   "avoid": [
+    "anchored:neon_north_1",
+    "anchored:neon_north_2",
+    "anchored:sakura_bank",
+    1.5
+   ],
+   "why": "North bank ledge: wet black rock, ferns between."
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     66.0,
+     98.5,
+     -40.0
+    ],
+    [
+     92.0,
+     98.8,
+     -40.0
+    ]
+   ],
+   "why": "Two dark silhouettes on the north bank between pod backs, against the curtain glow."
+  },
+  {
+   "asset": "lantern_hanging",
+   "variant": "small_andon",
+   "at": [
+    [
+     64.6,
+     89.4
+    ],
+    [
+     75.3,
+     89.4
+    ],
+    [
+     86.0,
+     89.4
+    ],
+    [
+     96.7,
+     89.4
+    ],
+    [
+     107.4,
+     89.4
+    ],
+    [
+     118.1,
+     89.4
+    ],
+    [
+     64.5,
+     78.6
+    ],
+    [
+     75.9,
+     78.6
+    ],
+    [
+     82.1,
+     78.6
+    ],
+    [
+     99.1,
+     78.6
+    ],
+    [
+     105.3,
+     78.6
+    ],
+    [
+     115.9,
+     78.6
+    ]
+   ],
+   "height": 1.0,
+   "why": "One small table lantern per pod, on the table (08)."
+  }
+ ],
+ "mood": {
+  "key": "neon 川霧 gate at the end of the deck; curtains glowing between red chochin",
+  "palette": "red chochin + amber washi, magenta and cyan neon (only here and in b2_core), teal river glow from below, black wet basalt, aged hinoki",
+  "mist": "Dense low mist on the river under the deck, thin wisps rising between pods; none on the deck itself."
+ },
+ "waivers": [
+  {
+   "check": "spacing",
+   "where": "kawagiri_pod rows",
+   "reason": "Pods repeat at a near-regular pitch on purpose (a restaurant row, as in 06/07); the irregular gap for the lift drum and the gangways breaks the grid."
+  },
+  {
+   "check": "clearance",
+   "where": "gangway_main between T7 and T8",
+   "reason": "Curtains fall 1.3-2.1 m from the gangway edge; clearance corridor 1.2 x 2.1 m stays clear, spray is intended."
+  }
+ ]
+}

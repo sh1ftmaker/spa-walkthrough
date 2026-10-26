@@ -1,0 +1,639 @@
+{
+ "id": "b1_glacier",
+ "name": "07 Glacier Plunge Ice Cave",
+ "level": "b1",
+ "purpose": "After the heat, the shock: a 6 °C plunge in a cave where blue glacier ice meets black basalt and drips meltwater straight into the pool; guests gasp, climb out up timber steps into a warm shoji hut, and leave by a door that leads straight back to the steam.",
+ "floor_z": -20.0,
+ "ceiling_z": -8.0,
+ "ceiling_profile": {
+  "type": "cave",
+  "min_z": -14.0,
+  "max_z": -8.0,
+  "note": "Basalt vault 6-12 m; the north half glazed with ice and hung with icicles over the pool."
+ },
+ "footprint": [
+  [
+   164,
+   66
+  ],
+  [
+   196,
+   66
+  ],
+  [
+   197.875,
+   96
+  ],
+  [
+   164,
+   96
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_east_glacier",
+   "to": "b1_cor_east",
+   "at": [
+    165,
+    84
+   ],
+   "width": 3.0,
+   "height": 2.6
+  },
+  {
+   "id": "p_b1_glacier_outfall",
+   "to": "b1_outfall",
+   "at": [
+    170,
+    97
+   ],
+   "width": 3.0,
+   "height": 2.6
+  }
+ ],
+ "spine": [
+  [
+   165.0,
+   84.0,
+   -20.0
+  ],
+  [
+   167.6,
+   89.0,
+   -20.0
+  ],
+  [
+   168.6,
+   93.6,
+   -20.0
+  ],
+  [
+   170.0,
+   97.0,
+   -20.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "pool_loop",
+   "points": [
+    [
+     165.0,
+     84.0,
+     -20.0
+    ],
+    [
+     167.0,
+     81.0,
+     -20.0
+    ],
+    [
+     172.5,
+     75.6,
+     -20.0
+    ],
+    [
+     180.0,
+     72.5,
+     -20.0
+    ],
+    [
+     187.5,
+     73.4,
+     -20.0
+    ],
+    [
+     191.2,
+     77.8,
+     -20.0
+    ],
+    [
+     191.2,
+     84.0,
+     -20.0
+    ]
+   ],
+   "note": "From the entry round the south of the pool to the warming hut's engawa; walkers return the same way."
+  }
+ ],
+ "hero": {
+  "asset": "ice_formation",
+  "variant": "ice wall + icicle curtain",
+  "at": [
+   182.0,
+   94.4,
+   -20.0
+  ],
+  "facing_deg": 180,
+  "dims": {
+   "w": 22.0,
+   "h": 11.0,
+   "d": 2.4
+  },
+  "why": "Translucent blue ice rising straight out of the pool's north rim, backlit, with icicles dripping meltwater into the plunge (concept 17). It is the coldest and brightest light on B1, framed square from the entry door and reflected in the clear water."
+ },
+ "anchored": [
+  {
+   "id": "warm_hut",
+   "asset": "pavilion_engawa",
+   "variant": "warming hut",
+   "at": [
+    194.1,
+    82.6,
+    -20.0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "w": 7.0,
+    "d": 4.5,
+    "floor": 0.45
+   },
+   "why": "Concept 17 right: a warm timber hut with shoji and lanterns; you climb into it out of the cold water."
+  },
+  {
+   "id": "hut_steps",
+   "asset": "stair",
+   "variant": "pool steps",
+   "at": [
+    190.3,
+    83.2,
+    -20.0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "w": 2.0,
+    "steps": 5,
+    "riser": 0.17
+   },
+   "why": "Timber-edged stone steps from the hut's engawa down into the plunge (concept 17)."
+  },
+  {
+   "id": "hut_rail",
+   "asset": "railing",
+   "variant": "bronze handrail on timber posts",
+   "at": [
+    190.3,
+    82.0,
+    -20.0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "h": 1.0,
+    "len": 2.6
+   },
+   "why": "The handrail the bather holds in concept 17."
+  },
+  {
+   "id": "monolith",
+   "asset": "obsidian_monolith",
+   "at": [
+    188.47,
+    89.82,
+    -20.0
+   ],
+   "facing_deg": 228,
+   "dims": {
+    "h": 3.2
+   },
+   "why": "The glossy black obsidian slab between the ice and the hut (concept 17 centre-right); black against blue."
+  },
+  {
+   "id": "entry_board",
+   "asset": "sign_kanji",
+   "at": [
+    164.6,
+    80.6,
+    -20.0
+   ],
+   "facing_deg": 60,
+   "dims": {
+    "w": 0.5,
+    "h": 1.5
+   },
+   "text": "氷 6 °C",
+   "why": "Temperature board inside the door."
+  },
+  {
+   "id": "return_noren",
+   "asset": "banner",
+   "variant": "noren (warm)",
+   "at": [
+    170.0,
+    96.4,
+    -17.6
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 2.8,
+    "h": 0.9
+   },
+   "why": "Lookbook: 'one door leads straight back into the steam'. A warm-lit noren at the NW door marks it from the pool."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_glacier",
+   "kind": "still",
+   "z": -20.06,
+   "rim_z": -20.0,
+   "bed_z": -21.3,
+   "temp": 6,
+   "footprint": [
+    [
+     182.0,
+     92.0
+    ],
+    [
+     183.56,
+     91.85
+    ],
+    [
+     185.06,
+     91.39
+    ],
+    [
+     186.44,
+     90.65
+    ],
+    [
+     187.66,
+     89.66
+    ],
+    [
+     188.65,
+     88.44
+    ],
+    [
+     189.39,
+     87.06
+    ],
+    [
+     189.85,
+     85.56
+    ],
+    [
+     190.0,
+     84.0
+    ],
+    [
+     189.85,
+     82.44
+    ],
+    [
+     189.39,
+     80.94
+    ],
+    [
+     188.65,
+     79.56
+    ],
+    [
+     187.66,
+     78.34
+    ],
+    [
+     186.44,
+     77.35
+    ],
+    [
+     185.06,
+     76.61
+    ],
+    [
+     183.56,
+     76.15
+    ],
+    [
+     182.0,
+     76.0
+    ],
+    [
+     180.44,
+     76.15
+    ],
+    [
+     178.94,
+     76.61
+    ],
+    [
+     177.56,
+     77.35
+    ],
+    [
+     176.34,
+     78.34
+    ],
+    [
+     175.35,
+     79.56
+    ],
+    [
+     174.61,
+     80.94
+    ],
+    [
+     174.15,
+     82.44
+    ],
+    [
+     174.0,
+     84.0
+    ],
+    [
+     174.15,
+     85.56
+    ],
+    [
+     174.61,
+     87.06
+    ],
+    [
+     175.35,
+     88.44
+    ],
+    [
+     176.34,
+     89.66
+    ],
+    [
+     177.56,
+     90.65
+    ],
+    [
+     178.94,
+     91.39
+    ],
+    [
+     180.44,
+     91.85
+    ]
+   ],
+   "layout_ref": "w_glacier",
+   "note": "Matches layout (r 8 at (182,84), z -20.06). Clear cold water, visible rock bed (concept 17)."
+  },
+  {
+   "id": "w_glacier_drip",
+   "kind": "fall",
+   "z_top": -15.0,
+   "z_bottom": -20.06,
+   "path": [
+    [
+     176.0,
+     92.6
+    ],
+    [
+     186.0,
+     92.6
+    ]
+   ],
+   "width": 0.3,
+   "note": "Meltwater threads from the icicle curtain into the pool's north edge."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_east_glacier",
+   "see": "Across the plunge to the blue ice wall; the warm hut on the right; the black monolith between.",
+   "target": [
+    182.0,
+    94.4,
+    -15.0
+   ]
+  },
+  {
+   "from": "warm_hut",
+   "at": [
+    191.2,
+    84.0
+   ],
+   "see": "From the hut: the warm noren of the return door across the pool (NW) - the way back to the steam.",
+   "target": [
+    170.0,
+    97.0,
+    -18.6
+   ]
+  },
+  {
+   "from": "p_b1_glacier_outfall",
+   "see": "Looking back in from the return door: ice wall left, hut glow far right.",
+   "target": [
+    190.0,
+    84.0,
+    -18.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    166.6,
+    84.0,
+    -18.4
+   ],
+   "target": [
+    184.0,
+    90.5,
+    -16.0
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    174.6,
+    74.6,
+    -18.4
+   ],
+   "target": [
+    182.0,
+    94.0,
+    -15.0
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "pos": [
+    171.0,
+    77.6,
+    -18.4
+   ],
+   "target": [
+    190.5,
+    90.5,
+    -17.0
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/17-glacier-plunge.jpg",
+   "match": "Clear teal water in the foreground with black rocks, blue ice wall and icicles with meltwater on the left, a glossy obsidian slab centre-right, the warm timber hut with lanterns, steps and a handrail on the right, low fog on the water."
+  }
+ },
+ "lights": [
+  {
+   "asset": "ice_formation",
+   "part": "backlight",
+   "along": [
+    [
+     172.0,
+     95.5
+    ],
+    [
+     192.0,
+     95.5
+    ]
+   ],
+   "spacing": [
+    3.0,
+    4.0
+   ],
+   "color": "cold blue",
+   "why": "Light behind/inside the ice wall: the hero is the brightest thing."
+  },
+  {
+   "asset": "pavilion_engawa",
+   "part": "shoji_glow",
+   "at": [
+    [
+     194.1,
+     82.6,
+     -20.0
+    ]
+   ],
+   "why": "Warm interior of the hut (the only warm block)."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     190.9,
+     81.0,
+     -20.0
+    ],
+    [
+     190.9,
+     86.0,
+     -20.0
+    ]
+   ],
+   "face": "path",
+   "why": "Pair at the hut steps (concept 17)."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     167.0,
+     81.0
+    ],
+    [
+     172.5,
+     75.6
+    ],
+    [
+     180.0,
+     72.5
+    ],
+    [
+     187.5,
+     73.4
+    ]
+   ],
+   "side": "out",
+   "offset": 1.5,
+   "spacing": [
+    7.0,
+    9.0
+   ],
+   "face": "path",
+   "why": "Very sparse warm points on the outer side of the loop path; the room stays blue."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     170.0,
+     95.8,
+     -16.8
+    ]
+   ],
+   "snap": "ceiling",
+   "why": "Warm chochin at the return door."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    182.0,
+    84.0
+   ],
+   "radius": 8.3,
+   "spacing": [
+    0.9,
+    1.6
+   ],
+   "embed": 0.15,
+   "scale": [
+    0.5,
+    1.2
+   ],
+   "avoid": [
+    "nav",
+    "anchored:hut_steps",
+    "anchored:monolith"
+   ],
+   "why": "Wet black boulders round the plunge (concept 17 foreground)."
+  },
+  {
+   "asset": "ice_formation",
+   "variant": "small ice + frost",
+   "along": [
+    [
+     164.4,
+     88.0
+    ],
+    [
+     164.4,
+     95.6
+    ],
+    [
+     197.4,
+     95.6
+    ]
+   ],
+   "spacing": [
+    1.2,
+    2.4
+   ],
+   "snap": "wall",
+   "jitter": 0.3,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ],
+   "why": "Ice creeping along the north walls only."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    2.2
+   ],
+   "density": 0.04,
+   "avoid": [
+    "nav",
+    "portals",
+    "water",
+    "hero",
+    "anchored:warm_hut"
+   ]
+  }
+ ],
+ "mood": {
+  "key": "backlit blue ice over a clear plunge",
+  "palette": "glacier blue and teal, black basalt and obsidian, one warm amber hut",
+  "mist": "Flat cold fog lying on the water, warm steam curling off the hut's engawa where the two airs meet."
+ },
+ "waivers": [],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

@@ -8,3 +8,8 @@ node_modules/
 web/dist/
 __pycache__/
 .venv/
+.bpy_deps/
+3d/blend/*.blend
+tools/bin/
+tools/node_modules/
+web/node_modules/

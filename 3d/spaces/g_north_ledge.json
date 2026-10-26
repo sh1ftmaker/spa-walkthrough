@@ -1,0 +1,478 @@
+{
+ "id": "g_north_ledge",
+ "name": "North cliff foot ledge",
+ "level": "ground",
+ "tier": "must",
+ "purpose": "Stand at the foot of the north cliff and look up: twelve lit suites stacked in the rock, three white trickles falling past them into stone basins at your feet, and the Cliff Stair's lantern zigzag climbing to the moon deck.",
+ "floor_z": 0.0,
+ "ceiling_z": null,
+ "ceiling_profile": {
+  "type": "open",
+  "note": "Open sky; cliff face to the south (suites from +10 to +63), sea cliff drop to the north."
+ },
+ "footprint": [
+  [
+   122,
+   108
+  ],
+  [
+   200,
+   108
+  ],
+  [
+   200,
+   119
+  ],
+  [
+   122,
+   119
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_path_ledge",
+   "to": "g_east_path",
+   "at": [
+    194,
+    109
+   ],
+   "width": 3.0
+  },
+  {
+   "id": "p_ledge_cliff_stair",
+   "to": "cliff_stair_0",
+   "at": [
+    140.0,
+    109.15
+   ],
+   "width": 2.0,
+   "connection": "cliff_stair_0",
+   "note": "Foot of the Cliff Stair (cliff_stair_0 plan point 0); first leg runs north to lane y 111.8 then west."
+  }
+ ],
+ "spine": [
+  [
+   194.0,
+   109.0,
+   0
+  ],
+  [
+   190.0,
+   112.0,
+   0
+  ],
+  [
+   178.0,
+   112.8,
+   0
+  ],
+  [
+   166.0,
+   112.8,
+   0
+  ],
+  [
+   156.0,
+   112.4,
+   0
+  ],
+  [
+   146.0,
+   111.0,
+   0
+  ],
+  [
+   141.6,
+   109.8,
+   0
+  ],
+  [
+   140.0,
+   109.15,
+   0
+  ]
+ ],
+ "hero": {
+  "asset": "falls_sheet",
+  "at": [
+   173.0,
+   108.6,
+   0
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "w": 1.2,
+   "h": 10.0,
+   "lip_z": 10.0
+  },
+  "why": "The centre trickle (I column) after its last tub drops 10 m into a lit basin right beside the walk, framed by the stacked suites above: the end of the north water branch and the vertical line that leads the eye up the whole cliff."
+ },
+ "anchored": [
+  {
+   "id": "basin_a",
+   "asset": "cascade_pool",
+   "at": [
+    155.0,
+    109.6,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 2.6,
+    "d": 1.8,
+    "rim_h": 0.3
+   },
+   "why": "Stone basin catching the A-column trickle; overflow sinks into a slot at the cliff toe (inside to the river head)."
+  },
+  {
+   "id": "basin_b",
+   "asset": "cascade_pool",
+   "at": [
+    173.0,
+    109.6,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 2.6,
+    "d": 1.8,
+    "rim_h": 0.3
+   },
+   "why": "Stone basin catching the B-column trickle; overflow sinks into a slot at the cliff toe (inside to the river head)."
+  },
+  {
+   "id": "basin_c",
+   "asset": "cascade_pool",
+   "at": [
+    191.0,
+    109.6,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 2.6,
+    "d": 1.8,
+    "rim_h": 0.3
+   },
+   "why": "Stone basin catching the C-column trickle; overflow sinks into a slot at the cliff toe (inside to the river head)."
+  },
+  {
+   "id": "stair_foot_toro_e",
+   "asset": "lantern_stone",
+   "at": [
+    142.2,
+    108.6,
+    0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "h": 2.2
+   },
+   "why": "Marks the Cliff Stair foot."
+  },
+  {
+   "id": "stair_sign",
+   "asset": "sign_kanji",
+   "at": [
+    144.0,
+    108.4,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "h": 2.0,
+    "text": "Cliff Stair · suites +10 +26 +43 +60 · moon deck +120"
+   },
+   "why": "Wayfinding at the foot."
+  },
+  {
+   "id": "under_stair_garden",
+   "asset": "rock_cluster",
+   "at": [
+    130.0,
+    115.5,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "area": [
+     [
+      123,
+      113.2
+     ],
+     [
+      138,
+      113.2
+     ],
+     [
+      138,
+      118
+     ],
+     [
+      123,
+      118
+     ]
+    ]
+   },
+   "why": "North of the stacked Cliff Stair lanes (x 124-140, y 108.4-112.8): a dry rock garden, not a walk; the space under the flights is enclosed."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_trickle_basin_a",
+   "kind": "still",
+   "part_of": "w_north_trickle",
+   "z": -0.35,
+   "rim_z": -0.3,
+   "path": [
+    [
+     154.0,
+     109.6
+    ],
+    [
+     156.0,
+     109.6
+    ]
+   ],
+   "width": 1.6,
+   "note": "Lowest open water of the A column; then inside to the river head (-42)."
+  },
+  {
+   "id": "w_trickle_basin_b",
+   "kind": "still",
+   "part_of": "w_north_trickle",
+   "z": -0.35,
+   "rim_z": -0.3,
+   "path": [
+    [
+     172.0,
+     109.6
+    ],
+    [
+     174.0,
+     109.6
+    ]
+   ],
+   "width": 1.6,
+   "note": "Lowest open water of the B column; then inside to the river head (-42)."
+  },
+  {
+   "id": "w_trickle_basin_c",
+   "kind": "still",
+   "part_of": "w_north_trickle",
+   "z": -0.35,
+   "rim_z": -0.3,
+   "path": [
+    [
+     190.0,
+     109.6
+    ],
+    [
+     192.0,
+     109.6
+    ]
+   ],
+   "width": 1.6,
+   "note": "Lowest open water of the C column; then inside to the river head (-42)."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_path_ledge",
+   "see": "West along the ledge: three white falls, the cliff of lit suites, the stair zigzag at the far end.",
+   "target": [
+    150.0,
+    106.0,
+    30.0
+   ]
+  },
+  {
+   "from": "p_ledge_cliff_stair",
+   "see": "Up the first flight: lantern posts climbing west, the tier-1 balcony glow above.",
+   "target": [
+    132.0,
+    111.8,
+    12.0
+   ]
+  },
+  {
+   "from": "hero",
+   "see": "Straight up the falls to the lit tubs.",
+   "target": [
+    173.0,
+    106.0,
+    45.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    193.0,
+    110.0,
+    1.6
+   ],
+   "target": [
+    172.0,
+    106.0,
+    18.0
+   ],
+   "fov_v": 62
+  },
+  "reveal": {
+   "pos": [
+    183.0,
+    115.5,
+    1.6
+   ],
+   "target": [
+    176.0,
+    106.0,
+    30.0
+   ],
+   "fov_v": 70
+  },
+  "concept": {
+   "image": "lookbook/img/32-suites-cliff.jpg",
+   "pos": [
+    170.0,
+    118.4,
+    1.6
+   ],
+   "target": [
+    160.0,
+    106.0,
+    32.0
+   ],
+   "fov_v": 70,
+   "match": "32 front elevation at eye height from the sea rail: four tiers of lit shoji fronts, trickles between, the Cliff Stair zigzag on the left with its post lanterns, ground ledge rail in the foreground."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_stone",
+   "along": "spine",
+   "side": "right",
+   "spacing": [
+    8.0,
+    10.0
+   ],
+   "offset": 2.4,
+   "face": "path",
+   "avoid": [
+    "portals",
+    "water"
+   ]
+  },
+  {
+   "asset": "pool_uplight",
+   "at": [
+    [
+     155.0,
+     109.6,
+     -0.5
+    ],
+    [
+     173.0,
+     109.6,
+     -0.5
+    ],
+    [
+     191.0,
+     109.6,
+     -0.5
+    ]
+   ],
+   "why": "Each basin uplights its falls; centre one strongest (hero)."
+  },
+  {
+   "asset": "lantern_post",
+   "along": [
+    [
+     123.0,
+     118.6
+    ],
+    [
+     199.5,
+     118.6
+    ]
+   ],
+   "spacing": [
+    9.0,
+    12.0
+   ],
+   "face": "path"
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": [
+    [
+     122.3,
+     118.7
+    ],
+    [
+     199.7,
+     118.7
+    ]
+   ],
+   "height": 1.05,
+   "why": "Sea cliff edge."
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": "anchored:basin_*",
+   "radius": 1.6,
+   "count": 5,
+   "embed": 0.2,
+   "scale": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.2,
+    1.4
+   ],
+   "density": 0.05,
+   "side": "south",
+   "avoid": [
+    "nav",
+    "portals",
+    "water",
+    "hero",
+    2.5
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     186.0,
+     117.0,
+     0
+    ],
+    [
+     162.0,
+     117.2,
+     0
+    ]
+   ],
+   "scale": [
+    0.9,
+    1.2
+   ],
+   "why": "Windswept pines on the sea rail, silhouettes against the surf glow."
+  }
+ ],
+ "mood": {
+  "key": "look up at the lit cliff",
+  "palette": "warm shoji glow stacked on black rock, white-teal trickles, blue sea night",
+  "mist": "spray at the basins, sea haze to the north"
+ },
+ "waivers": []
+}

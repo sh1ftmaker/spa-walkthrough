@@ -1,0 +1,587 @@
+{
+ "id": "suite_template",
+ "name": "Cliff suite (template)",
+ "level": "cliff",
+ "tier": "should",
+ "frame": {
+  "origin": "per-suite file 'origin' = [x0, 94.0, floor_z] (footprint SW corner)",
+  "axes": "x east, y north, z up; metres"
+ },
+ "purpose": "A private room carved into the north cliff: tatami and washi inside, a stone tub on the cliff edge fed by the trickle from the suite above, the sea and the night below.",
+ "ceiling_profile": {
+  "type": "flat",
+  "min_z": 2.6,
+  "max_z": 3.2,
+  "note": "Timber ceiling 3.2 m in the tatami room; 2.6 m in the genkan; the rock overhang above the tub niche and veranda reaches 3.0 m."
+ },
+ "footprint_local": [
+  [
+   0,
+   0
+  ],
+  [
+   16,
+   0
+  ],
+  [
+   16,
+   12
+  ],
+  [
+   0,
+   12
+  ]
+ ],
+ "balcony_local": "from layout: [[0,12],[18,12],[18,16],[0,16]] for columns a and b (bridging the gully), [[0,12],[16,12],[16,16],[0,16]] for c",
+ "zones": [
+  {
+   "id": "genkan",
+   "area": [
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     12
+    ],
+    [
+     0,
+     12
+    ]
+   ],
+   "note": "Entry vestibule with storage (32 plan); door from the veranda at (1.5, 12)."
+  },
+  {
+   "id": "tatami_room",
+   "area": [
+    [
+     3,
+     1
+    ],
+    [
+     12,
+     1
+    ],
+    [
+     12,
+     11.8
+    ],
+    [
+     3,
+     11.8
+    ]
+   ],
+   "note": "Futon, tea table, tokonoma on the back (south) wall; shoji front at y 11.8."
+  },
+  {
+   "id": "bath_store",
+   "area": [
+    [
+     12,
+     0
+    ],
+    [
+     16,
+     0
+    ],
+    [
+     16,
+     7.5
+    ],
+    [
+     12,
+     7.5
+    ]
+   ],
+   "note": "Washroom and storage (closed)."
+  },
+  {
+   "id": "tub_niche",
+   "area": [
+    [
+     12,
+     7.5
+    ],
+    [
+     16,
+     7.5
+    ],
+    [
+     16,
+     12
+    ],
+    [
+     12,
+     12
+    ]
+   ],
+   "note": "Rock niche open to the north under the overhang."
+  },
+  {
+   "id": "veranda",
+   "area": [
+    [
+     0,
+     12
+    ],
+    [
+     16,
+     12
+    ],
+    [
+     16,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ]
+   ],
+   "note": "Private engawa, hinoki."
+  },
+  {
+   "id": "balcony_walk",
+   "area": "balcony band y 14.3-16 over the full balcony length",
+   "note": "Public balcony walk (centre y 15.15 = layout 109.15) linking suites and the Cliff Stair; low hinoki fence + sudare at y 14.25. Columns a/b: crosses the gully (x 16-18) with a 0.6 m bronze-grated slot at x 16.7-17.3 that the trickle falls through."
+  }
+ ],
+ "portals_note": "Walk portals are absolute, per suite file (from layout.json); only the private openings are local.",
+ "portals_local": [
+  {
+   "id": "suite_gate",
+   "at": [
+    1.5,
+    14.25
+   ],
+   "width": 1.0,
+   "height": 2.1,
+   "note": "Gate in the fence to the private veranda."
+  },
+  {
+   "id": "suite_door",
+   "at": [
+    1.5,
+    12.0
+   ],
+   "width": 1.0,
+   "height": 2.1
+  }
+ ],
+ "spine_local": [
+  [
+   0,
+   15.15,
+   0
+  ],
+  [
+   1.5,
+   15.15,
+   0
+  ],
+  [
+   1.5,
+   13.0,
+   0
+  ],
+  [
+   1.5,
+   10.0,
+   0
+  ],
+  [
+   5.0,
+   8.0,
+   0
+  ],
+  [
+   9.0,
+   10.5,
+   0
+  ],
+  [
+   12.5,
+   11.0,
+   0
+  ]
+ ],
+ "hero": {
+  "asset": "stone_tub",
+  "at": [
+   14.0,
+   9.8,
+   0
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "w": 3.4,
+   "d": 3.2,
+   "rim_h": 0.0,
+   "depth": 0.65
+  },
+  "why": "A natural basalt tub at the cliff edge under the rock overhang, a bamboo spout pouring in the trickle from the suite above (21, 32 plan): the reason for the suite, seen from the futon through the open shoji."
+ },
+ "anchored": [
+  {
+   "id": "futon",
+   "asset": "suite_module",
+   "part": "futon",
+   "at": [
+    6.5,
+    5.5,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 2.2,
+    "l": 2.4
+   },
+   "why": "Low futon facing the shoji and the view."
+  },
+  {
+   "id": "tea_table",
+   "asset": "suite_module",
+   "part": "tea_table",
+   "at": [
+    9.0,
+    8.5,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 1.2,
+    "d": 0.8
+   },
+   "why": "Between bed and veranda (32 plan)."
+  },
+  {
+   "id": "tokonoma",
+   "asset": "suite_module",
+   "part": "tokonoma",
+   "at": [
+    7.5,
+    1.4,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 2.4
+   },
+   "why": "Scroll and ikebana on the back wall (21)."
+  },
+  {
+   "id": "shoji_front",
+   "asset": "suite_module",
+   "part": "shoji",
+   "at": [
+    7.5,
+    11.8,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 9.0,
+    "h": 2.4,
+    "panels": 6,
+    "open": [
+     2,
+     5
+    ]
+   },
+   "why": "Sliding washi screens; two bays open in the cameras."
+  },
+  {
+   "id": "kakehi",
+   "asset": "kakehi_spout",
+   "at": [
+    15.7,
+    10.6,
+    1.2
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "len": 1.4
+   },
+   "why": "Bamboo spout from the east gully (x local 16-18, the 2 m gap between suites) into the tub."
+  },
+  {
+   "id": "tub_bucket",
+   "asset": "steam_bench",
+   "variant": "bucket_only",
+   "at": [
+    12.5,
+    8.0,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {},
+   "why": "Hinoki bucket and towel at the tub (21)."
+  },
+  {
+   "id": "veranda_seat",
+   "asset": "bench_stone",
+   "at": [
+    7.0,
+    13.6,
+    0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "len": 2.0,
+    "material": "hinoki"
+   },
+   "why": "Veranda seating (32 plan)."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_tub",
+   "kind": "still",
+   "z_rel": -0.05,
+   "rim_z_rel": 0.0,
+   "footprint_local": [
+    [
+     12.4,
+     8.3
+    ],
+    [
+     15.6,
+     8.3
+    ],
+    [
+     15.6,
+     11.5
+    ],
+    [
+     12.4,
+     11.5
+    ]
+   ],
+   "part_of": "w_north_trickle",
+   "note": "Sunken tub, rim flush with the floor. Inflow: kakehi from the gully at x local 16-20; overflow back into the gully."
+  },
+  {
+   "id": "w_gully",
+   "kind": "fall",
+   "x_local": 17.0,
+   "y_local": 12.6,
+   "part_of": "w_north_trickle",
+   "outside_ok": "Gully in the 2 m cliff gap east of each suite (x local 16-18).",
+   "note": "Trickle column falling past this tier; on columns a/b it passes through the grated slot in the balcony walk, on c it falls clear beside the dead end."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "suite_door",
+   "see": "Across the tatami to the tub glowing teal in its niche.",
+   "target": [
+    14.0,
+    9.8,
+    0.5
+   ]
+  },
+  {
+   "from": "tatami_room",
+   "see": "Through the open shoji: night sea and the sky beyond the balcony rail.",
+   "target": [
+    8.0,
+    40.0,
+    -10.0
+   ]
+  },
+  {
+   "from": "gully_slot",
+   "see": "The trickle falling past in the gully, lit from the tub below.",
+   "target": [
+    17.0,
+    12.6,
+    -3.0
+   ]
+  }
+ ],
+ "cameras_local": {
+  "entry": {
+   "pos": [
+    1.5,
+    10.5,
+    1.6
+   ],
+   "target": [
+    14.0,
+    9.8,
+    0.6
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    7.5,
+    7.0,
+    1.6
+   ],
+   "target": [
+    14.2,
+    10.2,
+    0.5
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "image": "lookbook/img/21-private-suite.jpg",
+   "pos": [
+    4.5,
+    3.5,
+    1.6
+   ],
+   "target": [
+    14.5,
+    11.5,
+    0.6
+   ],
+   "fov_v": 55,
+   "match": "21: from inside the tatami room, futon on the left, open shoji frame, the stone tub under the rock overhang with the spout pouring in, steam, night view beyond."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     3.6,
+     2.0,
+     0
+    ],
+    [
+     11.4,
+     2.0,
+     0
+    ],
+    [
+     3.6,
+     11.0,
+     0
+    ]
+   ],
+   "why": "Andon in the room corners (21)."
+  },
+  {
+   "asset": "lantern_niche",
+   "at": [
+    [
+     12.3,
+     11.7,
+     0.3
+    ]
+   ],
+   "why": "Ankle light at the tub niche."
+  },
+  {
+   "asset": "pool_uplight",
+   "at": [
+    [
+     14.0,
+     9.8,
+     -0.5
+    ]
+   ],
+   "why": "Tub glows teal: the brightest thing in the suite."
+  },
+  {
+   "asset": "lantern_post",
+   "along": "balcony:north_edge",
+   "offset": 0.1,
+   "spacing": [
+    5.0,
+    6.0
+   ],
+   "face": "path",
+   "why": "Balcony walk posts on the rail (32 elevation)."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": "balcony:north_edge",
+   "offset": 0.1,
+   "height": 1.05,
+   "why": "Cliff edge."
+  },
+  {
+   "asset": "railing",
+   "along": "balcony:east_end",
+   "only": "column c",
+   "height": 1.05,
+   "why": "Dead end above the c gully."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     0,
+     14.25
+    ],
+    [
+     16,
+     14.25
+    ]
+   ],
+   "height": 0.9,
+   "material": "hinoki fence + sudare",
+   "skip": "suite_gate",
+   "why": "Privacy between walk and veranda."
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     0.6,
+     13.6,
+     0
+    ]
+   ],
+   "scale": [
+    0.5,
+    0.7
+   ],
+   "why": "Potted pine at the gate."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "area",
+   "area": [
+    [
+     12,
+     7.5
+    ],
+    [
+     16,
+     7.5
+    ],
+    [
+     16,
+     12
+    ],
+    [
+     12,
+     12
+    ]
+   ],
+   "density": 0.1,
+   "avoid": [
+    "water",
+    "nav"
+   ],
+   "why": "Wet rock round the tub niche."
+  }
+ ],
+ "mood": {
+  "key": "teal tub under rock, warm room",
+  "palette": "tatami gold, washi cream, warm andon, teal tub, black wet rock",
+  "mist": "steam off the tub"
+ },
+ "waivers": []
+}

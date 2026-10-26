@@ -10,5 +10,115 @@
     "outputs": [
       "AGENT_PROMPT_3D.md"
     ]
+  },
+  {
+    "id": "matlib",
+    "outputs": [
+      "3d/materials/",
+      "3d/materials.json",
+      "3d/renders/materials/"
+    ],
+    "name": "Material library",
+    "role": "library.blend, ~26 materials, KTX2 textures, previews",
+    "model": "opus",
+    "status": "done",
+    "last": "26 materials, previews, sheet. KTX2 encode blocked: running the downloaded KTX-Software binary needs owner approval",
+    "updated": "2026-10-26T22:50:37Z"
+  },
+  {
+    "id": "webapp",
+    "outputs": [
+      "web/"
+    ],
+    "name": "Web runtime",
+    "role": "Vite + three.js runtime, asset contract, walk mode, tiers, fog/water/mirror",
+    "model": "opus",
+    "status": "running",
+    "last": "Started: scaffold + stand-in scene from layout.json",
+    "updated": "2026-10-26T22:17:42Z"
+  },
+  {
+    "id": "lead",
+    "outputs": [
+      "3d/layout.json"
+    ],
+    "name": "Lead",
+    "role": "Layout, assembly, bake pipeline, reviews",
+    "model": "opus",
+    "status": "running",
+    "last": "Metric layout.json drafted; rendering overlays",
+    "updated": "2026-10-26T22:17:42Z"
+  },
+  {
+    "id": "spaces-gs",
+    "outputs": [
+      ".scratch/spaces_draft/"
+    ],
+    "name": "Space files: Ground + Summit",
+    "role": "Intent/rules space files (hero, sightlines, cameras, lights, dressing)",
+    "model": "opus",
+    "status": "running",
+    "last": "Fix round: iterating rules until placement checks pass (isolated runs)",
+    "updated": "2026-10-26T22:59:09Z"
+  },
+  {
+    "id": "spaces-b1",
+    "outputs": [
+      ".scratch/spaces_draft/"
+    ],
+    "name": "Space files: B1",
+    "role": "Intent/rules space files (hero, sightlines, cameras, lights, dressing)",
+    "model": "opus",
+    "status": "running",
+    "last": "Fix round: iterating rules until placement checks pass (isolated runs)",
+    "updated": "2026-10-26T22:59:09Z"
+  },
+  {
+    "id": "spaces-b2b4",
+    "outputs": [
+      ".scratch/spaces_draft/"
+    ],
+    "name": "Space files: B2 + B4",
+    "role": "Intent/rules space files (hero, sightlines, cameras, lights, dressing)",
+    "model": "opus",
+    "status": "running",
+    "last": "Fix round: iterating rules until placement checks pass (isolated runs)",
+    "updated": "2026-10-26T22:59:09Z"
+  },
+  {
+    "id": "spaces-b3",
+    "outputs": [
+      ".scratch/spaces_draft/"
+    ],
+    "name": "Space files: B3",
+    "role": "Intent/rules space files (hero, sightlines, cameras, lights, dressing)",
+    "model": "opus",
+    "status": "running",
+    "last": "Fix round: iterating rules until placement checks pass (isolated runs)",
+    "updated": "2026-10-26T22:59:09Z"
+  },
+  {
+    "id": "water-research",
+    "outputs": [
+      "3d/research/water/"
+    ],
+    "name": "Water research",
+    "role": "Cheap + beautiful animated water: white water, falls, waves, bubbling pools; prototypes",
+    "model": "opus",
+    "status": "running",
+    "last": "Started: surveying techniques (flow maps, VAT, Gerstner/FFT, SWE, SPH, particles) + building 3 prototypes",
+    "updated": "2026-10-26T22:57:40Z"
+  },
+  {
+    "id": "sound-research",
+    "outputs": [
+      "3d/research/sound/"
+    ],
+    "name": "Sound & ambience research",
+    "role": "Water/wind/chime/lava soundscape design, Web Audio architecture, procedural vs CC0, playable demo",
+    "model": "opus",
+    "status": "running",
+    "last": "Started: researching + building a walk-through sound demo",
+    "updated": "2026-10-26T22:59:09Z"
   }
 ]

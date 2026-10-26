@@ -1,0 +1,466 @@
+{
+ "id": "b1_cor_east",
+ "name": "Mist corridor east",
+ "level": "b1",
+ "purpose": "From the warm Mirror toward the 6 °C glacier: the corridor water stops steaming and turns glass-clear, the warm niches give out, and the first icicles hang from the ceiling ahead in blue light; a shoji door on the right leads to the treatment rooms.",
+ "floor_z": -20.0,
+ "ceiling_z": -17.0,
+ "ceiling_profile": {
+  "type": "tube",
+  "min_z": -17.6,
+  "max_z": -17.0,
+  "note": "Basalt barrel 3 m; the last 6 m are rimed with frost and hung with icicles (to -18.3)."
+ },
+ "footprint": [
+  [
+   142.405,
+   87.973
+  ],
+  [
+   166.166,
+   85.993
+  ],
+  [
+   165.834,
+   82.007
+  ],
+  [
+   141.595,
+   84.027
+  ],
+  [
+   129.368,
+   88.103
+  ],
+  [
+   130.632,
+   91.897
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_mirror_east",
+   "to": "b1_mirror",
+   "at": [
+    130.5,
+    90
+   ],
+   "width": 4.0,
+   "height": 3.0
+  },
+  {
+   "id": "p_b1_east_glacier",
+   "to": "b1_glacier",
+   "at": [
+    165,
+    84
+   ],
+   "width": 3.0,
+   "height": 2.6
+  },
+  {
+   "id": "p_b1_east_treat",
+   "to": "b1_treatment",
+   "at": [
+    146,
+    82
+   ],
+   "width": 2.0,
+   "height": 2.4
+  }
+ ],
+ "spine": [
+  [
+   130.5,
+   90.0,
+   -20.0
+  ],
+  [
+   136.0,
+   88.1,
+   -20.0
+  ],
+  [
+   142.0,
+   86.0,
+   -20.0
+  ],
+  [
+   150.0,
+   85.3,
+   -20.0
+  ],
+  [
+   158.0,
+   84.65,
+   -20.0
+  ],
+  [
+   165.0,
+   84.0,
+   -20.0
+  ]
+ ],
+ "spurs": [
+  {
+   "id": "to_treatment",
+   "points": [
+    [
+     146.0,
+     85.65,
+     -20.0
+    ],
+    [
+     146.0,
+     83.9,
+     -20.0
+    ],
+    [
+     146.0,
+     82.0,
+     -20.0
+    ]
+   ],
+   "note": "p_b1_east_treat is in the 3.7 m of rock between this corridor (south wall y≈83.7) and the treatment hall (y 80): a short threshold tunnel."
+  }
+ ],
+ "hero": {
+  "asset": "ice_formation",
+  "variant": "ceiling icicles + frosted wall",
+  "at": [
+   162.4,
+   84.35,
+   -17.15
+  ],
+  "facing_deg": 270,
+  "snap": "ceiling",
+  "dims": {
+   "w": 4.0,
+   "l": 6.0,
+   "drop": 1.2
+  },
+  "why": "In 35 m you go from 35 °C to 6 °C. The blue-lit ice hanging at the far end is the only cold light on B1's warm circuit; it is what you walk toward from the Mirror's east arch, and it hangs above the glacier door like a curtain."
+ },
+ "anchored": [
+  {
+   "id": "treat_door",
+   "asset": "portal_arch",
+   "variant": "hinoki frame + noren",
+   "at": [
+    146.0,
+    83.75,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 2.0,
+    "h": 2.4
+   },
+   "why": "Treatment rooms entrance: a quiet timber doorway with an indigo noren in the south wall."
+  },
+  {
+   "id": "treat_sign",
+   "asset": "sign_kanji",
+   "at": [
+    144.3,
+    83.95,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.5,
+    "h": 1.5
+   },
+   "text": "癒",
+   "why": "Small board beside the door."
+  },
+  {
+   "id": "glacier_board",
+   "asset": "sign_kanji",
+   "at": [
+    163.6,
+    82.45,
+    -20.0
+   ],
+   "facing_deg": 300,
+   "dims": {
+    "w": 0.5,
+    "h": 1.5
+   },
+   "text": "氷 6 °C",
+   "why": "Temperature board at the glacier door, lit by the ice light."
+  },
+  {
+   "id": "bonsai_e",
+   "asset": "pine_bonsai",
+   "at": [
+    133.3,
+    90.55,
+    -20.0
+   ],
+   "facing_deg": 200,
+   "dims": {
+    "h": 1.2
+   },
+   "why": "Silhouette on the north kerb just outside the Mirror's arch."
+  }
+ ],
+ "water": [
+  {
+   "id": "w_cor_east",
+   "kind": "still",
+   "z": -20.05,
+   "rim_z": -20.0,
+   "bed_z": -20.2,
+   "path": [
+    [
+     130.5,
+     90.0
+    ],
+    [
+     136.0,
+     88.1
+    ],
+    [
+     142.0,
+     86.0
+    ],
+    [
+     150.0,
+     85.3
+    ],
+    [
+     158.0,
+     84.65
+    ],
+    [
+     165.0,
+     84.0
+    ]
+   ],
+   "width": 3.0,
+   "layout_ref": "w_b1_corridors",
+   "note": "Same -20.05 surface; no steam after x 155 (the water is visibly clearer and cooler toward the glacier)."
+  }
+ ],
+ "sightlines": [
+  {
+   "from": "p_b1_mirror_east",
+   "see": "Down the corridor: warm niche pools, the treatment door glow on the right, blue ice light at the far end.",
+   "target": [
+    165.0,
+    84.0,
+    -18.6
+   ]
+  },
+  {
+   "from": "p_b1_east_glacier",
+   "see": "Looking back west: warm niches leading to the Mirror arch's teal leak.",
+   "target": [
+    130.5,
+    90.0,
+    -18.6
+   ]
+  },
+  {
+   "from": "p_b1_east_treat",
+   "see": "Stepping out of the treatment rooms: blue ice to the right, the Mirror's teal to the left.",
+   "target": [
+    165.0,
+    84.0,
+    -18.6
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    132.4,
+    89.4,
+    -18.4
+   ],
+   "target": [
+    165.0,
+    84.0,
+    -18.4
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    156.0,
+    84.85,
+    -18.4
+   ],
+   "target": [
+    176.0,
+    84.0,
+    -17.0
+   ],
+   "fov_v": 60
+  },
+  "concept": {
+   "pos": [
+    143.0,
+    85.9,
+    -18.4
+   ],
+   "target": [
+    165.0,
+    84.0,
+    -18.5
+   ],
+   "fov_v": 52,
+   "image": "lookbook/img/05-mist-corridor.jpg",
+   "match": "Corridor mood with a cold end: stepping stones in clear water, warm niches doubled, the treatment door's glow on the right, blue icicles and cold light where the corridor ends."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_niche",
+   "along": [
+    [
+     130.5,
+     90.0
+    ],
+    [
+     136.0,
+     88.1
+    ],
+    [
+     142.0,
+     86.0
+    ],
+    [
+     150.0,
+     85.3
+    ],
+    [
+     156.5,
+     84.75
+    ]
+   ],
+   "side": "both",
+   "stagger": true,
+   "spacing": [
+    4.5,
+    6.5
+   ],
+   "snap": "wall",
+   "height": 0.25,
+   "face": "path",
+   "avoid": [
+    "portals"
+   ],
+   "why": "Warm niches stagger to x 156.5 then stop: the last 8 m are lit only by the blue ice (cold gap, hero brightest)."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     144.95,
+     84.2,
+     -20.0
+    ],
+    [
+     147.05,
+     84.2,
+     -20.0
+    ]
+   ],
+   "face": "path",
+   "why": "Pair flanking the treatment door."
+  },
+  {
+   "asset": "ice_formation",
+   "part": "backlight",
+   "at": [
+    [
+     163.0,
+     84.3,
+     -17.2
+    ]
+   ],
+   "color": "cold blue",
+   "why": "Blue light inside the ice, spilling from the glacier."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "stepping_stone",
+   "along": "spine",
+   "side": "both",
+   "offset": 0.36,
+   "spacing": [
+    0.72,
+    0.86
+   ],
+   "jitter": 0.08,
+   "top_z": -20.0,
+   "scale": [
+    0.95,
+    1.15
+   ],
+   "variants": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+  },
+  {
+   "asset": "boulder_rim",
+   "along": "spine",
+   "side": "both",
+   "offset": 1.62,
+   "spacing": [
+    2.2,
+    4.0
+   ],
+   "embed": 0.12,
+   "scale": [
+    0.35,
+    0.7
+   ],
+   "avoid": [
+    "nav",
+    "portals"
+   ],
+   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
+  },
+  {
+   "asset": "ice_formation",
+   "variant": "frost patches",
+   "along": [
+    [
+     159.0,
+     84.6
+    ],
+    [
+     165.0,
+     84.0
+    ]
+   ],
+   "side": "both",
+   "offset": 1.8,
+   "spacing": [
+    1.2,
+    2.0
+   ],
+   "snap": "wall",
+   "why": "Frost and small ice on the walls in the last 6 m, building toward the door."
+  }
+ ],
+ "mood": {
+  "key": "blue ice at the end of a warm corridor",
+  "palette": "amber niches fading to cold blue; clear teal water",
+  "mist": "Warm knee-high mist near the Mirror thinning to a flat cold ground fog at the glacier end."
+ },
+ "waivers": [],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

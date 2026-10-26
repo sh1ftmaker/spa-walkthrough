@@ -1,0 +1,1 @@
+{"id": "suite_2b", "template": "suite_template", "origin": [156, 94.0, 26.0], "floor_z": 26.0, "ceiling_z": 29.2, "portals": [{"id": "p_suite_2ab", "to": "suite_2a", "at": [156, 109.15], "width": 1.6}, {"id": "p_suite_2bc", "to": "suite_2c", "at": [174, 109.15], "width": 1.6}], "trickle": {"inflow_from": "suite_3b via the gully at x 173", "overflow_to": "suite_1b"}}

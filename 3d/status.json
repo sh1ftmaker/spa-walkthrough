@@ -1,9 +1,9 @@
 {
-  "updated": "2026-10-26T22:05:40Z",
-  "phase": "Preflight",
-  "phase_index": 0,
+  "updated": "2026-10-26T22:59:09Z",
+  "phase": "Graybox + materials",
+  "phase_index": 2,
   "scope_tier": "Must",
-  "headline": "Preflight done. Publishing works: public sh1ftmaker/spa-walkthrough on Pages, data parts served from Pages (release assets fail CORS).",
+  "headline": "Graybox built; all 60 spaces placed (~3.8k proxies). Four agents fixing their rules against the placement checks; water and sound research running; material library done (KTX2 awaiting owner approval).",
   "phases": [
     "Preflight",
     "Plan",
@@ -13,7 +13,14 @@
     "Art pass",
     "Review rounds"
   ],
-  "gates": [],
+  "gates": [
+    {
+      "name": "Preflight",
+      "result": "pass",
+      "time": "2026-10-26T22:05:47Z",
+      "notes": "GPU WebGL=RTX 4090 via ANGLE/Vulkan; Pages publish ok; release assets blocked by CORS so parts go in Pages"
+    }
+  ],
   "metrics": {
     "draw_calls": null,
     "triangles": null,
@@ -21,8 +28,8 @@
     "desktop_ms": null
   },
   "checks": {
-    "walk": null,
-    "placement": null,
+    "walk": "fail",
+    "placement": "fail",
     "geometry": null
   },
   "publish": {

@@ -1,0 +1,501 @@
+{
+ "id": "b1_treatment",
+ "name": "Treatment rooms",
+ "level": "b1",
+ "purpose": "A dry, hushed hinoki hall of tatami treatment rooms behind glowing shoji, off the wet circuit; guests wait on an engawa beside a small lit courtyard garden and are led in one at a time.",
+ "floor_z": -20.0,
+ "ceiling_z": -16.0,
+ "ceiling_profile": {
+  "type": "flat",
+  "min_z": -16.4,
+  "max_z": -16.0,
+  "note": "Coffered hinoki ceiling at 3.6-4.0 m (hall_shell); a washi light box over the garden is the only bright ceiling."
+ },
+ "footprint": [
+  [
+   120,
+   60
+  ],
+  [
+   137,
+   60
+  ],
+  [
+   137,
+   61
+  ],
+  [
+   160,
+   61
+  ],
+  [
+   160,
+   80
+  ],
+  [
+   128.6,
+   80
+  ],
+  [
+   127.7,
+   78.8
+  ],
+  [
+   125.2,
+   76.3
+  ],
+  [
+   122.3,
+   74.3
+  ],
+  [
+   120,
+   73.1
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_b1_east_treat",
+   "to": "b1_cor_east",
+   "at": [
+    146,
+    82
+   ],
+   "width": 2.0,
+   "height": 2.4
+  },
+  {
+   "id": "p_b1_south_treat",
+   "to": "b1_cor_south",
+   "at": [
+    124,
+    56
+   ],
+   "width": 2.0,
+   "height": 2.4
+  }
+ ],
+ "spine": [
+  [
+   124.0,
+   56.0,
+   -20.0
+  ],
+  [
+   124.0,
+   60.6,
+   -20.0
+  ],
+  [
+   125.4,
+   66.4,
+   -20.0
+  ],
+  [
+   129.5,
+   70.6,
+   -20.0
+  ],
+  [
+   138.0,
+   70.9,
+   -20.0
+  ],
+  [
+   143.6,
+   71.4,
+   -20.0
+  ],
+  [
+   146.0,
+   74.5,
+   -20.0
+  ],
+  [
+   146.0,
+   80.0,
+   -20.0
+  ],
+  [
+   146.0,
+   82.0,
+   -20.0
+  ]
+ ],
+ "hero": {
+  "asset": "tsuboniwa",
+  "at": [
+   138.0,
+   65.2,
+   -20.0
+  ],
+  "facing_deg": 0,
+  "dims": {
+   "w": 9.0,
+   "d": 6.5,
+   "sunk": 0.3
+  },
+  "why": "A hall of closed doors needs one thing to look at. A sunken courtyard of raked gravel, moss, one niwaki pine and a stone lantern under a washi light box (a 'false sky') sits where the engawa widens; it is seen diagonally from both thresholds and is the brightest, calmest thing in a deliberately dim hall."
+ },
+ "anchored": [
+  {
+   "id": "room_n1",
+   "asset": "treatment_room",
+   "at": [
+    132.0,
+    76.5,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 6.0,
+    "d": 6.0
+   },
+   "why": "North row, shoji front on the engawa. Kept east of the NW chamfer."
+  },
+  {
+   "id": "room_n2",
+   "asset": "treatment_room",
+   "at": [
+    138.6,
+    76.5,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 6.0,
+    "d": 6.0
+   },
+   "why": "North row, west of the north entry passage."
+  },
+  {
+   "id": "room_n3",
+   "asset": "treatment_room",
+   "at": [
+    152.6,
+    76.5,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 6.0,
+    "d": 6.0
+   },
+   "why": "North row, east of the passage."
+  },
+  {
+   "id": "room_s1",
+   "asset": "treatment_room",
+   "at": [
+    129.9,
+    63.5,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 5.6,
+    "d": 6.0
+   },
+   "why": "South row, west of the garden."
+  },
+  {
+   "id": "room_s2",
+   "asset": "treatment_room",
+   "at": [
+    147.2,
+    64.4,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 6.0,
+    "d": 6.0
+   },
+   "why": "South row, east of the garden (backs onto the slide room; south edge steps to y 61 here)."
+  },
+  {
+   "id": "room_s3",
+   "asset": "treatment_room",
+   "at": [
+    153.8,
+    64.4,
+    -20.0
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 6.0,
+    "d": 6.0
+   },
+   "why": "South row; staggered against the north row so the doors don't face each other."
+  },
+  {
+   "id": "engawa",
+   "asset": "floor_paving",
+   "variant": "hinoki engawa boards",
+   "at": [
+    139.0,
+    70.9,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "l": 30.0,
+    "w": 2.4
+   },
+   "why": "The timber walk between the rows, raised 5 cm, edged with a gravel strip each side."
+  },
+  {
+   "id": "wait_bench_1",
+   "asset": "bench_stone",
+   "variant": "hinoki",
+   "at": [
+    135.5,
+    69.25,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "l": 2.2
+   },
+   "why": "Waiting bench facing the garden."
+  },
+  {
+   "id": "wait_bench_2",
+   "asset": "bench_stone",
+   "variant": "hinoki",
+   "at": [
+    141.4,
+    69.2,
+    -20.0
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "l": 1.8
+   },
+   "why": "Shorter second bench, offset."
+  },
+  {
+   "id": "s_noren",
+   "asset": "banner",
+   "variant": "noren",
+   "at": [
+    124.0,
+    60.4,
+    -17.6
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 1.9,
+    "h": 0.9
+   },
+   "why": "Inside face of the south door."
+  },
+  {
+   "id": "n_noren",
+   "asset": "banner",
+   "variant": "noren",
+   "at": [
+    146.0,
+    79.6,
+    -17.6
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 1.9,
+    "h": 0.9
+   },
+   "why": "Inside face of the north door."
+  }
+ ],
+ "water": [],
+ "sightlines": [
+  {
+   "from": "p_b1_south_treat",
+   "see": "Through the noren: a dim timber hall, shoji glowing left and right, the lit garden ahead-right.",
+   "target": [
+    138.0,
+    65.2,
+    -19.4
+   ]
+  },
+  {
+   "from": "p_b1_east_treat",
+   "see": "From the north: down the passage to the garden's pine under its light box.",
+   "target": [
+    138.0,
+    65.2,
+    -19.0
+   ]
+  },
+  {
+   "from": "engawa_east",
+   "at": [
+    150.0,
+    71.0
+   ],
+   "see": "West along the engawa: shoji rows converging, the garden on the left.",
+   "target": [
+    125.0,
+    70.0,
+    -18.6
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    124.2,
+    61.4,
+    -18.4
+   ],
+   "target": [
+    138.0,
+    66.0,
+    -19.0
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    129.6,
+    70.7,
+    -18.4
+   ],
+   "target": [
+    138.4,
+    65.4,
+    -19.3
+   ],
+   "fov_v": 58
+  },
+  "concept": {
+   "pos": [
+    127.0,
+    71.0,
+    -18.4
+   ],
+   "target": [
+    156.0,
+    71.0,
+    -18.6
+   ],
+   "fov_v": 55,
+   "image": "lookbook/img/05-mist-corridor.jpg",
+   "match": "Concept 05's left side brought indoors: glowing shoji fronts and timber posts on both sides of a warm hinoki engawa, small floor lanterns, a bonsai, darker gaps between rooms; the garden's soft overhead light on the right."
+  }
+ },
+ "lights": [
+  {
+   "asset": "tsuboniwa",
+   "part": "washi_light_box",
+   "at": [
+    [
+     138.0,
+     65.2,
+     -16.1
+    ]
+   ],
+   "why": "The brightest surface in the hall (hero)."
+  },
+  {
+   "asset": "treatment_room",
+   "part": "shoji_glow",
+   "at": "anchored:treatment_room",
+   "intensity": "low",
+   "why": "Each room's shoji front glows; occupied rooms slightly brighter (variant)."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": "spine",
+   "side": "both",
+   "offset": 1.6,
+   "spacing": [
+    6.0,
+    8.0
+   ],
+   "face": "path",
+   "avoid": [
+    "portals",
+    "hero"
+   ],
+   "why": "Sparse andon on the engawa edges: pools of light with darker stretches."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     124.0,
+     61.6,
+     -16.5
+    ],
+    [
+     146.0,
+     78.6,
+     -16.5
+    ]
+   ],
+   "snap": "ceiling",
+   "why": "One chochin inside each door."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "pine_bonsai",
+   "variant": "potted",
+   "at": [
+    [
+     126.0,
+     61.3,
+     -20.0
+    ],
+    [
+     144.4,
+     79.0,
+     -20.0
+    ],
+    [
+     158.6,
+     70.9,
+     -20.0
+    ]
+   ],
+   "why": "Threshold pots at both doors and one closing the engawa's east end."
+  },
+  {
+   "asset": "rock_cluster",
+   "variant": "gravel-strip stones",
+   "along": [
+    [
+     128.0,
+     69.4
+    ],
+    [
+     158.0,
+     69.4
+    ]
+   ],
+   "spacing": [
+    3.0,
+    5.0
+   ],
+   "scale": [
+    0.2,
+    0.4
+   ],
+   "avoid": [
+    "nav",
+    "hero",
+    "anchored:wait_bench_1",
+    "anchored:wait_bench_2"
+   ],
+   "why": "Small stones in the gravel strip along the engawa edge."
+  }
+ ],
+ "mood": {
+  "key": "lit courtyard garden",
+  "palette": "hinoki and washi, warm low light, tatami green, one bright soft overhead box",
+  "mist": "None (dry hall)."
+ },
+ "waivers": [],
+ "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
+}

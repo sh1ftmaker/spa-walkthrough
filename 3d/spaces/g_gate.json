@@ -1,0 +1,571 @@
+{
+ "id": "g_gate",
+ "name": "Basalt Gate forecourt",
+ "level": "ground",
+ "tier": "must",
+ "purpose": "Pass under the black basalt torii into a quiet stone court; the hall porch glows ahead, the cascade pools steam below the south parapet and the Terrace Path climbs away to the north-west.",
+ "floor_z": 0.0,
+ "ceiling_z": null,
+ "ceiling_profile": {
+  "type": "open",
+  "note": "Open sky; the mountain foot and the hall's timber facade close the east side, the west flank cliff closes the north."
+ },
+ "footprint": [
+  [
+   12,
+   40
+  ],
+  [
+   30,
+   40
+  ],
+  [
+   40,
+   42
+  ],
+  [
+   40,
+   68
+  ],
+  [
+   12,
+   66
+  ]
+ ],
+ "portals": [
+  {
+   "id": "p_road_gate",
+   "to": "g_road",
+   "at": [
+    13,
+    55
+   ],
+   "width": 7.0
+  },
+  {
+   "id": "p_gate_hall",
+   "to": "g_arrival",
+   "at": [
+    40,
+    55
+   ],
+   "width": 6.0,
+   "height": 4.5,
+   "note": "Entered through the genkan_porch (4 m wide, 3 m high) so the hall reads as a reveal."
+  },
+  {
+   "id": "p_gate_terrace",
+   "to": "g_terrace",
+   "at": [
+    34,
+    41
+   ],
+   "width": 5.0
+  },
+  {
+   "id": "p_gate_terrace_path",
+   "to": "terrace_path",
+   "at": [
+    16.0,
+    66.0
+   ],
+   "width": 2.4,
+   "connection": "terrace_path",
+   "note": "Foot of the Terrace Path (layout connection terrace_path, last plan point)."
+  }
+ ],
+ "spine": [
+  [
+   13.0,
+   55.0,
+   0
+  ],
+  [
+   19.0,
+   55.0,
+   0
+  ],
+  [
+   27.0,
+   55.0,
+   0
+  ],
+  [
+   34.0,
+   55.0,
+   0
+  ],
+  [
+   40.0,
+   55.0,
+   0
+  ]
+ ],
+ "branches": [
+  {
+   "id": "to_terrace_path",
+   "points": [
+    [
+     22.0,
+     55.0,
+     0
+    ],
+    [
+     18.5,
+     60.0,
+     0
+    ],
+    [
+     16.2,
+     65.6,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "to_terrace",
+   "points": [
+    [
+     29.0,
+     55.0,
+     0
+    ],
+    [
+     32.0,
+     48.0,
+     0
+    ],
+    [
+     34.0,
+     41.2,
+     0
+    ]
+   ]
+  }
+ ],
+ "hero": {
+  "asset": "torii_basalt",
+  "at": [
+   19.0,
+   55.0,
+   0
+  ],
+  "facing_deg": 270,
+  "dims": {
+   "w": 9.0,
+   "h": 11.0,
+   "post_d": 1.5,
+   "kasagi_overhang": 2.0
+  },
+  "why": "Two single basalt columns under an upswept kasagi: the threshold marker of 04 and the cutaway. Everyone passes through it on axis with the hall door, so it frames the porch glow from the road and frames the road and falls from the hall."
+ },
+ "anchored": [
+  {
+   "id": "genkan_porch",
+   "asset": "timber_passage",
+   "at": [
+    37.0,
+    55.0,
+    0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "len": 6.0,
+    "w": 4.0,
+    "h": 3.0,
+    "roof": "hip, copper-edged, eaves to 1.2 m beyond"
+   },
+   "why": "Compressed passage (4 m wide, 3 m clear) before the 16 m arrival hall: noren, low eaves and dark timber make the lava window a reveal."
+  },
+  {
+   "id": "torii_toro_n",
+   "asset": "lantern_stone",
+   "at": [
+    19.0,
+    60.2,
+    0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "h": 2.6
+   },
+   "why": "Paired toro flank the torii, lighting the posts from beside."
+  },
+  {
+   "id": "torii_toro_s",
+   "asset": "lantern_stone",
+   "at": [
+    19.0,
+    49.8,
+    0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "h": 2.6
+   },
+   "why": "Pair of the above."
+  },
+  {
+   "id": "path_marker",
+   "asset": "sign_kanji",
+   "at": [
+    18.2,
+    64.4,
+    0
+   ],
+   "facing_deg": 160,
+   "dims": {
+    "h": 2.2,
+    "text": "Terrace Path · summit 120 m"
+   },
+   "why": "Wayfinding at the stair foot, readable from the spine."
+  },
+  {
+   "id": "court_pine_n",
+   "asset": "pine_bonsai",
+   "at": [
+    26.0,
+    63.0,
+    0
+   ],
+   "facing_deg": 200,
+   "dims": {
+    "h": 5.0
+   },
+   "why": "Niwaki pine leaning over the court (plans 31, 28); dark silhouette against the porch glow."
+  },
+  {
+   "id": "court_pine_s",
+   "asset": "pine_bonsai",
+   "at": [
+    24.5,
+    43.5,
+    0
+   ],
+   "facing_deg": 20,
+   "dims": {
+    "h": 4.0
+   },
+   "why": "Balances the north pine and screens the south parapet corner."
+  }
+ ],
+ "water": [],
+ "sightlines": [
+  {
+   "from": "p_road_gate",
+   "see": "Torii framing the porch noren and its lantern cluster; banners on the facade either side.",
+   "target": [
+    37.0,
+    55.0,
+    2.5
+   ]
+  },
+  {
+   "from": "hero",
+   "see": "Through the porch: hall lanterns and a sliver of orange lava light on the hall's back wall.",
+   "target": [
+    60.0,
+    62.0,
+    3.0
+   ]
+  },
+  {
+   "from": "p_gate_terrace",
+   "see": "Back north to the torii's flank and the hall facade; the terrace lanterns run east toward the cable lift.",
+   "target": [
+    19.0,
+    55.0,
+    6.0
+   ]
+  },
+  {
+   "from": "p_gate_terrace_path",
+   "see": "Down the court: the torii from behind, the porch glow; turn left and the lantern zigzag of the Terrace Path climbs the flank.",
+   "target": [
+    37.0,
+    55.0,
+    2.0
+   ]
+  },
+  {
+   "from": "south_parapet",
+   "see": "Over the parapet: the cascade pools steaming teal 2-4 m below.",
+   "target": [
+    24.0,
+    22.0,
+    -2.0
+   ]
+  }
+ ],
+ "cameras": {
+  "entry": {
+   "pos": [
+    13.8,
+    55.0,
+    1.6
+   ],
+   "target": [
+    37.0,
+    55.0,
+    3.5
+   ],
+   "fov_v": 60
+  },
+  "reveal": {
+   "pos": [
+    16.0,
+    53.0,
+    1.6
+   ],
+   "target": [
+    19.0,
+    55.0,
+    7.5
+   ],
+   "fov_v": 62
+  },
+  "concept": {
+   "image": "lookbook/img/04-arrival-gate.jpg",
+   "pos": [
+    15.0,
+    54.0,
+    1.6
+   ],
+   "target": [
+    38.0,
+    56.0,
+    5.0
+   ],
+   "fov_v": 55,
+   "match": "04's torii seen from its outer side: massive posts filling the frame, hanging-lantern cluster and banners on the lit timber facade behind, wet flagstones, figures in yukata walking in."
+  }
+ },
+ "lights": [
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     22.0,
+     55.0
+    ],
+    [
+     34.0,
+     55.0
+    ]
+   ],
+   "side": "both",
+   "spacing": [
+    5.0,
+    6.5
+   ],
+   "offset": 2.4,
+   "face": "path",
+   "why": "One pool of light per bay from the torii to the porch: a lit runway to the door."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     34.5,
+     57.2
+    ],
+    [
+     39.5,
+     57.2
+    ]
+   ],
+   "spacing": [
+    1.0,
+    1.6
+   ],
+   "height": [
+    2.4,
+    2.9
+   ],
+   "snap": "eave",
+   "cluster": true,
+   "why": "Lantern cluster under the porch eave (04): the brightest warm patch in the court after the torii's toro."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     34.5,
+     52.8
+    ],
+    [
+     39.5,
+     52.8
+    ]
+   ],
+   "spacing": [
+    1.0,
+    1.6
+   ],
+   "height": [
+    2.4,
+    2.9
+   ],
+   "snap": "eave",
+   "cluster": true
+  },
+  {
+   "asset": "lantern_post",
+   "along": [
+    [
+     12.6,
+     40.6
+    ],
+    [
+     29.0,
+     40.6
+    ]
+   ],
+   "spacing": [
+    6.0,
+    8.0
+   ],
+   "offset": 0.0,
+   "face": "path",
+   "why": "Low lights on the south parapet; darker gap between them and the spine."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     15.0,
+     64.6,
+     0
+    ],
+    [
+     17.6,
+     66.0,
+     0
+    ]
+   ],
+   "why": "Pair at the Terrace Path foot; the stair's first post lanterns continue the line up the flank."
+  }
+ ],
+ "dressing": [
+  {
+   "asset": "railing",
+   "along": [
+    [
+     12.2,
+     40.3
+    ],
+    [
+     30.0,
+     40.3
+    ]
+   ],
+   "height": 1.0,
+   "material": "basalt parapet 0.5 m + timber rail",
+   "why": "Edge over the cascade pools."
+  },
+  {
+   "asset": "banner",
+   "along": [
+    [
+     39.6,
+     47.0
+    ],
+    [
+     39.6,
+     51.5
+    ]
+   ],
+   "spacing": [
+    4.0,
+    4.0
+   ],
+   "height": 5.5,
+   "snap": "wall",
+   "why": "Mountain-crest banners on the facade either side of the porch (04)."
+  },
+  {
+   "asset": "banner",
+   "along": [
+    [
+     39.6,
+     58.5
+    ],
+    [
+     39.6,
+     63.0
+    ]
+   ],
+   "spacing": [
+    4.0,
+    4.0
+   ],
+   "height": 5.5,
+   "snap": "wall"
+  },
+  {
+   "asset": "boulder_rim",
+   "along": [
+    [
+     12.5,
+     42.0
+    ],
+    [
+     12.5,
+     50.5
+    ]
+   ],
+   "spacing": [
+    1.2,
+    2.0
+   ],
+   "offset": 0.3,
+   "embed": 0.25,
+   "scale": [
+    0.8,
+    1.4
+   ],
+   "why": "Rock edge where the court meets the A4 falls side."
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "edge_band",
+   "band": [
+    0.3,
+    2.5
+   ],
+   "density": 0.06,
+   "avoid": [
+    "nav",
+    "portals",
+    "hero",
+    3.0
+   ]
+  },
+  {
+   "asset": "pine_bonsai",
+   "scatter": "edge_band",
+   "band": [
+    0.8,
+    3.0
+   ],
+   "density": 0.008,
+   "min_dist": 7.0,
+   "scale": [
+    0.6,
+    1.0
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "hero",
+    4.0
+   ]
+  }
+ ],
+ "mood": {
+  "key": "torii against the porch glow",
+  "palette": "black basalt, amber porch, blue-hour sky, teal steam rising from the south",
+  "mist": "steam drifting up over the south parapet"
+ },
+ "waivers": []
+}
