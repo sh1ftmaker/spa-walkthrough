@@ -1,0 +1,11 @@
+CANONICAL LAYOUT OF KAZAN-YU (every layout image must follow this exactly). The attached images are the existing concept art for each place: match their look, materials and colours so each place is recognisable in the layout.
+- SUMMIT (crater rim): Spring Source with egg baskets; 1 CALDERA CROWN INFINITY POOL; Tsukimi moon-viewing deck.
+- SOUTH FACE, OUTDOORS: CASCADE TERRACES, turquoise stepped pools pouring down the mountainside from the crater.
+- NORTH CLIFF: PRIVATE SUITES carved into the cliff, each with a stone tub fed by a trickle from above.
+- GROUND LEVEL: BASALT GATE (black stone torii) and ARRIVAL HALL with the glass LAVA WINDOW; CHANGING HALLS.
+- B1 THERMAL LEVEL: MIST CORRIDORS (ankle-deep misty reflecting-pool hallways) link 6 FUMAROLE STEAM GROTTO, 7 GLACIER PLUNGE ICE CAVE, TREATMENT ROOMS and 5 OBSIDIAN MIRROR FLOAT POOL.
+- B2 RIVER LEVEL: KAWAGIRI RESTAURANT (timber decks on beams with water-curtain table pods and neon) over the UNDERGROUND RIVER; neon RAMEN COUNTER; BOAT LANDING.
+- B3 GREAT CAVERN "AQUA CAVERN": the river drops in as 9 THUNDER CURTAIN FALLS, then flows through 8 RIMSTONE CASCADE TERRACES, 2 LAVA TUBE LAZY RIVER (a ring tunnel), 4 GEYSER PLAZA, and ends at 10 WAVE GROTTO, a sea cave with black sand beach opening to the ocean. 3 MAGMA GLASS SLIDE descends from B1 down to B3 beside the lava.
+- B4: MAGMA VIEWING CHAMBER, sealed behind glass at the bottom.
+- WATER PATH: spring at summit (44 °C) -> Caldera Crown -> Cascade Terraces -> suites -> into the mountain -> mist corridors (34 °C) -> underground river under Kawagiri -> Thunder Curtain Falls -> Rimstone Terraces -> Lazy River -> Geyser Plaza -> Wave Grotto (30 °C) -> the sea.
+Style: black basalt, glowing teal water, amber lantern light, low mist, hinoki wood, magenta/cyan neon only at Kawagiri. Clean, legible English labels. Wide 16:9.

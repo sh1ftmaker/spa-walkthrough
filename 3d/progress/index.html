@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kazan-yu Build Progress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<style>
+/* Layout: sticky status bar + three tabs (Gallery, Agents, Spec). Single dark theme matching the lookbook. */
+:root{
+  --basalt:#0d0f10; --obsidian:#16191b; --raised:#1d2124; --rule:#2a2f31;
+  --mist:#e9ecea; --ash:#9aa3a3; --onsen:#46d6c8; --lantern:#f2a64a; --neon:#ff3fa4;
+  --ok:#5fd38d; --warn:#f2c14a; --bad:#ff6b6b;
+  --f-display:"Shippori Mincho B1",Georgia,serif;
+  --f-body:"Zen Kaku Gothic New",system-ui,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--basalt);color:var(--mist);font:15px/1.6 var(--f-body)}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.bar{position:sticky;top:0;z-index:5;background:rgba(13,15,16,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-block:12px}
+.brand{font-family:var(--f-display);font-weight:800;font-size:20px;white-space:nowrap}
+.brand span{color:var(--lantern);font-weight:600;font-size:14px;margin-left:6px}
+.live{font-family:var(--f-mono);font-size:12px;color:var(--ash);display:flex;align-items:center;gap:6px;margin-left:auto}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ash)}
+.dot.on{background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.dot.off{background:var(--bad)}
+nav.tabs{display:flex;gap:4px;width:100%}
+nav.tabs button{font:500 13px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid transparent;color:var(--ash);padding:7px 12px;border-radius:4px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--mist);border-color:var(--rule);background:var(--obsidian)}
+nav.tabs .n{color:var(--onsen);margin-left:6px}
+main{padding-block:22px 60px}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.2;text-wrap:balance}
+.eyebrow{font:500 12px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--onsen)}
+.muted{color:var(--ash)}
+:focus-visible{outline:2px solid var(--lantern);outline-offset:2px}
+
+/* overview */
+.overview{display:grid;gap:16px;margin-bottom:26px}
+.headline{font-family:var(--f-display);font-size:clamp(22px,3vw,30px)}
+.phases{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.phases div{flex:1 1 120px;padding:10px 12px;border-right:1px solid var(--rule);font-size:13px;min-width:0}
+.phases div:last-child{border-right:0}
+.phases b{display:block;font:500 11px var(--f-mono);color:var(--ash);letter-spacing:.08em}
+.phases .done{background:rgba(95,211,141,.08)} .phases .done b{color:var(--ok)}
+.phases .cur{background:rgba(242,166,74,.12);box-shadow:inset 0 -2px 0 var(--lantern)} .phases .cur b{color:var(--lantern)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--obsidian);border:1px solid var(--rule);border-radius:4px;padding:10px 12px;min-width:0}
+.stat b{display:block;font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ash)}
+.stat span{font:500 18px var(--f-mono);font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font:500 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.s-done,.s-pass,.s-ok{color:var(--ok)} .s-running,.s-active{color:var(--lantern)} .s-queued,.s-none{color:var(--ash)} .s-failed,.s-fail,.s-blocked{color:var(--bad)} .s-warn{color:var(--warn)}
+
+/* gallery */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 18px}
+.filters button{font:500 12px var(--f-mono);background:var(--obsidian);color:var(--ash);border:1px solid var(--rule);border-radius:999px;padding:5px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{color:var(--basalt);background:var(--onsen);border-color:var(--onsen)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{display:grid;gap:8px;align-content:start;min-width:0}
+.card .imgs{display:grid;gap:4px;grid-template-columns:1fr}
+.card .imgs.pair{grid-template-columns:1fr 1fr}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;background:var(--obsidian);cursor:zoom-in;display:block}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;font:12px var(--f-mono);color:var(--ash)}
+.card h3{font-size:17px}
+.card p{margin:0;color:var(--ash);font-size:14px}
+.empty{border:1px dashed var(--rule);border-radius:6px;padding:28px;color:var(--ash);display:grid;gap:8px;max-width:760px}
+.empty code{color:var(--onsen)}
+
+/* agents */
+table{width:100%;border-collapse:collapse}
+.tablewrap{overflow-x:auto}
+th,td{text-align:left;vertical-align:top;padding:10px 10px 10px 0;border-bottom:1px solid var(--rule)}
+th{font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ash)}
+td{font-size:14px}
+td.mono{font-family:var(--f-mono);font-size:12px;white-space:nowrap;font-variant-numeric:tabular-nums}
+td .last{color:var(--ash)}
+
+/* spec */
+.spec{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}
+.doc{min-width:0;max-width:80ch}
+.doc h1{font-size:30px;margin-bottom:10px}.doc h2{font-size:22px;margin:28px 0 8px;color:var(--lantern)}.doc h3{font-size:18px;margin:20px 0 6px}
+.doc table{margin:10px 0;display:block;overflow-x:auto}
+.doc code{font-family:var(--f-mono);font-size:13px;color:var(--onsen)}
+.doc li{margin:3px 0}
+.side{display:grid;gap:14px;position:sticky;top:120px}
+.side img{width:100%;border-radius:4px;cursor:zoom-in}
+.side a{color:var(--onsen)}
+.docswitch{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.docswitch button{font:500 12px var(--f-mono);background:var(--obsidian);color:var(--ash);border:1px solid var(--rule);border-radius:4px;padding:6px 10px;cursor:pointer}
+.docswitch button[aria-pressed="true"]{color:var(--mist);border-color:var(--onsen)}
+
+dialog{border:0;padding:10px;background:var(--basalt);color:var(--mist);width:96vw;max-width:1800px;max-height:94vh}
+dialog::backdrop{background:rgba(0,0,0,.86)}
+dialog img{width:100%;max-height:84vh;object-fit:contain;cursor:zoom-out}
+dialog p{font:12px var(--f-mono);color:var(--ash);margin:6px 0 0}
+@media (max-width:860px){.spec{grid-template-columns:1fr}.side{position:static}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <div class="brand">Kazan-yu <span>build progress</span></div>
+    <div class="live"><i class="dot" id="dot"></i><span id="livetxt">connecting…</span></div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" id="t-gallery" aria-selected="true" data-tab="gallery">Gallery<span class="n" id="n-gallery"></span></button>
+      <button role="tab" id="t-agents" aria-selected="false" data-tab="agents">Agents<span class="n" id="n-agents"></span></button>
+      <button role="tab" id="t-spec" aria-selected="false" data-tab="spec">Spec</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="overview" aria-label="Build status">
+    <p class="eyebrow" id="phase">Phase</p>
+    <p class="headline" id="headline">Loading status…</p>
+    <div class="phases" id="phases"></div>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <section id="p-gallery">
+    <div class="filters" id="filters"></div>
+    <div id="gallery"></div>
+  </section>
+
+  <section id="p-agents" hidden>
+    <div id="agents"></div>
+  </section>
+
+  <section id="p-spec" hidden>
+    <div class="spec">
+      <div>
+        <div class="docswitch" id="docswitch">
+          <button aria-pressed="true" data-doc="../../layout-spec.md">Layout spec</button>
+          <button aria-pressed="false" data-doc="../../AGENT_PROMPT_3D.md">Build brief</button>
+          <button aria-pressed="false" data-doc="../decisions.md">Decisions</button>
+        </div>
+        <article class="doc" id="doc">Loading…</article>
+      </div>
+      <aside class="side">
+        <img src="../../lookbook/img/37-alignment-sheet.jpg" alt="Level alignment key" data-cap="Level alignment key">
+        <img src="../../lookbook/img/24-isometric-cutaway.jpg" alt="Isometric cutaway, the layout source of truth" data-cap="Isometric cutaway (layout source of truth)">
+        <p class="muted">Raw files: <a href="../inventory.csv">inventory.csv</a> · <a href="../status.json">status.json</a> · <a href="../agents.json">agents.json</a> · <a href="../gallery.json">gallery.json</a></p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<dialog id="lb"><img id="lb-img" alt=""><p id="lb-cap"></p></dialog>
+
+<script>
+const POLL = 5000;
+const REF = [
+  ["01-hero-exterior","Hero exterior"],["23-descent-v2","The Descent v2"],["24-isometric-cutaway","Isometric cutaway"],
+  ["37-alignment-sheet","Alignment key"],["30-plan-summit","Summit plan"],["31-plan-ground","Ground plan"],["32-suites-cliff","North cliff suites"],
+  ["33-plan-b1-thermal","B1 thermal plan"],["34-plan-b2-river","B2 river plan"],["35-plan-b3-aqua-cavern","B3 Aqua Cavern plan"],["36-plan-b4-magma","B4 magma plan"],
+  ["04-arrival-gate","Arrival hall"],["05-mist-corridor","Mist corridor"],["06-kawagiri-restaurant","Kawagiri"],["08-table-aqueduct","Table aqueduct"],["09-neon-ramen-counter","Ramen counter"],
+  ["11-caldera-crown","01 Caldera Crown"],["12-lava-tube-lazy-river","02 Lazy River"],["13-magma-glass-slide","03 Magma Glass Slide"],["14-geyser-plaza","04 Geyser Plaza"],
+  ["15-obsidian-mirror","05 Obsidian Mirror"],["16-steam-grotto","06 Steam Grotto"],["17-glacier-plunge","07 Glacier Plunge"],["18-rimstone-terraces","08 Rimstone Terraces"],
+  ["19-thunder-curtain","09 Thunder Curtain"],["20-wave-grotto","10 Wave Grotto"],["21-private-suite","Private suite"],["22-brand-board","Brand board"]
+].map(([f,t])=>({title:t,kind:"reference",image:`../../lookbook/img/${f}.jpg`}));
+const KINDS = {all:"All build images",graybox:"Graybox",contact:"Contact sheets",material:"Materials",lod:"LOD sheets",render:"Renders",compare:"vs concept",paintover:"Paint-overs",reference:"Reference"};
+let state = {status:null,agents:[],gallery:[],filter:"all",doc:"../../layout-spec.md",lastOk:0,sig:{}};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cls = s => "s-"+String(s||"none").toLowerCase().replace(/[^a-z]/g,"");
+function ago(t){ if(!t) return "—"; const d=(Date.now()-new Date(t))/1000; if(isNaN(d)) return esc(t);
+  if(d<60) return Math.max(0,Math.round(d))+"s ago"; if(d<3600) return Math.round(d/60)+"m ago"; if(d<86400) return Math.round(d/3600)+"h ago"; return new Date(t).toLocaleDateString(); }
+async function getJSON(u){ const r=await fetch(u+"?t="+Date.now(),{cache:"no-store"}); if(!r.ok) throw new Error(u+" "+r.status); return r.json(); }
+async function getText(u){ const r=await fetch(u+"?t="+Date.now(),{cache:"no-store"}); if(!r.ok) throw new Error(u+" "+r.status); return r.text(); }
+
+function renderStatus(){
+  const s=state.status; if(!s) return;
+  $("#phase").textContent = `Phase: ${s.phase||"—"} · scope tier: ${s.scope_tier||"—"}`;
+  $("#headline").textContent = s.headline||"";
+  const pi = s.phase_index ?? -1;
+  $("#phases").innerHTML = (s.phases||[]).map((p,i)=>`<div class="${i<pi?"done":i===pi?"cur":""}"><b>${i<pi?"DONE":i===pi?"NOW":"STEP "+i}</b>${esc(p)}</div>`).join("");
+  const m=s.metrics||{}, c=s.checks||{}, pub=s.publish||{};
+  const fmt=v=>v==null?"—":Number(v).toLocaleString();
+  const chk=v=>v==null?`<span class="pill s-none">not run</span>`:`<span class="pill ${cls(v)}">${esc(v)}</span>`;
+  $("#stats").innerHTML = [
+    ["Draw calls",fmt(m.draw_calls)],["Triangles",fmt(m.triangles)],["Texture MB",fmt(m.texture_mb)],["Frame (desktop ms)",fmt(m.desktop_ms)],
+    ["Walk check",chk(c.walk)],["Placement",chk(c.placement)],["Geometry",chk(c.geometry)],
+    ["Published",pub.url?`<a href="${esc(pub.url)}" style="color:var(--onsen);font-size:14px">${pub.tiers_ok===false?"tiers failing":"open"}</a>`:"—"],
+    ["Status updated",ago(s.updated)]
+  ].map(([k,v])=>`<div class="stat"><b>${k}</b><span>${v}</span></div>`).join("");
+}
+
+function renderFilters(){
+  const counts={all:state.gallery.length,reference:REF.length};
+  state.gallery.forEach(g=>counts[g.kind]=(counts[g.kind]||0)+1);
+  const keys=Object.keys(KINDS).filter(k=>k==="all"||k==="reference"||counts[k]);
+  $("#filters").innerHTML = keys.map(k=>`<button aria-pressed="${state.filter===k}" data-f="${k}">${KINDS[k]} <span style="opacity:.7">${counts[k]||0}</span></button>`).join("");
+}
+function card(g){
+  const imgs=[g.image,g.concept].filter(Boolean);
+  const meta=[g.space&&esc(g.space),g.round!=null&&("round "+esc(g.round)),g.score!=null&&("score "+esc(g.score)+"/5"),g.agent&&esc(g.agent),g.time&&ago(g.time)].filter(Boolean).join(" · ");
+  return `<article class="card"><div class="imgs ${imgs.length>1?"pair":""}">${imgs.map((u,i)=>`<img loading="lazy" src="${esc(rel(u))}" alt="${esc(g.title)}${i?" (concept)":""}" data-cap="${esc(g.title)}${i?" (concept)":""}">`).join("")}</div>
+    <div class="meta">${g.kind&&g.kind!=="reference"?`<span class="pill ${g.status?cls(g.status):"s-active"}">${esc(KINDS[g.kind]||g.kind)}</span>`:""}${meta}</div>
+    <h3>${esc(g.title)}</h3>${g.notes?`<p>${esc(g.notes)}</p>`:""}</article>`;
+}
+function rel(u){ return /^(https?:|\.\.?\/|\/)/.test(u)?u:"../"+u; } /* gallery paths are relative to 3d/ */
+function renderGallery(){
+  renderFilters();
+  const items = state.filter==="reference"?REF: state.filter==="all"?[...state.gallery].reverse(): state.gallery.filter(g=>g.kind===state.filter).reverse();
+  $("#n-gallery").textContent = state.gallery.length||"";
+  if(!items.length){
+    $("#gallery").innerHTML = `<div class="empty"><b style="color:var(--mist)">No build images yet.</b>
+      <span>When the build agent starts, its graybox renders, contact sheets, material swatches, LOD sheets and comparisons with the concept art appear here as they're made. The page refreshes itself every few seconds.</span>
+      <span>Agents add an image by appending an entry to <code>3d/gallery.json</code> and saving the file under <code>3d/renders/</code>.</span>
+      <span>Open the <a href="#" data-f="reference" style="color:var(--onsen)">Reference</a> filter to see the concept art and level plans the build works from.</span></div>`;
+    return;
+  }
+  $("#gallery").innerHTML = `<div class="grid">${items.map(card).join("")}</div>`;
+}
+function renderAgents(){
+  const a=state.agents||[];
+  const running=a.filter(x=>/run|active/i.test(x.status)).length;
+  $("#n-agents").textContent = a.length?(running?running+" running":a.length):"";
+  if(!a.length){ $("#agents").innerHTML=`<div class="empty">No subagents recorded yet. The lead agent lists every subagent in <code>3d/agents.json</code>.</div>`; return; }
+  const order={running:0,active:0,blocked:1,failed:1,queued:2,done:3};
+  const rows=[...a].sort((x,y)=>(order[String(x.status).toLowerCase()]??2)-(order[String(y.status).toLowerCase()]??2)||new Date(y.updated||0)-new Date(x.updated||0));
+  $("#agents").innerHTML = `<div class="tablewrap"><table><thead><tr><th>Agent</th><th>Status</th><th>Model</th><th>Task and latest update</th><th>Updated</th></tr></thead><tbody>${
+    rows.map(x=>`<tr><td><b>${esc(x.name||x.id)}</b><br><span class="muted mono" style="font-size:12px">${esc(x.id)}</span></td>
+      <td><span class="pill ${cls(x.status)}">${esc(x.status)}</span></td><td class="mono">${esc(x.model||"—")}</td>
+      <td>${esc(x.role||"")}${x.last?`<br><span class="last">${esc(x.last)}</span>`:""}${x.outputs&&x.outputs.length?`<br><span class="muted mono" style="font-size:12px">→ ${x.outputs.map(esc).join(", ")}</span>`:""}</td>
+      <td class="mono">${ago(x.updated)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+async function renderDoc(force){
+  try{ const t=await getText(state.doc); if(!force && state.sig.doc===t) return; state.sig.doc=t;
+    $("#doc").innerHTML = window.marked?marked.parse(t):`<pre style="white-space:pre-wrap">${esc(t)}</pre>`;
+  }catch(e){ $("#doc").textContent="Couldn't load "+state.doc+". Is the server running from the project root?"; }
+}
+
+async function poll(){
+  try{
+    const [s,a,g]=await Promise.all([getJSON("../status.json"),getJSON("../agents.json"),getJSON("../gallery.json")]);
+    const sig=JSON.stringify([s,a,g]);
+    if(sig!==state.sig.data){ state.sig.data=sig; state.status=s; state.agents=a; state.gallery=g; renderStatus(); renderGallery(); renderAgents(); }
+    else renderStatus(); /* keep "x ago" fresh */
+    if(!$("#p-spec").hidden) renderDoc(false);
+    state.lastOk=Date.now(); $("#dot").className="dot on"; $("#livetxt").textContent="live · checks every "+POLL/1000+"s";
+  }catch(e){ $("#dot").className="dot off"; $("#livetxt").textContent="can't reach the data files, retrying"; }
+}
+
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-tab]"); if(t){ showTab(t.dataset.tab); return; }
+  const f=e.target.closest("[data-f]"); if(f){ e.preventDefault(); state.filter=f.dataset.f; try{localStorage.setItem("kz-filter",state.filter)}catch(_){} renderGallery(); return; }
+  const d=e.target.closest("[data-doc]"); if(d){ state.doc=d.dataset.doc; document.querySelectorAll("[data-doc]").forEach(b=>b.setAttribute("aria-pressed",b===d)); renderDoc(true); return; }
+  const im=e.target.closest("img[data-cap]"); if(im){ $("#lb-img").src=im.src; $("#lb-cap").textContent=im.dataset.cap; $("#lb").showModal(); return; }
+  if(e.target.closest("#lb")) $("#lb").close();
+});
+function showTab(name){
+  ["gallery","agents","spec"].forEach(n=>{ $("#p-"+n).hidden=n!==name; $("#t-"+n).setAttribute("aria-selected",n===name); });
+  if(name==="spec") renderDoc(true);
+  try{ history.replaceState(null,"","#"+name) }catch(_){}
+}
+try{ state.filter=localStorage.getItem("kz-filter")||"all" }catch(_){}
+showTab(["gallery","agents","spec"].includes(location.hash.slice(1))?location.hash.slice(1):"gallery");
+poll(); setInterval(poll,POLL);
+</script>
+</body>
+</html>

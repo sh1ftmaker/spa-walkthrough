@@ -1,0 +1,10 @@
+.scratch/
+*.exr
+**/bake_cache/
+**/blendcache_*/
+*.blend1
+*.blend2
+node_modules/
+web/dist/
+__pycache__/
+.venv/

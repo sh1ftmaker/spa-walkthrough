@@ -1,0 +1,14 @@
+[
+  {
+    "id": "review-brief-1",
+    "name": "Brief reviewer",
+    "role": "Independent review of AGENT_PROMPT_3D.md",
+    "model": "opus",
+    "status": "done",
+    "updated": "2026-10-26T21:59:28Z",
+    "last": "Recommended graybox-first, rules-based assembly, placement checks, a metric spec and scope tiers. All of it is now in the brief.",
+    "outputs": [
+      "AGENT_PROMPT_3D.md"
+    ]
+  }
+]

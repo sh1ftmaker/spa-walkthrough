@@ -1,0 +1,416 @@
+<title>Kazan-yu Volcano Spa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single descending scroll that follows the water downhill — crater at the top, river and caverns at the bottom. Deliberately single dark theme (inside a volcano at night). */
+:root{
+  --basalt:#0d0f10;      /* page ground */
+  --obsidian:#16191b;    /* raised surfaces */
+  --ash:#9aa3a3;         /* secondary text */
+  --mist:#e9ecea;        /* primary text */
+  --onsen:#46d6c8;       /* water teal accent */
+  --lantern:#f2a64a;     /* amber light */
+  --neon:#ff3fa4;        /* dining only */
+  --rule:#2a2f31;
+  --f-display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--basalt);color:var(--mist);font-family:var(--f-body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;font-weight:700;line-height:1.15}
+p{margin:0}
+figure{margin:0}
+img{display:block;width:100%;height:auto;max-width:100%;border-radius:4px;background:var(--obsidian)}
+figcaption{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;color:var(--ash);margin-top:8px;text-transform:uppercase}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--onsen)}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--mist);max-width:62ch}
+.muted{color:var(--ash)}
+a{color:var(--onsen)}
+:focus-visible{outline:2px solid var(--lantern);outline-offset:3px}
+
+/* hero */
+.hero{padding-top:28px;display:grid;gap:22px}
+.hero h1{font-size:clamp(46px,9vw,112px);font-weight:800;letter-spacing:-.01em;display:flex;align-items:baseline;gap:.3em;flex-wrap:wrap}
+.hero h1 .jp{font-size:.42em;color:var(--lantern);font-weight:500;letter-spacing:.2em}
+.hero .tag{font-size:clamp(18px,2.4vw,24px);font-family:var(--f-display);color:var(--ash);max-width:40ch}
+
+/* section */
+section{padding-top:84px;display:grid;gap:26px}
+.sec-head{display:grid;gap:10px;max-width:760px}
+.sec-head h2{font-size:clamp(30px,4.6vw,52px)}
+.depth{font-family:var(--f-mono);font-size:12px;color:var(--lantern);letter-spacing:.1em}
+.split{display:grid;grid-template-columns:1.35fr 1fr;gap:32px;align-items:start}
+.split > *{min-width:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pair > *{min-width:0}
+ul.ideas{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+ul.ideas li{padding-left:18px;position:relative}
+ul.ideas li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:7px;border-radius:50%;background:var(--onsen);box-shadow:0 0 10px var(--onsen)}
+ul.ideas b{font-weight:700;color:var(--mist)}
+ul.ideas span{color:var(--ash)}
+
+/* the water line: a thin glowing thread down the left of the descent */
+.descent{border-left:1px solid var(--rule);padding-left:22px;margin-left:4px;position:relative}
+.descent::before{content:"";position:absolute;left:-1px;top:0;width:1px;height:100%;background:linear-gradient(var(--onsen),transparent 85%);opacity:.6}
+
+/* dining overrides */
+.dining .eyebrow{color:var(--neon)}
+.dining ul.ideas li::before{background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.menu{display:grid;grid-template-columns:repeat(2,1fr);gap:0 32px;border-top:1px solid var(--rule)}
+.menu div{padding:14px 0;border-bottom:1px solid var(--rule);display:grid;gap:2px;min-width:0}
+.menu b{font-family:var(--f-display);font-size:19px}
+.menu span{color:var(--ash);font-size:14px}
+
+/* amenities */
+.amen{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 28px}
+.amen article{display:grid;gap:12px;min-width:0;align-content:start}
+.amen .row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.amen .no{font-family:var(--f-mono);color:var(--onsen);font-size:14px}
+.amen h3{font-size:24px}
+.amen .temp{font-family:var(--f-mono);font-size:12px;color:var(--lantern);letter-spacing:.06em;margin-left:auto;font-variant-numeric:tabular-nums}
+.amen p{color:var(--ash);font-size:15px}
+
+/* day timeline */
+.day{display:grid;gap:0;border-top:1px solid var(--rule)}
+.day div{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.day time{font-family:var(--f-mono);color:var(--lantern);font-variant-numeric:tabular-nums}
+.day p{min-width:0}
+
+.levels{width:100%;border-collapse:collapse;border-top:1px solid var(--rule)}
+.levels th,.levels td{text-align:left;vertical-align:top;padding:10px 0;border-bottom:1px solid var(--rule)}
+.levels th{font-family:var(--f-mono);font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lantern);width:130px;padding-right:16px;padding-top:13px}
+.levels td{color:var(--ash);font-size:15px}
+.qs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.qs p{background:var(--obsidian);border:1px solid var(--rule);padding:16px 18px;border-radius:4px;min-width:0}
+.qs b{color:var(--lantern);font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;display:block;margin-bottom:4px;text-transform:uppercase}
+footer{padding-top:72px;color:var(--ash);font-size:13px;font-family:var(--f-mono)}
+
+dialog#lb{border:0;padding:12px;background:var(--basalt);color:var(--mist);max-width:min(96vw,1700px);width:96vw;max-height:94vh;overflow:auto}
+dialog#lb::backdrop{background:rgba(0,0,0,.85)}
+#lb-img{width:100%;height:auto;max-height:82vh;object-fit:contain;cursor:zoom-out}
+#lb-cap{font-family:var(--f-mono);font-size:12px;color:var(--ash);margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
+#lb-close{position:absolute;top:18px;right:18px;background:var(--obsidian);color:var(--mist);border:1px solid var(--rule);font-family:var(--f-mono);padding:6px 12px;border-radius:4px;cursor:pointer}
+@media (max-width:820px){
+  .split,.pair,.amen,.menu,.qs{grid-template-columns:1fr}
+  .day div{grid-template-columns:64px 1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero figure img{animation:breathe 14s ease-in-out infinite alternate}
+  @keyframes breathe{from{filter:brightness(.96)}to{filter:brightness(1.06)}}
+}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">Concept lookbook · fictional destination</p>
+  <h1>Kazan-yu <span class="jp">火山湯</span></h1>
+  <p class="tag">A spa built inside a sleeping volcano. Hot spring water rises at the crater and you follow it down, pool by pool, into the mountain.</p>
+  <figure>
+    <img src="img/01-hero-exterior.jpg" alt="Volcano at dusk with turquoise terraced pools cascading down black basalt toward a glowing cave entrance">
+    <figcaption>The south face at blue hour. Overflow from the crater fills the outdoor terraces before going underground.</figcaption>
+  </figure>
+</header>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">The organising idea</p>
+    <h2>One stream, followed downhill</h2>
+    <p class="lede">Everything at Kazan-yu is fed by a single spring, and the spa is laid out along its path. The water is hottest at the top, around 44&nbsp;°C, and it loses heat on the way down through each pool, corridor and cavern. A guest's visit is a slow descent: you start under the open sky and finish deep underground beside the river.</p>
+  </div>
+  <figure>
+    <img src="img/23-descent-v2.jpg" alt="Labeled cutaway cross-section of the volcano showing every place from the crater pool down to the magma viewing chamber">
+    <figcaption>The Descent, v2. Every place on its level, crater to magma chamber.</figcaption>
+  </figure>
+  <div class="split">
+    <figure>
+      <img src="img/03-master-floorplan.jpg" alt="Top-down master floor plan of the cave spa with labeled zones">
+      <figcaption>First master plan sketch, replaced by the level plans below.</figcaption>
+    </figure>
+    <ul class="ideas">
+      <li><b>Gravity-fed throughout.</b> <span>No visible pumps in guest areas. Water reaches every pool, tap and table aqueduct by falling, so you can always hear it moving.</span></li>
+      <li><b>Temperature as wayfinding.</b> <span>Each level is a few degrees cooler than the one above. The floor stones are warmer near hotter zones, so bare feet can tell you where you are.</span></li>
+      <li><b>Yukata colour by depth.</b> <span>Guests change robes as they descend: undyed linen at the crater, indigo in the caverns, near-black at the river.</span></li>
+      <li><b>The heartbeat.</b> <span>Low-frequency microphones in the magma chamber play the mountain's own rumble, slowed down, in the deepest rooms.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">Layout</p>
+    <h2>How it fits together</h2>
+    <p class="lede">Seven views of the same plan. The summit and south face are outdoors and the suites sit in the north cliff. Arrival is at ground level, the thermal circuit on B1, Kawagiri over the river on B2, the Aqua Cavern on B3, and the magma chamber on B4. The river reaches the cavern as Thunder Curtain Falls and meets the sea at the Wave Grotto.</p>
+  </div>
+  <table class="levels" aria-label="Places by level">
+    <tbody>
+      <tr><th>Summit</th><td>Spring source and egg baskets · 01 Caldera Crown Infinity Pool · Tsukimi moon deck</td></tr>
+      <tr><th>South face</th><td>Cascade Terraces, outdoors</td></tr>
+      <tr><th>North cliff</th><td>Private suites with spring-fed tubs</td></tr>
+      <tr><th>Ground</th><td>Basalt Gate · arrival hall and lava window · changing halls</td></tr>
+      <tr><th>B1 thermal</th><td>Mist corridors · 06 Steam Grotto · 07 Glacier Plunge · treatment rooms · 05 Obsidian Mirror · top of 03 Magma Glass Slide</td></tr>
+      <tr><th>B2 river</th><td>Kawagiri restaurant · ramen counter · boat landing · underground river</td></tr>
+      <tr><th>B3 cavern</th><td>09 Thunder Curtain Falls · 08 Rimstone Terraces · 02 Lazy River · 04 Geyser Plaza · 10 Wave Grotto · foot of the slide</td></tr>
+      <tr><th>B4</th><td>Magma viewing chamber</td></tr>
+    </tbody>
+  </table>
+  <figure>
+    <img src="img/24-isometric-cutaway.jpg" alt="Isometric cutaway of the whole volcano with every level and attraction numbered">
+    <figcaption>Isometric cutaway with attraction legend.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/27-stacked-level-plans.jpg" alt="Exploded axonometric of the levels stacked with lifts, water flow and slide route">
+    <figcaption>Level stack. Lifts, water flow and the slide route between plates.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/26-guest-route-map.jpg" alt="Transit-map style diagram of guest routes between all places">
+    <figcaption>Guest routes: mist paths, lifts, cable lift, river boat, slide express.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/25-water-journey.jpg" alt="Infographic tracing the spring from source to sea with temperatures at each place">
+    <figcaption>The water's journey, 44 °C at the source to 30 °C at the sea.</figcaption>
+  </figure>
+  <div class="pair">
+    <figure>
+      <img src="img/28-aerial-site-plan.jpg" alt="Aerial view of the volcano island with an interior cutaway and labeled places">
+      <figcaption>Aerial site plan of the island.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/29-river-section.jpg" alt="Long section following the river from Kawagiri over Thunder Curtain Falls into the Aqua Cavern">
+      <figcaption>River section: Kawagiri to the falls to the sea.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">Level plans</p>
+    <h2>Every floor on one grid</h2>
+    <p class="lede">Every level is drawn on the same 200 × 120 m grid (columns A–J, rows 1–6, 20 m cells). That means the plans stack directly on top of each other for 3D modelling. You can walk everywhere: the Terrace Path and Cliff Stair outdoors, the Spiral Stair around the main lift at E3, the Mist Steps from B1 to B2, the Falls Stair behind Thunder Curtain Falls from B2 to B3, and the Lava Stair around the slide shaft. Lifts, the boat and the slide are quicker options. Tap any plan to enlarge it.</p>
+  </div>
+  <figure>
+    <img src="img/37-alignment-sheet.jpg" alt="All levels overlaid on the shared grid with vertical connections and an elevation strip">
+    <figcaption>Alignment key: all levels overlaid, with stairs, lifts and elevations.</figcaption>
+  </figure>
+  <div class="pair">
+    <figure>
+      <img src="img/30-plan-summit.jpg" alt="Summit plan with spring source, Caldera Crown infinity pool, moon deck and cable lift station">
+      <figcaption>Summit, +120 m.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/31-plan-ground.jpg" alt="Ground level plan with Basalt Gate, arrival hall, changing halls, terraces and cliff stair">
+      <figcaption>Ground, 0 m.</figcaption>
+    </figure>
+  </div>
+  <figure>
+    <img src="img/32-suites-cliff.jpg" alt="North cliff elevation with four tiers of suites and a typical suite plan">
+    <figcaption>North cliff suites: elevation and a typical suite, +10 to +60 m.</figcaption>
+  </figure>
+  <div class="pair">
+    <figure>
+      <img src="img/33-plan-b1-thermal.jpg" alt="B1 thermal level plan with steam grotto, obsidian mirror, treatment rooms, ice cave and slide launch">
+      <figcaption>B1 thermal, −20 m.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/34-plan-b2-river.jpg" alt="B2 river level plan with Kawagiri's twelve water-curtain pods, aqueducts, ramen counter and boat landing">
+      <figcaption>B2 river and Kawagiri, −40 m.</figcaption>
+    </figure>
+  </div>
+  <div class="pair">
+    <figure>
+      <img src="img/35-plan-b3-aqua-cavern.jpg" alt="B3 Aqua Cavern plan with falls, rimstone terraces, lazy river, geyser plaza, slide splashdown and wave grotto">
+      <figcaption>B3 Aqua Cavern, −70 m.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/36-plan-b4-magma.jpg" alt="B4 plan with lift lobby, tunnel gallery and magma viewing chamber">
+      <figcaption>B4 magma chamber, −100 m.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="descent">
+  <div class="sec-head">
+    <p class="depth">Level 0 · Arrival</p>
+    <h2>The Basalt Gate</h2>
+    <p class="lede">Guests walk in through a torii cut from a single basalt column. Inside, one wall of the arrival hall is thick glass with real lava moving slowly behind it. Shoes come off here and you don't put them back on until you leave.</p>
+  </div>
+  <figure>
+    <img src="img/04-arrival-gate.jpg" alt="Guests in indigo yukata passing a basalt torii inside a cave hall with a glass wall showing lava">
+    <figcaption>Arrival hall: slipper wall, chōzubachi basin, lava window.</figcaption>
+  </figure>
+</section>
+
+<section class="descent">
+  <div class="sec-head">
+    <p class="depth">Level B1 · Every connecting route</p>
+    <h2>Kiri-no-Michi, the mist corridors</h2>
+    <p class="lede">The cave has no dry hallways. Each connecting passage is a shallow reflecting pool, ankle-deep and warm, with a knee-high layer of mist rolling across it. You cross barefoot on stepping stones set just under the surface.</p>
+  </div>
+  <div class="split">
+    <figure>
+      <img src="img/05-mist-corridor.jpg" alt="Narrow cave corridor with ankle-deep reflecting pool and low rolling mist, guests walking barefoot">
+      <figcaption>Corridor water 34 °C. Mist held at 40 cm.</figcaption>
+    </figure>
+    <ul class="ideas">
+      <li><b>Mist that stays low.</b> <span>Cool air is drawn in at floor level over the warm water, so the fog forms close to the surface and hangs there. Ultrasonic foggers in the walls fill gaps on quieter days.</span></li>
+      <li><b>Stones you can feel.</b> <span>Stepping stones are polished smooth on top and textured at the edges, so you can follow the path by touch when the mist is thick.</span></li>
+      <li><b>Lantern niches at ankle height.</b> <span>Light comes from low in the walls so it lights the mist from inside, and each lantern is doubled in the water.</span></li>
+      <li><b>Quiet hours.</b> <span>After 22:00 the corridors are silent. A small bell at each junction is the only sound allowed.</span></li>
+      <li><b>Koi in the wider pools.</b> <span>At junctions the corridor widens into small ponds with black and gold koi moving under the mist.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="descent dining">
+  <div class="sec-head">
+    <p class="depth">Level B2 · Over the underground river</p>
+    <p class="eyebrow">Dining</p>
+    <h2>Kawagiri 川霧, the river-mist restaurant</h2>
+    <p class="lede">A timber dining deck hung on heavy beams over a fast underground river. Every table sits on its own platform behind a falling curtain of water. Soy sauce and hot tea reach each table through tiny wooden aqueducts. The building is extravagant; the food is simple. Ramen, smoke, neon and steam.</p>
+  </div>
+  <figure>
+    <img src="img/06-kawagiri-restaurant.jpg" alt="Restaurant on wooden beams above a glowing underground river, tables separated by water curtains, neon signs">
+    <figcaption>Kawagiri from the river landing.</figcaption>
+  </figure>
+  <div class="pair">
+    <figure>
+      <img src="img/08-table-aqueduct.jpg" alt="Close-up of a table with a miniature wooden aqueduct pouring soy sauce and tea">
+      <figcaption>Two channels per table: soy and genmaicha.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/09-neon-ramen-counter.jpg" alt="Neon-lit ramen counter with a chef pulling noodles and steam rising">
+      <figcaption>The counter, open until 03:00.</figcaption>
+    </figure>
+  </div>
+  <div class="split">
+    <figure>
+      <img src="img/07-restaurant-plan.jpg" alt="Plan and section drawing of the restaurant showing aqueduct network and water curtain pods">
+      <figcaption>Plan and section: 12 pods, soy and tea aqueduct network.</figcaption>
+    </figure>
+    <ul class="ideas">
+      <li><b>The aqueducts.</b> <span>Header tanks above the kitchen feed hinoki channels on thin stilts. At your table you lift a small wooden sluice gate and soy sauce trickles into your dish; a second channel brings tea. A third channel for dashi or warm sake could run to the counter.</span></li>
+      <li><b>Curtains that part.</b> <span>The water curtain stops for a few seconds when a server steps up to the table, then starts again, so every course arrives like a reveal.</span></li>
+      <li><b>Arriving by boat.</b> <span>Guests come in on a lantern-lit flat-bottomed boat along the river and climb up a ladder-stair to the deck.</span></li>
+      <li><b>Neon, kept small.</b> <span>Only the restaurant uses magenta and cyan neon, in hand-bent kanji signs. Everywhere else the light is lantern amber, so the neon reads as a destination.</span></li>
+      <li><b>Cooked by the volcano.</b> <span>Eggs are lowered into the spring in baskets, and dumplings and vegetables steam over a fumarole vent in the kitchen.</span></li>
+    </ul>
+  </div>
+  <div class="menu">
+    <div><b>Lava Tonkotsu</b><span>18-hour pork broth, black garlic oil, a red chili-oil swirl, onsen egg</span></div>
+    <div><b>Obsidian Shoyu</b><span>Clear soy broth darkened with squid ink, thin noodles, charred negi</span></div>
+    <div><b>Jigoku-mushi basket</b><span>"Hell-steamed" vegetables and gyoza cooked over the kitchen vent</span></div>
+    <div><b>Spring-boiled tamago</b><span>Eggs cooked in the source water, served in the basket they were lowered in</span></div>
+    <div><b>Ash-salt yakitori</b><span>Binchōtan grill, finished with volcanic black salt</span></div>
+    <div><b>Kakigōri from the ice cave</b><span>Shaved glacier ice, yuzu and black sesame syrup</span></div>
+  </div>
+</section>
+
+<section class="descent">
+  <div class="sec-head">
+    <p class="depth">Level B3 · The great cavern</p>
+    <h2>Aqua Cavern: ten waters</h2>
+    <p class="lede">The spa's water park. The same spring runs through all ten attractions from top to bottom, getting cooler and calmer as it goes, until it reaches the sea in the wave grotto.</p>
+  </div>
+  <figure>
+    <img src="img/10-waterpark-map.jpg" alt="Illustrated isometric map of the Aqua Cavern water park with ten numbered attractions">
+    <figcaption>Guest map. Numbered in the order the water reaches them.</figcaption>
+  </figure>
+  <div class="amen">
+    <article><img src="img/11-caldera-crown.jpg" alt="Infinity pool on the crater rim above a sea of clouds at night"><div class="row"><span class="no">01</span><h3>Caldera Crown Infinity Pool</h3><span class="temp">42 °C</span></div><p>Carved into the crater rim, where the spring first surfaces. The edge spills over into a sea of cloud. Opens at dawn so guests can watch the sun come up over the clouds.</p></article>
+    <article><img src="img/12-lava-tube-lazy-river.jpg" alt="Guests floating on rings through a round lava tube lit by glowworms"><div class="row"><span class="no">02</span><h3>Lava Tube Lazy River</h3><span class="temp">38 °C</span></div><p>A 600-metre float through an ancient lava tube on woven rings. The ceiling has amber light in its cracks and glowworms between them.</p></article>
+    <article><img src="img/13-magma-glass-slide.jpg" alt="Transparent tube slide spiralling past a glass wall of molten lava"><div class="row"><span class="no">03</span><h3>Magma Glass Slide</h3><span class="temp">36 °C</span></div><p>A clear tube slide that spirals down past the lava window, close enough that the water inside glows orange.</p></article>
+    <article><img src="img/14-geyser-plaza.jpg" alt="Circular cave plaza with geysers erupting through the floor"><div class="row"><span class="no">04</span><h3>Geyser Plaza</h3><span class="temp">37 °C</span></div><p>Floor vents fire in timed sequence around a ring of stone seats. The largest goes off every 20 minutes, and guests gather to watch it.</p></article>
+    <article><img src="img/15-obsidian-mirror.jpg" alt="Guests floating on a black mirror pool under a glowworm ceiling"><div class="row"><span class="no">05</span><h3>Obsidian Mirror Float Pool</h3><span class="temp">35 °C</span></div><p>Dense mineral salt water, so you float without effort. It's perfectly still and black, so the glowworm ceiling reflects in it and you seem to hang in a starfield.</p></article>
+    <article><img src="img/16-steam-grotto.jpg" alt="Steam caves with basalt benches and hanging temperature signs"><div class="row"><span class="no">06</span><h3>Fumarole Steam Grotto</h3><span class="temp">45–65 °C</span></div><p>A chain of natural steam rooms getting hotter as you go in, from 45 to 55 to 65 °C. Hinoki ladles and buckets for cooling off.</p></article>
+    <article><img src="img/17-glacier-plunge.jpg" alt="Cold plunge pool in a blue ice cave meeting black basalt"><div class="row"><span class="no">07</span><h3>Glacier Plunge Ice Cave</h3><span class="temp">6 °C</span></div><p>Blue ice where it meets the basalt, a cold plunge fed by meltwater. One door leads straight back into the steam.</p></article>
+    <article><img src="img/18-rimstone-terraces.jpg" alt="Stepped rimstone pools pouring into each other inside a cavern"><div class="row"><span class="no">08</span><h3>Rimstone Cascade Terraces</h3><span class="temp">40 → 33 °C</span></div><p>Dozens of scalloped mineral pools, each spilling into the one below. Choose your temperature by choosing your step.</p></article>
+    <article><img src="img/19-thunder-curtain.jpg" alt="Powerful waterfall into a pool with a walkway behind it"><div class="row"><span class="no">09</span><h3>Thunder Curtain Falls</h3><span class="temp">39 °C</span></div><p>A heavy hot waterfall with stone seats set under focused streams for a shoulder massage. A walkway runs behind the falling water.</p></article>
+    <article><img src="img/20-wave-grotto.jpg" alt="Wave pool in a sea cave with black sand beach and moonlit opening"><div class="row"><span class="no">10</span><h3>Wave Grotto</h3><span class="temp">30 °C</span></div><p>Where the spring finally meets the sea. Slow heated waves roll onto a black sand beach inside a sea cave, with the open ocean beyond.</p></article>
+  </div>
+</section>
+
+<section class="descent">
+  <div class="sec-head">
+    <p class="depth">Carved into the north wall</p>
+    <h2>Suites and identity</h2>
+    <p class="lede">Each suite gets its own trickle from the stream above, filling a private stone tub on a ledge over the terraces. The brand stays quiet: materials first, logo second.</p>
+  </div>
+  <div class="pair">
+    <figure>
+      <img src="img/21-private-suite.jpg" alt="Tatami suite with sliding screens open onto a private stone onsen tub">
+      <figcaption>Suite with private spring-fed tub.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/22-brand-board.jpg" alt="Brand mood board with logo, yukata, basalt token, tea cup and colour swatches">
+      <figcaption>Brand and materials board.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">A guest's day</p>
+    <h2>Following the water</h2>
+  </div>
+  <div class="day">
+    <div><time>05:40</time><p>Sunrise soak in the Caldera Crown, above the clouds. Tea comes up in a hinoki box on a small cable lift.</p></div>
+    <div><time>08:00</time><p>Down the Cascade Terraces to breakfast: spring-boiled eggs, rice, miso.</p></div>
+    <div><time>10:30</time><p>Into the mountain through the mist corridors. Change into the indigo yukata.</p></div>
+    <div><time>11:00</time><p>Aqua Cavern: lazy river, the Magma Glass Slide, the 11:20 geyser.</p></div>
+    <div><time>14:00</time><p>Steam grotto, then the ice cave, three rounds. A float in the Obsidian Mirror after.</p></div>
+    <div><time>17:00</time><p>Treatment hour: volcanic ash clay wrap, hot basalt stones.</p></div>
+    <div><time>20:00</time><p>Boat along the river to Kawagiri. Ramen behind a water curtain.</p></div>
+    <div><time>23:30</time><p>Silent hours begin. Walk back through the mist corridors to the suite tub.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">More ideas for the pile</p>
+    <h2>Extras</h2>
+  </div>
+  <ul class="ideas" style="max-width:820px">
+    <li><b>Onsen sommelier.</b> <span>A host who reads your mood and builds a route through the pools by mineral content and temperature.</span></li>
+    <li><b>Ash mud bath.</b> <span>Warm volcanic clay pits in a side chamber, rinsed off under a bamboo shower.</span></li>
+    <li><b>Tamago lowering.</b> <span>Guests tie their own egg basket to a rope at the spring source, and get it back for breakfast the next day.</span></li>
+    <li><b>Tsukimi deck.</b> <span>A moon-viewing platform on the crater rim with sake served warm from the spring.</span></li>
+    <li><b>Lantern release on the river.</b> <span>Floating paper lanterns sent downstream from Kawagiri, collected at the wave grotto.</span></li>
+    <li><b>Geothermal everything.</b> <span>The volcano powers the whole resort. A brass gauge in the lobby shows how much it's producing right now.</span></li>
+    <li><b>Basalt key token.</b> <span>A small polished stone opens your locker and suite. Guests keep it when they leave.</span></li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">Next round</p>
+    <h2>Choices to steer the next set of images</h2>
+  </div>
+  <div class="qs">
+    <p><b>Setting</b>Real-world anchored (an island off Japan or Iceland) or pure fantasy with impossible geology?</p>
+    <p><b>Tone</b>Serene luxury retreat, or more theme-park energy with bigger slides and nighttime shows?</p>
+    <p><b>Restaurant</b>Keep Kawagiri ramen-only, or add an omakase counter in a separate quieter cave?</p>
+    <p><b>Story</b>Should the spa have lore, like a guardian spirit of the spring, mascots, or a founding legend?</p>
+  </div>
+</section>
+
+<dialog id="lb" aria-label="Enlarged image"><img id="lb-img" alt=""><p id="lb-cap"></p><button id="lb-close" type="button">Close</button></dialog>
+<script>
+(function(){
+  var lb=document.getElementById('lb'),im=document.getElementById('lb-img'),cap=document.getElementById('lb-cap');
+  document.querySelectorAll('.wrap img:not(#lb-img)').forEach(function(img){
+    img.tabIndex=0;img.style.cursor='zoom-in';
+    function open(){im.src=img.src;im.alt=img.alt;var fc=img.closest('figure');cap.textContent=fc&&fc.querySelector('figcaption')?fc.querySelector('figcaption').textContent:img.alt;lb.showModal()}
+    img.addEventListener('click',open);
+    img.addEventListener('keydown',function(e){if(e.key==='Enter')open()});
+  });
+  document.getElementById('lb-close').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target===im)lb.close()});
+})();
+</script>
+<footer>Kazan-yu is fictional. Concept art generated with OpenAI image generation via Codex; text and concept developed with Claude.</footer>
+</div>

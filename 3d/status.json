@@ -1,0 +1,33 @@
+{
+  "updated": "2026-10-26T22:05:40Z",
+  "phase": "Preflight",
+  "phase_index": 0,
+  "scope_tier": "Must",
+  "headline": "Preflight done. Publishing works: public sh1ftmaker/spa-walkthrough on Pages, data parts served from Pages (release assets fail CORS).",
+  "phases": [
+    "Preflight",
+    "Plan",
+    "Graybox + materials",
+    "Vertical slice",
+    "Generators",
+    "Art pass",
+    "Review rounds"
+  ],
+  "gates": [],
+  "metrics": {
+    "draw_calls": null,
+    "triangles": null,
+    "texture_mb": null,
+    "desktop_ms": null
+  },
+  "checks": {
+    "walk": null,
+    "placement": null,
+    "geometry": null
+  },
+  "publish": {
+    "url": "https://sh1ftmaker.github.io/spa-walkthrough/",
+    "last_deploy": null,
+    "tiers_ok": "test page ok"
+  }
+}

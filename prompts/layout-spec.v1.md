@@ -1,0 +1,34 @@
+# Kazan-yu layout spec (source of truth for plans and 3D)
+
+The isometric cutaway (`images/24-isometric-cutaway.png`) settles any conflict between images. This file pins down the numbers.
+
+## Orientation and grid
+- Plan view: north is up. West is on the left and east is on the right, the same as the cutaway. The sea is to the east.
+- Shared grid, 200 m × 120 m: columns A–J (20 m each, west to east) and rows 1–6 (20 m each, north to south).
+- Every level plan prints this grid so the plans stack when modelled.
+
+## Elevations
+| Level | Elevation | Contents |
+|---|---|---|
+| Summit | +120 m | Spring source and egg baskets (D2), 01 Caldera Crown Infinity Pool (E2–G3), Tsukimi moon deck (H2), cable lift top station (E4) |
+| South face (outdoor slope, Summit → Ground) | +120 → 0 | Cascade Terraces, from B5 up to E3 on the south-west slope |
+| North cliff (outdoor, +10 → +60) | | Private suites stacked in the cliff face, H1–J2, each tub fed by a trickle |
+| Ground | 0 m | Basalt Gate (A4), approach road (from the west edge), arrival hall and lava window (C3–E4), changing halls (F3–G4), cable lift base (E4) |
+| B1 thermal | −20 m | Mist corridors link everything; 06 Steam Grotto (C2–D3, rooms at 45/55/65 °C), 05 Obsidian Mirror (E2–F3), treatment rooms (G3–H4), 07 Glacier Plunge (I2–J3), Magma Glass Slide launch (H4) |
+| B2 river | −40 m | Underground river enters at J2 and flows WEST to the falls lip at B3; Kawagiri restaurant on beams over the river (C2–F3, 12 water-curtain pods, aqueducts, kitchen with steam vent); ramen counter (F3); boat landing (G3) |
+| B3 Aqua Cavern | floor −70 m, roof about −45 m | 09 Thunder Curtain Falls (B3), 08 Rimstone Terraces (C3–D5), 02 Lava Tube Lazy River (a loop tunnel around D4–G5), 04 Geyser Plaza (F4), slide splashdown (H4), 10 Wave Grotto beach (I4–J5) with the sea mouth on the east edge |
+| B4 | −100 m | Magma viewing chamber (C5–F6), lift lobby (E3) |
+
+## Vertical connections (same grid cell on every level)
+Every place can be reached on foot. Lifts and the slide are extras.
+- **E3, main lift and Spiral Stair.** A lift in the middle of a carved spiral staircase, running from Ground through B1, B2, B3 and B4.
+- **Terrace Path.** A switchback footpath and stair climbing the south face beside the Cascade Terraces, from the Ground at B5 to the Summit at E3. The cable lift (E4) runs parallel.
+- **Cliff Stair.** An outdoor stair cut into the north cliff, joining Ground (G3), each suite landing and the Summit moon deck (H2).
+- **Mist Steps, B1 → B2 at C3.** A wide stepped reflecting-pool stair, mist-covered, that descends to the Kawagiri entrance.
+- **Falls Stair, B2 → B3 at B3–B4.** A stair carved into the cliff that passes behind the Thunder Curtain Falls on a walkway.
+- **Lava Stair, B1 → B3 at H4.** A stair that winds around the Magma Glass Slide shaft, so walkers can follow the slide down.
+- **Shore path, B3.** Runs from the Geyser Plaza to the Wave Grotto beach.
+- **River boat, B2.** Optional; a riverside boardwalk follows the same route.
+
+## Water path
+Spring (D2, Summit, 44 °C) → Caldera Crown → Cascade Terraces down the south face → suites → in through the arrival hall → mist corridors (B1, 34 °C) → underground river (B2) → Thunder Curtain Falls (B3) → Rimstone Terraces → Lazy River → Geyser Plaza → Wave Grotto (30 °C) → the sea.
