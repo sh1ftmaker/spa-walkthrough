@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><title>Kazan-yu</title><p id=o>testing…</p>
+<script>
+(async()=>{const r={};try{const m=await (await fetch('manifest-test.json')).json();const b=await (await fetch(m.part)).arrayBuffer();r.pages=b.byteLength}catch(e){r.pages='ERR '+e}
+try{const b=await (await fetch('https://github.com/sh1ftmaker/spa-walkthrough/releases/download/parts-test/reltest.bin')).arrayBuffer();r.release=b.byteLength}catch(e){r.release='ERR '+e}
+document.getElementById('o').textContent=JSON.stringify(r);window.RESULT=r})()
+</script>
