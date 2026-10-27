@@ -1,0 +1,8235 @@
+{
+ "contract": 1,
+ "tier": "low",
+ "source": "mixed",
+ "generated": "2026-10-27T16:12:16.471Z",
+ "layout_sha": null,
+ "coords": {
+  "gltf": "three Y-up (X=x, Y=z, Z=-y)",
+  "json": "layout z-up (x east, y north, z up, metres)"
+ },
+ "color": {
+  "toneMapping": "AgX",
+  "exposureStops": 0,
+  "lightMapIntensity": 3.141592653589793
+ },
+ "start": {
+  "place": "g_gate"
+ },
+ "textures": {
+  "stone_floor": {
+   "uri": "tex/8b471427b7e576b2.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512,
+   "codec": "etc1s"
+  },
+  "basalt": {
+   "uri": "tex/ca743493832f7eea.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512,
+   "codec": "etc1s"
+  },
+  "rock_ceiling": {
+   "uri": "tex/bfa7632dfe3c9979.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512,
+   "codec": "etc1s"
+  },
+  "wood": {
+   "uri": "tex/527d59eee991e440.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512,
+   "codec": "etc1s"
+  },
+  "pool_tile": {
+   "uri": "tex/29a5fd4718d5f208.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512,
+   "codec": "etc1s"
+  },
+  "plaster": {
+   "uri": "tex/c35b0b188bdc9dd4.ktx2",
+   "colorSpace": "srgb",
+   "width": 512,
+   "height": 512,
+   "codec": "etc1s"
+  },
+  "water_normal": {
+   "uri": "tex/5f0ce0dcfc2c9205.ktx2",
+   "colorSpace": "linear",
+   "width": 256,
+   "height": 256
+  },
+  "lib:pl_pine_bark_base": {
+   "uri": "tex/cc900307fbfa0414.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_pine_bark_base.ktx2"
+  },
+  "lib:pl_pine_bark_nh": {
+   "uri": "tex/05a5c212fd9334ae.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_pine_bark_nh.ktx2"
+  },
+  "lib:kz_noise": {
+   "uri": "tex/369644b73ba8d52c.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/kz_noise.ktx2"
+  },
+  "lib:pl_dark_rock_base": {
+   "uri": "tex/edee17ad62e79737.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_dark_rock_base.ktx2"
+  },
+  "lib:pl_dark_rock_nh": {
+   "uri": "tex/23b61c6730e2504a.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_dark_rock_nh.ktx2"
+  },
+  "lib:pl_dark_rock_02_base": {
+   "uri": "tex/985129b086b545f9.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_dark_rock_02_base.ktx2"
+  },
+  "lib:pl_dark_rock_02_nh": {
+   "uri": "tex/5358f3be1b5dd8a4.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_dark_rock_02_nh.ktx2"
+  },
+  "lib:pl_sand_02_base": {
+   "uri": "tex/4e4b5d3d32be11f4.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_sand_02_base.ktx2"
+  },
+  "lib:pl_sand_02_nh": {
+   "uri": "tex/efeb6e073a479a11.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_sand_02_nh.ktx2"
+  },
+  "lib:pl_tile_bronze_base": {
+   "uri": "tex/be7ec737372c0916.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_bronze_base.ktx2"
+  },
+  "lib:pl_tile_bronze_nh": {
+   "uri": "tex/b3a39d6a2447dc6c.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_bronze_nh.ktx2"
+  },
+  "lib:ceramic_base": {
+   "uri": "tex/0bbe6adb18c8f7d9.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/ceramic_base.ktx2"
+  },
+  "lib:ceramic_orm": {
+   "uri": "tex/213e3af0e75fe904.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/ceramic_orm.ktx2"
+  },
+  "lib:ceramic_nh": {
+   "uri": "tex/6acabbfcd7a38201.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/ceramic_nh.ktx2"
+  },
+  "lib:pl_japanese_cedar_planks_base": {
+   "uri": "tex/1147c9cee5a03e11.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_japanese_cedar_planks_base.ktx2"
+  },
+  "lib:pl_japanese_cedar_planks_nh": {
+   "uri": "tex/da389ee840a32d95.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_japanese_cedar_planks_nh.ktx2"
+  },
+  "lib:pl_metal_plate_02_base": {
+   "uri": "tex/e5c99feb450e0139.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_metal_plate_02_base.ktx2"
+  },
+  "lib:pl_metal_plate_02_nh": {
+   "uri": "tex/22b05e623c824205.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_metal_plate_02_nh.ktx2"
+  },
+  "lib:lacquer_black_base": {
+   "uri": "tex/b3665e8422802772.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lacquer_black_base.ktx2"
+  },
+  "lib:lacquer_black_orm": {
+   "uri": "tex/a3d35589fd11207b.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lacquer_black_orm.ktx2"
+  },
+  "lib:lacquer_black_nh": {
+   "uri": "tex/32ca2340742eddc6.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lacquer_black_nh.ktx2"
+  },
+  "lib:lacquer_dark_base": {
+   "uri": "tex/b3665e8422802772.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lacquer_dark_base.ktx2"
+  },
+  "lib:lacquer_dark_orm": {
+   "uri": "tex/7dac923a58ac484a.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lacquer_dark_orm.ktx2"
+  },
+  "lib:lacquer_dark_nh": {
+   "uri": "tex/b166bae095c05164.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lacquer_dark_nh.ktx2"
+  },
+  "lib:pl_Moss002_base": {
+   "uri": "tex/2c3d95d4f0bdb16c.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_Moss002_base.ktx2"
+  },
+  "lib:pl_Moss002_nh": {
+   "uri": "tex/4011b264ce868f8a.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_Moss002_nh.ktx2"
+  },
+  "lib:pl_slab_tiles_base": {
+   "uri": "tex/45b8bd9a3ef94cf4.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_slab_tiles_base.ktx2"
+  },
+  "lib:pl_slab_tiles_nh": {
+   "uri": "tex/f75abced9322368b.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_slab_tiles_nh.ktx2"
+  },
+  "lib:foliage_pine_base": {
+   "uri": "tex/5206d2e6f3a29454.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/foliage_pine_base.ktx2"
+  },
+  "lib:foliage_pine_orm": {
+   "uri": "tex/b36065601db56498.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/foliage_pine_orm.ktx2"
+  },
+  "lib:foliage_pine_nh": {
+   "uri": "tex/40b63efc4e3db1e7.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/foliage_pine_nh.ktx2"
+  },
+  "lib:lantern_andon_base": {
+   "uri": "tex/c0dfbd45530b87e7.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_andon_base.ktx2"
+  },
+  "lib:lantern_andon_orm": {
+   "uri": "tex/ef110ca8a7762b67.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_andon_orm.ktx2"
+  },
+  "lib:lantern_andon_nh": {
+   "uri": "tex/4eaee021481cdd15.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_andon_nh.ktx2"
+  },
+  "lib:lantern_andon_emis": {
+   "uri": "tex/3eadd22dc767dc9e.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_andon_emis.ktx2"
+  },
+  "lib:pl_tile_washi_base": {
+   "uri": "tex/38a72ffe4d117c6f.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_washi_base.ktx2"
+  },
+  "lib:pl_tile_washi_nh": {
+   "uri": "tex/e3b3de64bf455a3f.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_washi_nh.ktx2"
+  },
+  "lib:washi_backlit_emis": {
+   "uri": "tex/3e135f919f839289.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/washi_backlit_emis.ktx2"
+  },
+  "lib:waterfall_base": {
+   "uri": "tex/8db503c2c56c650a.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/waterfall_base.ktx2"
+  },
+  "lib:waterfall_orm": {
+   "uri": "tex/ae794fa3a78b769e.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/waterfall_orm.ktx2"
+  },
+  "lib:waterfall_nh": {
+   "uri": "tex/c68a467ad2307505.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/waterfall_nh.ktx2"
+  },
+  "lib:waterfall_emis": {
+   "uri": "tex/7d1ca9e3ab9950b5.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/waterfall_emis.ktx2"
+  },
+  "lib:pl_rough_linen_base": {
+   "uri": "tex/3795304beb6782a3.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_rough_linen_base.ktx2"
+  },
+  "lib:pl_rough_linen_nh": {
+   "uri": "tex/cb4aaab1b7a9284a.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_rough_linen_nh.ktx2"
+  },
+  "lib:pl_linen_offwhite_base": {
+   "uri": "tex/204433981e2dcd73.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_linen_offwhite_base.ktx2"
+  },
+  "lib:pl_linen_offwhite_nh": {
+   "uri": "tex/cb4aaab1b7a9284a.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_linen_offwhite_nh.ktx2"
+  },
+  "lib:terry_base": {
+   "uri": "tex/229dfedac8ba7913.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/terry_base.ktx2"
+  },
+  "lib:terry_orm": {
+   "uri": "tex/e62fcd3ed371eedf.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/terry_orm.ktx2"
+  },
+  "lib:terry_nh": {
+   "uri": "tex/766f727c2a7e0d79.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/terry_nh.ktx2"
+  },
+  "lib:pl_tile_cave_rock_base": {
+   "uri": "tex/f39cf1de38137656.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_cave_rock_base.ktx2"
+  },
+  "lib:pl_tile_cave_rock_nh": {
+   "uri": "tex/7425eec668f8eefc.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_cave_rock_nh.ktx2"
+  },
+  "lib:kawara_base": {
+   "uri": "tex/cf033ea2f800d184.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/kawara_base.ktx2"
+  },
+  "lib:kawara_orm": {
+   "uri": "tex/08300c18fcf26205.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/kawara_orm.ktx2"
+  },
+  "lib:kawara_nh": {
+   "uri": "tex/c48171853df98f8e.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/kawara_nh.ktx2"
+  },
+  "lib:pl_obsidian_base": {
+   "uri": "tex/3e12773812cfab9f.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_obsidian_base.ktx2"
+  },
+  "lib:pl_obsidian_nh": {
+   "uri": "tex/cd628fbb725949d4.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_obsidian_nh.ktx2"
+  },
+  "lib:pl_tatami_mat_base": {
+   "uri": "tex/6dd3a9b685fd68cc.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tatami_mat_base.ktx2"
+  },
+  "lib:pl_tatami_mat_nh": {
+   "uri": "tex/1f282c1df9b94c6f.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tatami_mat_nh.ktx2"
+  },
+  "lib:pl_Bamboo001B_base": {
+   "uri": "tex/eee05be82f388564.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_Bamboo001B_base.ktx2"
+  },
+  "lib:pl_Bamboo001B_nh": {
+   "uri": "tex/5a70cdbef9ccd27c.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_Bamboo001B_nh.ktx2"
+  },
+  "lib:gold_leaf_base": {
+   "uri": "tex/b4f36aacaa62c69b.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/gold_leaf_base.ktx2"
+  },
+  "lib:gold_leaf_orm": {
+   "uri": "tex/737d0d6abbc3539e.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/gold_leaf_orm.ktx2"
+  },
+  "lib:gold_leaf_nh": {
+   "uri": "tex/8f54e32f634bb672.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/gold_leaf_nh.ktx2"
+  },
+  "lib:pl_Rope001_base": {
+   "uri": "tex/f7e03d51e84e492b.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_Rope001_base.ktx2"
+  },
+  "lib:pl_Rope001_nh": {
+   "uri": "tex/516901749c5656a5.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_Rope001_nh.ktx2"
+  },
+  "lib:pl_tile_sinter_base": {
+   "uri": "tex/64cb56a66bfc123b.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_sinter_base.ktx2"
+  },
+  "lib:pl_tile_sinter_nh": {
+   "uri": "tex/c85bfface485bf43.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_sinter_nh.ktx2"
+  },
+  "lib:pl_seaside_rock_base": {
+   "uri": "tex/f5ab50bd9ad8521e.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_seaside_rock_base.ktx2"
+  },
+  "lib:pl_seaside_rock_nh": {
+   "uri": "tex/2956a473dec4fa90.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_seaside_rock_nh.ktx2"
+  },
+  "lib:blossom_base": {
+   "uri": "tex/8dada81b25cb14c6.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/blossom_base.ktx2"
+  },
+  "lib:blossom_orm": {
+   "uri": "tex/aa92f03c9364908a.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/blossom_orm.ktx2"
+  },
+  "lib:blossom_nh": {
+   "uri": "tex/4b920451fc303447.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/blossom_nh.ktx2"
+  },
+  "lib:foliage_fern_base": {
+   "uri": "tex/018091f37e1ed62a.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/foliage_fern_base.ktx2"
+  },
+  "lib:foliage_fern_orm": {
+   "uri": "tex/5b98c4375f1c2e10.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/foliage_fern_orm.ktx2"
+  },
+  "lib:foliage_fern_nh": {
+   "uri": "tex/6b1281c8274fdee1.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/foliage_fern_nh.ktx2"
+  },
+  "lib:glass_clear_base": {
+   "uri": "tex/2b45a9761fea4e9b.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/glass_clear_base.ktx2"
+  },
+  "lib:glass_clear_orm": {
+   "uri": "tex/b0a3fdb417d3e9a6.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/glass_clear_orm.ktx2"
+  },
+  "lib:glass_clear_nh": {
+   "uri": "tex/4379abb8e6f13ee4.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/glass_clear_nh.ktx2"
+  },
+  "lib:lantern_andon_plain_base": {
+   "uri": "tex/61fb18e849376527.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_andon_plain_base.ktx2"
+  },
+  "lib:lantern_andon_plain_orm": {
+   "uri": "tex/e493914400799162.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_andon_plain_orm.ktx2"
+  },
+  "lib:lantern_andon_plain_nh": {
+   "uri": "tex/be1fb87b057a02c4.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_andon_plain_nh.ktx2"
+  },
+  "lib:lantern_andon_plain_emis": {
+   "uri": "tex/ddd9ed6c3c93f66b.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_andon_plain_emis.ktx2"
+  },
+  "lib:lantern_paper_base": {
+   "uri": "tex/0c98ae24e67e434c.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_paper_base.ktx2"
+  },
+  "lib:lantern_paper_orm": {
+   "uri": "tex/f5bc5bfde398f319.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_paper_orm.ktx2"
+  },
+  "lib:lantern_paper_nh": {
+   "uri": "tex/0cb33fa331dc0a45.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_paper_nh.ktx2"
+  },
+  "lib:lantern_paper_emis": {
+   "uri": "tex/87a72c1c988bc552.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lantern_paper_emis.ktx2"
+  },
+  "lib:pl_tile_lava_flow_base": {
+   "uri": "tex/245ec399ce1ab21f.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_lava_flow_base.ktx2"
+  },
+  "lib:pl_tile_lava_flow_nh": {
+   "uri": "tex/a9af71c664059a10.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_lava_flow_nh.ktx2"
+  },
+  "lib:lava_flow_emis": {
+   "uri": "tex/6a83e1b523be6dec.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lava_flow_emis.ktx2"
+  },
+  "lib:lava_glass_base": {
+   "uri": "tex/ef4f3127bae3d711.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lava_glass_base.ktx2"
+  },
+  "lib:lava_glass_orm": {
+   "uri": "tex/07e0518f2cdcdf09.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lava_glass_orm.ktx2"
+  },
+  "lib:lava_glass_nh": {
+   "uri": "tex/1ded7d7ec92b87fe.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lava_glass_nh.ktx2"
+  },
+  "lib:lava_molten_base": {
+   "uri": "tex/05c87ea5649ef0f6.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lava_molten_base.ktx2"
+  },
+  "lib:lava_molten_orm": {
+   "uri": "tex/d7b472dcbbdd5bf9.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lava_molten_orm.ktx2"
+  },
+  "lib:lava_molten_nh": {
+   "uri": "tex/80f606cc1c6c9418.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/lava_molten_nh.ktx2"
+  },
+  "lib:lava_molten_emis": {
+   "uri": "tex/fe93094b40719680.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lava_molten_emis.ktx2"
+  },
+  "lib:pl_tile_lava_crust_base": {
+   "uri": "tex/211866607e95e7e1.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_lava_crust_base.ktx2"
+  },
+  "lib:pl_tile_lava_crust_nh": {
+   "uri": "tex/7a35cc5871db7d3e.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_lava_crust_nh.ktx2"
+  },
+  "lib:lava_emis": {
+   "uri": "tex/2c5ffb7eb74da559.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/lava_emis.ktx2"
+  },
+  "lib:water_still_base": {
+   "uri": "tex/ef4f3127bae3d711.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/water_still_base.ktx2"
+  },
+  "lib:water_still_orm": {
+   "uri": "tex/b075dcf1a0599dac.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/water_still_orm.ktx2"
+  },
+  "lib:water_still_nh": {
+   "uri": "tex/c65119a4b4dc1ec2.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/water_still_nh.ktx2"
+  }
+ },
+ "materials": {
+  "stone_floor": {
+   "type": "standard",
+   "baseColorTexture": "stone_floor",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.72,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "basalt": {
+   "type": "standard",
+   "baseColorTexture": "basalt",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.82,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "rock_ceiling": {
+   "type": "standard",
+   "baseColorTexture": "rock_ceiling",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "plaster": {
+   "type": "standard",
+   "baseColorTexture": "plaster",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.85,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "wood": {
+   "type": "standard",
+   "baseColorTexture": "wood",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "pool_tile": {
+   "type": "standard",
+   "baseColorTexture": "pool_tile",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.3,
+   "metalness": 0,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "rail": {
+   "type": "standard",
+   "baseColorTexture": null,
+   "color": [
+    0.32,
+    0.22,
+    0.14
+   ],
+   "roughness": 0.45,
+   "metalness": 0.7,
+   "emissive": null,
+   "emissiveIntensity": 0,
+   "lightmap": true
+  },
+  "lantern": {
+   "type": "standard",
+   "baseColorTexture": null,
+   "color": [
+    1,
+    0.85,
+    0.6
+   ],
+   "roughness": 0.6,
+   "metalness": 0,
+   "emissive": [
+    1,
+    0.62,
+    0.3
+   ],
+   "emissiveIntensity": 4,
+   "lightmap": false
+  },
+  "water": {
+   "type": "water",
+   "normalTexture": "water_normal"
+  },
+  "bark~1ed44239": {
+   "type": "kz",
+   "id": "bark",
+   "params": {
+    "tint": [
+     0.55,
+     0.5,
+     0.45
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 1.5,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_pine_bark_base",
+    "nh": "lib:pl_pine_bark_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.7,
+    "worn": {
+     "color": [
+      0.12,
+      0.08,
+      0.06
+     ],
+     "rough": 0.7
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.4,
+    "roughness": 0.445
+   }
+  },
+  "basalt_dry~3a86cc24": {
+   "type": "kz",
+   "id": "basalt_dry",
+   "params": {
+    "tint": [
+     0.965,
+     0.965,
+     0.965
+    ],
+    "wetness": 0.35,
+    "wear": 0.3,
+    "roughness_offset": 0,
+    "scale": 2.42,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_dark_rock_base",
+    "nh": "lib:pl_dark_rock_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2.42,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.052,
+      0.056
+     ],
+     "rough": 0.45
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.6,
+    "roughness": 0.771
+   }
+  },
+  "basalt_wet": {
+   "type": "kz",
+   "id": "basalt_wet",
+   "params": {
+    "tint": [
+     0.35,
+     0.45,
+     0.75
+    ],
+    "wetness": 0.7,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 0.6,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_dark_rock_02_base",
+    "nh": "lib:pl_dark_rock_02_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.052,
+      0.056
+     ],
+     "rough": 0.45
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.226
+   }
+  },
+  "basalt_wet~65c75295": {
+   "type": "kz",
+   "id": "basalt_wet",
+   "params": {
+    "tint": [
+     0.32,
+     0.36,
+     0.46
+    ],
+    "wetness": 0.35,
+    "wear": 0,
+    "roughness_offset": 0.12,
+    "scale": 2,
+    "normal_strength": 0.6,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_dark_rock_02_base",
+    "nh": "lib:pl_dark_rock_02_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.052,
+      0.056
+     ],
+     "rough": 0.45
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.226
+   }
+  },
+  "black_sand~322f9709": {
+   "type": "kz",
+   "id": "black_sand",
+   "params": {
+    "tint": [
+     0.5,
+     0.55,
+     0.66
+    ],
+    "wetness": 0.15,
+    "wear": 0,
+    "roughness_offset": 0.3,
+    "scale": 2.14,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_sand_02_base",
+    "nh": "lib:pl_sand_02_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2.14,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.02,
+      0.019,
+      0.018
+     ],
+     "rough": 0.8
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.5,
+    "roughness": 0.704
+   }
+  },
+  "bronze~56e45b08": {
+   "type": "kz",
+   "id": "bronze",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0.39,
+    "roughness_offset": 0,
+    "scale": 3,
+    "normal_strength": 0.35,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_tile_bronze_base",
+    "nh": "lib:pl_tile_bronze_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 3,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0.2,
+    "worn": {
+     "color": [
+      0.8,
+      0.55,
+      0.3
+     ],
+     "rough": 0.22
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.451
+   }
+  },
+  "ceramic~tenmoku": {
+   "type": "kz",
+   "id": "ceramic",
+   "params": {
+    "tint": [
+     0.035,
+     0.03,
+     0.035
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.3,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:ceramic_base",
+    "orm": "lib:ceramic_orm",
+    "nh": "lib:ceramic_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.3,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.35,
+      0.25,
+      0.18
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.1
+   }
+  },
+  "hinoki~dark_timber": {
+   "type": "kz",
+   "id": "hinoki",
+   "params": {
+    "tint": [
+     0.2,
+     0.14,
+     0.13
+    ],
+    "wetness": 0,
+    "wear": 0.2,
+    "roughness_offset": 0.1,
+    "scale": 1.13,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_japanese_cedar_planks_base",
+    "nh": "lib:pl_japanese_cedar_planks_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.13,
+    "aspect": 0.5,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.8,
+    "worn": {
+     "color": [
+      0.3,
+      0.29,
+      0.27
+     ],
+     "rough": 0.6
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.5,
+    "roughness": 0.581
+   }
+  },
+  "iron~47c7321c": {
+   "type": "kz",
+   "id": "iron",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0.25,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_metal_plate_02_base",
+    "nh": "lib:pl_metal_plate_02_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.42,
+      0.42,
+      0.43
+     ],
+     "rough": 0.35
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.808
+   }
+  },
+  "lacquer_black": {
+   "type": "kz",
+   "id": "lacquer_black",
+   "params": {
+    "tint": [
+     0.5,
+     0.9,
+     1.15
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 0.3,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lacquer_black_base",
+    "orm": "lib:lacquer_black_orm",
+    "nh": "lib:lacquer_black_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.19,
+      0.013,
+      0.007
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.074
+   }
+  },
+  "lacquer_dark": {
+   "type": "kz",
+   "id": "lacquer_dark",
+   "params": {
+    "tint": [
+     0.75,
+     0.9,
+     1.1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 0.3,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lacquer_dark_base",
+    "orm": "lib:lacquer_dark_orm",
+    "nh": "lib:lacquer_dark_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.19,
+      0.013,
+      0.007
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.074
+   }
+  },
+  "moss": {
+   "type": "kz",
+   "id": "moss",
+   "params": {
+    "tint": [
+     0.6,
+     1.3,
+     1
+    ],
+    "wetness": 0.2,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_Moss002_base",
+    "nh": "lib:pl_Moss002_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0.9,
+    "worn": {
+     "color": [
+      0.1,
+      0.12,
+      0.05
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.445
+   }
+  },
+  "paving~c4c18863": {
+   "type": "kz",
+   "id": "paving",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0.85,
+    "wear": 0.6,
+    "roughness_offset": 0,
+    "scale": 1.6,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_slab_tiles_base",
+    "nh": "lib:pl_slab_tiles_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2.37,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.5,
+    "worn": {
+     "color": [
+      0.06,
+      0.06,
+      0.062
+     ],
+     "rough": 0.12
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.09
+   }
+  },
+  "foliage_pine": {
+   "type": "kz",
+   "id": "foliage_pine",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.5,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:foliage_pine_base",
+    "orm": "lib:foliage_pine_orm",
+    "nh": "lib:foliage_pine_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.5,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": 0.5,
+    "doubleSided": true,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.49
+   }
+  },
+  "lantern_andon~079ed723": {
+   "type": "kz",
+   "id": "lantern_andon",
+   "params": {
+    "tint": [
+     1,
+     0.8,
+     0.55
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 1,
+    "emissive_level": 1
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lantern_andon_base",
+    "orm": "lib:lantern_andon_orm",
+    "nh": "lib:lantern_andon_nh",
+    "emis": "lib:lantern_andon_emis"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": null,
+    "aspect": 1,
+    "uv_mode": "object",
+    "tech": null,
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": {
+     "map_scale": 1.0084,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 0.55,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.2,
+    "roughness": 0.721
+   }
+  },
+  "washi_backlit": {
+   "type": "kz",
+   "id": "washi_backlit",
+   "params": {
+    "tint": [
+     1,
+     0.8,
+     0.3
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 1,
+    "emissive_level": 1
+   },
+   "lightmap": true,
+   "maps": {
+    "emis": "lib:washi_backlit_emis"
+   },
+   "kit": {
+    "base": "lib:pl_tile_washi_base",
+    "nh": "lib:pl_tile_washi_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.62,
+      0.56,
+      0.44
+     ],
+     "rough": 0.9
+    },
+    "emissive": {
+     "map_scale": 1,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 1,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.869
+   }
+  },
+  "waterfall~cc10d83e": {
+   "type": "kz",
+   "id": "waterfall",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 1,
+    "emissive_level": 1.4
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:waterfall_base",
+    "orm": "lib:waterfall_orm",
+    "nh": "lib:waterfall_nh",
+    "emis": "lib:waterfall_emis"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": {
+     "map_scale": 0.95,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 0.35,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": true,
+    "transparent": true,
+    "envMapIntensity": 0.8,
+    "roughness": 0.05
+   }
+  },
+  "noren~ebcdc794": {
+   "type": "kz",
+   "id": "noren",
+   "params": {
+    "tint": [
+     0.01,
+     0.02,
+     0.066
+    ],
+    "wetness": 0,
+    "wear": 0.06,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1.8,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_rough_linen_base",
+    "nh": "lib:pl_rough_linen_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.05,
+      0.07,
+      0.13
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.758
+   }
+  },
+  "noren~cc70b4f1": {
+   "type": "kz",
+   "id": "noren",
+   "params": {
+    "tint": [
+     0.0096,
+     0.0192,
+     0.0634
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1.8,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_rough_linen_base",
+    "nh": "lib:pl_rough_linen_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.05,
+      0.07,
+      0.13
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.758
+   }
+  },
+  "noren~3079a236": {
+   "type": "kz",
+   "id": "noren",
+   "params": {
+    "tint": [
+     1,
+     0.92,
+     0.76
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1.2,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_rough_linen_base",
+    "nh": "lib:pl_rough_linen_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.05,
+      0.07,
+      0.13
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.758
+   }
+  },
+  "bronze~8999e23c": {
+   "type": "kz",
+   "id": "bronze",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0.4,
+    "roughness_offset": 0,
+    "scale": 3,
+    "normal_strength": 0.35,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_tile_bronze_base",
+    "nh": "lib:pl_tile_bronze_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 3,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0.2,
+    "worn": {
+     "color": [
+      0.8,
+      0.55,
+      0.3
+     ],
+     "rough": 0.22
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.451
+   }
+  },
+  "ceramic~0ea8e998": {
+   "type": "kz",
+   "id": "ceramic",
+   "params": {
+    "tint": [
+     0.92,
+     0.7,
+     0.56
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0.38,
+    "scale": 0.3,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:ceramic_base",
+    "orm": "lib:ceramic_orm",
+    "nh": "lib:ceramic_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.3,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.35,
+      0.25,
+      0.18
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.1
+   }
+  },
+  "lacquer_black~59f1afe9": {
+   "type": "kz",
+   "id": "lacquer_black",
+   "params": {
+    "tint": [
+     0.5,
+     0.9,
+     1.15
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0.15,
+    "scale": 1,
+    "normal_strength": 0.3,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lacquer_black_base",
+    "orm": "lib:lacquer_black_orm",
+    "nh": "lib:lacquer_black_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.19,
+      0.013,
+      0.007
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.074
+   }
+  },
+  "linen": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     1,
+     0.96,
+     0.88
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "noren": {
+   "type": "kz",
+   "id": "noren",
+   "params": {
+    "tint": [
+     0.01,
+     0.02,
+     0.066
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_rough_linen_base",
+    "nh": "lib:pl_rough_linen_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.05,
+      0.07,
+      0.13
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.758
+   }
+  },
+  "linen~e5eecaa5": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     0.74,
+     0.56,
+     0.34
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "noren~vermilion": {
+   "type": "kz",
+   "id": "noren",
+   "params": {
+    "tint": [
+     0.14,
+     0.011,
+     0.009
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_rough_linen_base",
+    "nh": "lib:pl_rough_linen_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.05,
+      0.07,
+      0.13
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.758
+   }
+  },
+  "hinoki~natural": {
+   "type": "kz",
+   "id": "hinoki",
+   "params": {
+    "tint": [
+     1.2,
+     0.85,
+     0.55
+    ],
+    "wetness": 0,
+    "wear": 0.2,
+    "roughness_offset": 0,
+    "scale": 1.13,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_japanese_cedar_planks_base",
+    "nh": "lib:pl_japanese_cedar_planks_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.13,
+    "aspect": 0.5,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.8,
+    "worn": {
+     "color": [
+      0.3,
+      0.29,
+      0.27
+     ],
+     "rough": 0.6
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.5,
+    "roughness": 0.581
+   }
+  },
+  "terry~cream": {
+   "type": "kz",
+   "id": "terry",
+   "params": {
+    "tint": [
+     1,
+     0.93,
+     0.8
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.12,
+    "normal_strength": 0.45,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:terry_base",
+    "orm": "lib:terry_orm",
+    "nh": "lib:terry_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.12,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.95
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.2,
+    "roughness": 0.96
+   }
+  },
+  "noren~black": {
+   "type": "kz",
+   "id": "noren",
+   "params": {
+    "tint": [
+     0.018,
+     0.018,
+     0.02
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_rough_linen_base",
+    "nh": "lib:pl_rough_linen_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.05,
+      0.07,
+      0.13
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.758
+   }
+  },
+  "hinoki~walnut": {
+   "type": "kz",
+   "id": "hinoki",
+   "params": {
+    "tint": [
+     0.085,
+     0.07,
+     0.075
+    ],
+    "wetness": 0,
+    "wear": 0.2,
+    "roughness_offset": -0.1,
+    "scale": 1.13,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_japanese_cedar_planks_base",
+    "nh": "lib:pl_japanese_cedar_planks_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.13,
+    "aspect": 0.5,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.8,
+    "worn": {
+     "color": [
+      0.3,
+      0.29,
+      0.27
+     ],
+     "rough": 0.6
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.5,
+    "roughness": 0.581
+   }
+  },
+  "ceramic~242397b2": {
+   "type": "kz",
+   "id": "ceramic",
+   "params": {
+    "tint": [
+     0.76,
+     0.5,
+     0.37
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0.38,
+    "scale": 0.3,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:ceramic_base",
+    "orm": "lib:ceramic_orm",
+    "nh": "lib:ceramic_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.3,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.35,
+      0.25,
+      0.18
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.1
+   }
+  },
+  "linen~ef5d825f": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     0.42,
+     0.4,
+     0.37
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "_glowworm": {
+   "type": "sprite",
+   "lightmap": false
+  },
+  "bark~3691c082": {
+   "type": "kz",
+   "id": "bark",
+   "params": {
+    "tint": [
+     0.958,
+     0.958,
+     0.958
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 1.5,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_pine_bark_base",
+    "nh": "lib:pl_pine_bark_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.7,
+    "worn": {
+     "color": [
+      0.12,
+      0.08,
+      0.06
+     ],
+     "rough": 0.7
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.4,
+    "roughness": 0.445
+   }
+  },
+  "basalt_dry~ae7c5c99": {
+   "type": "kz",
+   "id": "basalt_dry",
+   "params": {
+    "tint": [
+     0.24,
+     0.27,
+     0.34
+    ],
+    "wetness": 0.2,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2.42,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_dark_rock_base",
+    "nh": "lib:pl_dark_rock_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2.42,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.052,
+      0.056
+     ],
+     "rough": 0.45
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.6,
+    "roughness": 0.771
+   }
+  },
+  "basalt_wet~8e53177b": {
+   "type": "kz",
+   "id": "basalt_wet",
+   "params": {
+    "tint": [
+     0.32,
+     0.36,
+     0.46
+    ],
+    "wetness": 1,
+    "wear": 0,
+    "roughness_offset": -0.08,
+    "scale": 2,
+    "normal_strength": 0.6,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_dark_rock_02_base",
+    "nh": "lib:pl_dark_rock_02_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.052,
+      0.056
+     ],
+     "rough": 0.45
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.226
+   }
+  },
+  "cave_rock": {
+   "type": "kz",
+   "id": "cave_rock",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0.8,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 4,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_tile_cave_rock_base",
+    "nh": "lib:pl_tile_cave_rock_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 4,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.048,
+      0.045
+     ],
+     "rough": 0.4
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.8,
+    "roughness": 0.325
+   }
+  },
+  "hinoki~fc2a7b54": {
+   "type": "kz",
+   "id": "hinoki",
+   "params": {
+    "tint": [
+     0.32,
+     0.23,
+     0.2
+    ],
+    "wetness": 0,
+    "wear": 0.3,
+    "roughness_offset": -0.05,
+    "scale": 1.13,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_japanese_cedar_planks_base",
+    "nh": "lib:pl_japanese_cedar_planks_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.13,
+    "aspect": 0.5,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.8,
+    "worn": {
+     "color": [
+      0.3,
+      0.29,
+      0.27
+     ],
+     "rough": 0.6
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.5,
+    "roughness": 0.581
+   }
+  },
+  "hinoki~wet_oiled": {
+   "type": "kz",
+   "id": "hinoki",
+   "params": {
+    "tint": [
+     0.47,
+     0.36,
+     0.25
+    ],
+    "wetness": 0,
+    "wear": 0.2,
+    "roughness_offset": -0.32,
+    "scale": 1.13,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_japanese_cedar_planks_base",
+    "nh": "lib:pl_japanese_cedar_planks_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.13,
+    "aspect": 0.5,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.8,
+    "worn": {
+     "color": [
+      0.3,
+      0.29,
+      0.27
+     ],
+     "rough": 0.6
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.5,
+    "roughness": 0.581
+   }
+  },
+  "iron": {
+   "type": "kz",
+   "id": "iron",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0.2,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_metal_plate_02_base",
+    "nh": "lib:pl_metal_plate_02_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.42,
+      0.42,
+      0.43
+     ],
+     "rough": 0.35
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.808
+   }
+  },
+  "kawara": {
+   "type": "kz",
+   "id": "kawara",
+   "params": {
+    "tint": [
+     0.15,
+     0.17,
+     0.21
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.9,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:kawara_base",
+    "orm": "lib:kawara_orm",
+    "nh": "lib:kawara_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.9,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.11,
+      0.11,
+      0.115
+     ],
+     "rough": 0.35
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.8,
+    "roughness": 0.42
+   }
+  },
+  "lacquer_black~74dfa79d": {
+   "type": "kz",
+   "id": "lacquer_black",
+   "params": {
+    "tint": [
+     0.5,
+     0.9,
+     1.15
+    ],
+    "wetness": 0,
+    "wear": 0.15,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 0.3,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lacquer_black_base",
+    "orm": "lib:lacquer_black_orm",
+    "nh": "lib:lacquer_black_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.19,
+      0.013,
+      0.007
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.074
+   }
+  },
+  "moss~6667a305": {
+   "type": "kz",
+   "id": "moss",
+   "params": {
+    "tint": [
+     0.75,
+     0.8,
+     0.75
+    ],
+    "wetness": 0.2,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_Moss002_base",
+    "nh": "lib:pl_Moss002_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0.9,
+    "worn": {
+     "color": [
+      0.1,
+      0.12,
+      0.05
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.445
+   }
+  },
+  "obsidian": {
+   "type": "kz",
+   "id": "obsidian",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1.6,
+    "normal_strength": 0.3,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_obsidian_base",
+    "nh": "lib:pl_obsidian_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.6,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.012,
+      0.012,
+      0.013
+     ],
+     "rough": 0.25
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.064
+   }
+  },
+  "tatami": {
+   "type": "kz",
+   "id": "tatami",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1.8,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_tatami_mat_base",
+    "nh": "lib:pl_tatami_mat_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.8,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.9,
+    "worn": {
+     "color": [
+      0.52,
+      0.44,
+      0.22
+     ],
+     "rough": 0.4
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.4,
+    "roughness": 0.58
+   }
+  },
+  "washi~f253d1b2": {
+   "type": "kz",
+   "id": "washi",
+   "params": {
+    "tint": [
+     0.9,
+     0.85,
+     0.75
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_tile_washi_base",
+    "nh": "lib:pl_tile_washi_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.62,
+      0.56,
+      0.44
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.869
+   }
+  },
+  "foliage_pine~sage": {
+   "type": "kz",
+   "id": "foliage_pine",
+   "params": {
+    "tint": [
+     2.2,
+     2,
+     6.5
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.5,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:foliage_pine_base",
+    "orm": "lib:foliage_pine_orm",
+    "nh": "lib:foliage_pine_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.5,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": 0.5,
+    "doubleSided": true,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.49
+   }
+  },
+  "linen~3251f6e6": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     0.78,
+     0.74,
+     0.66
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "ceramic~7e564e9e": {
+   "type": "kz",
+   "id": "ceramic",
+   "params": {
+    "tint": [
+     0.86,
+     0.6,
+     0.46
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0.38,
+    "scale": 0.3,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:ceramic_base",
+    "orm": "lib:ceramic_orm",
+    "nh": "lib:ceramic_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.3,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.35,
+      0.25,
+      0.18
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.1
+   }
+  },
+  "bamboo~feee3fa7": {
+   "type": "kz",
+   "id": "bamboo",
+   "params": {
+    "tint": [
+     0.5,
+     0.45,
+     0.38
+    ],
+    "wetness": 0,
+    "wear": 0.5,
+    "roughness_offset": 0,
+    "scale": 1.3,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_Bamboo001B_base",
+    "nh": "lib:pl_Bamboo001B_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.3,
+    "aspect": 0.5,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.55,
+      0.46,
+      0.26
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.411
+   }
+  },
+  "bark~a9d203c1": {
+   "type": "kz",
+   "id": "bark",
+   "params": {
+    "tint": [
+     0.32,
+     0.28,
+     0.28
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 1.5,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_pine_bark_base",
+    "nh": "lib:pl_pine_bark_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.7,
+    "worn": {
+     "color": [
+      0.12,
+      0.08,
+      0.06
+     ],
+     "rough": 0.7
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.4,
+    "roughness": 0.445
+   }
+  },
+  "basalt_dry~d7dc2101": {
+   "type": "kz",
+   "id": "basalt_dry",
+   "params": {
+    "tint": [
+     0.24,
+     0.27,
+     0.34
+    ],
+    "wetness": 0.27,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2.42,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_dark_rock_base",
+    "nh": "lib:pl_dark_rock_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2.42,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.052,
+      0.056
+     ],
+     "rough": 0.45
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.6,
+    "roughness": 0.771
+   }
+  },
+  "basalt_wet~8062401f": {
+   "type": "kz",
+   "id": "basalt_wet",
+   "params": {
+    "tint": [
+     0.62,
+     0.62,
+     0.66
+    ],
+    "wetness": 0.75,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1.1,
+    "normal_strength": 0.6,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_dark_rock_02_base",
+    "nh": "lib:pl_dark_rock_02_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.052,
+      0.056
+     ],
+     "rough": 0.45
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.226
+   }
+  },
+  "basalt_wet~c2c10445": {
+   "type": "kz",
+   "id": "basalt_wet",
+   "params": {
+    "tint": [
+     0.32,
+     0.36,
+     0.46
+    ],
+    "wetness": 0.56,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 0.6,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_dark_rock_02_base",
+    "nh": "lib:pl_dark_rock_02_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.052,
+      0.056
+     ],
+     "rough": 0.45
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.226
+   }
+  },
+  "gold_leaf~d38b8992": {
+   "type": "kz",
+   "id": "gold_leaf",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0.2,
+    "scale": 0.33,
+    "normal_strength": 0.05,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:gold_leaf_base",
+    "orm": "lib:gold_leaf_orm",
+    "nh": "lib:gold_leaf_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.33,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.03,
+      0.012,
+      0.008
+     ],
+     "rough": 0.25
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.301
+   }
+  },
+  "hinoki~stained": {
+   "type": "kz",
+   "id": "hinoki",
+   "params": {
+    "tint": [
+     0.32,
+     0.23,
+     0.2
+    ],
+    "wetness": 0,
+    "wear": 0.2,
+    "roughness_offset": -0.05,
+    "scale": 1.13,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_japanese_cedar_planks_base",
+    "nh": "lib:pl_japanese_cedar_planks_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.13,
+    "aspect": 0.5,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.8,
+    "worn": {
+     "color": [
+      0.3,
+      0.29,
+      0.27
+     ],
+     "rough": 0.6
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.5,
+    "roughness": 0.581
+   }
+  },
+  "lacquer_black~d6a619d5": {
+   "type": "kz",
+   "id": "lacquer_black",
+   "params": {
+    "tint": [
+     0.5,
+     0.9,
+     1.15
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0.5,
+    "scale": 1,
+    "normal_strength": 0.3,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lacquer_black_base",
+    "orm": "lib:lacquer_black_orm",
+    "nh": "lib:lacquer_black_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.19,
+      0.013,
+      0.007
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.074
+   }
+  },
+  "linen~e6ad5f64": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     0.36,
+     0.22,
+     0.12
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "linen~f4d6a3d7": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     0.62,
+     0.44,
+     0.26
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "obsidian~5091ec6c": {
+   "type": "kz",
+   "id": "obsidian",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0.4,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1.6,
+    "normal_strength": 0.3,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_obsidian_base",
+    "nh": "lib:pl_obsidian_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.6,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.012,
+      0.012,
+      0.013
+     ],
+     "rough": 0.25
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.064
+   }
+  },
+  "paving": {
+   "type": "kz",
+   "id": "paving",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0.85,
+    "wear": 0.15,
+    "roughness_offset": 0,
+    "scale": 2.37,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_slab_tiles_base",
+    "nh": "lib:pl_slab_tiles_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2.37,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.5,
+    "worn": {
+     "color": [
+      0.06,
+      0.06,
+      0.062
+     ],
+     "rough": 0.12
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.09
+   }
+  },
+  "rope": {
+   "type": "kz",
+   "id": "rope",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.5,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_Rope001_base",
+    "nh": "lib:pl_Rope001_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.5,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.45,
+      0.38,
+      0.22
+     ],
+     "rough": 0.85
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.804
+   }
+  },
+  "sinter~870a2205": {
+   "type": "kz",
+   "id": "sinter",
+   "params": {
+    "tint": [
+     1,
+     0.66,
+     0.34
+    ],
+    "wetness": 0.9,
+    "wear": 0,
+    "roughness_offset": -0.1,
+    "scale": 2,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_tile_sinter_base",
+    "nh": "lib:pl_tile_sinter_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0.5,
+    "worn": {
+     "color": [
+      0.8,
+      0.75,
+      0.65
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.482
+   }
+  },
+  "stepping_stone~e4436660": {
+   "type": "kz",
+   "id": "stepping_stone",
+   "params": {
+    "tint": [
+     0.55,
+     0.55,
+     0.57
+    ],
+    "wetness": 1,
+    "wear": 0.2,
+    "roughness_offset": 0,
+    "scale": 1.6,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_seaside_rock_base",
+    "nh": "lib:pl_seaside_rock_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.4,
+    "worn": {
+     "color": [
+      0.05,
+      0.05,
+      0.05
+     ],
+     "rough": 0.15
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 1,
+    "roughness": 0.187
+   }
+  },
+  "blossom~13bdc80f": {
+   "type": "kz",
+   "id": "blossom",
+   "params": {
+    "tint": [
+     1,
+     0.96,
+     0.98
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.3,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:blossom_base",
+    "orm": "lib:blossom_orm",
+    "nh": "lib:blossom_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.3,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": 0.5,
+    "doubleSided": true,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.545
+   }
+  },
+  "foliage_fern": {
+   "type": "kz",
+   "id": "foliage_fern",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.5,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:foliage_fern_base",
+    "orm": "lib:foliage_fern_orm",
+    "nh": "lib:foliage_fern_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.5,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": 0.5,
+    "doubleSided": true,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.543
+   }
+  },
+  "foliage_pine~92106434": {
+   "type": "kz",
+   "id": "foliage_pine",
+   "params": {
+    "tint": [
+     0.986,
+     0.986,
+     0.986
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.5,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:foliage_pine_base",
+    "orm": "lib:foliage_pine_orm",
+    "nh": "lib:foliage_pine_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 0.5,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": 0.5,
+    "doubleSided": true,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.49
+   }
+  },
+  "glass_clear": {
+   "type": "kz",
+   "id": "glass_clear",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:glass_clear_base",
+    "orm": "lib:glass_clear_orm",
+    "nh": "lib:glass_clear_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": true,
+    "transparent": true,
+    "envMapIntensity": 1.2,
+    "roughness": 0
+   }
+  },
+  "lantern_andon_plain": {
+   "type": "kz",
+   "id": "lantern_andon_plain",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 1,
+    "emissive_level": 1
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lantern_andon_plain_base",
+    "orm": "lib:lantern_andon_plain_orm",
+    "nh": "lib:lantern_andon_plain_nh",
+    "emis": "lib:lantern_andon_plain_emis"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": null,
+    "aspect": 1,
+    "uv_mode": "object",
+    "tech": null,
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": {
+     "map_scale": 1.0388,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 0.55,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.2,
+    "roughness": 0.82
+   }
+  },
+  "lantern_paper~dd04ac2a": {
+   "type": "kz",
+   "id": "lantern_paper",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 1,
+    "emissive_level": 1.02
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lantern_paper_base",
+    "orm": "lib:lantern_paper_orm",
+    "nh": "lib:lantern_paper_nh",
+    "emis": "lib:lantern_paper_emis"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": null,
+    "aspect": 1,
+    "uv_mode": "object",
+    "tech": null,
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": {
+     "map_scale": 1.0556,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 0.55,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.2,
+    "roughness": 0.865
+   }
+  },
+  "lava_flow": {
+   "type": "kz",
+   "id": "lava_flow",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 6,
+    "normal_strength": 1,
+    "emissive_level": 1
+   },
+   "lightmap": true,
+   "maps": {
+    "emis": "lib:lava_flow_emis"
+   },
+   "kit": {
+    "base": "lib:pl_tile_lava_flow_base",
+    "nh": "lib:pl_tile_lava_flow_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 6,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.02,
+      0.018,
+      0.017
+     ],
+     "rough": 0.6
+    },
+    "emissive": {
+     "map_scale": 1.4313,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 0.8,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.4,
+    "roughness": 0.4
+   }
+  },
+  "lava_glass~place_standin": {
+   "type": "kz",
+   "id": "lava_glass",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 0,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lava_glass_base",
+    "orm": "lib:lava_glass_orm",
+    "nh": "lib:lava_glass_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": true,
+    "envMapIntensity": 1.2,
+    "roughness": 0.015
+   }
+  },
+  "lava_molten~bfe09308": {
+   "type": "kz",
+   "id": "lava_molten",
+   "params": {
+    "tint": [
+     1,
+     0.42,
+     0.1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 4,
+    "normal_strength": 1,
+    "emissive_level": 4
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:lava_molten_base",
+    "orm": "lib:lava_molten_orm",
+    "nh": "lib:lava_molten_nh",
+    "emis": "lib:lava_molten_emis"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 4,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": {
+     "map_scale": 1,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 0.6,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.2,
+    "roughness": 0.353
+   }
+  },
+  "lava~84ae05fb": {
+   "type": "kz",
+   "id": "lava",
+   "params": {
+    "tint": [
+     1,
+     0.35,
+     0.15
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 6,
+    "normal_strength": 1,
+    "emissive_level": 3.5
+   },
+   "lightmap": true,
+   "maps": {
+    "emis": "lib:lava_emis"
+   },
+   "kit": {
+    "base": "lib:pl_tile_lava_crust_base",
+    "nh": "lib:pl_tile_lava_crust_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 6,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.02,
+      0.018,
+      0.017
+     ],
+     "rough": 0.6
+    },
+    "emissive": {
+     "map_scale": 1.4317,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 1.2,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.4,
+    "roughness": 0.463
+   }
+  },
+  "noren~ec1f7c75": {
+   "type": "kz",
+   "id": "noren",
+   "params": {
+    "tint": [
+     0.01,
+     0.02,
+     0.066
+    ],
+    "wetness": 0,
+    "wear": 0.18,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1.4,
+    "emissive_level": 0.12
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_rough_linen_base",
+    "nh": "lib:pl_rough_linen_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.05,
+      0.07,
+      0.13
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.758
+   }
+  },
+  "washi_backlit~ed52fe50": {
+   "type": "kz",
+   "id": "washi_backlit",
+   "params": {
+    "tint": [
+     0.3,
+     0.26,
+     0.22
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1,
+    "normal_strength": 1,
+    "emissive_level": 0.5
+   },
+   "lightmap": true,
+   "maps": {
+    "emis": "lib:washi_backlit_emis"
+   },
+   "kit": {
+    "base": "lib:pl_tile_washi_base",
+    "nh": "lib:pl_tile_washi_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.62,
+      0.56,
+      0.44
+     ],
+     "rough": 0.9
+    },
+    "emissive": {
+     "map_scale": 1,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 1,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.869
+   }
+  },
+  "water_still": {
+   "type": "kz",
+   "id": "water_still",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 4,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:water_still_base",
+    "orm": "lib:water_still_orm",
+    "nh": "lib:water_still_nh"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 4,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": true,
+    "envMapIntensity": 1,
+    "roughness": 0.012
+   }
+  },
+  "waterfall~2e831e0c": {
+   "type": "kz",
+   "id": "waterfall",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 2,
+    "normal_strength": 1,
+    "emissive_level": 0.3
+   },
+   "lightmap": true,
+   "maps": {
+    "base": "lib:waterfall_base",
+    "orm": "lib:waterfall_orm",
+    "nh": "lib:waterfall_nh",
+    "emis": "lib:waterfall_emis"
+   },
+   "kit": {},
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": null,
+    "porosity": 0,
+    "worn": {
+     "color": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "rough": 0.5
+    },
+    "emissive": {
+     "map_scale": 0.95,
+     "color": [
+      1,
+      1,
+      1
+     ],
+     "strength": 0.35,
+     "emit_core": 0
+    },
+    "alphaTest": null,
+    "doubleSided": true,
+    "transparent": true,
+    "envMapIntensity": 0.8,
+    "roughness": 0.05
+   }
+  },
+  "linen~988b2680": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     0.85,
+     0.82,
+     0.74
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "linen~5f9abd38": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     1,
+     0.97,
+     0.92
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "bamboo": {
+   "type": "kz",
+   "id": "bamboo",
+   "params": {
+    "tint": [
+     0.85,
+     1.3,
+     1.8
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 1.3,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_Bamboo001B_base",
+    "nh": "lib:pl_Bamboo001B_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 1.3,
+    "aspect": 0.5,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 0.3,
+    "worn": {
+     "color": [
+      0.55,
+      0.46,
+      0.26
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.411
+   }
+  },
+  "linen~b8ff0370": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     0.95,
+     0.82,
+     0.52
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  },
+  "linen~ef911f70": {
+   "type": "kz",
+   "id": "linen",
+   "params": {
+    "tint": [
+     0.4,
+     0.4,
+     0.41
+    ],
+    "wetness": 0,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 0.27,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_linen_offwhite_base",
+    "nh": "lib:pl_linen_offwhite_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 0.27,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "plain+macro",
+    "porosity": 1,
+    "worn": {
+     "color": [
+      0.6,
+      0.58,
+      0.54
+     ],
+     "rough": 0.9
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.3,
+    "roughness": 0.841
+   }
+  }
+ },
+ "zones": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "neighbors": [
+    "c_spiral_stair",
+    "c_terrace_path",
+    "cliff",
+    "p_g_arrival"
+   ],
+   "preload": [
+    "b1",
+    "b2",
+    "b3",
+    "b4"
+   ],
+   "spaces": [
+    "g_road",
+    "g_gate",
+    "g_changing",
+    "g_terrace",
+    "g_cascade",
+    "g_east",
+    "g_east_path",
+    "g_north_ledge"
+   ],
+   "bounds": [
+    -2,
+    3,
+    201,
+    120
+   ],
+   "parts": [
+    {
+     "uri": "parts/a64d253e3c223523.glb",
+     "bytes": 125256,
+     "tris": 3720
+    }
+   ],
+   "walk": {
+    "uri": "parts/e4ee4f7784e0de5b.glb",
+    "bytes": 13004,
+    "tris": 3612
+   },
+   "lightmaps": [
+    {
+     "id": "lm_ground",
+     "uri": "tex/95f371c0c335f2f9.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 512,
+     "height": 256,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_g_road",
+     "space": "g_road",
+     "center": [
+      7,
+      56,
+      1.6
+     ],
+     "box_min": [
+      -0.495,
+      51.535,
+      -0.3
+     ],
+     "box_max": [
+      14.495,
+      60.465,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_gate",
+     "space": "g_gate",
+     "center": [
+      26.03,
+      53.68,
+      1.6
+     ],
+     "box_min": [
+      12,
+      40,
+      -0.3
+     ],
+     "box_max": [
+      40,
+      68,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_changing",
+     "space": "g_changing",
+     "center": [
+      120,
+      61,
+      1.6
+     ],
+     "box_min": [
+      100,
+      42,
+      -0.3
+     ],
+     "box_max": [
+      140,
+      80,
+      6
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_g_terrace",
+     "space": "g_terrace",
+     "center": [
+      90.26,
+      32.96,
+      1.6
+     ],
+     "box_min": [
+      30,
+      24,
+      -0.3
+     ],
+     "box_max": [
+      150,
+      42,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_cascade",
+     "space": "g_cascade",
+     "center": [
+      34.87,
+      15.64,
+      0.6
+     ],
+     "box_min": [
+      12,
+      4,
+      -1.3
+     ],
+     "box_max": [
+      62,
+      38,
+      7
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_east",
+     "space": "g_east",
+     "center": [
+      151,
+      60,
+      1.6
+     ],
+     "box_min": [
+      140,
+      42,
+      -0.3
+     ],
+     "box_max": [
+      162,
+      78,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_east_path",
+     "space": "g_east_path",
+     "center": [
+      184.77,
+      80.04,
+      1.6
+     ],
+     "box_min": [
+      159.724,
+      72.526,
+      -0.3
+     ],
+     "box_max": [
+      195.497,
+      110.1,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_g_north_ledge",
+     "space": "g_north_ledge",
+     "center": [
+      161,
+      113.5,
+      1.6
+     ],
+     "box_min": [
+      122,
+      108,
+      -0.3
+     ],
+     "box_max": [
+      200,
+      119,
+      8
+     ],
+     "cubemap": null,
+     "intensity": 1
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "b1",
+   "name": "B1 Thermal",
+   "neighbors": [
+    "b2",
+    "c_lava_stair",
+    "c_spiral_stair",
+    "p_b1_cor_mirror",
+    "p_b1_mirror"
+   ],
+   "preload": [
+    "b3",
+    "b4",
+    "ground"
+   ],
+   "spaces": [
+    "b1_lobby",
+    "b1_junction_w",
+    "b1_cor_west",
+    "b1_grotto",
+    "b1_cor_north",
+    "b1_cor_east",
+    "b1_treatment",
+    "b1_glacier",
+    "b1_cor_south",
+    "b1_slide_top",
+    "b1_outfall"
+   ],
+   "bounds": [
+    39,
+    39,
+    199,
+    118
+   ],
+   "parts": [
+    {
+     "uri": "parts/21fbb7aa28efcc1d.glb",
+     "bytes": 142236,
+     "tris": 4858
+    }
+   ],
+   "walk": {
+    "uri": "parts/ea1f884b79a83d6c.glb",
+    "bytes": 12580,
+    "tris": 3422
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b1",
+     "uri": "tex/139471eb8a3ff5fa.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 512,
+     "height": 256,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b1_lobby",
+     "space": "b1_lobby",
+     "center": [
+      89.78,
+      69.78,
+      -18.4
+     ],
+     "box_min": [
+      77.5,
+      57.5,
+      -20.3
+     ],
+     "box_max": [
+      102.5,
+      82.5,
+      -15.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_junction_w",
+     "space": "b1_junction_w",
+     "center": [
+      66,
+      74,
+      -18.4
+     ],
+     "box_min": [
+      60.5,
+      68.5,
+      -20.3
+     ],
+     "box_max": [
+      71.5,
+      79.5,
+      -16.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_west",
+     "space": "b1_cor_west",
+     "center": [
+      54.85,
+      79.29,
+      -18.4
+     ],
+     "box_min": [
+      46.889,
+      74.336,
+      -20.3
+     ],
+     "box_max": [
+      63.109,
+      82.497,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_grotto",
+     "space": "b1_grotto",
+     "center": [
+      57.1,
+      98.67,
+      -18.4
+     ],
+     "box_min": [
+      40,
+      83.5,
+      -20.3
+     ],
+     "box_max": [
+      80,
+      112,
+      -9
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_north",
+     "space": "b1_cor_north",
+     "center": [
+      121.76,
+      113.25,
+      -18.4
+     ],
+     "box_min": [
+      76.52,
+      98.268,
+      -20.3
+     ],
+     "box_max": [
+      166.999,
+      117,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_east",
+     "space": "b1_cor_east",
+     "center": [
+      147.8,
+      86.02,
+      -18.4
+     ],
+     "box_min": [
+      129.368,
+      82.007,
+      -20.3
+     ],
+     "box_max": [
+      166.166,
+      91.897,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_treatment",
+     "space": "b1_treatment",
+     "center": [
+      140.53,
+      69.94,
+      -18.4
+     ],
+     "box_min": [
+      120,
+      60,
+      -20.3
+     ],
+     "box_max": [
+      160,
+      80,
+      -16
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_glacier",
+     "space": "b1_glacier",
+     "center": [
+      180.47,
+      81.14,
+      -18.4
+     ],
+     "box_min": [
+      164,
+      66,
+      -20.3
+     ],
+     "box_max": [
+      197.875,
+      96,
+      -8
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_cor_south",
+     "space": "b1_cor_south",
+     "center": [
+      118.82,
+      56.92,
+      -18.4
+     ],
+     "box_min": [
+      99.952,
+      52.007,
+      -20.3
+     ],
+     "box_max": [
+      138.166,
+      65.703,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_slide_top",
+     "space": "b1_slide_top",
+     "center": [
+      150,
+      50,
+      -18.4
+     ],
+     "box_min": [
+      138,
+      40,
+      -20.3
+     ],
+     "box_max": [
+      162,
+      60,
+      -12
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b1_outfall",
+     "space": "b1_outfall",
+     "center": [
+      180,
+      100,
+      -18.4
+     ],
+     "box_min": [
+      166,
+      98,
+      -20.3
+     ],
+     "box_max": [
+      194,
+      102,
+      -17
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "b2",
+   "name": "B2 River",
+   "neighbors": [
+    "b1",
+    "b3",
+    "c_lava_stair",
+    "c_spiral_stair"
+   ],
+   "preload": [
+    "b4",
+    "ground"
+   ],
+   "spaces": [
+    "b2_kawagiri",
+    "b2_core",
+    "b2_boat",
+    "b2_boardwalk",
+    "b2_boardwalk_edge",
+    "b2_lava_link",
+    "b2_falls_head",
+    "b2_river"
+   ],
+   "bounds": [
+    23,
+    55,
+    206,
+    101
+   ],
+   "parts": [
+    {
+     "uri": "parts/f572f22966ec8b8b.glb",
+     "bytes": 353024,
+     "tris": 12262
+    }
+   ],
+   "walk": {
+    "uri": "parts/760b3f1e374deb1f.glb",
+    "bytes": 35588,
+    "tris": 10324
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b2",
+     "uri": "tex/04bb451c624c6529.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 512,
+     "height": 128,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b2_kawagiri",
+     "space": "b2_kawagiri",
+     "center": [
+      83.86,
+      87.27,
+      -38.4
+     ],
+     "box_min": [
+      46,
+      74,
+      -40.3
+     ],
+     "box_max": [
+      122,
+      100,
+      -28
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_core",
+     "space": "b2_core",
+     "center": [
+      84,
+      65,
+      -38.4
+     ],
+     "box_min": [
+      46,
+      56,
+      -40.3
+     ],
+     "box_max": [
+      122,
+      74,
+      -28
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_boat",
+     "space": "b2_boat",
+     "center": [
+      132,
+      72,
+      -38.4
+     ],
+     "box_min": [
+      122,
+      64,
+      -40.3
+     ],
+     "box_max": [
+      142,
+      80,
+      -30
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_boardwalk",
+     "space": "b2_boardwalk",
+     "center": [
+      167.86,
+      82.23,
+      -38.4
+     ],
+     "box_min": [
+      139.576,
+      74.302,
+      -40.3
+     ],
+     "box_max": [
+      196.217,
+      88.736,
+      -32
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_boardwalk_edge",
+     "space": "b2_boardwalk_edge",
+     "center": [
+      167.86,
+      84.82,
+      -43
+     ],
+     "box_min": [
+      139.709,
+      77.436,
+      -44.9
+     ],
+     "box_max": [
+      196.149,
+      90.791,
+      -32
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_lava_link",
+     "space": "b2_lava_link",
+     "center": [
+      141.3,
+      62.33,
+      -38.4
+     ],
+     "box_min": [
+      133.217,
+      56.999,
+      -40.3
+     ],
+     "box_max": [
+      149.4,
+      67.565,
+      -37
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_falls_head",
+     "space": "b2_falls_head",
+     "center": [
+      43.5,
+      64,
+      -38.4
+     ],
+     "box_min": [
+      40,
+      58,
+      -40.3
+     ],
+     "box_max": [
+      47,
+      70,
+      -32
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b2_river",
+     "space": "b2_river",
+     "center": [
+      105.3,
+      85.8,
+      -43
+     ],
+     "box_min": [
+      24.006,
+      71.006,
+      -44.9
+     ],
+     "box_max": [
+      204.999,
+      98.999,
+      -32
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "b3",
+   "name": "B3 Aqua Cavern",
+   "neighbors": [
+    "b2",
+    "c_lava_stair",
+    "c_spiral_stair"
+   ],
+   "preload": [
+    "b1",
+    "b4",
+    "ground"
+   ],
+   "spaces": [
+    "b3_cavern",
+    "b3_falls",
+    "b3_rimstone",
+    "b3_lobby",
+    "b3_lazy",
+    "b3_geyser",
+    "b3_slide_foot",
+    "b3_shore",
+    "b3_wave",
+    "b3_walk_north",
+    "b3_falls_east",
+    "b3_falls_gallery"
+   ],
+   "bounds": [
+    7,
+    11,
+    201,
+    85
+   ],
+   "parts": [
+    {
+     "uri": "parts/fb3b6c7ad809c06f.glb",
+     "bytes": 550228,
+     "tris": 19041
+    }
+   ],
+   "walk": {
+    "uri": "parts/08cc7c7c903ee1b8.glb",
+    "bytes": 55072,
+    "tris": 16101
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b3",
+     "uri": "tex/4a472230d3cdbb8b.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 512,
+     "height": 256,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b3_cavern",
+     "space": "b3_cavern",
+     "center": [
+      102.14,
+      46.48,
+      -65.4
+     ],
+     "box_min": [
+      46,
+      12,
+      -67.3
+     ],
+     "box_max": [
+      164,
+      84,
+      -50
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_falls",
+     "space": "b3_falls",
+     "center": [
+      26.87,
+      57.85,
+      -57.9
+     ],
+     "box_min": [
+      8,
+      40,
+      -59.8
+     ],
+     "box_max": [
+      46,
+      76,
+      -40
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_rimstone",
+     "space": "b3_rimstone",
+     "center": [
+      66.8,
+      48,
+      -58.4
+     ],
+     "box_min": [
+      50,
+      26,
+      -60.3
+     ],
+     "box_max": [
+      86,
+      74,
+      -50
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_lobby",
+     "space": "b3_lobby",
+     "center": [
+      90,
+      70,
+      -65.4
+     ],
+     "box_min": [
+      77.5,
+      57.5,
+      -67.3
+     ],
+     "box_max": [
+      102.5,
+      82.5,
+      -58
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_lazy",
+     "space": "b3_lazy",
+     "center": [
+      114,
+      42,
+      -65.4
+     ],
+     "box_min": [
+      85.5,
+      23.5,
+      -67.3
+     ],
+     "box_max": [
+      142.5,
+      60.5,
+      -63
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_geyser",
+     "space": "b3_geyser",
+     "center": [
+      114,
+      42,
+      -65.4
+     ],
+     "box_min": [
+      96,
+      33.5,
+      -67.3
+     ],
+     "box_max": [
+      132,
+      50.5,
+      -50
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_slide_foot",
+     "space": "b3_slide_foot",
+     "center": [
+      151,
+      49,
+      -65.4
+     ],
+     "box_min": [
+      140,
+      34,
+      -67.3
+     ],
+     "box_max": [
+      162,
+      64,
+      -50
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_shore",
+     "space": "b3_shore",
+     "center": [
+      156.8,
+      34.64,
+      -65.4
+     ],
+     "box_min": [
+      149.106,
+      32,
+      -67.3
+     ],
+     "box_max": [
+      164,
+      38.789,
+      -62.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_wave",
+     "space": "b3_wave",
+     "center": [
+      180.97,
+      38.58,
+      -69.4
+     ],
+     "box_min": [
+      160,
+      14,
+      -71.3
+     ],
+     "box_max": [
+      200,
+      64,
+      -52
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_walk_north",
+     "space": "b3_walk_north",
+     "center": [
+      71.48,
+      69.25,
+      -65.4
+     ],
+     "box_min": [
+      64.586,
+      64.586,
+      -67.3
+     ],
+     "box_max": [
+      78,
+      72,
+      -58
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_falls_east",
+     "space": "b3_falls_east",
+     "center": [
+      42,
+      57.25,
+      -57.9
+     ],
+     "box_min": [
+      38,
+      40,
+      -59.8
+     ],
+     "box_max": [
+      46,
+      74.5,
+      -32
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_falls_gallery",
+     "space": "b3_falls_gallery",
+     "center": [
+      27,
+      78.25,
+      -53.4
+     ],
+     "box_min": [
+      8,
+      76,
+      -55.3
+     ],
+     "box_max": [
+      46,
+      80.5,
+      -52
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "b4",
+   "name": "B4 Magma",
+   "neighbors": [
+    "c_spiral_stair"
+   ],
+   "preload": [
+    "b1",
+    "b2",
+    "b3",
+    "ground"
+   ],
+   "spaces": [
+    "b4_lobby",
+    "b4_tunnel",
+    "b4_chamber"
+   ],
+   "bounds": [
+    39,
+    5,
+    123,
+    90
+   ],
+   "parts": [
+    {
+     "uri": "parts/c8b4af492702ff1b.glb",
+     "bytes": 60884,
+     "tris": 1752
+    }
+   ],
+   "walk": {
+    "uri": "parts/3821a77ccb5f7bf4.glb",
+    "bytes": 5048,
+    "tris": 1024
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b4",
+     "uri": "tex/f87326b7a088e82b.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 256,
+     "height": 256,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b4_lobby",
+     "space": "b4_lobby",
+     "center": [
+      90,
+      70,
+      -98.4
+     ],
+     "box_min": [
+      76,
+      56,
+      -100.3
+     ],
+     "box_max": [
+      104,
+      84,
+      -90
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b4_tunnel",
+     "space": "b4_tunnel",
+     "center": [
+      59.11,
+      53.04,
+      -98.4
+     ],
+     "box_min": [
+      49.74,
+      33.057,
+      -100.3
+     ],
+     "box_max": [
+      77.841,
+      66.354,
+      -96.5
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b4_chamber",
+     "space": "b4_chamber",
+     "center": [
+      79.78,
+      19.56,
+      -98.4
+     ],
+     "box_min": [
+      40,
+      6,
+      -100.3
+     ],
+     "box_max": [
+      122,
+      36,
+      -92
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "summit",
+   "name": "Summit",
+   "neighbors": [
+    "c_cliff_stair_4",
+    "c_terrace_path"
+   ],
+   "preload": [],
+   "spaces": [
+    "s_pool",
+    "s_spring",
+    "s_moon",
+    "s_rim",
+    "s_rim_west"
+   ],
+   "bounds": [
+    44,
+    59,
+    165,
+    112
+   ],
+   "parts": [
+    {
+     "uri": "parts/04333f57064982ae.glb",
+     "bytes": 56224,
+     "tris": 1514
+    }
+   ],
+   "walk": {
+    "uri": "parts/df3d39ad8b93901e.glb",
+    "bytes": 6620,
+    "tris": 1438
+   },
+   "lightmaps": [
+    {
+     "id": "lm_summit",
+     "uri": "tex/ecc5211554059292.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 256,
+     "height": 128,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_s_pool",
+     "space": "s_pool",
+     "center": [
+      110.76,
+      83.69,
+      121.6
+     ],
+     "box_min": [
+      80,
+      64,
+      119.7
+     ],
+     "box_max": [
+      142,
+      107.236,
+      128
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_s_spring",
+     "space": "s_spring",
+     "center": [
+      65.82,
+      96.21,
+      123.1
+     ],
+     "box_min": [
+      56,
+      86,
+      121.2
+     ],
+     "box_max": [
+      77,
+      106,
+      129.5
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_s_moon",
+     "space": "s_moon",
+     "center": [
+      153,
+      91,
+      122.1
+     ],
+     "box_min": [
+      142,
+      80,
+      120.2
+     ],
+     "box_max": [
+      164,
+      102,
+      128.5
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_s_rim",
+     "space": "s_rim",
+     "center": [
+      97.86,
+      105.71,
+      121.6
+     ],
+     "box_min": [
+      72.112,
+      60.25,
+      119.7
+     ],
+     "box_max": [
+      149.35,
+      110.764,
+      128
+     ],
+     "cubemap": null,
+     "intensity": 1
+    },
+    {
+     "id": "probe_s_rim_west",
+     "space": "s_rim_west",
+     "center": [
+      60.38,
+      70.2,
+      121.6
+     ],
+     "box_min": [
+      45.311,
+      63.34,
+      119.7
+     ],
+     "box_max": [
+      75.553,
+      77.609,
+      128
+     ],
+     "cubemap": null,
+     "intensity": 1
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "cliff",
+   "name": "Cliff suites",
+   "neighbors": [
+    "c_cliff_stair_4",
+    "ground"
+   ],
+   "preload": [],
+   "spaces": [
+    "suite_1a",
+    "suite_1b",
+    "suite_1c",
+    "suite_2a",
+    "suite_2b",
+    "suite_2c",
+    "suite_3a",
+    "suite_3b",
+    "suite_3c",
+    "suite_4a",
+    "suite_4b",
+    "suite_4c"
+   ],
+   "bounds": [
+    121,
+    93,
+    191,
+    116
+   ],
+   "parts": [
+    {
+     "uri": "parts/255b80ac8ddd522c.glb",
+     "bytes": 494876,
+     "tris": 16392
+    }
+   ],
+   "walk": {
+    "uri": "parts/53348f221dcee83f.glb",
+    "bytes": 55676,
+    "tris": 15888
+   },
+   "lightmaps": [
+    {
+     "id": "lm_cliff",
+     "uri": "tex/dff52c5ec9254f94.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 256,
+     "height": 64,
+     "uv": 1
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_suite_1a",
+     "space": "suite_1a",
+     "center": [
+      146,
+      100,
+      11.6
+     ],
+     "box_min": [
+      138,
+      94,
+      9.7
+     ],
+     "box_max": [
+      154,
+      106,
+      13.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_1b",
+     "space": "suite_1b",
+     "center": [
+      164,
+      100,
+      11.6
+     ],
+     "box_min": [
+      156,
+      94,
+      9.7
+     ],
+     "box_max": [
+      172,
+      106,
+      13.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_1c",
+     "space": "suite_1c",
+     "center": [
+      182,
+      100,
+      11.6
+     ],
+     "box_min": [
+      174,
+      94,
+      9.7
+     ],
+     "box_max": [
+      190,
+      106,
+      13.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_2a",
+     "space": "suite_2a",
+     "center": [
+      146,
+      100,
+      27.6
+     ],
+     "box_min": [
+      138,
+      94,
+      25.7
+     ],
+     "box_max": [
+      154,
+      106,
+      29.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_2b",
+     "space": "suite_2b",
+     "center": [
+      164,
+      100,
+      27.6
+     ],
+     "box_min": [
+      156,
+      94,
+      25.7
+     ],
+     "box_max": [
+      172,
+      106,
+      29.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_2c",
+     "space": "suite_2c",
+     "center": [
+      182,
+      100,
+      27.6
+     ],
+     "box_min": [
+      174,
+      94,
+      25.7
+     ],
+     "box_max": [
+      190,
+      106,
+      29.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_3a",
+     "space": "suite_3a",
+     "center": [
+      146,
+      100,
+      44.6
+     ],
+     "box_min": [
+      138,
+      94,
+      42.7
+     ],
+     "box_max": [
+      154,
+      106,
+      46.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_3b",
+     "space": "suite_3b",
+     "center": [
+      164,
+      100,
+      44.6
+     ],
+     "box_min": [
+      156,
+      94,
+      42.7
+     ],
+     "box_max": [
+      172,
+      106,
+      46.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_3c",
+     "space": "suite_3c",
+     "center": [
+      182,
+      100,
+      44.6
+     ],
+     "box_min": [
+      174,
+      94,
+      42.7
+     ],
+     "box_max": [
+      190,
+      106,
+      46.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_4a",
+     "space": "suite_4a",
+     "center": [
+      146,
+      100,
+      61.6
+     ],
+     "box_min": [
+      138,
+      94,
+      59.7
+     ],
+     "box_max": [
+      154,
+      106,
+      63.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_4b",
+     "space": "suite_4b",
+     "center": [
+      164,
+      100,
+      61.6
+     ],
+     "box_min": [
+      156,
+      94,
+      59.7
+     ],
+     "box_max": [
+      172,
+      106,
+      63.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_suite_4c",
+     "space": "suite_4c",
+     "center": [
+      182,
+      100,
+      61.6
+     ],
+     "box_min": [
+      174,
+      94,
+      59.7
+     ],
+     "box_max": [
+      190,
+      106,
+      63.2
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "c_spiral_stair",
+   "name": "Carved Spiral Stair",
+   "neighbors": [
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "ground",
+    "p_g_arrival"
+   ],
+   "preload": [],
+   "spaces": [],
+   "bounds": [
+    82,
+    62,
+    98,
+    78
+   ],
+   "parts": [
+    {
+     "uri": "parts/477650f2cab0f48a.glb",
+     "bytes": 427920,
+     "tris": 11488
+    }
+   ],
+   "walk": {
+    "uri": "parts/76319d5607e6de5e.glb",
+    "bytes": 40212,
+    "tris": 10996
+   },
+   "lightmaps": [
+    {
+     "id": "lm_c_spiral_stair",
+     "uri": "tex/d49822220dd0c0c7.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 32,
+     "height": 32,
+     "uv": 1
+    }
+   ],
+   "probes": [],
+   "placements": []
+  },
+  {
+   "id": "c_lava_stair",
+   "name": "Lava Stair",
+   "neighbors": [
+    "b1",
+    "b2",
+    "b3"
+   ],
+   "preload": [],
+   "spaces": [],
+   "bounds": [
+    140,
+    40,
+    160,
+    60
+   ],
+   "parts": [
+    {
+     "uri": "parts/1c8c20197e2e245d.glb",
+     "bytes": 237304,
+     "tris": 6160
+    }
+   ],
+   "walk": {
+    "uri": "parts/75633913a8749e4f.glb",
+    "bytes": 23896,
+    "tris": 5980
+   },
+   "lightmaps": [
+    {
+     "id": "lm_c_lava_stair",
+     "uri": "tex/5d16f7569b1f5cb1.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 64,
+     "height": 64,
+     "uv": 1
+    }
+   ],
+   "probes": [],
+   "placements": []
+  },
+  {
+   "id": "c_terrace_path",
+   "name": "Terrace Path",
+   "neighbors": [
+    "ground",
+    "summit"
+   ],
+   "preload": [],
+   "spaces": [],
+   "bounds": [
+    3,
+    63,
+    49,
+    119
+   ],
+   "parts": [
+    {
+     "uri": "parts/c31aa74ceddc6ca3.glb",
+     "bytes": 916384,
+     "tris": 29560
+    }
+   ],
+   "walk": {
+    "uri": "parts/f16e50bfdf677295.glb",
+    "bytes": 99724,
+    "tris": 29248
+   },
+   "lightmaps": [
+    {
+     "id": "lm_c_terrace_path",
+     "uri": "tex/6998197012aa2513.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 128,
+     "height": 128,
+     "uv": 1
+    }
+   ],
+   "probes": [],
+   "placements": []
+  },
+  {
+   "id": "c_cliff_stair_4",
+   "name": "cliff_stair_4",
+   "neighbors": [
+    "cliff",
+    "summit"
+   ],
+   "preload": [],
+   "spaces": [],
+   "bounds": [
+    121,
+    105,
+    143,
+    116
+   ],
+   "parts": [
+    {
+     "uri": "parts/b054a8420deb352e.glb",
+     "bytes": 522624,
+     "tris": 17332
+    }
+   ],
+   "walk": {
+    "uri": "parts/debce35c63399bef.glb",
+    "bytes": 60380,
+    "tris": 17140
+   },
+   "lightmaps": [
+    {
+     "id": "lm_c_cliff_stair_4",
+     "uri": "tex/265110a4a93977a7.ktx2",
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 64,
+     "height": 32,
+     "uv": 1
+    }
+   ],
+   "probes": [],
+   "placements": []
+  },
+  {
+   "id": "p_b1_cor_mirror",
+   "name": "Mist corridor to the Mirror",
+   "source": "blender",
+   "base": "b1",
+   "neighbors": [
+    "b1",
+    "p_b1_mirror"
+   ],
+   "preload": [
+    "b3",
+    "b4",
+    "ground"
+   ],
+   "spaces": [
+    "b1_cor_mirror"
+   ],
+   "bounds": [
+    62.765,
+    69.039,
+    95,
+    95
+   ],
+   "parts": [
+    {
+     "uri": "parts/0bf9a61c1f31374c.glb",
+     "bytes": 1353136,
+     "tris": 70854
+    },
+    {
+     "uri": "parts/667109309097fcb1.glb",
+     "bytes": 16020,
+     "tris": 396,
+     "kind": "anim"
+    },
+    {
+     "uri": "parts/6233fdd79cb91369.glb",
+     "bytes": 109680,
+     "tris": 2334,
+     "kind": "anim",
+     "clips": [
+      "walk_slow"
+     ]
+    },
+    {
+     "uri": "parts/4e8d67e690d0ae6a.glb",
+     "bytes": 98408,
+     "tris": 2046,
+     "kind": "anim",
+     "clips": [
+      "walk_slow"
+     ]
+    },
+    {
+     "uri": "parts/20873531c9c122f3.glb",
+     "bytes": 112496,
+     "tris": 2334,
+     "kind": "anim",
+     "clips": [
+      "walk"
+     ]
+    }
+   ],
+   "walk": {
+    "uri": "parts/098edd022b68de92.glb",
+    "bytes": 10920,
+    "tris": 2468
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b1_cor_mirror",
+     "uri": "tex/4d51485123995ce5.ktx2",
+     "bytes": 1323887,
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 1024,
+     "height": 1024,
+     "uv": 1,
+     "texel_m": 0.06681702631520546
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b1_cor_mirror_0",
+     "space": "b1_cor_mirror",
+     "center": [
+      74.728,
+      72.654,
+      -18.5
+     ],
+     "box_min": [
+      70.22819519042969,
+      68.15436553955078,
+      -20.2
+     ],
+     "box_max": [
+      79.22819519042969,
+      77.15436553955078,
+      -16.9
+     ],
+     "cubemap": "tex/0705642aeb4c4bab.ktx2",
+     "projection": "equirect",
+     "bytes": 604903,
+     "intensity": 1,
+     "mean": [
+      0.028823159635066986,
+      0.013022647239267826,
+      0.003690213430672884
+     ]
+    },
+    {
+     "id": "probe_b1_cor_mirror_1",
+     "space": "b1_cor_mirror",
+     "center": [
+      66.968,
+      83.292,
+      -18.5
+     ],
+     "box_min": [
+      62.467567443847656,
+      78.79191589355469,
+      -20.2
+     ],
+     "box_max": [
+      71.46756744384766,
+      87.79191589355469,
+      -16.9
+     ],
+     "cubemap": "tex/ac9a5d6905c1c881.ktx2",
+     "projection": "equirect",
+     "bytes": 634388,
+     "intensity": 1,
+     "mean": [
+      0.003807881847023964,
+      0.0028593121096491814,
+      0.0018694208702072501
+     ]
+    },
+    {
+     "id": "probe_b1_cor_mirror_2",
+     "space": "b1_cor_mirror",
+     "center": [
+      66.27,
+      89.754,
+      -18.5
+     ],
+     "box_min": [
+      61.77033233642578,
+      85.25352478027344,
+      -20.2
+     ],
+     "box_max": [
+      70.77033233642578,
+      94.25352478027344,
+      -16.9
+     ],
+     "cubemap": "tex/0135b9c11f3e031b.ktx2",
+     "projection": "equirect",
+     "bytes": 646248,
+     "intensity": 1,
+     "mean": [
+      0.007076331879943609,
+      0.004198228009045124,
+      0.00172332301735878
+     ]
+    },
+    {
+     "id": "probe_b1_cor_mirror_3",
+     "space": "b1_cor_mirror",
+     "center": [
+      71.51,
+      92,
+      -18.5
+     ],
+     "box_min": [
+      67.01040649414062,
+      87.5,
+      -20.2
+     ],
+     "box_max": [
+      76.01040649414062,
+      96.5,
+      -16.9
+     ],
+     "cubemap": "tex/8c504f1dcb81f586.ktx2",
+     "projection": "equirect",
+     "bytes": 649496,
+     "intensity": 1,
+     "mean": [
+      0.005746390670537949,
+      0.0036758705973625183,
+      0.001666120020672679
+     ]
+    },
+    {
+     "id": "probe_b1_cor_mirror_4",
+     "space": "b1_cor_mirror",
+     "center": [
+      79.51,
+      92,
+      -18.5
+     ],
+     "box_min": [
+      75.01040649414062,
+      87.5,
+      -20.2
+     ],
+     "box_max": [
+      84.01040649414062,
+      96.5,
+      -16.9
+     ],
+     "cubemap": "tex/cb28917967adf799.ktx2",
+     "projection": "equirect",
+     "bytes": 648466,
+     "intensity": 1,
+     "mean": [
+      0.00557716004550457,
+      0.003517321776598692,
+      0.001746476162225008
+     ]
+    },
+    {
+     "id": "probe_b1_cor_mirror_5",
+     "space": "b1_cor_mirror",
+     "center": [
+      87.51,
+      92,
+      -18.5
+     ],
+     "box_min": [
+      83.01040649414062,
+      87.5,
+      -20.2
+     ],
+     "box_max": [
+      92.01040649414062,
+      96.5,
+      -16.9
+     ],
+     "cubemap": "tex/82ef336709f14846.ktx2",
+     "projection": "equirect",
+     "bytes": 645139,
+     "intensity": 1,
+     "mean": [
+      0.0024474526289850473,
+      0.001515122945420444,
+      0.0008658567094244063
+     ]
+    }
+   ],
+   "lights": [],
+   "fx": [
+    {
+     "name": "fx_mist_00",
+     "kind": "mist",
+     "pos": [
+      76.1369,
+      72.3726,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_01",
+     "kind": "mist",
+     "pos": [
+      73.9796,
+      72.8041,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_02",
+     "kind": "mist",
+     "pos": [
+      71.8223,
+      73.2355,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_03",
+     "kind": "mist",
+     "pos": [
+      67.4093,
+      79.3164,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_04",
+     "kind": "mist",
+     "pos": [
+      67.1663,
+      81.5029,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_05",
+     "kind": "mist",
+     "pos": [
+      66.9234,
+      83.6895,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_06",
+     "kind": "mist",
+     "pos": [
+      66.6804,
+      85.876,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_07",
+     "kind": "mist",
+     "pos": [
+      66.4375,
+      88.0626,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_08",
+     "kind": "mist",
+     "pos": [
+      66.336,
+      90.2482,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_09",
+     "kind": "mist",
+     "pos": [
+      67.7303,
+      91.8413,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_10",
+     "kind": "mist",
+     "pos": [
+      69.9104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_11",
+     "kind": "mist",
+     "pos": [
+      72.1104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_12",
+     "kind": "mist",
+     "pos": [
+      74.3104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_13",
+     "kind": "mist",
+     "pos": [
+      76.5104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_14",
+     "kind": "mist",
+     "pos": [
+      78.7104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_15",
+     "kind": "mist",
+     "pos": [
+      80.9104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_16",
+     "kind": "mist",
+     "pos": [
+      83.1104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_17",
+     "kind": "mist",
+     "pos": [
+      85.3104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_18",
+     "kind": "mist",
+     "pos": [
+      87.5104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_19",
+     "kind": "mist",
+     "pos": [
+      89.7104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_mist_20",
+     "kind": "mist",
+     "pos": [
+      91.9104,
+      92,
+      -20.05
+     ],
+     "params": {
+      "height": 0.4,
+      "radius": 1.6,
+      "density": 0.8,
+      "hug_walls": true,
+      "thin_over_stones": true
+     }
+    },
+    {
+     "name": "fx_drips_trickle_n",
+     "kind": "drips",
+     "pos": [
+      65.1509,
+      84.5193,
+      -19.5
+     ],
+     "params": {
+      "rate": 6
+     }
+    },
+    {
+     "name": "fx_drips_trickle_s",
+     "kind": "drips",
+     "pos": [
+      78.798,
+      90.33,
+      -19.5
+     ],
+     "params": {
+      "rate": 6
+     }
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "p_b1_mirror",
+   "name": "Obsidian Mirror Float Pool",
+   "source": "blender",
+   "base": "b1",
+   "neighbors": [
+    "b1",
+    "p_b1_cor_mirror"
+   ],
+   "preload": [
+    "b3",
+    "b4",
+    "ground"
+   ],
+   "spaces": [
+    "b1_mirror"
+   ],
+   "bounds": [
+    92,
+    72,
+    132,
+    112
+   ],
+   "parts": [
+    {
+     "uri": "parts/be5e8eab6cec77a7.glb",
+     "bytes": 2168476,
+     "tris": 110592
+    },
+    {
+     "uri": "parts/8d0ab08daf35075f.glb",
+     "bytes": 1039944,
+     "tris": 47756
+    },
+    {
+     "uri": "parts/02047e13351fffc3.glb",
+     "bytes": 1033104,
+     "tris": 0,
+     "kind": "sprites"
+    },
+    {
+     "uri": "parts/efab47a28166fe57.glb",
+     "bytes": 136228,
+     "tris": 1502,
+     "kind": "anim",
+     "clips": [
+      "float_back"
+     ]
+    },
+    {
+     "uri": "parts/7b0f82dc85af67f8.glb",
+     "bytes": 136196,
+     "tris": 1422,
+     "kind": "anim",
+     "clips": [
+      "float_back"
+     ]
+    },
+    {
+     "uri": "parts/34285eace9aac92f.glb",
+     "bytes": 136640,
+     "tris": 1502,
+     "kind": "anim",
+     "clips": [
+      "float_back"
+     ]
+    },
+    {
+     "uri": "parts/bb9bed603e6d9287.glb",
+     "bytes": 140912,
+     "tris": 2046,
+     "kind": "anim",
+     "clips": [
+      "idle_lookup"
+     ]
+    }
+   ],
+   "walk": {
+    "uri": "parts/1a3e8166166f4aea.glb",
+    "bytes": 33256,
+    "tris": 9172
+   },
+   "lightmaps": [
+    {
+     "id": "lm_b1_mirror",
+     "uri": "tex/e38b358272d69b59.ktx2",
+     "bytes": 4995865,
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 2048,
+     "height": 2048,
+     "uv": 1,
+     "texel_m": 0.062153476399388785
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_b1_mirror_0",
+     "space": "b1_mirror",
+     "center": [
+      112,
+      92,
+      -18.4
+     ],
+     "box_min": [
+      93,
+      73,
+      -21.4
+     ],
+     "box_max": [
+      131,
+      111,
+      -6.5
+     ],
+     "cubemap": "tex/2c021a0994b51440.ktx2",
+     "projection": "equirect",
+     "bytes": 613214,
+     "intensity": 1,
+     "mean": [
+      0.008063655346632004,
+      0.0036991641391068697,
+      0.0010388597147539258
+     ]
+    },
+    {
+     "id": "probe_b1_mirror_1",
+     "space": "b1_mirror",
+     "center": [
+      116,
+      104.5,
+      -18.5
+     ],
+     "box_min": [
+      110,
+      101,
+      -20
+     ],
+     "box_max": [
+      122,
+      111,
+      -14
+     ],
+     "cubemap": "tex/31286f2d77d5423a.ktx2",
+     "projection": "equirect",
+     "bytes": 638967,
+     "intensity": 1,
+     "mean": [
+      0.039395496249198914,
+      0.015384729951620102,
+      0.002875730162486434
+     ]
+    },
+    {
+     "id": "probe_b1_mirror_2",
+     "space": "b1_mirror",
+     "center": [
+      121,
+      81.5,
+      -18.5
+     ],
+     "box_min": [
+      115,
+      74,
+      -20
+     ],
+     "box_max": [
+      128,
+      85,
+      -14
+     ],
+     "cubemap": "tex/51926c08756004cb.ktx2",
+     "projection": "equirect",
+     "bytes": 641086,
+     "intensity": 1,
+     "mean": [
+      0.057534314692020416,
+      0.021744191646575928,
+      0.0035278259310871363
+     ]
+    }
+   ],
+   "lights": [],
+   "fx": [
+    {
+     "name": "fx_mist_00",
+     "kind": "mist",
+     "pos": [
+      110.9106,
+      104.4524,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_01",
+     "kind": "mist",
+     "pos": [
+      108.3454,
+      103.9538,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_02",
+     "kind": "mist",
+     "pos": [
+      105.9399,
+      102.9327,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_03",
+     "kind": "mist",
+     "pos": [
+      103.7993,
+      101.4339,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_04",
+     "kind": "mist",
+     "pos": [
+      102.0171,
+      99.5227,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_05",
+     "kind": "mist",
+     "pos": [
+      100.6712,
+      97.2827,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_06",
+     "kind": "mist",
+     "pos": [
+      99.8204,
+      94.8119,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_07",
+     "kind": "mist",
+     "pos": [
+      99.5019,
+      92.2182,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_08",
+     "kind": "mist",
+     "pos": [
+      99.7297,
+      89.6149,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_mist_09",
+     "kind": "mist",
+     "pos": [
+      100.4937,
+      87.1159,
+      -20.05
+     ],
+     "params": {
+      "height": 0.45,
+      "radius": 2.6,
+      "density": 0.55,
+      "drift": [
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "name": "fx_glowworm_twinkle",
+     "kind": "glowworm",
+     "pos": [
+      112,
+      92,
+      -8
+     ],
+     "params": {
+      "target": "glowworm_ceiling.dome"
+     }
+    }
+   ],
+   "placements": []
+  },
+  {
+   "id": "p_g_arrival",
+   "name": "Arrival hall (lava window)",
+   "source": "blender",
+   "base": "ground",
+   "neighbors": [
+    "c_spiral_stair",
+    "ground"
+   ],
+   "preload": [
+    "b1",
+    "b2",
+    "b3",
+    "b4"
+   ],
+   "spaces": [
+    "g_arrival"
+   ],
+   "bounds": [
+    39,
+    41,
+    101,
+    81
+   ],
+   "parts": [
+    {
+     "uri": "parts/0266e5b296840c09.glb",
+     "bytes": 2465360,
+     "tris": 112517
+    },
+    {
+     "uri": "parts/9f509ed1a230d420.glb",
+     "bytes": 3103592,
+     "tris": 119635
+    },
+    {
+     "uri": "parts/b981e81a266a35a8.glb",
+     "bytes": 320876,
+     "tris": 13307
+    },
+    {
+     "uri": "parts/a8edc036bc5fc8dc.glb",
+     "bytes": 181608,
+     "tris": 2698,
+     "kind": "anim",
+     "clips": [
+      "idle_talk"
+     ]
+    },
+    {
+     "uri": "parts/36c975770e7f62b7.glb",
+     "bytes": 118500,
+     "tris": 2334,
+     "kind": "anim",
+     "clips": [
+      "walk_slow"
+     ]
+    },
+    {
+     "uri": "parts/debcde013187de62.glb",
+     "bytes": 95592,
+     "tris": 2046,
+     "kind": "anim",
+     "clips": [
+      "walk"
+     ]
+    },
+    {
+     "uri": "parts/0d60d5689e62984b.glb",
+     "bytes": 149680,
+     "tris": 2334,
+     "kind": "anim",
+     "clips": [
+      "idle_lookup"
+     ]
+    },
+    {
+     "uri": "parts/6bc563399887047c.glb",
+     "bytes": 152180,
+     "tris": 2250,
+     "kind": "anim",
+     "clips": [
+      "idle_lookup"
+     ]
+    },
+    {
+     "uri": "parts/70ca1eb49ba32905.glb",
+     "bytes": 159356,
+     "tris": 2334,
+     "kind": "anim",
+     "clips": [
+      "idle_shift"
+     ]
+    },
+    {
+     "uri": "parts/404eedb09c7a6b6f.glb",
+     "bytes": 109672,
+     "tris": 2334,
+     "kind": "anim",
+     "clips": [
+      "walk_slow"
+     ]
+    },
+    {
+     "uri": "parts/0f5176d9a1bbc118.glb",
+     "bytes": 98368,
+     "tris": 2046,
+     "kind": "anim",
+     "clips": [
+      "walk_slow"
+     ]
+    },
+    {
+     "uri": "parts/99ea79bf47976ec7.glb",
+     "bytes": 118452,
+     "tris": 2334,
+     "kind": "anim",
+     "clips": [
+      "walk_slow"
+     ]
+    }
+   ],
+   "walk": {
+    "uri": "parts/6a61378aa1410991.glb",
+    "bytes": 27804,
+    "tris": 8185
+   },
+   "lightmaps": [
+    {
+     "id": "lm_g_arrival",
+     "uri": "tex/4fbb750251db46c6.ktx2",
+     "bytes": 4481352,
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 2048,
+     "height": 2048,
+     "uv": 1,
+     "texel_m": 0.12593530441645323
+    }
+   ],
+   "probes": [
+    {
+     "id": "probe_g_arrival_0",
+     "space": "g_arrival",
+     "center": [
+      49,
+      58,
+      2.5
+     ],
+     "box_min": [
+      40,
+      42,
+      0
+     ],
+     "box_max": [
+      58,
+      80,
+      16
+     ],
+     "cubemap": "tex/78142fecc283a5c9.ktx2",
+     "projection": "equirect",
+     "bytes": 633020,
+     "intensity": 1,
+     "mean": [
+      0.04043719545006752,
+      0.012643023394048214,
+      0.00209288252517581
+     ]
+    },
+    {
+     "id": "probe_g_arrival_1",
+     "space": "g_arrival",
+     "center": [
+      66,
+      64,
+      2.5
+     ],
+     "box_min": [
+      58,
+      42,
+      0
+     ],
+     "box_max": [
+      80,
+      80,
+      16
+     ],
+     "cubemap": "tex/8d6c52cc13ad62a6.ktx2",
+     "projection": "equirect",
+     "bytes": 644978,
+     "intensity": 1,
+     "mean": [
+      0.062077563256025314,
+      0.03103928454220295,
+      0.01509309746325016
+     ]
+    },
+    {
+     "id": "probe_g_arrival_2",
+     "space": "g_arrival",
+     "center": [
+      88,
+      52,
+      2.5
+     ],
+     "box_min": [
+      80,
+      42,
+      0
+     ],
+     "box_max": [
+      100,
+      80,
+      16
+     ],
+     "cubemap": "tex/f895cc3b9fbe9b1f.ktx2",
+     "projection": "equirect",
+     "bytes": 644567,
+     "intensity": 1,
+     "mean": [
+      0.06557434797286987,
+      0.026775207370519638,
+      0.003919136244803667
+     ]
+    }
+   ],
+   "lights": [
+    {
+     "name": "L_hero_lava_window_0",
+     "type": "point",
+     "pos": [
+      61,
+      79,
+      6.107
+     ],
+     "dir": [
+      0,
+      -1,
+      0
+     ],
+     "color": [
+      1,
+      0.4497,
+      0
+     ],
+     "intensity": 321.5805,
+     "distance": 400.99,
+     "spot_deg": null
+    }
+   ],
+   "fx": [
+    {
+     "name": "fx_steam.0",
+     "kind": "steam",
+     "pos": [
+      46,
+      77,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.1",
+     "kind": "steam",
+     "pos": [
+      49.392,
+      74.88,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.2",
+     "kind": "steam",
+     "pos": [
+      52.784,
+      72.76,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.3",
+     "kind": "steam",
+     "pos": [
+      56.053,
+      70.461,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.4",
+     "kind": "steam",
+     "pos": [
+      59.253,
+      68.061,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.5",
+     "kind": "steam",
+     "pos": [
+      62.4,
+      65.6,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.6",
+     "kind": "steam",
+     "pos": [
+      65.229,
+      62.772,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.7",
+     "kind": "steam",
+     "pos": [
+      67.614,
+      59.58,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.8",
+     "kind": "steam",
+     "pos": [
+      69.833,
+      56.252,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.9",
+     "kind": "steam",
+     "pos": [
+      70.725,
+      52.374,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_steam.10",
+     "kind": "steam",
+     "pos": [
+      71.51,
+      48.452,
+      0
+     ],
+     "params": {
+      "rate": 0.6,
+      "height": 1.2,
+      "note": "low steam over the stream only"
+     }
+    },
+    {
+     "name": "fx_spill",
+     "kind": "spray",
+     "pos": [
+      46.2,
+      78.4,
+      0.6
+     ],
+     "params": {
+      "rate": 1
+     }
+    },
+    {
+     "name": "fx_window_mist",
+     "kind": "mist",
+     "pos": [
+      61,
+      78.5,
+      0.4
+     ],
+     "params": {
+      "extent": [
+       34,
+       1.6,
+       1.2
+      ],
+      "rate": 0.4
+     }
+    },
+    {
+     "name": "fx_chozubachi",
+     "kind": "drips",
+     "pos": [
+      74,
+      52,
+      0.75
+     ],
+     "params": {}
+    },
+    {
+     "name": "fx_drain",
+     "kind": "steam",
+     "pos": [
+      72.05,
+      45.4,
+      -0.2
+     ],
+     "params": {
+      "rate": 0.8
+     }
+    }
+   ],
+   "placements": []
+  }
+ ],
+ "water": [
+  {
+   "id": "w_spring",
+   "kind": "still",
+   "zone": "summit",
+   "z": 121.45,
+   "bed_z": 120.25,
+   "bounds": [
+    60,
+    90,
+    72,
+    102
+   ],
+   "planar": false,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_caldera",
+   "kind": "still",
+   "zone": "summit",
+   "z": 119.95,
+   "bed_z": 118.75,
+   "bounds": [
+    84,
+    68,
+    138,
+    100
+   ],
+   "planar": true,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_glacier",
+   "kind": "still",
+   "zone": "b1",
+   "z": -20.06,
+   "bed_z": -21.26,
+   "bounds": [
+    174,
+    76,
+    190,
+    92
+   ],
+   "planar": true,
+   "mist": 0.35,
+   "absorption": [
+    0.9,
+    0.25,
+    0.18
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_river",
+   "kind": "flow",
+   "zone": "b2",
+   "z": -42.5,
+   "bed_z": -44.6,
+   "bounds": [
+    26.39,
+    72.19,
+    200.43,
+    98.98
+   ],
+   "planar": true,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0.35
+  },
+  {
+   "id": "w_falls_pool",
+   "kind": "still",
+   "zone": "b3",
+   "z": -60.05,
+   "bed_z": -61.25,
+   "bounds": [
+    14,
+    46,
+    39.5,
+    75.8
+   ],
+   "planar": false,
+   "mist": 0.35,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_lazy",
+   "kind": "flow",
+   "zone": "b3",
+   "z": -67.475,
+   "bed_z": -68.4,
+   "bounds": [
+    87.5,
+    25.5,
+    140.47,
+    58.5
+   ],
+   "planar": false,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0.35
+  },
+  {
+   "id": "w_geyser",
+   "kind": "still",
+   "zone": "b3",
+   "z": -67.55,
+   "bed_z": -68.75,
+   "bounds": [
+    106,
+    38,
+    122,
+    46
+   ],
+   "planar": false,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_splash",
+   "kind": "still",
+   "zone": "b3",
+   "z": -67.6,
+   "bed_z": -68.8,
+   "bounds": [
+    149.5,
+    40.5,
+    158.5,
+    49.5
+   ],
+   "planar": false,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_sea",
+   "kind": "sea",
+   "zone": "b3",
+   "z": -70,
+   "bed_z": -74,
+   "bounds": [
+    170,
+    16,
+    200,
+    60
+   ],
+   "planar": true,
+   "mist": 1,
+   "absorption": [
+    0.75,
+    0.16,
+    0.12
+   ],
+   "flow": 0
+  },
+  {
+   "id": "w_b1_corridors",
+   "kind": "still",
+   "zone": "p_b1_cor_mirror",
+   "z": -20.05,
+   "bed_z": -20.18,
+   "bounds": [
+    64.84,
+    70.94,
+    92.65,
+    93.58
+   ],
+   "planar": true,
+   "mist": 0,
+   "absorption": [
+    0.42,
+    0.1,
+    0.12
+   ],
+   "flow": 0,
+   "scatter": [
+    0.00066,
+    0.00328,
+    0.00306
+   ]
+  },
+  {
+   "id": "w_mirror",
+   "kind": "still",
+   "zone": "p_b1_mirror",
+   "z": -20.05,
+   "bed_z": -21.4,
+   "bounds": [
+    100,
+    80,
+    124,
+    104
+   ],
+   "planar": true,
+   "mist": 0,
+   "absorption": [
+    1.6,
+    1.1,
+    0.9
+   ],
+   "flow": 0,
+   "f0": 0.12,
+   "normal_strength": 0.025,
+   "reflect_gain": 1.25,
+   "scatter": [
+    0.00208,
+    0.01041,
+    0.00972
+   ]
+  },
+  {
+   "id": "w_blossom_basin",
+   "kind": "still",
+   "zone": "p_g_arrival",
+   "z": 0.3,
+   "bed_z": -0.9,
+   "bounds": [
+    74.1,
+    43.1,
+    78.5,
+    47.5
+   ],
+   "planar": false,
+   "mist": 0,
+   "absorption": [
+    0.45,
+    0.12,
+    0.08
+   ],
+   "flow": 0.35,
+   "scatter": [
+    0.00351,
+    0.01753,
+    0.01636
+   ]
+  },
+  {
+   "id": "w_hall_stream",
+   "kind": "flow",
+   "zone": "p_g_arrival",
+   "z": -0.395,
+   "bed_z": -1.595,
+   "bounds": [
+    45.27,
+    45.73,
+    73.42,
+    78.17
+   ],
+   "planar": false,
+   "mist": 0,
+   "absorption": [
+    0.45,
+    0.12,
+    0.08
+   ],
+   "flow": 0.35,
+   "scatter": [
+    0.00351,
+    0.01753,
+    0.01636
+   ]
+  }
+ ],
+ "places": "data/places.json",
+ "spaces": "data/9432ef1bcc752f7c.json",
+ "budget": {
+  "drawCalls": 150,
+  "triangles": 500000,
+  "textureMB": 250
+ },
+ "places_blender": [
+  "b1_cor_mirror",
+  "b1_mirror",
+  "g_arrival"
+ ]
+}

@@ -1,0 +1,663 @@
+{
+ "layout": "/home/agent-tom/Desktop/volcanospa/3d/layout.json",
+ "warnings": [
+  "bridge p_b3_lobby_lift: no river nearby",
+  "portal p_suite_1ab: 3.7 m from the nearest wall of suite_1a",
+  "portal p_suite_1ab: 3.2 m from the nearest wall of suite_1b",
+  "portal p_suite_1bc: 3.7 m from the nearest wall of suite_1b",
+  "portal p_suite_1bc: 3.2 m from the nearest wall of suite_1c",
+  "portal p_suite_2ab: 3.7 m from the nearest wall of suite_2a",
+  "portal p_suite_2ab: 3.2 m from the nearest wall of suite_2b",
+  "portal p_suite_2bc: 3.7 m from the nearest wall of suite_2b",
+  "portal p_suite_2bc: 3.2 m from the nearest wall of suite_2c",
+  "portal p_suite_3ab: 3.7 m from the nearest wall of suite_3a",
+  "portal p_suite_3ab: 3.2 m from the nearest wall of suite_3b",
+  "portal p_suite_3bc: 3.7 m from the nearest wall of suite_3b",
+  "portal p_suite_3bc: 3.2 m from the nearest wall of suite_3c",
+  "portal p_suite_4ab: 3.7 m from the nearest wall of suite_4a",
+  "portal p_suite_4ab: 3.2 m from the nearest wall of suite_4b",
+  "portal p_suite_4bc: 3.7 m from the nearest wall of suite_4b",
+  "portal p_suite_4bc: 3.2 m from the nearest wall of suite_4c",
+  "falls_stair_1: end at (10.5,74.0) z -55.00 is -4.5 m from the floor of b3_falls",
+  "falls_gallery: end at (10.5,74.0) z -55.00 is -4.5 m from the floor of b3_falls",
+  "spring_steps: end at (77.0,101.7) z 121.50 is -141.5 m from the floor of b1_grotto",
+  "cliff_stair_0: end at (140.0,109.2) z 10.00 is -10 m from the floor of g_north_ledge",
+  "cliff_stair_1: end at (140.0,109.2) z 26.00 is -26 m from the floor of g_north_ledge",
+  "cliff_stair_1: end at (140.0,109.2) z 10.00 is -10 m from the floor of g_north_ledge",
+  "cliff_stair_2: end at (140.0,109.2) z 43.00 is -43 m from the floor of g_north_ledge",
+  "cliff_stair_2: end at (140.0,109.2) z 26.00 is -26 m from the floor of g_north_ledge",
+  "cliff_stair_3: end at (140.0,109.2) z 60.00 is -60 m from the floor of g_north_ledge",
+  "cliff_stair_3: end at (140.0,109.2) z 43.00 is -43 m from the floor of g_north_ledge",
+  "cliff_stair_4: end at (140.0,109.2) z 60.00 is -60 m from the floor of g_north_ledge",
+  "beach_steps: end at (163.5,35.5) z -68.00 is 1 m from the floor of b3_shore",
+  "north_walk_stair: end at (66.0,66.0) z -61.50 is -5.5 m from the floor of b3_cavern",
+  "portal p_terrace_cascade: floors differ by -1.00 m (g_terrace 0 / g_cascade -1) with no stair",
+  "portal p_b2_falls_balcony: floors differ by -19.50 m (b2_falls_head -40 / b3_falls_east -59.5) with no stair",
+  "portal p_b3_falls_rim: floors differ by -0.50 m (b3_falls -59.5 / b3_rimstone -60) with no stair",
+  "portal p_b3_walk_rim: floors differ by 7.00 m (b3_walk_north -67 / b3_rimstone -60) with no stair",
+  "portal p_b3_rim_lazy: floors differ by -7.00 m (b3_rimstone -60 / b3_lazy -67) with no stair",
+  "portal p_b3_falls_arch: floors differ by -7.50 m (b3_falls -59.5 / b3_cavern -67) with no stair",
+  "portal p_b3_shore_wave: floors differ by -4.00 m (b3_shore -67 / b3_wave -71) with no stair",
+  "portal p_s_rim_spring: floors differ by 1.50 m (s_rim 120 / s_spring 121.5) with no stair",
+  "portal p_s_rim_moon: floors differ by 0.50 m (s_rim 120 / s_moon 120.5) with no stair"
+ ],
+ "excluded": [
+  "b1_cor_mirror",
+  "b1_mirror",
+  "g_arrival"
+ ],
+ "doors_spiral_stair": [
+  {
+   "space": "g_arrival",
+   "deg": -90,
+   "z": 0
+  },
+  {
+   "space": "b1_lobby",
+   "deg": -593.6,
+   "z": -20
+  },
+  {
+   "space": "b2_core",
+   "deg": -1094.2,
+   "z": -40
+  },
+  {
+   "space": "b3_lobby",
+   "deg": -1780.8,
+   "z": -67
+  },
+  {
+   "space": "b4_lobby",
+   "deg": -2556,
+   "z": -100
+  },
+  {
+   "space": "g_arrival",
+   "deg": -90,
+   "z": 0,
+   "portal": "p_g_arrival_spiral_stair"
+  },
+  {
+   "space": "b1_lobby",
+   "deg": 141.8,
+   "z": -20,
+   "portal": "p_b1_lobby_spiral_stair"
+  },
+  {
+   "space": "b2_core",
+   "deg": 1.1,
+   "z": -40,
+   "portal": "p_b2_core_spiral_stair"
+  },
+  {
+   "space": "b3_lobby",
+   "deg": 34.5,
+   "z": -67,
+   "portal": "p_b3_lobby_spiral_stair"
+  },
+  {
+   "space": "b4_lobby",
+   "deg": -36,
+   "z": -100,
+   "portal": "p_b4_lobby_spiral_stair"
+  }
+ ],
+ "doors_lava_stair": [
+  {
+   "space": "b1_slide_top",
+   "deg": 90,
+   "z": -20
+  },
+  {
+   "space": "b2_lava_link",
+   "deg": 479.4,
+   "z": -40
+  },
+  {
+   "space": "b3_slide_foot",
+   "deg": 977.6,
+   "z": -67
+  },
+  {
+   "space": "b1_slide_top",
+   "deg": 90,
+   "z": -20,
+   "portal": "p_b1_slide_top_lava_stair"
+  },
+  {
+   "space": "b2_lava_link",
+   "deg": 107.4,
+   "z": -40,
+   "portal": "p_b2_lava_link_lava_stair"
+  },
+  {
+   "space": "b3_slide_foot",
+   "deg": -102.4,
+   "z": -67,
+   "portal": "p_b3_slide_foot_lava_stair"
+  }
+ ],
+ "excluded_water": [
+  "w_mirror"
+ ],
+ "endpoints": [
+  {
+   "conn": "spiral_stair",
+   "at": [
+    90,
+    64.4
+   ],
+   "z": 0,
+   "space": "g_arrival",
+   "dz": 0
+  },
+  {
+   "conn": "spiral_stair",
+   "at": [
+    94.53,
+    66.71
+   ],
+   "z": -100,
+   "space": "b4_lobby",
+   "dz": 0
+  },
+  {
+   "conn": "mist_steps",
+   "at": [
+    49,
+    79
+   ],
+   "z": -20,
+   "space": "b1_cor_west",
+   "dz": 0
+  },
+  {
+   "conn": "mist_steps",
+   "at": [
+    58.2,
+    64.69
+   ],
+   "z": -40,
+   "space": "b2_core",
+   "dz": 0
+  },
+  {
+   "conn": "falls_stair_1",
+   "at": [
+    47.5,
+    66
+   ],
+   "z": -40,
+   "space": "b2_core",
+   "dz": 0
+  },
+  {
+   "conn": "falls_stair_1",
+   "at": [
+    10.5,
+    74
+   ],
+   "z": -55,
+   "space": "b3_falls",
+   "dz": -4.5
+  },
+  {
+   "conn": "falls_gallery",
+   "at": [
+    10.5,
+    74
+   ],
+   "z": -55,
+   "space": "b3_falls",
+   "dz": -4.5
+  },
+  {
+   "conn": "falls_gallery",
+   "at": [
+    43,
+    78.5
+   ],
+   "z": -55,
+   "space": "b3_falls_gallery",
+   "dz": 0
+  },
+  {
+   "conn": "falls_stair_2",
+   "at": [
+    43,
+    78.5
+   ],
+   "z": -55,
+   "space": "b3_falls_gallery",
+   "dz": 0
+  },
+  {
+   "conn": "falls_stair_2",
+   "at": [
+    41.5,
+    62
+   ],
+   "z": -59.5,
+   "space": "b3_falls",
+   "dz": 0
+  },
+  {
+   "conn": "rimstone_stair",
+   "at": [
+    44.5,
+    66
+   ],
+   "z": -59.5,
+   "space": "b3_falls",
+   "dz": 0
+  },
+  {
+   "conn": "rimstone_stair",
+   "at": [
+    84,
+    32
+   ],
+   "z": -67,
+   "space": "b3_cavern",
+   "dz": 0
+  },
+  {
+   "conn": "lava_stair",
+   "at": [
+    150,
+    57.2
+   ],
+   "z": -20,
+   "space": "b1_slide_top",
+   "dz": 0
+  },
+  {
+   "conn": "lava_stair",
+   "at": [
+    148.46,
+    42.97
+   ],
+   "z": -67,
+   "space": "b3_cavern",
+   "dz": 0
+  },
+  {
+   "conn": "terrace_path",
+   "at": [
+    46,
+    76
+   ],
+   "z": 120,
+   "space": "s_rim_west",
+   "dz": 0
+  },
+  {
+   "conn": "terrace_path",
+   "at": [
+    16,
+    66
+   ],
+   "z": 0,
+   "space": "g_gate",
+   "dz": 0
+  },
+  {
+   "conn": "spring_steps",
+   "at": [
+    77,
+    101.7
+   ],
+   "z": 121.5,
+   "space": "b1_grotto",
+   "dz": -141.5
+  },
+  {
+   "conn": "spring_steps",
+   "at": [
+    81.5,
+    101.7
+   ],
+   "z": 120,
+   "space": "s_rim",
+   "dz": 0
+  },
+  {
+   "conn": "moon_steps",
+   "at": [
+    147.6,
+    100.5
+   ],
+   "z": 120.5,
+   "space": "s_moon",
+   "dz": 0
+  },
+  {
+   "conn": "moon_steps",
+   "at": [
+    147.6,
+    104
+   ],
+   "z": 120,
+   "space": "s_rim",
+   "dz": 0
+  },
+  {
+   "conn": "cliff_stair_0",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 10,
+   "space": "g_north_ledge",
+   "dz": -10
+  },
+  {
+   "conn": "cliff_stair_0",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 0,
+   "space": "g_north_ledge",
+   "dz": 0
+  },
+  {
+   "conn": "cliff_stair_1",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 26,
+   "space": "g_north_ledge",
+   "dz": -26
+  },
+  {
+   "conn": "cliff_stair_1",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 10,
+   "space": "g_north_ledge",
+   "dz": -10
+  },
+  {
+   "conn": "cliff_stair_2",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 43,
+   "space": "g_north_ledge",
+   "dz": -43
+  },
+  {
+   "conn": "cliff_stair_2",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 26,
+   "space": "g_north_ledge",
+   "dz": -26
+  },
+  {
+   "conn": "cliff_stair_3",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 60,
+   "space": "g_north_ledge",
+   "dz": -60
+  },
+  {
+   "conn": "cliff_stair_3",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 43,
+   "space": "g_north_ledge",
+   "dz": -43
+  },
+  {
+   "conn": "cliff_stair_4",
+   "at": [
+    140,
+    107
+   ],
+   "z": 120,
+   "space": "s_rim",
+   "dz": 0
+  },
+  {
+   "conn": "cliff_stair_4",
+   "at": [
+    140,
+    109.15
+   ],
+   "z": 60,
+   "space": "g_north_ledge",
+   "dz": -60
+  },
+  {
+   "conn": "beach_steps",
+   "at": [
+    156.5,
+    35.5
+   ],
+   "z": -67,
+   "space": "b3_cavern",
+   "dz": 0
+  },
+  {
+   "conn": "beach_steps",
+   "at": [
+    163.5,
+    35.5
+   ],
+   "z": -68,
+   "space": "b3_shore",
+   "dz": 1
+  },
+  {
+   "conn": "north_walk_stair",
+   "at": [
+    66,
+    66
+   ],
+   "z": -61.5,
+   "space": "b3_cavern",
+   "dz": -5.5
+  },
+  {
+   "conn": "north_walk_stair",
+   "at": [
+    78,
+    70
+   ],
+   "z": -67,
+   "space": "b3_cavern",
+   "dz": 0
+  }
+ ],
+ "portal_drops": [
+  {
+   "portal": "p_terrace_cascade",
+   "a": "g_terrace",
+   "b": "g_cascade",
+   "dz": -1
+  },
+  {
+   "portal": "p_b2_falls_balcony",
+   "a": "b2_falls_head",
+   "b": "b3_falls_east",
+   "dz": -19.5
+  },
+  {
+   "portal": "p_b3_falls_rim",
+   "a": "b3_falls",
+   "b": "b3_rimstone",
+   "dz": -0.5
+  },
+  {
+   "portal": "p_b3_walk_rim",
+   "a": "b3_walk_north",
+   "b": "b3_rimstone",
+   "dz": 7
+  },
+  {
+   "portal": "p_b3_rim_lazy",
+   "a": "b3_rimstone",
+   "b": "b3_lazy",
+   "dz": -7
+  },
+  {
+   "portal": "p_b3_falls_arch",
+   "a": "b3_falls",
+   "b": "b3_cavern",
+   "dz": -7.5
+  },
+  {
+   "portal": "p_b3_shore_wave",
+   "a": "b3_shore",
+   "b": "b3_wave",
+   "dz": -4
+  },
+  {
+   "portal": "p_s_rim_spring",
+   "a": "s_rim",
+   "b": "s_spring",
+   "dz": 1.5
+  },
+  {
+   "portal": "p_s_rim_moon",
+   "a": "s_rim",
+   "b": "s_moon",
+   "dz": 0.5
+  }
+ ],
+ "zones": [
+  {
+   "id": "ground",
+   "neighbors": [
+    "c_spiral_stair",
+    "c_terrace_path",
+    "cliff"
+   ],
+   "renderTris": 3720,
+   "walkTris": 3612,
+   "glbKB": 122.3
+  },
+  {
+   "id": "b1",
+   "neighbors": [
+    "c_spiral_stair",
+    "b2",
+    "c_lava_stair"
+   ],
+   "renderTris": 4858,
+   "walkTris": 3422,
+   "glbKB": 138.9
+  },
+  {
+   "id": "b2",
+   "neighbors": [
+    "c_spiral_stair",
+    "b1",
+    "b3",
+    "c_lava_stair"
+   ],
+   "renderTris": 12262,
+   "walkTris": 10324,
+   "glbKB": 344.8
+  },
+  {
+   "id": "b3",
+   "neighbors": [
+    "c_spiral_stair",
+    "b2",
+    "c_lava_stair"
+   ],
+   "renderTris": 19041,
+   "walkTris": 16101,
+   "glbKB": 537.3
+  },
+  {
+   "id": "b4",
+   "neighbors": [
+    "c_spiral_stair"
+   ],
+   "renderTris": 1752,
+   "walkTris": 1024,
+   "glbKB": 59.5
+  },
+  {
+   "id": "summit",
+   "neighbors": [
+    "c_terrace_path",
+    "c_cliff_stair_4"
+   ],
+   "renderTris": 1514,
+   "walkTris": 1438,
+   "glbKB": 54.9
+  },
+  {
+   "id": "cliff",
+   "neighbors": [
+    "ground",
+    "c_cliff_stair_4"
+   ],
+   "renderTris": 16392,
+   "walkTris": 15888,
+   "glbKB": 483.3
+  },
+  {
+   "id": "c_spiral_stair",
+   "neighbors": [
+    "ground",
+    "b1",
+    "b2",
+    "b3",
+    "b4"
+   ],
+   "renderTris": 11488,
+   "walkTris": 10996,
+   "glbKB": 417.9
+  },
+  {
+   "id": "c_lava_stair",
+   "neighbors": [
+    "b1",
+    "b2",
+    "b3"
+   ],
+   "renderTris": 6160,
+   "walkTris": 5980,
+   "glbKB": 231.7
+  },
+  {
+   "id": "c_terrace_path",
+   "neighbors": [
+    "ground",
+    "summit"
+   ],
+   "renderTris": 29560,
+   "walkTris": 29248,
+   "glbKB": 894.9
+  },
+  {
+   "id": "c_cliff_stair_4",
+   "neighbors": [
+    "cliff",
+    "summit"
+   ],
+   "renderTris": 17332,
+   "walkTris": 17140,
+   "glbKB": 510.4
+  }
+ ],
+ "seconds": 37.684
+}
