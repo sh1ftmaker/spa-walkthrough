@@ -2,7 +2,7 @@
  "contract": 1,
  "tier": "low",
  "source": "mixed",
- "generated": "2026-10-27T16:54:52.208Z",
+ "generated": "2026-10-27T17:05:55.491Z",
  "layout_sha": null,
  "coords": {
   "gltf": "three Y-up (X=x, Y=z, Z=-y)",
@@ -2454,14 +2454,14 @@
     "roughness": 0.226
    }
   },
-  "cave_rock": {
+  "cave_rock~ac1203e2": {
    "type": "kz",
    "id": "cave_rock",
    "params": {
     "tint": [
-     1,
-     1,
-     1
+     0.28,
+     0.3,
+     0.36
     ],
     "wetness": 0.8,
     "wear": 0,
@@ -3262,6 +3262,51 @@
     "transparent": false,
     "envMapIntensity": 1,
     "roughness": 0.226
+   }
+  },
+  "cave_rock": {
+   "type": "kz",
+   "id": "cave_rock",
+   "params": {
+    "tint": [
+     1,
+     1,
+     1
+    ],
+    "wetness": 0.8,
+    "wear": 0,
+    "roughness_offset": 0,
+    "scale": 4,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_tile_cave_rock_base",
+    "nh": "lib:pl_tile_cave_rock_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 4,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "hybrid",
+    "porosity": 0.6,
+    "worn": {
+     "color": [
+      0.05,
+      0.048,
+      0.045
+     ],
+     "rough": 0.4
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.8,
+    "roughness": 0.325
    }
   },
   "gold_leaf~d38b8992": {
@@ -8348,13 +8393,13 @@
    ],
    "parts": [
     {
-     "uri": "parts/e0274efb624705e4.glb",
-     "bytes": 2170436,
+     "uri": "parts/65f403a89b0617dc.glb",
+     "bytes": 2170364,
      "tris": 110592
     },
     {
-     "uri": "parts/aa88cb9ad78c181c.glb",
-     "bytes": 1040608,
+     "uri": "parts/0a0363ad8fbb8b56.glb",
+     "bytes": 1040300,
      "tris": 47756
     },
     {
@@ -8408,8 +8453,8 @@
    "lightmaps": [
     {
      "id": "lm_b1_mirror",
-     "uri": "tex/f02056b3451adbc0.ktx2",
-     "bytes": 4990705,
+     "uri": "tex/5e27c34c68382318.ktx2",
+     "bytes": 4987073,
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -8417,7 +8462,7 @@
      "width": 2048,
      "height": 2048,
      "uv": 1,
-     "texel_m": 0.056711089918433155
+     "texel_m": 0.056647914883187205
     }
    ],
    "probes": [
@@ -8439,14 +8484,14 @@
       111,
       -6.5
      ],
-     "cubemap": "tex/5a3edbf2fca5beaa.ktx2",
+     "cubemap": "tex/f61c51a3e561aae6.ktx2",
      "projection": "equirect",
-     "bytes": 627633,
+     "bytes": 609221,
      "intensity": 1,
      "mean": [
-      0.0576692670583725,
-      0.03908437117934227,
-      0.015180971473455429
+      0.024160124361515045,
+      0.013891325332224369,
+      0.005314494017511606
      ]
     },
     {
@@ -8467,14 +8512,14 @@
       111,
       -14
      ],
-     "cubemap": "tex/5e2fd1a3d026e91a.ktx2",
+     "cubemap": "tex/a0c1ca24f0b5fe0b.ktx2",
      "projection": "equirect",
-     "bytes": 631670,
+     "bytes": 640047,
      "intensity": 1,
      "mean": [
-      1.2233182191848755,
-      0.7093663215637207,
-      0.2342400848865509
+      0.10388977825641632,
+      0.04456532374024391,
+      0.011019623838365078
      ]
     },
     {
@@ -8495,14 +8540,14 @@
       85,
       -14
      ],
-     "cubemap": "tex/9b21af04b4a94f93.ktx2",
+     "cubemap": "tex/66cec83485c2ce1a.ktx2",
      "projection": "equirect",
-     "bytes": 628133,
+     "bytes": 640011,
      "intensity": 1,
      "mean": [
-      0.2768368422985077,
-      0.14162831008434296,
-      0.042546313256025314
+      0.08076964318752289,
+      0.03550724312663078,
+      0.010697269812226295
      ]
     }
    ],
@@ -8785,7 +8830,7 @@
     },
     {
      "name": "L_rim_lamp_00_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       115.6137,
@@ -8793,9 +8838,9 @@
       -19.822
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.0938,
+      -0.3167,
+      -0.9439
      ],
      "color": [
       1,
@@ -8804,11 +8849,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_01_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       118.4448,
@@ -8816,9 +8861,9 @@
       -19.8276
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.1677,
+      -0.2846,
+      -0.9439
      ],
      "color": [
       1,
@@ -8827,11 +8872,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_02_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       120.4941,
@@ -8839,9 +8884,9 @@
       -19.8011
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.221,
+      0.2455,
+      -0.9439
      ],
      "color": [
       1,
@@ -8850,11 +8895,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_03_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       117.9595,
@@ -8862,9 +8907,9 @@
       -19.822
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.1551,
+      0.2917,
+      -0.9439
      ],
      "color": [
       1,
@@ -8873,11 +8918,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_04_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       99.9243,
@@ -8885,9 +8930,9 @@
       -19.8276
      ],
      "dir": [
-      0,
-      0,
-      -1
+      0.3142,
+      -0.1021,
+      -0.9439
      ],
      "color": [
       1,
@@ -8896,11 +8941,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_05_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       100.5964,
@@ -8908,9 +8953,9 @@
       -19.8211
      ],
      "dir": [
-      0,
-      0,
-      -1
+      0.2969,
+      -0.1448,
+      -0.9439
      ],
      "color": [
       1,
@@ -8919,11 +8964,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_06_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       107.6561,
@@ -8931,9 +8976,9 @@
       -19.822
      ],
      "dir": [
-      0,
-      0,
-      -1
+      0.113,
+      0.3104,
+      -0.9439
      ],
      "color": [
       1,
@@ -8942,11 +8987,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_07_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       102.2733,
@@ -8954,9 +8999,9 @@
       -19.8276
      ],
      "dir": [
-      0,
-      0,
-      -1
+      0.2531,
+      0.2123,
+      -0.9439
      ],
      "color": [
       1,
@@ -8965,11 +9010,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_08_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       117.9634,
@@ -8977,9 +9022,9 @@
       -19.8011
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.1551,
+      0.2917,
+      -0.9439
      ],
      "color": [
       1,
@@ -8988,11 +9033,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_09_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       120.1564,
@@ -9000,9 +9045,9 @@
       -19.822
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.2123,
+      0.2531,
+      -0.9439
      ],
      "color": [
       1,
@@ -9011,11 +9056,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_10_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       122.0031,
@@ -9023,9 +9068,9 @@
       -19.8276
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.2603,
+      0.2034,
+      -0.9439
      ],
      "color": [
       1,
@@ -9034,11 +9079,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_11_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       123.3094,
@@ -9046,9 +9091,9 @@
       -19.8011
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.2943,
+      0.15,
+      -0.9439
      ],
      "color": [
       1,
@@ -9057,11 +9102,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_12_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       124.3184,
@@ -9069,9 +9114,9 @@
       -19.822
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.3205,
+      -0.0799,
+      -0.9439
      ],
      "color": [
       1,
@@ -9080,11 +9125,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_13_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       123.5088,
@@ -9092,9 +9137,9 @@
       -19.8276
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.2994,
+      -0.1396,
+      -0.9439
      ],
      "color": [
       1,
@@ -9103,11 +9148,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_14_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       122.2618,
@@ -9115,9 +9160,9 @@
       -19.8011
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.2673,
+      -0.1942,
+      -0.9439
      ],
      "color": [
       1,
@@ -9126,11 +9171,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_15_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       120.6608,
@@ -9138,9 +9183,9 @@
       -19.822
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.2253,
+      -0.2416,
+      -0.9439
      ],
      "color": [
       1,
@@ -9149,11 +9194,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_16_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       118.5425,
@@ -9161,9 +9206,9 @@
       -19.8276
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.1701,
+      -0.2832,
+      -0.9439
      ],
      "color": [
       1,
@@ -9172,11 +9217,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_17_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       115.9146,
@@ -9184,9 +9229,9 @@
       -19.8011
      ],
      "dir": [
-      0,
-      0,
-      -1
+      -0.1021,
+      -0.3142,
+      -0.9439
      ],
      "color": [
       1,
@@ -9195,11 +9240,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_18_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       109.5822,
@@ -9207,9 +9252,9 @@
       -19.822
      ],
      "dir": [
-      0,
-      0,
-      -1
+      0.063,
+      -0.3243,
+      -0.9439
      ],
      "color": [
       1,
@@ -9218,11 +9263,11 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_rim_lamp_19_0",
-     "type": "point",
+     "type": "spot",
      "baked": true,
      "pos": [
       105.0878,
@@ -9230,9 +9275,9 @@
       -19.8276
      ],
      "dir": [
-      0,
-      0,
-      -1
+      0.1799,
+      -0.2771,
+      -0.9439
      ],
      "color": [
       1,
@@ -9241,7 +9286,7 @@
      ],
      "intensity": 7.162,
      "distance": 59.84,
-     "spot_deg": null
+     "spot_deg": 149.99999734394112
     },
     {
      "name": "L_shoji_glow_0",
