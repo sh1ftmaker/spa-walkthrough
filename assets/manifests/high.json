@@ -2,7 +2,7 @@
  "contract": 1,
  "tier": "high",
  "source": "mixed",
- "generated": "2026-10-27T16:44:13.851Z",
+ "generated": "2026-10-27T16:54:52.277Z",
  "layout_sha": null,
  "coords": {
   "gltf": "three Y-up (X=x, Y=z, Z=-y)",
@@ -9145,13 +9145,13 @@
    ],
    "parts": [
     {
-     "uri": "parts/4ce49380948893be.glb",
-     "bytes": 2515720,
+     "uri": "parts/b5e1ed503514113d.glb",
+     "bytes": 2515752,
      "tris": 119504
     },
     {
-     "uri": "parts/643136d438381bc9.glb",
-     "bytes": 853560,
+     "uri": "parts/084d0991755bfe42.glb",
+     "bytes": 853392,
      "tris": 38844
     },
     {
@@ -9205,19 +9205,19 @@
    "lightmaps": [
     {
      "id": "lm_b1_mirror",
-     "uri": "tex/02b53e970c713c24.ktx2",
-     "bytes": 4840525,
+     "uri": "tex/6868d5b1e69ed08d.ktx2",
+     "bytes": 4853385,
      "encoding": "hdr",
      "intensity": 3.141592653589793,
      "width": 2048,
      "height": 2048,
      "uv": 1,
-     "texel_m": 0.04773009060693157
+     "texel_m": 0.0476783882011088
     },
     {
      "id": "lm_b1_mirror_upper",
-     "uri": "tex/ffa74b74fb8ecb04.ktx2",
-     "bytes": 1243790,
+     "uri": "tex/c301783d649d266e.ktx2",
+     "bytes": 1220031,
      "encoding": "hdr",
      "intensity": 3.141592653589793,
      "width": 1024,
@@ -9245,14 +9245,14 @@
       111,
       -6.5
      ],
-     "cubemap": "tex/5c6dfa0a89d17593.ktx2",
+     "cubemap": "tex/75611b0482da3978.ktx2",
      "projection": "equirect",
-     "bytes": 632259,
+     "bytes": 625870,
      "intensity": 1,
      "mean": [
-      0.022745560854673386,
-      0.014019777067005634,
-      0.004994208458811045
+      0.059810854494571686,
+      0.03970298171043396,
+      0.015166925266385078
      ]
     },
     {
@@ -9273,14 +9273,14 @@
       111,
       -14
      ],
-     "cubemap": "tex/aea794c261cf7536.ktx2",
+     "cubemap": "tex/ba0078df48be85f2.ktx2",
      "projection": "equirect",
-     "bytes": 638590,
+     "bytes": 631653,
      "intensity": 1,
      "mean": [
-      0.3668774366378784,
-      0.20860683917999268,
-      0.06818743050098419
+      1.227178931236267,
+      0.7095288038253784,
+      0.23403212428092957
      ]
     },
     {
@@ -9301,14 +9301,14 @@
       85,
       -14
      ],
-     "cubemap": "tex/c57a006fd462f948.ktx2",
+     "cubemap": "tex/e5cfe63c6fe9ef57.ktx2",
      "projection": "equirect",
-     "bytes": 637170,
+     "bytes": 627490,
      "intensity": 1,
      "mean": [
-      0.11988862603902817,
-      0.05798665061593056,
-      0.017271120101213455
+      0.28860944509506226,
+      0.1450101137161255,
+      0.043125029653310776
      ]
     }
    ],
@@ -9608,8 +9608,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9631,8 +9631,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9654,8 +9654,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9677,8 +9677,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9700,8 +9700,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9723,8 +9723,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9746,8 +9746,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9769,8 +9769,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9792,8 +9792,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9815,8 +9815,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9838,8 +9838,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9861,8 +9861,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9884,8 +9884,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9907,8 +9907,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9930,8 +9930,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9953,8 +9953,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9976,8 +9976,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -9999,8 +9999,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -10022,8 +10022,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {
@@ -10045,8 +10045,8 @@
       0.5912,
       0.1971
      ],
-     "intensity": 1.9894,
-     "distance": 31.54,
+     "intensity": 7.162,
+     "distance": 59.84,
      "spot_deg": null
     },
     {

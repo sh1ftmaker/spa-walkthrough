@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T16:43:36.425Z",
+ "generated": "2026-10-27T16:54:14.989Z",
  "places": {
   "b1_cor_mirror": {
    "package": "/home/agent-tom/Desktop/volcanospa/3d/bake/b1_cor_mirror/low/pkg",
@@ -13,9 +13,9 @@
   },
   "b1_mirror": {
    "package": "/home/agent-tom/Desktop/volcanospa/3d/bake/b1_mirror/low/pkg",
-   "generated": "2026-10-27T16:35:51.328Z",
+   "generated": "2026-10-27T16:53:12.255Z",
    "tris": 164820,
-   "bytes": 11740747,
+   "bytes": 11705521,
    "lightmaps": [
     "lm_b1_mirror 2048^2 rgbm 5.7 cm"
    ],
