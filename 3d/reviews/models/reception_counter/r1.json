@@ -1,0 +1,26 @@
+{
+ "asset": "reception_counter",
+ "round": 1,
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 4,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 3,
+  "variation": 3
+ },
+ "fixes": [
+  "Stone top: reads as slabs of flat grey-green with visible seams, no thickness variation or chiselled edge; concept has a dark glossy basalt slab with ~6-8 cm overhang and a bevel. Use basalt_dry with a 0.06-0.08 m overhang on front and ends, 0.02 m arris chamfer, and make it noticeably darker and wetter than the floor.",
+  "Timber front: flat vertical boards with no depth. Concept shows recessed panels between posts with dark iron corner straps. Recess panels 0.03 m behind 0.08 m stiles/rails, add 4 iron strap brackets at posts (bronze/iron), and a plinth rail.",
+  "Plinth light: reads as a thin white-cream strip, hard and uniform; concept is a warm amber glow pooled on the floor under a 0.1 m shadow gap. Set emission to ~2200K amber, lower strength, and inset it 0.05 m behind a toe-kick so the strip itself is not visible.",
+  "LOD2/LOD3 at switch distance: the black top slab swallows the silhouette and the timber reads as a flat brown rectangle. Keep it, but bake the plinth glow into the LOD2/3 texture and add 2 post-width steps in the front so it does not read as a box (LOD3 60 tris has room).",
+  "Props: towel stacks are cream blocks with no fold lines. Add 3-4 folded layers with a 0.01 m offset each and a visible fold edge; vary the heights per seed. The kanji plaque on the front is oversized (about 0.5 m) relative to the 7 m counter; the concept has none, so shrink to 0.3 m or make optional.",
+  "Seeds differ almost only in prop placement and board count; vary counter length (3-8 m is allowed), add a return/L-corner end on one seed, and swap top between stone and hinoki as the brief allows."
+ ],
+ "library_issues": [
+  "basalt_dry top looks green-grey and matte, not the glossy black basalt of the concept sheet.",
+  "hinoki on front reads saturated orange with strong grain stripes; concept is deeper chestnut-brown."
+ ],
+ "verdict": "revise",
+ "summary": "Correct object and colour story, the 7x1.1 proportion matches the sheet, but it is a plain board box. Top and front lack the thick glossy stone, recessed panels and iron straps of the concept; plinth light is a hard strip; low LODs are a brown slab."
+}

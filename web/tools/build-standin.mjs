@@ -2,7 +2,10 @@
 // Builds the graybox stand-in scene from 3d/layout.json into the asset contract:
 //   public/assets/manifests/{low,high}.json, parts/<sha16>.glb, tex/<sha16>.ktx2, data/*.json
 // It is a test fixture for the runtime and the contract, not art.
-//   node tools/build-standin.mjs [--layout ../3d/layout.json] [--out public/assets]
+//   node tools/build-standin.mjs [--layout ../3d/layout.json] [--out public/assets] [--exclude-spaces a,b]
+// --exclude-spaces: spaces replaced by Blender place models (tools/build-mixed.mjs). Their floors, ceilings, walls,
+// lanterns, probes and walk mesh are left out, their footprints are cut out of overlapping slabs and water at the
+// same level (except --keep-slabs spaces), and neighbouring walls still treat them as rooms (so portals stay open).
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -17,7 +20,8 @@ const LAYOUT = resolve(args.layout ?? join(WEB, '../3d/layout.json'));
 const OUT = resolve(args.out ?? join(WEB, 'public/assets'));
 const t0 = Date.now();
 const L = JSON.parse(readFileSync(LAYOUT, 'utf8'));
-const report = { layout: LAYOUT, warnings: [] };
+const EXCLUDE = new Set(String(args['exclude-spaces'] ?? '').split(',').map((x) => x.trim()).filter(Boolean));
+const report = { layout: LAYOUT, warnings: [], excluded: [...EXCLUDE] };
 const warn = (m) => { report.warnings.push(m); console.warn('  warn:', m); };
 
 for (const d of ['parts', 'tex', 'data', 'manifests']) rmSync(join(OUT, d), { recursive: true, force: true });
@@ -26,6 +30,16 @@ mkdirSync(OUT, { recursive: true });
 const spaceById = new Map(L.spaces.map((s) => [s.id, s]));
 const connById = new Map(L.connections.map((c) => [c.id, c]));
 for (const s of L.spaces) s._ring = G.openRing(s.footprint);
+for (const id of EXCLUDE) if (!spaceById.has(id)) { console.error(`--exclude-spaces: unknown space ${id}`); process.exit(2); }
+// --keep-slabs a,b: stand-in spaces that keep their floor / ceiling where they overlap a replaced space (the place leaves
+// that stretch to the stand-in, e.g. the koi junction inside the Mirror corridor footprint)
+const KEEP = new Set(String(args['keep-slabs'] ?? '').split(',').map((x) => x.trim()).filter(Boolean));
+const excludedRings = (z, tol = 0.6) => {
+  const ex = L.spaces.filter((s) => EXCLUDE.has(s.id) && Math.abs(s.floor_z - z) <= tol).map((s) => [s._ring]);
+  const keep = L.spaces.filter((s) => KEEP.has(s.id) && Math.abs(s.floor_z - z) <= tol).map((s) => [s._ring]);
+  if (!ex.length || !keep.length) return ex;
+  try { return G.difference(G.union(...ex), ...keep); } catch (e) { warn(`--keep-slabs: ${e.message}`); return ex; }
+};
 
 // ---------------- zones ----------------
 const ZONE_NAMES = { ground: 'Ground', b1: 'B1 Thermal', b2: 'B2 River', b3: 'B3 Aqua Cavern', b4: 'B4 Magma', summit: 'Summit', cliff: 'Cliff suites' };
@@ -279,12 +293,18 @@ for (const w of L.water) {
     bed = w.bed_z ?? z - 1.2;
   } else continue;
   const level = w.level ?? null;
+  const cut = excludedRings(z, 1.5);
+  if (cut.length) {
+    try { poly = G.difference(poly, ...cut); } catch (e) { warn(`water ${w.id}: exclusion cut failed (${e.message})`); }
+    if (!poly.length) { report.excluded_water = [...(report.excluded_water ?? []), w.id]; continue; }
+  }
   waters.push({ id: w.id, kind: w.kind, z, bed, poly, level, src: w, bb: G.multiBBox(poly) });
 }
 
 // ---------------- slabs (floors / ceilings) ----------------
 const slabGroups = new Map();
 for (const s of L.spaces) {
+  if (EXCLUDE.has(s.id)) continue;
   const k = `${s._zone}|floor|${s.floor_z}`;
   if (!slabGroups.has(k)) slabGroups.set(k, { zone: s._zone, kind: 'floor', top: s.floor_z, bottom: s.floor_z - 0.3, polys: [], spaces: [] });
   slabGroups.get(k).polys.push([s._ring]); slabGroups.get(k).spaces.push(s);
@@ -312,8 +332,9 @@ for (const g of slabGroups.values()) {
     (w.cutFrom ??= []).push({ top: g.top, full, zone: g.zone });
   }
   let mp = full;
+  const xcuts = excludedRings(g.kind === 'floor' ? g.top : g.bottom, 0.6);
   try {
-    if (cuts.length || wcuts.length) mp = G.difference(full, ...cuts, ...wcuts);
+    if (cuts.length || wcuts.length || xcuts.length) mp = G.difference(full, ...cuts, ...wcuts, ...xcuts);
   } catch (e) {
     warn(`slab ${g.zone}/${g.kind}/${g.top}: clipping failed (${e.message}); kept uncut`);
   }
@@ -456,6 +477,7 @@ function floorAt(pt, zz, tol) {
 }
 const lanterns = [...stairLanterns];
 for (const s of L.spaces) {
+  if (EXCLUDE.has(s.id)) continue;
   const z = zone(s._zone);
   const r = s._ring, ccw = G.ringArea(r) > 0;
   const indoor = s.ceiling_z != null;
@@ -773,7 +795,7 @@ for (const tier of Object.keys(TIERS)) {
       uri = writeAddressed(OUT, 'tex', 'ktx2', await T.encodeLDR({ data: img, width: W, height: H }, 'linear'));
       encoding = 'rgbm';
     }
-    const probes = z.spaces.map((sid) => {
+    const probes = z.spaces.filter((sid) => !EXCLUDE.has(sid)).map((sid) => {
       const s = spaceById.get(sid), bb = G.bbox(s._ring), c = G.interiorPoint(s._ring);
       const top = s.ceiling_z ?? s.floor_z + 8;
       return { id: `probe_${sid}`, space: sid, center: [+c[0].toFixed(2), +c[1].toFixed(2), +(s.floor_z + 1.6).toFixed(2)], box_min: [bb.minx, bb.miny, s.floor_z - 0.3], box_max: [bb.maxx, bb.maxy, top], cubemap: null, intensity: s.ceiling_z == null ? 1.0 : 0.6 };

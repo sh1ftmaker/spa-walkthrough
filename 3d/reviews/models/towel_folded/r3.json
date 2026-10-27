@@ -1,0 +1,25 @@
+{
+  "asset": "towel_folded",
+  "round": 3,
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 2
+  },
+  "fixes": [
+    "stack pitch: 52 mm towels on a 70 mm pitch leave about 18 mm of air between layers, so the stack reads as floating plates. Target: pitch 54-56 mm (3-4 mm gap) or let each towel sag onto the one below, and set the stack to 4-5 towels at about 0.22-0.28 m.",
+    "towel outline: the superellipse (expo 8) with two rings per side gives hard chamfered corners, so the towels look like cardboard, not soft folded terry. Target: a rounded rectangle with a 40-50 mm corner radius, more rings or segments on the corners, and a soft 8 mm edge roll.",
+    "drape: the drape style is a closed white drum with a wooden lid, not a towel over a rim. Target: an open cloth sheet 0.4 m wide, hanging 0.12-0.15 m down both outside faces of the rim, with a visible loose hem and no closed top.",
+    "seed variation: the three seeds look nearly identical. Target: count changes 4 to 5 visibly, yaw +-0.15 rad (now +-0.08), offset +-0.02 m, and the fold crease moves across the towel width.",
+    "LOD3: three 8-segment slabs read as horizontal stripes at 10 m. Target: keep the tray and four slabs at LOD3 (about 55 tris, budget 60) so the stack still reads as towels."
+  ],
+  "library_issues": [
+    "terry or towelling cloth: the concept towels are fluffy terry. Linen's cross-hatch reads as paper or linen, so the cloth looks wrong even with good geometry. Library gap; add a terry or towelling material, then re-judge.",
+    "hinoki: the tray reads correctly as pale hinoki. No change needed."
+  ],
+  "verdict": "revise",
+  "summary": "This is the weakest of the three. The stack reads as floating plates rather than soft folded towels, because the 70 mm pitch leaves air gaps and the hard chamfered outline looks like cardboard. The drape style reads as a closed drum with a lid, not a towel over a tub rim. The roll is clean but generic. Triangle counts are within the CSV budgets (LOD0 676 of 700, LOD1 228 of 260, LOD2 108 of 120, LOD3 48 of 60). The sheet's budget flags (50, 35) are stale. The terry library gap is a real limit on the final read. Revise the pitch, outline, drape and variation first."
+}

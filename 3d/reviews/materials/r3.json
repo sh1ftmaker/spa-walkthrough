@@ -1,0 +1,500 @@
+{
+ "round": 3,
+ "reviewer": "indep-r3",
+ "materials": {
+  "basalt_wet": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture + procedural wet film/macro",
+   "changes": [
+    "Push albedo to near-black neutral (sRGB 25-40, drop the warm brown cast); the concept rock is black, made warm only by lantern light",
+    "Wet film must read as mirror sheen on ridges and run-off: raise film coverage to 60-70 % on walls, roughness 0.03-0.08 in streaks, and add vertical drip channels every 0.3-0.6 m",
+    "Add columnar or blocky joint lines every 0.4-0.8 m with sharp conchoidal facet edges; at 1.6 m the current plate reads as flat flaky slate"
+   ],
+   "notes": "Hex tiling works (no repeat seen in 10 x 10 m). Too brown and too matte against mat-basalt-wet. The __context render is stale (17:58, a pitted-sponge look) and was ignored."
+  },
+  "basalt_dry": {
+   "scores": {
+    "likeness": 2,
+    "richness": 3,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "Remove the pale calcite veins: they make it brown marble, not basalt. Keep only hairline dark fractures",
+    "Albedo lifted x2.2 is too light and warm. Target a dark grey of sRGB ~45-55 with slight vesicle pitting (2-8 mm) in the height map",
+    "Kill the teal speckle on unlit faces (fill reflection) or make it far smaller"
+   ],
+   "notes": "Reads as a marble countertop in the close-up."
+  },
+  "obsidian": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "procedural (gloss and fracture lines) over a small anti-tiled albedo",
+   "changes": [
+    "Remove the planar facet overlay. Each facet is a flat mirror that catches the cyan fill or a lantern as a solid polygon, so the 10 x 10 m view looks like a broken mosaic. Use continuous gloss with gentle conchoidal ripples (normal amplitude well under 5 deg)",
+    "Albedo near-black (sRGB 8-15) with a faint smoky-grey banding; roughness 0.02-0.06. Fractures as thin (2-5 mm) light-catching lines, not as cells",
+    "Pool-edge obsidian in the concept is wet, flagged slabs. Add a slab-joint variant (0.6-1.0 m) for floors"
+   ],
+   "notes": "Its likeness is lowest of the key materials. The concept is deep black glass that mirrors lanterns and glowworms."
+  },
+  "rimstone": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 3
+   },
+   "better_as": "anti-tiled texture plus geometry (rim lips are modelled, not textured)",
+   "changes": [
+    "Desaturate the salmon/orange to creamy white-ivory (sRGB ~225,215,195) with faint ochre only in low channels",
+    "Pattern reads as brain coral or marble. It needs scalloped micro-terraces (2-10 cm pools with raised rims) and drip-curtain flutes on vertical faces; feed the side set from a vertical flowstone plate",
+    "Wet gloss on the rims (roughness 0.1) and white mineral crust in the low areas"
+   ],
+   "notes": "Terrace lips and curtains have to come from geometry. The texture should only supply the crust."
+  },
+  "black_sand": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture + procedural glint",
+   "changes": [
+    "It is brown, not black: albedo sRGB 20-30 neutral",
+    "Add a sparse sub-pixel glint (stochastic specular dots, 1-3 per cm^2) for the volcanic-glass sparkle in mat-black-sand",
+    "Add a wet shoreline band (darker, roughness 0.1) driven by the shoreline mask, plus scattered 1-5 cm pebbles"
+   ],
+   "notes": "Currently reads as brown dirt."
+  },
+  "ash_clay": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 1,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "Fix the regular lattice of dark star pits across the wall (an obvious grid every ~0.5 m). Probably a hex-tap or plate artefact; reject that plate or randomise",
+    "Tsuchikabe needs visible straw fibres (1-3 cm) and trowel arcs at low contrast",
+    "Large-scale (2-4 m) tonal mottling and a darker skirting band near the floor"
+   ],
+   "notes": "The tiling failure is the worst in the library."
+  },
+  "paving": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture + procedural wet film",
+   "changes": [
+    "Arrival-floor concept is mirror-wet dark flagstone. Puddle film with roughness 0.03-0.08 covering 30-50 % in low areas, rest 0.25",
+    "Darker albedo (sRGB 30-45) and crisper joints: 1-2 cm darker grout and slightly bevelled slab edges that catch highlights",
+    "Slab size 0.5-1.2 m with per-slab tone variation of ±10 %"
+   ],
+   "notes": "Looks like matte grey concrete with blurry joints."
+  },
+  "cave_rock": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "anti-tiled triplanar texture",
+   "changes": [
+    "Too warm and light (brown-orange). Darken to near-black basalt and keep warm light from the rig only",
+    "Wet sheen on overhangs and drip tips; the glowworm ceiling needs a dark, slightly glossy base so cyan points reflect",
+    "README lists Poly Haven rock_face_04 but the manifest says pl_tile_cave_rock; check which one ships"
+   ],
+   "notes": "Form (pits, ledges) is the best of the rocks."
+  },
+  "stepping_stone": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture + procedural wet film",
+   "changes": [
+    "Mushy noise and brown-rust speckle. Use rounded water-worn dark basalt, sRGB 25-35, with smooth tops and rougher sides",
+    "Wet: mirror-wet top film (roughness 0.05) with a damp halo; a waterline darkening band at the edge",
+    "Scale is wrong for 0.5-0.8 m stones. Detail should be 5-20 mm, not the current 2 m mush"
+   ],
+   "notes": "This is a key material for the mist corridor. The concept stones are dark, glossy and slick."
+  },
+  "sinter": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "Reads as granite or marble. Add the botryoidal / cauliflower micro-relief (5-30 mm bumps) in the height map; the close-up is soft",
+    "Lower the orange saturation and keep iron staining in streaks that follow flow direction",
+    "Wetness on raised nodules"
+   ],
+   "notes": "The __context render is stale and showed an obvious repeat."
+  },
+  "hinoki": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture (plank shuffle)",
+   "changes": [
+    "It is fresh pink cedar. Aged hinoki is silvery-brown to dark honey: lower saturation, darken, and use wear as silvering on edges and upper surfaces",
+    "Add raised grain (normal 0.3-0.5 mm, rings 4-8 mm) and knots every 0.5-1.5 m; the normal map is nearly flat",
+    "Vary board widths (90-180 mm) and add end-grain gaps"
+   ],
+   "notes": "The dark_timber variant is barely darker. The concept wall timber is a much darker brown."
+  },
+  "lacquer_dark": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "Urushi is near-black (sRGB 10-20) with a deep red undertone only at worn edges. The current bright red mahogany grain must go almost entirely",
+    "Lacquer is smooth: remove the wavy wood normal and keep roughness 0.05-0.1 with soft orange-peel",
+    "Edge wear: red or brown showing through on corners via the wear mask"
+   ],
+   "notes": "The cyan rectangle on it is the rig's fill card, not the material."
+  },
+  "bamboo": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "Too fresh and lemon-yellow. Aged spout bamboo is gold-brown with darker nodes and grey weathering",
+    "Make the node ridges stronger and give each culm a tone shift (±15 %)"
+   ],
+   "notes": "Geometry and node spacing look right."
+  },
+  "tatami": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "Weave too fine and faint at 1.6 m. Rush rows at about 4 mm should read in the normal, with a slight sheen anisotropy along the rush",
+    "Warmer, more golden and slightly greener-yellow; add per-mat fading and foot-traffic darkening",
+    "Heri border: darker indigo or black with a woven pattern, not plain green"
+   ],
+   "notes": ""
+  },
+  "washi": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "The fibre inclusions are too dark and coarse; they read as stucco speckle. Use paler, longer (2-5 cm), thinner kozo fibres",
+    "Warmer ivory (less pink), very low normal"
+   ],
+   "notes": ""
+  },
+  "washi_backlit": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "texture + procedural transmission",
+   "changes": [
+    "Transmission is muddy brown. The concept shoji glow is bright amber-cream (around sRGB 255,190,110) with fibres as darker veins",
+    "Fibre density in thickness: thinner paper glows more. Drive emission/transmission from the thinness mask with 2-3x contrast",
+    "Kill the visible point hot-spot. Use a broad falloff (bulb behind diffuser) or the lightmap"
+   ],
+   "notes": "Phone note: bake as emissive, not as real transmission."
+  },
+  "noren": {
+   "scores": {
+    "likeness": 2,
+    "richness": 1,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "Flat, purplish slab. Deep indigo (sRGB 25,35,70) with uneven dye, a faded hem and a woven slub visible at 1 m",
+    "Add a white resist-dye emblem (mon) and a split-panel hem; that is what reads as noren",
+    "Use cloth geometry (folds) or a vertex shader sway; flat boxes kill it"
+   ],
+   "notes": ""
+  },
+  "rope": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "procedural helix (cheap) or texture on correct UVs",
+   "changes": [
+    "Reads as candy stripes. Needs a 3-strand twist: each strand bulges (normal) with fibre direction along the helix, plus a dark crevice between strands",
+    "Straw shimenawa: frayed fibre tufts, golden-straw colour, rougher"
+   ],
+   "notes": ""
+  },
+  "iron": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "No metal response: it reads as matte grey stone with scratch decals. Black oxide is metallic 1, roughness 0.35-0.5, dark base (sRGB 40-50)",
+    "Rust only in pits and drips (orange-brown, non-metal) via a cavity mask; currently scattered blobs",
+    "The plate grid in the base map is visible; remove the seams or make them deliberate rivet plates"
+   ],
+   "notes": ""
+  },
+  "bronze": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 2,
+    "phone": 3
+   },
+   "better_as": "anti-tiled texture",
+   "changes": [
+    "Reads as moss: too dark and fibrous. Warm brown bronze metal (metallic 1, roughness 0.3) with readable highlights on raised areas",
+    "Verdigris (pale blue-green, non-metal, rough) only in recesses and drips, driven by cavity",
+    "Repeat visible at 1 m tiling (stale context shows a lattice). Go to 2 m or add hex"
+   ],
+   "notes": ""
+  },
+  "glacier_ice": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 2,
+    "phone": 3
+   },
+   "better_as": "procedural (parallax depth) over anti-tiled texture",
+   "changes": [
+    "Opaque cyan marble wallpaper. It needs depth: parallax or interior-mapping layers of bubbles and fractures fading to deep blue (sRGB ~20,60,120) a few cm in",
+    "Lower the saturation of the surface; white frost only on edges and tops; glossy wet melt film",
+    "Repeat is obvious every 2 m on the wall; use 4-6 m or hex"
+   ],
+   "notes": "The close-up shows white snow, which does not match the wall."
+  },
+  "lava_glass": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 5,
+    "phone": 4
+   },
+   "better_as": "procedural",
+   "changes": [
+    "Add a slight smoky-amber tint and green-edge absorption so the thickness reads (10-20 cm glass)",
+    "Add faint smudges, condensation near the bottom and a thin mullion reflection; at the moment it is invisible"
+   ],
+   "notes": "Judged mostly on the glass. The backdrop behind it is the broken lava_flow."
+  },
+  "water_still": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "procedural runtime shader",
+   "changes": [
+    "No teal glow: it reads as dark green-brown. Add underlight emission or a lit pool bed so shallow water (0.1 m) reads bright teal (sRGB ~60,220,200) going to deep blue-black at 2 m",
+    "Show the bed through the water (refraction/transparency) and project caustics on it",
+    "At grazing 1.6 m views the Fresnel mirror of lanterns must dominate; ripple normals should be finer and slower"
+   ],
+   "notes": "This is the stream and the Obsidian Mirror pool. The mirror variant must reflect glowworm points crisply."
+  },
+  "water_river": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "procedural runtime shader (flow-mapped normals)",
+   "changes": [
+    "Opaque turquoise paint: add transparency and depth absorption like water_still",
+    "The foam is blotchy and pixelated in close-up (512 px mask). Foam only at rocks and drops, driven by flow/obstacle masks, with a procedural edge"
+   ],
+   "notes": ""
+  },
+  "water_sea": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 1,
+    "phone": 4
+   },
+   "better_as": "procedural runtime shader",
+   "changes": [
+    "Foam lattice repeats on an obvious 2.67 m grid in the 10 x 10 m view. Use hex/anti-tiling or procedural foam, and confine foam to the breaking zone",
+    "Deep teal-blue body with bright crest transmission; no foam on flat water"
+   ],
+   "notes": ""
+  },
+  "waterfall": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "procedural runtime shader (scrolling)",
+   "changes": [
+    "Grey streaky card. It needs a bright white aerated core, translucent teal-lit edges and a broken, wispy edge outline",
+    "The dark streaks read as dirt; replace them with lighter-and-darker white ribbons and add mist at the base"
+   ],
+   "notes": ""
+  },
+  "caustics_decal": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 3,
+    "phone": 5
+   },
+   "better_as": "procedural runtime (animated)",
+   "changes": [
+    "Lines are too thick and uniform, like a net. Make them thinner (2-4 mm) with bright nodes, and fade the decal edges (hard box edge visible)",
+    "Animate warp; tint warmer near lanterns"
+   ],
+   "notes": ""
+  },
+  "lava": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 4,
+    "phone": 4
+   },
+   "better_as": "anti-tiled texture + procedural emission masks",
+   "changes": [
+    "The seams clip to white. Grade the emission: yellow-orange core (2000-2500 K look) to red edges, about 2 stops lower",
+    "Add a dull red radiant glow on the crust near seams (heat halo) and cracked, plated crust; the rope swirl reads well"
+   ],
+   "notes": "Closest of the light materials."
+  },
+  "lava_flow": {
+   "scores": {
+    "likeness": 1,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "better_as": "procedural runtime (flowing emission over crust texture)",
+   "changes": [
+    "Molten areas render as cream/white, so the whole thing reads as cow print or coffee. Emission must stay saturated orange (lower intensity, colour graded before AgX)",
+    "Big black crust islands with glowing seams flowing downhill; the reference is mostly dark crust with orange rivers, not a molten field",
+    "Slow scrolling flow and crust drift; no static swirls"
+   ],
+   "notes": "The lava window is the arrival-hall hero. This is the worst miss in the library."
+  },
+  "neon_tube": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 5,
+    "phone": 5
+   },
+   "better_as": "procedural",
+   "changes": [
+    "Washed-out pale pink. Saturated magenta and cyan with a slightly dimmer core, a bright rim and a glass tube highlight",
+    "Add a halo or bloom card and a dark tube where the electrodes are; the cyan variant has the same problem"
+   ],
+   "notes": ""
+  },
+  "lantern_paper": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 5,
+    "phone": 5
+   },
+   "better_as": "texture (object UV)",
+   "changes": [
+    "Glow is pale peach and too even. Warm amber (sRGB ~255,170,80), hotter in the middle, darker at the caps",
+    "Vary the rib spacing and add paper creases and a few written characters"
+   ],
+   "notes": ""
+  },
+  "lantern_andon": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 5,
+    "phone": 5
+   },
+   "better_as": "texture (object UV)",
+   "changes": [
+    "Plain white boxes. Add a kumiko lattice (the concept shows 4-6 panes per side) with dark frames 15-20 mm",
+    "Amber glow with fibre texture and a bottom-to-top falloff"
+   ],
+   "notes": ""
+  }
+ },
+ "rig": "Better than before: the grey card reads grey, the scale corners are honest, and repeat/ and vs_concept are the most useful views. Misleading: (1) a cyan rectangular fill card shows up as solid cyan polygons on every glossy material (obsidian, lacquer, lava_glass, basalt); use a dark environment with small lantern and glowworm points like the concepts instead. (2) Emissives (lava_flow, lava seams, neon, washi_backlit) are desaturated to cream by AgX plus bloom. Show them with an exposure-matched view or a false-colour luminance strip. (3) 13 of the scale/__context shots are stale (17:58-18:01, older textures); the stone ones should not exist at all according to the script. Delete them. (4) Close-ups have strong DOF blur and hide micro detail; use f/8. (5) Water is shown from above; add a 1.6 m grazing view with lanterns behind so Fresnel and reflection are judged. Next round: one in-situ vignette per slice room (arrival floor + wall + lava window; corridor stones in water with andon; mirror pool) at 1.6 m under scene-like lighting.",
+ "priority": [
+  "basalt_wet",
+  "water_still",
+  "obsidian",
+  "lava_flow",
+  "stepping_stone"
+ ],
+ "priority_next": [
+  "paving",
+  "cave_rock",
+  "lantern_andon",
+  "lava",
+  "washi_backlit"
+ ],
+ "top_fixes": [
+  "1. Emission grading: lava_flow, lava seams, neon and backlit washi clip to cream. Keep saturated orange, magenta and amber with lower intensity; fixes the arrival-hall lava window",
+  "2. water_still/river: teal underglow and depth absorption (0.1 m teal to 2 m blue-black), visible bed with caustics, transparency; no opaque paint",
+  "3. obsidian: drop the planar mirror facets and use continuous black gloss with thin fracture lines, plus a wet slab variant for the pool rim",
+  "4. Rock family (basalt_wet, cave_rock, stepping_stone, basalt_dry): near-black neutral albedo; mirror wet film on ridges and drips; basalt joints; no marble veins",
+  "5. paving: mirror-wet puddle film, darker slabs, crisp joints",
+  "6. Tiling failures: ash_clay star-pit lattice, water_sea foam grid, glacier_ice and bronze 1-2 m repeats",
+  "7. Metals: iron and bronze need real metallic response, with rust and verdigris in cavities only",
+  "8. Wood and fibre identity: aged dark hinoki with raised grain and knots, near-black urushi, a 3-strand rope twist, noren indigo weave and mon, andon kumiko lattice"
+ ],
+ "summary": "The shader-first rebuild fixed most tiling: hex-tiled rocks show no repeat at 10 m. Likeness against the concepts is still weak. Materials are too brown and too matte where the concepts are black and mirror-wet. The glowing elements (lava, water glow, neon) lose their colour, so the three slice rooms would miss their signature looks: teal glow, an orange lava window and a black mirror. Woods, cloth and metals read as generic CG, not aged Japanese materials. Most fixes are parameter or mask changes (albedo, film coverage, emission grading), not new textures. Water and lava should be runtime procedural; everything else should stay as anti-tiled textures."
+}

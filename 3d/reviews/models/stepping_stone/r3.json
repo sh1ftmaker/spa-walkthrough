@@ -1,0 +1,24 @@
+{
+  "asset": "stepping_stone",
+  "round": 3,
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 2,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 3,
+    "variation": 3
+  },
+  "fixes": [
+    "Top-rim chamfer: the uniform bright bevel band around the whole perimeter (25-40 mm, reads as a cut crystal or glass edge in canonical.jpg) is the main reason it does not read as stone. Cut the chamfer to 8-15 mm, make its width vary per vertex by more than 50 % so it breaks up, and let the rough edge faces (basalt_dry) carry the silhouette.",
+    "Outline: the 12-16 vertex polygon with 0.12-0.18 radial jitter gives straight facets and hex-like wedges (seed 1 in sheet_34.jpg and the canonical). Target 9-12 vertices with 0.20-0.25 jitter and one or two shallow bites per outline, so no straight run is longer than about 35 % of the diameter. Concept stones (lookbook 05) are rounded, irregular discs.",
+    "Thickness: 0.10-0.13 m is thin next to the concept discs, which sit as thick wet cobbles. Raise to 0.13-0.16 m and keep the top face within 2 mm of flat for the polish-high seeds.",
+    "Top surface: the top currently reads as the floor texture around it. Give the top basalt_wet with roughness offset to about 0.15-0.25 (wet gloss) and a 1-2 mm shallow dish toward the centre so highlights and the light from the water catch on it, as in the lookbook 05 stones.",
+    "Edge chips: rough edge is seeded at 0.5-1.0 but the canonical edge looks smooth. Raise the chip amplitude to 4-8 mm at the lower 60 % of the edge so the side faces show a rough, split-stone profile at 5 m, the LOD2 switch distance."
+  ],
+  "library_issues": [
+    "The edge faces in the canonical and the LOD0 seed 1 render read as pale, glassy beige with specular streaks rather than basalt. Check which library material (obsidian or basalt_wet) is assigned to the chamfer band; obsidian reads as glass at this size. Not a generator fault, but it makes the stone look like cut crystal."
+  ],
+  "verdict": "revise",
+  "summary": "Reads as a faceted, wedge-like slab with a bright glass-like bevel rather than a wet, rounded river stone. Proportion and LOD budgets are fine (LOD2 at 5 m reads as a dark rock blob), and seeds vary the outline at LOD0/1. Fixes focus on the chamfer, outline polygon, thickness, top gloss and edge chips. Needs one more revision before pass; the concept scene use (small, mostly at 2-5 m) would otherwise be acceptable."
+}

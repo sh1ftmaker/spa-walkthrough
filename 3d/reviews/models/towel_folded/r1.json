@@ -1,0 +1,28 @@
+{
+  "asset": "towel_folded",
+  "round": 1,
+  "reviewed_render": "3d/renders/models/towel_folded/canonical_r1.jpg (no canonical.jpg present; stack style only)",
+  "lod_sheet": "3d/renders/lod/towel_folded/sheet.jpg (phone-lod2-lod3.jpg not present; phone panel taken from sheet)",
+  "concept_refs_checked": ["lookbook/img/04-arrival-gate.jpg", "lookbook/img/20-wave-grotto.jpg", "lookbook/img/21-private-suite.jpg", "refs/gen/sheet-vs-bath-props.png (towel #2 and #6)", "refs/gen/sheet-ref-ground.png"],
+  "scores": {
+    "likeness": 1,
+    "silhouette_proportion": 3,
+    "construction_detail": 1,
+    "material_use": 1,
+    "lod_recognition": 1,
+    "variation": 1
+  },
+  "fixes": [
+    "Form: stack is hard chamfered boxes with flat tops. Concept towels are soft, puffed folds with rounded corners and a fold crease. Target rounded pillow profile: 10-15 mm corner radius, 8-12 mm central sag, one 3 mm fold crease per towel, and +-5 mm top bulge per towel.",
+    "Colour: cloth renders lavender-grey while the concept is white-cream. Target albedo near #F3EEE6 with roughness about 0.9 (see library_issues).",
+    "Tray: canonical tray is a solid dark slab with a hot bright bevel edge that reads as chrome. Concept tray is dark wood slats. Make it 3 slats 15 mm wide with 6 mm gaps and a 0.5 mm bevel.",
+    "LOD2/LOD3: LOD2 (24 tris) is one box with a tray and LOD3 (12 tris) is one flat box, so neither reads as towels at 10-24 m. Target LOD2 at 60+ tris with the tray and 2 slabs plus a rolled top edge, and LOD3 at 30+ tris with 2 slabs and a bulge.",
+    "Styles and seeds: only the stack style is rendered. Roll (lounger) and drape (tub rim) are not in the canonical or the sheet. Seeds look almost identical. Add roll and drape renders, and widen the seed range (count 2-6, yaw about +-0.08 rad, tilt about 2 deg). The docstring says default count 2-4 but the stack code uses randint(4, 6); reconcile them."
+  ],
+  "library_issues": [
+    "noren (cloth) base albedo renders lavender-grey, so the towel-white tint does not work. Fix the noren base or add the NEW linen material listed in asset_list.csv (linen is not in the library).",
+    "lacquer_dark bevel gives a hot specular edge at grazing angles that reads like chrome on the tray. Check roughness or spec on lacquer_dark."
+  ],
+  "verdict": "revise",
+  "summary": "Not a towel yet. The grey chamfered boxes on a dark slab read as tiles or foam blocks rather than soft white folded towels. There is no fabric form, the colour is wrong, the roll and drape styles are missing, and LOD2/LOD3 are unrecognisable boxes. Seeds vary too little."
+}

@@ -1,0 +1,220 @@
+{
+ "asset": "magma_glass_wall",
+ "budget": [
+  3000,
+  1200,
+  360,
+  60
+ ],
+ "proxy": {
+  "w": 80,
+  "d": 0.5,
+  "h": 7
+ },
+ "results": [
+  {
+   "lod": 0,
+   "seed": 1,
+   "tris": 7824,
+   "problems": [
+    "d 3.79 > proxy 0.50",
+    "7824 tris > budget 3000"
+   ],
+   "bbox": {
+    "w": 82.324,
+    "d": 3.792,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 0,
+   "seed": 2,
+   "tris": 7824,
+   "problems": [
+    "d 4.65 > proxy 0.50",
+    "7824 tris > budget 3000"
+   ],
+   "bbox": {
+    "w": 82.298,
+    "d": 4.651,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 0,
+   "seed": 3,
+   "tris": 5704,
+   "problems": [
+    "d 3.67 > proxy 0.50",
+    "5704 tris > budget 3000"
+   ],
+   "bbox": {
+    "w": 82.34,
+    "d": 3.667,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 1,
+   "seed": 1,
+   "tris": 2040,
+   "problems": [
+    "d 3.75 > proxy 0.50",
+    "2040 tris > budget 1200"
+   ],
+   "bbox": {
+    "w": 82.324,
+    "d": 3.752,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 1,
+   "seed": 2,
+   "tris": 2040,
+   "problems": [
+    "d 4.61 > proxy 0.50",
+    "2040 tris > budget 1200"
+   ],
+   "bbox": {
+    "w": 82.298,
+    "d": 4.611,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 1,
+   "seed": 3,
+   "tris": 1728,
+   "problems": [
+    "d 3.63 > proxy 0.50",
+    "1728 tris > budget 1200"
+   ],
+   "bbox": {
+    "w": 82.34,
+    "d": 3.627,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 2,
+   "seed": 1,
+   "tris": 880,
+   "problems": [
+    "d 3.75 > proxy 0.50",
+    "880 tris > budget 360"
+   ],
+   "bbox": {
+    "w": 82.215,
+    "d": 3.752,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 2,
+   "seed": 2,
+   "tris": 880,
+   "problems": [
+    "d 4.61 > proxy 0.50",
+    "880 tris > budget 360"
+   ],
+   "bbox": {
+    "w": 82.188,
+    "d": 4.611,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 2,
+   "seed": 3,
+   "tris": 616,
+   "problems": [
+    "d 3.63 > proxy 0.50",
+    "616 tris > budget 360"
+   ],
+   "bbox": {
+    "w": 82.231,
+    "d": 3.627,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 3,
+   "seed": 1,
+   "tris": 190,
+   "problems": [
+    "d 2.70 > proxy 0.50",
+    "190 tris > budget 60"
+   ],
+   "bbox": {
+    "w": 82.215,
+    "d": 2.699,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 3,
+   "seed": 2,
+   "tris": 190,
+   "problems": [
+    "d 3.56 > proxy 0.50",
+    "190 tris > budget 60"
+   ],
+   "bbox": {
+    "w": 82.188,
+    "d": 3.559,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 3,
+   "seed": 3,
+   "tris": 190,
+   "problems": [
+    "d 2.57 > proxy 0.50",
+    "190 tris > budget 60"
+   ],
+   "bbox": {
+    "w": 82.231,
+    "d": 2.574,
+    "h": 7.0,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  }
+ ]
+}

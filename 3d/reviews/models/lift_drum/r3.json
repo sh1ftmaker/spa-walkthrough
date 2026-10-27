@@ -1,0 +1,27 @@
+{
+  "asset": "lift_drum",
+  "round": 3,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 4
+  },
+  "fixes": [
+    "Upper kumiko register vs door storey (h = 4.5 m): measured in canonical crop, the kumiko band is ~145 px over a ~285 px door storey, so it takes ~32% of the storey. sheet-vs-lift-cable #1 front measures ~160 px band over ~155 px door storey (about 1:1), and ref-b1-lobby has the glazing at least equal to the door storey. This is r1's target and it has still not landed. Move the cornice/band split so the band is >= 45% of storey height (about 2.0 m of the 4.5 m storey), and keep the door at about 2.4 m.",
+    "Lower storey glazing: about 75% of the visible lower drum is still opaque mottled bronze, with one lit slot per side of the plaque. The sheet and ref-b1-lobby show lit glazed bays between pilasters all the way round. Make every non-door, non-plaque bay a glazed slot at 45-55% of bay width (0.35-0.45 m), backed by washi_backlit with 3 vertical kumiko bars, so the drum reads as a lantern from any side and not only from the door side.",
+    "Level plaque board: the glyphs still sit straight on the dark bronze wall with no board edge. r1 and r2 both asked for this and it has not landed. ref-b1-lobby shows a tall hinoki board. Model a hinoki board 0.5 W x 2.4 H x 0.04 D m with a 0.02 m bronze frame, standing 0.03 m proud of the wall, with the glyphs carved or raised on it in dark ink or bronze, not emissive gold.",
+    "Kumiko feature panel: the centre upper bay now reads as a blank, blown-out white washi panel in canonical and in all three seeds of styles.jpg. r2's pine motif was cut so far that it disappeared. The sheet has a visible ink pine/cloud over the lattice in the main bays. Restore the motif at ~60% opacity with a trunk plus 3-4 needle pads (pad thickness <= 0.06 m), and keep the lattice continuous through the feature bay so it isn't a blank card.",
+    "Crown: the guide columns landed (6/8 rods), but they read as free-standing antennas. The sheet ties them with a top ring and caps. Add a tie ring (0.08 m tube) at the rod tops and 0.12 m ball or disc caps. Also remove the stray bright rectangle on the crown ring above the feature bay (visible at the top of canonical; r1 flagged it and it is back).",
+    "LOD0 to LOD2 colour pop: in the neutral LOD sheet, LOD0/1 show the upper band as dark with teal and white panels, but LOD2/3 show it as uniform beige. Bake LOD2/3 band vertex colour or texture from the LOD0 average (warm amber with dark lattice) so the switch at 35 m doesn't flash."
+  ],
+  "library_issues": [
+    "bronze: still reads as noisy crumpled-foil or camouflage mottling (high-contrast flecks at about 0.1-0.3 m) on the drum wall and posts, not the sheet's dark gunmetal with brass edge highlights. Lower the albedo noise contrast by about 60% and add edge wear in place of the overall speckle. This has been flagged in r1, r2 and r3.",
+    "bridge or floor timber in styles.jpg shows bright gold-leaf blotches under the door light. Check whether the floor material uses the bronze noise or a too-glossy clearcoat.",
+    "washi_backlit on the door slats and feature panel still clips to near-white at the canonical exposure. Its emission should stay warm amber (~2400 K) and not blow out."
+  ],
+  "verdict": "revise",
+  "summary": "Reads as the B1 lift drum: round two-register drum, kumiko band, lit double doors, B1 火山湯 plaque, guide columns, well balustrade. The LODs are recognisable at 35 m and 80 m. It still looks like a bronze kiosk with a clerestory, not the concept's glowing lantern drum: the kumiko band is about 1/3 of the storey, the lower bays are mostly opaque, the plaque has no hinoki board (asked for twice), and the feature panel is a blank white card. Earlier fixes that landed: guide columns, bracket lanterns resized and warmer, LOD3 drum as a 10-sided lathe with a thin rail strip, seed variation (pattern, plaque side, lanterns, columns). Partly landed: lower slot widening (one slot per side only) and the pine motif (over-corrected to invisible). Not landed: r1's kumiko height target, the hinoki plaque board, and the crown artefact, which has returned."
+}

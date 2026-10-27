@@ -1,0 +1,1315 @@
+{
+ "triangles": {
+  "kz_render": 70194,
+  "kz_anim": 7110,
+  "kz_water": 660,
+  "total": 77964,
+  "in_concept_view_upper_bound": 52747,
+  "budget_corridor": 80000,
+  "by_asset": {
+   "shell": 18304,
+   "portal_arch": 3268,
+   "shoji_wall_bay": 3978,
+   "wall_trickle": 2972,
+   "lantern_niche": 2260,
+   "lantern_floor": 2266,
+   "bonsai_potted": 965,
+   "stepping_stone": 24000,
+   "boulder_rim": 12181,
+   "noren": 396,
+   "guest_figure": 6714
+  },
+  "ok": true
+ },
+ "materials": {
+  "library_ids": [
+   "bark",
+   "basalt_dry",
+   "basalt_wet",
+   "black_sand",
+   "bronze",
+   "ceramic",
+   "foliage_pine",
+   "hinoki",
+   "iron",
+   "lacquer_black",
+   "lacquer_dark",
+   "lantern_andon",
+   "linen",
+   "moss",
+   "noren",
+   "paving",
+   "terry",
+   "washi_backlit",
+   "water_still",
+   "waterfall"
+  ],
+  "n_library_ids": 20,
+  "n_blender_materials": 71,
+  "budget": 40,
+  "ok": true
+ },
+ "flood_fill": {
+  "cell": 0.2,
+  "walkable_cells": 4939,
+  "reached_from_lobby": 4939,
+  "reach": {
+   "p_b1_lobby_cor": true,
+   "p_b1_cor_mirror": true,
+   "p_b1_junction_mirror": true,
+   "pi_mirror_junction_e": true,
+   "pi_mirror_junction_n": true,
+   "hero_view_concept_cam": true,
+   "hero_arch_approach": true
+  },
+  "ok": true,
+  "note": "junction stretch is a stand-in walk patch (walk_junction_standin, owned by b1_junction_w)"
+ },
+ "clearance": {
+  "min": 2.946,
+  "points": 90,
+  "fails": [],
+  "ok": true,
+  "note": "mouth noren (cloth, kz_anim) excluded: bottom edge 1.92 m by design (space file 1.95)"
+ },
+ "portals": {
+  "detail": {
+   "p_b1_lobby_cor": {
+    "floor_z": -20.0,
+    "width_req": 4.0,
+    "free_width_at_0_3_1_0_1_8": [
+     4.01,
+     4.004,
+     4.135
+    ],
+    "height_at_centre": 3.018,
+    "height_req": 3.0,
+    "ok": true
+   },
+   "p_b1_cor_mirror": {
+    "floor_z": -20.0,
+    "width_req": 4.0,
+    "free_width_at_0_3_1_0_1_8": [
+     4.475,
+     4.538,
+     4.559
+    ],
+    "height_at_centre": 3.567,
+    "height_req": 3.0,
+    "ok": true
+   },
+   "p_b1_junction_mirror": {
+    "floor_z": -20.0,
+    "width_req": 3.2,
+    "free_width_at_0_3_1_0_1_8": [
+     10.385,
+     10.448,
+     10.59
+    ],
+    "height_at_centre": null,
+    "height_req": 3.0,
+    "ok": true
+   },
+   "pi_mirror_junction_e": {
+    "floor_z": -20.0,
+    "width_req": 4.0,
+    "free_width_at_0_3_1_0_1_8": [
+     7.355,
+     7.328,
+     7.321
+    ],
+    "height_at_centre": null,
+    "height_req": 3.0,
+    "ok": true
+   },
+   "pi_mirror_junction_n": {
+    "floor_z": -20.18,
+    "width_req": 4.0,
+    "free_width_at_0_3_1_0_1_8": [
+     7.231,
+     7.172,
+     7.238
+    ],
+    "height_at_centre": 2.997,
+    "height_req": 3.0,
+    "ok": true
+   }
+  },
+  "ok": true,
+  "note": "height: the corridor is a 3.0 m crown / 2.4 m springing tube, so the 3.0 m portal height is met only at the crown; arch clear opening 2.7 m (see deviations)"
+ },
+ "floating": {
+  "n": 143,
+  "fails": [],
+  "ok": true
+ },
+ "floating_detail": [
+  {
+   "obj": "shoji_bay_1",
+   "gap": 0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "shoji_bay_2",
+   "gap": 0.001,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "trickle_n",
+   "gap": 0.001,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "trickle_s",
+   "gap": 0.001,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "mouth_niches_0",
+   "kind": "wall",
+   "back_gap": -0.033,
+   "ok": true
+  },
+  {
+   "obj": "mouth_niches_1",
+   "kind": "wall",
+   "back_gap": -0.127,
+   "ok": true
+  },
+  {
+   "obj": "niches_w_0",
+   "kind": "wall",
+   "back_gap": -0.135,
+   "ok": true
+  },
+  {
+   "obj": "niches_w_1",
+   "kind": "wall",
+   "back_gap": -0.042,
+   "ok": true
+  },
+  {
+   "obj": "niches_n_0",
+   "kind": "wall",
+   "back_gap": -0.043,
+   "ok": true
+  },
+  {
+   "obj": "niches_n_1",
+   "kind": "wall",
+   "back_gap": -0.041,
+   "ok": true
+  },
+  {
+   "obj": "niches_n_2",
+   "kind": "wall",
+   "back_gap": -0.046,
+   "ok": true
+  },
+  {
+   "obj": "niches_e_0",
+   "kind": "wall",
+   "back_gap": -0.033,
+   "ok": true
+  },
+  {
+   "obj": "niches_e_1",
+   "kind": "wall",
+   "back_gap": -0.03,
+   "ok": true
+  },
+  {
+   "obj": "niches_e_2",
+   "kind": "wall",
+   "back_gap": -0.126,
+   "ok": true
+  },
+  {
+   "obj": "niches_e_3",
+   "kind": "wall",
+   "back_gap": -0.044,
+   "ok": true
+  },
+  {
+   "obj": "niches_e_4",
+   "kind": "wall",
+   "back_gap": -0.019,
+   "ok": true
+  },
+  {
+   "obj": "niches_e_x0",
+   "kind": "wall",
+   "back_gap": -0.032,
+   "ok": true
+  },
+  {
+   "obj": "niches_e_x1",
+   "kind": "wall",
+   "back_gap": -0.127,
+   "ok": true
+  },
+  {
+   "obj": "niches_n_x0",
+   "kind": "wall",
+   "back_gap": -0.032,
+   "ok": true
+  },
+  {
+   "obj": "corner_lantern",
+   "gap": 0.001,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "bonsai_1",
+   "gap": 0.003,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "mouth_lantern_0",
+   "gap": 0.0,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "mouth_lantern_1",
+   "gap": 0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_000",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_001",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_002",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_003",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_004",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_005",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_006",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_007",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_008",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_009",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_010",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_011",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_012",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_013",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_014",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_015",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_016",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_017",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_018",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_019",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_020",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_021",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_022",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_023",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_024",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_025",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_026",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_027",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_028",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_029",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_030",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_031",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_032",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_033",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_034",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_035",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_036",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_037",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_038",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_039",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_040",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_041",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_042",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_043",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_044",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_045",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_046",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_047",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_048",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_049",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_050",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_051",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_052",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_053",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_054",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_055",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_056",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_057",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_058",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_059",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_060",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_061",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_062",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_063",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_064",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_065",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_066",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_067",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_068",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_069",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_070",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_071",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_072",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_073",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_074",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_075",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_076",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_077",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_078",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_079",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_080",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_081",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_082",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_083",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_084",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_085",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_086",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_087",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_088",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_089",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_090",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_091",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_092",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_093",
+   "gap": -0.002,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_094",
+   "gap": -0.005,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_095",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_096",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_097",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_098",
+   "gap": -0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "stone_099",
+   "gap": -0.006,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "ring0_0",
+   "gap": -0.098,
+   "embed": 0.098,
+   "ok": true
+  },
+  {
+   "obj": "ring0_1",
+   "gap": -0.068,
+   "embed": 0.068,
+   "ok": true
+  },
+  {
+   "obj": "ring1_0",
+   "gap": -0.1,
+   "embed": 0.1,
+   "ok": true
+  },
+  {
+   "obj": "ring1_2",
+   "gap": -0.087,
+   "embed": 0.087,
+   "ok": true
+  },
+  {
+   "obj": "ring2_3",
+   "gap": -0.078,
+   "embed": 0.078,
+   "ok": true
+  },
+  {
+   "obj": "ring2_5",
+   "gap": -0.103,
+   "embed": 0.103,
+   "ok": true
+  },
+  {
+   "obj": "ring3_3",
+   "gap": -0.068,
+   "embed": 0.068,
+   "ok": true
+  },
+  {
+   "obj": "ring3_4",
+   "gap": -0.068,
+   "embed": 0.068,
+   "ok": true
+  },
+  {
+   "obj": "kerbrock_71_S",
+   "gap": -0.158,
+   "embed": 0.158,
+   "ok": true
+  },
+  {
+   "obj": "kerbrock_76_S",
+   "gap": -0.183,
+   "embed": 0.183,
+   "ok": true
+  },
+  {
+   "obj": "kerbrock_83_S",
+   "gap": -0.167,
+   "embed": 0.167,
+   "ok": true
+  },
+  {
+   "obj": "kerbrock_89_S",
+   "gap": -0.192,
+   "embed": 0.192,
+   "ok": true
+  },
+  {
+   "obj": "kerbrock_79_N",
+   "gap": -0.15,
+   "embed": 0.15,
+   "ok": true
+  },
+  {
+   "obj": "kerbrock_88_N",
+   "gap": -0.167,
+   "embed": 0.167,
+   "ok": true
+  },
+  {
+   "obj": "kerbrock_91_N",
+   "gap": -0.133,
+   "embed": 0.133,
+   "ok": true
+  },
+  {
+   "obj": "kerbrock_n83",
+   "gap": -0.15,
+   "embed": 0.15,
+   "ok": true
+  },
+  {
+   "obj": "guest_figure_0",
+   "gap": 0.007,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "guest_figure_1",
+   "gap": 0.009,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "guest_figure_2",
+   "gap": 0.008,
+   "embed": 0.0,
+   "ok": true
+  },
+  {
+   "obj": "hero_portal_arch",
+   "gap": -0.213,
+   "embed": 0.243,
+   "ok": true
+  }
+ ],
+ "counts": {
+  "stones": 100,
+  "boulders": 16,
+  "figures": 3,
+  "niches": 15,
+  "lights": 57,
+  "fx": 23,
+  "probes": 6
+ },
+ "ok": true,
+ "deviations": [
+  "Mouth noren: w 3.6 -> 3.2, h 1.1 -> 0.7, rod at z -17.38: a 3.6 m rod at -17.05 does not fit under the 2.4 m springing; the bottom edge stays at 1.92 m clear.",
+  "lantern_floor pair and corner lantern stand on the kerb / dry threshold at z -20.0, not -20.2 (in the pool).",
+  "Wall items (shoji bays, trickles, niches) are re-seated on the computed wall line (<= 0.15 m from the given xy); headings follow the wall normal.",
+  "wall_trickle widths clamped to the generator range: trickle_n 0.8 -> 0.9, trickle_s 1.4 -> 1.2.",
+  "portal_arch (hero, basalt, no noren) built with clear_w 4.3 / clear_h 3.25 and sunk 0.243 m (its threshold height)  so the threshold is flush with floor_z and ~3.0 m stays clear (same fix as b1_mirror, per the lead). The last 2.2 m of the vault flares up 0.75 m and out 12 % so the arch face reads instead of vanishing into the 3.0 m crown.",
+  "Pool stops 0.1 m short of the arch threshold and 1.9 m inside the lobby mouth (dry stone threshold at floor_z so the lobby portal meets the stand-in without a step); it stays continuous into the koi junction.",
+  "Concept 05 shows teal-lit water all along the straight: dim teal pool-bed lights (kz_runtime false) light it, stopping 7 m short of the arch like the lanterns, so the Mirror leak stays the brightest thing.",
+  "Generator kz_lights sit inside the closed lantern boxes, where Cycles occludes them: niche lights are realised 0.16 m in front of the niche (kz_offset), floor-lantern lights with shadows off.",
+  "Extra niche lanterns from the space file \"lights\" along-rule: two on the straight (x 84.0 N, x 86.2 S, last one <= 86.5) and one on the west wall of the north leg (y 89.0).",
+  "Stepping stones use the stepping_stone generator at LOD1 (240 tris) in kz_render: ~100 stones at LOD0 (972) would take the corridor over its 80k budget on stones alone."
+ ],
+ "placed": [
+  {
+   "name": "shoji_bay_1",
+   "asset": "shoji_wall_bay",
+   "given": [
+    73.6,
+    93.75,
+    -20.0
+   ],
+   "at": [
+    73.612,
+    93.75,
+    -20.0
+   ],
+   "heading": 180.0
+  },
+  {
+   "name": "shoji_bay_2",
+   "asset": "shoji_wall_bay",
+   "given": [
+    82.7,
+    93.75,
+    -20.0
+   ],
+   "at": [
+    82.707,
+    93.75,
+    -20.0
+   ],
+   "heading": 180.0
+  },
+  {
+   "name": "trickle_n",
+   "asset": "wall_trickle",
+   "given": [
+    64.95,
+    84.5,
+    -20.0
+   ],
+   "at": [
+    65.002,
+    84.503,
+    -20.0
+   ],
+   "heading": 83.7
+  },
+  {
+   "name": "trickle_s",
+   "asset": "wall_trickle",
+   "given": [
+    78.8,
+    90.25,
+    -20.0
+   ],
+   "at": [
+    78.798,
+    90.18,
+    -20.0
+   ],
+   "heading": 0.0
+  },
+  {
+   "name": "mouth_niches_0",
+   "asset": "lantern_niche",
+   "given": [
+    76.94,
+    70.32,
+    -19.75
+   ],
+   "at": [
+    76.922,
+    70.273,
+    -19.75
+   ],
+   "heading": 11.3
+  },
+  {
+   "name": "mouth_niches_1",
+   "asset": "lantern_niche",
+   "given": [
+    77.46,
+    73.99,
+    -19.75
+   ],
+   "at": [
+    77.469,
+    74.049,
+    -19.75
+   ],
+   "heading": 191.3
+  },
+  {
+   "name": "niches_w_0",
+   "asset": "lantern_niche",
+   "given": [
+    74.96,
+    70.72,
+    -19.75
+   ],
+   "at": [
+    74.96,
+    70.665,
+    -19.75
+   ],
+   "heading": 11.3
+  },
+  {
+   "name": "niches_w_1",
+   "asset": "lantern_niche",
+   "given": [
+    74.02,
+    74.68,
+    -19.75
+   ],
+   "at": [
+    74.019,
+    74.739,
+    -19.75
+   ],
+   "heading": 191.3
+  },
+  {
+   "name": "niches_n_0",
+   "asset": "lantern_niche",
+   "given": [
+    65.07,
+    83.59,
+    -19.75
+   ],
+   "at": [
+    65.018,
+    83.587,
+    -19.75
+   ],
+   "heading": 83.7
+  },
+  {
+   "name": "niches_n_1",
+   "asset": "lantern_niche",
+   "given": [
+    64.92,
+    84.99,
+    -19.75
+   ],
+   "at": [
+    64.863,
+    84.986,
+    -19.75
+   ],
+   "heading": 83.7
+  },
+  {
+   "name": "niches_n_2",
+   "asset": "lantern_niche",
+   "given": [
+    68.35,
+    87.62,
+    -19.75
+   ],
+   "at": [
+    68.402,
+    87.633,
+    -19.75
+   ],
+   "heading": 263.7
+  },
+  {
+   "name": "niches_e_0",
+   "asset": "lantern_niche",
+   "given": [
+    72.8,
+    90.15,
+    -19.75
+   ],
+   "at": [
+    72.804,
+    90.095,
+    -19.75
+   ],
+   "heading": 0.0
+  },
+  {
+   "name": "niches_e_1",
+   "asset": "lantern_niche",
+   "given": [
+    74.0,
+    90.15,
+    -19.75
+   ],
+   "at": [
+    74.003,
+    90.095,
+    -19.75
+   ],
+   "heading": 0.0
+  },
+  {
+   "name": "niches_e_2",
+   "asset": "lantern_niche",
+   "given": [
+    77.6,
+    93.85,
+    -19.75
+   ],
+   "at": [
+    77.6,
+    93.905,
+    -19.75
+   ],
+   "heading": 180.0
+  },
+  {
+   "name": "niches_e_3",
+   "asset": "lantern_niche",
+   "given": [
+    79.6,
+    90.15,
+    -19.75
+   ],
+   "at": [
+    79.606,
+    90.095,
+    -19.75
+   ],
+   "heading": 0.0
+  },
+  {
+   "name": "niches_e_4",
+   "asset": "lantern_niche",
+   "given": [
+    80.8,
+    90.15,
+    -19.75
+   ],
+   "at": [
+    80.805,
+    90.095,
+    -19.75
+   ],
+   "heading": 0.0
+  },
+  {
+   "name": "niches_e_x0",
+   "asset": "lantern_niche",
+   "given": [
+    84.0,
+    93.85,
+    -19.75
+   ],
+   "at": [
+    84.01,
+    93.905,
+    -19.75
+   ],
+   "heading": 180.0
+  },
+  {
+   "name": "niches_e_x1",
+   "asset": "lantern_niche",
+   "given": [
+    86.2,
+    90.15,
+    -19.75
+   ],
+   "at": [
+    86.199,
+    90.095,
+    -19.75
+   ],
+   "heading": 0.0
+  },
+  {
+   "name": "niches_n_x0",
+   "asset": "lantern_niche",
+   "given": [
+    64.3,
+    89.0,
+    -19.75
+   ],
+   "at": [
+    64.417,
+    89.0,
+    -19.75
+   ],
+   "heading": 83.7
+  }
+ ]
+}

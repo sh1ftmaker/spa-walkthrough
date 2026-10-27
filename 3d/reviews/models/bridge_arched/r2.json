@@ -1,0 +1,26 @@
+{
+  "asset": "bridge_arched",
+  "round": 2,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 2,
+    "variation": 3
+  },
+  "fixes": [
+    "Side girder/fascia: in canonical_r4_elevation the outer face is a stair-stepped run of flat board segments with visible kinks and notches at every post. sheet-mod-arrival #5 shows one smooth, continuous laminated arched beam about 0.35 m deep (7 m span at about 99 px/m), with dark iron strap plates at each post. Build the fascia as a single swept profile (at least 16 segments at LOD0, 8 at LOD1) with a constant 0.35-0.40 m depth. Add 0.12 m iron straps where posts land, and remove the notched plank ends.",
+    "Corner lanterns: they read as about 0.45 m bright-white paper cubes on top of the timber end posts, the biggest and brightest thing in the frame. In the concept they are slender (about 0.25 w x 0.5 h m), with a dark iron frame, warm amber glazing and a small roof with a ball finial. They stand on a short post on top of the stone abutment pier, not on the rail post. Shrink them to about 0.26 x 0.26 x 0.50 m, give them a 0.03 m dark frame and amber emission, and seat them on the pier tops at the 4 corners.",
+    "Post rhythm and rail stack: the elevation shows about 9 finial posts per side (about 0.7 m pitch) plus a 3-rail stack with a spindle row. The concept shows 5 posts between the corner lanterns (about 1.15 m pitch), a top rail plus one mid rail, and no spindle band. Cut the default posts to 5 (range 4-6) and drop the spindle row from the default. Keep it only as a seeded variant at most 1 in 3.",
+    "Abutments: on seeds 1 and 2 they are small rectangular block piers about 1.0 m wide that read as separate boxes beside the deck. In the concept, the abutment is a stacked rough-basalt mass about 1.3-1.5 m long that carries the deck end and spills into the water as boulders 0.4-0.8 m across. Widen the pier to the full deck width plus 0.3 m and add 3-5 skirt rocks at the waterline (the rock style on seed 3 is the right direction). The deck end must visibly bear on the stone.",
+    "Finials: they read as sharp pyramids on iron collars. The concept shows rounded giboshi (onion) caps. Make giboshi the default at least 2 in 3 and give it an 8-segment bulb at about 0.14 m diameter, so the cap still reads at LOD1 (LOD1 already shows round caps; LOD0 should match).",
+    "LOD sheet and LOD3: the stock 'front' camera looks end-on, so the 35 m silhouette is a U and the arch is invisible. Render the recognition views from the side elevation. At LOD3, the 4 lanterns float as white cards with no post or pier contact, and the single rail is a 3-segment polyline. Keep one 4-segment arched girder edge in the silhouette and ground the lantern cards on the pier tops. Seed 1 and seed 3 rise (about 0.5-0.6 m) are also nearly identical: widen the non-humped range to 0.45-0.8 m."
+  ],
+  "library_issues": [
+    "hinoki: the generator asks for a deep oiled-brown tint (k 0.62-0.75), but the deck and rails render pale orange-tan with little grain. The concept wood is dark stained brown. Either the tint is not applied or the base albedo is too light.",
+    "lantern_andon: the emission reads near-white (about 6500 K) instead of the warm amber (about 2200-2700 K) every concept lantern shows. The same problem appears in the stair render, so it is a library default."
+  ],
+  "verdict": "revise",
+  "summary": "Reads as a Japanese arched timber bridge with capped posts, corner lanterns and stone abutments, so the ingredient list is right. The build quality is below the concept. The fascia is a stepped, faceted plank run, not a smooth laminated arch. The lanterns are oversized white boxes on timber posts, not small amber lanterns on stone piers. Posts are about 1.6x too dense, and the abutments are small boxes, not rock masses. The wood renders pale orange, not dark stained. LOD recognition is weak: the stock view is end-on, and LOD3 lanterns float. Only seed 2 really changes the shape."
+}

@@ -1,0 +1,29 @@
+{
+  "asset": "pavilion_engawa",
+  "round": 1,
+  "reviewer": "independent model reviewer (mrev1_g), did not build the generator",
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 4,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 4
+  },
+  "fixes": [
+    "Base / plinth: the deck sits on 0.45 m of small footings over a flat floor, and the stair is a thin 2-stone slab. Sheet 01 (front and side) stands the whole pavilion on a rough basalt podium that is about 1.2-1.4 m high and fills the full 8 m footprint, with a 3-tread cut-stone stair about 2.5 m wide centred on the middle bay. This podium is the single largest difference from the concept. Add a 'plinth' option of clustered basalt_dry boulders (0.4-0.8 m) skirting the deck edge, 0.8-1.4 m high, plus a 3-4 tread stone stair. Keep floor_h 0.45 as the timber-on-podium height, so the deck top lands about 1.3 m above grade when the plinth is on. Default it on for 'mirror' and 'glacier'.",
+    "Roof sori and ridge ends: the corner upsweep reads as about 20-25 deg over the last 1.2 m, and the onigawara/ridge-end horns rise about 0.6 m. Together they read Chinese or Korean. The sheet roof is a restrained Japanese irimoya: nearly straight eaves with about 5-8 deg of tip lift over the last 0.8 m, and low, blocky onigawara about 0.35 m tall. Cut the corner lift to about 1/3 of its current value and shorten the ridge-end pieces to 0.3-0.4 m.",
+    "Irimoya proportion: the gable triangle starts low on the roof, so the hip skirt is short. In the front ortho (sheet.jpg seed 1) the roof reads as a flat rectangular slab with no hip ends. In the sheet the gable takes the top ~40% of the roof height and the hip skirt the lower ~60%, which reads as a trapezoid from the front. Raise the gable-base line and pull the gable face in about 0.5 m from the eave line, so the front view shows sloped hip ends.",
+    "Hinoki read: the timber is a pale, uniform orange-beige and looks like new plywood. The concept posts and beams are a deeper weathered honey-brown, with the structure (posts, nuki, keta) visibly darker than the shoji frames. Use the darker of the two hinoki tints, about 30-40% darker, on the structural members. Keep the light tint for kumiko and deck boards only.",
+    "Bay rhythm and posts: on the shoji front, the outer engawa posts stand almost in front of the shoji posts, so the facade reads as one dense row of equal 0.15 m posts. The sheet shows 3 clear bays: thick corner and bay posts (about 0.24 m) at the engawa edge, a deeper engawa (about 1.2-1.5 m) behind them, and 2 shoji per bay with a lit tokonoma-style centre. Thicken the outer posts to 0.22-0.26 m, deepen the engawa to at least 1.2 m on 'mirror', and limit each bay to 2 panels.",
+    "Side pent roof (optional, for hero instances): sheet 01 front has a lower secondary hisashi on the right side at about 3.0 m. Add a seeded, single-side lean-to of about 1.2 m to break the box silhouette."
+  ],
+  "library_issues": [
+    "No kawara roof-tile material: iron stands in, so the tiles read as dark metal with steely highlights instead of matte fired clay (known gap).",
+    "No moss material: the sheet has moss and yellow-green growth on the podium rocks, so a basalt plinth will need one (known gap).",
+    "No foliage material: the sheet flanks the pavilion with potted shrubs and bonsai about 1-1.5 m tall. This is a set-dressing gap, not the generator's fault.",
+    "hinoki: both tints may sit too light and clean for an aged onsen pavilion. Consider a weathered or 'aged' hinoki variant in the library."
+  ],
+  "verdict": "revise",
+  "summary": "A well-built timber pavilion with good joinery, rafter ends, ribbed tile courses, a koran rail, lanterns and convincing lit shoji. It reads clearly at LOD2 and LOD3, and the roof styles and open/shoji fronts vary meaningfully. It falls short of the concept on three points. It has no basalt podium (the sheet's defining base). The over-swept, horned roof reads continental rather than Japanese. The pale timber flattens the structure. Add the plinth, tame the sori and onigawara, and darken the structure."
+}

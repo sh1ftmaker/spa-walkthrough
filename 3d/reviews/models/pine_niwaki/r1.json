@@ -1,0 +1,26 @@
+{
+  "asset": "pine_niwaki",
+  "round": 1,
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 2,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 3,
+    "variation": 2
+  },
+  "fixes": [
+    "Foliage pads: they are lumpy, cauliflower-like blobs with a thickness to width ratio of about 0.5, and they stack as a vertical column hugging the trunk. sheet-mod-nature #1 shows broad cloud pads, flat on the bottom and gently domed on top, with a ratio of 0.25-0.33 (about 0.3 m thick for about 1.0-1.2 m wide). The lowest 2-3 pads are the widest and sit at 0.3-0.55 of the height, and the pads shrink to a 0.6-0.7 m crown pad. Flatten the pad bottoms (clamp z below the pad centre to a plane plus 3 cm noise), cut the lobe vertical offset by half, and add a tufted needle-clump edge (alpha cards or displaced fringe) instead of smooth folds.",
+    "Branch structure: no limbs are visible, and the pads sit directly on the trunk. The concept's identity is the bare, twisting limbs that run 0.6-1.1 m out from the trunk to each pad, rising 10-20 deg, with taper from about 0.1 m to 0.04 m. Push the pad centres out to 0.45-0.6 of the canopy radius from the trunk axis, and make sure the branch tubes (Lb) stay visible beneath each pad rather than buried inside it.",
+    "Trunk: it is almost straight with a mild lean, about 0.25-0.3 m in diameter, with a tiny root flare. Target a base diameter of 0.4-0.5 m and a strong S-curve with 2 bends offset about 0.35-0.5 m laterally in the front view (niwaki is styled for the front). Add 4-6 root buttresses flaring to about 0.9-1.0 m at the ground, and deep twisting bark ridges (twist parameter > 1.0 for the niwaki style).",
+    "Overall proportion: the canopy W/H is about 0.85, and the mass is concentrated high. The concept is about 0.95-1.0 (2.8-3.0 m wide at 3 m tall), with the widest spread in the lower-middle tier. Let the lowest pads overhang by 1.2-1.4 m on one side to give the asymmetric niwaki balance.",
+    "Variation: all three seeds on the sheet are the same niwaki column with similar height and pad layout, and the windswept and leaning styles are not shown at all. Render a styles sheet (niwaki, windswept at 25-35 deg, leaning at 12-25 deg, and the pale Mirror tint). The windswept style must match 19-thunder-curtain: one long, near-horizontal limb about 1.5-2 m with pads streaming downwind. Also vary the pad count across the full 3-9 range and the height across the full 1.5-5 m range.",
+    "LOD2 and LOD3: LOD2 pads turn into mushroom caps and LOD3 into thin stacked disks, which reads as a tiered fir or pagoda tree. Keep the pads at LOD3 as 3-5 offset, wide, flat-bottomed cards placed left and right rather than centred on the trunk. Re-render the sheet and phone test: the background is broken (rock texture), there is no phone-lod2-lod3.jpg, and the 80 m / 192 m switch distances reduce a 3 m tree to 2-10 px. Check the switch distances themselves."
+  ],
+  "library_issues": [
+    "NEW:bark and NEW:foliage_pine both show a regular diagonal stripe or moire pattern across the trunk and pads. It looks like a procedural texture at the wrong scale or a UV/projection artifact. Bark needs deep vertical plated ridges in dark brown-black with warm highlights.",
+    "foliage_pine reads as desaturated khaki-olive with a matte, clay-like surface. The concept is a saturated mid-green (about #5a7a2a), with warm rim light catching individual needle tufts. It needs an alpha-tuft or translucency term and much higher-frequency normal detail."
+  ],
+  "verdict": "revise",
+  "summary": "At a glance it reads as a stylised tree with tiers, but not as the concept's niwaki. The pads are thick, lumpy blobs stacked on a nearly straight thin trunk, with no visible branch limbs, no strong S-curve and no root flare. The materials show a stripe artifact and read as khaki clay. The seeds don't vary meaningfully, and the windswept and leaning styles are not shown. The LOD sheet background and the phone test are broken or missing."
+}

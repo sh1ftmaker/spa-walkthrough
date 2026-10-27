@@ -1,0 +1,25 @@
+{
+  "asset": "oke_bucket",
+  "round": 3,
+  "scores": {
+    "likeness": 4,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 4,
+    "lod_recognition": 4,
+    "variation": 3
+  },
+  "fixes": [
+    "ladle join: the handle is a bare stick laid through the rim with no collar where it meets the scoop. Add an 8 mm collar at the cup-handle joint and a rounded tip, and keep the 30 mm to 20 mm taper.",
+    "pivot: with_ladle keeps the origin 0.02-0.05 m off the bucket axis (sheet: LOD1 s3 (0.02,0.05), LOD2 s3 (0.03,0.05), LOD3 s1-2 (0.04,0.05)). Target: origin on the bucket axis at base, within 0.005 m. Move the bbox check to the proxy instead of the origin.",
+    "bowl: the LOD0 bowl is a 12-sided revolve with a stepped foot, visible as facets in the hero canonical. Target: 24 segments at LOD0 and a 20 mm chamfer in place of the foot step, keeping r 0.08 and depth 0.06.",
+    "hoops: flat bands with no edge. Target: 15 mm wide copper band with a 2-3 mm rounded edge at LOD0 and LOD1, so the bronze catches light like the concept.",
+    "variation: LOD0 seeds 1 and 2 are almost the same. Widen taper 0.66-0.84 to about 0.60-0.90 and height 0.19-0.25 to about 0.16-0.30 m so seeds differ in profile, not only in hoop count."
+  ],
+  "library_issues": [
+    "ceramic celadon: the bowl renders cream-white. The concept bowl is teal celadon (ONSEN TEAL / celadon). The generator asks for variant='celadon', so this is a library gap. Owner is adding a teal celadon.",
+    "hinoki: reads correctly as pale hinoki staves. No change needed."
+  ],
+  "verdict": "revise",
+  "summary": "Likeness and LOD recognition are good: it reads as the concept's copper-hooped hinoki bucket with ladle, and the LOD2 phone silhouette is a clear bucket with handle. Triangle counts sit within the current CSV budgets (LOD0 1392-1572 of 1600; LOD1 466-522 of 550; LOD2 104-120 of 120; LOD3 38 of 40). The sheet's own budget flags use stale values (30 at LOD3), so ignore them. Revise for the ladle join, the off-axis pivot (a placement defect), the faceted bowl and seed variation. Each is a small generator change."
+}

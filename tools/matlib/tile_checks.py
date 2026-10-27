@@ -29,8 +29,10 @@ def panel(src, title, chan=None, ph=None):
 def row(sid, aspect):
     ph = max(24, int(round(PW / aspect))) if aspect >= 1 else min(900, int(round(PW / aspect)))
     p = lambda k: os.path.join(TEX, f'{sid}_{k}.png')  # noqa: E731
-    out = panel(p('base'), 'base (sRGB)', None, ph) + panel(p('orm'), 'ORM: R ao  G rough  B metal', None, ph) + \
-        panel(p('nh'), 'normal XY + height (B)', None, ph)
+    out = panel(p('base'), 'base (sRGB)', None, ph)
+    if os.path.exists(p('orm')):
+        out += panel(p('orm'), 'ORM: R ao  G rough  B metal', None, ph)
+    out += panel(p('nh'), 'normal XY + height (B)', None, ph)
     out += panel(p('base'), 'base.a mask', 'a', ph) if _has_alpha(p('base')) else []
     out += panel(p('nh'), 'nh.a wet-film mask', 'a', ph)
     return ['(', *out, '+append', ')']
@@ -45,7 +47,9 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     man = json.load(open(os.path.join(ROOT, '3d', 'materials.json')))
     for m in man['materials']:
-        sid = os.path.basename(m['textures']['base'])[:-len('_base.ktx2')]
+        sid = os.path.basename((m.get('kzBase') or m['textures']['base']))[:-len('_base.ktx2')]
+        if m.get('kzBase'):
+            m = dict(m, aspect=1.0, textures_side=None, texture_size=[512, 512])
         rows = row(sid, m['aspect'])
         if m.get('textures_side'):
             rows += row(sid + '_side', m['aspect'])

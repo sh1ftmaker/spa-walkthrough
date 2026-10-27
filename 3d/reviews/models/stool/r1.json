@@ -1,0 +1,28 @@
+{
+  "asset": "stool",
+  "round": 1,
+  "reviewed_render": "3d/renders/models/stool/canonical_r1.jpg (no canonical.jpg present; only the bar style is shown)",
+  "lod_sheet": "3d/renders/lod/stool/sheet.jpg (phone-lod2-lod3.jpg not present; phone panel taken from sheet)",
+  "concept_refs_checked": ["lookbook/img/09-neon-ramen-counter.jpg", "refs/gen/sheet-ref-ground.png (changing hall, vanity stools)", "lookbook/img/16-steam-grotto.jpg"],
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 2,
+    "variation": 1
+  },
+  "fixes": [
+    "Footrest: canonical footrest is a square frame of four flat sticks. The brief and the ramen concept show a round hinoki ring. Replace with a 0.30-0.34 m diameter ring, 25 mm section, about 0.22 m above the floor, with 2 tie stretchers.",
+    "Cushion: canonical cushion is a flat grey disc with a small dome. Concept cushion is a soft red upholstered pad. Target a 40-50 mm thick dome with a 15 mm bevelled fabric edge and a stitched seam ring. Tint must read red (see library_issues).",
+    "Seat top: faceted edge shows polygon facets. Raise the seat revolve to 24 or more segments at LOD0 and use a two-step 12 mm edge radius.",
+    "Legs: legs are square-section with flat faces and no visible joinery. Target 8-sided legs at LOD0, a 30 mm turned bead at mid height, and a visible 10 mm shoulder/tenon where each leg meets the seat underside.",
+    "LOD3: 18-tri hexagonal prism reads as a plinth or pillar, not a stool. Keep four legs (sticks) and the round seat, about 40 tris minimum. LOD2 (80 tris) keeps the stool read; keep the footrest ring at LOD2."
+  ],
+  "library_issues": [
+    "noren (cloth) renders grey-lavender or grey-brown, so the red cushion tint does not come through. The base albedo needs fixing, or a red fabric entry is needed.",
+    "lacquer_dark and hinoki: no visible issue on the stool itself, but the seat top reads flat at distance; check the wear value."
+  ],
+  "verdict": "revise",
+  "summary": "The stool reads as a stool at LOD0 and LOD2, with the right height and seat width. Weak points are the square footrest, the faceted seat top and the grey cushion. LOD3 is a block and fails recognition. All three seeds look the same in the sheet and only the bar style is shown."
+}

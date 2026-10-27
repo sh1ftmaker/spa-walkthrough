@@ -16,11 +16,11 @@ export const BLENDER_EXPOSURE_STOPS = 0.0;
 export const LIGHTMAP_INTENSITY = Math.PI;
 
 export const TIERS = {
-  low: { dprMax: 1.5, planar: 1, planarScale: 0.25, bloom: false, msaa: 2, labelMax: 4 },
+  low: { dprMax: 1.5, planar: 1, planarScale: 0.25, planarOwnZone: true, bloom: false, msaa: 2, labelMax: 4 },
   high: { dprMax: 2.0, planar: 2, planarScale: 0.5, bloom: true, msaa: 4, labelMax: 8 },
 };
 
-export const BLOOM = { strength: 0.16, radius: 0.35, threshold: 1.6 }; // linear HDR threshold, High only
+export const BLOOM = { strength: 0.08, radius: 0.3, threshold: 2.5 }; // r2: halved; lamp highlights on wet floors bloomed the arrival hall +1.3 stops // linear HDR threshold, High only
 
 export const FOG = {
   color: [0.018, 0.015, 0.013], // linear
@@ -29,4 +29,8 @@ export const FOG = {
   mistDensity: 0.55, // 1/m at the water surface
   mistHeight: 0.3, // m, e-folding height (dense in the first 0-0.5 m)
   maxWaters: 8,
+  // Blender places: haze / mist colour = mean probe radiance x gain (the defaults above match a probe mean of ~0.05)
+  hazeFromProbe: 0.25,
+  mistFromProbe: 1.5,
+  mistTint: [0.8, 0.93, 1.1],
 };

@@ -8,11 +8,11 @@
    500
   ],
   "mean_albedo_linear": [
-   0.0345,
-   0.0328,
-   0.0335
+   0.0106,
+   0.0107,
+   0.0114
   ],
-  "albedo_std_srgb255": 33.0,
+  "albedo_std_srgb255": 13.1,
   "mean_roughness": 0.335
  },
  "basalt_vesicular": {
@@ -24,11 +24,11 @@
    500
   ],
   "mean_albedo_linear": [
-   0.0495,
-   0.0454,
-   0.0427
+   0.0383,
+   0.0386,
+   0.0406
   ],
-  "albedo_std_srgb255": 30.1,
+  "albedo_std_srgb255": 25.2,
   "mean_roughness": 0.717
  },
  "paving_wet": {
@@ -40,11 +40,11 @@
    500
   ],
   "mean_albedo_linear": [
-   0.0476,
-   0.0464,
-   0.0468
+   0.0254,
+   0.0257,
+   0.0276
   ],
-  "albedo_std_srgb255": 30.6,
+  "albedo_std_srgb255": 15.6,
   "mean_roughness": 0.33
  },
  "obsidian": {
@@ -56,11 +56,11 @@
    1006
   ],
   "mean_albedo_linear": [
-   0.0218,
-   0.0218,
-   0.0235
+   0.0087,
+   0.0091,
+   0.0101
   ],
-  "albedo_std_srgb255": 24.7,
+  "albedo_std_srgb255": 9.8,
   "mean_roughness": 0.082
  },
  "rimstone": {
@@ -72,9 +72,9 @@
    1006
   ],
   "mean_albedo_linear": [
-   0.645,
+   0.6451,
    0.4685,
-   0.3233
+   0.3234
   ],
   "albedo_std_srgb255": 38.9,
   "mean_roughness": 0.591
@@ -88,11 +88,11 @@
    1006
   ],
   "mean_albedo_linear": [
-   0.0361,
-   0.0318,
-   0.028
+   0.0148,
+   0.0144,
+   0.0147
   ],
-  "albedo_std_srgb255": 30.5,
+  "albedo_std_srgb255": 14.4,
   "mean_roughness": 0.464
  },
  "rock_wet_ore": {
@@ -104,11 +104,11 @@
    501
   ],
   "mean_albedo_linear": [
-   0.0346,
-   0.0329,
-   0.0341
+   0.0125,
+   0.0124,
+   0.0131
   ],
-  "albedo_std_srgb255": 32.0,
+  "albedo_std_srgb255": 12.7,
   "mean_roughness": 0.324
  },
  "rock_teal_glass": {
@@ -120,11 +120,11 @@
    501
   ],
   "mean_albedo_linear": [
-   0.0344,
-   0.0457,
-   0.0498
+   0.0175,
+   0.0242,
+   0.0268
   ],
-  "albedo_std_srgb255": 30.1,
+  "albedo_std_srgb255": 14.4,
   "mean_roughness": 0.207
  },
  "sulfur_travertine": {
@@ -136,9 +136,9 @@
    501
   ],
   "mean_albedo_linear": [
-   0.6044,
-   0.3021,
-   0.1786
+   0.6045,
+   0.3024,
+   0.179
   ],
   "albedo_std_srgb255": 61.2,
   "mean_roughness": 0.634
@@ -152,7 +152,7 @@
    1014
   ],
   "mean_albedo_linear": [
-   0.2434,
+   0.2433,
    0.1794,
    0.1335
   ],
@@ -168,11 +168,11 @@
    1014
   ],
   "mean_albedo_linear": [
-   0.1956,
-   0.0599,
-   0.0357
+   0.1646,
+   0.044,
+   0.0293
   ],
-  "albedo_std_srgb255": 55.8,
+  "albedo_std_srgb255": 49.2,
   "mean_roughness": 0.723
  },
  "glacier_ice": {
@@ -184,11 +184,11 @@
    1014
   ],
   "mean_albedo_linear": [
-   0.0806,
-   0.2741,
-   0.4387
+   0.0808,
+   0.2742,
+   0.4386
   ],
-  "albedo_std_srgb255": 66.4,
+  "albedo_std_srgb255": 66.3,
   "mean_roughness": 0.13
  },
  "hinoki": {
@@ -200,12 +200,12 @@
    496
   ],
   "mean_albedo_linear": [
-   0.3014,
-   0.141,
-   0.0581
+   0.2847,
+   0.14,
+   0.0631
   ],
-  "albedo_std_srgb255": 45.4,
-  "mean_roughness": 0.691
+  "albedo_std_srgb255": 44.4,
+  "mean_roughness": 0.69
  },
  "lacquer": {
   "sheet": "wood",
@@ -216,11 +216,11 @@
    496
   ],
   "mean_albedo_linear": [
-   0.0408,
-   0.0094,
-   0.0069
+   0.0249,
+   0.0057,
+   0.0048
   ],
-  "albedo_std_srgb255": 26.0,
+  "albedo_std_srgb255": 17.9,
   "mean_roughness": 0.211
  },
  "bamboo": {
@@ -232,11 +232,11 @@
    496
   ],
   "mean_albedo_linear": [
-   0.3007,
-   0.1632,
-   0.0486
+   0.3006,
+   0.163,
+   0.0485
   ],
-  "albedo_std_srgb255": 55.4,
+  "albedo_std_srgb255": 55.3,
   "mean_roughness": 0.444
  },
  "tatami": {
@@ -248,11 +248,11 @@
    1002
   ],
   "mean_albedo_linear": [
-   0.3065,
-   0.1941,
-   0.0582
+   0.336,
+   0.2126,
+   0.0625
   ],
-  "albedo_std_srgb255": 41.9,
+  "albedo_std_srgb255": 42.4,
   "mean_roughness": 0.745
  },
  "washi": {
@@ -296,11 +296,11 @@
    501
   ],
   "mean_albedo_linear": [
-   0.0173,
-   0.0374,
-   0.0768
+   0.0123,
+   0.0289,
+   0.0635
   ],
-  "albedo_std_srgb255": 34.4,
+  "albedo_std_srgb255": 28.6,
   "mean_roughness": 0.894
  },
  "rope": {
@@ -312,11 +312,11 @@
    501
   ],
   "mean_albedo_linear": [
-   0.2013,
-   0.1322,
-   0.082
+   0.1996,
+   0.1308,
+   0.0809
   ],
-  "albedo_std_srgb255": 47.5,
+  "albedo_std_srgb255": 47.1,
   "mean_roughness": 0.836
  },
  "bronze": {
@@ -328,11 +328,11 @@
    501
   ],
   "mean_albedo_linear": [
-   0.1027,
-   0.0753,
-   0.0424
+   0.096,
+   0.0698,
+   0.0395
   ],
-  "albedo_std_srgb255": 30.0,
+  "albedo_std_srgb255": 27.2,
   "mean_roughness": 0.388
  },
  "iron": {
@@ -344,11 +344,11 @@
    1015
   ],
   "mean_albedo_linear": [
-   0.1182,
-   0.0547,
-   0.0343
+   0.1161,
+   0.0533,
+   0.0334
   ],
-  "albedo_std_srgb255": 34.6,
+  "albedo_std_srgb255": 33.8,
   "mean_roughness": 0.768
  },
  "water_teal": {
@@ -360,11 +360,11 @@
    1015
   ],
   "mean_albedo_linear": [
-   0.0655,
-   0.2256,
-   0.2641
+   0.0562,
+   0.2096,
+   0.2466
   ],
-  "albedo_std_srgb255": 61.6,
+  "albedo_std_srgb255": 58.1,
   "mean_roughness": 0.045
  },
  "foam_sand": {
@@ -376,11 +376,11 @@
    1015
   ],
   "mean_albedo_linear": [
-   0.1506,
-   0.1557,
-   0.1693
+   0.106,
+   0.1093,
+   0.1192
   ],
-  "albedo_std_srgb255": 58.2,
+  "albedo_std_srgb255": 44.5,
   "mean_roughness": 0.46
  }
 }

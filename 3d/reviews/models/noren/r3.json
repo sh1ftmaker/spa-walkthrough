@@ -1,0 +1,29 @@
+{
+  "asset": "noren",
+  "round": 3,
+  "scores": {"likeness": 4, "silhouette_proportion": 3, "construction_detail": 3, "material_use": 3, "lod_recognition": 4, "variation": 4},
+  "fixes": [
+    "Cloth width and proportion (seed 1): the generator makes cloth_w = w - 2*(0.06 + 0.08) = 0.92 m on the 1.2 m hero. The canonical cloth measures about 285 x 545 px (w:h about 0.52). In sheet-mod-lights #7 the 'W 1.20 m' arrow spans the cloth edges, not the rod. The cloth there measures 220 x 285 px (w:h about 0.77; the labels give 0.67). Target: 1.2 m wide cloth (w:h at least 0.67) with the rod overhanging 0.08 m plus 0.06 m caps each side (rod about 1.48 m), which keeps the r1 overhang target. This needs the proxy widened to about 1.5 m (lead).",
+    "Drape still reads as flat boards: r2 fix 1 has not visibly landed. The canonical and styles panels are planar, with only faint streaks near the hem. Shorten the ripple wavelength to about 0.07-0.09 m (5-6 ripples per 0.46 m panel) at about 3-4 cm peak-to-peak at the hem. Add the 2-3 cm forward belly over the lower third that r2 asked for. Give the canonical a raking key light 35-45 degrees off-axis so the folds read. Check that smooth_angle=70 isn't flattening the shading across the ripple columns.",
+    "Tab loops: the canonical shows 6 tabs and the cream seed shows 8. At about 50% duty they read as a black-and-white checker strip under the rod. Concept #7: 5 loops about 0.07 m wide on about 0.25 m centres (about 30% duty), with the wooden rod clearly visible between them. Cap at 5 tabs per 1.2 m (n_splits+2 minimum, as r2 asked), with spacing of at least 0.2 m.",
+    "LOD2/LOD3 rod on seed 2 (half noren): LOD0/1 show a bronze tube with finials, but LOD2 renders a flat black bar and LOD3 a dark speckled bar. Keep the bronze (or hinoki) slot on the reduced rod so the colour holds across the switch.",
+    "Cloth colour and weave (generator side, alongside the library fix): the indigo samples at about #2C2E3A (near-neutral slate) against the concept's #1E2A40. Black samples at about #302B27 (warm brown-grey), while the 09 black noren reads blue-charcoal. No slub weave shows at 2 m. Until the library lands, push the indigo tint toward blue saturation (more B, less R/G), set black to a cool charcoal, and raise the albedo streak/variation over normal_strength 1.8.",
+    "Crest lettering: 'KAZAN-YU' renders in a heavy grotesque. The concept uses thin, widely spaced serif capitals, about 0.4 em tracking, set narrower than the mountain. Swap the glyph set or widen the tracking. Low priority."
+  ],
+  "library_issues": [
+    "noren indigo still renders desaturated slate (#2C2E3A sampled) with no visible slub/warp streaks; target navy around #1E2A40 with the weave of sheet-tex-cloth #1. Repeat of r2.",
+    "noren black variant reads warm brown-grey; should be a cool blue-charcoal per 09-neon-ramen-counter.",
+    "vermilion variant is now a deep brick red (#632B22 sampled under styles light), which is acceptable. r2's library issue landed."
+  ],
+  "verdict": "revise",
+  "summary": "This reads as the Kazan-yu noren. The full crest with KAZAN-YU / 火山湯 is there, the hero is a two-panel centre-slit door noren with tab loops on a turned wooden rod with bronze caps and brackets, and the colour set and full/half/wide/sleeve variants hold up. LOD2/LOD3 keep the split, the rod and the peak at 16 m and 44 m. It isn't there yet: the hero cloth is about 30% too narrow against the concept, the panels still hang like flat boards with no drape, the tabs read as a checker strip, and the indigo/black colours are off, which is mostly a library issue.",
+  "earlier_fixes": {
+    "r2_1_drape": "not landed visually. Code documents ±1.8 cm hem ripple and slight hem stagger; renders still look planar.",
+    "r2_2_tabs_hinoki_rod_default": "landed. Door noren default to tabs on a wooden rod with bronze caps and brackets, and the rod sits in view in the canonical. Tab count overshoots (6-8 vs 5).",
+    "r2_3_head_band": "landed. No visible tone band; slits start just under the tab line.",
+    "r2_4_seed1_two_panels": "landed. _style seed%4==1 gives splits=2; the docstring and styles label still say '3 splits', so fix the label.",
+    "r2_5_lod_crest": "landed. LOD1 keeps the mountain plus wisps; LOD2/3 a clean peak triangle.",
+    "r2_6_depth_standoff": "partly. Brackets visible; standoff 0.055 m in code (r2 asked 0.06-0.07). No side view supplied to verify the outward hang.",
+    "r1_all": "landed except the cloth-form item: lettering, LOD3 slit/crest, rod scale, seed variation."
+  }
+}

@@ -1,0 +1,26 @@
+{
+ "asset": "signboard_kanji",
+ "round": 1,
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 4,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 3,
+  "variation": 4
+ },
+ "fixes": [
+  "Frame: the bright orange outer frame reads as a plain moulding painted copper, much brighter than the board. Concept frame is a 0.03-0.04 m dark weathered timber with only a thin gilt inner line. Darken outer frame to aged wood, keep a 0.01 m gilt inner fillet, and add 0.02 m board relief.",
+  "Gilt kanji: characters are flat texture with ragged pitted edges that look eaten away (mottled orange with holes), not carved gold-leaf. Make the glyphs real 0.01-0.015 m raised or incised geometry at LOD0/1 with crisp edges and uniform gold; limit the pitting to the board only.",
+  "Side/back depth: concept side view shows a 0.2 m deep board with two iron wall brackets (top and bottom), 0.12 m standoff. Render shows a thin slab leaning on a wall with nothing. Add the brackets (bronze, 2 per board with bolts) and a 0.04 m board thickness with a visible back.",
+  "LOD2 and LOD3: the gilt becomes one big orange rectangle (LOD2 seed 3, LOD3 all), so it no longer reads as characters. Replace with 3 stacked glyph-sized blocks at LOD2 and 3 separate bars at LOD3, with a dark gap; right now LOD1 seed 1 even drops the top two glyphs.",
+  "Lintel/gold board (川霧) is not present in the three seeds shown; the brief lists it as a variant. Show it in a sheet (horizontal, gold-leaf plate, projecting eaves) or confirm it exists.",
+  "Standing variant: post/frame and rounded cap read as thin boards with no joinery. Add tenon blocks, a 0.06 m wide base foot, and a deeper cap (0.1 m overhang) as in the grotto lookbook tower."
+ ],
+ "library_issues": [
+  "lacquer_dark carries mottled orange pitting that looks like rust, not lacquer wear; the gold material has a visible noise pattern at 2.4 m scale.",
+  "The 'gilt' material is copper-orange; the concept is a warmer yellow-gold (about #D9A55A)."
+ ],
+ "verdict": "revise",
+ "summary": "Reads as the concept's 火山湯 vertical board at the right 0.6 x 2.4 proportion, with extras (B1, 大浴場) good for wayfinding. But frame, gilt and depth are flat and cheap, and the LOD2/3 versions lose the characters."
+}

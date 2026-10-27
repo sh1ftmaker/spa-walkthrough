@@ -1,0 +1,47 @@
+{
+  "asset": "bridge_arched",
+  "round": 3,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 4,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 4
+  },
+  "overall_10": 6.7,
+  "fixes": [
+    {"rank": 1, "part": "deck ends / abutment bearing / arch void", "issue": "The deck starts at ground level (z_end 0.07) and sinks between ~1.0 m stone piers, so the deck end sits 0.3-0.5 m below the pier tops (canonical_r6_elevation lower view). On the low seed, the soffit at the crown is only ~0.1 m above the base (rise ~0.5 minus a 0.06 m plank minus a 0.35 m girder). There is no open arch, and the LOD2 side silhouette (phone_side) is solid from deck to base along the whole span. On sheet-mod-arrival #5 front (205 px/m from W 7.0 m), the deck end bears on the pier top at ~1.0 m and the girder springs from the pier face at ~0.8 m. The crown deck is ~1.35 m with the soffit ~1.0 m, over water ~0.4 m above the base, so an open arch about 0.6 m tall reads under it. r1 #6 and r2 #4 asked for this ('rising to the deck-end level', 'deck end must visibly bear on the stone'), and it has not landed.", "target": "Set z_end to pier_h - 0.05 (about 0.85-1.0 m) and measure rise from that, so the girder seats on the pier top. Keep at least 0.5 m of clear soffit above the base at the crown on every seed. Add a 2-4 step stone or timber approach at each end, as in the #5 side view. If the layout needs a deck that meets grade, keep z_end low but export kz_deck.soffit_z, so the layout carves a channel of at least 0.5 m under the span."},
+    {"rank": 2, "part": "pier-top lanterns", "issue": "They are on the pier tops now (r2 #2 partly landed), but the heads are still squat, wide boxes: ~0.35 m wide by ~0.4 m tall, aspect ~0.85, measured against the 0.13 m post. They glow flat white and are the brightest, largest thing in the frame. The concept lanterns are slender (~0.22 w x 0.45 h, aspect ~0.5), with an iron frame, amber glass, a hip cap and a knob finial, on a short iron plinth.", "target": "Head 0.22 x 0.22 x 0.45 m, 0.03 m iron corner bars, a 0.06 m iron plinth, and a hip cap with a 0.06 m ball finial. Raise the washi emissive tint toward 2200-2500 K (see library issues), or use an amber glass slot."},
+    {"rank": 3, "part": "timber tint consistency", "issue": "The top and mid rails render saturated orange (the wet_oiled slot at wear 0.35), while the posts and planks render grey-tan. The rails look like a different material from the posts they join. The concept uses one warm walnut-brown for posts and rails, with a darker girder.", "target": "Use the same slot for posts and rails (walnut or stained). Keep the lighter wet_oiled slot for at most 1 in 5 deck planks. Keep the girder on 'stained'."},
+    {"rank": 4, "part": "LOD2/LOD3 lanterns and rails", "issue": "The lanterns turn into flat white crossed cards at LOD2/3 (sheet_34 rows 3-4), which read as paper slips. LOD3 keeps only one rail with 2 posts per side. At 80 m the side silhouette is a flat bar with end blocks, and the arch is barely visible.", "target": "LOD2/3 lantern: a 6-tri box at 0.22 x 0.45 m with a dark top face, so it reads as a lantern and not a card. LOD3: keep the arched girder bottom edge as a 4-segment curve and leave the soffit void open (follows fix 1), so the arch silhouette survives at 80 m. Budget: about 40 tris from the deck and 70 from the rails and lanterns."},
+    {"rank": 5, "part": "abutment spill / rock variant", "issue": "The block piers on seeds 1 and 2 stand as clean boxes on flat ground, with no boulder spill at the water. On the rock variant (seed 3), the lumps are coarse, faceted 'octahedra' (very visible at LOD1), and the near pier has a wedge that looks unseated. Concept #5 shows coursed blocks with a skirt of boulders 0.4-0.8 m across stepping down to the water.", "target": "Add 3-5 seated skirt boulders (0.4-0.8 m, z=0, overlapping the pier by at least 0.1 m) on both styles. Give the rock style at least 2 subdivision levels of lump or reuse the block courses with jittered faces. Keep gaps under 2 cm."},
+    {"rank": 6, "part": "finials", "issue": "The giboshi read as sharp pointed spikes in the canonical. The concept caps are rounded onion domes with a small knob (r2 #5 only partly landed).", "target": "Bulb 0.14-0.16 m in diameter, its height 1.1 times its diameter, with a 0.03 m knob, not a long point."}
+  ],
+  "earlier_fixes": {
+    "r1": {
+      "lantern as rail newel": "superseded by r2 #2. Concept #5 shows the lanterns on short iron bases on the pier tops, separate from the end rail posts, so r2 is the right target",
+      "deep dark girder + iron straps": "landed",
+      "iron brackets/collars/giboshi": "mostly landed (collars and joint bands present; the finial shape is still too pointed)",
+      "seed variation": "landed",
+      "LOD3 solid rail walls": "landed (top-rail band + posts)",
+      "pier height / seated rubble": "partly landed: the piers are ~0.9-1.05 m, but the deck does not reach their top, and the seed 3 rock seating is still loose"
+    },
+    "r2": {
+      "smooth laminated fascia with straps": "landed",
+      "slim amber lanterns on the pier tops": "partly landed: on the piers, but still squat and white",
+      "5 posts, 2 rails, kerb/strut only as a variant": "landed",
+      "abutment carries the deck + skirt rocks": "not landed: the deck end sits below the pier top, and there are no skirt rocks on the block style",
+      "giboshi default": "partly landed: present 2 in 3, but the profile is pointed",
+      "side-elevation recognition views, grounded LOD3 lanterns, rise spread": "landed (phone_side added, cards sit on the piers, rises 0.5/0.95/0.75)"
+    }
+  },
+  "library_issues": [
+    "washi_backlit (pier lanterns): emission still reads near-white (~5500-6500 K). Every concept lantern is amber, ~2200-2500 K. r1 and r2 raised this against lantern_andon, and the new slot has the same problem.",
+    "basalt_dry: renders mid grey-brown with pale fracture highlights. Concept #5 basalt is near-black with warm amber flecks. The albedo needs to be ~30-40% darker.",
+    "hinoki 'wet_oiled' with wear: renders saturated orange next to 'walnut' or 'stained', which read grey-tan. The variants are not one family under the same lighting.",
+    "LOD pipeline: the stock sheet.jpg and phone-lod2-lod3.jpg are still end-on or under-ground framings that show a tiny U shape. Use sheet_34, phone_side and phone_34 for this asset."
+  ],
+  "verdict": "pass",
+  "summary": "A clear improvement. The fascia is now one smooth, dark, laminated arch with iron straps, the rails are top + mid on 5 posts, and the seeds vary in rise, abutment style and rail scheme. It reads as the #5 bridge at phone distance from the side. It passes narrowly, at 6.7/10. The remaining gap to the concept is structural, not cosmetic. The deck runs down to grade between tall piers instead of resting on them, which leaves no open arch beneath the low and mid seeds. The lanterns are still squat white boxes, and the rail and post timber tints do not match. Fix 1 is the priority: it fixes both the close-up likeness and the LOD2/3 silhouette."
+}

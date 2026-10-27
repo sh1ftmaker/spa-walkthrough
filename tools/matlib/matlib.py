@@ -118,3 +118,45 @@ def assign(obj, material_id, slot=0, variant=None, link=False, **params):
         mats.append(None)
     mats[slot] = mat
     return mat
+
+
+def refresh(material_ids=None):
+    """Replace library materials already appended in this .blend with the current library versions.
+
+    assign() reuses a material that is already in the file, so files built before a library fix keep the
+    old shader (e.g. the old hazy lava_glass).  refresh() appends fresh copies, remaps every user of the
+    old material and of the old KZ_* node groups onto them, and deletes the stale data.  Variants
+    (<id>~...) are rebuilt from the fresh base with their stored kz_params."""
+    olds = [m for m in bpy.data.materials if m.get('kz_id') and '~' not in m.name and m.library is None
+            and (material_ids is None or m['kz_id'] in material_ids)]
+    if not olds:
+        return []
+    ids = sorted({m['kz_id'] for m in olds})
+    old_groups = {ng.name: ng for ng in bpy.data.node_groups if ng.name.startswith(('KZ_', 'KZM_', 'KZP_'))}
+    for ng in old_groups.values():
+        ng.name = ng.name + '__stale'
+    for m in olds:
+        m.name = m.name + '__stale'
+    with bpy.data.libraries.load(LIBRARY, link=False) as (src, dst):
+        dst.materials = ids
+    for m in olds:
+        new = bpy.data.materials.get(m['kz_id'])
+        if new is not None:
+            m.user_remap(new)
+            bpy.data.materials.remove(m)
+    for name, ng in old_groups.items():
+        base = name[:-len('__stale')] if name.endswith('__stale') else name
+        new = bpy.data.node_groups.get(base)
+        if new is not None and new is not ng:
+            ng.user_remap(new)
+            bpy.data.node_groups.remove(ng)
+    for v in [m for m in bpy.data.materials if '~' in m.name and m.get('kz_id') in ids]:
+        params = json.loads(v.get('kz_params', '{}'))
+        node = v.node_tree.nodes.get('KZ')
+        fresh = bpy.data.materials.get(v['kz_id'])
+        if node and fresh:
+            node.node_tree = fresh.node_tree.nodes['KZ'].node_tree
+            for k, val in params.items():
+                node.inputs[k].default_value = tuple(val) + (1.0,) if k == 'tint' else val
+    _dedupe_groups()
+    return ids

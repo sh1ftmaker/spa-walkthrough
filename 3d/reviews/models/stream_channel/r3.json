@@ -1,0 +1,21 @@
+{"asset":"stream_channel","round":3,
+"scores":{"likeness":2,"silhouette_proportion":2,"construction_detail":2,"material_use":2,"lod_recognition":2,"variation":4},
+"overall_10":4.7,
+"fixes":[
+"Kerbed and stepped styles: wall blocks are huge, tall, near-cubic monoliths (roughly 0.5-0.8 m square sections, 3-4x taller than the channel is wide) so the water is a thin patch at the top of a wall. Sheet-vs-water-2 #2 shows a low cut-stone kerb about 0.15-0.2 m wide and 0.3 m tall around a bed roughly 0.3-0.5 m wide. Cut kerb section to 0.18 x 0.3 m, course the sides at ~0.15 m with 4 mm joint bevels, and drop the water to 0.1 m below the kerb top.",
+"Stepped style: must read as a stair of ashlar treads, 0.17 m drop each, tread ~0.3 m, water sheeting over each lip, walls both sides at the same coursing (sheet side view). Currently 3-4 oversized stepped columns with one pool on top. Build 4-5 full-width treads with rounded 2 cm lips and 0.25 m thick side walls that follow the stair line; lantern-post stub optional at the top end.",
+"Natural style: closer (rounded boulders, ashlar block wall, flat bed), but bank is one tall slab wall on one side (~0.5 m high) and a row of pointed shards on the other. Concept (04-arrival-gate, sheet front row 1) has rounded, flat-topped, overlapping basalt boulders on both banks, 0.25-0.4 m high, with 2-3 low weirs. Replace the pointed rocks with lumpy rounded boulders (bevel 4-6 cm, flat tops), make both banks match, and cap height at 0.35 m.",
+"Weirs: there is still no readable weir (0.06 m lip, 0.12-0.17 m drop, plunge pool below). Only pale ledge strips sit in the natural bed. Give each style 2-3 lips per 4 m with a bed step under each and a cobble scatter (8-12 stones 4-8 cm) so the water reads shallow and moving.",
+"Material: basalt_wet on kerbs and blocks still reads as bright brown metal foil with large stretched dark blotches; paving has no joint pattern. Scale UVs to ~0.5 m per tile on blocks and per-block UV offset so each stone differs. Library issue, but the generator should set UV scale.",
+"LOD2/LOD3: at 35 m (LOD2) the model is a ~30 px speck and LOD3 at 80 m is invisible; natural LOD2 silhouette is a flat slab with two dots. Keep banks as two thin parallel strips with a lighter water band between so it reads as a channel; LOD3 seed 2 should use the full 16-20 tri budget with both banks. Seeds also produce different proxy shapes per style, which is fine."
+],
+"earlier_fix_status":{
+"r2_natural_real_banks":"partly landed: boulder row and flat bed now exist, but shards and a one-sided slab wall remain",
+"r2_stepped_staircase_no_gaps":"partly landed: floating gap gone, but oversized monolithic steps",
+"r2_kerbed_reduce_section":"not landed: kerb still 0.5 m+ slabs, no joints visible",
+"r2_weirs":"not landed",
+"r2_scale":"not landed: still bulky, bank wall far above 0.35 m",
+"r2_lod_lighter_band":"not landed"},
+"library_issues":["basalt_wet reads as bright brown metal foil with blotchy stretched texture on kerbs and blocks","paving on blocks has no joint pattern and hard shading edges","water_river flat cyan sheet: acceptable as runtime fx placeholder"],
+"verdict":"revise",
+"summary":"Natural style has improved toward the concept (rounded boulders, flat bed) but kerbed and stepped still read as chunky monolithic blocks with a puddle on top, far from the low cut-stone rill and 0.17 m stair runnel of the sheet. No weirs, scale 2-3x too bulky, LOD2/3 are specks. Variation across styles is good."}

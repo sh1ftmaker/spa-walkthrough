@@ -1,0 +1,39 @@
+{
+  "asset": "stream_channel",
+  "round": 5,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 3
+  },
+  "overall_10": 6.0,
+  "fixes": [
+    "Stepped side walls: the capstones are separate cubes with gaps between them, so from the 3/4 view (styles.jpg top right, sheet_34 LOD0/LOD1 seed 3) the walls look like crenellations. The sheet-vs-water-2 #2 SIDE view shows a continuous coursed wall that steps down with the treads. Butt the capstones with gaps of 5 mm or less, use capstones 0.30-0.45 m long in running bond across the tread joints, and step the wall top once per tread (kept at 0.20-0.23 m above the tread).",
+    "Natural weir lips: with water fx off (styles.jpg natural seed 4, sheet_34 LOD0 seed 1) each lip is one clean, thin, full-width slab spanning between the rock clusters. It reads as a plank bridge, not a rock weir. Build each lip from 2-3 irregular lip stones about 0.10 m thick with 1-2 notches 0.08-0.15 m wide, as in lookbook 04, where 3-4 thin falls cross each weir. Tuck the ends 0.10 m under the flanking bank rocks and keep the crest 0.03-0.05 m below the bank toe.",
+    "Natural footing course: every FRONT view on sheet-vs-water-2 #2 shows a pale cut-stone base course, about 0.10-0.15 m high, under the black bank rocks. The natural style has none (verify_sections seed 1). Add a pale stepping_stone ashlar strip, 0.10-0.15 m high and 0.3-0.5 m blocks, along the outer foot of each bank, half buried in kz_ground_profile.",
+    "Natural rock shapes and gaps: several bank rocks are still tall pointed prisms. In verify_sections seed 1, the right bank rock rises to a peak about 0.55 m above the bed. Flatten the top facet to at least 40 % of the footprint and cap the height at 0.35 m above water (the r1/r3 target, kept). Close the bank gaps at bends: in styles.jpg seed 4 the ground shows through between the rock clusters. Hold 30-40 % overlap on the outer side of each bend.",
+    "Kerbed blocks: at viewing distance the kerbs read as long plain boxes, with faint joints and identical tone. Cut visible V-joints every 0.4-0.6 m (6-8 mm chamfer), vary the tint per block by plus or minus 8 % value, and add a 0.02 m capstone overhang so a shadow line runs along the kerb. Keep the 0.18 x 0.30 m section.",
+    "Natural LOD2: sharp triangular fins stick out of the bank strips (sheet_34 LOD2 seed 1, right side; phone-lod2-lod3 LOD2 @15 m silhouette). Replace them with blunt strip ends and keep LOD2 bank heights within 0.05 m of LOD0. Then add the bed cobbles that r1 and r3 asked for (8-12 per pool, 4-8 cm, LOD0 only), which are still not visible."
+  ],
+  "library_issues": [
+    "basalt_wet renders warm brown/bronze with bright foil highlights; concept (lookbook 04, sheet-vs-water-2) is near-black wet basalt with gold-lit edges. Darken albedo to ~0.03-0.06 and cool the tint.",
+    "stepping_stone treads/bed read well; no issue.",
+    "water_river teal preview is a runtime-fx stand-in; not judged."
+  ],
+  "earlier_fixes_status": {
+    "r4 natural boulders 2-3 sizes, craggy faceted, overlapping, slab wall removed": "landed (some pointed shards remain)",
+    "r1-r4 weirs with pale lip and 0.12-0.17 m bed step": "landed (lip shape reads as plank, see fix 2)",
+    "r1-r4 stepped as 4-5 treads, 0.17 m drop, ~0.3 m tread, walls <= tread+0.25": "landed (5 x 0.33 m, walls 0.20-0.23 m)",
+    "r2-r4 kerbed 0.18 x 0.30 m section, coursing, end rock clusters": "landed (joints still weak, see fix 5)",
+    "r1/r3 bank height cap 0.35 m": "mostly landed (0.24-0.35 above water; one shard over)",
+    "r1/r3 bed cobble scatter": "not landed",
+    "r2 stepping stones in bed": "not landed (optional)",
+    "r2-r4 LOD2 two bank strips + lighter bed band; LOD3 full budget both banks": "landed (18 tris, U-section; natural LOD2 has fins)",
+    "r3/r4 basalt tint/UV scale": "library issue, still warm brown"
+  },
+  "verdict": "pass",
+  "summary": "The from-scratch rebuild is a clear step up. Natural now reads as the arrival-hall rock-lined stream with pools and weirs. Kerbed is a correctly scaled cut-stone rill. Stepped is a real 5-tread, 0.17 m runnel with walls. The remaining weak points are the crenellated stepped walls, plank-like natural weir lips, the missing pale footing course, a few pointed shard rocks, faint kerb joints and fins on natural LOD2. It passes narrowly at 6.0/10."
+}

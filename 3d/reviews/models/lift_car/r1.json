@@ -1,0 +1,19 @@
+{
+  "asset": "lift_car",
+  "round": 1,
+  "scores": {"likeness": 3, "silhouette_proportion": 3, "construction_detail": 2, "material_use": 2, "lod_recognition": 2, "variation": 2},
+  "fixes": [
+    "1. Glazing: the glass reads as cloudy, smoky panels with white blobs (canonical, sheet_34 LOD0-2). The concept car (sheet-vs-lift-cable #2) is crystal clear so you see the passengers, floor rings and far mullions sharply. Use a clear glass material (not lava_glass) for the cabin skin, with thickness about 0 and IOR 1.5, and reserve tinted glass for nothing here.",
+    "2. Frame colour and finish: the mullions and rings read as orange rusted copper. The concept and lift_drum use dark blackened bronze with polished gold edges. Use the same bronze treatment as lift_drum (darker base, brighter edge highlight) so car and drum look like one product. Add 2 polished brass bands, at the base (~0.18 m tall) and under the cornice (~0.12 m), as in the sheet.",
+    "3. Lower fret band: it is a cage of X/diamond struts set inside the glass, so the car looks like a birdcage. The concept has a solid 0.9-1.0 m tall kumiko/fret panel band (square-key lattice, as on the lift_drum balustrade) behind the glass, topped by a brass handrail ring at 0.95 m. Replace the diamond pattern with lift_drum's key-fret pattern in a continuous band; drop the extra vertical bars below the rail.",
+    "4. Ceiling and lanterns: the concept's identity is a lit sunburst ceiling disc (r ~1.1 m) plus two vertical wall lanterns flanking the door. The canonical shows a pinkish wash with no readable sunburst and no wall lanterns. Make the ceiling disc emissive washi_backlit with 12-16 bronze radial spokes, and add 2 bronze-framed lanterns (0.35 x 0.12 m) at 2.0 m height on the mullions either side of the door.",
+    "5. Roof and crosshead: two rough boxes on a flat plate read as cheap. The concept has a shallow dome with a ribbed crown, a cylindrical hub, twin vertical guide rods/cables rising ~0.5 m, and small sheave wheels. Replace the boxes with a turned hub (r 0.25, h 0.2) and 2-4 rod stubs plus sheaves. At LOD3 replace the gable/pitched roof (it reads as a hut) with a low dome or cone.",
+    "6. Door and variation: the front view shows an open door gap with a white strip, which reads as a hole. Default to closed curved sliding doors with a centre seam (as in the sheet), and animate them open separately. The seeds are visually identical: make rings (3-6), bay count and dome style (low/tall/onion) produce visible differences, and add an r range of 1.3-1.6 to the seeds."
+  ],
+  "library_issues": [
+    "bronze: mottled rust-orange appearance; it needs to be darker and smoother to match lift_drum and the concept (shared with spiral_stair).",
+    "lava_glass (or whatever is on the cabin glazing): has cloudy inclusions/smoke that make it useless as clear cabin glass. The library needs a plain clear glass entry."
+  ],
+  "verdict": "revise",
+  "summary": "Cylinder-with-dome form, a mid ring and a round floor are there, so it is recognisably a round lift car. But the cloudy glass, rusty orange frame, birdcage diamond strutting, box crosshead and missing sunburst/lanterns make it read as an old cage rather than the polished bronze-and-glass cabin of the concept. It does not yet match lift_drum's style, the LOD3 gable roof is wrong, and the seeds do not vary."
+}

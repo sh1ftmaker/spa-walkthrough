@@ -2,7 +2,7 @@
 // Walk a list of waypoints at eye height (real walk physics: stairs, collision) and record it as an MP4.
 //   node tools/flythrough.mjs --cdp 9311 --url http://127.0.0.1:5173/ --route tools/routes/ground-to-b1.json \
 //        --out ../3d/renders/web/ground-to-b1.mp4 [--size 1280x720] [--fps 30] [--speed 1.6] [--tier low|high] [--query labels=0]
-// Route JSON: { "start": "<place id>", "points": [[x, y, zEye], ...] }  (layout coords; z is eye height = floor + 1.6)
+// Route JSON: { "start": "<place id>", "start_pos"?: [x, y, zEye], "start_target"?: [x, y, z], "points": [[x, y, zEye], ...] }  (layout coords; z is eye height = floor + 1.6)
 // or a bare array of points (then --start <place id> is required). Frames come from CDP Page.startScreencast and are
 // re-timed to a constant frame rate with ffmpeg (concat demuxer with per-frame durations).
 import { chromium } from 'playwright-core';
@@ -48,6 +48,7 @@ try {
   const ok = await page.evaluate(() => window.__kz.ready.then(() => true, (e) => String(e?.message ?? e)));
   if (ok !== true) throw new Error(`app failed: ${ok}`);
   await page.waitForFunction(() => window.__kz.allLoadedMs != null, null, { timeout: 120000 });
+  if (routeDoc.start_pos) await page.evaluate(([p, t]) => window.__kz.setCamera(p, t), [routeDoc.start_pos, routeDoc.start_target ?? null]);
   await page.evaluate(() => window.__kz.frames(30));
   const cdp = await ctx.newCDPSession(page);
   cdp.on('Page.screencastFrame', async (f) => {

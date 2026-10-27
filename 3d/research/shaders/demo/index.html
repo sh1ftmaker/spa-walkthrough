@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KZ shader kit demo</title>
+<style>
+  :root { --bg: #0b0a09; --fg: #e8e2d8; --mut: #9a9187; --panel: rgba(16, 14, 12, 0.82); --acc: #e0a15a; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 13px/1.35 system-ui, sans-serif; overflow: hidden; }
+  canvas { display: block; width: 100vw; height: 100vh; touch-action: none; }
+  #ui { position: fixed; left: 8px; top: 8px; background: var(--panel); padding: 8px 10px; border-radius: 8px; max-width: min(360px, calc(100vw - 32px)); }
+  #ui label { display: flex; justify-content: space-between; gap: 8px; margin: 3px 0; align-items: center; }
+  #ui select { background: #1d1a17; color: var(--fg); border: 1px solid #3a342e; border-radius: 4px; padding: 2px 4px; max-width: 200px; }
+  #ui .row { display: flex; gap: 4px; flex-wrap: wrap; margin: 4px 0; }
+  #ui button { background: #1d1a17; color: var(--fg); border: 1px solid #3a342e; border-radius: 4px; padding: 3px 7px; cursor: pointer; }
+  #ui button.on { border-color: var(--acc); color: var(--acc); }
+  #stats { font: 12px ui-monospace, monospace; color: var(--mut); margin-top: 4px; white-space: pre; }
+  #hide { position: absolute; right: 6px; top: 4px; padding: 0 6px; }
+  body.clean #ui { display: none; }
+  #labels { position: fixed; left: 0; right: 0; top: 0; pointer-events: none; }
+  #labels div { position: fixed; transform: translateX(-50%); font: 600 14px system-ui; color: #fff; text-shadow: 0 1px 3px #000, 0 0 8px #000; white-space: nowrap; }
+  #caption { position: fixed; left: 50%; bottom: 10px; transform: translateX(-50%); font: 600 15px system-ui; color: #fff; text-shadow: 0 1px 3px #000, 0 0 10px #000; pointer-events: none; text-align: center; }
+  #err { position: fixed; inset: auto 8px 8px 8px; color: #ff8a7a; font: 12px ui-monospace, monospace; white-space: pre-wrap; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "../../../../web/node_modules/three/build/three.module.js",
+  "three/addons/": "../../../../web/node_modules/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="labels"></div>
+<div id="caption"></div>
+<div id="ui">
+  <button id="hide" title="hide panel">×</button>
+  <b>KZ shader kit</b>
+  <label>scene <select id="scene"><option value="cave">cave 40×20 m</option><option value="corridor">corridor 60 m</option><option value="swatch">swatch wall (4 modes)</option></select></label>
+  <label>wall <select id="wall"></select></label>
+  <label>floor <select id="floor"></select></label>
+  <div class="row" id="modes"></div>
+  <div class="row" id="tiers"></div>
+  <label>source <select id="source"><option value="auto">auto (lib for plain, plates after)</option><option value="lib">library set</option><option value="plate">Codex plate</option></select></label>
+  <label>camera <select id="cam"></select></label>
+  <label>animate <input type="checkbox" id="anim" checked></label>
+  <div id="stats"></div>
+</div>
+<div id="err"></div>
+<script type="module" src="./demo.js"></script>
+</body>
+</html>

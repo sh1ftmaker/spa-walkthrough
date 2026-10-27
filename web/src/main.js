@@ -14,6 +14,7 @@ import { Walker } from './walk.js';
 import { Input } from './input.js';
 import { Labels, buildPlaceSheet, LEVEL_NAMES, placeName } from './places.js';
 import { Dollhouse } from './dollhouse.js';
+import { SPRITES } from './sprites.js';
 import { l2t, t2l, headingToYaw, yawToHeading } from './coords.js';
 
 const Q = new URLSearchParams(location.search);
@@ -76,7 +77,7 @@ async function main() {
   const renderPass = new RenderPass(scene, camera);
   composer.addPass(renderPass);
   const bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), BLOOM.strength, BLOOM.radius, BLOOM.threshold);
-  bloom.enabled = rt.bloom;
+  bloom.enabled = rt.bloom && Q.get('bloom') !== '0';
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
 
@@ -109,8 +110,10 @@ async function main() {
   const placeById = new Map(places.map((p) => [p.id, p]));
   const spaces = spacesDoc.spaces;
   loadText('Loading materials', 0.15);
-  const world = new World(renderer, scene, assets, manifest, env);
+  const world = new World(renderer, scene, assets, manifest, env, tier);
   await world.init();
+  // fixed pool of live lights for kz_runtime lights (Blender places); constant count, so zone changes never recompile
+  const lightPool = manifest.zones.some((z) => z.lights?.length) ? Array.from({ length: 6 }, () => { const l = new THREE.PointLight(0xffffff, 0, 0, 2); scene.add(l); return l; }) : [];
 
   const walker = new Walker();
   const startId = Q.get('place') && placeById.has(Q.get('place')) ? Q.get('place') : manifest.start?.place ?? places[0].id;
@@ -278,7 +281,7 @@ async function main() {
 
   // ---------- frame ----------
   const clock = new THREE.Clock();
-  const eye = new THREE.Vector3();
+  const eye = new THREE.Vector3(), camDir = new THREE.Vector3();
   const frustum = new THREE.Frustum(), pm = new THREE.Matrix4(), tmpBox = new THREE.Box3();
   let probe = null;
   let lastFrameT = performance.now();
@@ -327,11 +330,16 @@ async function main() {
       KZ.kzFogDensity.value += (target - KZ.kzFogDensity.value) * Math.min(1, dt * 2);
       camera.updateMatrixWorld();
       world.updateUniforms(camera.position, now / 1000);
+      world.update(dt);
+      world.assignLights(lightPool, camera.position, camera.getWorldDirection(camDir));
+      SPRITES.kzPxScale.value = renderer.domElement.height / (2 * Math.tan((camera.fov * Math.PI) / 360));
       // planar reflections
       const ws = choosePlanar();
-      const hide = world.waterObjs;
       ws.forEach((w, i) => {
         const r = reflectors[i];
+        // Low: the mirror pass draws only the water's own zone (it doubled the corridor's draw calls otherwise)
+        const own = w.userData.zone;
+        const hide = rt.planarOwnZone ? [...world.waterObjs, ...[...world.zones.values()].filter((z) => z.group && z.def.id !== own).map((z) => z.group)] : world.waterObjs;
         if (r.render(renderer, scene, camera, w.userData.kzWater.z, hide)) {
           const u = w.userData.uniforms;
           u.tReflect.value = r.rt.texture; u.uReflMatrix.value.copy(r.textureMatrix); u.uHasPlanar.value = 1;
@@ -363,7 +371,7 @@ async function main() {
       pos: (walker.fixed ? t2l(camera.position) : t2l(eye)).map((v) => +v.toFixed(3)), feet: feetL.map((v) => +v.toFixed(3)),
       heading: +yawToHeading(walker.yaw).toFixed(1), pitch: +((walker.pitch * 180) / Math.PI).toFixed(1), fov: camera.fov,
       space: currentSpace, zone: currentZone, visibleZones: world.visibleIds ?? [], loadedZones: world.loadedIds(), zonesTotal: world.zones.size,
-      walkTris: walker.triCount, bvhMs: +(walker.buildMs ?? 0).toFixed(1), planar: reflectors.filter((r) => r).length,
+      walkTris: walker.triCount, liveLights: lightPool.filter((l) => l.intensity > 0).length, mixers: world.mixers.length, sprites: world.sprites.length, bvhMs: +(walker.buildMs ?? 0).toFixed(1), planar: reflectors.filter((r) => r).length,
       probeA: world.probeA, probeB: world.probeB, blend: +KZ.kzProbeBlend.value.toFixed(2),
       viewport: [innerWidth, innerHeight], dpr: renderer.getPixelRatio(), bytesLoaded: assets.bytes, interactiveMs: kz.interactiveMs ?? null,
     };
@@ -399,7 +407,7 @@ async function main() {
     mode: (m) => { if (m) setMode(m); return mode; },
     walkPath: async (pts, opts) => { releaseFixed(); const v = pts.map((p) => l2t(p)); v.forEach((q) => (q.y -= EYE_HEIGHT)); return walker.walkPath(v, opts); },
     setFov: (f) => { kz._fovLocked = !!f; if (f) { camera.fov = f; camera.updateProjectionMatrix(); } },
-    renderer, scene, camera, world, walker,
+    renderer, scene, camera, world, walker, THREE,
   });
   readyResolve(kz.info());
   if (!tierInfo.locked && tier === 'high') probe = frameProbe(45);

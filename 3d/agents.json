@@ -21,9 +21,9 @@
     "name": "Material library",
     "role": "library.blend, ~26 materials, KTX2 textures, previews",
     "model": "opus",
-    "status": "running",
-    "last": "Round-1 rework: rebuilding the library on the Codex texture plates (seamless, height/normal/ORM derived) + rig fixes; then KTX2 encode",
-    "updated": "2026-10-27T00:47:06Z"
+    "status": "done",
+    "last": "Final pass: 59 materials incl. lava_molten, mirror, skin, hair, copper, wicker, food",
+    "updated": "2026-10-27T08:30:25Z"
   },
   {
     "id": "webapp",
@@ -237,9 +237,9 @@
     "name": "Mist simulation",
     "role": "Cheap 2D stable-fluids (Navier-Stokes) low mist in a Web Worker, coupled to the fog shader; walk-through wake",
     "model": "opus",
-    "status": "running",
-    "last": "Started: research + worker solver + 3 prototypes (mist corridor, steam pool, falls base)",
-    "updated": "2026-10-26T23:54:20Z"
+    "status": "done",
+    "last": "2D stable-fluids mist in a Web Worker (64^2 @20Hz Low, 128^2 @30Hz High): main thread 0.01-0.05 ms; walk-through wake; 3 prototypes; phone GPU ~1 ms on Low (estimate)",
+    "updated": "2026-10-27T00:52:11Z"
   },
   {
     "id": "shader-research",
@@ -266,5 +266,544 @@
     "status": "running",
     "last": "Started: reading concept art, Codex sheets, space files, placements",
     "updated": "2026-10-27T00:45:44Z"
+  },
+  {
+    "id": "review-mat-r2",
+    "outputs": [
+      "3d/reviews/materials/r2.json"
+    ],
+    "name": "Material review r2",
+    "role": "Independent review of the plate-based library (32 materials), incl. shader-vs-texture call per material",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 2: most 2-3/5; worst basalt_wet, water_still. Shader-vs-texture call per material in r2.json",
+    "updated": "2026-10-27T01:17:21Z"
+  },
+  {
+    "id": "shaders",
+    "outputs": [],
+    "status": "done",
+    "last": "Shader kit done: hex-tiled Codex plates + procedural layers (hybrid); Low tier <1 ms est. on phone; demo at /3d/research/shaders/demo/",
+    "updated": "2026-10-27T01:18:45Z"
+  },
+  {
+    "id": "gen-a",
+    "outputs": [],
+    "name": "Generators: torii_basalt + obsidian_monolith",
+    "role": "First-batch parametric generators for owner critique (LOD0-3, variants, self-critique x2)",
+    "model": "opus",
+    "status": "done",
+    "last": "Batch 1 done; awaiting owner critique",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-b",
+    "outputs": [],
+    "name": "Generators: lift_drum + chochin",
+    "role": "First-batch parametric generators for owner critique (LOD0-3, variants, self-critique x2)",
+    "model": "opus",
+    "status": "done",
+    "last": "Batch 1 done; awaiting owner critique",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-c",
+    "outputs": [],
+    "name": "Generators: bridge_arched + stair",
+    "role": "First-batch parametric generators for owner critique (LOD0-3, variants, self-critique x2)",
+    "model": "opus",
+    "status": "done",
+    "last": "Batch 1 done; awaiting owner critique",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-d",
+    "outputs": [],
+    "name": "Generators: chozubachi + pine_niwaki",
+    "role": "First-batch parametric generators for owner critique (LOD0-3, variants, self-critique x2)",
+    "model": "opus",
+    "status": "done",
+    "last": "Batch 1 done; awaiting owner critique",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-e",
+    "outputs": [],
+    "name": "Generators: slipper_cubbies + noren",
+    "role": "First-batch parametric generators for owner critique (LOD0-3, variants, self-critique x2)",
+    "model": "opus",
+    "status": "done",
+    "last": "Batch 1 done; awaiting owner critique",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "cc0mat",
+    "outputs": [],
+    "name": "Free material scans",
+    "role": "Find CC0 PBR scans matching the 32 materials; compare sheets",
+    "model": "opus",
+    "status": "done",
+    "last": "14 usable CC0 bases (Poly Haven/ambientCG), 6 detail layers, 5 ours better, 7 no match (water/glass/lights)",
+    "updated": "2026-10-27T01:35:58Z"
+  },
+  {
+    "id": "gen-f",
+    "outputs": [],
+    "name": "Generators: lava_window + portal_arch",
+    "role": "Batch-2 parametric generators",
+    "model": "opus",
+    "status": "running",
+    "last": "Started",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-g",
+    "outputs": [],
+    "name": "Generators: pavilion_engawa + shoji_wall_bay",
+    "role": "Batch-2 parametric generators",
+    "model": "opus",
+    "status": "running",
+    "last": "Started",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-h",
+    "outputs": [],
+    "name": "Generators: spiral_stair + lift_car",
+    "role": "Batch-2 parametric generators",
+    "model": "opus",
+    "status": "running",
+    "last": "Started",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-i",
+    "outputs": [],
+    "name": "Generators: reception_counter, signboard_kanji, sign_tower_lit, banner_hanging",
+    "role": "Batch-2 parametric generators",
+    "model": "sonnet",
+    "status": "running",
+    "last": "Started",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-j",
+    "outputs": [],
+    "name": "Generators: kakehi_spout, wall_trickle, stream_channel",
+    "role": "Batch-2 parametric generators",
+    "model": "sonnet",
+    "status": "running",
+    "last": "Started",
+    "updated": "2026-10-27T02:09:35Z"
+  },
+  {
+    "id": "gen-k",
+    "outputs": [],
+    "name": "Generators: oke_bucket, stool, towel_folded, stepping_stone, bench",
+    "role": "Batch-2 parametric generators",
+    "model": "haiku",
+    "status": "done",
+    "last": "All Haiku props done; towel passed 6.3 at r5; stepping_stone escalated to Sonnet",
+    "updated": "2026-10-27T04:53:19Z"
+  },
+  {
+    "id": "gen-stream-opus",
+    "outputs": [],
+    "name": "Generator takeover: stream_channel",
+    "role": "Rebuild stream_channel to reach 6/10",
+    "model": "opus",
+    "status": "done",
+    "last": "Rebuilt stream_channel; passed 6.0 at r5",
+    "updated": "2026-10-27T05:21:35Z"
+  },
+  {
+    "id": "gen-stone-sonnet",
+    "outputs": [],
+    "name": "Generator takeover: stepping_stone",
+    "role": "Escalated Haiku\u2192Sonnet after repeated fails; reach 6/10",
+    "model": "sonnet",
+    "status": "done",
+    "last": "Rewrote stepping_stone; passed 6.3 at r7",
+    "updated": "2026-10-27T04:59:49Z"
+  },
+  {
+    "id": "haiku-guide",
+    "outputs": [],
+    "name": "Haiku modelling guide",
+    "role": "Mine all reviews + generators into GUIDE.md + tested kzgeo_common.py recipes",
+    "model": "fable",
+    "status": "done",
+    "last": "GUIDE.md + kzgeo_common.py (46 helpers, 12 recipes tested)",
+    "updated": "2026-10-27T05:24:19Z"
+  },
+  {
+    "id": "gen-b3-l",
+    "outputs": [],
+    "name": "Batch 3 generators (l)",
+    "role": "Haiku + GUIDE.md",
+    "model": "haiku",
+    "status": "stopped",
+    "last": "Superseded by one-pass Opus build",
+    "updated": "2026-10-27T05:49:32Z"
+  },
+  {
+    "id": "gen-b3-m",
+    "outputs": [],
+    "name": "Batch 3 generators (m)",
+    "role": "Haiku + GUIDE.md",
+    "model": "haiku",
+    "status": "stopped",
+    "last": "Superseded by one-pass Opus build",
+    "updated": "2026-10-27T05:49:32Z"
+  },
+  {
+    "id": "gen-b3-n",
+    "outputs": [],
+    "name": "Batch 3 generators (n)",
+    "role": "Haiku + GUIDE.md",
+    "model": "haiku",
+    "status": "stopped",
+    "last": "Superseded by one-pass Opus build",
+    "updated": "2026-10-27T05:49:32Z"
+  },
+  {
+    "id": "gen-b3-o",
+    "outputs": [],
+    "name": "Batch 3 generators (o)",
+    "role": "Haiku + GUIDE.md",
+    "model": "haiku",
+    "status": "stopped",
+    "last": "Superseded by one-pass Opus build",
+    "updated": "2026-10-27T05:49:32Z"
+  },
+  {
+    "id": "op01",
+    "outputs": [],
+    "name": "One-pass Opus op01",
+    "role": "Build 4 models, one round, no review",
+    "model": "opus",
+    "status": "done",
+    "last": "lantern_floor/post/niche/stone built",
+    "updated": "2026-10-27T06:25:11Z"
+  },
+  {
+    "id": "op03",
+    "outputs": [],
+    "name": "One-pass Opus op03",
+    "role": "Build 4 models, one round, no review",
+    "model": "opus",
+    "status": "done",
+    "last": "shoji_panel, roof_tiled, slat_screen, facade_timber built",
+    "updated": "2026-10-27T06:21:07Z"
+  },
+  {
+    "id": "op04",
+    "outputs": [],
+    "name": "One-pass Opus op04",
+    "role": "Build 4 models, one round, no review",
+    "model": "opus",
+    "status": "done",
+    "last": "railing, timber_passage, rock_opening_glazed, arcade_pier built",
+    "updated": "2026-10-27T06:07:59Z"
+  },
+  {
+    "id": "op05",
+    "outputs": [],
+    "name": "One-pass Opus op05",
+    "role": "Build 4 models, one round, no review",
+    "model": "opus",
+    "status": "done",
+    "last": "groundcover, shrub_clump, bonsai_potted, sakura_small built",
+    "updated": "2026-10-27T06:20:52Z"
+  },
+  {
+    "id": "op09",
+    "outputs": [],
+    "name": "One-pass Opus op09",
+    "role": "Build 4 models, one round, no review",
+    "model": "opus",
+    "status": "done",
+    "last": "pool_shell, koi_pond, mirror_pool, stone_tub built",
+    "updated": "2026-10-27T06:11:59Z"
+  },
+  {
+    "id": "op10",
+    "outputs": [],
+    "name": "One-pass Opus op10",
+    "role": "Build 4 models, one round, no review",
+    "model": "opus",
+    "status": "done",
+    "last": "falls_lip_rock, plunge_basin, cascade_pool, spill_lip built",
+    "updated": "2026-10-27T06:08:59Z"
+  },
+  {
+    "id": "op02",
+    "outputs": [],
+    "name": "One-pass Opus op02",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "Group built",
+    "updated": "2026-10-27T07:07:44Z"
+  },
+  {
+    "id": "op06",
+    "outputs": [],
+    "name": "One-pass Opus op06",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "Group built",
+    "updated": "2026-10-27T07:07:44Z"
+  },
+  {
+    "id": "op07",
+    "outputs": [],
+    "name": "One-pass Opus op07",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "rock_cluster, boulder_rim, rock_overhang, sea_stack built",
+    "updated": "2026-10-27T07:08:23Z"
+  },
+  {
+    "id": "op08",
+    "outputs": [],
+    "name": "One-pass Opus op08",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "stalactite, icicle, ice_formation, fumarole built",
+    "updated": "2026-10-27T07:13:25Z"
+  },
+  {
+    "id": "op11",
+    "outputs": [],
+    "name": "One-pass Opus op11",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "river_channel, rimstone_terrace, geyser_vent, massage_spout built",
+    "updated": "2026-10-27T07:18:02Z"
+  },
+  {
+    "id": "op12",
+    "outputs": [],
+    "name": "One-pass Opus op12",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "stair_cascade, cascade_terrace_upper, caldera_rim, beach_terrain built",
+    "updated": "2026-10-27T07:23:31Z"
+  },
+  {
+    "id": "op13",
+    "outputs": [],
+    "name": "One-pass Opus op13",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "parapet_stone, bridge_slab, stele_stone, culvert_grate built",
+    "updated": "2026-10-27T07:21:43Z"
+  },
+  {
+    "id": "op14",
+    "outputs": [],
+    "name": "One-pass Opus op14",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "yukata_shelves, locker_bank, vanity_counter, changing_booth_row built",
+    "updated": "2026-10-27T07:27:58Z"
+  },
+  {
+    "id": "op15",
+    "outputs": [],
+    "name": "One-pass Opus op15",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "steam_room, treatment_room, glass_oculus, junction_bell built",
+    "updated": "2026-10-27T07:34:48Z"
+  },
+  {
+    "id": "op16",
+    "outputs": [],
+    "name": "One-pass Opus op16",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "cable_station, cable_cabin, cable_line, header_tank built",
+    "updated": "2026-10-27T07:43:39Z"
+  },
+  {
+    "id": "op17",
+    "outputs": [],
+    "name": "One-pass Opus op17",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "slide_tube, slide_launch_gate, lava_tube, magma_glass_wall built",
+    "updated": "2026-10-27T07:36:36Z"
+  },
+  {
+    "id": "op18",
+    "outputs": [],
+    "name": "One-pass Opus op18",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "kawagiri_sign_gate, kawagiri_pod, kitchen_block, ramen_counter built",
+    "updated": "2026-10-27T07:47:38Z"
+  },
+  {
+    "id": "op19",
+    "outputs": [],
+    "name": "One-pass Opus op19",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "table_low, chair_dining, zabuton_cushion, tableware built",
+    "updated": "2026-10-27T07:42:29Z"
+  },
+  {
+    "id": "op20",
+    "outputs": [],
+    "name": "One-pass Opus op20",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "boardwalk, deck_slatted, pier_trestle, aqueduct built",
+    "updated": "2026-10-27T07:51:26Z"
+  },
+  {
+    "id": "op21",
+    "outputs": [],
+    "name": "One-pass Opus op21",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "boat, mooring_post, float_ring, lounger built",
+    "updated": "2026-10-27T07:52:56Z"
+  },
+  {
+    "id": "op22",
+    "outputs": [],
+    "name": "One-pass Opus op22",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "tea_set, sake_counter, seat_block_carved, board_small_hanging built",
+    "updated": "2026-10-27T07:59:26Z"
+  },
+  {
+    "id": "op23",
+    "outputs": [],
+    "name": "One-pass Opus op23",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "futon_bed, tansu_chest, suite_module, geothermal_gauge built",
+    "updated": "2026-10-27T08:13:33Z"
+  },
+  {
+    "id": "op24",
+    "outputs": [],
+    "name": "One-pass Opus op24",
+    "role": "Build 4 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "egg_baskets, egg_basket, summit_lodge, moon_pavilion built",
+    "updated": "2026-10-27T08:07:14Z"
+  },
+  {
+    "id": "op25",
+    "outputs": [],
+    "name": "One-pass Opus op25",
+    "role": "Build 2 models, one round",
+    "model": "opus",
+    "status": "done",
+    "last": "cliff_lodge_b3, torii_small built",
+    "updated": "2026-10-27T08:01:28Z"
+  },
+  {
+    "id": "op26",
+    "outputs": [],
+    "name": "One-pass Opus op26",
+    "role": "Guest + staff figures (skinned meshes + rig)",
+    "model": "opus",
+    "status": "done",
+    "last": "guest_figure, staff_figure built (shared skinned body + 24-bone rig)",
+    "updated": "2026-10-27T08:15:56Z"
+  },
+  {
+    "id": "op27",
+    "outputs": [],
+    "name": "One-pass Opus op27",
+    "role": "Authored emissive assets: lava_backdrop, glowworm_ceiling, lava_crack, moon_sky",
+    "model": "opus",
+    "status": "done",
+    "last": "lava_backdrop, glowworm_ceiling, lava_crack, moon_sky built",
+    "updated": "2026-10-27T08:36:38Z"
+  },
+  {
+    "id": "op28",
+    "outputs": [],
+    "name": "One-pass Opus op28",
+    "role": "Figure animation clips (13, self-made)",
+    "model": "opus",
+    "status": "done",
+    "last": "13 clips, 0 seam error, 0 foot slide, glTF export verified",
+    "updated": "2026-10-27T14:37:50Z"
+  },
+  {
+    "id": "pl_g_arrival",
+    "outputs": [],
+    "name": "Place model g_arrival",
+    "role": "Vertical slice place model",
+    "model": "opus",
+    "status": "done",
+    "last": "Fix round done: 245k tris, checks pass; lava view + density still below concept 04",
+    "updated": "2026-10-27T14:59:49Z"
+  },
+  {
+    "id": "pl_b1_cor_mirror",
+    "outputs": [],
+    "name": "Place model b1_cor_mirror",
+    "role": "Vertical slice place model",
+    "model": "opus",
+    "status": "done",
+    "last": "78k tris, all checks pass; reads as concept 05",
+    "updated": "2026-10-27T15:11:44Z"
+  },
+  {
+    "id": "pl_b1_mirror",
+    "outputs": [],
+    "name": "Place model b1_mirror",
+    "role": "Vertical slice place model",
+    "model": "opus",
+    "status": "done",
+    "last": "Web lighting fixed: dark dome, baked rim band",
+    "updated": "2026-10-27T17:07:45Z"
+  },
+  {
+    "id": "export",
+    "outputs": [],
+    "name": "Bake + export pipeline",
+    "role": "Blender place -> web contract, runtime for the slice, browser proof",
+    "model": "opus",
+    "status": "done",
+    "last": "Look-dev r2 published; Mirror -2.6 stops open",
+    "updated": "2026-10-27T16:49:24Z"
+  },
+  {
+    "id": "gallery",
+    "outputs": [],
+    "name": "Model gallery + browser",
+    "role": "Public gallery page and 3D viewer for all models and materials",
+    "model": "opus",
+    "status": "running",
+    "last": "Started",
+    "updated": "2026-10-27T18:48:00Z"
   }
 ]

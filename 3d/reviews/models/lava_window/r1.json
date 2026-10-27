@@ -1,0 +1,20 @@
+{
+  "asset": "lava_window",
+  "round": 1,
+  "scores": {"likeness": 3, "silhouette_proportion": 3, "construction_detail": 3, "material_use": 2, "lod_recognition": 4, "variation": 3},
+  "fixes": [
+    "Transoms: every seed has 1-3 full-width transom rows, so the wall reads as a greenhouse or factory grid. The concept (sheet-vs-lava-glass #1, 04-arrival, 13-slide, mat-lava-glass) shows clean, uninterrupted, full-height vertical bays. Make 0 transoms the default (weights about 0:60%, 1:30% as a single clerestory bar at 0.88-0.92 H, 2:10%). Drop the low kick rail entirely on walls taller than 6 m.",
+    "Bronze colour and value: the frame reads as rusty orange copper with high-frequency white speckle (sheet_front, sizes.png). The concept is near-black dark bronze, with warm highlights only on the arrises. Lower the seeded tint from 0.50-0.60 to about 0.18-0.25 linear albedo, cap wear at 0.2, and scale the speckle or noise up at least 5x so it does not alias at mid distance.",
+    "End posts and head: the sheet shows end pilasters about 0.7-0.8 m wide, running the full 0.6 m depth, with a base block and capital. It also shows a deep head beam (about 0.6 m) with bolt bosses over each mullion. Here the ends are just the perimeter frame, about 0.35 m. Add true end posts 0.75 m wide x 0.6 m deep with a 0.15 m plinth step and a capital. Raise the head beam to 0.55-0.65 m on the 12 m size, and scale it with H, about 0.05 H, clamped 0.25-0.65 m.",
+    "Glazing: several panes go milky white or opaque (seed 3 left bays in sheet_front and phone-lod2, the left half of sizes.png, and a white rectangle in a canonical pane). The glass also shows no visible thickness edge. Check the per-pane shimmer/attribute or normal flip that makes these panes differ. Show a 60-80 mm glass edge catching lava light at the mullion reveals, and keep every pane the same transmissive dark-amber tint.",
+    "Sill: it reads as a thin dark strip, about 0.3 m. The concept and 13-slide show a heavy stepped ledge: a stone/iron plinth with a bronze nosing that projects about 0.15-0.2 m in front of the mullion faces. Make the nosing project 0.15 m past the mullion face and keep sill_h at least 0.6 m on walls 8 m and taller. Also identify the white blocks at the mullion feet in canonical.jpg: if they are shoes, they must be bronze/iron, not white.",
+    "Variation: the seeds change only bay rhythm and transom count. Cornice vs corbel heads are nearly indistinguishable head-on, and tee vs box profiles cannot be seen. Make the head styles differ in silhouette (corbel brackets projecting 0.25 m and visible above the head line, or a stepped cornice 0.3 m proud), and let 'major' posts be at least 1.6x the mullion width so the rhythm reads."
+  ],
+  "library_issues": [
+    "bronze: albedo is too bright and orange, with a fine white speckle; it reads as rusted copper rather than dark bronze in every render, including portal_arch.",
+    "lava_glass: transmission or tint is inconsistent between panes (some render milky white); LOD3 bakes to flat opaque amber.",
+    "Tooling, not the generator: lod/lava_window/sheet.jpg uses a broken top-down camera (LOD0 row empty, labels overlap the objects), and its phone panel shows 850 m / 2040 m, where the model is a single dot. phone-lod2-lod3.jpg (70 m / 160 m) is the valid one. Regenerate sheet.jpg or drop it."
+  ],
+  "verdict": "revise",
+  "summary": "The basic idea is right: a long mullioned bronze wall with a sill and head, readable at LOD2/LOD3 and within budget. It misses the concept's look in three ways. The default transom grid makes it a greenhouse rather than tall unbroken bays. The bronze reads as bright rusty copper rather than near-black. The end posts, head and sill are too light for a 34 x 12 m hero wall. Glazing consistency (milky panes) also needs a fix."
+}

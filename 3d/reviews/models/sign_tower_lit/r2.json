@@ -1,0 +1,26 @@
+{
+ "asset": "sign_tower_lit",
+ "round": 2,
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 4,
+  "construction_detail": 4,
+  "material_use": 3,
+  "lod_recognition": 3,
+  "variation": 4
+ },
+ "fixes": [
+  "Glow: the washi face reads as flat orange with weak internal light falloff. Concept shows a creamy bright paper (#F2C77A-ish) with a hot centre and darker edges. Lower the saturation, raise emissive to ~6-8, and add a vignette toward the frame.",
+  "Kimono lattice: the kōshi grid only covers the bottom third and cuts through the crest. Run the lattice over the whole face at 0.12 m pitch, or only as a bottom skirt panel; do not cross the mountain crest.",
+  "Base: stone plinth is a small grey block and the lower dark panel plus wood door looks like an unrelated cabinet. Replace with a 0.25 m basalt plinth and a recessed 0.3 m dark kick panel with metal corner straps as in the lookbook 16 box.",
+  "LOD2 shows a black vertical slot on orange; LOD3 shows an orange slab with no text. Target at LOD2: 3 stacked dark glyph blocks plus a crest triangle; at LOD3: baked albedo with glyphs. Today it reads as a door not a sign.",
+  "Cap: seed 1 flat dark cap is a plain box; seed 2 hip cap is a tiny pyramid. Add a 0.10 m eave overhang with visible rafter ends, as the lookbook 16 top bracket.",
+  "Corner posts: thin 0.04 m pale posts; add iron corner straps (lookbook 09 box has riveted black frames) at 4 heights."
+ ],
+ "library_issues": [
+  "washi_backlit reads orange not cream; lacquer_dark panel reads brown.",
+  "hinoki too orange."
+ ],
+ "verdict": "revise",
+ "summary": "Convincing lit timber sign tower with correct text, crest and three sizes (tall hall, grotto, short ramen box). Construction is good (cap, posts, plinth, door), but the face is too orange and the lattice and base are unrelated to the references. LOD2 and LOD3 lose the text, so the sign stops reading as a sign."
+}

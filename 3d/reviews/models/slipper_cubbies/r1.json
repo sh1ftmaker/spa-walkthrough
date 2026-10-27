@@ -1,0 +1,26 @@
+{
+  "asset": "slipper_cubbies",
+  "round": 1,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 2,
+    "lod_recognition": 1,
+    "variation": 2
+  },
+  "fixes": [
+    "LOD evidence: sheet.jpg is unusable. The LOD0 and LOD3 rows are empty, LOD1/LOD2 are shot top-down (they read as four brown strips on the floor), and the phone renders are taken at 350 m (LOD2) and 840 m (LOD3), so the object is a 30 px dash on a black square. Re-render front-on at 3/4 elevation with the camera framed to the object bbox. Derive switch distances from the indoor arrival hall (LOD2 at roughly 25-40 m, LOD3 at 60-80 m), not from the 14 m width. Until then, LOD2/LOD3 recognition cannot be passed.",
+    "Slipper pairs: they read as pale salmon/pink flat wedges (paper tents), many visibly single, and some are dark grey. The concept shows plump cream/pale-hinoki slippers in side-by-side pairs with a tan-brown band, toes out, filling about 70% of the cell width. Target pair width about 0.22 m in a 0.30 m cell, length about 0.25 m, upper height about 0.05-0.06 m, cream (#d9c6a5 range) with a brown strap. Drop the grey colour or keep it under 10%. Stop using the noren material with a 26x tint for the covers (see library_issues).",
+    "Cell interiors and contrast: in the concept the backs and undersides are much darker than the face frame (near black-brown), so each slipper pops as a lit object in a dark hole. In the render the backs, shelves and faces are the same mid-orange tone and the grid goes flat. Darken the inner slot to about 35-40% of the face albedo, or add a recessed dark back panel 0.012 m in front of the carcass back. Give the face frame a visible 0.04-0.05 m front stile/rail width against 0.018-0.02 m dividers.",
+    "Plinth: the concept has a drawer band of about 0.25 m with 4-6 framed drawer fronts, dark iron pulls, and two bright lit end niches (glowing boxes about 0.3 x 0.2 m) as its signature. The render shows a dim drawer band with tiny pulls and a hairline floor-wash strip, and no niches are visible in the canonical. Make niches the default for plinth_light=True (currently only 60% of seeds), raise niche emissive so they read like the concept glow, and make the floor wash read as a 0.3-0.5 m pool rather than a 2 cm line.",
+    "Ironwork and cornice: the concept side view shows black iron L-strap corner brackets at top, middle and bottom of each end panel, plus a darker, heavier cornice cap (about 0.08-0.1 m) with iron corner plates. The canonical shows a plain wood slab cornice and no visible iron at that angle. Add iron corner plates on the front cornice corners and the front module stiles (0.06 x 0.12 m, lacquer_dark/iron) so the front elevation carries the iron rhythm too.",
+    "Variation: all three seeds are the same 14 m run with the same rows and cols. Fill, cornice and drawer rhythm changes are invisible at sheet scale. Make seeds 2 and 3 differ in width (for example 2 m and 6 m modules), row count (6 vs 8) and fill (0.55 vs 0.95, with whole empty columns near the front desk), and show one seed with a slab cornice and one with crown."
+  ],
+  "library_issues": [
+    "Slipper covers use the 'noren' cloth material with tints of 26-34x, which comes out as pink/salmon. The library has no leather/vinyl or pale-cloth slipper material. Propose a 'slipper_cloth' (or 'cloth_pale') library entry: cream base, roughness 0.7, fine weave normal.",
+    "Slipper soles use 'tatami' with tints up to 1.45x. Tatami has a woven-rush pattern that is wrong at slipper scale. Prefer a plain pale wood or cork-like sole material."
+  ],
+  "verdict": "revise",
+  "summary": "The open hinoki pigeonhole grid with slippers is recognisable as the arrival-gate cubby wall, but it is a weak copy. The slippers read as pink paper wedges rather than cream pairs. The cells have no dark-interior contrast, the lit end niches and iron straps that sign the concept are missing or too faint, and the seeds barely differ. The LOD sheet and phone renders are broken (empty rows, top-down framing, 350/840 m switch distances), so LOD recognition cannot be judged and scores 1."
+}

@@ -1,0 +1,128 @@
+{
+ "space": "b1_mirror",
+ "generated": "2026-10-27 10:03",
+ "deviations": [
+  "pool_steps: 8 risers x 0.175 m (space file: 4 x 0.17) so the entry reaches the bed at -21.4; the stair origin sits inside the rim so the top nosing is on the rim.",
+  "pine_se: pine_niwaki seed 4 (pale niwaki) stands in for pine_bonsai \"niwaki large\" (pine_bonsai has no generator).",
+  "bench_stone -> bench style slab (bench_stone has no generator).",
+  "east_arch: facing 288.4 (space file 270) so the arch sits square to the east portal line of layout b1_cor_east.",
+  "Concept wins: 12 extra lantern_niche along the far (east) rim and the north rim, the \"line of small lanterns along the far rim doubled in the water\" of concept 15; the space file only pairs 8 at the pavilions/steps/lounges.",
+  "Concept wins: NW pavilion (with shoji_glow_0 and rim_lamps_0/1) rotated 8.5 deg clockwise about the pool centre along the north rim so the concept camera frames it on the left as concept 15 does.",
+  "Concept wins: warm wall-wash spot lights at the wall foot (concept 15 rock walls glow amber up to the springing).",
+  "Hinoki boardwalk ring r 12.85-15.35 (dollhouse / plan 33 deck ring), floor elsewhere wet basalt.",
+  "glowworm_ceiling: one 38 x 38 m patch (w/d beyond the documented 4-30 range) conformed to the dome instead of tiles: one continuous galaxy band like concept 15, no tile seams."
+ ],
+ "triangles": {
+  "total": 164820,
+  "render": 158318,
+  "anim": 6472,
+  "water": 30,
+  "by_asset": {
+   "boulder_rim": 57163,
+   "pavilion_engawa": 24070,
+   "rock_cluster": 20967,
+   "mirror_deck": 19566,
+   "lantern_niche": 7912,
+   "mirror_dome": 6600,
+   "guest_figure": 6472,
+   "pine_niwaki": 5812,
+   "mirror_wall": 4728,
+   "mirror_floor": 3460,
+   "portal_arch": 3268,
+   "mirror_basin": 3264,
+   "stair": 1112,
+   "bench": 396,
+   "glowworm_ceiling": 0
+  },
+  "budget": 250000,
+  "pass_": true
+ },
+ "materials": {
+  "distinct_material_datablocks": 61,
+  "distinct_library_ids": 22,
+  "ids": [
+   "bark",
+   "basalt_dry",
+   "basalt_wet",
+   "bronze",
+   "cave_rock",
+   "ceramic",
+   "foliage_pine",
+   "hinoki",
+   "iron",
+   "kawara",
+   "lacquer_black",
+   "lantern_andon",
+   "linen",
+   "moss",
+   "neon_tube",
+   "noren",
+   "obsidian",
+   "tatami",
+   "terry",
+   "washi",
+   "washi_backlit",
+   "water_still"
+  ],
+  "budget": 40,
+  "pass_": true,
+  "note": "datablocks include per-slot parameter variants of the same library id"
+ },
+ "glowworm_points": {
+  "glowworm_ceiling.dome": 54272,
+  "glowworm_ceiling.wall": 5924
+ },
+ "walk_flood": {
+  "result": {
+   "p_b1_cor_mirror": {
+    "p_b1_mirror_east": true,
+    "hero_view": true,
+    "pool_bed_centre": true,
+    "cells_reached": 16464
+   },
+   "p_b1_mirror_east": {
+    "p_b1_cor_mirror": true,
+    "hero_view": true,
+    "pool_bed_centre": true,
+    "cells_reached": 16464
+   }
+  },
+  "grid_m": 0.25,
+  "cells": 18311,
+  "pass_": true
+ },
+ "spine_clearance": {
+  "min_m": 3.33,
+  "at": [
+   129.92,
+   90.08
+  ],
+  "samples": 100,
+  "fails": [],
+  "pass_": true
+ },
+ "portals": {
+  "result": {
+   "p_b1_cor_mirror": {
+    "floor_z": -20.0,
+    "floor_ok": true,
+    "blocked_rays": [],
+    "pass_": true
+   },
+   "p_b1_mirror_east": {
+    "floor_z": -20.0,
+    "floor_ok": true,
+    "blocked_rays": [],
+    "pass_": true
+   }
+  },
+  "pass_": true
+ },
+ "dressing_grounded": {
+  "ok": 72,
+  "bad": [],
+  "pass_": true,
+  "note": "rocks / rim boulders carry an intended embed (kz_embed_allowed); figures float in kz_anim and are not tested"
+ },
+ "all_pass": true
+}

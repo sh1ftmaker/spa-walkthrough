@@ -26,3 +26,12 @@ for i, (lod, mode, f) in enumerate(J['phone']):
 probs = [f'LOD{l} s{s}: ' + '; '.join(pr) for l, s, t, pr in J['grid'] if pr]
 d.text((12, raw.height + 66), ('PROBLEMS: ' + ' | '.join(probs))[:220] if probs else 'proxy fit + budgets: OK', fill=(255, 90, 90) if probs else (95, 211, 141), font=F(15, True))
 out = os.path.join(ROOT, '3d', 'renders', 'lod', A, 'sheet.jpg'); sheet.save(out, quality=86); print(out)
+
+# separate phone-size recognition strip (reviewers look for it): LOD2/LOD3 x shaded/silhouette, labelled
+_ph = [(lod, mode, f) for lod, mode, f in J['phone'] if os.path.exists(f)]
+if _ph:
+    strip = Image.new('RGB', (390 * len(_ph) + 10 * (len(_ph) - 1), 844 + 40), (16, 17, 19)); dd = ImageDraw.Draw(strip)
+    for i, (lod, mode, f) in enumerate(_ph):
+        strip.paste(Image.open(f).convert('RGB').resize((390, 844)), (i * 400, 40))
+        dd.text((i * 400 + 8, 10), f'LOD{lod} {mode} @ switch distance', fill=(235, 235, 230), font=F(16, True))
+    p2 = os.path.join(ROOT, '3d', 'renders', 'lod', A, 'phone-lod2-lod3.jpg'); strip.save(p2, quality=86); print(p2)

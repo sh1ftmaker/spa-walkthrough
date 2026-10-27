@@ -1,0 +1,12 @@
+{"asset":"kakehi_spout","round":1,
+"scores":{"likeness":3,"silhouette_proportion":3,"construction_detail":3,"material_use":3,"lod_recognition":2,"variation":3},
+"fixes":[
+"LOD2/LOD3 pipe: at 31 m/73 m the pipe is a thin tilted bar over two sticks and reads as a torii/table, not a spout. Thicken the LOD2 pipe to >=1.4x true diameter, give LOD2 a visible open mouth, keep the 2nd post in every seed at LOD3, and keep the downward tilt (~8-10 deg) so the water end reads.",
+"Posts: bare, thin (~7 cm) and ~1.4 m tall with only a small cap wrap. Concept (04-arrival-gate, sheet-mod-water #5) has fat 8-10 cm golden posts about pipe+0.15 m high, tied by a horizontal cross-rail plus a second pipe or rail (lashed box frame). Add a rail between posts at ~0.25 m under the pipe, and drop post height to ~pipe height + 0.2 m for the tub/rim use (taller only for the 1.4 m drop variant).",
+"Pipe cut: the mouth is a plain bevel and the top has an odd rectangular notch (seen at the saddle in canonical). Concept shows a clean round open mouth with a dark hollow and a slightly flared, sawn lip, with 3-4 node rings on the pipe. Model the hollow (inner dark cylinder, wall ~6 mm) and put node rings every ~0.25 m, thicker than the current ones.",
+"Rope lashings: wraps are small and sit at the post tops only. Concept shows thick (~12 mm) dark rope bands, 4-6 turns, with a hanging tail at each pipe/post crossing. Increase band width to ~6-8 cm, add a tail loop, and add one lashing per cross-rail joint.",
+"Seed variation: seeds 1 and 2 are the same two-post gate with the pipe nudged. Add a short-pipe/tall-post variant (spout over a tub, ~0.5 m pipe, 1 m drop) and a bent end-cap pipe so silhouettes differ at LOD2.",
+"Colour: bamboo reads pale tan/blonde and flat. Concept bamboo is saturated amber-olive with darker node bands; push base colour warmer/greener and add per-segment value variation (see library issues)."],
+"library_issues":["bamboo reads washed-out pale blonde with almost no node/colour variation under warm light; needs more saturation (amber-olive) and darker node bands","rope not visible as distinct dark material at normal view distance"],
+"verdict":"revise",
+"summary":"Recognisably a bamboo pipe on two posts, but it reads as a thin torii-style frame: pale, spindly posts, no cross-rail, weak lashings, and LOD2/LOD3 lose the pipe entirely. Needs sturdier golden bamboo, a lashed frame, a hollow cut mouth, and LOD2/3 that keep the tilted pipe."}

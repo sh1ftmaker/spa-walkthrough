@@ -1,0 +1,28 @@
+{
+  "asset": "stepping_stone",
+  "round": 5,
+  "reviewer": "independent model reviewer (mrev5_k2), did not build the generator; no browser or Blender used",
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 3,
+    "variation": 3
+  },
+  "overall_10": 5.0,
+  "fixes": [
+    "Shoulder band (gen_stepping_stone.py, band(S2, C1, m_side) at z 0.72 t to 0.85 t): this 0.02 m band is the bright tan ring that dominates canonical.jpg. It is stepping_stone material, not basalt_dry, so the r4 diagnosis (basalt_dry is the glass band) is wrong for this band. Fix: drop the C1 ring (or lower it to 0.80 t) so the chamfer starts directly from S2, and keep the 8-15 mm top chamfer. Target: no tan band above 0.015 m tall on the canonical side.",
+    "Edge slots vs docstring: the docstring says the rough edge is basalt_dry, but the code sets m_edge = m_side (stepping_stone) and uses basalt_dry only for the bottom skirt (band(B, S1, m_bot)). Either change the docstring or assign S1-S2 to basalt_dry as documented, so the rough split edge is the matte dark tone and the top stays the wet tone. Target: S1-S2 band darker than the top face in the canonical, as in lookbook 05 and ref-b1-lobby.",
+    "Outline still reads polygonal: at 3/4 in sheet_34 seed 1 has a straight front run of about 40 % of the diameter, and seed 3 is near a triangle. Replace the per-vertex radius jitter with 1D smooth noise sampled along the angle (2 octaves, amplitude 0.20 R) and keep the 9-12 count, so the outline is rounded lobes, as in lookbook 05. Target: no straight run above 35 % of the diameter on any of the 3 seeds.",
+    "LOD3 recognition: the hex disc (20 tris, closed bottom) is a 6-8 px dot in phone-lod2-lod3.jpg at 18 m and cannot be named. This is a lead decision: either move the LOD3 switch to about 10 m (the stone is a 0.6 m dot beyond that) or accept LOD3 as a 'dot' role. Generator-side, keep the 0.95 top ratio so the disc stays flat. The docstring still says 16 tris and an open bottom; update it to 20 tris and closed.",
+    "Top and dish: canonical top shows a crack-like dark line and a cyan patch that read as an overlay, not a worn top. Target: cap the top noise term at 0.0015 m peak (code currently 0.0015-0.0035 m, set by polish), and deepen the centre dish from 1.5 mm to 2.5-3 mm so the wet sheen follows a visible shallow bowl."
+  ],
+  "library_issues": [
+    "stepping_stone side tone (the side slot used by S1-S2 and S2-C1) renders pale tan with a sponge-like speckle. The concept (lookbook 05, ref-b1-lobby) shows one near-black wet basalt. This is the main reason the stone reads as cut sandstone or glass. Library owner to darken the stepping_stone tone and reduce its speckle.",
+    "basalt_wet top shows two bright cyan streaks across the canonical top, stronger than the faint sheen the lead flagged. Check the top reflection and specular setup.",
+    "No stepping-stone concept sheet (sheet-mod or sheet-vs) exists in refs/gen, so proportion was checked against the 0.6 m footprint in lookbook 05 and ref-b1-lobby, not against a scale bar. Also, canonical.jpg has no concept crops on the right as the brief describes; it is the render alone."
+  ],
+  "verdict": "revise",
+  "summary": "Round 5 is a small gain on round 4 (4.67 to 5.0). Landed: the 8-15 mm chamfer, the 9-12 vertex outline with bites, the 0.13-0.16 m thickness, the wet top with dish, the removed notch, the LOD2 lump, the second edge octave and the closed LOD3 bottom (20 tris, within the CSV LOD3 budget). Not landed: the rough edge still renders as pale tan stepping_stone, and r4 pointed at the wrong slot, because the band is stepping_stone and basalt_dry is only the skirt. The outline still has straight runs. At phone size LOD3 is a dot. Recognition at LOD2 (7 m) is a dark block, which is acceptable only if the switch distance is confirmed."
+}

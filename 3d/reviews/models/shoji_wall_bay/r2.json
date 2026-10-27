@@ -1,0 +1,57 @@
+{
+  "asset": "shoji_wall_bay",
+  "round": 2,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 3
+  },
+  "fixes": [
+    {
+      "rank": 1,
+      "part": "rock surround (jambs and crown)",
+      "issue": "The surround is a ring of same-sized rounded domes, ~0.5-0.6 m each, laid like a bead necklace: one even row of five or six humps across the crown and a regular vertical stack on each jamb. It reads as stacked pillows or dumplings. The concept surround is one continuous mass of angular, fractured basalt in mixed block sizes. The crown overhangs the frame and is irregular, and the jambs are lumpier and wider at the base.",
+      "target": "Switch to faceted fractured rocks (planar cuts, sharp edges, no smooth caps). Mix sizes 0.2-0.9 m with 2-3 small fill stones between large ones. Make the crown silhouette irregular, +/-0.25 m height variation, and let it overhang the canopy by ~0.15-0.3 m. Jambs should be ~0.35x the opening width each side (the concept ratio is total width / opening ~1.7) and widen ~15% toward the base."
+    },
+    {
+      "rank": 2,
+      "part": "sill plants",
+      "issue": "The plants are crossed alpha cards that render as pixelated green squares. They are the cheapest-looking element in the canonical shot and are obvious at 1.6 m eye height.",
+      "target": "Replace them with small geometric bonsai or pine: a twisted trunk tube plus 3-5 clumped foliage blobs, or reuse the project's existing bonsai/plant generator. 0.4-0.6 m tall on the sill, plus one taller (~1.0-1.2 m) shrub against a jamb as in the concept. Use dark glazed pots (charcoal or brown) rather than celadon to match the sheet."
+    },
+    {
+      "rank": 3,
+      "part": "base / sill plinth",
+      "issue": "In the 'low' layout the base is ~31% of total height and its face is the same pillow-dome treatment. The sill is a thin dark slab. In the concept the base is ~23% of height and a fractured basalt course, and the sill is a lit flat ledge ~0.25-0.3 m deep that lanterns and pots sit on. Seed 3's sill strip shows scattered white flecks that read as a material or pebble error.",
+      "target": "Make the base ~0.7-0.8 m on a 3 m-tall bay (~23-25%). Use a dressed flat-top sill course 0.25-0.3 m deep with a slightly lighter stone or wood cap so the lanterns' glow catches it. Remove or darken the white pebbles on seed 3."
+    },
+    {
+      "rank": 4,
+      "part": "timber head (canopy / kamoi)",
+      "issue": "The canopy is a single flat plank with a row of small square blocks on top ('teeth') and simple corner brackets. It reads as a shelf. The concept head has the two posts running up past the lintel with capped ends, and a short (~0.4 m) roofed hood with a thin edge.",
+      "target": "Extend the posts 0.15-0.2 m above the kamoi with a cap block. Thin the canopy board to ~0.05 m with a 5-8 deg forward slope and 0.35-0.45 m projection. Drop the top teeth row, or turn it into proper rafter ends under the board."
+    },
+    {
+      "rank": 5,
+      "part": "seeded variation of the surround",
+      "issue": "The layout (low/window/tall) and the size change the shoji, but the rock ring is nearly identical across seeds 1-3 and seed 7: same count, same rhythm.",
+      "target": "Vary the rock count (+/-30%), the crown height and overhang, and left/right jamb asymmetry (0.8-1.25 width ratio). Add an optional moss/plant clump in a jamb crevice per seed."
+    },
+    {
+      "rank": 6,
+      "part": "LOD2/LOD3 rock shell",
+      "issue": "At LOD2/3 the surround becomes a smooth extruded box with a chamfered top. In 3/4 view it reads as a stone cabinet, and its silhouette (tombstone) does not suggest rock.",
+      "target": "Keep 6-8 notches or bulges on the outer outline at LOD2 (it has budget: 302 of 360 tris) so the silhouette stays rocky. At LOD3, break the top edge into 3 facets."
+    }
+  ],
+  "library_issues": [
+    "basalt_dry reads mid grey-brown and matte. The concept basalt is near-black with bright lit edges and spots of moss. Darken the albedo (~0.04-0.06) and add edge or cavity contrast.",
+    "washi_backlit emission: the panels glow uniformly with no falloff, and the lantern papers read white rather than warm amber (known issue).",
+    "hinoki reads saturated orange and flat. A darker, aged variant would suit the in-rock bays better."
+  ],
+  "verdict": "revise",
+  "summary": "The shoji itself is good: 3 panels, a believable kumiko grid, a koshi-ita kick panel, warm glow and correct opening proportions (w:h ~1.25). The lanterns and the head canopy are serviceable. The rock surround, which is half the identity of this asset, reads as rounded pillows in a regular ring rather than fractured basalt. The alpha-card plants look cheap at close range. Fix the rock treatment, plants and base proportion first."
+}

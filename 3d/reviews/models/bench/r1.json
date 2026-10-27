@@ -1,0 +1,27 @@
+{
+  "asset": "bench",
+  "round": 1,
+  "reviewer": "independent model reviewer (mrev1_k2), did not build the generator",
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 3,
+    "lod_recognition": 2,
+    "variation": 2
+  },
+  "fixes": [
+    "LOD0 closed-box read (gen_bench.py slatted branch, the `if lod == 0` skirt loop): five vertical skirt boards per long side run floor to seat height, plus full-height end panels. The canonical reads as a covered shelter or bus stop, not a bench. Remove the skirt boards. The concept benches (sheet-ref-deep, B4 gallery; sheet-ref-ground, changing hall) are open with a plank seat on short legs. Target: open underside, clear height at least 0.25 m under the seat along the whole length.",
+    "Slats are too narrow and too many for the concept. Current sw = 0.035 m with a 0.036 m thickness and n = 5-7 gives a fine rod-like seat. Concept seat planks are about 0.09-0.10 m wide and about 0.03 m thick. Use 5 slats of 0.10 m with 0.02 m gaps across the 0.6 m depth. This also fixes the dense 'roof' look seen from above.",
+    "Legs and ends are chunky boxes (0.10 m wide, full height, 0.012 m bevel). Replace with two 0.06 x 0.06 m hinoki legs with a 0.01 m chamfer, inset 0.2 m, and a single 0.04 m stretcher at 0.12 m. Seat top at 0.42-0.45 m as now. Target: visible leg joinery, no panel-like ends.",
+    "Variation is weak: seeds change mostly slat count (604 vs 560 tris on LOD0), and the three seeds look near identical. Make leg inset vary 0.15-0.35 m, slat count 4-6, and one seed use splayed legs. Target: at least two of the three seeds differ in silhouette at LOD0.",
+    "LOD jump: LOD0 is a closed box, LOD1 is an open frame (skirts dropped), so the silhouette changes shape at the first switch. Keep the open-leg form at LOD0 and drop only the skirt boards at LOD1. LOD1 also measures 352 tris against a 320 budget in asset_list.csv (about 10% over). Drop the bevels on the stretcher or use 3 slats at LOD1 to get under 320.",
+    "LOD3 (24 tris, two stacked slabs) reads as a '=' double bar at 58 m and does not name as a bench. Use one seat slab plus two legs (about 24-30 tris) so it reads as a bench with legs at distance."
+  ],
+  "library_issues": [
+    "Hinoki reads pale, almost raw yellow-white in the canonical. The concept hinoki is aged, darker and lacquer-sheened (lookbook 16 and the ground sheet). Darken and add a lacquer gloss to the library hinoki entry; the generator should not compensate for this.",
+    "The LOD sheet has layout issues: LOD header rows and tri-count labels do not line up with the objects, and the LOD0 row looks empty at its header. Fix the sheet layout so rows can be matched by eye. This is tooling, not the generator."
+  ],
+  "verdict": "revise",
+  "summary": "The bench is a slatted hinoki bench in the right proportion and footprint, but at the canonical view it reads as an enclosed shelter, not a low open bench. The skirt boards on LOD0, the thin many-slat seat and the chunky legs are the main causes. LOD2 at 22 m is nameable as a bench frame; LOD3 is not. The first three fixes are generator-only."
+}

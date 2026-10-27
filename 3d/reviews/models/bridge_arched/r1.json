@@ -1,0 +1,27 @@
+{
+  "asset": "bridge_arched",
+  "round": 1,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 2
+  },
+  "fixes": [
+    {"rank": 1, "part": "corner lantern posts", "issue": "Lantern heads are fat ~0.45 m cubes on short ~0.5 m stubs, standing apart from the rail ends, so they read as garden lanterns placed beside the bridge. In sheet-mod-arrival #5 the lantern IS the rail-end newel: a slim post running to ~1.9-2.0 m above the base, with a narrow lantern of ~0.26 x 0.26 x 0.42 m, an iron frame and a hip cap with a finial.", "target": "Make the corner newel carry both the rail end and the lantern. Post 0.16 m square, lantern head 0.26 x 0.26 x 0.42 m, top of the finial ~1.0-1.1 m above the deck end. Keep iron corner bars on the frame, and add a 0.05 m iron cap band at the post top."},
+    {"rank": 2, "part": "arch girder / deck fascia", "issue": "The side girder reads as a thin, pale plank edge (~0.25 m) and is hard to see under the deck. The concept's front elevation is defined by a deep, dark, curved laminated girder with iron straps.", "target": "Girder depth 0.38-0.45 m at the crown and ~0.6 m at the springing, in the darker wood slot (tint x0.6). Add iron strap plates (0.08 m wide, wrapping the top and bottom edges) at every post station, plus 2-3 bolt heads per plate at LOD0."},
+    {"rank": 3, "part": "iron fittings on the rail", "issue": "Iron shows only as post-foot shoes and pyramid caps. The concept has black iron brackets at every rail-to-post joint and capped bands under the finials.", "target": "Add an L-bracket or band (0.06 m) at each rail/post intersection and an iron collar 0.12 m below each finial. Make the finial a real giboshi onion (bulb diameter ~1.3x the post width, 0.18 m tall). Today the caps read as small pyramids."},
+    {"rank": 4, "part": "seed variation", "issue": "The three seeds share the same span, rise, post count and rail scheme. Only the abutment rocks change, so the LOD0 row reads as one bridge three times.", "target": "When the layout does not fix them, seed these too: rise 0.45-1.0 m (the sheet's crown reads ~0.7 m over 7 m), posts 4-7, rail scheme (2 rails vs 3 rails + short struts), and abutment style. At least one of the three seeds should be visibly humped (k at the top of its range with rise >= 0.9)."},
+    {"rank": 5, "part": "LOD3", "issue": "The rails collapse into solid opaque wall panels, so at mid range the bridge reads as a trough or sled.", "target": "Replace them with a top-rail band only (0.10 m tall, following the arch) plus 2 post quads per side, or an alpha-cut rail card. Keep the four lantern boxes. Stay within 120 tris."},
+    {"rank": 6, "part": "abutments", "issue": "The piers are squat (0.6-0.7 m), and a stray boulder floats under the left pier in the canonical. The concept piers are stacked basalt courses rising to the deck-end level, with rock spill at the water.", "target": "Pier height 0.9-1.1 m, 2-3 courses. Seat every rubble rock on z=0, or on the course below it, with no gaps over 2 cm."}
+  ],
+  "library_issues": [
+    "hinoki: even with the generator's 0.38-0.44 tint it renders pale salmon-beige and plastic. The concept timber is deep oiled brown (about sRGB #6a4128) with visible grain. A darker 'hinoki_stained' / aged variant, or a lower base albedo, is needed. The stair and other timber assets will hit the same problem.",
+    "lantern_andon: the emission is near-white cream. The concept lanterns glow amber (~2000-2400 K) with a hot core. Shift the emission colour warm.",
+    "LOD pipeline: the stock front sheet (sheet.jpg) and the stock phone row are framed from inside or under the ground plane. They show ground texture filling the frame, with the bridge tiny or invisible, so they cannot be used to judge recognition. The 3/4 sheet_34 and the switch-distance row are fine."
+  ],
+  "verdict": "revise",
+  "summary": "It reads as an arched taiko-style timber bridge on basalt piers, and the plank deck, rail rhythm and pier stonework are a solid base. It does not yet look like the concept piece. The corner lanterns are fat cubes standing beside the rail instead of slim lantern newels, the girder is thin and pale where it should be deep and iron-strapped, iron is barely used, and the hinoki is far too light. The seeds barely differ, LOD3's solid rail walls weaken mid-range reads, and the stock front LOD sheet is broken by its framing."
+}

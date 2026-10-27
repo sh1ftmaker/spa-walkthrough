@@ -1,0 +1,26 @@
+{
+  "asset": "pine_niwaki",
+  "round": 2,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 4
+  },
+  "fixes": [
+    "Foliage pads (LOD0/1): the pads read as small, sparse clumps of radial spiky cards over a dark plate, like grass tufts on saucers. In the concept (sheet-mod-nature, Niwaki pine 3 m) each pad is a dense domed cloud 1.0-1.4 m across and 0.35-0.5 m thick, with a lit convex top and a flat shaded underside, and no plate visible. Widen pad R to 0.55-0.75 m at h=3 m (currently about 0.3-0.45 m effective in the renders). Raise the card density about 2x on the top dome and lay the cards about 20-35 deg from the surface tangent instead of sticking out radially. Shrink the visible rim fringe to under 0.08 m so the edge reads as a soft cloud, not a spike halo.",
+    "Crown width and tiering: canonical seed 1 is about 1.6 m wide at about 3 m tall (w/h about 0.55). The sheet is about 2.6-3.0 m wide at 3 m (w/h about 0.9), with 3 clear tiers: a broad low pair spreading 1.2-1.4 m each side, a mid pair, and a crowning dome. Raise the lateral limb length Lb to about 0.9-1.3 S for the bottom tier and stack the tiers with 0.25-0.4 m clear vertical gaps so the dark sky reads between the pads.",
+    "Trunk: the trunk is a smooth tube about 0.25-0.3 m at the base with a mild bend and small root fins. The concept trunk is 0.45-0.55 m at the base and twists through 2 clear S-bends (about 25-35 deg each, 0.4-0.6 m lateral offset) with spiral ridges or fluting and a root flare spreading 1.0-1.2 m, with roots 0.15 m high. Raise r0 to about 0.24 S and the S-curve amplitude to 0.3-0.4 S. Add 4-6 spiral ridges (8-15 mm relief, about 0.5 turn over the height), and taper the limbs from 0.12 m to 0.03 m with visible forks into each pad (2-4 sub-branches) instead of one stick per pad.",
+    "LOD3 pads: the pads are flat cones or triangular umbrellas, so at 78 m the tree reads as a pagoda or a TV antenna. Make each pad a flattened lens (a hexagon top dome plus a flat underside, 12-14 tris) and merge the top 2 pads into one crown dome. Thicken the trunk to the LOD0 base width, since the trunk silhouette vanishes at phone size.",
+    "LOD2 artifact: the LOD2 silhouette at 29 m shows a pale square block at the crown top (an opaque card or a misassigned material face). Find it and remove it. Also, at LOD2 the dark pad plates dominate (grey slabs in sheet.jpg row 3), so tint or shrink the plates so the green cards carry the pad read.",
+    "Pale Mirror variant (seed 4): the cream spiky cards read as snow. Lookbook 15 shows a softly pale-lit, warm-white form. Keep the pad mass dense and use a pale sage or bone tint (about 0.75/0.78/0.68) rather than near-white, or leave the hue to Mirror lighting."
+  ],
+  "library_issues": [
+    "bark (NEW): it renders saturated orange-tan and smooth. The concept bark is dark grey-brown with warm highlights in deep plated fissures. Lower the albedo to about 0.25/0.18/0.13 and add a normal map with vertical plate fissures.",
+    "foliage_pine (NEW): the card texture reads as blades of grass in a cool saturated green. The concept is yellow-olive needle tufts (about 0.45/0.5/0.2) with lit tips. The texture needs needle-bundle clusters, not long blades."
+  ],
+  "verdict": "revise",
+  "summary": "The style variants work: niwaki, windswept, leaning, pale, a small 1.6 m tree and a tall one are clearly distinct, and the tiered-pad idea is there. But against the concept the tree is narrow and spindly. The trunk is too thin and smooth, the pads are too small and read as spiky grass tufts on dark plates rather than dense cloud domes, and the crown is about half the sheet's width. At LOD3 the umbrella-cone pads read as a pagoda or antenna, and LOD2 has a pale square artifact at the crown. The bark and foliage library materials are off-hue (orange bark, grassy cool-green cards)."
+}

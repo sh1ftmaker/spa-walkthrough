@@ -1,6 +1,8 @@
-# Kazan-yu web asset contract (v1)
+# Kazan-yu web asset contract (v1.2)
 
 This is the interface between the Blender export pipeline and the three.js walkaround in `web/`.
+v1.1 (2026-10-27) adds the Blender side; v1.2 (same day, look-dev round 2) is in §16. v1.1 (`tools/export/`) and the mixed manifests; every v1 file still loads unchanged
+(`"contract": 1` stays). The additions are listed in §15.
 Anything that follows it loads without code changes. The graybox stand-in
 (`tools/build-standin.mjs`, generated from `3d/layout.json`) is built through the same contract and is the reference
 implementation of the exporter side.
@@ -239,3 +241,140 @@ node tools/flythrough.mjs --cdp 9311 --url http://127.0.0.1:5173/ --route tools/
 | interactive, built `dist/`, 9 Mbit/s + 60 ms + 4x CPU throttle | 4.6 s from navigation (3.5 s app) | - |
 | frame time, desktop | 16.7 ms (vsync-bound) | 16.7 ms (vsync-bound) |
 | walk smoothness on stairs (frame-to-frame step change, p99) | 3 mm | 3 mm |
+
+## 15. v1.1: Blender places and mixed manifests (2026-10-27)
+
+### 15.1 Pipeline
+
+```
+3d/places/<space>.blend  (3d/PLACE_CONTRACT.md)
+  -> tools/export/bake_place.py    blender -b <place> -P ... -- --tier low|high      -> 3d/bake/<space>/<tier>/
+       evaluate kz_render (skip the kz_preview_modifier modifier), pull glowworm points/threads out, fold near-identical
+       library variants of one kz_id (Low: <= 2 per id, High: <= 4); skip kz_role render_only, take kz_lod_render meshes, merge by material into parts; UV1 'kz_lm':
+       smart project + average island scale + pack (margin ADD 4-6 px) into one atlas per place
+       (Low target 6 cm/texel, High 2.5 cm, both capped at 2048 px, so big places get coarser); Cycles Diffuse bake, Direct + Indirect, Color off,
+       OptiX, OIDN denoise (view-layer kz_bake = 1 only with --kz-bake: it made the hinoki deck bake ~60x too bright) -> lightmap_raw.exr, lightmap.exr, lightmap.f32;
+       probes: Cycles equirect 1024 x 512 at each kz_probes empty (denoised) -> probe_*.exr / .f32; baked.blend, bake.json
+  -> tools/export/export_place.py  blender -b -P ... -- --bake 3d/bake/<space>/<tier>   -> dump/ (+ runs pack_place.mjs)
+  -> tools/export/pack_place.mjs   GLBs (meshopt + quantization), KTX2 lightmap / probes   -> pkg/place.json + pkg/files/
+  -> web/tools/build-mixed.mjs     stand-in with --exclude-spaces + every package in 3d/bake -> public/assets
+tools/export/run_chain.sh <space> [low|high|both]      bake + export in one go
+tools/export/render_compare.py                          Cycles reference render for the §10 colour match
+```
+`npm run build` runs `build-mixed.mjs` (stand-in only when no package exists). Manifests then say `"source": "mixed"`
+and list `places_blender`.
+
+### 15.2 Zones
+
+Each Blender place is its own zone `p_<space>` (`"source": "blender"`, `"base": <level zone>`). Its neighbours are its base
+zone and the zones it has portals to (level zones, stair zones, other places); every one of those lists it back.
+(Taking all of the base zone's neighbours put all three places in view on the spiral stair: 192 draws, 673k tris on Low.)
+The stand-in leaves out the replaced spaces' floors, ceilings, walls, lanterns, probes and walk mesh, cuts their
+footprints out of overlapping slabs and water at the same level, and keeps treating them as rooms for its neighbours'
+walls (portals stay open). `mixed-report.json` records a walk-mesh seam check at every portal of every place.
+New zone fields: `lights` (live lights, §15.6), `fx` (emitters, §15.7); `parts[].kind` = `sprites` | `anim` (with `clips`).
+
+### 15.3 Materials (`"type": "kz"`)
+
+```jsonc
+"basalt_wet~8e53177b": { "type": "kz", "id": "basalt_wet", "params": { /* the 7 kz settings */ }, "lightmap": true,
+  "kit": { "base": "lib:pl_dark_rock_02_base", "nh": "lib:pl_dark_rock_02_nh", "noise": "lib:kz_noise" },   // kit plates
+  "maps": { "base": ..., "orm": ..., "nh": ..., "emis": ... },                                             // library set
+  "lib": { "tiling", "aspect", "uv_mode", "tech", "porosity", "worn", "emissive", "alphaTest", "doubleSided", "envMapIntensity" } }
+```
+Keys are the Blender material names (`<kz_id>~<hash>` for thin variants), the same names the GLB primitives carry.
+Textures `lib:<file>` are the library KTX2 files (`3d/materials/tex`), copied content-addressed. The runtime
+(`src/kzlib.js`) builds kit materials with `kzShade` + `KZM[id]` (copied to `src/vendor/` by `tools/copy-libs.mjs`),
+mode 3 for hybrid / procedural and 2 otherwise; other materials use kzShade mode 0 on the library set; alpha cards
+(foliage) are plain MeshStandardMaterial with `alphaTest`; the library emissive map is added when the library material
+emits (`emissive = tint x strength x emissive_level x map_scale`). Lightmapped materials ignore live lights
+(`RE_Direct` is undefined when `USE_LIGHTMAP`), so baked lights are never counted twice.
+`_glowworm` is `{ "type": "sprite" }`.
+
+### 15.4 GLB additions
+
+* `extras.kz.role`: also `glowworm` (POINTS, COLOR_0 = brightness, twinkle phase, radius / 0.05 m, rate / 0.4 Hz;
+  `extras.kz.color` linear RGB) and `glowworm_threads` (LINES, COLOR_0.r = brightness). Drawn additively with fog.
+* `_KZ_FLOW` (VEC2, normalized short): unit flow direction in UV0 space; `lava_molten`, `lava_flow`, `waterfall`
+  scroll along it (or along -v without it) at 0.05 / 0.03 / 0.6 m/s.
+* `extras.kz.role: anim`: one GLB per kz_anim object. Skinned figures carry their own clip (`kz_clip`, from
+  `3d/assets/figure_anims.blend`, not force-sampled) and play it in a loop with a random start (AnimationMixer).
+  Other kz_anim objects are exported in their static pose.
+* Placeholder glTF materials may be double-sided; Blender parts render single-sided only for the roles floor, wall,
+  ceiling, rock, basin and stair.
+
+### 15.5 Lightmaps and probes
+
+Lightmap entries add `texel_m` (measured density). High uses UASTC HDR; atlases are capped at 2048 px (the WASM encoder
+takes at most ~12 Mpix). The atlas is baked as one joined object and split by material afterwards (Blender writes
+the bake margin per object, so several objects sharing one image overwrote each other's texels). Probes from places are `"projection": "equirect"`: a UASTC HDR
+2D texture, 1024 x 512, rows bottom-first (three's `equirectUv` with flipY false: u = 0.5 looks east, u grows
+clockwise seen from above). The runtime uses `PMREMGenerator.fromEquirectangular`, which gives the same 256 px cube
+size as the stub. Probes also carry `mean` (linear RGB mean radiance): the base haze and the mist colour follow it
+(`FOG.hazeFromProbe` 0.25, `FOG.mistFromProbe` 1.5), so a dark room gets dark mist.
+
+### 15.6 Live lights
+
+`zone.lights`: `[{ name, type: point|spot, pos (layout), dir, color (linear), intensity, distance }]` from the
+`kz_lights` objects with `kz_runtime` = true. Intensity is in three render units, `I = W / 4pi` (Cycles point-light
+watts). The runtime keeps a fixed pool (Low 2, High 4) of PointLights and gives them to the nearest live lights of the
+visible zones each frame, so the light count never changes and no program recompiles.
+
+### 15.7 FX emitters and water
+
+`zone.fx`: `[{ name, kind, pos (layout), params }]` from `kz_fx` empties (`kz_` prefixes stripped). `mist` / `steam` / `fog`
+emitters join the mist list of §10 as square patches (`params.radius`, `params.density`). Water entries may add
+`scatter` (in-scatter colour, scaled by the probe mean so dark pools stay black), `f0`, `normal_strength` and
+`reflect_gain` (the Obsidian Mirror uses 0.12 / 0.025 / 1.25 and absorption [1.6, 1.1, 0.9] for a black, dead-still
+mirror). Place water keeps `planar` only when its bounds cover >= 80 m2 (or it is the Mirror): a planar reflection re-renders
+the scene, which doubled the draw calls for the small blossom basin in the arrival hall. Water in a place that authors `mist` emitters gets `mist` 0 (the emitters carry the authored mist). Water ids resolve per zone
+first (`<zone>|<id>`), so a stand-in remnant and a place can share a layout water id.
+
+### 15.8 Places data
+
+For Blender spaces, `data/places.json` takes the zone `p_<space>` and the space file's `cam_entry` as the teleport pose;
+the spaces JSON takes the new zone.
+
+### 15.9 Measured on the vertical slice (2026-10-27, RTX 4090 via ANGLE/Vulkan; `3d/checks/web_slice.json`)
+
+| | Low | High |
+|---|---|---|
+| worst draw calls, concept cameras (incl. planar pass) | 110 | 269 |
+| worst triangles, concept cameras | 334k | 735k |
+| flythrough arrival -> spiral stair -> corridor -> Mirror, worst draws / triangles | 141 / 403k | 296 / 742k |
+| GPU texture estimate | 163 MB | 231 MB |
+| place packages (GLB + lightmap + probes) | g_arrival 12.9 MB, b1_mirror 11.2 MB, b1_cor_mirror 6.5 MB | 12.3 / 10.9 / 9.7 MB |
+
+Low planar reflections draw only the water's own zone (`TIERS.low.planarOwnZone`). High exceeds the Low budget on purpose.
+Debug: `?albedo=0.18` replaces every library material with grey 0.18 (lighting check against
+`tools/export/render_compare.py --albedo 0.18`).
+
+## 16. v1.2: look-dev round 2 (2026-10-27)
+
+Measured against Cycles at each place's concept camera (`3d/checks/web_slice.json` → `colour_match`): arrival and corridor
+are within 0.3 stops in mean luminance on both tiers (bright pools 0.5-0.8 stops short); the Mirror is about 2.7 stops
+short (see the note there).
+
+* **Lights.** `zone.lights` now holds every place light: `baked: true` for the ones already in the lightmap, except baked
+  *area* lights (as pool points they made hard, over-bright highlights; their soft reflections come through the probes).
+  Watts → render units: point / spot `W / 4pi`, area `W / 2pi`. The pool has 6 PointLights on both tiers, ranked each
+  frame by `intensity / (1 + distance)`, lights in front of the camera and runtime lights first.
+  - Lightmapped materials take only the **specular** of the pool lights (`RE_Direct_KzSpec`, lobe widened to roughness
+    >= 0.15 because the points stand in for lamps of some size). Unbaked meshes (figures, emissive props) take them fully.
+  - Transparent materials (`KZ_NO_DIRECT`) take no pool light at all.
+  - Every patched material clamps its linear output at 4.0 before fog and tone mapping (lamp highlights on wet floors
+    otherwise bloomed the arrival hall by +1.3 stops).
+* **Bloom** (High): strength 0.08, radius 0.3, threshold 2.5. `?bloom=0` turns it off.
+* **Probes** now show the lamps (lights visible to camera and glossy rays), except area lights larger than 1 m (proxy panels).
+* **Glass** (`transparent` library materials): opacity 0.12 (lava_glass) / 0.2, `envMapIntensity` 0.3, so the lava
+  field reads through the window.
+* **Paper emitters** (`lantern_paper`, `lantern_andon`, `lantern_andon_plain`, `washi_backlit`): emissive x 1.6 for the
+  lamp light passing through the paper (Cycles translucency).
+* **Mist.** The mist colour is the probe luminance x 1.5 in a cool neutral (`FOG.mistTint` [0.8, 0.93, 1.1]); fx mist
+  patches (sent as negative amounts) count only where the ray *ends* in the patch, over at most 4 m of the ray (before, a
+  camera standing in a rim patch misted the whole view). The Mirror water has `scatter` [0, 0, 0].
+* **Lightmaps.** When one 2048 atlas would leave a place coarser than the tier's texel_max, `bake_place.py` splits it at
+  floor + 3.5 m: walk-level surfaces get `lm_<space>` at the target density, the mass above `lm_<space>_upper` at half
+  of it. Parts carry their own `extras.kz.lightmap`; zones list both. Margin 3 px. g_arrival Low walk level: 7.3 cm/texel.
+* **Poses.** `data/places.json` takes each Blender place's *concept* camera (pos, heading and pitch from the target);
+  the manifest starts at `g_arrival` when it is a Blender place.

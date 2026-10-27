@@ -1,0 +1,28 @@
+{
+  "asset": "stair",
+  "round": 1,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 2
+  },
+  "fixes": [
+    {"rank": 1, "part": "cheek walls (stone_rough / stone_polished / pool_entry)", "issue": "The cheeks step up in 3-4 big rectangular blocks that overshoot the treads, so the flight reads as stacked boxes. In the switchback they merge into one solid black cube. The concept (sheet-vs-stairs #1 side, sheet-ref-ground 03) has a cheek that follows the pitch: a raking coping of rough basalt, with rock masses below it that bulge and break the edge.", "target": "Raking cheek top running parallel to the nosing line, 0.25-0.35 m above it, with a 0.08 m coping slab. Rough rock blocks below (0.4-0.9 m units, ±6 cm face displacement). On switchbacks, hollow out or chamfer the core under the upper flight, or show it as rock with recesses, so it does not read as one 3 x 3 x 3 m box."},
+    {"rank": 2, "part": "lantern newels", "issue": "The lanterns are wide ~0.45 m cream cubes on short timber stubs. The concept sets tall, slim iron-framed lanterns on stone newel piers at the bottom AND top of the flight, and they are the strongest identifier of this stair.", "target": "Stone newel pier 0.4 x 0.4 m, 0.5-0.6 m above the bottom tread. Lantern head 0.24 x 0.24 x 0.42 m with an iron frame and hip cap. Default lanterns='both' for stone styles, and add a mid-flight lantern post every ~8 risers on long runs (the terrace path shows lanterns every 4-6 m)."},
+    {"rank": 3, "part": "rail infill and fittings", "issue": "There is one handrail and one mid-rail on posts ~1.5 m apart, with no infill, which looks sparse and generic. The concept rail (sheet-vs-stairs #1 and the #3 rail detail) has a handrail, a lower rail and vertical balusters at ~0.15-0.2 m centres between posts, with iron shoes, brackets and giboshi finials.", "target": "Posts at <=1.2 m, balusters 0.04 m square at 0.18 m centres (LOD0 only), iron collars at the rail-post joints, finial bulb ~1.3x the post width. Handrail top 0.90 m above the nosing line."},
+    {"rank": 4, "part": "ladder and cantilever styles", "issue": "Ladder renders as a thin, generic, steel-looking open stair. Cantilever slabs float with nothing behind them, and the 20-riser cantilever switchback looks unsupported.", "target": "Ladder: steep ~60° hinoki ladder-stair, 0.9 m wide, with tall side stringers 0.25 m deep that run up as the handrail posts, a lantern at the head, and treads housed into the stringers. Cantilever: always emit the host wall stub (basalt, 0.3 m thick, spanning the full flight), with each slab visibly embedded 0.15 m into it."},
+    {"rank": 5, "part": "seed variation", "issue": "Seeds 1-3 are near-identical at every LOD. Only tiny slab jitter changes.", "target": "Seed the cheek treatment (raking coping vs stepped rubble vs bare rock), rail scheme (balusters vs 2-rail), lantern type and post spacing (0.9-1.4 m). Seed slab splits strongly enough to see at 10 m (1-3 slabs per tread)."},
+    {"rank": 6, "part": "LOD3 and the missing cliff style", "issue": "LOD3 drops the rails and lanterns completely, and the cheeks stay as tall slabs, so it reads as a trough. The 'cliff' style in the asset list and concept sheet (a narrow flight cut into rock with a rail on the open side) has no style option.", "target": "LOD3: keep one rail band quad per open side and a 4-tri lantern box at each newel (still within 40 tris; trim the cheek walls to the pitch). Add style 'cliff' = stone_rough, width 1.0-1.4 m, rock wall on the closed side rising 1.5 m above the treads, and a hinoki rail on the open side."}
+  ],
+  "library_issues": [
+    "hinoki rails render pale salmon-beige. They need the darker oiled concept timber (~sRGB #6a4128). This is the same problem as on bridge_arched.",
+    "lantern_andon emission is too white. It should be amber, ~2000-2400 K.",
+    "LOD pipeline: the stock front sheet (sheet.jpg) and the stock phone row are framed from inside or under the ground plane, so they show only ground texture.",
+    "Stock proxy in 3d/assets.json (2.4 x 1.0 x 0.2) cannot hold a 12-riser flight, so every cell is flagged as a problem. This belongs to the lead and is not a generator fault."
+  ],
+  "verdict": "revise",
+  "summary": "The tread and riser rhythm is correct, with real 17/29 cm steps that read at every LOD, and the wet stone treads look right. It still reads as a generic stair rather than the concept's lantern-lit basalt flight. The cheek walls are stacked boxes, and the switchback becomes one solid cube. The lanterns are fat cream cubes where they should be slim iron lanterns on stone newels. The rail has no infill or iron fittings. The ladder and cantilever styles are weak or unsupported, the seeds are identical, and LOD3 loses the rail and lanterns."
+}

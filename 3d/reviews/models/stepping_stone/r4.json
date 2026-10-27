@@ -1,0 +1,28 @@
+{
+  "asset": "stepping_stone",
+  "round": 4,
+  "reviewer": "independent model reviewer (mrev4_k2), did not build the generator; no browser used",
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 2,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 3,
+    "variation": 3
+  },
+  "overall_10": 4.67,
+  "fixes": [
+    "Edge band material (gen_stepping_stone.py, band(S1,S2,m_edge) and band(S2,C1,m_edge)): the smooth, bright tan band at 0.72-0.85 t is the basalt_dry slot, and it is the most prominent surface on the canonical. It reads as glossy glass, not as a rough split edge, and the textured dark band below (stepping_stone side) reads as the rough one, which inverts the intent. Keep the slot assignment, but change the library tone for basalt_dry (or the slot) to a matte dark basalt before any geometry change. Target: the mid band reads darker than the top in the canonical.",
+    "Edge breakup at the same amplitude (r3 target kept: chip 4-8 mm): the chip is a single low-frequency radial offset per ring, so S1 and S2 look like a turned profile in sheet_34 and the canonical. Add a second octave of noise at about 3x frequency with 2-3 mm amplitude to the S1 and S2 rings only, so each edge gets small bites and steps at 1 m. Keep the chip amplitude and the 0.72 t / 0.85 t heights unchanged.",
+    "LOD3 underside (gen RINGS, lod==3 branch): the bottom is left open, so at a low grazing angle or from the side you see through a hollow in the hexagon. The LOD3 silhouette and shading also do not survive 15 m (a 6-8 px dark dot on the phone-size sheet), so it cannot be named at its switch distance. Ask the lead to either close the bottom with a 4-tri hex fan (16 -> 20 tris, outside the r1 budget of 16) or accept the open bottom and set LOD3 to a 'dot' role with a switch distance nearer 8-10 m. This is a budget decision for the lead, not a generator-only fix.",
+    "Outline (lod==0 outline, sub=5 Catmull-Rom over 9-12 vertices, jitter 0.20-0.25 from r3): the r3 target is in the code, but seeds 1 and 2 in sheet_34 still show two or three straight runs of about a third of the diameter each. Keep the vertex count and jitter as they are, and apply the 0.82 bite to a second adjacent vertex on seed 1 so the bite reads as a fracture rather than a corner. Target: no straight run above 35 % of the diameter, as set in r3.",
+    "LOD2 at the 5 m switch (lod==2, min(N,10) vertices, top 0.92 R): the shaded render is a near-black blob with no edge detail, and the silhouette is only as good as its outline. Keep the 10-vertex outline, add a 0.02 m upward bump on the top ring's two most-bitten vertices so the silhouette shows a lump, and let the top use the wet sheen (library) so it separates from the water. No triangle cost."
+  ],
+  "library_issues": [
+    "basalt_dry (the rough-edge slot) renders as pale, glossy beige with specular streaks in the canonical and the LOD0 seeds of sheet_34. The same issue was raised in r3 for the chamfer. It is the main reason the stone reads as cut glass. Library owner to check the basalt_dry albedo, roughness and normal.",
+    "stepping_stone (the side slot) renders as a textured dark brown band that is lighter and warmer than the concept's near-black basalt. Check the library tone, since the concept shows one dark, wet material across the whole side.",
+    "basalt_wet tops show cyan and teal patches in the canonical and in the LOD0 seeds of sheet_34. These look like environment or water reflection picking up the top, not basalt. Check the top's reflection and specular setup in the library material."
+  ],
+  "verdict": "revise",
+  "summary": "Still reads as a wedge-shaped slab with a glass-like band rather than a wet, split river stone. Outline, bites, top roughness and the removal of the notch from r2 have landed, and the LOD3 hex disc from r1 is in place, so the generator is closer than in round 3. The largest remaining gap is material: the rough-edge slot renders as pale glass, and the library owner has to fix that before any geometry change will read. Within the generator, the edge needs a second noise octave, the LOD3 bottom needs a lead decision, and the LOD2 top needs a lump. Scores are held close to round 3, since the proportion, thickness and footprint are unchanged and the material problem is still visible at the same scale."
+}

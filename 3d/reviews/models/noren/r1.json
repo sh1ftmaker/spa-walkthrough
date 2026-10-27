@@ -1,0 +1,25 @@
+{
+  "asset": "noren",
+  "round": 1,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 3,
+    "variation": 2
+  },
+  "fixes": [
+    "Crest lettering: the concept crest is the mountain and wisps plus 'KAZAN-YU' in spaced caps and 火山湯 below it, in a block about 0.5 m wide centred at about 45% from the top. The render has only the mountain and wisps, so it reads as a generic banner. Add a 'kazan_full' crest variant with the two text lines (a texture decal is fine) and make it the default for indigo and black.",
+    "Cloth form: the panels read as flat rigid boards, with no visible pleats, no hem weight and no gap at the slits, which are 1 px dark lines. The concept cloth hangs with soft vertical folds and the panels part slightly at the hem. Raise the pleat amplitude to about 1.5-2.5 cm at the hem (about 0.5 cm at the band), open each slit to about 1-2 cm at the hem, and give each panel a 1-2 cm hem drop variation so the bottom edge is not one straight line. Add a 6-8 mm turned hem band and a stitched head band of about 0.12 m that reads as a separate strip.",
+    "Colour and weave: the indigo reads as a desaturated lavender-grey (#3a3d5c look) and the concept is deep saturated indigo with slub weave and lighter warp streaks (#1c2f55 area, see sheet-tex-cloth). The crest reads pink. Target cream #d9cfb8. Black reads brown. The vermilion is a flat orange; the concept reads deep red #8c2418. Retune CLOTH_TINT/CREST_TINT and raise the weave normal and albedo variation so the cloth does not look like plastic.",
+    "Rod and hardware: the concept rod is a turned hinoki pole of about 30 mm with bronze ball end caps that overhang the cloth by about 0.08 m each side, held by visible bronze wall brackets that stand the rod off about 0.06-0.08 m (side view). The canonical rod is thin, barely overhangs, and the brackets are not legible. Use a rod diameter of 30-35 mm, an overhang of 0.08 m, and bracket standoff and finial size readable at 3 m.",
+    "LOD3: the crest breaks apart (seed 1 is a fragmented peak, seed 3 is two separate triangles) and the slits vanish. Keep one clean crest quad (or bake the crest into a 2-panel texture) and keep at least the centre slit. The phone render frames the whole wall, so the noren is a 15 px chip. Frame the object. 45 m and 108 m look far for an indoor corridor curtain; check that the switch distances match corridor sight lines (about 15-25 m and 40 m).",
+    "Variation: the seeds change only colour and rod/hang style. Width, height and split count are the same across all three (four panels each). Let the seeds sample the asset_list ranges: a short 0.45-0.6 m half-noren over a counter (as in 09-neon-ramen-counter), a 1.8 m full door noren, and a 2.4-3.6 m wide 4-5 split. The cream colour never appears in the sheet; force one seed per colour in the canonical set."
+  ],
+  "library_issues": [
+    "The 'noren' library material with its default normal reads as smooth matte plastic under the canonical light. It needs a stronger slub/weave normal and albedo streaking to match sheet-tex-cloth panel 1 (indigo hand-woven). It is also being reused by slipper_cubbies at extreme tints, which suggests the library lacks a generic pale cloth."
+  ],
+  "verdict": "revise",
+  "summary": "The noren reads as a split curtain on a rod with the Kazan-yu mountain crest, so the basic likeness is there, but it looks like painted boards rather than hung indigo cloth. There are no folds, the slits do not open, the colours are off (lavender-grey indigo, pink crest), and the KAZAN-YU / 火山湯 lettering that makes the concept read as the spa's noren is missing. The rod hardware is under-scaled, LOD3 breaks the crest, and the seeds vary only in colour, not size or split count."
+}

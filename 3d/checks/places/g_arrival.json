@@ -1,0 +1,701 @@
+{
+ "space": "g_arrival",
+ "contract": "PLACE_CONTRACT v1",
+ "triangles": {
+  "kz_render": 245057,
+  "kz_anim": 20710,
+  "kz_water": 402,
+  "by_role": {
+   "basin": 23063,
+   "wall": 42392,
+   "ceiling": 13880,
+   "floor": 1786,
+   "emissive": 8875,
+   "glass": 6752,
+   "stair": 5048,
+   "prop": 52349,
+   "rock": 34090,
+   "lantern": 56822
+  },
+  "top_objects": [
+   [
+    "lift_core",
+    19250
+   ],
+   [
+    "stream_w_hall_stream",
+    19173
+   ],
+   [
+    "slipper_cubbies",
+    13998
+   ],
+   [
+    "shell_vault",
+    11488
+   ],
+   [
+    "facade_kumiko",
+    8136
+   ],
+   [
+    "lava_backdrop",
+    7879
+   ],
+   [
+    "hero_lava_window",
+    6752
+   ],
+   [
+    "sakura",
+    6406
+   ],
+   [
+    "pine_w",
+    5814
+   ],
+   [
+    "pine_e",
+    5814
+   ],
+   [
+    "facade_frame",
+    5656
+   ],
+   [
+    "chochin.8",
+    5033
+   ],
+   [
+    "hall_bridge",
+    4616
+   ],
+   [
+    "shell_wall",
+    4614
+   ]
+  ],
+  "budget_hero": 250000
+ },
+ "materials": {
+  "blender_materials": 147,
+  "library_ids": 36,
+  "ids": [
+   "bamboo",
+   "bark",
+   "basalt_dry",
+   "basalt_wet",
+   "black_sand",
+   "blossom",
+   "bronze",
+   "cave_rock",
+   "ceramic",
+   "foliage_fern",
+   "foliage_pine",
+   "glass_clear",
+   "gold_leaf",
+   "hinoki",
+   "iron",
+   "lacquer_black",
+   "lacquer_dark",
+   "lantern_andon_plain",
+   "lantern_paper",
+   "lava",
+   "lava_flow",
+   "lava_glass",
+   "lava_molten",
+   "linen",
+   "moss",
+   "noren",
+   "obsidian",
+   "paving",
+   "rope",
+   "sinter",
+   "stepping_stone",
+   "terry",
+   "washi_backlit",
+   "water_river",
+   "water_still",
+   "waterfall"
+  ],
+  "budget": 40
+ },
+ "flood_fill": {
+  "pass": true,
+  "cells": 7416,
+  "wall_quads": 823,
+  "reach": {
+   "p_gate_hall": {
+    "p_gate_hall": true,
+    "p_hall_terrace": true,
+    "p_hall_changing": true,
+    "p_g_arrival_spiral_stair": true,
+    "p_g_arrival_lift": true,
+    "hero_view": true
+   },
+   "p_hall_terrace": {
+    "p_gate_hall": true,
+    "p_hall_terrace": true,
+    "p_hall_changing": true,
+    "p_g_arrival_spiral_stair": true,
+    "p_g_arrival_lift": true,
+    "hero_view": true
+   },
+   "p_hall_changing": {
+    "p_gate_hall": true,
+    "p_hall_terrace": true,
+    "p_hall_changing": true,
+    "p_g_arrival_spiral_stair": true,
+    "p_g_arrival_lift": true,
+    "hero_view": true
+   },
+   "p_g_arrival_spiral_stair": {
+    "p_gate_hall": true,
+    "p_hall_terrace": true,
+    "p_hall_changing": true,
+    "p_g_arrival_spiral_stair": true,
+    "p_g_arrival_lift": true,
+    "hero_view": true
+   },
+   "p_g_arrival_lift": {
+    "p_gate_hall": true,
+    "p_hall_terrace": true,
+    "p_hall_changing": true,
+    "p_g_arrival_spiral_stair": true,
+    "p_g_arrival_lift": true,
+    "hero_view": true
+   }
+  }
+ },
+ "clearance": {
+  "pass": true,
+  "min_m": 2.49,
+  "samples": 116,
+  "below_2.1": []
+ },
+ "portals": {
+  "pass": true,
+  "each": {
+   "p_gate_hall": {
+    "open": true,
+    "floor_z": 0.0,
+    "width": 6.0,
+    "blocked_by": []
+   },
+   "p_hall_terrace": {
+    "open": true,
+    "floor_z": 0.0,
+    "width": 5.0,
+    "blocked_by": []
+   },
+   "p_hall_changing": {
+    "open": true,
+    "floor_z": 0.0,
+    "width": 4.0,
+    "blocked_by": []
+   },
+   "p_g_arrival_spiral_stair": {
+    "open": true,
+    "floor_z": 0.0,
+    "width": 2.6,
+    "blocked_by": []
+   },
+   "p_g_arrival_lift": {
+    "open": true,
+    "floor_z": 0.0,
+    "width": 1.8,
+    "blocked_by": []
+   }
+  }
+ },
+ "dressing_ground": {
+  "pass": true,
+  "failures": 0,
+  "objects": [
+   [
+    "hero_lava_window",
+    "lava_window",
+    0.0,
+    "ok"
+   ],
+   [
+    "hall_bridge",
+    "bridge_arched",
+    0.0,
+    "ok"
+   ],
+   [
+    "slipper_cubbies",
+    "slipper_cubbies",
+    0.0,
+    "ok"
+   ],
+   [
+    "reception",
+    "reception_counter",
+    0.0,
+    "ok"
+   ],
+   [
+    "chozubachi",
+    "chozubachi",
+    -0.005,
+    "ok"
+   ],
+   [
+    "sakura",
+    "sakura_small",
+    -0.0,
+    "ok"
+   ],
+   [
+    "lift_core",
+    "lift_drum",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.1",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.002",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.003",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.004",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.2",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.005",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.4",
+    "lantern_floor",
+    -0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.006",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.007",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.008",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.009",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.010",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_stone.1",
+    "lantern_stone",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_stone.002",
+    "lantern_stone",
+    -0.0,
+    "ok"
+   ],
+   [
+    "lantern_stone.003",
+    "lantern_stone",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.011",
+    "lantern_floor",
+    -0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.012",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_stone.2",
+    "lantern_stone",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.013",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.014",
+    "lantern_floor",
+    -0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.015",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.016",
+    "lantern_floor",
+    -0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.017",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "lantern_floor.018",
+    "lantern_floor",
+    0.0,
+    "ok"
+   ],
+   [
+    "boulder_rim.1",
+    "boulder_rim",
+    -0.2,
+    "ok"
+   ],
+   [
+    "boulder_rim.2",
+    "boulder_rim",
+    -0.197,
+    "ok"
+   ],
+   [
+    "boulder_rim.3",
+    "boulder_rim",
+    -0.118,
+    "ok"
+   ],
+   [
+    "boulder_rim.4",
+    "boulder_rim",
+    -0.228,
+    "ok"
+   ],
+   [
+    "boulder_rim.5",
+    "boulder_rim",
+    -0.222,
+    "ok"
+   ],
+   [
+    "boulder_rim.6",
+    "boulder_rim",
+    -0.133,
+    "ok"
+   ],
+   [
+    "boulder_rim.7",
+    "boulder_rim",
+    -0.183,
+    "ok"
+   ],
+   [
+    "pine_w",
+    "pine_niwaki",
+    0.0,
+    "ok"
+   ],
+   [
+    "pine_e",
+    "pine_niwaki",
+    0.0,
+    "ok"
+   ],
+   [
+    "rock_cluster.0",
+    "rock_cluster",
+    -0.06,
+    "ok"
+   ],
+   [
+    "rock_cluster.1",
+    "rock_cluster",
+    -0.06,
+    "ok"
+   ],
+   [
+    "rock_cluster.2",
+    "rock_cluster",
+    null,
+    "no ground under the pivot"
+   ],
+   [
+    "spill_rocks",
+    "rock_cluster",
+    -0.1,
+    "ok"
+   ],
+   [
+    "spill_trickle",
+    "wall_trickle",
+    -0.05,
+    "ok"
+   ],
+   [
+    "window_rocks.0",
+    "rock_cluster",
+    -0.06,
+    "ok"
+   ],
+   [
+    "window_rocks.1",
+    "rock_cluster",
+    -0.06,
+    "ok"
+   ],
+   [
+    "window_rocks.2",
+    "rock_cluster",
+    -0.06,
+    "ok"
+   ],
+   [
+    "bench_se",
+    "bench",
+    0.0,
+    "ok"
+   ],
+   [
+    "drain_grate",
+    "culvert_grate",
+    -0.0,
+    "ok"
+   ],
+   [
+    "bed_shrub.0",
+    "shrub_clump",
+    -0.0,
+    "ok"
+   ],
+   [
+    "bed_cover.1",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "bed_shrub.2",
+    "shrub_clump",
+    0.0,
+    "ok"
+   ],
+   [
+    "bed_cover.3",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "bed_shrub.4",
+    "shrub_clump",
+    0.0,
+    "ok"
+   ],
+   [
+    "bed_cover.5",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "bed_shrub.6",
+    "shrub_clump",
+    0.0,
+    "ok"
+   ],
+   [
+    "bed_cover.7",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "bed_shrub.8",
+    "shrub_clump",
+    0.0,
+    "ok"
+   ],
+   [
+    "bed_cover.9",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "window_bed.0",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "window_bed.1",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "window_bed.2",
+    "groundcover",
+    -0.0,
+    "ok"
+   ],
+   [
+    "window_bed.3",
+    "groundcover",
+    -0.0,
+    "ok"
+   ],
+   [
+    "window_bed.4",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "window_bed.5",
+    "groundcover",
+    0.0,
+    "ok"
+   ],
+   [
+    "bench.0",
+    "bench",
+    0.0,
+    "ok"
+   ],
+   [
+    "bench.1",
+    "bench",
+    0.0,
+    "ok"
+   ],
+   [
+    "bench.2",
+    "bench",
+    0.0,
+    "ok"
+   ],
+   [
+    "gate_torii",
+    "torii_small",
+    -0.0,
+    "ok"
+   ],
+   [
+    "fig.0",
+    "staff_figure",
+    0.0,
+    "ok"
+   ],
+   [
+    "fig.1",
+    "guest_figure",
+    0.0,
+    "ok"
+   ],
+   [
+    "fig.2",
+    "guest_figure",
+    0.0,
+    "ok"
+   ],
+   [
+    "fig.3",
+    "guest_figure",
+    -0.001,
+    "ok"
+   ],
+   [
+    "fig.4",
+    "guest_figure",
+    -0.001,
+    "ok"
+   ],
+   [
+    "fig.5",
+    "guest_figure",
+    -0.0,
+    "ok"
+   ],
+   [
+    "fig.6",
+    "guest_figure",
+    -0.0,
+    "ok"
+   ],
+   [
+    "fig.7",
+    "guest_figure",
+    0.0,
+    "ok"
+   ],
+   [
+    "fig.8",
+    "guest_figure",
+    0.0,
+    "ok"
+   ]
+  ]
+ },
+ "summary": {
+  "flood_fill": true,
+  "clearance": true,
+  "portals": true,
+  "dressing_ground": true,
+  "tris": 245057,
+  "tris_anim": 20710,
+  "materials": 147,
+  "library_ids": 36
+ }
+}

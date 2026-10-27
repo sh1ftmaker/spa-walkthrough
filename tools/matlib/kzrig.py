@@ -22,7 +22,9 @@ sys.path.insert(0, HERE)
 from kzdsl import blackbody_rgb  # noqa: E402
 
 LANTERN = blackbody_rgb(2700)
-KEY_W = 760.0           # one lantern key (W), calibrated with the grey card
+NEUTRAL = blackbody_rgb(5000)
+AMBER_SPLIT = 0.45      # amber lantern power relative to the neutral key (r3 rig: neutral key + amber split)
+KEY_W = 600.0           # one lantern key (W), calibrated with the grey card
 FILL_W = 30.0           # dim teal fill (W, area)
 
 
@@ -334,3 +336,51 @@ def clear(objs):
                 bpy.data.meshes.remove(data)
             elif isinstance(data, bpy.types.Light):
                 bpy.data.lights.remove(data)
+
+
+def barrel(name, base, height, r_mid, r_end, seg=48, rings=16):
+    """Chochin-style bulging lantern (lathe), object UVs: u around 0..1, v bottom->top 0..1."""
+    me = bpy.data.meshes.new(name)
+    bm = bmesh.new()
+    rows = []
+    for k in range(rings + 1):
+        v = k / rings
+        r = r_end + (r_mid - r_end) * math.sin(math.pi * v)
+        rows.append([bm.verts.new((base[0] + r * math.cos(2 * math.pi * i / seg),
+                                   base[1] + r * math.sin(2 * math.pi * i / seg), base[2] + height * v))
+                     for i in range(seg)])
+    uvl = bm.loops.layers.uv.new('UVMap')
+    for k in range(rings):
+        for i in range(seg):
+            j = (i + 1) % seg
+            f = bm.faces.new((rows[k][i], rows[k][j], rows[k + 1][j], rows[k + 1][i]))
+            f.smooth = True
+            for lp, p in zip(f.loops, ((i / seg, k / rings), ((i + 1) / seg, k / rings),
+                                       ((i + 1) / seg, (k + 1) / rings), (i / seg, (k + 1) / rings))):
+                lp[uvl].uv = p
+    bm.normal_update()
+    bm.to_mesh(me)
+    bm.free()
+    return link(bpy.data.objects.new(name, me))
+
+
+def lantern(name, base, height, r_mid, paper_mat, ring_mat):
+    """Barrel lantern + dark lacquered top and bottom rings; returns objects."""
+    r_end = r_mid * 0.62
+    body = barrel(name, base, height, r_mid, r_end)
+    body.data.materials.append(paper_mat)
+    obs = [body]
+    for k, z in enumerate((base[2], base[2] + height)):
+        ring = cylinder(f'{name}_ring{k}', (base[0], base[1], z - 0.02), (base[0], base[1], z + 0.02),
+                        r_end * 1.08, seg=48, caps=True)
+        ring.data.materials.append(ring_mat)
+        obs.append(ring)
+    return obs
+
+
+def teal_points(name, centre, target, energy, n=3, spread=0.5):
+    """Dim teal fill as a few small point lights (glossy materials reflect dots, not a cyan polygon)."""
+    c, t = Vector(centre), Vector(target)
+    side = (t - c).cross(Vector((0, 0, 1))).normalized()
+    return [point(f'{name}{i}', c + side * (i - (n - 1) / 2) * spread + Vector((0, 0, 0.15 * i)), energy / n, 0.03,
+                  color=(0.18, 0.80, 0.74)) for i in range(n)]

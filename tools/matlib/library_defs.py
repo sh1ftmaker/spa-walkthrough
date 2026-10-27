@@ -20,6 +20,7 @@ from kzdsl import blackbody_rgb, hexlin
 
 LANTERN = blackbody_rgb(2700)
 PAPER_GLOW = blackbody_rgb(2100)
+LANTERN_2200 = blackbody_rgb(2200)
 EDGE_GLOW = blackbody_rgb(1800)
 TAU = 6.2831853
 
@@ -560,19 +561,10 @@ def pat_glacier_ice(b, uv):
 
 
 def pat_lava_glass(b, uv):
-    """Thick lava-window glass: near-clear, imperfections in roughness only: condensation haze
-    patches (rough 0.3-0.5), faint diagonal wipe streaks, dust specks, tiny bubbles.  base.a =
-    haze amount (web: raises opacity there).  2 m tile."""
+    """Thick dark smoky lava-window glass: no haze in the direct response, no cloud normal (review r4)."""
     t = b.torus(uv)
-    wave = b.noise4(t, scale=1.2, detail=2)
-    bub = holes(b, t, 140, 0.02, 0.06) * b.noise4(t, scale=3).smooth(0.62, 0.8)
-    haze = b.noise4(warp(b, t, 0.08, 1.5), scale=3, detail=5).smooth(0.55, 0.75)
-    wipe = b.noise4(b.torus(uv, ax=0.15, ay=1.0, rot=(1, 1, 1, -1)), scale=12, detail=2).smooth(0.6, 0.72)
-    dust = b.noise4(t, scale=200, detail=1).smooth(0.78, 0.84) * b.noise4(t, scale=4).smooth(0.5, 0.7)
-    rough = (0.01 + haze * 0.38 + wipe * 0.06 + dust * 0.2).clamp()
-    height = (wave * 0.85 + bub * 0.1).clamp()
-    return dict(albedo=(0.97, 0.96, 0.93), rough=rough, height=height,
-                mask=(haze * 0.8 + dust * 0.4 + bub * 0.2).clamp(), wet=haze)
+    dust = b.noise4(t, scale=200, detail=1).smooth(0.82, 0.86) * b.noise4(t, scale=4).smooth(0.55, 0.7)
+    return dict(albedo=(0.97, 0.96, 0.93), rough=(dust * 0.08 + 0.015).clamp(), height=0.5, mask=0.0, wet=0.0)
 
 
 # ------------------------------------------------------------------------- water
@@ -622,7 +614,7 @@ def pat_waterfall(b, uv):
     streak2 = b.noise4(b.torus(uv, ax=1.0, ay=0.12), scale=90, detail=2)
     cloud = b.noise4(t, scale=4, detail=3).smooth(0.25, 0.7)
     aer = (streak.smooth(0.32, 0.6) * 0.8 + streak2.smooth(0.5, 0.7) * 0.3).clamp()
-    foam = (aer * (cloud * 0.6 + 0.4)).clamp()
+    foam = (aer * (cloud * 0.6 + 0.4)).clamp() ** 1.5            # bright core, thin see-through edges
     height = (streak * 0.8 + cloud * 0.2).clamp()
     return dict(albedo=(0.90, 0.95, 0.95), rough=0.05, height=height, mask=foam,
                 emission=b.cmul((0.80, 0.95, 0.95), foam), wet=1.0)
@@ -636,6 +628,71 @@ def pat_caustics(b, uv):
     c = ((1.0 - e1.smooth(0.0, 0.06)) ** 1.5 * 0.7 + (1.0 - e2.smooth(0.0, 0.05)) ** 1.5 * 0.5).clamp()
     return dict(albedo=(0.0, 0.0, 0.0), rough=1.0, height=c * 0.2 + 0.4, emission=b.cmul((0.55, 1.0, 0.95), c),
                 mask=c, wet=0.0)
+
+
+def pat_ceramic(b, uv):
+    """Ash / celadon glaze for tea ware: soft pooling, iron speckles, crackle hairlines, glossy."""
+    t = b.torus(uv)
+    pool = b.noise4(warp(b, t, 0.08, 2.0), scale=3, detail=4)
+    sp = holes(b, t, 160, 0.02, 0.06) * b.noise4(t, scale=5).smooth(0.4, 0.7)
+    cr = cracks(b, warp(b, t, 0.1, 2.0), 6.0, 0.992, 0.999)
+    col = b.ramp(pool, [(0.2, (0.42, 0.44, 0.38)), (0.7, (0.56, 0.57, 0.50)), (1.0, (0.62, 0.62, 0.55))])
+    col = b.mixc(sp * 0.85, col, (0.08, 0.05, 0.03))
+    col = b.mixc(cr * 0.4, col, (0.25, 0.24, 0.2))
+    height = (0.5 + pool * 0.1 - cr * 0.05).clamp()
+    rough = (0.08 + sp * 0.2 + pool * 0.04).clamp()
+    return dict(albedo=col, rough=rough, height=height, ao=1.0, wet=0.0)
+
+
+def pat_kawara(b, uv):
+    """Kiln-fired silver-charcoal roof tile surface (ibushi-gin): fine grain, faint firing clouds, 30 cm
+    per-tile tone cells (tile geometry comes from the generator)."""
+    t = b.torus(uv)
+    _, cc = b.voronoi4(t, scale=3.3, feature='F1', out=['Distance', 'Color'])
+    cr, _, _ = b.rgb_sep(cc)
+    cloud = b.noise4(t, scale=6, detail=4)
+    grain = b.noise4(t, scale=220, detail=2)
+    tone = (cr - 0.5) * 0.16 + (cloud - 0.5) * 0.18 + (grain - 0.5) * 0.08 + 1.0
+    col = b.cmul((0.075, 0.078, 0.084), tone)
+    rough = (0.42 + (cloud - 0.5) * 0.1 + (grain - 0.5) * 0.08).clamp()
+    height = (0.5 + (grain - 0.5) * 0.3 + (cloud - 0.5) * 0.1).clamp()
+    return dict(albedo=col, rough=rough, metal=0.0, height=height, ao=1.0, wet=cloud.smooth(0.55, 0.8) * 0.4)
+
+
+def pat_gold_leaf(b, uv):
+    """Gold leaf (kinpaku) over lacquer: pale yellow-gold, smooth, faint square leaf seams ~10.9 cm."""
+    u, v, _ = b.sep(uv)
+    t = b.torus(uv)
+    n = 3.0
+    fx, fy = (u * n).fract(), (v * n + b.white1((u * n).floor()) * 0.5).fract()
+    e = fx.min(1.0 - fx).min(fy.min(1.0 - fy))
+    seam = 1.0 - e.smooth(0.0, 0.012)
+    col = b.cmul((0.693, 0.376, 0.102), 1.0 - seam * 0.06)              # #D9A55A
+    rough = (0.30 + seam * 0.05).clamp()
+    height = (0.5 + seam * 0.05).clamp()
+    return dict(albedo=col, rough=rough, metal=0.9, height=height, ao=1.0, wet=0.0)
+
+
+def pat_terry(b, uv):
+    """Terry cloth: dense 2-3 mm loop pile (soft bumps), faint woven rows, off-white, very rough."""
+    t = b.torus(uv)
+    d, c = b.voronoi4(t, scale=48, feature='F1', out=['Distance', 'Color'])
+    cr, _, _ = b.rgb_sep(c)
+    loop = 1.0 - d.smooth(0.05, 0.55)
+    d2 = b.voronoi4(warp(b, t, 0.02, 20.0), scale=72, feature='F1')
+    loop2 = 1.0 - d2.smooth(0.05, 0.5)
+    u, v, _ = b.sep(uv)
+    rows = ((v * 40.0 * TAU).sin() * 0.5 + 0.5).smooth(0.2, 0.9)
+    fluff = b.noise4(t, scale=8, detail=4)
+    height = (loop * 0.5 + loop2 * 0.3 + rows * 0.12 + (cr - 0.5) * 0.08).clamp()
+    col = b.cmul((0.74, 0.72, 0.67), (fluff - 0.5) * 0.06 + height * 0.18 + 0.86)
+    return dict(albedo=col, rough=0.96, height=height, ao=height.lin(0.0, 0.6, 0.6, 1.0), wet=0.0)
+
+
+def pat_glass_clear(b, uv):
+    t = b.torus(uv)
+    w = b.noise4(t, scale=1.0, detail=1)
+    return dict(albedo=(0.97, 0.98, 0.97), rough=0.0, height=w * 0.05 + 0.5, mask=0.0, wet=0.0)
 
 
 # ------------------------------------------------------------- light sources
@@ -696,7 +753,7 @@ def pat_lantern_paper(b, uv):
     cap = v.smooth(0.0, 0.05) * (1.0 - v.smooth(0.95, 1.0))
     glow = g * 0.6 + 0.4
     glow = glow * (1.0 - thick * 0.35 + 0.15) * (1.0 - ribsh * 0.25) * (1.0 - rib * 0.55) * cap
-    ecol = b.mixc(g, EDGE_GLOW, LANTERN)
+    ecol = b.mixc(g, EDGE_GLOW, LANTERN_2200)
     emis = b.cmul(ecol, glow)
     col = b.cmul((0.76, 0.69, 0.53), (cloud - 0.5) * 0.12 + 1.0)
     col = b.mixc(rib * 0.6, col, (0.30, 0.22, 0.12))
@@ -724,6 +781,144 @@ def pat_lantern_andon(b, uv):
     return dict(albedo=col, rough=rough, height=height, emission=emis, mask=(1.0 - thick).clamp(), wet=0.0)
 
 
+def pat_lantern_plain(b, uv):
+    """Plain back-lit paper panel: even 2200 K glow, soft cloud and fibre only, bottom-to-top falloff."""
+    u, v, _ = b.sep(uv)
+    thick, fib, cloud, bund = _washi(b, uv)
+    g = 1.0 - (v - 0.42).abs() * 0.6
+    emis = b.cmul(LANTERN_2200, g * (1.0 - thick * 0.18 + 0.09))
+    col = b.cmul((0.78, 0.70, 0.52), (cloud - 0.5) * 0.08 + 1.0)
+    return dict(albedo=col, rough=0.82, height=(cloud * 0.2 + fib * 0.1 + 0.3).clamp(), emission=emis,
+                mask=(1.0 - thick).clamp(), wet=0.0)
+
+
+def pat_gravel(b, uv):
+    """Raked pale-grey gravel (karesansui): 6-15 mm stones, per-stone tone, faint rake ridges every ~3 cm."""
+    u, v, _ = b.sep(uv)
+    t = b.torus(uv)
+    d, c = b.voronoi4(t, scale=55, feature='F1', out=['Distance', 'Color'])
+    cr, cg, _ = b.rgb_sep(c)
+    stone = 1.0 - d.smooth(0.15, 0.6)
+    d2, c2 = b.voronoi4(warp(b, t, 0.02, 10.0), scale=110, feature='F1', out=['Distance', 'Color'])
+    cr2, _, _ = b.rgb_sep(c2)
+    small = 1.0 - d2.smooth(0.15, 0.6)
+    rake = ((v * 16.0 * TAU).sin() * 0.5 + 0.5)
+    height = (stone * 0.45 + small * 0.25 + rake * 0.25).clamp()
+    col = b.cmul((0.39, 0.37, 0.32), (cr - 0.5) * 0.3 + (cr2 - 0.5) * 0.15 + 1.0)
+    col = b.mixc(cg.smooth(0.9, 0.95) * 0.6, col, (0.22, 0.21, 0.2))
+    return dict(albedo=col, rough=(0.8 + (cr - 0.5) * 0.1).clamp(), height=height,
+                ao=height.lin(0.0, 0.6, 0.6, 1.0), wet=(1.0 - height) * 0.4)
+
+
+def pat_koi(b, uv):
+    """Koi skin: overlapping cycloid scales in rows (~6 mm), pale base, glossy; colour via variants/tint."""
+    u, v, _ = b.sep(uv)
+    rows = 60.0
+    y = v * rows
+    r = y.floor()
+    x = u * rows * 0.8 + r.mod(2.0) * 0.5
+    fx, fy = x.fract(), y.fract()
+    dx, dy = fx - 0.5, fy * 1.1
+    d = (dx * dx + dy * dy).sqrt()
+    scale_edge = d.smooth(0.42, 0.55)
+    t = b.torus(uv)
+    sheen = b.noise4(t, scale=6, detail=3)
+    col = b.cmul((0.82, 0.80, 0.76), (sheen - 0.5) * 0.1 + 1.0 - scale_edge * 0.18)
+    height = (1.0 - d * 1.4).clamp()
+    return dict(albedo=col, rough=(0.12 + scale_edge * 0.1).clamp(), height=height, ao=1.0 - scale_edge * 0.2, wet=0.0)
+
+
+def pat_lava_molten(b, uv):
+    """Bright molten lava field (for behind glass): mostly glowing yellow-orange melt with thin dark crust rafts."""
+    t = b.torus(uv)
+    flow = b.noise4(warp(b, b.torus(uv, ax=0.5, ay=1.5), 0.12, 1.2), scale=2.0, detail=5)
+    r1 = b.ridge(b.noise4(warp(b, t, 0.15, 1.2), scale=3.5, detail=3))
+    crust = (flow.smooth(0.53, 0.58) * (1.0 - r1.smooth(0.85, 0.97))).clamp()
+    heat = (1.0 - flow.smooth(0.45, 0.58)) * 0.65 + 0.35 + r1.smooth(0.9, 0.99) * 0.3
+    emis = b.ramp(heat.clamp(), [(0.0, (0.45, 0.03, 0.0)), (0.5, (1.0, 0.2, 0.0)), (0.85, (1.0, 0.36, 0.0)),
+                                 (1.0, (1.0, 0.5, 0.02))])
+    emis = b.cmul(emis, 1.0 - crust)
+    col = b.mixc(crust, (0.3, 0.06, 0.01), (0.012, 0.01, 0.009))
+    return dict(albedo=col, rough=(0.3 + crust * 0.5).clamp(), height=(0.4 + crust * 0.4).clamp(), emission=emis,
+                ao=1.0, wet=0.0)
+
+
+def pat_mirror(b, uv):
+    t = b.torus(uv)
+    smudge = b.noise4(t, scale=5, detail=4).smooth(0.65, 0.85)
+    return dict(albedo=(0.93, 0.93, 0.92), rough=(smudge * 0.04 + 0.01).clamp(), metal=1.0, height=0.5, ao=1.0, wet=0.0)
+
+
+def pat_copper(b, uv):
+    t = b.torus(uv)
+    m = b.noise4(t, scale=6, detail=5)
+    brush = b.noise4(b.torus(uv, ax=0.05, ay=1.0), scale=60, detail=2)
+    col = b.cmul((0.92, 0.55, 0.42), (m - 0.5) * 0.12 + 1.0)
+    return dict(albedo=col, rough=(0.22 + (m - 0.5) * 0.08 + (brush - 0.5) * 0.05).clamp(), metal=1.0,
+                height=(0.5 + (brush - 0.5) * 0.1).clamp(), ao=1.0, wet=0.0)
+
+
+def pat_wicker(b, uv):
+    """Rattan/wicker over-under weave, 12 mm strands, aged honey cane with darker gaps."""
+    u, v, _ = b.sep(uv)
+    n = 40.0
+    x, y = u * n, v * n
+    ix, iy = x.floor(), y.floor()
+    fx, fy = x.fract(), y.fract()
+    over = ((ix + iy).mod(2.0))
+    pw = (fx * 3.14159265).sin() ** 0.6
+    pf = (fy * 3.14159265).sin() ** 0.6
+    height = b.mixf(over, pf * 0.85 + 0.1, pw * 0.85 + 0.1).clamp()
+    t = b.torus(uv)
+    fib = b.noise4(b.torus(uv, ax=1.0, ay=0.05), scale=80, detail=2)
+    tone = b.white1(ix * 3.0 + iy * 7.0 + 1.0)
+    col = b.cmul((0.45, 0.30, 0.13), (tone - 0.5) * 0.2 + (fib - 0.5) * 0.15 + 1.0)
+    col = b.mixc((1.0 - height).smooth(0.4, 0.95) * 0.85, col, (0.03, 0.02, 0.01))
+    return dict(albedo=col, rough=(0.55 + (1.0 - height) * 0.3).clamp(), height=height,
+                ao=height.lin(0.0, 0.5, 0.4, 1.0), wet=0.0)
+
+
+def pat_food(b, uv):
+    """Chashu-style meat: pink-brown with soft fat marbling; variants egg_white / yolk via tint."""
+    t = b.torus(uv)
+    m = b.noise4(warp(b, t, 0.1, 2.0), scale=5, detail=5)
+    fat = b.ridge(b.noise4(warp(b, t, 0.08, 3.0), scale=3, detail=3)).smooth(0.8, 0.95)
+    col = b.mixc(fat, b.cmul((0.42, 0.16, 0.08), (m - 0.5) * 0.3 + 1.0), (0.75, 0.62, 0.45))
+    return dict(albedo=col, rough=(0.45 - fat * 0.15).clamp(), height=(0.5 + fat * 0.1 + (m - 0.5) * 0.1).clamp(),
+                ao=1.0, wet=fat * 0.5)
+
+
+def pat_tenmoku(b, uv):
+    """Tenmoku glaze: black-brown with rust/silver oil-spot speckles and a brown pooling."""
+    t = b.torus(uv)
+    pool = b.noise4(warp(b, t, 0.08, 2.0), scale=3, detail=4)
+    sp = holes(b, t, 180, 0.02, 0.07) * b.noise4(t, scale=4).smooth(0.35, 0.65)
+    col = b.mixc(pool.smooth(0.55, 0.8) * 0.6, (0.02, 0.016, 0.014), (0.11, 0.045, 0.015))
+    col = b.mixc(sp, col, (0.42, 0.26, 0.14))
+    return dict(albedo=col, rough=(0.07 + sp * 0.12).clamp(), height=0.5, ao=1.0, wet=0.0)
+
+
+def pat_skin(b, uv):
+    """Skin: soft mottling, faint redness, fine pores; colour by variant (light / medium / deep)."""
+    t = b.torus(uv)
+    m = b.noise4(t, scale=6, detail=4)
+    red = b.noise4(t, scale=3, detail=3).smooth(0.5, 0.8)
+    pores = holes(b, t, 320, 0.03, 0.09) * 0.5
+    col = b.cmul((0.62, 0.40, 0.30), (m - 0.5) * 0.08 + 1.0 - pores * 0.06)
+    col = b.mixc(red * 0.25, col, (0.62, 0.30, 0.25))
+    return dict(albedo=col, rough=(0.42 + pores * 0.15 + (m - 0.5) * 0.06).clamp(), height=(0.5 - pores * 0.2).clamp(),
+                ao=1.0, wet=0.0)
+
+
+def pat_hair(b, uv):
+    """Hair strands along v: fine dark streaks, clumps; anisotropic sheen in KZ_Core."""
+    s1 = b.noise4(b.torus(uv, ax=1.0, ay=0.02), scale=180, detail=2)
+    clump = b.noise4(b.torus(uv, ax=1.0, ay=0.1), scale=25, detail=2)
+    col = b.cmul((0.03, 0.026, 0.024), (s1 - 0.5) * 0.5 + (clump - 0.5) * 0.3 + 1.0)
+    return dict(albedo=col, rough=(0.32 + (s1 - 0.5) * 0.1).clamp(), height=(s1 * 0.6 + clump * 0.4).clamp(),
+                ao=clump.lin(0.0, 0.6, 0.6, 1.0), wet=0.0)
+
+
 # ------------------------------------------------------------------- the library
 # tile = metres along u per repeat (aspect: u/v extent ratio); res = pixels along the larger
 # side.  core = KZ_Core constants; params = defaults of the 7 artist settings.
@@ -737,7 +932,7 @@ MATERIALS = [
     # ---- stone
     dict(id='basalt_dry', name='Dry basalt', category='stone', tile=2.0, res=1024,
          pattern=pat_basalt, depth=0.10,
-         params=dict(wetness=0.0, wear=0.0),
+         params=dict(wetness=0.0, wear=0.0, tint=(0.24, 0.27, 0.34)),
          core=dict(Porosity=0.6, WornColor=(0.05, 0.052, 0.056), WornRough=0.45, MacroAmount=STONE_MACRO,
                    Cavity=1.0),
          concept=['22-brand-board.jpg (BASALT swatch)', '04-arrival-gate.jpg', '19-thunder-curtain.jpg'],
@@ -745,8 +940,8 @@ MATERIALS = [
          three=dict(env=0.6)),
     dict(id='basalt_wet', name='Wet basalt', category='stone', tile=2.0, res=1024, tex_from='basalt_dry',
          pattern=pat_basalt, depth=0.10,
-         params=dict(wetness=0.85, wear=0.0),
-         core=dict(Porosity=0.6, WornColor=(0.05, 0.052, 0.056), WornRough=0.45, MacroAmount=STONE_MACRO,
+         params=dict(wetness=0.7, wear=0.0, normal_strength=0.6, tint=(0.35, 0.45, 0.75)),
+         core=dict(Specular=0.35, Porosity=0.6, WornColor=(0.05, 0.052, 0.056), WornRough=0.45, MacroAmount=STONE_MACRO,
                    Cavity=1.0),
          concept=['16-steam-grotto.jpg', '05-mist-corridor.jpg', '17-glacier-plunge.jpg'],
          ref='refs/gen/mat-basalt-wet.png',
@@ -755,23 +950,22 @@ MATERIALS = [
                                   'mip 2 (the ORM mips already carry Toksvig roughness).')),
     dict(id='obsidian', name='Polished obsidian', category='stone', tile=2.0, res=1024,
          pattern=pat_obsidian, depth=0.06,
-         params=dict(wetness=0.0, wear=0.0),
-         core=dict(IOR=1.49, Specular=0.55, Porosity=0.0, WornColor=(0.03, 0.03, 0.032), WornRough=0.25,
+         params=dict(wetness=0.0, wear=0.0, normal_strength=0.3),
+         core=dict(IOR=1.49, Specular=0.5, Porosity=0.0, Transmission=0.0, Translucency=0.0, WornColor=(0.012, 0.012, 0.013), WornRough=0.25,
                    Cavity=0.6),
          concept=['22-brand-board.jpg (OBSIDIAN swatch)', '17-glacier-plunge.jpg (obsidian monolith)', '15-obsidian-mirror.jpg'],
          ref='refs/gen/mat-obsidian.png',
          three=dict(env=1.0, note='Defined by what it reflects: needs the room reflection probe (lantern and '
                                   'glowworm dots) at envMapIntensity ~1.0.')),
     dict(id='rimstone', name='Rimstone / travertine', category='stone', tile=1.5, res=512,
-         pattern=pat_rimstone_top, side=pat_rimstone_side, depth=0.02,
-         params=dict(wetness=0.5, wear=0.0),
+         pattern=pat_rimstone_top, depth=0.02,
+         params=dict(wetness=0.5, wear=0.0, tint=(0.75, 0.9, 1.2)),
          core=dict(Porosity=0.5, WornColor=(0.82, 0.8, 0.74), WornRough=0.3, Cavity=0.6),
          concept=['18-rimstone-terraces.jpg'], ref='refs/gen/mat-rimstone.png',
-         three=dict(env=0.8, note='Two texture sets: textures (tops, micro-gours) and textures_side (flowstone '
-                                  'drapery), blended by world normal: w_top = smoothstep(0.5, 0.8, n.y).')),
+         three=dict(env=0.8, note='Painted micro-gour plate; its curtain drips also read on vertical faces.')),
     dict(id='black_sand', name='Black sand', category='stone', tile=2.0, res=1024,
          pattern=pat_black_sand, depth=0.03,
-         params=dict(wetness=0.15, wear=0.0),
+         params=dict(wetness=0.15, wear=0.0, tint=(0.5, 0.55, 0.66)),
          core=dict(Porosity=1.0, WornColor=(0.02, 0.019, 0.018), WornRough=0.8, MacroAmount=1.0, Cavity=0.8),
          concept=['20-wave-grotto.jpg'], ref='refs/gen/mat-black-sand.png',
          three=dict(env=0.5, note='Drive wetness from a shoreline vertex-colour mask (wet sand -> rough 0.05-0.1).')),
@@ -779,11 +973,12 @@ MATERIALS = [
          pattern=pat_ash_clay, depth=0.01,
          params=dict(wetness=0.0, wear=0.0),
          core=dict(Porosity=1.0, WornColor=(0.2, 0.19, 0.18), WornRough=0.7, MacroAmount=0.6, Cavity=0.8),
+         variants=dict(ash_grey=dict(tint=(0.5, 0.66, 1.0))),
          concept=['16-steam-grotto.jpg', '22-brand-board.jpg'],
          three=dict(env=0.4, note='Interior clay/plaster walls. Not for ash-glaze tea ware (use a prop texture).')),
     dict(id='paving', name='Worn paving (basalt flagstones)', category='stone', tile=4.0, res=1024,
          pattern=pat_paving, depth=0.02,
-         params=dict(wetness=0.5, wear=0.15),
+         params=dict(wetness=0.85, wear=0.15),
          core=dict(Porosity=0.5, WornColor=(0.06, 0.06, 0.062), WornRough=0.12, MacroAmount=0.7, Cavity=1.0),
          concept=['16-steam-grotto.jpg (wet flagstones)', '04-arrival-gate.jpg (lobby floor)'],
          ref='refs/gen/mat-obsidian.png (floor)',
@@ -792,11 +987,15 @@ MATERIALS = [
     # ---- wood, paper, cloth
     dict(id='hinoki', name='Hinoki (aged)', category='wood_paper_cloth', tile=2.0, aspect=8.0, res=2048,
          pattern=pat_hinoki, depth=0.0015,
-         params=dict(wetness=0.0, wear=0.1),
-         core=dict(Porosity=0.8, WornColor=(0.30, 0.26, 0.20), WornRough=0.55, WornMax=0.6, Specular=0.45,
-                   Sheen=0.15, Cavity=0.6),
-         variants=dict(dark_timber=dict(tint=(0.30, 0.27, 0.25), roughness_offset=0.1),
-                       handled=dict(tint=(0.8, 0.72, 0.65), roughness_offset=-0.15)),
+         params=dict(wetness=0.0, wear=0.2, tint=(0.78, 0.6, 0.42), roughness_offset=0.05),
+         core=dict(Porosity=0.8, WornColor=(0.30, 0.29, 0.27), WornRough=0.6, WornMax=0.5, Specular=0.45,
+                   Sheen=0.03, Cavity=0.6),
+         variants=dict(natural=dict(tint=(1.2, 0.85, 0.55), roughness_offset=0.0),
+                       dark_timber=dict(tint=(0.2, 0.14, 0.13), roughness_offset=0.1),
+                       handled=dict(tint=(0.8, 0.72, 0.65), roughness_offset=-0.15),
+                       wet_oiled=dict(tint=(0.47, 0.36, 0.25), roughness_offset=-0.32),
+                       stained=dict(tint=(0.32, 0.23, 0.2), roughness_offset=-0.05),
+                       walnut=dict(tint=(0.085, 0.07, 0.075), roughness_offset=-0.1)),
          concept=['05-mist-corridor.jpg (shoji frames, posts)', '04-arrival-gate.jpg (shoe lockers)', '16-steam-grotto.jpg (bucket, sign post)'],
          ref='refs/gen/mat-hinoki-washi.png',
          three=dict(env=0.5, note='Texture is 2 m along the grain (u) x 0.25 m across (v). Randomise u offset, '
@@ -804,16 +1003,32 @@ MATERIALS = [
                                   '(stained structural timber), handled (hand-polished rails, darker, glossier).')),
     dict(id='lacquer_dark', name='Lacquered dark wood (urushi)', category='wood_paper_cloth', tile=1.0, res=512,
          pattern=pat_lacquer, depth=0.0005,
-         params=dict(wetness=0.0, wear=0.0),
-         core=dict(Porosity=0.0, Coat=1.0, CoatRough=0.05, WornColor=(0.19, 0.013, 0.007), WornRough=0.3,
+         params=dict(wetness=0.0, wear=0.0, tint=(0.75, 0.9, 1.1), normal_strength=0.3),
+         core=dict(Porosity=0.0, Coat=0.45, CoatRough=0.12, Specular=0.3, WornColor=(0.19, 0.013, 0.007), WornRough=0.3,
                    Cavity=0.3),
+         variants=dict(vermilion=dict(tint=(23.0, 3.6, 1.9), roughness_offset=0.02),
+                       black=dict(tint=(0.5, 0.9, 1.15))),
          concept=['21-private-suite.jpg (table, trays)', '06-kawagiri-restaurant.jpg'],
-         three=dict(env=1.0, clearcoat=1.0, clearcoatRoughness=0.05,
-                    note='For furniture and trays. Structural dark timbers: hinoki variant dark_timber. '
-                         'Edge wear reveals red undercoat (negoro).')),
+         three=dict(env=0.7, clearcoat=0.45, clearcoatRoughness=0.12,
+                    note='Clean dark urushi (mottled look: lacquer_mottled). Variant vermilion = shu-urushi '
+                         '(small torii, Kawagiri red); black. Edge wear reveals red undercoat.')),
+    dict(id='lacquer_mottled', name='Lacquered dark wood, worn mottle (urushi)', category='wood_paper_cloth', tile=1.0,
+         res=512, pattern=pat_lacquer, depth=0.0005, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.0, Coat=0.45, CoatRough=0.12, Specular=0.3, WornColor=(0.19, 0.013, 0.007), WornRough=0.3,
+                   Cavity=0.3),
+         concept=['21-private-suite.jpg (old trays)'],
+         three=dict(env=0.7, clearcoat=0.45, clearcoatRoughness=0.12, note='Old, worn lacquer with grain mottle.')),
+    dict(id='lacquer_black', name='Black urushi (clean)', category='wood_paper_cloth', tile=1.0, res=512,
+         pattern=pat_lacquer, depth=0.0003, params=dict(wetness=0.0, wear=0.0, tint=(0.5, 0.9, 1.15),
+                                                         normal_strength=0.3),
+         core=dict(Porosity=0.0, Coat=0.45, CoatRough=0.1, Specular=0.3, WornColor=(0.19, 0.013, 0.007),
+                   WornRough=0.3, Cavity=0.0),
+         concept=['21-private-suite.jpg (lacquer)', '04-arrival-gate.jpg (signboards)'],
+         three=dict(env=0.7, clearcoat=0.45, clearcoatRoughness=0.1,
+                    note='Clean black urushi for signs and trays: no pitting; red shu shows only via wear.')),
     dict(id='bamboo', name='Bamboo', category='wood_paper_cloth', tile=0.25, aspect=0.25, res=1024,
          pattern=pat_bamboo, depth=0.004,
-         params=dict(wetness=0.0, wear=0.0),
+         params=dict(wetness=0.0, wear=0.0, tint=(0.85, 1.3, 1.8)),
          core=dict(Porosity=0.3, Sheen=0.3, WornColor=(0.55, 0.46, 0.26), WornRough=0.3, Cavity=0.6),
          concept=['04-arrival-gate.jpg (bamboo spout)', '22-brand-board.jpg'],
          three=dict(env=0.7, note='u = around the culm (0.25 m), v = along it (1.0 m). Randomise v offset per '
@@ -835,8 +1050,8 @@ MATERIALS = [
          three=dict(env=0.3, note='base.a = thinness. Faint yellowing at panel bottoms via vertex colour.')),
     dict(id='washi_backlit', name='Washi, back-lit (shoji / lantern shade)', category='wood_paper_cloth',
          tile=0.5, res=512, pattern=pat_washi_backlit, depth=0.0008, emissive=True,
-         params=dict(wetness=0.0, wear=0.0, emissive_level=1.0),
-         core=dict(Porosity=1.0, Translucency=0.7, ThinFromMask=1.0, EmitStrength=0.8,
+         params=dict(wetness=0.0, wear=0.0, emissive_level=1.0, tint=(1.0, 0.8, 0.3)),
+         core=dict(Porosity=1.0, Translucency=0.3, ThinFromMask=1.0, EmitStrength=1.0,
                    WornColor=(0.62, 0.56, 0.44), WornRough=0.9, Cavity=0.3),
          preview=dict(backlight=True),
          concept=['05-mist-corridor.jpg (lit shoji)', '22-brand-board.jpg (paper lantern)'],
@@ -846,19 +1061,190 @@ MATERIALS = [
                                   'belongs in the lightmap / a per-panel emissive gradient, not this tile.')),
     dict(id='noren', name='Noren cloth (indigo)', category='wood_paper_cloth', tile=0.3, res=1024,
          pattern=pat_noren, depth=0.0008,
-         params=dict(wetness=0.0, wear=0.0),
-         core=dict(Porosity=1.0, Sheen=0.45, Translucency=0.06, WornColor=(0.05, 0.07, 0.13), WornRough=0.9,
+         params=dict(wetness=0.0, wear=0.0, tint=(0.01, 0.02, 0.066)),
+         variants=dict(black=dict(tint=(0.018, 0.018, 0.02)), vermilion=dict(tint=(0.14, 0.011, 0.009)), amber=dict(tint=(0.75, 0.28, 0.03)), indigo_yukata=dict(tint=(0.02, 0.035, 0.18)),
+                       cream=dict(tint=(1.0, 0.92, 0.76))),
+         
+         core=dict(Porosity=1.0, Sheen=0.05, Translucency=0.06, WornColor=(0.05, 0.07, 0.13), WornRough=0.9,
                    Cavity=0.5),
          concept=['09-neon-ramen-counter.jpg (noren curtains)', '22-brand-board.jpg (indigo robe)'],
          three=dict(env=0.3, sheen=0.45, sheenColor=(0.25, 0.30, 0.45),
                     note='Fade the hem lighter and darken folds via vertex colour.')),
+    dict(id='terry', name='Terry cloth (towels)', category='wood_paper_cloth', tile=0.12, res=512,
+         pattern=pat_terry, depth=0.0015, params=dict(wetness=0.0, wear=0.0, normal_strength=0.45),
+         core=dict(Porosity=1.0, Sheen=0.6, Translucency=0.04, WornColor=(0.6, 0.58, 0.54), WornRough=0.95, Cavity=0.9),
+         variants=dict(cream=dict(tint=(1.0, 0.93, 0.8)), indigo=dict(tint=(0.08, 0.11, 0.25))),
+         concept=['21-private-suite.jpg (towels)', '16-steam-grotto.jpg (towel)'],
+         three=dict(env=0.2, sheen=0.6, sheenColor=(0.9, 0.9, 0.88),
+                    note='Fluffy loop-pile towels (off-white; variant cream / indigo). Linen is for yukata and noren.')),
     dict(id='rope', name='Rope (straw, twisted)', category='wood_paper_cloth', tile=0.3, res=512,
          pattern=pat_rope, depth=0.012,
          params=dict(wetness=0.0, wear=0.0),
          core=dict(Porosity=1.0, Sheen=0.25, WornColor=(0.45, 0.38, 0.22), WornRough=0.85, Cavity=0.8),
          concept=['22-brand-board.jpg (braided cord)', '04-arrival-gate.jpg (torii)'],
          three=dict(env=0.3, note='Best on twisted geometry with u along the rope.')),
+
+    dict(id='bark', name='Pine bark', category='wood_paper_cloth', tile=2.0, res=1024, pattern=pat_hinoki, depth=0.03,
+         params=dict(wetness=0.0, wear=0.0, normal_strength=1.5, tint=(0.65, 1.0, 1.6)),
+         core=dict(Porosity=0.7, WornColor=(0.12, 0.08, 0.06), WornRough=0.7, MacroAmount=0.6, Cavity=1.0),
+         concept=['04-arrival-gate.jpg (pines)', '01-hero-exterior.jpg'], ref='CC0 Poly Haven pine_bark',
+         three=dict(env=0.4, note='Reddish-brown plated pine bark; trunk UVs with u around, v up.')),
+    dict(id='foliage_pine', name='Pine needle cards (alpha)', category='wood_paper_cloth', tile=0.5, res=512,
+         pattern=pat_hinoki, gen='pine_needles', depth=0.003, transparent=True,
+         params=dict(wetness=0.0, wear=0.0),
+         variants=dict(sage=dict(tint=(2.2, 2.0, 6.5))),
+         core=dict(Porosity=0.3, Translucency=0.35, AlphaFromMask=1.0, AlphaMin=0.0, Specular=0.4, Cavity=0.0,
+                   Transmission=0.0),
+         concept=['04-arrival-gate.jpg (pines)', '01-hero-exterior.jpg'],
+         three=dict(env=0.3, transparent=False, alphaTest=0.5, side='DoubleSide',
+                    note='Needle-tuft cards for pine pads: base.a = coverage (alpha-test 0.5), translucency 0.35 '
+                         '(web: wrap lighting / back-face tint). Card UV 0..1 = 0.5 m.')),
+    dict(id='linen', name='Linen (off-white cloth)', category='wood_paper_cloth', tile=0.27, res=512, pattern=pat_noren,
+         depth=0.0008, params=dict(wetness=0.0, wear=0.0, tint=(1.0, 0.96, 0.88)),
+         core=dict(Porosity=1.0, Sheen=0.25, Translucency=0.05, WornColor=(0.6, 0.58, 0.54), WornRough=0.9, Cavity=0.5),
+         concept=['21-private-suite.jpg (towels, yukata)'], ref='CC0 Poly Haven rough_linen',
+         three=dict(env=0.3, sheen=0.25, note='Towels, yukata, cushions: neutral weave, colour via tint.')),
     # ---- metal, ice, glass
+    dict(id='ceramic', name='Glazed ceramic (tea ware)', category='metal_ice_glass', tile=0.3, res=512,
+         pattern=pat_ceramic, depth=0.0005, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.0, Coat=0.6, CoatRough=0.06, Specular=0.5, WornColor=(0.35, 0.25, 0.18), WornRough=0.5,
+                   Cavity=0.2),
+         variants=dict(tenmoku=dict(tint=(0.035, 0.03, 0.035)), white=dict(tint=(1.5, 1.45, 1.4)),
+                       celadon=dict(tint=(0.24, 0.5, 0.46))),
+         concept=['22-brand-board.jpg (tea cup)', '21-private-suite.jpg (tea set)'],
+         three=dict(env=1.0, clearcoat=0.6, clearcoatRoughness=0.06,
+                    note='Bowls and tea sets; object UVs in metres. Variants tenmoku / white / celadon via tint.')),
+    dict(id='kawara', name='Kawara roof tile (ibushi silver-charcoal)', category='stone', tile=0.9, res=512,
+         pattern=pat_kawara, depth=0.0015, params=dict(wetness=0.0, wear=0.0, tint=(0.15, 0.17, 0.21)),
+         core=dict(Porosity=0.3, Sheen=0.0, Specular=0.3, WornColor=(0.11, 0.11, 0.115), WornRough=0.35,
+                   MacroAmount=0.5, Cavity=0.5),
+         concept=['04-arrival-gate.jpg (roofs)', '01-hero-exterior.jpg'],
+         three=dict(env=0.8, note='Tile geometry from the generator; ~30 cm per-tile tone cells in the texture.')),
+    dict(id='moss', name='Moss (kokedama / groundcover)', category='wood_paper_cloth', tile=1.0, res=512,
+         pattern=pat_hinoki, depth=0.02, params=dict(wetness=0.2, wear=0.0, tint=(0.6, 1.3, 1.0)),
+         core=dict(Porosity=0.9, Sheen=0.3, Translucency=0.08, WornColor=(0.1, 0.12, 0.05), WornRough=0.9, Cavity=0.8),
+         concept=['04-arrival-gate.jpg (garden)', '16-steam-grotto.jpg'], ref='CC0 ambientCG Moss002',
+         three=dict(env=0.3, sheen=0.3, note='Soft moss for kokedama, groundcover, rock tops.')),
+    dict(id='gold_leaf', name='Gold leaf (kinpaku)', category='metal_ice_glass', tile=0.33, res=512,
+         pattern=pat_gold_leaf, depth=0.0003, params=dict(wetness=0.0, wear=0.0, normal_strength=0.05),
+         core=dict(Porosity=0.0, Specular=0.5, WornColor=(0.03, 0.012, 0.008), WornRough=0.25, Cavity=0.2),
+         concept=['22-brand-board.jpg (gilt mark)', '04-arrival-gate.jpg (signboard)'],
+         three=dict(env=1.0, note='Gilt glyphs and fillets; base ~#D9A55A metallic, leaf seams 11 cm.')),
+    dict(id='glass_clear', name='Clear architectural glass', category='metal_ice_glass', tile=2.0, res=256,
+         pattern=pat_glass_clear, depth=0.0005, transparent=True, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Transmission=1.0, IOR=1.5, Specular=0.5, Porosity=0.0, Absorb=(0.86, 0.96, 0.9), AbsorbDensity=1.5,
+                   Cavity=0.0),
+         concept=['13-magma-glass-slide.jpg (glass)', '04-arrival-gate.jpg (windows)'],
+         three=dict(env=1.2, transmission=0.0, transparent=True, opacity=0.1, roughness=0.02, metalness=0.0,
+                    color=(0.91, 0.95, 0.92), side='DoubleSide', depthWrite=False,
+                    note='Phone: thin transparent MeshStandardMaterial (opacity ~0.1, roughness 0.02) with the room '
+                         'reflection probe at envMapIntensity 1.2 and a fresnel-boosted opacity (e.g. onBeforeCompile '
+                         'alpha = mix(0.08, 0.6, pow(1 - NdotV, 4))); slight green edge tint via color. No haze.')),
+    dict(id='lantern_andon_plain', name='Lantern paper, plain panel (emissive)', category='light', tile=1.0, res=512,
+         uvmode='object', pattern=pat_lantern_plain, depth=0.002, emissive=True,
+         params=dict(wetness=0.0, wear=0.0, emissive_level=1.0),
+         core=dict(Porosity=1.0, EmitStrength=0.55, Translucency=0.0, Cavity=0.3),
+         concept=['05-mist-corridor.jpg (andon)'],
+         three=dict(env=0.2, note='lantern_andon without the printed frame/crossbar: frame comes from geometry.')),
+    dict(id='foliage_fern', name='Fern frond cards (alpha)', category='wood_paper_cloth', tile=0.5, res=512,
+         pattern=pat_hinoki, gen='fern', depth=0.003, transparent=True, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.3, Translucency=0.35, AlphaFromMask=1.0, AlphaMin=0.0, Specular=0.4, Cavity=0.0),
+         concept=['16-steam-grotto.jpg (ferns)', '05-mist-corridor.jpg'],
+         three=dict(env=0.3, transparent=False, alphaTest=0.5, side='DoubleSide',
+                    note='Fern frond cards ~#5a8a2a, double-sided, alpha-tested, translucency hint 0.35.')),
+    dict(id='blossom', name='Blossom petal-cluster cards (alpha)', category='wood_paper_cloth', tile=0.3, res=512,
+         pattern=pat_hinoki, gen='blossom', depth=0.002, transparent=True, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.3, Translucency=0.3, AlphaFromMask=1.0, AlphaMin=0.0, Specular=0.35, Cavity=0.0),
+         concept=['01-hero-exterior.jpg (sakura)', '22-brand-board.jpg'],
+         three=dict(env=0.3, transparent=False, alphaTest=0.5, side='DoubleSide',
+                    note='Sakura-style petal clusters ~#f2d4de, double-sided, slightly translucent.')),
+    dict(id='gravel', name='Raked gravel (pale grey)', category='stone', tile=0.5, res=512, pattern=pat_gravel,
+         depth=0.008, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.8, WornColor=(0.4, 0.38, 0.34), WornRough=0.8, MacroAmount=0.5, Cavity=1.0),
+         concept=['04-arrival-gate.jpg (garden)'],
+         three=dict(env=0.4, note='Karesansui gravel ~#A8A49A; rake ridges run along u (align u with the rake lines).')),
+    dict(id='koi', name='Koi skin (glossy)', category='metal_ice_glass', tile=0.2, res=512, pattern=pat_koi,
+         depth=0.0008, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.0, Coat=0.8, CoatRough=0.08, Specular=0.5, Sheen=0.1, WornColor=(0.8, 0.8, 0.8), Cavity=0.2),
+         variants=dict(white=dict(tint=(1.15, 1.15, 1.15)), red_orange=dict(tint=(1.15, 0.24, 0.06)),
+                       black=dict(tint=(0.035, 0.035, 0.04)), gold=dict(tint=(1.2, 0.72, 0.18))),
+         concept=['15-obsidian-mirror.jpg (koi)', '12-lava-tube-lazy-river.jpg'],
+         three=dict(env=1.0, clearcoat=0.8, clearcoatRoughness=0.08,
+                    note='Glossy scaled fish skin; colour by variant (white / red_orange / black / gold) or per-patch '
+                         'vertex colour multiplied into tint.')),
+    dict(id='maple_leaf', name='Maple leaf cards (alpha)', category='wood_paper_cloth', tile=0.4, res=512,
+         pattern=pat_hinoki, gen='maple', depth=0.002, transparent=True, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.3, Translucency=0.35, AlphaFromMask=1.0, AlphaMin=0.0, Specular=0.4, Cavity=0.0),
+         variants=dict(orange=dict(tint=(1.33, 3.9, 1.0))),
+         concept=['01-hero-exterior.jpg (momiji)'],
+         three=dict(env=0.3, transparent=False, alphaTest=0.5, side='DoubleSide',
+                    note='Palmate momiji leaves ~#B8301E (variant orange ~#D2601E), double-sided, alpha-tested.')),
+    dict(id='lava_molten', name='Lava, bright molten field (behind glass)', category='light', tile=4.0, res=1024,
+         pattern=pat_lava_molten, depth=0.02, emissive=True, params=dict(wetness=0.0, wear=0.0, emissive_level=1.0),
+         core=dict(Porosity=0.0, EmitStrength=0.6, EmitMacro=0.6, MacroAmount=0.4, Cavity=0.2),
+         concept=['13-magma-glass-slide.jpg (molten field)', '04-arrival-gate.jpg (lava window)'],
+         three=dict(env=0.2, note='Saturated orange-yellow molten field tuned for AgX; scroll along v for flow. '
+                                  'Use for thin lava strips and the window backdrop (lava_backdrop).')),
+    dict(id='mirror', name='Mirror (silvered glass)', category='metal_ice_glass', tile=1.0, res=256, pattern=pat_mirror,
+         depth=0.0002, params=dict(wetness=0.0, wear=0.0, normal_strength=0.0),
+         core=dict(Porosity=0.0, Specular=0.5, Cavity=0.0),
+         variants=dict(aged=dict(tint=(0.8, 0.76, 0.66), roughness_offset=0.04)),
+         concept=['21-private-suite.jpg (vanity)'],
+         three=dict(env=1.0, roughness=0.02, metalness=1.0,
+                    note='Vanity/suite mirrors: metalness 1, roughness ~0.02, needs the room probe (or a planar '
+                         'reflection on hero mirrors).')),
+    dict(id='copper', name='Copper (polished)', category='metal_ice_glass', tile=0.5, res=512, pattern=pat_copper,
+         depth=0.0003, params=dict(wetness=0.0, wear=0.0, normal_strength=0.4),
+         core=dict(Porosity=0.0, WornColor=(0.95, 0.6, 0.45), WornRough=0.15, WornMetal=1.0, Cavity=0.3),
+         variants=dict(patinated=dict(tint=(0.22, 0.42, 0.36), roughness_offset=0.4), dark=dict(tint=(0.35, 0.25, 0.2))),
+         concept=['04-arrival-gate.jpg (fittings)'],
+         three=dict(env=1.0, note='Polished copper straps/fittings; variants patinated (green-grey), dark (oxidised).')),
+    dict(id='wicker', name='Wicker / rattan weave', category='wood_paper_cloth', tile=0.3, res=512, pattern=pat_wicker,
+         depth=0.004, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.6, Sheen=0.1, WornColor=(0.55, 0.42, 0.22), WornRough=0.4, Cavity=0.8),
+         variants=dict(dark=dict(tint=(0.45, 0.38, 0.32))),
+         concept=['21-private-suite.jpg (baskets)', '12-lava-tube-lazy-river.jpg (float rings)'],
+         three=dict(env=0.3, note='Baskets and rattan float rings; alias rattan_weave.')),
+    dict(id='food', name='Food (meat / egg / yolk)', category='wood_paper_cloth', tile=0.1, res=256, pattern=pat_food,
+         depth=0.0005, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.2, Sheen=0.2, Translucency=0.08, Specular=0.5, Cavity=0.3),
+         variants=dict(meat=dict(tint=(1.0, 1.0, 1.0)), egg_white=dict(tint=(1.9, 2.4, 3.2), roughness_offset=-0.2),
+                       yolk=dict(tint=(2.3, 1.9, 0.25), roughness_offset=-0.15)),
+         concept=['09-neon-ramen-counter.jpg (ramen)'],
+         three=dict(env=0.5, note='Ramen toppings: default chashu meat; variants egg_white, yolk (tint-based).')),
+    dict(id='broth', name='Broth (golden, translucent)', category='water', tile=0.2, res=256, pattern=pat_water_still,
+         depth=0.002, transparent=True, params=dict(wetness=0.0, wear=0.0),
+         core=dict(WATER_CORE, Absorb=(0.85, 0.55, 0.15), AbsorbDensity=8.0, Scatter=(1.0, 0.85, 0.6), ScatterDensity=8.0,
+                   Cavity=0.0),
+         concept=['09-neon-ramen-counter.jpg (ramen)'],
+         three=dict(env=0.8, transparent=True, opacity=0.85, color=(0.75, 0.45, 0.12), roughness=0.05,
+                    note='Golden tonkotsu/shoyu broth; on the web an opaque-ish glossy surface is enough.')),
+    dict(id='ceramic_tenmoku', name='Ceramic, tenmoku glaze', category='metal_ice_glass', tile=0.15, res=512,
+         pattern=pat_tenmoku, depth=0.0003, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.0, Coat=0.6, CoatRough=0.05, Specular=0.5, Cavity=0.1),
+         concept=['22-brand-board.jpg (tea bowl)'],
+         three=dict(env=1.0, clearcoat=0.6, note='Black-brown glaze with rust/silver oil-spot speckles.')),
+    dict(id='sinter_amber', name='Sinter, amber translucent (stalactite tips)', category='stone', tile=0.5, res=512,
+         pattern=pat_rimstone_top, depth=0.01, emissive=True, params=dict(wetness=0.4, wear=0.0, emissive_level=1.0,
+                                                                          tint=(1.0, 0.62, 0.25)),
+         core=dict(Porosity=0.3, Translucency=0.55, EmitStrength=0.25, EmitColor=(0.6, 0.25, 0.05), Cavity=0.4),
+         concept=['16-steam-grotto.jpg', '18-rimstone-terraces.jpg'],
+         three=dict(env=0.6, note='Amber translucent mineral for stalactite/drip tips; emissive_level 0..1 adds a '
+                                  'faint amber glow (EmitColor x level x 0.25).')),
+    dict(id='skin', name='Skin (subsurface)', category='wood_paper_cloth', tile=0.1, res=256, pattern=pat_skin,
+         depth=0.0002, params=dict(wetness=0.0, wear=0.0, normal_strength=0.4),
+         core=dict(Porosity=0.2, Subsurface=0.35, Sheen=0.1, Specular=0.45, Cavity=0.2),
+         variants=dict(light=dict(tint=(1.15, 1.12, 1.1)), medium=dict(tint=(0.62, 0.5, 0.42)),
+                       deep=dict(tint=(0.38, 0.3, 0.26))),
+         concept=['21-private-suite.jpg (guests)', '22-brand-board.jpg'],
+         three=dict(env=0.4, sheen=0.1, note='Figures: Blender subsurface 0.35; web = MeshStandard with a warm '
+                                             'wrap-lighting tweak (no SSS). Variants light / medium / deep.')),
+    dict(id='hair', name='Hair (anisotropic)', category='wood_paper_cloth', tile=0.2, res=256, pattern=pat_hair,
+         depth=0.0005, params=dict(wetness=0.0, wear=0.0),
+         core=dict(Porosity=0.0, Anisotropic=0.8, Specular=0.5, Sheen=0.2, Cavity=0.4),
+         variants=dict(black=dict(tint=(0.8, 0.8, 0.8)), grey=dict(tint=(6.0, 6.0, 6.2))),
+         concept=['21-private-suite.jpg (guests)'],
+         three=dict(env=0.5, note='Strands along v (UV v along the hair). three: MeshPhysicalMaterial anisotropy 0.8.')),
     dict(id='iron', name='Iron (black oxide, rust)', category='metal_ice_glass', tile=0.6, res=512,
          pattern=pat_iron, depth=0.002,
          params=dict(wetness=0.0, wear=0.2),
@@ -868,11 +1254,13 @@ MATERIALS = [
          three=dict(env=1.0, note='Metal is binary: 0 in the texture, 1 only where wear exposes bare iron.')),
     dict(id='bronze', name='Bronze (patina, verdigris)', category='metal_ice_glass', tile=0.6, res=512,
          pattern=pat_bronze, depth=0.0015,
-         params=dict(wetness=0.0, wear=0.2),
+         params=dict(wetness=0.0, wear=0.12, normal_strength=0.35),
          core=dict(Porosity=0.2, WornColor=(0.80, 0.55, 0.30), WornRough=0.22, WornMetal=1.0, MacroAmount=0.5,
                    Cavity=0.8),
+         variants=dict(smooth=dict(normal_strength=0.03),
+                       verdigris=dict(tint=(2.6, 9.5, 13.0), roughness_offset=0.35, wear=0.0)),
          concept=['04-arrival-gate.jpg (bronze spout, fittings)', '22-brand-board.jpg (bucket hoops)'],
-         three=dict(env=1.0)),
+         three=dict(env=1.0, note='Blackened/oiled bronze ~#3a2a1c, metallic; gold edge highlights via wear.')),
     dict(id='glacier_ice', name='Glacier ice', category='metal_ice_glass', tile=2.0, res=512,
          pattern=pat_glacier_ice, depth=0.05, transparent=True, emissive=True,
          params=dict(wetness=0.3, wear=0.0, emissive_level=1.0),
@@ -886,9 +1274,9 @@ MATERIALS = [
                          'internal glow x 0.5-1.5 plus a fresnel rim; frost = base.a + world-up mask.')),
     dict(id='lava_glass', name='Thick lava glass', category='metal_ice_glass', tile=2.0, res=512,
          pattern=pat_lava_glass, depth=0.004, transparent=True,
-         params=dict(wetness=0.0, wear=0.0),
+         params=dict(wetness=0.0, wear=0.0, normal_strength=0.0),
          core=dict(Transmission=1.0, IOR=1.5, Specular=0.5, Porosity=0.0, FoamColor=(0.75, 0.74, 0.72),
-                   FoamFromMask=0.12, Absorb=(0.72, 0.74, 0.62), AbsorbDensity=3.0, Cavity=0.0),
+                   FoamFromMask=0.0, Absorb=(0.62, 0.58, 0.5), AbsorbDensity=3.0, Cavity=0.0),
          concept=['13-magma-glass-slide.jpg (glass wall, glass tube)', '04-arrival-gate.jpg (lava window)'],
          ref='refs/gen/mat-lava-glass.png',
          three=dict(env=1.2, transmission=0.0, transparent=True, opacity=0.14,
@@ -900,7 +1288,7 @@ MATERIALS = [
          pattern=pat_water_still, depth=0.004, transparent=True,
          params=dict(wetness=0.0, wear=0.0),
          core=dict(WATER_CORE, Absorb=(0.03, 0.67, 0.60), AbsorbDensity=3.0, Scatter=(0.2, 0.9, 0.85),
-                   ScatterDensity=0.25, Cavity=0.0),
+                   ScatterDensity=0.05, Cavity=0.0),
          variants=dict(mirror=dict(tint=(0.30, 0.36, 0.42), roughness_offset=-0.005)),
          concept=['05-mist-corridor.jpg', '15-obsidian-mirror.jpg (variant mirror)', '17-glacier-plunge.jpg'],
          ref='refs/gen/mat-water-teal.png',
@@ -915,7 +1303,7 @@ MATERIALS = [
     dict(id='water_river', name='River water', category='water', tile=3.0, res=512,
          pattern=pat_water_river, depth=0.03, transparent=True,
          params=dict(wetness=0.0, wear=0.0),
-         core=dict(WATER_CORE, Absorb=(0.02, 0.72, 0.70), AbsorbDensity=2.6, Scatter=(0.25, 0.95, 0.95),
+         core=dict(WATER_CORE, FoamFromMask=0.5, Absorb=(0.02, 0.72, 0.70), AbsorbDensity=2.6, Scatter=(0.25, 0.95, 0.95),
                    ScatterDensity=0.6, Cavity=0.0),
          concept=['12-lava-tube-lazy-river.jpg', '06-kawagiri-restaurant.jpg'], ref='refs/gen/mat-water-teal.png',
          water=dict(depth_colors_srgb={'0.1': [120, 225, 215], '0.5': [0, 190, 185], '2.0': [0, 60, 75]},
@@ -926,7 +1314,7 @@ MATERIALS = [
     dict(id='water_sea', name='Sea water', category='water', tile=6.0, res=512,
          pattern=pat_water_sea, depth=0.18, transparent=True,
          params=dict(wetness=0.0, wear=0.0),
-         core=dict(WATER_CORE, Absorb=(0.0, 0.62, 0.72), AbsorbDensity=2.5, Scatter=(0.3, 0.85, 0.9),
+         core=dict(WATER_CORE, FoamFromMask=0.2, Absorb=(0.0, 0.62, 0.72), AbsorbDensity=2.5, Scatter=(0.3, 0.85, 0.9),
                    ScatterDensity=0.2, Cavity=0.0),
          concept=['20-wave-grotto.jpg'],
          water=dict(depth_colors_srgb={'0.1': [130, 210, 205], '0.5': [0, 150, 160], '2.0': [2, 25, 45]},
@@ -934,14 +1322,15 @@ MATERIALS = [
          three=dict(env=1.0, transmission=0.0, transparent=True,
                     note='Swell is vertex animation; this texture is chop + lacy crest foam. Height-driven '
                          'crest/trough colour lerp.')),
-    dict(id='waterfall', name='Waterfall sheet', category='water', tile=2.0, res=512,
+    dict(id='waterfall', name='Waterfall sheet', category='water', tile=2.0, res=1024,
          pattern=pat_waterfall, depth=0.02, transparent=True, emissive=True,
          params=dict(wetness=0.0, wear=0.0, emissive_level=1.0),
-         core=dict(WATER_CORE, ThinWall=1.0, AlphaFromMask=1.0, AlphaMin=0.25, EmitStrength=0.25,
+         core=dict(WATER_CORE, ThinWall=1.0, AlphaFromMask=1.0, AlphaMin=0.18, EmitStrength=0.35, EmitColor=(0.02, 0.2, 0.18),
+                   FoamColor=(0.95, 1.0, 1.0),
                    Absorb=(0.3, 0.85, 0.8), AbsorbDensity=0.0, Cavity=0.0),
          concept=['19-thunder-curtain.jpg', '18-rimstone-terraces.jpg', '06-kawagiri-restaurant.jpg (water curtains)'],
          three=dict(env=0.8, transmission=0.0, transparent=True, side='DoubleSide', depthWrite=False,
-                    opacityFromBaseAlpha='0.25 + 0.75*a',
+                    opacityFromBaseAlpha='0.06 + 0.94*a^1.5 (bright core, see-through teal edges)',
                     note='Scroll v at two speeds/scales (e.g. 1.5 and 2.3 m/s); spray/mist card at the base; '
                          'emissive = foam x 0.25 so it reads bright in a dark cave.')),
     dict(id='caustics_decal', name='Caustics decal', category='water', tile=1.0, res=256,
@@ -973,8 +1362,8 @@ MATERIALS = [
                                   'Flow-scroll along v.')),
     dict(id='neon_tube', name='Neon tube', category='light', tile=0.2, res=256,
          pattern=pat_neon, depth=0.0005, emissive=True,
-         params=dict(wetness=0.0, wear=0.0, emissive_level=1.0, tint=hexlin('#ff1493')),
-         core=dict(Porosity=0.0, EmitStrength=1.4, EmitCore=1.0, Specular=0.5, Cavity=0.0),
+         params=dict(wetness=0.0, wear=0.0, emissive_level=1.0, tint=hexlin('#ff1aa8')),
+         core=dict(Porosity=0.0, EmitStrength=0.55, EmitCore=0.0, Specular=0.5, Cavity=0.0),
          variants=dict(cyan=dict(tint=hexlin('#00b8ff'))),
          concept=['09-neon-ramen-counter.jpg (magenta/cyan neon)', '06-kawagiri-restaurant.jpg'],
          three=dict(env=0.5, note='Kawagiri only. emissive = mix(tint, white-pink, (1 - fresnel)^2) for a '
@@ -984,7 +1373,7 @@ MATERIALS = [
     dict(id='lantern_paper', name='Lantern paper, round chochin (emissive)', category='light', tile=1.0, res=512,
          uvmode='object', pattern=pat_lantern_paper, depth=0.002, emissive=True,
          params=dict(wetness=0.0, wear=0.0, emissive_level=1.0),
-         core=dict(Porosity=1.0, EmitStrength=1.4, Translucency=0.0, ThinFromMask=0.0, Cavity=0.3),
+         core=dict(Porosity=1.0, EmitStrength=0.55, Translucency=0.0, ThinFromMask=0.0, Cavity=0.3),
          concept=['22-brand-board.jpg (paper lantern)', '05-mist-corridor.jpg', '12-lava-tube-lazy-river.jpg'],
          ref='refs/gen/mat-hinoki-washi.png',
          three=dict(env=0.2, note='Object UVs: u around the lantern 0..1, v bottom->top 0..1 (scale stays 1). '
@@ -992,7 +1381,7 @@ MATERIALS = [
     dict(id='lantern_andon', name='Lantern paper, square andon (emissive)', category='light', tile=1.0, res=512,
          uvmode='object', pattern=pat_lantern_andon, depth=0.002, emissive=True,
          params=dict(wetness=0.0, wear=0.0, emissive_level=1.0),
-         core=dict(Porosity=1.0, EmitStrength=1.4, Translucency=0.0, Cavity=0.3),
+         core=dict(Porosity=1.0, EmitStrength=0.55, Translucency=0.0, Cavity=0.3),
          concept=['05-mist-corridor.jpg (andon)', '12-lava-tube-lazy-river.jpg (floating lanterns)'],
          three=dict(env=0.2, note='Object UVs: each paper face mapped 0..1 (frame shadow at the border).')),
 ]
@@ -1045,17 +1434,18 @@ BIG = dict(bands=(0.01, 0.05, 0.2), weights=(0.25, 0.45, 0.3))
 
 PLATES = {
     'basalt_wet': dict(sheet='stone', idx=0, plate_m=1.6, src_w=480, **B1024, rotate=False, albedo_mean=0.022,
-                       sat=0.6, rough=(0.22, 0.55, 'lum'), height=dict(BIG, dark_deep=0.3),
+                       sat=0.6, contrast=0.6, rough=(0.18, 0.5, 'lum'), height=dict(BIG, dark_deep=0.3),
                        delight=dict(spec_thresh=1.3, spec_sigma=10.0)),
     'basalt_dry': dict(sheet='stone', idx=1, plate_m=1.4, src_w=480, **B1024, rotate=True, albedo_mean=0.024,
                        sat=0.6, rough=(0.62, 0.9, 'lum'), height=dict(BIG, dark_deep=0.45),
                        delight=dict(spec_thresh=2.2), gloss_rough=0.3),
     'paving': dict(sheet='stone', idx=2, plate_m=2.4, src_w=480, **B1024, rotate=True, albedo_mean=0.04, sat=0.5,
-                   rough=(0.06, 0.3, 'height'), height=dict(BIG, dark_deep=0.55), delight=dict(spec_thresh=1.6),
+                   rough=(0.03, 0.18, 'height'), height=dict(BIG, dark_deep=0.55), delight=dict(spec_thresh=1.6),
                    wet_hollows=0.6),
     'obsidian': dict(sheet='stone', idx=3, plate_m=1.0, src_w=480, **B1024, rotate=True, albedo_mean=0.012,
                      sat=0.3, contrast=0.3, rough=(0.02, 0.12, 'lum'), height=dict(bands=(0.01, 0.04, 0.15),
-                     weights=(0.2, 0.5, 0.3), dark_deep=0.25), delight=dict(spec_thresh=1.7), gloss_rough=0.0),
+                     weights=(0.2, 0.5, 0.3), dark_deep=0.25), delight=dict(spec_thresh=1.7), gloss_rough=0.0,
+                     hybrid=True),
     'rimstone': dict(sheet='stone', idx=4, plate_m=0.8, src_w=480, **B1024, rotate=True, albedo_mean=0.6,
                      sat=0.9, rough=(0.12, 0.55, 'lum'), height=dict(dark_deep=0.2), delight=dict(spec_thresh=2.0)),
     'black_sand': dict(sheet='stone', idx=5, plate_m=0.7, src_w=480, **F1024, rotate=True, albedo_mean=0.014,
@@ -1063,7 +1453,7 @@ PLATES = {
                        gloss_floor=0.08),
     'cave_rock': dict(sheet='rock', idx=0, plate_m=2.0, src_w=480, **B1024, rotate=True, albedo_mean=0.02, sat=0.7,
                       rough=(0.2, 0.5, 'lum'), height=dict(BIG, dark_deep=0.35), delight=dict(spec_thresh=1.6)),
-    'stepping_stone': dict(sheet='rock', idx=1, plate_m=0.9, src_w=480, **B1024, rotate=True, albedo_mean=0.025,
+    'stepping_stone': dict(sheet='rock', idx=1, plate_m=0.9, src_w=480, **F1024, rotate=False, albedo_mean=0.025,
                            sat=0.6, rough=(0.05, 0.3, 'lum'), height=dict(BIG, dark_deep=0.3),
                            delight=dict(spec_thresh=1.6)),
     'sinter': dict(sheet='rock', idx=2, plate_m=0.8, src_w=480, **B512, rotate=True, albedo_mean=0.35, sat=1.0,
@@ -1073,18 +1463,21 @@ PLATES = {
     'lava': dict(sheet='rock', idx=4, plate_m=2.0, src_w=480, **B1024, rotate=True, glow=True, rule='lava',
                  albedo_mean=0.012, sat=0.5, rough=(0.45, 0.7, 'lum'), height=dict(BIG),
                  delight=dict(keep_spec=True, grad_strength=0.3)),
+    'lava_flow': dict(sheet='rock', idx=4, plate_m=2.0, src_w=480, **B1024, rotate=True, glow=True, rule='lava',
+                      hot=(0.02, 0.22), albedo_mean=0.06, sat=0.5, rough=(0.4, 0.65, 'lum'), height=dict(BIG),
+                      delight=dict(keep_spec=True, grad_strength=0.3), seed=5),
     'glacier_ice': dict(sheet='rock', idx=5, plate_m=1.2, src_w=480, **B512, rotate=True, rule='ice',
                         albedo_mean=0.3, sat=1.0, rough=(0.03, 0.25, 'inv'), height=dict(dark_deep=0.0),
                         delight=dict(keep_spec=True, grad_strength=0.5)),
-    'hinoki': dict(sheet='wood', idx=0, joints=True, plate_m=0.72, src_w=512, out=(2048, 512), block=288, overlap=32,
+    'hinoki': dict(sheet='wood', idx=0, joints=True, plate_m=0.72, src_w=256, out=(2048, 256), strips=4, block=288, overlap=32,
                    axis='v', albedo_mean=0.24, sat=0.7, rough=(0.42, 0.62, 'lum'),
                    height=dict(bands=(0.002, 0.008, 0.03), weights=(0.35, 0.45, 0.2), dark_deep=0.3),
                    delight=dict(spec_thresh=2.4)),
-    'lacquer_dark': dict(sheet='wood', idx=1, joints=True, plate_m=0.6, src_w=512, out=(1024, 512), block=288,
-                         overlap=32, axis='v', albedo_mean=0.022, sat=1.0, rough=(0.06, 0.3, 'lum'),
+    'lacquer_mottled': dict(sheet='wood', idx=1, joints=True, plate_m=0.6, src_w=256, out=(1024, 256), strips=2, block=288,
+                         overlap=32, axis='v', albedo_mean=0.018, sat=0.7, rough=(0.06, 0.3, 'lum'),
                          height=dict(bands=(0.002, 0.008, 0.03), weights=(0.4, 0.4, 0.2)),
                          delight=dict(spec_thresh=1.8)),
-    'bamboo': dict(sheet='wood', idx=2, joints=True, plate_m=0.6, src_w=512, out=(1024, 512), block=288, overlap=32,
+    'bamboo': dict(sheet='wood', idx=2, joints=True, plate_m=0.6, src_w=256, out=(1024, 256), strips=2, block=288, overlap=32,
                    axis='v', albedo_mean=0.22, sat=0.9, rough=(0.28, 0.45, 'lum'),
                    height=dict(bands=(0.003, 0.012, 0.04), weights=(0.3, 0.5, 0.2)), delight=dict(spec_thresh=2.2)),
     'tatami': dict(sheet='wood', idx=3, crop=(0.0, 1.0, 0.17, 1.0), plate_m=0.42, src_w=400, **F1024, rotate=False,
@@ -1104,9 +1497,6 @@ PLATES = {
     'noren': dict(sheet='cloth', idx=0, plate_m=0.45, src_w=480, out=(512, 512), block=80, overlap=16, rotate=False,
                   exclude=(0.13, 0.82, 0.08, 0.95), albedo_mean=0.03, sat=1.0, rough=(0.78, 0.92, 'lum'),
                   height=dict(bands=(0.001, 0.004, 0.015), weights=(0.45, 0.4, 0.15)), delight=dict(spec_thresh=2.6)),
-    'rope': dict(sheet='cloth', idx=1, plate_m=0.5, src_w=480, **B512, rotate=True, albedo_mean=0.22, sat=0.9,
-                 rough=(0.78, 0.95, 'lum'), height=dict(bands=(0.003, 0.012, 0.04), weights=(0.3, 0.5, 0.2),
-                 dark_deep=0.3), delight=dict(spec_thresh=2.4)),
     'bronze': dict(sheet='cloth', idx=2, plate_m=0.8, src_w=480, **B512, rotate=True, rule='bronze',
                    albedo_mean=0.2, sat=0.9, rough=(0.3, 0.55, 'inv'), height=dict(dark_deep=0.2),
                    delight=dict(spec_thresh=2.2, grad_strength=1.0)),
@@ -1115,7 +1505,7 @@ PLATES = {
     'water_river': dict(sheet='cloth', idx=4, plate_m=2.0, src_w=480, **B512, rotate=True, rule='foam', water=True,
                         albedo_mean=0.5, sat=1.0, rough=(0.02, 0.05, 'lum'), height=dict(BIG),
                         delight=dict(keep_spec=True, grad_strength=0.5)),
-    'water_sea': dict(sheet='cloth', idx=5, plate_m=2.5, src_w=480, **B512, rotate=True, rule='foam', water=True,
+    'water_sea': dict(sheet='cloth', idx=5, plate_m=8.0, src_w=480, **B512, rotate=True, rule='foam', water=True,
                       albedo_mean=0.3, sat=1.0, rough=(0.02, 0.05, 'lum'), height=dict(BIG),
                       delight=dict(keep_spec=True, grad_strength=0.5)),
 }
@@ -1128,6 +1518,7 @@ def _plate_geometry():
             continue
         m['plate'] = dict(p, sheet=SHEET[p['sheet']])
         oh, ow = p['out']
+        ow *= p.get('strips', 1)
         m['tile'] = round(ow * p['plate_m'] / p['src_w'], 4)
         m['aspect'] = ow / oh
         m['res'] = max(oh, ow)
@@ -1141,12 +1532,12 @@ def _plate_geometry():
 
 NEW = [
     dict(id='cave_rock', name='Cave rock (ceiling, wet)', category='stone', tile=4.0, res=1024, pattern=pat_basalt,
-         depth=0.15, params=dict(wetness=0.5, wear=0.0),
+         depth=0.15, params=dict(wetness=0.8, wear=0.0),
          core=dict(Porosity=0.6, WornColor=(0.05, 0.048, 0.045), WornRough=0.4, MacroAmount=1.0, Cavity=1.0),
          concept=['15-obsidian-mirror.jpg (ceiling)', '12-lava-tube-lazy-river.jpg', '16-steam-grotto.jpg'],
          ref='refs/gen/sheet-tex-rock.png (plate 1)', three=dict(env=0.8)),
     dict(id='stepping_stone', name='Wet stepping stone (top)', category='stone', tile=1.8, res=1024,
-         pattern=pat_basalt, depth=0.04, params=dict(wetness=0.8, wear=0.2),
+         pattern=pat_basalt, depth=0.04, params=dict(wetness=1.0, wear=0.2),
          core=dict(Porosity=0.4, WornColor=(0.05, 0.05, 0.05), WornRough=0.15, MacroAmount=0.5, Cavity=1.0),
          concept=['05-mist-corridor.jpg (stepping stones)'], ref='refs/gen/sheet-tex-rock.png (plate 2)',
          three=dict(env=1.0, note='Mist-corridor stepping stones; waterline ring via vertex colour.')),

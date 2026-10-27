@@ -1,0 +1,25 @@
+{
+  "asset": "towel_folded",
+  "round": 2,
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 2,
+    "construction_detail": 2,
+    "material_use": 3,
+    "lod_recognition": 1,
+    "variation": 2
+  },
+  "fixes": [
+    "Stack form: each towel is a chamfered superellipse slab with a flat top. Concept towels are soft folded rectangles with a fold crease, a puffed centre and rounded corners. Add a mid-length crease, 15-25 mm centre puff, 0.02 m corner radius and a slight sag at the ends.",
+    "Stack height: canonical stack is about 0.10 m tall against the concept 0.30 m. Increase towel count to 4-5 (generator default is 3-5 but the sheet shows 3 for every seed) with about 0.07 m per towel, so the stack lands at about 0.30 m on a 0.40 x 0.30 m footprint.",
+    "Drape style: the towel is a flat sheet hanging inside a wooden hoop, with a visible gap and clipping at the rim. Rebuild it to lie over a tub rim (about 0.6 m dia per concept side view), contact the rim without penetration, and hang about 0.25 m down the outer wall.",
+    "Tray: canonical and roll tray slats are pale orange-tan. Concept tray is dark walnut. Change slats to a dark timber (lacquer_dark or walnut-style) and keep the 6 mm gaps.",
+    "LOD budget and recognition: LOD0 612 tris against 300, LOD1 252 against 120. LOD2 at 44 tris reads as a dark diamond sandwich at 4 m. LOD3 at 32 tris is a dash at 10 m. Give LOD2 about 120 tris with two rounded slabs on the tray, and LOD3 about 60 tris with a light top face so it reads at 10 m."
+  ],
+  "library_issues": [
+    "Linen material is correct for the towel cloth; the thin-weave texture is visible but the cloth reads matte-plastic at close range. Check the normal strength.",
+    "No dark walnut or lacquered tray material; the library's hinoki is too pale for the tray."
+  ],
+  "verdict": "revise",
+  "summary": "Stack, roll and drape are all present, but the stack is a set of flat chamfered tiles rather than folded towels, the stack is a third of the concept height, the drape is broken, LOD0 and LOD1 are over budget, and LOD2 and LOD3 are not recognisable at switch distance. The seed variation is nearly identical across all three seeds."
+}

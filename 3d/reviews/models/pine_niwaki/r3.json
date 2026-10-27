@@ -1,0 +1,45 @@
+{
+  "asset": "pine_niwaki",
+  "round": 3,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 4
+  },
+  "fixes": [
+    "Pad foliage read (LOD0/1): the pads are now dense, broad domes (good), but they are built from large rectangular cards (0.32-0.45 x csz) whose texture reads as broadleaf flakes or torn paper. In canonical the pads look like oak or lettuce heads. In sheet-mod-nature #1 each pad is a brush of needle tufts about 0.12-0.2 m across, with a finely serrated, spiky outline and lit yellow tips on top. Halve the card size (to about 0.15-0.22 m wide) and roughly double the count within budget (LOD0 is at 5814/6000, so fund it by dropping the rim cards that hang below the core). Give the fringe cards an outward 10-20 deg up-tilt, so the pad edge silhouette is a fine bristle rather than drooping flakes.",
+    "Tier separation and limbs: in canonical seed 1 the two mid-right pads and the upper-left pad touch or overlap, and the limbs carrying them are hidden. Fringe cards hang about 0.1 m below the cores. The concept shows a dark gap of 0.2-0.35 m between every tier and a bare limb visible under each pad. Clip the fringe to the flat underside (no card below the core bottom - 0.02 m), offset same-tier pads by >= 0.25 m in z, and keep the underside a flat dark plane so the limbs read in it.",
+    "Upper trunk: below the crown, seed 3 (and seed 5 in styles.jpg) is a straight, thin pole about 1 m long with nothing on it. In the front view the seed 1 S-curve is only about 0.35 m. The concept trunk keeps twisting all the way to the crown: three alternating bends, the trunk 0.15-0.2 m thick just under the crown, with spiral ridges. Add a third bend above the top tier, set a minimum radius of 0.07 S at t=0.9, and add the 4-6 spiral bark ridges r2 asked for (8-15 mm relief, about 0.5 turn). They are not visible in canonical: the trunk reads as a smooth tube with a texture.",
+    "LOD3 pads: they are still paper-thin 4-point diamonds, so the 78 m silhouette is a '+' or antenna and the LOD3 sheet row looks like an umbrella stand. Replace them with 6-sided lenses: a flat underside plus a raised centre vertex at about 0.3 R (about 12 tris per pad). Merge the top two pads into one crown dome, and keep the long low limb's pad widest. Budget: 118/150 on seed 1.",
+    "LOD2 pad mass: going from LOD1 to LOD2 the pads lose about 40% of their visible area. The core shrinks to a small green lens, and the few cards become feathery strands that stick out past the core (seeds 1 and 3, row 3). Scale the LOD2 core to 0.9 R with a domed top in foliage colour, and lay 6-8 big cards flat over it (no radial strands), so the pad keeps its LOD1 outline.",
+    "Seed 3 'leaning' style: the pads cluster in one tight column around the trunk, with the crown pad on a 1 m bare pole. Push the leaning style's pads toward the lean direction (the downwind or lower side) so the mass offsets the lean, like the 18-rimstone ledge pines."
+  ],
+  "library_issues": [
+    "foliage_pine: the card texture reads as broadleaf flakes in khaki-olive, not needle bundles. It needs needle-cluster alpha (radiating needles 4-8 cm, fine alpha edge) and a two-tone mid-green to yellow tip (about 0.32/0.42/0.14 base, 0.55/0.55/0.2 tips). It was also flagged in r1 and r2.",
+    "bark: it is still orange-tan and pinkish in canonical (r2 asked for about 0.25/0.18/0.13 with deep plate fissures). Not fixed. The concept bark is dark brown-grey with warm highlights in deep ridges."
+  ],
+  "verdict": "revise",
+  "summary": "Clearly better. The canopy is now about 0.95-1.0 w/h (seed 1 front: 215x218 px), the tiers are broad domed pads, the root flare reaches about 0.85 m, and the style variants (niwaki, windswept with a long limb, leaning, pale sage Mirror, small and tall) are distinct, so silhouette and variation pass. It still doesn't read as the concept pine up close. The pads are made of broadleaf-like flakes rather than needle brush, the tiers merge without the dark gaps and visible limbs, the upper trunk is a straight pole on some seeds, and the bark is orange. LOD3 is still a thin-diamond antenna at 78 m, and LOD2 pads thin out.",
+  "consistency": {
+    "r1": {
+      "flat-bottomed domed pads 0.25-0.33 thick, lowest widest": "landed",
+      "visible limbs 0.6-1.1 m to each pad": "built (visible on seed 3 underside) but mostly hidden by the card fringe (fix 2)",
+      "trunk 0.4-0.5 m base, S-curve, root buttresses": "base and buttresses landed; S-curve partly landed (about 0.35 m front-view offset on seed 1, a straight top on seeds 3 and 5)",
+      "canopy w/h 0.95-1.0, asymmetric low overhang": "landed",
+      "styles sheet, full pad/height range": "landed",
+      "LOD3 offset flat-bottomed pads; fix sheet and phone test": "sheet and phone test landed; LOD3 pads still thin diamonds (fix 4)"
+    },
+    "r2": {
+      "pads 1.0-1.4 m dense domes, cards at 20-35 deg": "landed in mass; the card read is wrong (fix 1, library)",
+      "crown width and 0.25-0.4 m tier gaps": "width landed; gaps not landed (fix 2)",
+      "thicker trunk, 2 S-bends, spiral ridges, forked limbs": "thickness landed; ridges and forks not visible; bends partial (fix 3)",
+      "LOD3 lens pads, merged crown, thick trunk": "thick trunk landed; lens pads not landed",
+      "LOD2 pale square artifact, dark plates": "artifact gone; plates replaced by a pad that thins too much (fix 5)",
+      "pale Mirror sage tint": "landed (seed 4)",
+      "no reversals": "Every target from r1 and r2 is kept. Fix 2 re-applies r2's gap target, and fix 3 extends r2's twist and ridge target to the upper trunk, citing the concept front view (bends continue to the crown)."
+    }
+  }
+}

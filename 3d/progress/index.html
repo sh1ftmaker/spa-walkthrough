@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <style>
-/* Layout: sticky status bar + three tabs (Gallery, Agents, Spec). Single dark theme matching the lookbook. */
+/* Layout: sticky status bar + section tabs (reference, materials, models, locations, sounds, water, renders, assemblies) + Agents + Spec. One card per subject with version history. */
 :root{
   --basalt:#0d0f10; --obsidian:#16191b; --raised:#1d2124; --rule:#2a2f31;
   --mist:#e9ecea; --ash:#9aa3a3; --onsen:#46d6c8; --lantern:#f2a64a; --neon:#ff3fa4;
@@ -71,6 +71,21 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.2;text-wrap:balance
 .empty{border:1px dashed var(--rule);border-radius:6px;padding:28px;color:var(--ash);display:grid;gap:8px;max-width:760px}
 .empty code{color:var(--onsen)}
 
+/* sections: one card per subject (asset / material / location), latest first, history strip */
+.secintro{color:var(--ash);font-size:14px;margin:4px 0 14px;max-width:80ch}
+.subj{display:grid;gap:8px;align-content:start;min-width:0;background:var(--obsidian);border:1px solid var(--rule);border-radius:6px;padding:10px}
+.subj .imgs{display:grid;gap:4px;grid-template-columns:1fr}
+.subj .imgs.pair{grid-template-columns:2fr 1fr}
+.subj img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;background:var(--basalt);cursor:zoom-in;display:block}
+.subj .hist{display:flex;gap:4px;overflow-x:auto;padding-bottom:2px}
+.subj .hist img{width:72px;height:41px;aspect-ratio:auto;flex:0 0 auto;opacity:.75}
+.subj .hist img:hover{opacity:1}
+.subj h3{font-size:16px}
+.subj .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;font:12px var(--f-mono);color:var(--ash)}
+.subj p{margin:0;color:var(--ash);font-size:13px}
+.search{font:13px var(--f-mono);background:var(--obsidian);color:var(--mist);border:1px solid var(--rule);border-radius:4px;padding:6px 10px;min-width:220px}
+nav.tabs{flex-wrap:wrap}
+
 /* agents */
 table{width:100%;border-collapse:collapse}
 .tablewrap{overflow-x:auto}
@@ -107,7 +122,14 @@ dialog p{font:12px var(--f-mono);color:var(--ash);margin:6px 0 0}
     <div class="brand">Kazan-yu <span>build progress</span></div>
     <div class="live"><i class="dot" id="dot"></i><span id="livetxt">connecting…</span></div>
     <nav class="tabs" role="tablist">
-      <button role="tab" id="t-gallery" aria-selected="true" data-tab="gallery">Gallery<span class="n" id="n-gallery"></span></button>
+      <button role="tab" id="t-reference" aria-selected="true" data-tab="reference">Reference images<span class="n" id="n-reference"></span></button>
+      <button role="tab" id="t-materials" aria-selected="false" data-tab="materials">Materials &amp; shaders<span class="n" id="n-materials"></span></button>
+      <button role="tab" id="t-models" aria-selected="false" data-tab="models">Models<span class="n" id="n-models"></span></button>
+      <button role="tab" id="t-locations" aria-selected="false" data-tab="locations">Locations<span class="n" id="n-locations"></span></button>
+      <button role="tab" id="t-sounds" aria-selected="false" data-tab="sounds">Sounds<span class="n" id="n-sounds"></span></button>
+      <button role="tab" id="t-water" aria-selected="false" data-tab="water">Water<span class="n" id="n-water"></span></button>
+      <button role="tab" id="t-renders" aria-selected="false" data-tab="renders">Renders<span class="n" id="n-renders"></span></button>
+      <button role="tab" id="t-assemblies" aria-selected="false" data-tab="assemblies">Assemblies<span class="n" id="n-assemblies"></span></button>
       <button role="tab" id="t-agents" aria-selected="false" data-tab="agents">Agents<span class="n" id="n-agents"></span></button>
       <button role="tab" id="t-spec" aria-selected="false" data-tab="spec">Spec</button>
     </nav>
@@ -122,8 +144,9 @@ dialog p{font:12px var(--f-mono);color:var(--ash);margin:6px 0 0}
     <div class="stats" id="stats"></div>
   </section>
 
-  <section id="p-gallery">
-    <div class="filters" id="filters"></div>
+  <section id="p-section">
+    <p class="secintro" id="secintro"></p>
+    <div class="filters"><input class="search" id="q" placeholder="filter by name, id or location…" aria-label="Filter"></div>
     <div id="gallery"></div>
   </section>
 
@@ -162,9 +185,62 @@ const REF = [
   ["11-caldera-crown","01 Caldera Crown"],["12-lava-tube-lazy-river","02 Lazy River"],["13-magma-glass-slide","03 Magma Glass Slide"],["14-geyser-plaza","04 Geyser Plaza"],
   ["15-obsidian-mirror","05 Obsidian Mirror"],["16-steam-grotto","06 Steam Grotto"],["17-glacier-plunge","07 Glacier Plunge"],["18-rimstone-terraces","08 Rimstone Terraces"],
   ["19-thunder-curtain","09 Thunder Curtain"],["20-wave-grotto","10 Wave Grotto"],["21-private-suite","Private suite"],["22-brand-board","Brand board"]
-].map(([f,t])=>({title:t,kind:"reference",image:`../../lookbook/img/${f}.jpg`}));
-const KINDS = {all:"All build images",graybox:"Graybox",contact:"Contact sheets",material:"Materials",lod:"LOD sheets",render:"Renders",compare:"vs concept",paintover:"Paint-overs",reference:"Reference"};
-let state = {status:null,agents:[],gallery:[],filter:"all",doc:"../../layout-spec.md",lastOk:0,sig:{}};
+].map(([f,t])=>({title:t,kind:"reference",image:`../lookbook/img/${f}.jpg`}));
+const KINDS = {graybox:"Graybox",contact:"Contact sheet",material:"Material",lod:"LOD sheet",render:"Render",compare:"vs concept",paintover:"Paint-over",reference:"Reference",model:"Model",concept:"Concept",sound:"Sound",water:"Water",assembly:"Assembly",location:"Location"};
+const SECTIONS = {
+  reference:["Reference images","Concept art, level plans, Codex reference sheets and dollhouse cutaways the build works from."],
+  materials:["Materials & shaders","One card per material: latest preview with earlier versions underneath, plus shader and tiling research."],
+  models:["Models","One card per asset: concept sheet, LOD sheets and model renders as each generator improves."],
+  locations:["Locations","One card per place: dollhouse concept, place model and review sheets, newest first."],
+  sounds:["Sounds","Soundscape research: spectrograms, before/after rounds, demo screenshots."],
+  water:["Water","Water and mist prototypes: falls, rapids, waves, curtains, pools, simulated mist."],
+  renders:["Renders","Finished renders, web-runtime shots and fly-throughs."],
+  assemblies:["Assemblies","Places dressed with assets: assembly passes, placement checks and walk maps."]};
+let state = {status:null,agents:[],gallery:[],tab:"reference",q:"",doc:"../../layout-spec.md",lastOk:0,sig:{}};
+/* classify old entries that predate the section/subject fields */
+function section(g){
+  if(g.section) return g.section;
+  const i=g.image||"", a=g.agent||"", t=(g.title||"").toLowerCase();
+  if(g.kind==="reference"||a==="codex"||/renders\/ref\//.test(i)) return "reference";
+  if(/renders\/sound\//.test(i)||/sound/.test(a)) return "sounds";
+  if(/renders\/(water|mist)\//.test(i)||/water|mist/.test(a)) return "water";
+  if(/renders\/(materials|shaders)\//.test(i)||g.kind==="material"||/matlib|review-mat|shader/.test(a)) return "materials";
+  if(g.kind==="lod"||/renders\/(lod|models)\//.test(i)) return "models";
+  if(/renders\/web\//.test(i)) return "renders";
+  if(g.kind==="contact"||g.kind==="graybox"||/renders\/(plan|graybox|contact)\//.test(i)) return "locations";
+  if(g.kind==="assembly"||/renders\/(assembly|checks)\//.test(i)) return "assemblies";
+  return "renders";
+}
+/* canonical-asset policy: each card is ONE asset; only its canonical image builds the history.
+   role: "canonical" (card + history), "extra" (a small link inside the card), "hidden" (not on the page) */
+let MATIDS = new Set();
+function role(g){
+  if(g.role) return g.role;
+  const i=g.image||"", sec=section(g); let m;
+  if(sec==="materials"){
+    if((m=i.match(/^renders\/materials\/(?:r[0-9]+\/)?([a-z_]+)\.jpg$/))) return (MATIDS.size===0||MATIDS.has(m[1]))?"canonical":"hidden";
+    if((m=i.match(/^renders\/materials\/(scale|tiles)\/([a-z_]+)\.jpg$/))) return (MATIDS.size===0||MATIDS.has(m[2]))?"extra":"hidden";
+    if((m=i.match(/^renders\/shaders\/([a-z_]+)\.jpg$/))) return "canonical";
+    return "hidden";
+  }
+  if(sec==="models") return /\/sheet\.jpg$/.test(i)||/^renders\/models\/[^/]+\/canonical/.test(i)?"canonical":"extra";
+  if(sec==="locations") return (g.kind==="contact"||g.kind==="graybox"||/renders\/(plan|graybox|contact)\//.test(i))?"hidden":"canonical";
+  if(sec==="reference") return "canonical";
+  return g.kind==="compare"?"hidden":"canonical";
+}
+function subject(g){
+  if(g.subject) return g.subject;
+  const i=g.image||"";
+  let m;
+  if((m=i.match(/renders\/materials\/(?:[a-z0-9_]+\/)?([a-z_~0-9.\-]+)\.jpg$/))) return m[1];
+  if((m=i.match(/renders\/shaders\/([a-z_]+)\.jpg$/))) return m[1];
+  if((m=i.match(/renders\/(?:lod|models)\/([^/]+)\//))) return m[1];
+  if((m=i.match(/renders\/contact\/([^/]+)\//))) return m[1];
+  if(g.space) return g.space;
+  if((m=i.match(/renders\/(?:water|mist|sound)\/([a-z0-9-]+?)(?:_|\.)/))) return m[1];
+  if((m=i.match(/renders\/ref\/([^/.]+)\./))) return m[1];
+  return g.title||i;
+}
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -191,11 +267,16 @@ function renderStatus(){
   ].map(([k,v])=>`<div class="stat"><b>${k}</b><span>${v}</span></div>`).join("");
 }
 
-function renderFilters(){
-  const counts={all:state.gallery.length,reference:REF.length};
-  state.gallery.forEach(g=>counts[g.kind]=(counts[g.kind]||0)+1);
-  const keys=Object.keys(KINDS).filter(k=>k==="all"||k==="reference"||counts[k]);
-  $("#filters").innerHTML = keys.map(k=>`<button aria-pressed="${state.filter===k}" data-f="${k}">${KINDS[k]} <span style="opacity:.7">${counts[k]||0}</span></button>`).join("");
+function subjCard(name,list,extras){
+  const latest=list[list.length-1];
+  const links=(extras||[]).length?`<div class="meta">${extras.map(x=>`<a href="#" style="color:var(--onsen)" data-view="${esc(rel(x.image))}" data-cap="${esc(x.title)}">${esc(/scale/.test(x.image)?"real-scale view":/tiles/.test(x.image)?"tiling check":(x.title||"view"))}</a>`).join(" · ")}</div>`:"";
+  const imgs=[latest.image,latest.concept].filter(Boolean);
+  const meta=[latest.kind&&`<span class="pill ${latest.status?cls(latest.status):"s-active"}">${esc(KINDS[latest.kind]||latest.kind)}</span>`,
+    latest.round!=null&&("round "+esc(latest.round)),latest.score!=null&&("score "+esc(latest.score)+"/5"),latest.agent&&esc(latest.agent),latest.time&&ago(latest.time),
+    list.length>1&&(list.length+" versions")].filter(Boolean).join(" · ");
+  const hist=list.length>1?`<div class="hist">${list.slice(0,-1).reverse().map(h=>`<img loading="lazy" src="${esc(rel(h.image))}" alt="" data-cap="${esc(h.title)}${h.round!=null?" · round "+esc(h.round):""} · ${esc(ago(h.time))}">`).join("")}</div>`:"";
+  return `<article class="subj"><div class="imgs ${imgs.length>1?"pair":""}">${imgs.map((u,i)=>`<img loading="lazy" src="${esc(rel(u))}" alt="${esc(latest.title)}${i?" (concept)":""}" data-cap="${esc(latest.title)}${i?" (concept)":""}">`).join("")}</div>
+    <div class="meta">${meta}</div><h3>${esc(name)}</h3><p>${esc(latest.title)}</p>${links}${hist}</article>`;
 }
 function card(g){
   const imgs=[g.image,g.concept].filter(Boolean);
@@ -204,19 +285,27 @@ function card(g){
     <div class="meta">${g.kind&&g.kind!=="reference"?`<span class="pill ${g.status?cls(g.status):"s-active"}">${esc(KINDS[g.kind]||g.kind)}</span>`:""}${meta}</div>
     <h3>${esc(g.title)}</h3>${g.notes?`<p>${esc(g.notes)}</p>`:""}</article>`;
 }
-function rel(u){ return /^(https?:|\.\.?\/|\/)/.test(u)?u:"../"+u; } /* gallery paths are relative to 3d/ */
+function rel(u){ return /^(https?:|\/)/.test(u)?u:"../"+u; } /* every gallery path (and REF) is relative to 3d/ */
 function renderGallery(){
-  renderFilters();
-  const items = state.filter==="reference"?REF: state.filter==="all"?[...state.gallery].reverse(): state.gallery.filter(g=>g.kind===state.filter).reverse();
-  $("#n-gallery").textContent = state.gallery.length||"";
-  if(!items.length){
-    $("#gallery").innerHTML = `<div class="empty"><b style="color:var(--mist)">No build images yet.</b>
-      <span>When the build agent starts, its graybox renders, contact sheets, material swatches, LOD sheets and comparisons with the concept art appear here as they're made. The page refreshes itself every few seconds.</span>
-      <span>Agents add an image by appending an entry to <code>3d/gallery.json</code> and saving the file under <code>3d/renders/</code>.</span>
-      <span>Open the <a href="#" data-f="reference" style="color:var(--onsen)">Reference</a> filter to see the concept art and level plans the build works from.</span></div>`;
-    return;
-  }
-  $("#gallery").innerHTML = `<div class="grid">${items.map(card).join("")}</div>`;
+  const all=[...(state.tab==="reference"?REF.map(r=>({...r,section:"reference",subject:"Concept art: "+r.title})):[]), ...state.gallery];
+  const groups={}; const extras={}; const counts={}; const seen={};
+  all.forEach(g=>{ const sec=section(g), r=role(g); if(r==="hidden") return;
+    const sj=subject(g);
+    if(r==="canonical" && !(seen[sec+"|"+sj])){ seen[sec+"|"+sj]=1; counts[sec]=(counts[sec]||0)+1; }
+    if(sec!==state.tab) return;
+    if(r==="extra"){ (extras[sj]=extras[sj]||[]).push(g); return; }
+    (groups[sj]=groups[sj]||[]).push(g); });
+  /* one entry per image in the history (re-posts of the same file count once; the file itself is overwritten each version) */
+  Object.keys(groups).forEach(k=>{ const byImg={}; groups[k]=groups[k].filter(g=>{ const key=g.image+"|"+(g.round??"")+"|"+(g.time||"").slice(0,13); if(byImg[key]) return false; byImg[key]=1; return true; }); });
+  Object.keys(extras).forEach(k=>{ const u={}; extras[k]=extras[k].filter(x=>{ if(u[x.image]) return false; u[x.image]=1; return true; }); });
+  Object.keys(SECTIONS).forEach(k=>{ const n=k==="reference"&&state.tab!=="reference"?(counts[k]||0)+REF.length:(counts[k]||0); $("#n-"+k).textContent=n||""; });
+  if(!SECTIONS[state.tab]) return;
+  $("#secintro").textContent=SECTIONS[state.tab][1];
+  const q=state.q.toLowerCase();
+  let names=Object.keys(groups).filter(n=>!q||n.toLowerCase().includes(q)||groups[n].some(g=>(g.title||"").toLowerCase().includes(q)||(g.space||"").toLowerCase().includes(q)));
+  names.sort((a,b)=>new Date(groups[b][groups[b].length-1].time||0)-new Date(groups[a][groups[a].length-1].time||0));
+  if(!names.length){ $("#gallery").innerHTML=`<div class="empty"><b style="color:var(--mist)">Nothing here yet.</b><span>${esc(SECTIONS[state.tab][1])}</span><span>Items appear as agents post them (the page refreshes every few seconds).</span></div>`; return; }
+  $("#gallery").innerHTML = `<div class="grid">${names.map(n=>subjCard(n,groups[n],extras[n])).join("")}</div>`;
 }
 function renderAgents(){
   const a=state.agents||[];
@@ -240,6 +329,7 @@ async function renderDoc(force){
 async function poll(){
   try{
     const [s,a,g]=await Promise.all([getJSON("../status.json"),getJSON("../agents.json"),getJSON("../gallery.json")]);
+    if(!MATIDS.size){ try{ const mj=await getJSON("../materials.json"); MATIDS=new Set((mj.materials||[]).map(x=>x.id)); }catch(_){} }
     const sig=JSON.stringify([s,a,g]);
     if(sig!==state.sig.data){ state.sig.data=sig; state.status=s; state.agents=a; state.gallery=g; renderStatus(); renderGallery(); renderAgents(); }
     else renderStatus(); /* keep "x ago" fresh */
@@ -250,18 +340,24 @@ async function poll(){
 
 document.addEventListener("click",e=>{
   const t=e.target.closest("[data-tab]"); if(t){ showTab(t.dataset.tab); return; }
-  const f=e.target.closest("[data-f]"); if(f){ e.preventDefault(); state.filter=f.dataset.f; try{localStorage.setItem("kz-filter",state.filter)}catch(_){} renderGallery(); return; }
+
   const d=e.target.closest("[data-doc]"); if(d){ state.doc=d.dataset.doc; document.querySelectorAll("[data-doc]").forEach(b=>b.setAttribute("aria-pressed",b===d)); renderDoc(true); return; }
+  const v=e.target.closest("[data-view]"); if(v){ e.preventDefault(); $("#lb-img").src=v.dataset.view; $("#lb-cap").textContent=v.dataset.cap; $("#lb").showModal(); return; }
   const im=e.target.closest("img[data-cap]"); if(im){ $("#lb-img").src=im.src; $("#lb-cap").textContent=im.dataset.cap; $("#lb").showModal(); return; }
   if(e.target.closest("#lb")) $("#lb").close();
 });
+const TABS=[...Object.keys(SECTIONS),"agents","spec"];
 function showTab(name){
-  ["gallery","agents","spec"].forEach(n=>{ $("#p-"+n).hidden=n!==name; $("#t-"+n).setAttribute("aria-selected",n===name); });
+  const isSec=!!SECTIONS[name];
+  $("#p-section").hidden=!isSec; $("#p-agents").hidden=name!=="agents"; $("#p-spec").hidden=name!=="spec";
+  TABS.forEach(n=>{ const t=$("#t-"+n); if(t) t.setAttribute("aria-selected",n===name); });
+  if(isSec){ state.tab=name; renderGallery(); }
   if(name==="spec") renderDoc(true);
-  try{ history.replaceState(null,"","#"+name) }catch(_){}
+  try{ history.replaceState(null,"","#"+name); localStorage.setItem("kz-tab",name) }catch(_){}
 }
-try{ state.filter=localStorage.getItem("kz-filter")||"all" }catch(_){}
-showTab(["gallery","agents","spec"].includes(location.hash.slice(1))?location.hash.slice(1):"gallery");
+document.addEventListener("input",e=>{ if(e.target.id==="q"){ state.q=e.target.value; renderGallery(); } });
+let first="reference"; try{ first=localStorage.getItem("kz-tab")||first }catch(_){}
+showTab(TABS.includes(location.hash.slice(1))?location.hash.slice(1):(TABS.includes(first)?first:"reference"));
 poll(); setInterval(poll,POLL);
 </script>
 </body>

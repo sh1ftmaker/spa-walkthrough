@@ -1,0 +1,28 @@
+{
+  "asset": "chochin",
+  "round": 2,
+  "scores": {
+    "likeness": 4,
+    "silhouette_proportion": 3,
+    "construction_detail": 4,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 4
+  },
+  "fixes": [
+    "round_logo body proportion: the paper body is oblate (w/h ~1.17 in canonical). sheet-mod-lights #2 shows Ø0.45 x H0.45 m overall with a slightly tall ovoid body (w/h ~0.95-1.0) plus caps of ~0.05 m each. Change the round profile to body h ≈ 1.0-1.05 x diameter and taper the shoulders into the caps.",
+    "Rib lines: the ribs read as heavy dark venetian-blind stripes (~24 bands, high contrast). The concept has ~14-18 fine, low-contrast rib lines plus faint vertical paper-panel seams (~10-12 around). Halve the rib pinch depth and the line darkness, and add vertical seam lines to the paper texture or as decal strokes.",
+    "LOD3 (44 tris): the profile closes to a pointed bicone or diamond with black pyramid ends, so the flat caps are lost and it reads as a spinning top. Keep flat cap discs: a 6-sided body with 3 segments (36 tris) plus flat 6-gon top and bottom cap faces (8 tris). The silhouette then stays a capped barrel.",
+    "Cluster rig: neighbouring lanterns visibly overlap or interpenetrate (right-hand pairs and the centre pair in styles.jpg). All are the same size and height, and none carry a print. Enforce centre spacing >= 2r + 0.08 m in plan, stagger drops by 0.15-0.6 m, vary r ±15%, and let the front-row lanterns carry the logo, like the strings in 04-arrival-gate.",
+    "Caps: in the LOD sheet the lacquer caps read as glossy chrome bands. The concept caps are matte black lacquer, ~0.05-0.06 m tall, with thin brass rims top and bottom, small brass studs, a brass hanging ring and a short bottom finial. Raise the cap roughness (≥0.45), make the rim rings visibly brass, and add 4-6 stud bumps at LOD0.",
+    "Logo print: the steam wisps are straight tapered black wedges. The brand board and sheet show three S-curved wisps. Use a 2-inflection curve per wisp at ~0.012 m stroke width, and set the tall_cylinder 'KAZAN-YU' line ~30% larger, because it is illegible at 3 m now."
+  ],
+  "library_issues": [
+    "washi_backlit / lantern_paper emission: the cream lanterns go pale pink-white off the canonical camera (styles.jpg, LOD sheet). The concept is warm amber. This is being fixed now.",
+    "Red paper reads salmon or coral pink in styles.jpg. Concept 06 and 09 are deep vermilion red with an orange core glow. Under AgX the red tint needs more saturation and lower emission.",
+    "Tooling: the LOD sheet flags LOD0 over a budget of 800, but asset_list.csv says 4600/340/110/44, so every LOD of every seed is within budget (LOD0 3990-4555, LOD1 315-339, LOD2 104, LOD3 44).",
+    "Tooling: the seed-to-variant mapping differs between sheet.jpg (seed 1 = red crest, seed 3 = round logo) and styles.jpg / gen_chochin.SEED_VARIANTS (seed 1 = round_logo, seed 3 = red_crest). The LOD sheet script probably passes different seed values from its labels."
+  ],
+  "verdict": "revise",
+  "summary": "A clearly recognisable chochin family. giant_ramen and the chain match 09 and 04 well, the logo is real geometry, and caps and cord are present at every LOD. Silhouette is held back by the oblate round body and the bicone LOD3. The paper looks like heavy striped blinds instead of fine ribs with panel seams. The cluster rig has overlapping, uniform lanterns. Paper colour (pink cream, salmon red) is mainly a library emission issue. Triangle counts are within the current budget."
+}

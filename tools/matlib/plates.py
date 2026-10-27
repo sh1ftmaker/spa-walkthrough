@@ -331,10 +331,15 @@ def make_set(p, plate_img):
         extra = [src_lin]
     stack = np.dstack([alb, gloss[..., None]] + extra)
     out_h, out_w = p['out']
-    q = quilt(stack, out_h, out_w, p['block'], p['overlap'], axis=p.get('axis', 'both'),
-              rotate=p.get('rotate', False), seed=p.get('seed', 1),
-              exclude=None if not p.get('exclude') else tuple(int(v * s) for v, s in zip(
-                  p['exclude'], (nh, nh, nw, nw))))
+    strips = []
+    for i in range(p.get('strips', 1)):                # several differently-quilted strips side by side
+        q = quilt(stack, out_h, out_w, p['block'], p['overlap'], axis=p.get('axis', 'both'),
+                  rotate=p.get('rotate', False), seed=p.get('seed', 1) + 17 * i,
+                  exclude=None if not p.get('exclude') else tuple(int(v * s) for v, s in zip(
+                      p['exclude'], (nh, nh, nw, nw))))
+        strips.append(np.roll(q, (i * out_h // 3 + 97 * i, i * out_w // 3), axis=(0, 1)))   # no mirroring (butterfly pairs)
+    q = np.concatenate(strips, axis=1)
+    out_w = q.shape[1]
     alb, gloss = np.clip(q[..., :3], 0, None), np.clip(q[..., 3], 0, 1)
     glow = q[..., 4:7] if extra else None
     # albedo calibration: scale luminance to the target mean, optional saturation
@@ -384,7 +389,8 @@ def make_set(p, plate_img):
     elif rule == 'lava':                               # glowing seams -> emissive; crust albedo dark
         g0 = srgb_to_lin(np.clip(glow, 0, 1)) if glow is not None else alb
         gl_l = lum(glow)
-        hot = smooth((glow[..., 0] - glow[..., 2]) * 1.0 + gl_l * 0.5, 0.18, 0.45)
+        t0, t1 = p.get('hot', (0.18, 0.45))
+        hot = smooth((glow[..., 0] - glow[..., 2]) * 1.0 + gl_l * 0.5, t0, t1)
         emis = glow * hot[..., None]
         emis = emis / max(np.percentile(lum(emis), 99.7), 1e-6)
         alb = alb * (1 - hot[..., None] * 0.85) + hot[..., None] * np.array([0.22, 0.05, 0.01])
@@ -420,9 +426,10 @@ def make_set(p, plate_img):
             glow_l = np.clip(0.35 + 0.75 * thin - 0.35 * fib, 0, 1)
             emis = (edge[None, None, :] * (1 - glow_l[..., None]) * 0.5 + centre[None, None, :] * glow_l[..., None]) \
                 * glow_l[..., None]
-    elif rule == 'foam':
+    elif rule == 'foam':                                # only bright, unsaturated pixels are foam
         sat = alb.max(-1) - alb.min(-1)
-        mask = smooth(lum(alb) - sat * 2.0, 0.18, 0.5)
+        w = lum(alb) / max(np.percentile(lum(alb), 99.5), 1e-6) - sat / max(alb.max(), 1e-6) * 1.5
+        mask = smooth(w, 0.45, 0.8) * 0.85
     if p.get('water'):                                 # water: base rgb is the foam colour
         alb = np.ones_like(alb) * np.array([0.9, 0.95, 0.95])
         rough = np.clip(rough * 0 + 0.02 + mask * 0.4, 0.02, 1)

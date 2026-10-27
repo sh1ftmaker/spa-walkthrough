@@ -1,0 +1,26 @@
+{
+ "asset": "reception_counter",
+ "round": 2,
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 4,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 4,
+  "variation": 4
+ },
+ "fixes": [
+  "Plinth glow: reads as 5 discrete spot pools on the floor with dark gaps. Sheet shows a continuous warm strip under the whole base. Make the emissive reveal a continuous 0.06 m slot (or overlapping 1 m-long lights) along the full bottom of every bay, and recess the base 0.04 m so the strip is visible on the face as well as on the floor.",
+  "Stone top: reads as a black thin slab with wet noise, no veining and little thickness; the sheet shows a chunky 0.08-0.10 m dark veined basalt slab with a visible 0.03 m overhang and a lighter chamfer edge. Thicken to ~0.09 m, add a 3 mm arris bevel and an edge highlight, and raise roughness variation so it separates from the black floor.",
+  "Posts and bands: the dark iron bracket blocks sit proud as plain boxes at irregular spacing. Sheet has thin black strap plates at post joints and a base rail. Replace with 0.12 m wide x 0.25 m tall straps with 4 visible bolt heads each, and add a continuous 0.07 m base rail at z=0.12 m.",
+  "Boards: panel boards are uniform vertical strips with identical tone. Add per-board tone/length jitter, 2 mm V-grooves, and a horizontal mid-rail every bay so the front reads as framed bay panels rather than one flat fence.",
+  "Towel stacks: read as identical white blocks (books). Add folded-edge layering with 3 rolled towels and a slight lean per stack; cut stack height to 0.12-0.18 m and vary footprint.",
+  "Plaque: the vertical 受付 plaque is ~0.05 m wide and unreadable beyond 3 m. Enlarge to 0.12 x 0.4 m or drop it."
+ ],
+ "library_issues": [
+  "Top stone reads near-black with no vein detail (basalt_dry). Floor and counter top merge in dark scenes.",
+  "hinoki reads very orange/saturated against the sheet's browner timber."
+ ],
+ "verdict": "revise",
+ "summary": "Clearly a hinoki board counter with stone top, right 7 m x 1.1 m proportion and good seed variation (stone/wood top, bay rhythm, width). Loses points on the plinth light (spotty, not a continuous reveal), a thin flat top slab and boxy bracket hardware. LOD2/3 read as a long low timber box at distance; fine."
+}

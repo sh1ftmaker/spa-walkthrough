@@ -1,0 +1,27 @@
+{
+  "asset": "stair",
+  "round": 2,
+  "scores": {
+    "likeness": 4,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 4
+  },
+  "fixes": [
+    "Cheek walls (stone_rough, cliff, cantilever): they are single smooth monolithic slabs with one straight raking top edge and a cracked texture, which reads as cast concrete. sheet-vs-stairs #1 side shows stacked rough basalt blocks about 0.4-0.6 m, with an irregular stepped top that follows every 2-3 treads and broken corners. Build the walls from block courses with 0.03-0.06 m per-block offsets and bevelled or chipped edges, and give the top edge 0.15-0.3 m steps, not a single slope. Seed 2's stepped wall is the right direction: make it the stone_rough default.",
+    "Lanterns: they are white paper boxes, about 0.4 m wide at the bottom and rather squat. In the concept they are tall and slender: an amber glazed lantern about 0.3 w x 0.6 h m on a 0.8-1.0 m post or plinth (about 1.4 m tall overall), with a dark frame, a hip roof and a ball finial at the bottom newels and the top landing. Use a slimmer lantern with a dark frame, warm emission and a 0.03 m frame.",
+    "Cliff and cantilever styles (styles.jpg): a full-height rock slab hides the flight, so from the 3/4 view you see a wall, not a stair. In 32-suites-cliff and 19-thunder-curtain the rock sits behind the treads, and the open side shows the treads (cantilever: 0.08-0.10 m thick slabs projecting from the rock, with visible gaps underneath). Put the rock on the uphill or back side only, and always leave the open_side face exposed.",
+    "Handrail: it is a square pale-orange bar on square posts. The sheet's rail detail shows a rounded top rail about 0.06 m with iron or bronze post caps, and a collar band 0.04 m under the cap. Round the top rail with a 6-8 sided profile, add a dark-metal cap and collar to each post, and darken the wood (see library_issues).",
+    "pool_entry: it is the standard stair with thin metal rails, as steep as the straight flight. The concept pool entry is a wide (3-4 m), shallow flight running down into water, with low stone cheeks and lanterns on both sides. Default width 3.2 m, riser 0.15 m, tread 0.35-0.40 m, cheeks no taller than 0.4 m, and the last 3 treads sitting below the waterline (z < 0).",
+    "LOD3 (sheet_34): the side walls are single-sided planes with visible gaps against the treads, the treads float as separate stripes, and the top lanterns hover above the walls. Close the walls into a solid wedge (still at 40 tris or fewer by dropping the separate tread stripes in favour of a 4-6 step sawtooth on the wedge top), and seat the lantern cards on the wall caps."
+  ],
+  "library_issues": [
+    "hinoki: renders pale orange-tan, not the dark stained wood in the concept. This is the same issue as bridge_arched.",
+    "lantern_andon: the emission is near-white, not warm amber (about 2200-2700 K). This is shared with bridge_arched.",
+    "basalt_wet: the treads get a cold blue-white specular glint, while the concept treads reflect warm lantern light. That is mostly the lighting rig, but check that the wet coat has no blue tint."
+  ],
+  "verdict": "revise",
+  "summary": "The straight stone_rough flight reads clearly as the concept's stair, with the right riser and tread rhythm, rail posts on both sides and lanterns at the newels. The 6 styles and the switchback all generate. The gap to the concept is in construction and materials. The cheek walls are smooth concrete-like monoliths, not stacked rough basalt, and the lanterns are squat white boxes. The rail is a pale square bar. The cliff and cantilever styles hide the stair behind a rock slab, and pool_entry does not enter water. LOD3 has a gappy plane shell with floating lantern cards."
+}

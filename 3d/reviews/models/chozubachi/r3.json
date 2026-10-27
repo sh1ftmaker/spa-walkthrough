@@ -1,0 +1,46 @@
+{
+  "asset": "chozubachi",
+  "round": 3,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 4
+  },
+  "fixes": [
+    "Basin body proportion (the biggest miss): measured on the front views, the concept (sheet-mod-arrival #2, 1 m bar = 158 px) has a body about 305 px wide at the rim for a rim height of 155 px. That is a squat tub, about 2.0:1 body width to rim height, and the rim is about 0.87 of the total footprint. The LOD sheet front views measure 130/113 px (1.15:1) for seed 1, 172/125 (1.38:1) for seed 2 and 140/108 (1.3:1) for seed 3, with the body only about 0.7 of the footprint. That is a tall drum, or a bucket at distance. Target a body 1.35-1.45 m across at the rim inside the 1.6 m footprint, with the rim at 0.65-0.8 m. Raise R0 from 0.8 r to about 0.9 r and stop the big fracture planes (0.10-0.15 m deep) from eating the plan radius at rim height. Keep those planes on the lower 2/3 of the wall instead, so the top stays broad and the ledges step outward toward the foot.",
+    "Wall surface: the faces are now large flat, mirror-smooth shards, 0.2-0.4 m across, so the stone reads as broken coal or obsidian sheets. The concept is clinker: a dense crust of convex knobs 0.05-0.12 m across with lit edges, and nothing flat larger than about 0.15 m. Keep the ledge steps, but cap the planar cuts at 0.12 m extent. Add a convex lump term (Voronoi-cell bulge with 2-4 cm relief at a 0.08 m cell size) so the facets bulge out rather than cut in. If the 3000-tri budget blocks this, push the lump scale into the basalt_wet normal map (see library_issues) and keep the geometry for the 0.1-0.3 m blocks.",
+    "Kakehi arm height: the arm joins the post about 0.27 m below its top (40 px under a 113 px rim height on seed 1). In both concept views the arm sits at the top of the culm: front, the top cap is at 100 px and the arm at 115-125 px; side, the top cap is about 0.05-0.1 m above the lashing. Set zj = post_h - 0.08 (+/- 0.02) and keep post_h. That puts the mouth about 0.35-0.45 m above the water, as the concept shows (about 0.35 m). Cut the mouth at 30-40 deg (the current cut is nearly square), and add the second rope lashing about 0.3 m above the ground that the side view shows.",
+    "Rubble skirt: 14-15 boulders now, which is right. But each one is a 12-point convex hull with 3-6 big flat faces, so they read as low-poly shards. Concept boulders are rounded-angular lumps. Give each hull 18-24 points, or one subdivision with a 0.6 smooth blend, and use the same knob relief as the wall. Tuck 2-3 boulders under the overflow fall so the streams land on rock rather than on the flat puddle decal.",
+    "Overflow strands: the main sheet curtain from the notch has landed. The two side strands stand off the wall as straight vertical ribbons (the left one in canonical floats about 5 cm proud, with a dark gap behind it). Keep them within 1-1.5 cm of the wall along wall_path, and bend them out over each ledge with a short 3-5 cm free fall at the step.",
+    "LOD2 and LOD3 body: inherit the squat proportion from fix 1. At 15 m and 39 m the silhouette is a tall flared bucket next to a stick. A body 2:1 wide with the arm at the post top gives a 'low tub + T-post' read, which is the identifier. Also drop the moss quads on seed 3: at LOD0 they read as flat green paper squares lying on the rim. Either drape them over 2-3 rim vertices, or remove them."
+  ],
+  "library_issues": [
+    "basalt_wet: hard-edged square patches of bright white and blue-grey across the body are still on every LOD in sheet.jpg (raised in r2, not fixed). This is a box-projection seam or a non-tiling roughness/albedo map. It also lacks a 2-5 cm knobbly normal layer, so large faces render as mirrors. The concept basalt is near-black with warm amber edge catches on small knobs.",
+    "waterfall: the curtain is still opaque white-grey. Thin sheets need transmission/alpha and a turquoise tint around 0.35/0.6/0.6.",
+    "water_still: it still renders black in the offline beauty, so the brimming level can only be judged from styles.jpg seed 4 (it is correct there). The glow is runtime work."
+  ],
+  "verdict": "revise",
+  "summary": "Good progress on the parts: brimming water about 1 cm under the rim low point (correct, styles.jpg seed 4), a rope-lashed kakehi with nodes and a stub, a ladle, a notch with a sheet curtain, a 14-15 boulder skirt, and seeds that vary plan, rim, overflow side and ladle. But the basin body is a tall drum, about 1.2-1.4:1 width to rim height, against the concept's squat tub at about 2:1. Its walls are big mirror-flat shards rather than knobbly clinker, the arm hangs about 0.27 m below the post top instead of at it, and the basalt_wet tiling patches are still there. At LOD2/3 it reads as a bucket with a stick. It would not yet sit convincingly at the arrival gate at 3-6 m.",
+  "consistency": {
+    "r1": {
+      "kakehi tall free-standing culm, near-horizontal 0.55-0.7 m arm, lashing": "landed (post 1.3-1.4, arm 0.55-0.7, rope at the joint). Arm position at the top of the culm not yet landed (fix 3).",
+      "overflow notch + braided translucent streams": "notch and curtain landed; translucency not landed (library)",
+      "more facets, rubble skirt, wide footprint": "facets and rubble count landed; footprint and body width regressed (fix 1)",
+      "brimming water level": "landed",
+      "seed variation of plan/height/rim/rubble/ladle": "landed",
+      "LOD3 hull with rim lip and arm strip; fix LOD sheet and phone test": "sheet and phone test landed; LOD3 still a frustum but now has a rim notch (partly landed)"
+    },
+    "r2": {
+      "single sheet curtain plus 2 strands": "landed in form; the strands stand off the wall (fix 5); colour is a library issue",
+      "deeper wall relief, ledge steps, chunked rim": "landed, overshot into big flat shards (fix 2)",
+      "rubble 10-16 boulders, 0.2-0.45 m, sunk 30-40%": "landed; the hulls are too crude (fix 4)",
+      "rope lashing, node, capped top, raked mouth": "lashing, node and cap landed; raked mouth not landed (fix 3)",
+      "proxy height 1.4-1.5": "landed (proxy h 1.45 in assets.json)",
+      "LOD2/3 notches and stepped outline": "partly landed: the rim notch is visible; the outline is still a smooth flared frustum",
+      "no reversals": "Fix 3 keeps r1's post height and only moves the arm to the top, as both concept views show. Fix 1 restates r2's 'squat ~1.9:1' target, which has regressed. Measured on sheet-mod-arrival #2 front: body 305 px / rim 155 px."
+    }
+  }
+}

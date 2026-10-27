@@ -1,0 +1,25 @@
+{
+  "asset": "bench",
+  "round": 2,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 2
+  },
+  "fixes": [
+    "Seat top: the canonical shows a grid of short square blocks (cross-grain cuts about every 0.1 m), which reads as a tile floor, not planking. Build the seat from 5-6 long boards running the full length, 0.11-0.14 m wide, with 3-5 mm gaps and a 0.04-0.05 m thickness, matching the slatted benches in sheet-ref-deep (magma gallery).",
+    "Legs: the posts are plain square stubs. Change them to 0.10 x 0.12 m, slightly tapered, with a 6-8 mm chamfer on all long edges, set 0.15 m in from each end. This matches the heavier end supports in the concept.",
+    "Stretchers: the two flat rails are flush with the legs and show no joinery. Add visible tenons (about 25 mm proud) at each leg, and move the lower rail to about 0.10 m above the floor so the base reads as built.",
+    "Edge profile: the top and leg arrises are sharp. Add a 6-10 mm round on the long top edges so the silhouette and edge highlights match the worn timber in the concept.",
+    "Seed variation: the three seeds are almost identical in the 3/4 view (only tri count and small leg shifts differ). Drive length (1.2-6 m, as in dims), leg inset and stretcher count so that seeds differ visibly in the sheet.",
+    "Styles not checked: the five styles (slatted, slab, cushioned, seat_step, niche) do not appear in any sheet. The lead needs a styles sheet at LOD0 and LOD2 before this asset can pass. The slatted style should be the default, since it matches the concept benches."
+  ],
+  "library_issues": [
+    "Hinoki reads pale peach and fairly bright at the top, while the concept benches are darker, oiled or weathered timber. Consider a darker oiled or wet variant for the bath zones (the steam grotto concept is darker still)."
+  ],
+  "verdict": "revise",
+  "summary": "The bench reads as a low timber bench with stretchers, and the LOD2 silhouette is recognisable from 22 m. The top is built from short cross-cut blocks that look like tiles, the legs and stretchers have no real joinery or edge profile, and the seeds barely differ. Dimensions are in range, but the construction is cheap and boxy. The styles were not shown and cannot be scored."
+}

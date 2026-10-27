@@ -1,0 +1,43 @@
+{
+  "asset": "obsidian_monolith",
+  "round": 3,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 4,
+    "lod_recognition": 4,
+    "variation": 5
+  },
+  "fixes": [
+    "Spire top (priority 1): the spire style still ends in a needle (LOD sheet seed 2, styles s2: top width ~5 % of base width). This contradicts both the generator's own rule ('never a crystal point') and map 10. In 10-waterpark-map (Obsidian Mirror pool, 3.5x crop) the pool monoliths are slender stelae with blunt tops: the top width is ~45-55 % of the base width (e.g. base ~70 px / top ~30-35 px), ending in a short raked or rounded break. Target for spire: top/base width >= 0.4, rake 20-30 deg, apex offset <= 15 % of w, aspect h/w 3-4. s5 is close; s2 is the outlier.",
+    "Cluster mass proportion (b1_glacier hero): in 17-glacier-plunge the hero mass is roughly as wide as it is tall (crop measured ~790 x ~770 px visible, aspect ~1:1), built from 4-6 broad leaning sheets each ~1/4-1/3 of the mass width. Cluster seed 1 is ~1:2.1 (narrow and tall) with two slim blades. Target for cluster: h 2.0-2.4 m, w 1.5-1.6 m within the proxy, with 2-3 secondary sheets leaning 10-20 deg outward from the main mass instead of slim parallel blades. A larger glacier instance is a layout or scale question for the lead (see proposed change in the report).",
+    "Surface crinkle and scallops (r2 fix 2, not landed as specified): the broad faces carry a fine crinkle network that reads as crumpled foil or cling film in the canonical and in styles.jpg. The shell scallops with ripple rings do not read as distinct curved arcs. The concept faces are clean mirror sheets broken only by ridge glints and an occasional large shell scar. Target: on the two broadest faces, 1-2 scallops 0.5-0.8 m across with 2 rings and a crisp lip, and no ripple pattern elsewhere. If the crinkle comes from the library's crack/normal layer, see library_issues; if it comes from ripple rings or poke noise in the generator, cut its amplitude by >= 70 %.",
+    "Rubble skirt: the base fragments include rectangular blocks (styles s4 left foot, s5 right foot, and the LOD0 sheet seed 2/3 feet). These read as cheap boxes next to the conchoidal body. Target: 3-5 fragments, each a thin faceted flake (4-6 clip planes, w/d >= 2, 0.2-0.45 m) leaning against the body at 20-40 deg. Optionally put 1-2 rounded basalt_wet boulders in front, as in 17, where the mass rises out of wet basalt.",
+    "LOD sheet hygiene (r2 fix 5, partial): the sheet now matches the canonical seed-to-style mapping and LOD3 is within budget (31/21/37 tris). The LOD3 shaded phone pane is still letterboxed with grey-blue bands, and the LOD2 shaded pane shows a white highlight at the tip that reads as a snow cap at 27 m. Fix the LOD3 framing. For LOD2 at phone size, consider breaking the top raked face into two planes so a single flat face does not mirror the key light as a white blob."
+  ],
+  "library_issues": [
+    "obsidian: the fleck density is still high (known): the white glitter dots dominate the LOD sheet at LOD0-2.",
+    "obsidian: under the canonical lighting the body reads brown/bronze and shows a fine crinkled crack network. Check whether the crack/normal layer's scale (~0.05-0.1 m) is the source of the foil look; mat-obsidian.png shows larger, sparser fracture veins.",
+    "Under the stock LOD-sheet key light, the broad faces mirror the light card as flat cyan/white planes (expected for a mirror material, but it makes LOD-sheet judging of relief unreliable)."
+  ],
+  "consistency": {
+    "r1": {
+      "visible conchoidal dishing / scallops": "partially; curvature present, scallops do not read (fix 3)",
+      "raked tip 25-40 deg, offset apex, secondary blades": "landed",
+      "seed variation, cluster vs spire": "landed (cluster/spire/slab; styles.jpg shows real variety)",
+      "sunk base with rubble skirt": "landed for presence; fragments are boxy (fix 4)",
+      "razor ridges + LOD0 micro-bevel": "landed (crisp ridge glints in canonical)"
+    },
+    "r2": {
+      "drop crystal-point pyramids, broad sheets, stepped break": "landed for cluster and slab; spire s2 still a needle (fix 1)",
+      "visible scallops with ripple rings": "not landed visibly",
+      "fewer flecks": "not landed (library)",
+      "sink base, 3-6 chunks, flare; slab w/d 2-2.5": "landed (slab s3/s6 now broad blades)",
+      "regenerate LOD sheet and phone test": "partial; sheet current and in budget, LOD3 phone pane still letterboxed"
+    },
+    "reversals": "None on presence or counts. r1 described the map 10 spires as 'sharply pointed'. This round narrows that to blunt raked tops (top/base >= 0.4), measured on the map 10 crop (pillar tops ~30-35 px on ~60-70 px bases), and it agrees with the generator's own 'never a crystal point' rule and r2's crystal-point fix."
+  },
+  "verdict": "revise",
+  "summary": "Real progress. It is now glossy black volcanic glass with broad raked sheets, a stepped break, lean and a rubble skirt, and three genuinely different styles. It is not yet the concept's object. The spire style still ends in a crystal needle where the Mirror pool shows blunt stelae. The glacier cluster is twice as slender as the broad hero mass in 17. The faces read as crumpled foil rather than clean mirror sheets with a few shell scars. The base chunks are boxes. The fleck density remains a library issue."
+}

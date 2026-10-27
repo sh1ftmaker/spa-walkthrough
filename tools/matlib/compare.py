@@ -30,11 +30,11 @@ def main():
     n = 0
     for m in man['materials']:
         mid = m['id']
-        r0s = os.path.join(REN, 'r0', 'scale', mid + '.jpg')
-        parts = (lab(r0s, 'round 0 (before)') if os.path.exists(r0s) else
-                 lab(os.path.join(REN, 'r0', mid + '.jpg'), 'round 0 preview (before)'))
-        parts += lab(os.path.join(REN, 'scale', mid + '.jpg'), 'round 2: neutral surround')
-        parts += lab(os.path.join(REN, 'scale', mid + '__context.jpg'), 'round 2: in context')
+        r0s = os.path.join(REN, 'r2', 'scale', mid + '.jpg')
+        parts = (lab(r0s, 'round 2 (before)') if os.path.exists(r0s) else
+                 lab(os.path.join(REN, 'r2', mid + '.jpg'), 'round 2 preview (before)'))
+        parts += lab(os.path.join(REN, 'scale', mid + '.jpg'), 'now: neutral surround')
+        parts += lab(os.path.join(REN, 'scale', mid + '__context.jpg'), 'now: in context')
         subprocess.run(['magick', '-background', BG, *parts, '+append', '(', '-size', '1920x34', f'xc:{BG}',
                         '-fill', FG, '-font', 'Liberation-Sans-Bold', '-pointsize', '18', '-gravity', 'west',
                         '-annotate', '+10+0', f"{m['name']} [{mid}]", ')', '+swap', '-append', '+repage',

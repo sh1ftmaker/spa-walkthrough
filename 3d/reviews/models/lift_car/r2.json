@@ -1,0 +1,58 @@
+{
+  "asset": "lift_car",
+  "round": 2,
+  "reviewer": "mrev2_h (independent)",
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 2,
+    "construction_detail": 3,
+    "material_use": 2,
+    "lod_recognition": 2,
+    "variation": 2
+  },
+  "overall_10": 4.7,
+  "fixes": [
+    {
+      "rank": 1,
+      "part": "overall proportion (radius vs body height)",
+      "problem": "The cabin is squat: wider than tall. Against the sheet-vs-lift-cable #2 scale bar, the concept body (plinth to cornice) is about 1.15x its diameter, plus a dome and crosshead of about 0.5 m. In ref-spiral-stair the car reads even taller, about 1.4:1. The current r 1.25-1.42 with h 2.6-3.0 total gives body h/D of about 0.8-0.85, a drum or birdcage rather than a lift car.",
+      "target": "Make body height plinth-to-cornice 2.7-2.9 m with r 1.15-1.3 (D 2.3-2.6), dome plus hub +0.35-0.5 m, total about 3.2-3.4 m. Keep h/D at 1.1 or more for every seed."
+    },
+    {
+      "rank": 2,
+      "part": "emissive interior / lantern read",
+      "problem": "In the concept and in ref-spiral-stair the car is a glowing lantern: a lit sunburst ceiling, warm-lit floor rings and amber light filling the glass. Ours is dark inside at every LOD. At LOD2 and LOD3 on the phone it is a black tin can, and it does not match the lift_drum style, whose identity is warm backlit panels in blackened bronze.",
+      "target": "Make the sunburst ceiling disc emissive (washi_backlit at about 8-12 W/m2, warm 2700 K) at all LODs. Add a 0.03 m emissive floor ring. At LOD2 and LOD3 give the inner glass shell a faint warm emissive (about 0.5) so the silhouette carries a lit core."
+    },
+    {
+      "rank": 3,
+      "part": "bronze surfaces (dome, plinth, cornice)",
+      "problem": "Every bronze part has a heavy crumpled or hammered-foil surface: lumpy dome, plinth like crushed paper, dome ribs that wobble. Both concept and lift_drum show smooth blackened bronze with polished bands and rivet rows.",
+      "target": "Drop the noise displacement/bump on the bronze to 10% or less of the current amount. Make the dome a smooth surface of revolution with 6-8 crisp 0.03 m polished ribs. Add rivet rows at 0.15 m pitch on the plinth and cornice bands (normal-map rivets at LOD0)."
+    },
+    {
+      "rank": 4,
+      "part": "door glass and LOD glass material",
+      "problem": "In the LOD0/1 front view the two door leaves render as flat opaque panes, one pale blue and one white, that look like missing textures. At LOD3 the glass shell is mint-green and opaque (a jar). Neither matches lava_glass/glass_clear on the side bays.",
+      "target": "Use one glass material on all bays and door leaves at every LOD. Check the door-leaf normals and backfaces (the white leaf looks inverted). At LOD3 use a dark, slightly tinted transparent shell (alpha about 0.35, bronze tint) rather than green."
+    },
+    {
+      "rank": 5,
+      "part": "crown / hoist crosshead",
+      "problem": "The roof ornament reads as an indistinct lumpy blob. The concept has a clear crosshead: a turned hub, two sheaves and 3-4 vertical rods rising 0.5-0.7 m.",
+      "target": "Model a 0.5 m turned bronze hub, a 0.9 m crossbeam carrying 2 sheaves (r 0.18) and 4 guide rods 0.6 m tall (0.03 m dia). Keep the rods through LOD2 and the hub as a box at LOD3."
+    },
+    {
+      "rank": 6,
+      "part": "seed variation",
+      "problem": "All three seeds share an identical silhouette. Dome type (low, tall, onion) and ring count barely show, and onion and tall look the same.",
+      "target": "Seed body height within 2.6-3.0 m and bays within 8-14 (wider pane rhythm). Make the onion dome a real ogee rising 0.6 m with a 0.15 m neck, and vary lower-band height (kumiko dado 0.6-1.0 m)."
+    }
+  ],
+  "library_issues": [
+    "bronze: the hammered/noisy normal reads as crumpled foil at car scale. Check the library bronze bump strength, or provide a smooth blackened_bronze variant matching lift_drum.",
+    "glass_clear / lava_glass: renders as opaque coloured panes on some faces (blue/white door leaves, green LOD3 shell). Possibly a material mismatch or backface issue, worth checking in the library preview."
+  ],
+  "verdict": "revise",
+  "summary": "It does read as a round glass-and-bronze cabin with rings, a lower fret band, a handrail and jamb lanterns, and those parts are there. But it is squat (h/D about 0.85 against the concept's 1.15 or more) and dark inside where the concept glows like a lantern. The bronze looks like crumpled foil instead of the smooth blackened bronze of lift_drum. The LOD2/3 phone read is an unlit dark can, and the seeds are indistinguishable. Revise at 4.7/10; fixes 1-3 are the priority."
+}

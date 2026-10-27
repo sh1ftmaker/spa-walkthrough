@@ -1,0 +1,27 @@
+{
+  "asset": "lift_drum",
+  "round": 2,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 4
+  },
+  "fixes": [
+    "Door-storey register: about 80% of the lower drum reads as opaque dark bronze; only the doors glow. The sheet and ref-b1-lobby show tall lit glazed bays either side of the doors, and the drum reads as a lantern. Widen each lower glass slot from its current narrow strip to ~45-55% of the bay width (about 0.35-0.45 m on a 2.2 m drum), and keep the vertical kumiko bars over them.",
+    "Crown: the 4.5 m and 9 m renders end in a flat ring with one small finial. The sheet's most recognisable silhouette cue is 6-8 vertical bronze guide columns rising 0.8-1.2 m above the crown ring (Ø 0.06-0.08 m, capped). Add them at every LOD0-2 and as 4 thin boxes at LOD3.",
+    "Ribs and pilasters: the ribs are flat chamfered strips standing ~2-3 cm proud and vanish in the render. The sheet uses round bronze pilasters (Ø ~0.10-0.12 m, standing 6-8 cm proud) with base and capital rings at the plinth and cornice. Turn the ribs into lathed half-columns.",
+    "Bracket lanterns beside the doors are tiny white cubes (~0.2 m). The sheet shows tall amber bronze-capped lanterns about 0.5-0.6 m high on scroll brackets. Scale them to 0.18 W x 0.5 H m, add a dark cap and a bottom finial, and use a warm amber emission instead of white.",
+    "Upper kumiko feature motif: the pine is flat black ellipse pads that read as blobs or graffiti at 3-5 m. The sheet shows a fine ink-style pine with a trunk and layered needle pads. Use thinner silhouettes (pad thickness <=0.06 m), add a trunk and 2-3 branch strokes, and cut motif opacity to ~60% so the lattice shows through.",
+    "Level plaque: the brief and docstring say vertical hinoki plaque, but the render shows glowing letters straight on dark bronze with no board edge. ref-b1-lobby shows a tall wood board 0.45-0.55 m wide over most of the storey height. Model a visible hinoki board with a 0.02 m bronze frame, and drop the letter emission so the strokes don't bloom (they read pinkish-white now)."
+  ],
+  "library_issues": [
+    "bronze: reads as large blotchy marbled or camouflage patina (light-dark mottling at ~0.3-0.5 m scale) instead of the sheet's dark gunmetal bronze with brass edge highlights. Lower the mottling contrast and scale it down, or check the generator's _object_uvs texel density.",
+    "washi_backlit: emission is near-white and blown out on the doors and kumiko band. The concept is warm amber (~2200-2700 K). This is being fixed now.",
+    "Tooling: the LOD sheet flags LOD0 s1 18654 and s3 20620 as over a 16000 budget. asset_list.csv now says 21000, so all seeds are within budget and the sheet script reads a stale budget."
+  ],
+  "verdict": "revise",
+  "summary": "Reads as the round lit lift drum with lattice doors, a B1 火山湯 plaque, a kumiko band and a fret-railed bridge and well, and LOD2 and LOD3 stay nameable (a round pavilion with a ring rail). It still looks like a dark bronze can with a lit door rather than the concept's glowing lantern tower. The lower register is too opaque. The crown guide columns are missing. Ribs, lanterns and the motif are under-built. Bronze and washi colour are mostly library problems. Triangle counts are within the current 21000 budget."
+}

@@ -1,0 +1,27 @@
+{
+ "asset": "portal_arch",
+ "round": 2,
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 3,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 4,
+  "variation": 4
+ },
+ "fixes": [
+  "Basalt mass construction: the concept (sheet-mod-pavilions #06, 16-steam-grotto) is a pile of many stacked boulders, about 0.4-1.2 m each, with deep dark joints and moss tufts. Here the arch reads as three big pillow blocks: two piers and one crown slab. Break each jamb into 4-6 courses of 0.5-0.9 m rocks with 0.06-0.1 m deep recessed gaps, and the crown into 4-6 rocks. Add 2-4 small moss/fern clumps on the crown ledges and jamb steps (LOD0 only).",
+  "Outer silhouette: the concept outline is lumpy and flares out at the base, with jambs bulging 0.2-0.4 m past the crown line at the foot and a crown top that is ragged by +/-0.3 m. The front ortho (seed 1) is a near-perfect rectangle with straight vertical outer edges and a flat top. Give the outer jamb faces a 0.25-0.35 m base flare plus +/-0.15 m random bulge per course, and let crown crag heights vary 0.0-0.4 m (now 0.0-0.25).",
+  "LOD2 popping (sheet.jpg, sheet_34 LOD2 seed 1, LOD2 silhouette): two separate rock caps sit on top of the crown that are not in LOD0/LOD1, and the timber lintel shrinks to a short stub. Use the same crown crag set at LOD2 as at LOD1 (ncr = 2 at LOD2 places new rocks), and keep the full-width lintel and head beam at LOD2.",
+  "Timber tone: the concept frame is dark, aged brown timber. The hinoki here renders light salmon-orange and new-looking, the brightest thing in the shot after the noren. On the basalt and timber_gate styles, tint hinoki to about 0.55-0.65 of the current value with a cooler brown, and raise wear so the end grain and arrises darken.",
+  "Noren and threshold: in the concept the centre noren panel is longer (about +25%) and carries the black steam-volcano crest, and the arch stands on a raised stone platform about 0.25-0.3 m high that runs 0.5 m past the jambs. Here the panels are equal and blank and the threshold is a flush slab. Make the centre panel 1.25x longer with a crest decal slot (or pass the crest to the noren row), and raise the threshold platform to 0.25 m with a 0.5 m apron.",
+  "bronze_frame style: the casings are square boxes with flat bands. Add 0.04 m chamfers to the jamb casings, a stepped plinth 0.35 m tall at the post feet, and stud rows that read as raised domes (r >= 0.03 m). At LOD3 it currently drops to a plain brown timber frame. Keep the bronze slot and the transom band at LOD3 so the style survives."
+ ],
+ "library_issues": [
+  "basalt_dry/basalt_wet at LOD1-LOD2 (sheet.jpg front views) show bright white/blue speckle that reads like granite or aliasing noise, not dark wet basalt. The texture's specular glints need to be damped at mip distance.",
+  "bronze (bronze_frame style) reads as bright orange copper with blotchy streaks, the same problem as on lava_window.",
+  "hinoki base colour is too light and orange for the concept's aged dark timber. This may be partly the generator tint."
+ ],
+ "verdict": "revise",
+ "summary": "The proportions are right: opening width about 0.62 of overall (concept 0.6), lintel height about 0.71 (concept 0.76), noren about 31% of height (concept 33%). The model reads as the concept's basalt entrance with noren, and the three styles give real variation. What holds it back: the basalt is three smooth pillow blocks in a rectangular outline instead of a ragged stacked-boulder mass, the timber is too light and new-looking, the threshold platform and crest noren are missing, and LOD2 pops new crown rocks."
+}

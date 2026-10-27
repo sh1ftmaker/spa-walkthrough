@@ -1,0 +1,208 @@
+{
+ "asset": "lava_crack",
+ "budget": [
+  200,
+  80,
+  30,
+  10
+ ],
+ "proxy": {
+  "w": 0.4,
+  "d": 8.0,
+  "h": 0.1
+ },
+ "results": [
+  {
+   "lod": 0,
+   "seed": 1,
+   "tris": 1219,
+   "problems": [
+    "1219 tris > budget 200"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.102,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 0,
+   "seed": 2,
+   "tris": 1367,
+   "problems": [
+    "1367 tris > budget 200"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.101,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 0,
+   "seed": 3,
+   "tris": 947,
+   "problems": [
+    "947 tris > budget 200"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.105,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 1,
+   "seed": 1,
+   "tris": 181,
+   "problems": [
+    "181 tris > budget 80"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.057,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 1,
+   "seed": 2,
+   "tris": 199,
+   "problems": [
+    "199 tris > budget 80"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.056,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 1,
+   "seed": 3,
+   "tris": 245,
+   "problems": [
+    "245 tris > budget 80"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.06,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 2,
+   "seed": 1,
+   "tris": 181,
+   "problems": [
+    "181 tris > budget 30"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.057,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 2,
+   "seed": 2,
+   "tris": 199,
+   "problems": [
+    "199 tris > budget 30"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.056,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 2,
+   "seed": 3,
+   "tris": 228,
+   "problems": [
+    "228 tris > budget 30"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.06,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 3,
+   "seed": 1,
+   "tris": 44,
+   "problems": [
+    "44 tris > budget 10"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.035,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 3,
+   "seed": 2,
+   "tris": 62,
+   "problems": [
+    "62 tris > budget 10"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.035,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  },
+  {
+   "lod": 3,
+   "seed": 3,
+   "tris": 62,
+   "problems": [
+    "62 tris > budget 10"
+   ],
+   "bbox": {
+    "w": 0.4,
+    "d": 8.0,
+    "h": 0.035,
+    "zmin": 0.0,
+    "cx": 0.0,
+    "cy": 0.0
+   }
+  }
+ ]
+}

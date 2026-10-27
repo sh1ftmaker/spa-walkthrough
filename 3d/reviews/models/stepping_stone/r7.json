@@ -1,0 +1,18 @@
+{
+ "asset":"stepping_stone","round":7,
+ "scores":{"likeness":3,"silhouette_proportion":3,"construction_detail":3,"material_use":3,"lod_recognition":3,"variation":4},
+ "overall_10":6.33,
+ "fixes":[
+  "Thickness/proportion (build thickness 0.15-0.21 m, R 0.25-0.36): canonical reads as a tall loaf/puck with a near-vertical belly; concept stones (lookbook 05, ref-b1-lobby) are broad discs whose visible part is about 0.08-0.12 m above the water, roughly 1:5 to 1:6 thickness to width. Target thickness 0.12-0.18 m and a stronger batter (side leaning in 8-12 deg above the belly) so it reads as a slab, not a block.",
+  "Top surface (top wetness 0.95, noise 2-5 mm, shallow dish): top is a dull dark hammered patch with one bright blob; concept tops are near-black with many small crisp specular glints (wet pitted basalt crust) and a faint raised lip at the rim. Add a fine pit/crust normal or 1-2 mm pitting on the shoulder, plus a 5-10 mm raised rim lip, so glints break up as in ref-b1-lobby.",
+  "Outline (plan harmonics 2-7, 1-2 bites): LOD0 plan is a lumpy kidney with a deep bite (seed 1). Concept stones are mostly round to slightly oval discs with only shallow irregularity. Reduce bite depth from 0.06-0.11 to 0.03-0.06 and harmonic 2-3 amplitude by about a third, keeping the aspect range 0.72-1.35; keep one in four seeds strongly lobed.",
+  "LOD1-LOD3 (24x5, 10x3, 5x2): LOD2 and LOD3 are faceted prisms with vertical walls and a flat tan-grey top (sheet_34) that look like paving blocks next to the rounded LOD0. Raise LOD2 to 12 segments with a one-ring chamfer and darken the LOD2/LOD3 top (tint toward the LOD0 wet-basalt value) so the switch does not pop pale.",
+  "Edge crust (side noise 4-9 mm, 2-4 chips): sides read as smooth lumpy clay with one crack; concept edges are crusty with small chips. Raise side displacement frequency (add a second octave at about 3 cm wavelength, 3-5 mm) and add 4-6 small chips, not 2-4."
+ ],
+ "library_issues":[
+  "basalt_wet: world-space seam produces a thin vertical dark line on the front of the stone (known, library fault).",
+  "basalt_wet top reads as a flat matt brown-black without the dense specular sparkle of the concept; a small bump/glint layer in the library would help every wet-rock asset."
+ ],
+ "verdict":"pass",
+ "summary":"Rewrite fixed the earlier tan-ledge/pale-band failures: one near-black wet basalt, flat top, rounded lumpy outline, three clearly different seeds. Still a thick chunky loaf compared with the thin broad concept discs, with a plain top and soft edge crust. Passes narrowly at 6.33/10; thickness and top glint detail are the gap to the concept."
+}

@@ -1,0 +1,20 @@
+{
+  "asset": "torii_basalt",
+  "round": 1,
+  "scores": {"likeness": 3, "silhouette_proportion": 3, "construction_detail": 3, "material_use": 2, "lod_recognition": 2, "variation": 3},
+  "fixes": [
+    "Plaque (gaku): the face reads pale tan/beige with low-contrast orange glyphs; sheet-mod-arrival and 04-arrival-gate both show a jet-black panel with a bright gold frame and gold 火山湯. Target: black obsidian face (albedo < 0.03), bronze frame 0.08-0.10 m wide, glyph relief >= 0.03 m (LOD0) so the characters catch light; check the obsidian slot is actually on the panel face and not on the frame.",
+    "Post surface and outline: the carving reads as soft smeared plaster blobs, and the outlines wobble (the right post visibly kinks and bulges at mid-height). The concept shows straight, crisp tapered posts clad in distinct polygonal columnar-joint plates. Target: limit outline displacement to <= 0.03 m; make the taper ~1.6 m at the base to ~1.25 m under the nuki, nearly straight; Voronoi plates ~0.3-0.4 m with sharp 0.02-0.03 m recessed seams instead of fBm smear.",
+    "Kasagi/shimaki curve: the camber runs along the whole span, so the beam reads as a sagging soft slab. In the sheet the centre ~60 % is straight and level, and the upsweep is concentrated in the outer ~1.5 m, rising ~0.5 m (about 12-15 deg at the tips), with the tip end cut on a crisp vertical rake. Hold the centre flat (raise p, or a piecewise curve that is flat for |x| < 2.7 m) and square up the slab's top and bottom arrises (chamfer <= 0.05 m).",
+    "Plinths: they read as low, flat slabs only slightly wider than the posts. The sheet shows stacked faceted basalt footings about 2.2 m wide x 1.6 m deep x 0.9-1.0 m tall, with a lamp niche in each front face (the glowing sockets at each post base are a key read in both concepts). Raise the plinths to ~0.9 m, widen them to ~1.45x the post diameter, and add two 0.25 x 0.2 x 0.15 m niches per plinth face with an emissive insert or a light-anchor empty.",
+    "Beam soffits: the concept's signature amber glow runs along the underside of the kasagi, shimaki and nuki. Add a recessed 0.04 m groove (LOD0/1) on each soffit, carrying a separate emissive material slot or a named light anchor, so lighting can drive it. Propose this to the lead rather than baking it in.",
+    "LOD2/LOD3: LOD3 at 176 tris drops the shimaki and gakuzuka, which is fine, but keep the plaque as a thin dark quad with a contrasting rim (it is an identifying feature 'at every LOD'). Keep the kasagi tip upsweep at >= 2 segments per side in LOD3 so the curve survives in silhouette."
+  ],
+  "library_issues": [
+    "basalt_dry reads warm tan/grey-brown and matte. The concept basalt is near-black with glossy, wet-looking highlights on the plate faces. Albedo looks ~2x too light and roughness too high.",
+    "obsidian on the plaque reads light/milky. The monolith shows the same issue: it renders brown and cloudy, not jet black.",
+    "LOD sheet tooling (not the generator): the sheet background is filled with a large-scale noisy rock texture that swamps every cell, so the LODs and seeds are nearly unreadable. The phone 'LOD2 shaded @225 m' and 'LOD3 shaded @540 m' panes show only noise, not the gate. Use a flat neutral backdrop. A separate phone-lod2-lod3.jpg was not produced."
+  ],
+  "verdict": "revise",
+  "summary": "The topology is right: two posts, an upswept two-tier kasagi, a protruding nuki and a central plaque, and the nuki height is about right at ~60 %. But it does not yet look like the concept's gate. The plaque reads beige instead of black and gold. The posts are wobbly and smeared instead of crisply tapered and plate-clad. The kasagi sags along its whole span instead of being flat with upswept tips. The plinths are too low, with no lamp niches. Low-LOD recognition cannot be confirmed because the shaded phone panes are unreadable. Only the silhouette pane shows a recognisable torii at LOD2."
+}

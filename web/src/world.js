@@ -2,15 +2,20 @@
 import * as THREE from 'three';
 import { KZ, MaterialLibrary } from './materials.js';
 import { createWaterMeshes } from './water.js';
+import { spriteMaterial } from './sprites.js';
 import { l2t, boundsToXZ } from './coords.js';
 import { FOG } from './config.js';
 
+const SINGLE_SIDED = new Set(['floor', 'wall', 'ceiling', 'rock', 'basin', 'stair']);
+
 export class World {
-  constructor(renderer, scene, assets, manifest, env) {
-    this.renderer = renderer; this.scene = scene; this.assets = assets; this.m = manifest; this.env = env;
+  constructor(renderer, scene, assets, manifest, env, tier = 'low') {
+    this.renderer = renderer; this.scene = scene; this.assets = assets; this.m = manifest; this.env = env; this.tier = tier;
+    this.mixers = []; this.liveLights = []; this.fxMist = []; this.sprites = [];
     this.zones = new Map(); // id -> {def, state, group, walkGeo, probes}
     for (const z of manifest.zones) this.zones.set(z.id, { def: z, state: 'idle', group: null, promise: null });
-    this.waterDefs = new Map((manifest.water ?? []).map((w) => [w.id, w]));
+    // water ids resolve per zone first (a stand-in remnant and a Blender place may share a layout water id)
+    this.waterDefs = new Map((manifest.water ?? []).flatMap((w) => [[`${w.zone}|${w.id}`, w], [w.id, w]]).reverse());
     this.waterObjs = []; // groups
     this.probes = [];
     this.onZoneLoaded = () => {};
@@ -18,7 +23,7 @@ export class World {
   }
   async init() {
     const tex = await this.assets.libraryTextures(this.m);
-    this.lib = new MaterialLibrary(this.m, tex, this.env);
+    this.lib = new MaterialLibrary(this.m, tex, this.env, this.tier);
     this.waterNormal = tex[this.m.materials.water?.normalTexture] ?? null;
     if (this.waterNormal) { this.waterNormal.wrapS = this.waterNormal.wrapT = THREE.RepeatWrapping; this.waterNormal.colorSpace = THREE.NoColorSpace; }
   }
@@ -48,12 +53,19 @@ export class World {
     for (const gl of parts) {
       gl.scene.updateMatrixWorld(true);
       const meshes = [];
-      gl.scene.traverse((o) => { if (o.isMesh) meshes.push(o); });
+      gl.scene.traverse((o) => { if (o.isMesh || o.isPoints || o.isLine) meshes.push(o); });
       for (const mesh of meshes) {
         const kz = mesh.userData.kz ?? mesh.parent?.userData?.kz ?? {};
         mesh.userData.kz = kz;
+        if (kz.role === 'glowworm' || kz.role === 'glowworm_threads') {
+          mesh.material = spriteMaterial(kz.color, kz.role === 'glowworm_threads');
+          mesh.frustumCulled = false; mesh.renderOrder = 12;
+          mesh.matrixAutoUpdate = false;
+          this.sprites.push(mesh);
+          continue;
+        }
         if (kz.role === 'water' || kz.material === 'water') {
-          const info = this.waterDefs.get(kz.water);
+          const info = this.waterDefs.get(`${z.def.id}|${kz.water}`) ?? this.waterDefs.get(kz.water);
           if (!info) { console.warn(`[kz] water mesh ${mesh.name} has no manifest water entry "${kz.water}"`); continue; }
           const geo = worldGeometry(mesh, true);
           const w = createWaterMeshes(geo, info, this.waterNormal, this.env);
@@ -66,12 +78,22 @@ export class World {
         const lm = kz.lightmap ? lmById.get(kz.lightmap) : null;
         if (kz.lightmap && !lm) console.warn(`[kz] ${mesh.name}: lightmap ${kz.lightmap} not in zone ${z.def.id}`);
         try {
-          mesh.material = this.lib.get(kz.material ?? mesh.material.name, { lightMap: lm?.tex ?? null, lightMapInfo: lm?.info ?? null, side: mesh.material.side });
+          const mname = kz.material && this.m.materials[kz.material] ? kz.material : mesh.material.name;
+          const isKz = this.m.materials[mname]?.type === 'kz';
+          const side = isKz ? (SINGLE_SIDED.has(kz.role) ? THREE.FrontSide : THREE.DoubleSide) : mesh.material.side;
+          mesh.material = this.lib.get(mname, { lightMap: lm?.tex ?? null, lightMapInfo: lm?.info ?? null, side, flow: !!mesh.geometry.attributes._kz_flow });
         } catch (e) {
           console.error(`[kz] ${mesh.name}: ${e.message}`);
         }
-        mesh.matrixAutoUpdate = false;
+        if (!mesh.isSkinnedMesh) mesh.matrixAutoUpdate = false;
         if (kz.role === 'ceiling') this.ceilings.push(mesh);
+      }
+      if (gl.animations?.length) {
+        const mixer = new THREE.AnimationMixer(gl.scene);
+        const clip = gl.animations.find((c) => /idle|loop|float|soak/i.test(c.name)) ?? gl.animations[0];
+        mixer.clipAction(clip).play();
+        mixer.setTime(Math.random() * clip.duration);
+        this.mixers.push({ mixer, zone: z.def.id, clips: gl.animations.map((c) => c.name) });
       }
       g.add(gl.scene);
     }
@@ -84,11 +106,18 @@ export class World {
     g.visible = false;
     g.traverse((o) => { o.frustumCulled = true; });
     this.scene.add(g);
+    // live lights (kz_runtime) and mist emitters, in three space
+    for (const l of z.def.lights ?? []) this.liveLights.push({ ...l, zone: z.def.id, p: l2t(l.pos), c: new THREE.Color().setRGB(...l.color, THREE.LinearSRGBColorSpace) });
+    for (const f of z.def.fx ?? []) {
+      if (!/mist|steam|fog/i.test(f.kind)) continue;
+      const r = Number(f.params?.radius ?? (f.kind === 'mist' ? 6 : 1.5)), q = l2t(f.pos);
+      this.fxMist.push({ zone: z.def.id, x0: q.x - r, z0: q.z - r, x1: q.x + r, z1: q.z + r, y: q.y, mist: Number(f.params?.density ?? (f.kind === 'mist' ? 1 : 0.5)) });
+    }
     // probes (layout -> three)
     for (const p of z.def.probes ?? []) {
       const a = l2t(p.box_min), b = l2t(p.box_max);
       this.probes.push({
-        id: p.id, space: p.space, zone: z.def.id, intensity: p.intensity ?? 1,
+        id: p.id, space: p.space, zone: z.def.id, intensity: p.intensity ?? 1, mean: p.mean ?? null,
         center: l2t(p.center), min: new THREE.Vector3(Math.min(a.x, b.x), Math.min(a.y, b.y), Math.min(a.z, b.z)), max: new THREE.Vector3(Math.max(a.x, b.x), Math.max(a.y, b.y), Math.max(a.z, b.z)),
         tex: this.env, // stub until the real cubemap (p.cubemap) has loaded
       });
@@ -96,13 +125,37 @@ export class World {
         const probe = this.probes[this.probes.length - 1];
         this.assets.texture(p.cubemap).then((cube) => {
           this.pmrem ??= new THREE.PMREMGenerator(this.renderer);
-          probe.tex = this.pmrem.fromCubemap(cube).texture; // roughness-prefiltered (GGX) at load time
+          // roughness-prefiltered (GGX) at load time; equirect probes (Blender places) are 1024 x 512 -> 256 px cube faces
+          probe.tex = (p.projection === 'equirect' ? this.pmrem.fromEquirectangular(cube) : this.pmrem.fromCubemap(cube)).texture;
           cube.dispose();
         }).catch((e) => console.error(`[kz] probe ${p.id}: ${e.message}`));
       }
     }
     // compile now so the first visible frame does not hitch
     this.renderer.compile(g, new THREE.PerspectiveCamera());
+  }
+
+  update(dt) {
+    for (const m of this.mixers) if (this.zones.get(m.zone)?.group?.visible) m.mixer.update(dt);
+  }
+  // nearest runtime lights of the visible zones -> the fixed light pool (constant light count: no recompiles)
+  assignLights(pool, camPos, camDir) {
+    if (camDir) (this._fwd ??= new THREE.Vector3()).copy(camDir);
+    if (!pool.length) return;
+    const vis = new Set(this.visibleIds ?? []);
+    // rank by what the camera can notice: intensity over distance (not squared: lamps that rake a far wall matter for
+    // its wet-rock highlights), lights in front of the camera first, runtime lights first
+    const fwd = this._fwd ?? (this._fwd = new THREE.Vector3());
+    const c = this.liveLights.filter((l) => vis.has(l.zone)).map((l) => {
+      const dx = l.p.x - camPos.x, dy = l.p.y - camPos.y, dz = l.p.z - camPos.z, d = Math.hypot(dx, dy, dz) + 1e-3;
+      const front = (dx * fwd.x + dy * fwd.y + dz * fwd.z) / d > -0.2 ? 1 : 0.25;
+      return { l, d: -(l.intensity / (1 + d)) * front * (l.baked ? 1 : 4) };
+    }).sort((a, b) => a.d - b.d);
+    pool.forEach((pl, i) => {
+      const e = c[i]?.l;
+      if (!e) { pl.intensity = 0; return; }
+      pl.position.copy(e.p); pl.color.copy(e.c); pl.intensity = e.intensity; pl.distance = e.distance ?? 0;
+    });
   }
 
   walkParts() {
@@ -135,6 +188,12 @@ export class World {
       const d = Math.hypot(dx, dz, Math.max(0, Math.abs(camPos.y - y) - 3));
       if (d < 120) ws.push({ d, x0, z0, x1, z1, y, mist: info.mist ?? 1 });
     }
+    for (const f of this.fxMist) {
+      if (!this.zones.get(f.zone)?.group?.visible) continue;
+      const dx = Math.max(f.x0 - camPos.x, 0, camPos.x - f.x1), dz = Math.max(f.z0 - camPos.z, 0, camPos.z - f.z1);
+      const d = Math.hypot(dx, dz, Math.max(0, Math.abs(camPos.y - f.y) - 3));
+      if (d < 120) ws.push({ d, ...f, mist: -Math.abs(f.mist) }); // negative: patch (see FOG_PARS)
+    }
     ws.sort((a, b) => a.d - b.d);
     const n = Math.min(ws.length, FOG.maxWaters);
     for (let i = 0; i < n; i++) {
@@ -161,6 +220,15 @@ export class World {
       KZ.kzEnvB.value = Bp.tex;
       KZ.kzProbeBlend.value = B ? (ua + ub > 0 ? ua / (ua + ub) : 0) : 0;
       KZ.kzProbeIntensity.value = A.intensity;
+      // haze and mist are lit by the room: baked probes carry their mean radiance; stand-in probes keep the defaults
+      const mean = A.mean ? A.mean.map((c, i) => (B?.mean ? c + (B.mean[i] - c) * KZ.kzProbeBlend.value : c)) : null;
+      const k = Math.min(1, 0.05 * (this.dtFog ?? 0.016) * 60);
+      for (const [u, def, gain] of [[KZ.kzFogColor, FOG.color, FOG.hazeFromProbe], [KZ.kzMistColor, FOG.mistColor, FOG.mistFromProbe]]) {
+        // mist: the probe's luminance in a cool neutral (steam reads grey-blue against the black water, not brown)
+        const lum = mean ? 0.2126 * mean[0] + 0.7152 * mean[1] + 0.0722 * mean[2] : 0;
+        const tr = !mean ? def : u === KZ.kzMistColor ? FOG.mistTint.map((c) => c * lum * gain) : mean.map((c) => c * gain);
+        u.value.r += (tr[0] - u.value.r) * k; u.value.g += (tr[1] - u.value.g) * k; u.value.b += (tr[2] - u.value.b) * k;
+      }
       this.probeA = A.id; this.probeB = B?.id ?? null;
       if (A.tex !== this.envA) {
         // swap the primary probe on every library material (same PMREM size -> no recompile)

@@ -1,0 +1,26 @@
+{
+ "asset": "banner_hanging",
+ "round": 1,
+ "scores": {
+  "likeness": 3,
+  "silhouette_proportion": 3,
+  "construction_detail": 2,
+  "material_use": 3,
+  "lod_recognition": 3,
+  "variation": 4
+ },
+ "fixes": [
+  "Cloth: the panel is a nearly flat plane with a faint vertical shade; no weave, no drape. Concept sheet cloth is slub-woven indigo with visible weft. Add a gentle 0.02-0.04 m S-curve fold across the width (not just a smooth gradient), and use the cloth normal/weave from sheet-tex-cloth at about 1 thread = 3 mm.",
+  "Hanging hardware: the top rod is barely visible and the loops are tiny pink tabs. Concept: 4-5 cloth loops 0.08 m wide with 0.12 m drop over a 0.04 m dia. bronze/wood rod with finial caps, extending 0.08 m past the cloth each side. Add a bottom batten/weight pocket (0.03 m dia.) and hang from two short chains.",
+  "Colour: the 'red' variant is a salmon pink; the indigo variant listed in the brief was not shown (the grey-brown one reads as dirty brown). Set cream = #E9DDC1, indigo = #1E2F5A, red = #8A1F1A (deep lacquer red as the ramen concept), lower emissive/overexposure; the cream banner glows like a lamp.",
+  "Crest: crest is a flat dark silhouette; sheet crest is a pale mountain with sweeping ridges and three steam wisps, double size (about 45% of the width). Increase the crest to 0.45 of width, make the mountain wider/shallower with the ridge wings, and add the KAZAN-YU / 火山湯 line the lookbook banners carry (small).",
+  "Edges: add 0.01 m hem seams with a stitched border and a fraying detail on indigo; the swallow-tail cut on seed 1 is nice but sharp-straight and unhemmed.",
+  "LOD3: a solid square patch replaces the crest and reads as a missing texture; use a triangle or 2-tone mountain at LOD3 and keep the rod dark so the hung banner reads in the silhouette."
+ ],
+ "library_issues": [
+  "noren cloth has no visible weave or slub in any render.",
+  "Banner red is far too light and pink under the lighting; check albedo and emission."
+ ],
+ "verdict": "revise",
+ "summary": "Correct tall hanging-banner with crest and swallow-tail variants, and the three colours differ well. But it is a flat tinted plane with no weave, no visible rod or hardware, an overexposed pink red and a crest that does not match the sheet. Weakest of the four."
+}

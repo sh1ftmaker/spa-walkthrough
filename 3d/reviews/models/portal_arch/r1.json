@@ -1,0 +1,22 @@
+{
+  "asset": "portal_arch",
+  "round": 1,
+  "scores": {"likeness": 3, "silhouette_proportion": 2, "construction_detail": 3, "material_use": 2, "lod_recognition": 3, "variation": 4},
+  "fixes": [
+    "Basalt overall proportion: the concept (sheet-mod-pavilions #06) is 5 m wide x 4.5 m tall (aspect about 1.1). The build is about 5 x 3.4 m (aspect about 1.5), so it reads squat, like a fireplace surround. Raise the default total height to 4.3-4.5 m. Keep a clear opening of about 2.8-3.0 m wide x 3.0 m high under the lintel. Leave a rock crown 0.9-1.2 m thick above the timber head beam (it is now about 0.4-0.5 m and sits directly on the beam). This needs the proxy changed (see report).",
+    "Basalt mass: the jambs are visibly stacked rounded boxes in courses with seams, topped by separate flat slabs, so it looks like dry-stone blocks. The concept and 16-steam-grotto show one continuous craggy basalt mass. It swells outward at the base (jamb about 1.1 m at the floor, 0.9 m at the head) and rolls over the top with a rounded, irregular crown that overhangs 0.2-0.3 m to the front. In 16/15 the soffit is arched. Merge the courses (overlap blocks 0.15 m and hide the seams), add a 0.2-0.3 m crown overhang, and offer a seeded arched soffit (rise 0.4-0.8 m) for the grotto instances.",
+    "Timber frame: the posts read about 0.15-0.18 m and pale salmon, with a single thin lintel. The concept has dark-stained posts about 0.3 m square, a head beam about 0.3 m deep projecting 0.35 m past each post with cut ends, and a second tie beam about 0.5 m below it carrying the noren rod. Thicken the posts to 0.28-0.32 m and the head beam to 0.3 m with 0.35 m kibana overhangs. Make 'double' (tie beam plus struts) the basalt default. Darken the hinoki tint for this asset (aged stain, about 0.35-0.45 of the library value).",
+    "LOD2/LOD3 basalt: the crown flattens to a straight rectangular slab, and at LOD3 the whole thing is a clean rectangular frame, so it reads as a door casing or dolmen and not a rock arch. Keep 2-3 crown lumps (the skyline break) and the base flare in LOD2. In LOD3, keep at least a 6-8 vertex irregular top outline and not a box.",
+    "timber_gate kasagi variant (seed 5) is a plain myojin torii. It duplicates the torii_basalt asset and does not match the brief's 'bronze-and-timber door frame'. Restrict timber_gate to the gabled-roof (kabuki-mon style) top, or a flat kasagi with no upsweep, so it cannot be confused with the torii. Add the basalt threshold step (0.15 m) the concept shows under every style.",
+    "bronze_frame: it reads as a pink timber box with thin copper rings, and bronze is only 5-10% of the surface. Clad the bottom 0.6 m of each jamb fully in bronze shoes, run 40-60 mm bronze edge angles up all four jamb arrises, add stud rows at LOD0-1, and make the head cornice bronze-capped, so it reads as the brief's 'bronze-and-timber' frame."
+  ],
+  "library_issues": [
+    "hinoki: reads flat pale salmon/pink with almost no grain at mid distance, too bright and saturated against the concept's dark aged timber (also visible in the portal's bronze_frame and timber_gate).",
+    "basalt_dry: reads mid grey and matte; the concept basalt is near-black with glossy wet highlights. basalt_wet shows as random white blotches on the threshold and lintel (sheet.jpg seed 3, LOD0/1), which look like texture errors and not wet sheen.",
+    "noren stand-in: dull blue-grey; the concept noren is off-white/cream with a dark crest. This belongs to the noren asset and the library, not this generator, but it hurts the canonical.",
+    "bronze: same as lava_window (too orange and bright).",
+    "Tooling: lod/portal_arch/sheet.jpg is top-down with overlapping labels. Its seed-to-style order (seed 1 = bronze_frame) contradicts the generator's (seed 1 = basalt) and sheet_34.jpg, so it looks stale. Regenerate or drop it."
+  ],
+  "verdict": "revise",
+  "summary": "All three styles exist, the seeds vary the shape meaningfully, and the basalt style has the right parts (rock jambs, crown, hinoki frame, noren, threshold). It still does not read as the concept's arch. It is too squat (aspect about 1.5 vs 1.1), the rock reads as stacked blocks rather than one craggy mass, and the timber is thin and salmon-pink. The low LODs collapse into a rectangular door casing. timber_gate seed 5 duplicates the torii, and bronze_frame has too little bronze."
+}

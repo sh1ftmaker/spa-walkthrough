@@ -263,7 +263,7 @@
      46
     ]
    ],
-   "width": 2.6,
+   "width": 2.5,
    "note": "Rises at a rock spill under the lava window (NW), runs SE under the bridge and sinks into a slot at the south wall toward B1."
   }
  ],
@@ -335,17 +335,18 @@
   "concept": {
    "image": "lookbook/img/04-arrival-gate.jpg",
    "pos": [
-    88,
-    54,
+    82.0,
+    71.0,
     1.6
    ],
    "target": [
-    44,
-    56,
-    5
+    44.0,
+    58.0,
+    5.0
    ],
    "fov_v": 55,
-   "match": "Looking back west: torii framed through the open west front, lava window on the right, stream and rocks lower right, slipper wall and lanterns on the left, wet reflective floor."
+   "match": "Looking back west: torii framed through the open west front, lava window on the right, stream and rocks lower right, slipper wall and lanterns on the left, wet reflective floor.",
+   "note": "Moved (lead, 2026-10-27) so the lava glass runs along the right of frame as in concept 04, looking west to the gate."
   }
  },
  "lights": [
@@ -508,8 +509,8 @@
    "asset": "lantern_stone",
    "at": [
     [
-     61.6,
-     64.4,
+     60.7,
+     63.46,
      0
     ],
     [
@@ -518,8 +519,8 @@
      0
     ],
     [
-     70.4,
-     59.2,
+     70.9,
+     59.52,
      0
     ]
    ],
@@ -591,8 +592,8 @@
     },
     {
      "near": [
-      70.4,
-      59.2
+      70.9,
+      59.52
      ],
      "r": 1.4
     },
@@ -605,8 +606,8 @@
     },
     {
      "near": [
-      61.6,
-      64.4
+      60.7,
+      63.46
      ],
      "r": 1.4
     }
@@ -691,7 +692,7 @@
     ]
    ],
    "face": 180,
-   "why": "Level board beside the lift door: 地上 Ground · B1-B4."
+   "why": "Level board beside the lift door: \u5730\u4e0a Ground \u00b7 B1-B4."
   },
   {
    "asset": "bench_stone",

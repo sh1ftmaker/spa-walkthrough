@@ -1,0 +1,58 @@
+{
+  "asset": "spiral_stair",
+  "round": 2,
+  "reviewer": "mrev2_h (independent)",
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 3
+  },
+  "overall_10": 6.3,
+  "fixes": [
+    {
+      "rank": 1,
+      "part": "balustrade infill (drum style, kumiko/ring rail)",
+      "problem": "Infill between posts is a few thin, sparse bars at about 0.3 m pitch with no bottom rail. It reads as a see-through fence. ref-spiral-stair and sheet-vs-stairs #3 and #6 show a dense bronze grille: verticals at about 0.10-0.12 m, a mid rail and a bottom rail about 0.08 m above the tread nosing.",
+      "target": "LOD0 baluster pitch 0.11 m (LOD1 0.25 m), add a 0.04 m bronze bottom rail at +0.08 m and a mid rail at +0.55 m on every run, so the rail reads as a solid warm band at 10-30 m."
+    },
+    {
+      "rank": 2,
+      "part": "handrail colour and section",
+      "problem": "The 0.13 m round hinoki rail renders light salmon-orange and plastic-looking. In the concept it is a thick, dark, polished red-brown rail (about 0.14 x 0.10 m, flattened oval) with a bronze cap strip, and it is the strongest line in ref-spiral-stair.",
+      "target": "Use a flattened oval 0.14 w x 0.10 h with a 0.02 m bronze top strip. Give it a darker lacquered hinoki (lacquer_dark tint or hinoki value about -35%, roughness about 0.25) so the rail matches the concept's deep brown."
+    },
+    {
+      "rank": 3,
+      "part": "post lanterns",
+      "problem": "The washi post lanterns taper outward like inverted pyramids or flower pots (canonical) and are only about 0.25 m tall. Concept post lanterns are straight-sided andon about 0.22 x 0.22 x 0.40 m with a dark frame, a cap and a finial, sitting on the post top. The concept also shows floor andon standing on alternate treads beside the rail.",
+      "target": "Make them straight-sided 0.22 x 0.22 x 0.40 m with 0.025 m bronze or dark-timber corner frames and a 0.28 m cap. Keep one every 2nd post and add a 0.5 m floor andon every ~6 m on the wall side of the tread."
+    },
+    {
+      "rank": 4,
+      "part": "tread material (LOD0/1 3/4 view)",
+      "problem": "Tread tops read pale grey to near-white in sheet_34 and styles.jpg. In the concept they are black, wet, mirror-like basalt with a lit bullnose edge.",
+      "target": "Use basalt_wet (or paving darkened to albedo about 0.04 with roughness about 0.15) on the tread tops. Keep a bronze or lighter stone nosing strip (0.04 m) so every step edge catches a highlight."
+    },
+    {
+      "rank": 5,
+      "part": "LOD3 rail",
+      "problem": "At LOD3 the rail collapses to a single hairline. In seed 3 and in phone_34 it floats free of the steps and overshoots above the top step (visible as a stray line in the LOD3 silhouette). LOD3 is also 216 tris per turn (324 at 1.5 turns) against the 200 budget.",
+      "target": "Either drop the rail at LOD3 or replace it with a 0.9 m vertical ribbon (1 quad per 2.6 m segment) clamped to the first and last tread. Cut the coarse step count to land at 200 tris per turn or less."
+    },
+    {
+      "rank": 6,
+      "part": "seed variation (drum style)",
+      "problem": "Drum seeds 1 and 2 are near-identical in silhouette (same radius, pitch and handedness). Soffit depth and ring-vs-kumiko infill do not show at the views that matter.",
+      "target": "Seed r_walk within 5.2-6.2 m, width within 2.3-2.9 m and pitch within 13.5-16 m, and alternate kerb versus waist-high parapet on the wall side. This gives each seed a different turn read."
+    }
+  ],
+  "library_issues": [
+    "hinoki: as used on the rail it renders a saturated salmon-orange with low depth. It needs a darker lacquered/oiled variant for handrails (concept rails are deep red-brown).",
+    "paving: reads too light for wet basalt treads under warm key light; check albedo (should be about 0.04-0.06) and that the wet clearcoat is on."
+  ],
+  "verdict": "pass",
+  "summary": "Reads as a helical stone stair with a continuous timber rail and landing doors, and the 1.5-turn LOD chain stays recognisable down to LOD3. Proportions (r_walk 5.6, width 2.6, 0.17/0.29 steps) are believable for the drum. It falls short of the concept on the rail: the balustrade infill is too sparse, the rail too pale and thin, and the lanterns are the wrong (tapered) shape. The treads also read grey, not wet black basalt. The canonical shot is taken over a landing and hides the treads. Re-shoot it from the 3/4 to show the helix. Pass at 6.3/10, but fixes 1-4 are needed before it can sit in ref-spiral-stair."
+}

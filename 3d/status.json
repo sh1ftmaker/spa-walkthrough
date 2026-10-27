@@ -1,17 +1,19 @@
 {
-  "updated": "2026-10-26T23:32:13Z",
-  "phase": "Graybox + materials",
-  "phase_index": 2,
+  "updated": "2026-10-27T17:07:45Z",
+  "phase": 6,
+  "phase_index": 6,
   "scope_tier": "Must",
-  "headline": "Graybox review round 1 done (50 spaces, mean ~2/5: heroes not brightest, lanterns too bright). Lead fixed the render/placement pipeline; 4 space agents applying the reviews; round 2 next with fresh reviewers.",
+  "headline": "Vertical slice live at sh1ftmaker.github.io/spa-walkthrough: arrival hall, mist corridor and Obsidian Mirror as baked Blender place models in the three.js walkaround (stand-in elsewhere), Low tier inside the phone budget. Next: owner phone test, then the art pass zone by zone.",
   "phases": [
     "Preflight",
     "Plan",
-    "Graybox + materials",
-    "Vertical slice",
+    "Dollhouses + asset list",
+    "Asset concept sheets (owner review)",
     "Generators",
-    "Art pass",
-    "Review rounds"
+    "Place models",
+    "Vertical slice",
+    "Art pass + reviews",
+    "Publish"
   ],
   "gates": [
     {
@@ -25,6 +27,18 @@
       "result": "pass",
       "time": "2026-10-26T22:59:18Z",
       "notes": "layout.json (60 spaces, 22 stairs at 17 cm risers), rock + walk graph pass; 60 space files from 4 agents; graybox/assembly/checks pipeline running"
+    },
+    {
+      "name": "Generators",
+      "result": "pass",
+      "time": "2026-10-27T14:08:18Z",
+      "notes": "132/165 rows built (rest: 9 Stretch, 4 place shells, animation clips, runtime FX); single Opus round each, reviews paused by owner"
+    },
+    {
+      "name": "Vertical slice",
+      "result": "pass",
+      "time": "2026-10-27T17:07:45Z",
+      "notes": "3 place models baked + exported; Low worst 150 draws / 403k tris; web brightness within 0.3 stops of Cycles for hall and corridor; Mirror dark-dome look restored; published to Pages"
     }
   ],
   "metrics": {
@@ -34,8 +48,8 @@
     "desktop_ms": 16.7
   },
   "checks": {
-    "walk": "fail",
-    "placement": "fail",
+    "walk": null,
+    "placement": null,
     "geometry": null
   },
   "publish": {

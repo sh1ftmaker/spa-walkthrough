@@ -1,0 +1,26 @@
+{
+  "asset": "chochin",
+  "round": 3,
+  "scores": {
+    "likeness": 4,
+    "silhouette_proportion": 3,
+    "construction_detail": 4,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 5
+  },
+  "fixes": [
+    "round_logo proportion (overshot): measured in canonical, the paper body is ~400 px wide x ~455 px tall (h/w 1.14), and caps-to-caps is 565 px (1.41 x diameter). sheet-mod-lights #2 gives Ø0.45 x H0.45 m with the height arrow spanning cap to cap: measured 320 px over 308 px of body width, so about 1.04. r2's target was body h about 1.0-1.05 x Ø, and the profile went from oblate (1/1.17) to egg (1.14). Set the body h/w to 1.0, fill the shoulders (radius at 15% from the top >= 0.85 Ø/2, not tapering like an egg), and cut each cap to about 0.05 m, so the overall height is about 0.50 m on a 0.45 m diameter.",
+    "Paper read: the body is pale cream with horizontal streaks that look like wood grain, and the ~20 rib lines are still dark brown and high-contrast. The concept is a saturated amber glow with fine, soft ribs and faint vertical gore seams. Darken the rib lines only to about 15% below the paper value, add 10-12 faint vertical seams, and push the emission warmer and brighter (see library_issues).",
+    "giant_ramen profile: it renders as a straight cylinder with rounded ends. lookbook 09 shows a barrel bulge, with mid diameter about 1.2 x the cap-end diameter, and black caps about 0.55 x the mid diameter. Give the giant preset a barrel profile: mid r = 1.2 x end r, h 1.2 m, mid Ø about 0.6 m.",
+    "Cord and ring: the rope is a thin line (about 4 mm). The sheet shows a braided rope about 12-15 mm thick with a visible twist, above a 60 mm brass ring. Thicken it at LOD0-1 to 12 mm with a 2-strand twist (or a twisted normal) and keep a 6 mm card at LOD2.",
+    "LOD3 caps: the flat cap discs landed (48 tris), but at LOD3 the cap rings are paper-coloured, so the dark caps that identify the lantern are lost in the sheet. Assign lacquer_dark to the top and bottom 6-gon rings, or bake dark vertex colour into the end 8% of height.",
+    "tall_cylinder print: the KAZAN-YU line is still illegible at sheet size (r2 asked for +30%). Scale the latin line to a cap height of about 0.03 m with tracking of 0.25 em, or drop it and enlarge the mark by 25%."
+  ],
+  "library_issues": [
+    "lantern_paper / washi_backlit: in canonical the cream paper reads as cool pale cream with a horizontal grain like wood veneer. The concept (sheet-mod-lights #2, brand board 22) is a saturated amber glow at about 2200-2500 K. Remove the directional streak in the fibre texture, warm the emission and raise it about 1 stop for the cream variant.",
+    "Red paper now reads as a proper vermilion in styles.jpg (r2 issue resolved)."
+  ],
+  "verdict": "revise",
+  "summary": "Strong likeness: the six variants (round logo, tall cylinder, red crest, ラーメン giant, chain, cluster) all read as the concept chochin, and the LOD chain stays a capped lantern at 6 m and 17 m. Earlier fixes that landed: curved steam wisps, centred and stacked logo print with the KAZAN-YU line, brass rims and rivet studs on matte caps, flat-capped LOD3, cluster stagger, size variation and prints, saturated red, and no chrome or cyan cap artefacts. Holding it below pass: the round body overshot from oblate to egg (h/w 1.14, overall 1.41 x Ø vs about 1.04 on the sheet), the paper reads pale and streaky rather than amber, and the giant ramen lacks the barrel bulge in lookbook 09."
+}

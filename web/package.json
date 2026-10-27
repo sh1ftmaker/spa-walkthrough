@@ -6,9 +6,10 @@
   "scripts": {
     "libs": "node tools/copy-libs.mjs",
     "standin": "node tools/build-standin.mjs",
+    "mixed": "node tools/build-mixed.mjs",
     "predev": "node tools/copy-libs.mjs",
     "dev": "vite",
-    "prebuild": "node tools/copy-libs.mjs && node tools/build-standin.mjs",
+    "prebuild": "node tools/copy-libs.mjs && node tools/build-mixed.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "shot": "node tools/shot.mjs",

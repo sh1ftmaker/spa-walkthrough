@@ -1,0 +1,28 @@
+{
+  "asset": "slipper_cubbies",
+  "round": 3,
+  "scores": {"likeness": 4, "silhouette_proportion": 4, "construction_detail": 3, "material_use": 3, "lod_recognition": 4, "variation": 4},
+  "fixes": [
+    "Slipper shape (LOD0/1): from 2-3 m, each slipper is a 5-6 facet peaked cover with a V-shaped instep notch. It reads as a folded paper tent (canonical, left module). Concept (sheet-mod-arrival #3, 04-arrival-gate) shows plump rounded humps with a soft arched cover and a visible sole edge. Keep the r2 heel-forward pair layout, but build the cover as a smooth arch with at least 8 segments across, rounded crown 0.06-0.07 m above the shelf. Use a U-shaped instep opening, not a V, and a 15-20 mm sole edge in the darker 'natural' hinoki so a line shows under the cover.",
+    "Mixed slipper tiers at LOD0: some pairs in the hero view render as a box sole with a tilted flat card on top (canonical, row 2 from top, right-hand cells of the left visible module). This is the budget fallback tier showing at close range. LOD0 must use one full tier for every pair. Get the triangles back by dropping slipper undersides and the back faces of cells you can't see, not by downgrading pairs. LOD0 is at 13998/14000, so the ladder is clearly trading pairs away.",
+    "Slipper placement and value: pairs sit up to 0.04 m back and are dull mid-tan (render ~#291609 in shadow). From 1.6 m eye height the upper four rows look nearly empty (styles seeds 1, 3, 5). Concept pairs sit right at the shelf front and are the brightest thing in each cell. Cut the random back offset to 0-0.015 m with the heel 0.02-0.03 m behind the shelf lip, and lift the cover tint toward cream-honey (sRGB ~#cfae80) at roughness ~0.55 so each pair catches the light.",
+    "Lit niches on long runs: the 14 m seed-1 wall has lit niches only at its two ends, and the canonical shows only the right one. 04-arrival-gate shows a lit bay repeating along the plinth: two visible within about 4 m of run, between drawer groups. For w > 4 m, add a recessed lit niche at every second module post (about every 4 m), so seed 1 gets 4-5. Keep the end niches.",
+    "Face-frame wood value: the render stile reads saturated orange (~#6F3916) and the concept stile is a darker aged brown (~#402817). Drop the 'wood' slot tint about 30% in value and about 20% in saturation, or wait for the stained-wood library pass. The cell backs are already right: the concept backs are also near black.",
+    "Unverified r2 items: show a 3/4 view of an exposed end panel (plank seams at 0.12-0.15 m, iron straps at 3 heights, per the sheet's side view). r2 asked for slab as the seed-1 default, but styles labels seed 1 'crown' and the code says slab for odd seeds. Make the label and the geometry agree."
+  ],
+  "library_issues": [
+    "hinoki (face frame) still reads more saturated orange than the concept's aged, stained cedar (#6F3916 vs #402817 measured on the stile). Same stained/dark wood gap as r2.",
+    "linen used for slipper uppers renders matte and paper-like; a slightly sheened pale cloth or vinyl would help the slippers read as objects."
+  ],
+  "verdict": "revise",
+  "summary": "This is the arrival cubby wall: correct grid and cell size, a 40/70 mm divider/post hierarchy, drawer band with iron pulls, recessed lit end niches with toe-kick glow, iron plates, and seeds that vary width, rows, fill, cornice and lights. LOD2/LOD3 still read as a pigeonhole wall on the phone. It still fails on the slippers, the identifying feature: they look like folded paper tents, some pairs drop to box-plus-card fallbacks in the hero view, and they sit too far back and too dull to fill the cells the way the concept does.",
+  "earlier_fixes": {
+    "r2_1_slippers": "partly landed. Heel-forward, about 65% of cell width, tan; still faceted peaked covers, and low-tier pairs show at LOD0.",
+    "r2_2_divider_hierarchy": "landed. 40 mm verticals, 70 mm module posts with iron plates.",
+    "r2_3_recessed_niches": "landed. Recessed wooden bays with a hidden strip (styles seeds 2-4).",
+    "r2_4_lod3_verticals": "partly landed. sheet.jpg LOD3 and the phone LOD3 keep a grid read; sheet_34 predates the pass.",
+    "r2_5_slab_default_seed1": "unclear. styles labels seed 1 'crown'; the crown is now a flat squared cap, which is acceptable.",
+    "r2_6_side_planks_straps": "not verifiable; no end-panel view supplied.",
+    "r1_all": "landed: LOD sheet framing, cream/tan pairs, dark interiors, niches, iron, seed variation."
+  }
+}

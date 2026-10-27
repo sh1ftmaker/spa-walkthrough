@@ -24,7 +24,7 @@ const FRAG = /* glsl */ `
 uniform sampler2D tNormal; uniform float uTime; uniform vec2 uFlow;
 uniform vec3 uSigma; uniform float uDepth; uniform vec3 uScatter; uniform float uNormalStrength;
 uniform sampler2D tReflect; uniform mat4 uReflMatrix; uniform float uHasPlanar;
-uniform sampler2D envMap; uniform float uEnvIntensity;
+uniform sampler2D envMap; uniform float uEnvIntensity; uniform float uF0; uniform float uReflGain;
 #include <common>
 #include <cube_uv_reflection_fragment>
 void main() {
@@ -37,7 +37,7 @@ void main() {
   vec3 V = normalize(cameraPosition - kzWorldPos);
   float above = step(0.0, cameraPosition.y - kzWorldPos.y);
   float cosT = clamp(abs(dot(N, V)), 0.0, 1.0);
-  float F = mix(0.0, 0.02 + 0.98 * pow(1.0 - cosT, 5.0), above);
+  float F = mix(0.0, uF0 + (1.0 - uF0) * pow(1.0 - cosT, 5.0), above);
   vec3 refl;
   if (uHasPlanar > 0.5) {
     vec4 p = uReflMatrix * vec4(kzWorldPos, 1.0);
@@ -50,7 +50,7 @@ void main() {
   float path = uDepth / max(abs(V.y), 0.12);
   vec3 T = exp(-uSigma * path);
   vec3 M = T * (1.0 - F);
-  vec3 A = refl * F + uScatter * (1.0 - T) * (1.0 - F);
+  vec3 A = refl * F * uReflGain + uScatter * (1.0 - T) * (1.0 - F);
   vec4 fogT = kzFogTerms(kzWorldPos);
 #if KZ_PASS == 0
   gl_FragColor = vec4(mix(M, vec3(1.0), fogT.a), 1.0);
@@ -68,8 +68,10 @@ export function createWaterMeshes(geometry, info, normalTex, env) {
     uFlow: { value: new THREE.Vector2(info.flow ? 0.02 : 0, info.flow ? 0.012 : 0) },
     uSigma: { value: new THREE.Vector3(...sig) },
     uDepth: { value: depth },
-    uScatter: { value: new THREE.Vector3(0.006, 0.03, 0.028) },
-    uNormalStrength: { value: info.id === 'w_mirror' ? 0.06 : 0.22 },
+    uScatter: { value: new THREE.Vector3(...(info.scatter ?? [0.006, 0.03, 0.028])) },
+    uNormalStrength: { value: info.normal_strength ?? (info.id === 'w_mirror' ? 0.06 : 0.22) },
+    uF0: { value: info.f0 ?? 0.02 },
+    uReflGain: { value: info.reflect_gain ?? 1 },
     tReflect: { value: null },
     uReflMatrix: { value: new THREE.Matrix4() },
     uHasPlanar: { value: 0 },

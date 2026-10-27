@@ -149,11 +149,11 @@ def setup_for(mid, cat, ctx):
 
 
 def corner_rig(sc):
-    lights = [R.point('S_Key1', (-1.7, 1.2, 2.7), R.KEY_W * 0.75, 0.08),
+    lights = [R.point('S_Key1', (-1.7, 1.2, 2.7), R.KEY_W * 0.75, 0.08, color=R.NEUTRAL),
               R.point('S_Key2', (1.9, 1.6, 2.5), R.KEY_W * 0.35, 0.08),
               R.point('S_Key3', (-2.4, 3.2, 1.8), R.KEY_W * 0.25, 0.06),
               R.point('S_FloorLantern', (1.9, 2.45, 0.3), 25.0),
-              R.area('S_Fill', (2.6, 1.0, 1.8), (0, 3.5, 0.6), R.FILL_W * 2.5, size=(2.0, 1.2))]
+              *R.teal_points('S_Fill', (2.6, 1.0, 1.8), (0, 3.5, 0.6), R.FILL_W * 3.0, spread=0.8)]
     cardobs = R.cards((-1.55, 2.75, 0.15), (0.15, 0.6, 1.6))
     dots = R.env_dots(center=(0, 2.0, 1.5), radius=9.0)
     cam = R.camera(sc, (0.15, 0.6, 1.6), (0.0, 4.0, 0.75), lens=20)
@@ -178,8 +178,9 @@ def close_view(sc, mid, info):
         p.scale.z = 7.0
         p.location.z = -0.06
         objs.append(under)
-    objs += [R.point('C_Rake', (-0.9, -0.1, 0.12), R.KEY_W * 0.04, 0.03),
-             R.point('C_Top', (0.3, -0.6, 0.9), R.KEY_W * 0.012, 0.05),
+    objs += [R.point('C_Rake', (-0.9, -0.1, 0.12), R.KEY_W * 0.12, 0.03, color=R.NEUTRAL),
+             R.point('C_Top', (0.3, -0.6, 0.9), R.KEY_W * 0.06, 0.05),
+             R.area('C_Soft', (0.0, -0.3, 1.2), (0, 0, 0), R.KEY_W * 0.08, size=(1.2, 1.2), color=R.NEUTRAL),
              R.area('C_Fill', (0.8, -0.5, 0.5), (0, 0, 0), R.FILL_W * 0.2, size=(0.6, 0.4))]
     objs += R.env_dots(center=(0, 0, 0.3), radius=3.0, warm=20, cyan=40)
     cam = R.camera(sc, (0.0, -0.42, 0.36), (0.0, 0.0, 0.0), lens=50)
@@ -221,6 +222,12 @@ def main():
                                                * (0.15 if light else 1.0))
         for ctx in ((False, True) if 'context' not in SKIP else (False,)):
             objs = setup_for(mid, info['category'], ctx)
+            if ctx:   # drop the context shot when the material already covers wall, floor and step
+                own = [o for o in objs if o.type == 'MESH' and o.data.materials and o.data.materials[0]
+                       and o.data.materials[0].get('kz_id') == mid]
+                if {o.name for o in own} >= {'S_Wall', 'S_Floor', 'S_Step'}:
+                    R.clear(objs)
+                    continue
             sc.camera = cam
             render(sc, os.path.join(BASE, 'scale', mid + ('__context' if ctx else '') + '.jpg'))
             R.clear(objs)

@@ -1,0 +1,26 @@
+{
+  "asset": "stepping_stone",
+  "round": 1,
+  "reviewer": "independent model reviewer (mrev1_k2), did not build the generator",
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 3,
+    "lod_recognition": 2,
+    "variation": 3
+  },
+  "fixes": [
+    "Top-to-side step (gen_stepping_stone.py rings R3 -> R4): R4 top shoulder is inset to 0.82 R at z = t + dome while R3 sits at 0.985 R and z = 0.85 t, so the top sits on a visible ledge about 0.16 R wide. The canonical shows it as a split block. Change R4 to >= 0.94 R and R3 to z = 0.9 t so the top flows into the side as one convex profile. Target: no horizontal ledge wider than 0.02 m in the profile.",
+    "Stone is too thick and too uniform for the concept, where the stones sit just under the water and read as thin, lobed pebbles. Default thickness seeded range 0.15-0.165 m (max 0.30) should become about 0.10-0.13 m, and the 0.15 m minimum should go. Keep plan diameter 0.52-0.58 m.",
+    "Outline is nearly round. Default ovality is seeded 0-0.08 and the three-lobe term is weak, so seeds 2 and 3 look like discs. Concept outlines are irregular. Raise default ovality to 0.06-0.12 and add a second wobble term of 0.03-0.05 R so about one stone in three is clearly non-round.",
+    "LOD3 (12 tris, hexagonal bipyramid, gen RINGS[3] = R0, R2, R5) reads as a faceted gem or lozenge in the 3/4 sheet, not as a flat stone, and at 36 m it is a 1-2 px dash. Replace it with a flat hexagonal disc: 6 side quads (12 tris) plus a 4-tri fan top, so 16 tris. Ask the lead to raise the LOD3 budget from 12 to 16, or accept 13 with a pentagonal disc. Target: width-to-height at least 4:1 with a flat top.",
+    "LOD2 (40 tris) also reads as a diamond at 3/4 because the top ring tapers to a point. Keep R4 at >= 0.9 R so the top stays a disc and the LOD2 silhouette matches LOD0. This is cheap: no added tris."
+  ],
+  "library_issues": [
+    "basalt_wet top and chipped rim show bright speckled highlights in the canonical that read as salt or chrome flecks rather than wet basalt. Check the basalt_wet roughness and normal map.",
+    "stepping_stone side material is lighter and more grey than the wet top, so the stone reads as two stones glued together. Consider a darker side tone matching the concept."
+  ],
+  "verdict": "revise",
+  "summary": "Recognisable as a flat stone disc at LOD0 and LOD1, and the material split (wet top, basalt side) is the right idea. It falls short on construction: a visible top-to-side ledge makes it read as a stacked block, the stones are too thick and too round compared with the concept, and LOD2/LOD3 turn into diamond or gem shapes that are not nameable at phone size. The first two fixes are generator-only and cheap; the LOD3 fix needs a 4-tri budget increase."
+}

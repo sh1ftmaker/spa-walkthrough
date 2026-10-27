@@ -1,0 +1,24 @@
+{
+  "asset": "bench",
+  "round": 3,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 2,
+    "lod_recognition": 3,
+    "variation": 3
+  },
+  "fixes": [
+    "Finish: the slatted hinoki reads pale, new and unweathered (canonical.jpg, LOD0 seed 1). The concept benches (sheet-ref-deep B4 magma bench, lookbook 16 steam grotto) are dark, oiled timber with wet gloss on the top. Darken the hinoki albedo by about 40 % for the slats and apply wet-gloss roughness (0.25-0.35) on the seat faces, so the seat carries a reflection like the concept.",
+    "Apron: the concept bench has a solid side board or vertical slatted apron under the seat; the generator gives two open end legs and one stretcher, which reads as a table or trestle at 5 m. Add a 0.10-0.12 m deep apron board on both long sides with 3 vertical slats per 0.6 m, inset 30 mm from the seat edge.",
+    "Leg section: the 0.07-0.09 m legs look light against the 2.4 m seat. Raise the leg section to 0.10 m square at the top, keep the peg and wedge blocks, and add a small chamfer so the joinery reads at LOD1.",
+    "Slat gaps: slats read as one continuous strip in the 3/4 views and at LOD1. Set slat width 0.09-0.11 m with 8-10 mm gaps and a 3 mm edge chamfer, so the slatting is visible at the 5 m switch distance.",
+    "Seed variation: all three seeds have nearly the same length and leg inset (LOD0 sheet). Vary length by +/-0.3 m and leg inset by +/-0.1 m per seed, and tie the slat count (5-7) to the length so longer seeds get more slats."
+  ],
+  "library_issues": [
+    "hinoki reads very pale and cool-white under the scene lighting; the library albedo looks like new timber. The darker wet-timber variant is needed for the concept look. Check the hinoki library entry before assigning it to benches."
+  ],
+  "verdict": "revise",
+  "summary": "Good proportion and overall bench read (2.4 m by 0.45 m, the LOD2 silhouette at 22 m is recognisable), and the five styles differ clearly in the styles sheet. Fails on finish: pale unweathered hinoki does not match the dark wet timber in the concept, and the open-leg construction lacks the solid apron of the concept bench. Seeds barely vary within a style. Revise before pass."
+}

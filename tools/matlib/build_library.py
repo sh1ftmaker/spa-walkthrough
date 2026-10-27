@@ -30,9 +30,20 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import kzimg  # noqa: E402
 import library_defs as L  # noqa: E402
+import kzkit  # noqa: E402
 from kzdsl import B  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
+_av = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
+SCAN_SET = _av[_av.index('--scans') + 1] if '--scans' in _av else 'ab'   # 'a' = 4 high-value swaps, 'b' = recolours
+KIT_ALL = kzkit.kit_table()
+SCAN_INFO = kzkit.apply_scans(KIT_ALL, SCAN_SET) if SCAN_SET != 'none' else {}
+TILE_SET = _av[_av.index('--tiles') + 1] if '--tiles' in _av else 'none'    # 'all' | id,id | none
+TILE_INFO = kzkit.apply_tiles(KIT_ALL, None if TILE_SET == 'all' else set(TILE_SET.split(','))) \
+    if TILE_SET != 'none' else {}
+for _k in TILE_INFO:
+    SCAN_INFO.pop(_k, None)
+KIT = {k: v for k, v in KIT_ALL.items() if v.get('tech') not in (None, 'keep', 'procedural') and v.get('plate')}
 OUT_BLEND = os.path.join(ROOT, '3d', 'materials', 'library.blend')
 OUT_JSON = os.path.join(ROOT, '3d', 'materials.json')
 TEX_PNG = os.path.join(ROOT, '.scratch', 'matlib', 'tex')
@@ -52,7 +63,7 @@ CORE_DEFAULTS = dict(
     WornColor=(0.5, 0.5, 0.5), WornRough=0.5, WornMetal=0.0, WornMax=1.0, FoamColor=(0.8, 0.85, 0.85),
     FoamFromMask=0.0, ThinFromMask=0.0, AlphaFromMask=0.0, AlphaMin=1.0, FrostUp=0.0,
     EmitStrength=1.0, EmitColor=(0.0, 0.0, 0.0), EmitMapScale=1.0, EmitCore=0.0, EmitMacro=0.0,
-    MacroAmount=0.0, Absorb=(1.0, 1.0, 1.0), AbsorbDensity=0.0, Scatter=(1.0, 1.0, 1.0), ScatterDensity=0.0)
+    MacroAmount=0.0, MacroHue=(0.9, 1.0, 1.12), UseGrad=0.0, Subsurface=0.0, Anisotropic=0.0, Absorb=(1.0, 1.0, 1.0), AbsorbDensity=0.0, Scatter=(1.0, 1.0, 1.0), ScatterDensity=0.0)
 NOT_CORE = ('Cavity',)
 PATTERN_OUT = [('Albedo', 'c', (0.5, 0.5, 0.5), 'albedo'), ('Roughness', 'f', 0.5, 'rough'),
                ('Metallic', 'f', 0.0, 'metal'), ('Height', 'f', 0.5, 'height'), ('AO', 'f', 1.0, 'ao'),
@@ -95,6 +106,8 @@ def full_params(m):
              normal_strength=1.0, emissive_level=0.0)
     if m:
         p['scale'] = 1.0 if m.get('uvmode') == 'object' else m['tile']
+        if m['id'] in KIT:
+            p['scale'] = float(KIT[m['id']]['plateM'])     # kit: metres per plate (kzShade tileM)
         p.update(m.get('params', {}))
         p['tint'] = tuple(p['tint'])
     return p
@@ -138,7 +151,7 @@ def texture_sets():
         c = m.get('core', {})
         uses_mask = bool(m.get('transparent') or c.get('ThinFromMask') or c.get('AlphaFromMask')
                          or m['category'] in ('light',) and m.get('uvmode') == 'object')
-        base = dict(sid=m['id'], pattern=m['pattern'], plate=m.get('plate'), tile=m['tile'], aspect=m.get('aspect', 1.0), res=m['res'],
+        base = dict(sid=m['id'], pattern=m['pattern'], plate=m.get('plate'), gen=m.get('gen'), tile=m['tile'], aspect=m.get('aspect', 1.0), res=m['res'],
                     depth=m['depth'], cavity=c.get('Cavity', 1.0), mask=uses_mask, emissive=bool(m.get('emissive')),
                     mat=m['id'])
         sets.append(base)
@@ -391,6 +404,7 @@ def build_core():
     sock(ng, 'Macro', 'INPUT', 'c', (0.5, 0.5, 0.5))
     sock(ng, 'MacroA', 'INPUT', 'f', 0.0, 0.0, 1.0)
     sock(ng, 'NormalIn', 'INPUT', 'v', (0, 0, 1))
+    sock(ng, 'Grad', 'INPUT', 'v', (0, 0, 0), desc='world surface gradient (kit path, UseGrad = 1)')
     for k, v in CORE_DEFAULTS.items():
         sock(ng, k, 'INPUT', 'c' if isinstance(v, tuple) else 'f', v)
     sock(ng, 'Shader', 'OUTPUT', 's')
@@ -407,26 +421,38 @@ def build_core():
     _, _, nz = b.sep(b.out(geo, 'Normal'))
     foam = (I('Mask') * I('FoamFromMask') + nz.smooth(0.6, 0.9) * I('FrostUp')).clamp()
     thin = b.mixf(I('ThinFromMask'), 1.0, I('Mask'))
+    # kit kzSurface formulas (3d/materials/kzshader.js): macro, wear, wetness
     streak = I('MacroA') * m
     wear_m = ((h + I('wear') * 1.2 - 1.0) * 4.0).clamp() * I('WornMax')
     film = (I('WetMask') * 1.2 + (0.5 - h) * 0.8 + (mb - 0.5) * 0.6 * m + streak * 0.5).clamp()
-    bright = (mr - 0.5) * 0.4 * m + 1.0
-    hue = (mg - 0.5) * m
-    huev = b.xyz(1.0 - hue * 0.2, 1.0, hue * 0.24 + 1.0)
-    alb = b.cmul(b.cmul(I('Albedo'), tint), I('AO') * bright * (1.0 - streak * 0.25))
-    alb = b.cmul(alb, huev)
+    alb = b.cmul(b.cmul(I('Albedo'), tint), I('AO') * ((mr - 0.5) * 0.9 * m + 1.0) * (1.0 - streak * 0.3))
+    huec = I('MacroHue')
+    alb = b.cmul(alb, b.mixc(((mg - 0.5) * 2.2).clamp() * m, (1, 1, 1), huec))
+    inv = b.vmath('DIVIDE', (1.0, 1.0, 1.0), b.vmath('MAXIMUM', huec, (0.5, 0.5, 0.5)))
+    alb = b.cmul(alb, b.mixc(((0.5 - mg) * 2.2).clamp() * m * 0.5, (1, 1, 1), inv))
     worn = b.cmul(b.cmul(I('WornColor'), tint), h * 0.6 + 0.7)
     alb = b.mixc(wear_m, alb, worn)
-    alb = b.cmul(alb, 1.0 - I('Porosity') * 0.55 * I('wetness') * (film * 0.4 + 0.6))
+    wet = (I('wetness') + ((mb - 0.5) * 0.9 * m + streak * 0.8) * b.math('GREATER_THAN', I('wetness'), 0.01)).clamp()
+    alb = b.cmul(alb, 1.0 - I('Porosity') * 0.55 * wet * (film * 0.4 + 0.6))
     alb = b.mixc(foam, alb, I('FoamColor'))
-    rough = b.mixf(wear_m, I('Roughness'), I('WornRough')) + I('roughness_offset') - (mb - 0.5) * 0.2 * m
+    rough = b.mixf(wear_m, I('Roughness'), I('WornRough')) - (mb - 0.5) * 0.25 * m
     wet_t = b.mixf(film, 0.32, 0.04)
-    rough = b.mixf((I('wetness') * 1.4).clamp(), rough, rough.min(wet_t))
+    rough = b.mixf((wet * 1.4).clamp(), rough, rough.min(wet_t)) + I('roughness_offset')
     rough = b.mixf(foam, rough, 0.45).max(0.02).min(1.0)
     metal = b.mixf(wear_m, I('Metallic'), I('WornMetal'))
     trans = I('Transmission') * (1.0 - foam)
     alpha = b.mixf(I('AlphaFromMask'), 1.0, I('AlphaMin') + (1.0 - I('AlphaMin')) * I('Mask'))
-    nrm = I('NormalIn')                         # detail normal decoded from normal_height (KZ_NormalXY)
+    # normal: legacy path = decoded normal map (NormalIn); kit path = surface gradient (Grad).
+    # view-layer property kz_bake = 1 -> geometric normals only (irradiance bake, kit README 7)
+    bk = b.node('ShaderNodeAttribute', {}, {'attribute_type': 'VIEW_LAYER', 'attribute_name': 'kz_bake'})
+    bake = b.out(bk, 'Fac').clamp()
+    Ng = b.out(geo, 'Normal')
+    nstr = I('normal_strength') * (1.0 - wet * film * 0.55) * (1.0 - bake)
+    gs = b.cmul(I('Grad'), nstr)
+    gperp = b.vmath('SUBTRACT', gs, b.cmul(Ng, b.vmath('DOT_PRODUCT', Ng, gs, out='Value')))
+    nkit = b.vmath('NORMALIZE', b.vmath('SUBTRACT', Ng, gperp))
+    nleg = b.mixc(bake, I('NormalIn'), Ng)
+    nrm = b.vmath('NORMALIZE', b.mixc(I('UseGrad'), nleg, nkit))
     emis = b.cadd(b.cmul(I('Emission'), I('EmitMapScale')), I('EmitColor'))
     emis = b.cmul(b.cmul(emis, tint), I('EmitStrength') * I('emissive_level') * ((mr - 0.5) * 1.2 * I('EmitMacro') + 1.0))
     lw = b.node('ShaderNodeLayerWeight', {'Blend': 0.5})
@@ -439,21 +465,30 @@ def build_core():
         'Base Color': alb, 'Metallic': metal, 'Roughness': rough, 'IOR': I('IOR'), 'Alpha': alpha,
         'Normal': nrm, 'Specular IOR Level': I('Specular'), 'Transmission Weight': trans,
         'Coat Weight': I('Coat'), 'Coat Roughness': I('CoatRough'), 'Sheen Weight': I('Sheen'),
-        'Sheen Roughness': 0.5, 'Emission Color': emis, 'Emission Strength': 1.0})
+        'Subsurface Weight': I('Subsurface'), 'Subsurface Radius': (1.0, 0.35, 0.2), 'Subsurface Scale': 0.012,
+        'Anisotropic': I('Anisotropic'),
+        'Sheen Roughness': 0.5, 'Sheen Tint': b.mixc(0.15, alb, (1, 1, 1)),   # sheen tinted by albedo (no white wash)
+        'Emission Color': emis, 'Emission Strength': 0.0})
     tw = p.inputs['Thin Wall']
     if tw.type in ('VALUE', 'BOOLEAN', 'INT'):
         ng.links.new(I('ThinWall').sock, tw)
     tl = b.node('ShaderNodeBsdfTranslucent', {'Color': alb, 'Normal': nrm})
     tfac = (I('Translucency') * thin * (I('ThinFromMask') + 1.0)).clamp()
     mix = b.node('ShaderNodeMixShader', {0: tfac, 1: b.out(p, 0), 2: b.out(tl, 0)})
+    # emission is added after the translucency mix (a translucent mix used to swallow it: washi_backlit)
+    emn = b.node('ShaderNodeEmission', {'Color': emis, 'Strength': 1.0})
+    lit = b.node('ShaderNodeAddShader', {0: b.out(mix, 0), 1: b.out(emn, 0)})
+    trn = b.node('ShaderNodeBsdfTransparent', {})
+    amix = b.node('ShaderNodeMixShader', {0: alpha, 1: b.out(trn, 0), 2: b.out(lit, 0)})   # alpha cuts translucency too
     ab = b.node('ShaderNodeVolumeAbsorption', {'Color': b.cmul(I('Absorb'), tint), 'Density': I('AbsorbDensity')})
     sc = b.node('ShaderNodeVolumeScatter', {'Color': I('Scatter'), 'Density': I('ScatterDensity')})
     vol = b.node('ShaderNodeAddShader', {0: b.out(ab, 0), 1: b.out(sc, 0)})
-    b.node('NodeGroupOutput', {'Shader': b.out(mix, 0), 'Volume': b.out(vol, 0)})
+    b.node('NodeGroupOutput', {'Shader': b.out(amix, 0), 'Volume': b.out(vol, 0)})
 
 
 # ------------------------------------------------------------------ materials
 STATS_CACHE = {}
+SCAN_ASSETS = {}
 IMG_CS = {'base': 'sRGB', 'orm': 'Non-Color', 'nh': 'Non-Color', 'emis': 'sRGB'}
 
 
@@ -655,7 +690,8 @@ def manifest_entry(m, stats):
         'params': {'tint': [round(x, 4) for x in p['tint']], 'wetness': p['wetness'], 'wear': p['wear'],
                    'roughness_offset': p['roughness_offset'], 'scale': p['scale'],
                    'normal_strength': p['normal_strength'], 'emissive_level': p['emissive_level']},
-        'tiling_m_per_repeat': m['tile'] if m.get('uvmode') != 'object' else None,
+        'tiling_m_per_repeat': (float(KIT[m['id']]['plateM']) if m['id'] in KIT else m['tile'])
+        if m.get('uvmode') != 'object' else None,
         'aspect': m.get('aspect', 1.0),
         'texture_size': st.get('size'),
         'textures': tex,
@@ -686,6 +722,31 @@ def manifest_entry(m, stats):
         'three': three,
         'stats': st,
     }
+    c = KIT.get(m['id'])
+    if c:
+        e['kz_id'] = m['id']
+        e['kzTech'] = c['tech']
+        e['kzBase'] = f"{TEX_KTX_REL}/pl_{c['plate']}_base.ktx2"
+        e['kzNh'] = f"{TEX_KTX_REL}/pl_{c['plate']}_nh.ktx2"
+        if c.get('plate2'):
+            e['kzBase2'] = f"{TEX_KTX_REL}/pl_{c['plate2']}_base.ktx2"
+            e['kzNh2'] = f"{TEX_KTX_REL}/pl_{c['plate2']}_nh.ktx2"
+        e['kzNoise'] = f'{TEX_KTX_REL}/kz_noise.ktx2'
+        e['plateM'] = c['plateM']
+        if c.get('tile'):
+            e['texture_source'] = {'origin': 'Codex seamless tile %s covering %s m, de-lit, height/normal/wet mask '
+                                             'derived in tools/matlib/kzkit.py' % (c['tile']['file'], c['tile']['cover_m']),
+                                   'licence': c['tile']['licence']}
+        if c.get('scan'):
+            e['texture_source'] = {'origin': 'CC0 scan %s (%s), resized to %d px; kit layers on top; recolour in '
+                                             'tools/matlib/kzkit.py SCANS' % (c['scan']['asset'], c['scan']['url'],
+                                                                              c['scan']['res']),
+                                   'licence': c['scan']['licence']}
+        e['kz'] = {k: v for k, v in c.items() if k not in ('note',)}
+        e['three']['kit'] = ('kzShade(material, cfg) from materials/kzshader.js with KZM[%s] from '
+                             'materials/kzmaterials.js; library textures above are the fallback.' % m['id'])
+        if c.get('note'):
+            e['three']['kit_note'] = c['note']
     return e
 
 
@@ -706,7 +767,17 @@ def main():
         scene, cam, bmat = bake_setup()
         for s in sets:
             t = time.time()
-            stats[s['sid']] = write_set(s, plate_px(s) if s.get('plate') else bake_set(scene, cam, bmat, s))
+            if s.get('gen'):
+                px = getattr(kzkit, 'gen_' + s['gen'])(*dims(s))
+            elif s.get('plate'):
+                px = plate_px(s)
+                if s['plate'].get('hybrid'):              # plate albedo + procedural facets (height, roughness)
+                    pp = bake_set(scene, cam, bmat, s)
+                    px['hmw'][..., 0] = pp['hmw'][..., 0]
+                    px['orm'][..., 1] = pp['orm'][..., 1]
+            else:
+                px = bake_set(scene, cam, bmat, s)
+            stats[s['sid']] = write_set(s, px)
             log(f"baked {s['sid']:16s} {dims(s)}  {time.time() - t:5.1f}s  {stats[s['sid']]}")
         for ob in list(bpy.data.objects):
             bpy.data.objects.remove(ob)
@@ -714,8 +785,43 @@ def main():
         json.dump(stats, open(STATS, 'w'), indent=1)
     STATS_CACHE.update(stats)
     macro = load_image('kz_macro', os.path.join(TEX_PNG, 'kz_macro_base.png'), 'Non-Color')
+    # ---- shader kit (3d/research/shaders): plates, hex/board/biplanar sampling, overlays ----
+    kzkit.build_hexgrid(B, new_group, sock)
+    kzkit.build_deriv(B, new_group, sock)
+    names, scan_assets = set(), {}
+    for mid, spec in SCAN_INFO.items():
+        a, res, src = kzkit.prepare_scan(mid, spec, TEX_PNG, kzimg.write_png)
+        scan_assets[a] = (res, src)
+    for mid, spec in TILE_INFO.items():
+        a, res, seam = kzkit.prepare_tile(mid, spec, TEX_PNG, kzimg.write_png)
+        log(f'tile {a}: {res}px, seam ratio {seam:.2f}')
+        scan_assets[a] = (res, {'origin': f'Codex seamless tile refs/gen/{spec[0]}.png ({spec[1]} m)',
+                                'licence': 'self-made for this project (owner-approved)'})
     for m in L.MATERIALS:
-        build_material(m, build_kzm(m, macro), stats.get(m.get('tex_from', m['id']), {}))
+        c = KIT.get(m['id'])
+        if c:
+            for n in (c['plate'], c.get('plate2')):
+                if n and n not in scan_assets:
+                    names.add(n)
+    kzkit.prepare_plates(names, TEX_PNG, kzimg.write_png)
+    names |= set(scan_assets)
+    SCAN_ASSETS.update(scan_assets)
+    pl_imgs = {n: {'base': load_image(f'pl_{n}_base', os.path.join(TEX_PNG, f'pl_{n}_base.png'), 'sRGB'),
+                   'nh': load_image(f'pl_{n}_nh', os.path.join(TEX_PNG, f'pl_{n}_nh.png'), 'Non-Color')}
+              for n in sorted(names)}
+    H = dict(B=B, new_group=new_group, sock=sock, settings_iface=settings_iface, set_inputs=set_inputs,
+             core_consts=core_consts, SETTINGS=SETTINGS,
+             legacy_emis=lambda mid: (load_image(f'{mid}_emis', os.path.join(TEX_PNG, f'{mid}_emis.png'), 'sRGB')
+                                      if os.path.exists(os.path.join(TEX_PNG, f'{mid}_emis.png')) else None))
+    for m in L.MATERIALS:
+        c = KIT.get(m['id'])
+        if c:
+            kzm = kzkit.build_kzm_kit(m, c, pl_imgs[c['plate']], pl_imgs.get(c.get('plate2')), H)
+        else:
+            kzm = build_kzm(m, macro)
+        build_material(m, kzm, stats.get(m.get('tex_from', m['id']), {}))
+    kzkit.write_kzmaterials(os.path.join(ROOT, '3d', 'materials', 'kzmaterials.js'), KIT_ALL)
+    kzkit.write_kzshader(os.path.join(ROOT, '3d', 'materials', 'kzshader.js'))
     for sc in list(bpy.data.scenes):
         sc.world = None
     for coll in (bpy.data.worlds, bpy.data.meshes, bpy.data.cameras):
@@ -730,6 +836,17 @@ def main():
     ktx_path = os.path.join(ROOT, '.scratch', 'matlib', 'ktx_status.json')
     ktx = json.load(open(ktx_path)) if os.path.exists(ktx_path) else {}
     set_list = []
+    for n in sorted(names):
+        res, src = SCAN_ASSETS.get(n, (512, None))
+        set_list.append({'set': 'pl_' + n, 'size': [res, res], 'kit_plate': n,
+                         'source': src or {'origin': 'self-made Codex plate (refs/gen/sheet-tex-*.png), prepared by '
+                                           '3d/research/shaders/tools/prep_textures.py + tools/matlib/kzkit.py fixes',
+                                           'licence': 'self-made for this project (owner-approved)'},
+                         'files': {'base': f'{TEX_KTX_REL}/pl_{n}_base.ktx2', 'nh': f'{TEX_KTX_REL}/pl_{n}_nh.ktx2'},
+                         'srgb_base': True, 'close_up': True, 'orm_mips': None,
+                         'ktx2': ktx.get('pl_' + n, {'encoded': False})})
+    set_list.append({'set': 'kz_noise', 'size': [256, 256], 'files': {'base': f'{TEX_KTX_REL}/kz_noise.ktx2'},
+                     'srgb_base': False, 'close_up': False, 'orm_mips': None, 'ktx2': ktx.get('kz_noise', {'encoded': False})})
     for s in sets:
         W, H = dims(s)
         kinds = ['base'] if s.get('macro') else ['base', 'orm', 'nh'] + (['emis'] if 'emissive_map_scale' in

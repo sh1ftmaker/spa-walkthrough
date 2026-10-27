@@ -1,0 +1,45 @@
+{
+ "scores": {
+  "likeness": 3,
+  "silhouette_proportion": 4,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 3,
+  "variation": 4
+ },
+ "fixes": [
+  "Glyph geometry: in canonical.jpg the 火 and 湯 characters are sheared/broken (stray wedge strokes, disconnected parts), unlike the clean brush characters in sheet-mod-lights item 6 and lookbook 04. Fix the stroke outline/boolean at LOD0 so each glyph is a closed shape, extrude 6-8 mm. (The 川霧 lintel glyphs are clean, so the vertical-board text path is the issue.)",
+  "Frame colour (carried from r1 and r2, NOT landed): outer frame still bright orange new hinoki. Sheet shows a dark weathered 0.07 m timber frame with a thin gilt inner fillet. Darken to aged brown-black (value ~0.1), keep the gilt fillet, add a 0.03 m bevel.",
+  "Wall mount: sheet side view has two black iron brackets standing the board 0.20 m off the wall; canonical still shows a slab leaning on the wall. Add two 0.05 x 0.05 m iron arms with bolts and 0.20 m total depth (wall variant).",
+  "LOD2/LOD3: gilt is 3 plain orange rectangles on a dark slab, frame lost at LOD2 on the wall variant (see sheet_34). At LOD2 keep the frame edge and unequal glyph blocks; at LOD3 bake the real text into the quad albedo (10 tris is enough).",
+  "Gilt on board: reads as orange copper with mottled pitting; target flat warm gold (#C9962E) with crisp edges. The lintel (川霧) has good text but a flat cap plank; give it a 0.05 m raked upsweep and a darker frame.",
+  "Standing variant: feet are small blocks and the cap is a bare curved plank; add a 0.06 m footing plate and tenon blocks at the crossbar."
+ ],
+ "library_issues": [
+  "lacquer_black missing, so the board is a dark wood stand-in that reads brown-grey rather than black lacquer.",
+  "hinoki pale: frames glow orange.",
+  "gilt material lacks a distinct gold-leaf look (reads as copper paint)."
+ ],
+ "verdict": "revise",
+ "summary": "Overall form (tall 0.6 x 2.4 m board with inset gilt border, standing and lintel variants) matches the sheet and three seeds differ well. Held to revise by broken 火/湯 glyph geometry on the hero board, still-bright orange frame, missing wall brackets, and LOD2/3 reducing text to rectangles.",
+ "earlier": {
+  "r1": {
+   "darker frame": "not landed",
+   "real glyph geometry": "landed but 火/湯 are now malformed",
+   "wall brackets": "not landed",
+   "LOD2/3 stacked blocks": "landed",
+   "lintel board": "landed (lintel.jpg)",
+   "standing joinery": "partly"
+  },
+  "r2": {
+   "deeper frame/relief": "partly",
+   "brackets": "not landed",
+   "LOD baked text": "not landed",
+   "gilt clean": "partly",
+   "lintel raked cap": "not landed",
+   "standing feet": "not landed"
+  }
+ },
+ "asset": "signboard_kanji",
+ "round": 3
+}

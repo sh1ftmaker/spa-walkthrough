@@ -1,0 +1,26 @@
+{
+ "asset": "signboard_kanji",
+ "round": 2,
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 4,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 3,
+  "variation": 4
+ },
+ "fixes": [
+  "Frame is a thin 0.04 m orange moulding around a flat board. Sheet shows a raised thick timber frame (~0.07 m face, 0.10 m deep) with carved relief characters and a gilt inner fillet. Deepen the frame to 0.08 m proud of the face, bevel it, and extrude the characters 6-8 mm so there is real relief and shadow.",
+  "Wall mount: sheet side view shows two black iron brackets standing the board 0.20 m off the wall. Canonical shows the board just leaning on the wall with no hardware. Add two 0.05 x 0.05 m iron bracket arms with a 0.20 m total depth for wall mount, and a tilt-free upright.",
+  "LOD2 and LOD3 collapse the text to 1 to 3 orange rectangles, which reads as a lit window, not a kanji board. Keep a single vertical stroke column of 3 stacked glyph blocks with unequal widths plus the frame colour edge; at LOD3 bake the albedo of the real text onto the quad (10 tris is enough).",
+  "Gilt text reads as orange rust speckle with a mottled noise. Target a flat, slightly warm gold with a clean edge; reduce albedo breakup in the glyph mask and sharpen edges (the 湯 glyph is ragged).",
+  "Lintel: top kasagi cap is a plain flat plank overhang, wood frame colour reads orange. Add a 0.05 m upsweep raked cap with end-grain bevel, and a darker frame to match the concept's black lacquer frame with gilt inner line.",
+  "Standing variant: feet are tiny blocks and the crossbeam cap is bare; add a 0.06 m footing plate and a second crossbar at 60% height."
+ ],
+ "library_issues": [
+  "gold_leaf and lacquer_black missing: glyphs read as orange rust, board reads brown-black instead of black lacquer (known; library).",
+  "hinoki frame too orange and saturated."
+ ],
+ "verdict": "revise",
+ "summary": "Reads as the concept's vertical kanji board and the lintel 川霧 board is recognisable. Construction is shallow: flat board, thin frame, no relief or iron hardware. Seeds vary well (wall, standing, B1 level board). LOD2/3 lose the identity and read as a lit panel."
+}

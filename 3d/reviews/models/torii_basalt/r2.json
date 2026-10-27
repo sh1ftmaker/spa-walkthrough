@@ -1,0 +1,26 @@
+{
+  "asset": "torii_basalt",
+  "round": 2,
+  "scores": {
+    "likeness": 4,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 3
+  },
+  "fixes": [
+    "Post cladding (priority 1): the plates read as crumpled foil or hammered metal, with fine low relief (Rock amp 0.02 m, cell 0.35 m) and smooth post outlines. The concept posts are clad in chunky irregular polygonal columnar plates about 0.45-0.65 m across, with 0.04-0.06 m deep dark seams and bumpy, broken outlines. Target: cell 0.5 m with +-20% jitter, outline displacement 0.06-0.08 m, crack depth 0.05 m, crack width 0.15-0.18. Apply the same plate language to the kasagi, shimaki and nuki faces, which in the concept are clad in the same cobbled plates.",
+    "Stone value and finish: in the canonical the posts read mid grey-brown and matte. On the LOD sheet they show a blue sheen and white granite-like speckle, which also shows on LOD2/LOD3. The concept is near-black (albedo about 0.03-0.05) with glossy plate faces and warm-lit plate edges. Drop the stone tint from 0.35x to about 0.15-0.2x, lower roughness on the plate faces about 0.15 and keep the seams rough, and remove the speckle (see library_issues).",
+    "Base lamps: the lamp niches render as flat white 0.25 x 0.20 m rectangles that read as LED tiles, and their colour is too cool and white. In the concept, warm amber uplights (2200-2700 K) sit on top of the plinth at the foot of each post and wash about 2 m up the post, picking out the plate edges. Move the emitters to the plinth top face (2 per post, aimed up), recess them so no emitter card is visible, and tint them amber. The canonical also shows floating white light cards in frame (left and right, at about 1 m height); set camera visibility off on those lights.",
+    "LOD2 phone test: both LOD2 panels in phone-lod2-lod3.jpg (and the matching panels on sheet.jpg) are empty, so the object is out of frame at the 35 m switch distance. LOD2 recognition has never been verified. Fix the camera framing for this asset and re-render before the next round. LOD3 at 80 m reads clearly as a torii, shaded and as a silhouette.",
+    "Plinths: they are two neat, near-rectangular tiers, which looks too tidy. The concept plinth is a rough stacked-boulder footing about 2.2-2.4 m wide x 1.0 m, overhanging the post by about 0.4-0.5 m per side, with an irregular top edge. Target: 3-5 boulder lumps per plinth, top height jitter +-0.1 m, and no visible box edges at LOD0/1.",
+    "Seed variation and plaque: the seeds differ only in speckle and plaque tint, and on seed 3 the plaque field and characters go salmon-pink instead of gold-on-black. For a count-1 hero, shape variation matters little, but clamp the plaque and bronze tint so every seed keeps gold characters and a gold frame on a near-black field, as in the concept."
+  ],
+  "library_issues": [
+    "basalt_dry shows high-frequency white speckle (granite look) and a cool blue specular sheen under the LOD-sheet light. The concept basalt is near-black with warm highlights, so the speckle layer should be much weaker or removed.",
+    "The cool white emissive on the lamp niche inserts (lantern_paper at emissive_level 1.0 reads white rather than amber at this size): check the lantern_paper emission colour temperature."
+  ],
+  "verdict": "revise",
+  "summary": "Proportions and the main reads are right: it is unmistakably the Basalt Gate. The upswept kasagi, double beam, through-nuki, gold 火山湯 plaque and tapered thick posts all match the sheet, and the LOD3 silhouette is excellent. It falls short of the concept on surface character: the posts look like crumpled foil instead of chunky glossy black columnar plates, the stone is too light and speckled, and the base lamps read as white tiles rather than amber uplights washing the posts. The LOD2 phone test rendered empty and must be re-run."
+}

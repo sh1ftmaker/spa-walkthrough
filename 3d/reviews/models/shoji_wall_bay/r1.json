@@ -1,0 +1,28 @@
+{
+  "asset": "shoji_wall_bay",
+  "round": 1,
+  "reviewer": "independent model reviewer (mrev1_g), did not build the generator",
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 4
+  },
+  "fixes": [
+    "Rock surround form: the rock is a few large flat-faceted shards that read like crumpled foil or paper, and the outline is a near-rectangular slab with a straight back. The sheet surround is a stack of distinct rounded basalt boulders, mostly 0.3-0.6 m, with a lumpy crown of 4-6 boulders that overhang the head beam by about 0.15-0.25 m. Build it from clustered rounded_rock pieces (12-20 at LOD0). LOD0 sits at about 2.2k of a 3k budget, so there are about 800 tris to spend on this.",
+    "Depth and side profile: the bay is 0.4 m deep, so in 3/4 view it reads as a relief panel stuck on a wall. The sheet side view is 1.2 m deep: a thick rock pier with the timber frame set about 0.3-0.4 m back from the rock face, and a small timber hisashi or kamoi canopy projecting about 0.35 m at the head. Raise the depth to 0.8-1.2 m, recess the frame, and add the projecting head board on short brackets.",
+    "Plinth and sill: the 'window' layout (the canonical seed 1) puts a thin 0.04 m plank sill on the rock. The sheet's defining base is a full-width basalt plinth about 0.9-1.0 m tall, wider than the surround above it, topped by a flat stone ledge about 0.3 m deep that carries the plants and lanterns. Seed 2 ('low') is close to this. Make it the default or canonical layout, give the plinth a flat dressed-stone top, and widen it by 0.1-0.15 m per side past the jambs.",
+    "Timber frame: the posts and head beam are about 0.08-0.10 m and read thin. The sheet frame has about 0.18-0.2 m posts with square cap blocks at the head (about 0.22 m cube), a 0.2 m kamoi beam, and a koshi kick-board 0.25-0.3 m tall under the shoji. Thicken the frame, add the post-head blocks, and default the koshi board on. Use a finer kumiko grid of 4 x 7 or 4 x 8 per panel; the current 3 x 5 reads coarse against the sheet.",
+    "Rock shading: the surface carries a strong blue-white specular sheen on every facet. The sheet rock is near-black and matte, with warm rim light only on the edges facing the lanterns and shoji. Use the dry setting (higher roughness, about 0.75+) on the surround, and keep the wet variant for the crown or drip areas only.",
+    "Sill plants: the bonsai and moss balls are about 0.25 m cartoon blobs. The sheet has 0.5-0.8 m potted shrubs or grasses in round ceramic pots at each end, plus one taller shrub (about 1 m) against the jamb. Scale them up to 0.5-0.8 m and add a ceramic or iron pot. The leaf material is a library gap; see library_issues."
+  ],
+  "library_issues": [
+    "No foliage material: the plants use moss-green tinted washi, which reads plastic and cartoon-like.",
+    "No moss material: the sheet shows yellow-green moss tufts in the rock crevices and on the crown (known gap).",
+    "basalt_dry: even the 'dry' setting shows a glossy blue specular sheen in Cycles. Check its roughness and specular tint in the library."
+  ],
+  "verdict": "revise",
+  "summary": "The core read is right: a glowing kumiko shoji in a timber frame inside dark basalt, with lanterns and plants on the sill. It is recognisable at the LOD2 and LOD3 phone distances, and the window/low/tall layouts plus ranma and panel counts give real variation. Against the sheet it is too shallow (0.4 m vs 1.2 m) and has no hisashi. The rock is faceted shards instead of stacked rounded boulders, the frame is thin, and the plants are toy-scale. Rebuild the surround as boulders, add depth and a canopy, make the plinth layout canonical, and thicken the frame."
+}

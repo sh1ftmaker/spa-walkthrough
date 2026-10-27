@@ -29,7 +29,9 @@ argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
 ONLY = set(argv[argv.index('--only') + 1].split(',')) if '--only' in argv else None
 SAMPLES = int(argv[argv.index('--samples') + 1]) if '--samples' in argv else 256
 VARIANTS = [('neon_tube', 'cyan', {}), ('hinoki', 'dark_timber', {}), ('hinoki', None, dict(wear=0.7)),
-            ('water_still', 'mirror', {}), ('basalt_dry', None, dict(wetness=0.5))]
+            ('water_still', 'mirror', {}), ('basalt_dry', None, dict(wetness=0.5)),
+            ('noren', 'vermilion', {}), ('noren', 'cream', {}), ('noren', 'black', {}),
+            ('hinoki', 'wet_oiled', {}), ('hinoki', 'stained', {}), ('hinoki', 'walnut', {}), ('ceramic', 'celadon', {}), ('terry', 'cream', {}), ('foliage_pine', 'sage', {}), ('bronze', 'smooth', {}), ('koi', 'red_orange', {}), ('koi', 'gold', {}), ('maple_leaf', 'orange', {}), ('ceramic', 'tenmoku', {}), ('lacquer_dark', 'vermilion', {}), ('copper', 'patinated', {}), ('bronze', 'verdigris', {}), ('food', 'yolk', {}), ('food', 'egg_white', {}), ('skin', 'medium', {}), ('skin', 'deep', {}), ('hair', 'grey', {}), ('noren', 'amber', {}), ('noren', 'indigo_yukata', {}), ('ash_clay', 'ash_grey', {})]
 SPHERE_C = Vector((-0.62, 0.0, 0.52))
 SWATCH_C = Vector((0.62, 0.12, 0.47))
 
@@ -37,12 +39,14 @@ SWATCH_C = Vector((0.62, 0.12, 0.47))
 def base_rig(sc):
     """Floor, key, fill, cards, dots, camera (shared by every preview)."""
     floor = R.box('PV_Floor', (0, 2.0, -0.01), (14, 14, 0.02), R.simple_mat('PV_FloorMat', (0.03, 0.03, 0.032), 0.6))
-    key = R.point('PV_Key', (-1.55, -1.75, 2.05), R.KEY_W, 0.08)
-    fill = R.area('PV_Fill', (2.4, -0.9, 1.3), (0, 0, 0.5), R.FILL_W)
+    key = R.point('PV_Key', (-1.55, -1.75, 2.05), R.KEY_W, 0.08, color=R.NEUTRAL)
+    amb = R.point('PV_Amber', (1.9, -1.2, 1.1), R.KEY_W * R.AMBER_SPLIT, 0.06)
+    fills = R.teal_points('PV_Fill', (2.4, -0.9, 1.3), (0, 0, 0.5), R.FILL_W * 1.2)
+    fill = fills[0]
     cards = R.cards((1.3, -0.45, 0.16), (0.0, -3.55, 1.0))
     dots = R.env_dots()
     cam = R.camera(sc, (0.0, -3.55, 1.38), (0.02, 0, 0.42), lens=48)
-    return dict(floor=floor, key=key, fill=fill, cards=cards, dots=dots, cam=cam)
+    return dict(floor=floor, key=key, amb=amb, fill=fill, fills=fills, cards=cards, dots=dots, cam=cam)
 
 
 def scene_sphere(mid, variant, params):
@@ -86,7 +90,7 @@ def scene_pool(mid, variant, params):
 
 def scene_emissive(mid, variant, params):
     objs = [R.box('PV_DarkWall', (0, 0.62, 1.2), (4.0, 0.1, 2.6), R.neutral())]
-    if mid in ('lava', 'lava_flow'):
+    if mid in ('lava', 'lava_flow', 'lava_molten'):
         p = R.box('PV_Panel', (0.0, 0.3, 0.75), (1.8, 0.05, 1.2))
         p.rotation_euler.x = math.radians(90) * 0
         matlib.assign(p, mid, variant=variant, **params)
@@ -94,23 +98,21 @@ def scene_emissive(mid, variant, params):
     elif mid == 'neon_tube':
         y, r = 0.30, 0.016
         pts = [(math.cos(a) * 0.32 - 0.45, y, math.sin(a) * 0.32 + 0.9) for a in
-               [i * 2 * math.pi / 24 for i in range(25)]]
-        for i in range(24):
-            c = R.cylinder(f'PV_NeonC{i}', pts[i], pts[i + 1], r, seg=16)
+               [i * 2 * math.pi / 72 for i in range(73)]]
+        for i in range(72):
+            c = R.cylinder(f'PV_NeonC{i}', pts[i], pts[i + 1], r, seg=48)
             matlib.assign(c, mid, variant=variant, **params)
             objs.append(c)
         for i, (a, b) in enumerate((((0.15, y, 0.55), (0.15, y, 1.3)), ((0.15, y, 1.3), (0.75, y, 1.3)),
                                     ((0.45, y, 0.55), (0.45, y, 1.3)))):
-            c = R.cylinder(f'PV_NeonS{i}', a, b, r, seg=16)
+            c = R.cylinder(f'PV_NeonS{i}', a, b, r, seg=48)
             matlib.assign(c, mid, variant=variant, **params)
             objs.append(c)
     elif mid == 'lantern_paper':
-        c = R.cylinder('PV_Lantern', (-0.35, 0.32, 0.35), (-0.35, 0.32, 1.0), 0.24, uv='object')
-        matlib.assign(c, mid, variant=variant, **params)
-        objs.append(c)
-        c2 = R.cylinder('PV_Lantern2', (0.45, 0.32, 0.25), (0.45, 0.32, 0.65), 0.15, uv='object')
-        matlib.assign(c2, mid, variant=variant, **params)
-        objs.append(c2)
+        paper = matlib.material(mid, variant=variant, **params)
+        ring = matlib.material('lacquer_dark')
+        objs += R.lantern('PV_Lantern', (-0.35, 0.32, 0.35), 0.65, 0.26, paper, ring)
+        objs += R.lantern('PV_Lantern2', (0.45, 0.32, 0.25), 0.4, 0.16, paper, ring)
     elif mid == 'lantern_andon':
         for i, (x, s) in enumerate(((-0.35, 0.3), (0.45, 0.22))):
             b = R.box(f'PV_Andon{i}', (x, 0.3, 0.2 + s * 0.9), (s, s, s * 1.6), uv='face', bevel=0.0)
@@ -145,7 +147,9 @@ def main():
             rig['cam'].rotation_euler = (Vector((0.02, 0, 0.42)) - rig['cam'].location).to_track_quat('-Z', 'Y').to_euler()
         rig['floor'].location.z = -2.4 if pool else -0.01      # the floor would cap the pool
         rig['key'].data.energy = R.KEY_W * (0.12 if emissive_scene else 1.0)
-        rig['fill'].data.energy = R.FILL_W * (0.3 if emissive_scene else 1.0)
+        rig['amb'].data.energy = R.KEY_W * R.AMBER_SPLIT * (0.12 if emissive_scene else 1.0)
+        for f in rig['fills']:
+            f.data.energy = R.FILL_W * 1.2 / 3 * (0.3 if emissive_scene else 1.0)
         for c, x in zip(rig['cards'], (-0.12, 0.12)):
             c.location = (x, -0.75, 0.14) if not pool else (x - 1.75, 0.0, 0.18)
         R.bloom(sc, emissive_scene)

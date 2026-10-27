@@ -1,0 +1,27 @@
+{
+  "asset": "chozubachi",
+  "round": 2,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 3,
+    "variation": 3
+  },
+  "fixes": [
+    "Overflow streams (all LODs): 3-5 ribbons 1.0-1.7 cm wide, opaque and cream-white, so they read as plastic strips or rope taped to the stone. The concept (sheet-mod-arrival #2 front) shows one 0.30-0.45 m sheet curtain falling from the notch that breaks into 2-3 braids on the lower third. Replace them with a single curved sheet 0.3-0.4 m wide at the lip, narrowing to 0.2 m, with 2 strands 3-4 cm wide either side. It should be translucent turquoise (waterfall tint around 0.35/0.6/0.6 with alpha), not cream. Keep one 0.05 m strand at LOD2 and none at LOD3.",
+    "Outer wall relief: the planar cuts are 1.2-3.5 cm deep and the big cuts 4-7 cm, so the body reads as a smooth lumpy drum. The concept is a stack of chunky faceted basalt blocks with cracks 6-12 cm deep and sharp lit edges. Raise the small facet depth to 0.04-0.08 m and the large to 0.10-0.15 m, and add 2-3 horizontal ledge breaks (steps of 0.05-0.1 m) so the silhouette edge is stepped, not smooth. Do the same on the rim: the rim edge should be broken into 6-10 chunks with 2-5 cm height jumps.",
+    "Foot and rubble skirt: the rubble is a few small black shards (0.1-0.25 m) plus a flat polygon puddle decal. The concept has a wide skirt of rounded-angular boulders 0.2-0.45 m that merges into the base and spreads the footprint to 1.6 m, with a few rocks reaching 0.3-0.4 m high. Raise the rubble half-size to 0.10-0.22 m, the count to 10-16, and partly embed them (sink 30-40%). Clip the splash puddle under the rubble so its hard polygon edge never shows.",
+    "Spout joint: the arm meets the post in a clean T or elbow and reads as a plumbing fitting. The concept shows the arm lashed to the post with 4-6 turns of rope and a short stub 3-5 cm proud on the far side, a node ring just below the joint, and a 30-40 deg angled cut at the mouth. Add a rope band about 0.06 m tall at the joint (the rope slot exists but is not visible in canonical), a node at 0.08 m below, a capped top node, and a raked mouth cut.",
+    "Proxy height: every LOD fails 'h 1.31-1.39 > proxy 0.90'. The concept total (post top) is about 1.4-1.5 m against its 1 m bar, so the generator is right and the proxy row is wrong. See the proposed shared-file change. Do not shrink the post to fit 0.9.",
+    "LOD3 and LOD2 body: the body is a straight-sided frustum (65-71 tris at LOD3), so at 39 m it reads as a bucket or flowerpot. Keep 2 notches in the rim profile (overflow notch plus one chip) and a 2-3 step bulge in the outline, and keep the foot flare as a separate wider ring at 0.15 m. Spend about 20 extra tris at LOD3 on that; there is budget (80)."
+  ],
+  "library_issues": [
+    "basalt_wet: the canonical, styles and LOD sheets all show hard-edged rectangular specular or albedo patches (square tiles of bright highlight next to matte black) across the body. This looks like a box-projection UV seam or a tiling roughness map with no blend. Either the library texture lacks seamless tiling or the generator's box UVs need triplanar-style blending. Check the library first (other basalt_wet assets will show the same thing).",
+    "water_still: inside the basin it renders near black in the canonical, so the water level is hard to judge. In styles.jpg seed 4 the surface does sit about 1 cm under the rim, which is correct. The glow is runtime work, but the offline material should at least show a turquoise tint and the rim reflection so reviews can see the level.",
+    "waterfall: with emissive 0 and this tint it renders opaque cream. It needs transmission or alpha for thin sheets."
+  ],
+  "verdict": "revise",
+  "summary": "It reads as a stone basin with a bamboo spout and ladle, and the squat front proportion (about 1.9:1 width to height) and the water level just under the rim match the sheet. But it is a smooth faceted drum with shallow cuts, not the craggy block-built basalt of the concept. The overflow is a set of opaque cream ribbons instead of a turquoise sheet curtain, the rubble skirt is token, and the spout joint looks like plumbing. A basalt_wet tiling or UV artifact (square highlight patches) dominates the material read. At LOD2 and LOD3 it is a bucket with a stick. The seeds vary plan and height, but all read as the same drum."
+}

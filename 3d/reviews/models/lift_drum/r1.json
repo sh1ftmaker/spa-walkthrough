@@ -1,0 +1,19 @@
+{
+  "asset": "lift_drum",
+  "round": 1,
+  "scores": {"likeness": 3, "silhouette_proportion": 3, "construction_detail": 2, "material_use": 2, "lod_recognition": 2, "variation": 2},
+  "fixes": [
+    "Upper kumiko register (h = 4.5 m storey): the glazed band reads ~0.8 m tall over a ~3.1 m door storey; sheet-vs-lift-cable #1 and ref-b1-lobby show the glazing dominating (~2.9 m glazed over a ~2.4 m door storey, i.e. kumiko >= 45-55 % of storey height). Rebalance heights(): cornice at ~2.7 m, kumiko from ~2.9 m to the crown, so a 4.5 m storey reads as a glass lantern-drum, not a bronze kiosk with a clerestory.",
+    "Kumiko pattern: coarse 3x3 squares (~0.25 m cells) with diagonals barely visible. Sheet shows a fine square grid (~8-10 cells/m) with large shaped (pine/cloud) feature panels in the centre bays. Raise default lattice to 6-8 cells/m at LOD0, make the asanoha diagonals actually read (bar width 12-15 mm, proud 10 mm of the grid), and add one shaped feature panel per upper bay (pine silhouette cut in the washi backing is enough).",
+    "Crown/top: the module ends in a closed, lidded cap with a stray bright rectangle on the crown ring (top left of canonical). The drum is one storey of a continuous shaft (ref-spiral-stair, ref-b1-lobby): end each storey in an open band ring that stacks onto the next storey, add the 4-6 vertical bronze guide rods/mullions running past the crown as on the sheet, and remove the bright crown artefact.",
+    "Level plaque: glyphs float on a bronze rib and 火 is illegible (reads as broken strokes). Put them on a vertical hinoki board ~0.45 m wide x 2.4 m tall with a 30 mm bronze frame, raise glyphs 12 mm, glyph height ~0.32 m, check stroke integrity of 火 (likely a font-curve/fill-rule issue).",
+    "Bridge/balustrade: plain round posts with two rails and a mottled bronze handrail; no fret lattice visible even at LOD0. Sheet shows key-fret (Chinese lattice) infill panels between square posts at ~1.0 m pitch, rail height ~1.0 m, hinoki cap rail 60x40 mm. Make fret panels visible at LOD0/1, square posts 50 mm, hinoki (not bronze) handrail per the docstring.",
+    "LOD3 + seeds: LOD3 turns the balustrade into an opaque ~0.6 m solid ring wall and the drum into a box; keep the rail as a thin 2-quad band (alpha-free rail strip ~0.05 m) and the drum as an 8-12 sided cylinder with a lit band. Seeds 1-3 are visually identical (only 16 vs 18 slots); let the seed vary lattice density, lantern style, plaque side and glazing pattern so the five level copies don't look cloned."
+  ],
+  "library_issues": [
+    "bronze: reads as high-contrast mottled brown marble/tortoiseshell at metre scale (large noise blotches, almost no metallic specular). Should be dark patinated bronze with fine brushed anisotropy and clear edge highlights; noise scale is ~10x too large.",
+    "LOD sheet harness (not the generator): rows are misregistered (LOD0 and LOD3 rows empty, LOD1/LOD2 models drawn across row boundaries) and the ground plane texture floods each cell. Phone test switch distances (LOD2 @ 400 m, LOD3 @ 960 m) make a 16 m interior object a few pixels, so the recognition test is uninformative; interior lift drum switch distances should be in the 30-120 m range."
+  ],
+  "verdict": "revise",
+  "summary": "Recognisably a round bronze lift drum with lit doors, B1 plaque and well railing, and the 9 m balcony storey is a decent echo of the sheet. But at the default 4.5 m it reads as a squat bronze kiosk with a short clerestory and a closed lid rather than a tall glowing kumiko drum on a continuous shaft; the kumiko is coarse and plain, the plaque glyphs break, railings are bare bars, and the bronze material reads as mottled marble. Seeds produce no visible variation and the LOD harness output is broken, so LOD recognition can't be confirmed."
+}

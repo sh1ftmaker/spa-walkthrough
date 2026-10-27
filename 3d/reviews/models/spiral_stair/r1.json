@@ -1,0 +1,19 @@
+{
+  "asset": "spiral_stair",
+  "round": 1,
+  "scores": {"likeness": 3, "silhouette_proportion": 3, "construction_detail": 3, "material_use": 2, "lod_recognition": 2, "variation": 3},
+  "fixes": [
+    "1. Handrail: reads as a thin mottled copper strap (~6-8 cm). ref-spiral-stair and sheet-vs-stairs #3 RAIL DETAIL show a fat, round, glossy hinoki/lacquer rail ~12-14 cm diameter with a separate narrow bronze cap strip on top, sweeping continuously through landings. Make the body timber (hinoki or lacquer_dark), round or bullnosed at 0.13 m, with a 0.03 m bronze cap; it must be the brightest continuous curve in the shot, as in the concept.",
+    "2. Lantern density and type: canonical shows ~4 lanterns per visible half-turn, so the run reads dark. The concept puts a post lantern about every 2.5-3 m of rail, plus low floor andon at the tread edge on the well side. Set lantern_every to 2 for drum, add an optional low andon every 4th post at tread level, and make the lantern bodies taller (0.45 m by 0.22 m, washi_backlit, bronze roof cap).",
+    "3. LOD2/LOD3 treads: tread tops render near-white on LOD1-3 (sheet_34 rows 2-4, worst on seed 3), so the stair reads as paper or snow. At LOD3 the steps are disconnected boxes with gaps and the rail is a hairline. Keep basalt_wet albedo dark on the merged tread tops (check the baked or simplified UVs and normals; see library note). At LOD3 keep a continuous soffit ribbon (no gaps) and a 0.15 m rail band so the helix reads as one connected spiral ribbon.",
+    "4. Lava style (seed 3): diagonal struts and brackets poke out past the stringer as loose spikes (sheet_34 LOD0/1 col 3), which reads as broken geometry. sheet-ref-deep #02 shows a straight-run timber balustrade with heavy square posts (~0.18 m), a lantern on every other post, and a solid stringer. Trim the struts to end at the wall (or drop them), and give lava posts a 0.18 m section with a lantern every 2nd post.",
+    "5. Phone silhouette: at 35-60 m the single turn reads as a flat S or zigzag, not a helix. Render the review silhouette (and default instance) with turns >= 1.5, or add the inner-edge kerb or soffit lip so the curved underside shows. Target: you can tell at a glance that it winds round a core.",
+    "6. Seeds 1 and 2 differ only in rail infill (kumiko vs ring) and are otherwise identical in plan, soffit and door. Let the seeds also vary soffit depth visibly (0.8 vs 1.6 m carved rock band), landing count/position and door style (kasagi vs transom), so two drum seeds placed side by side do not look copy-pasted."
+  ],
+  "library_issues": [
+    "bronze: reads as rusty, mottled orange copper rather than dark oiled bronze with gold highlights (same issue on lift_car). The concept bronze is near-black brown with warm specular.",
+    "paving/basalt_wet: tread tops go white under the studio key at LOD1-3. Likely the roughness/specular is too low for broad flat faces, or the LOD UV/normal transfer is wrong. It reads correctly only on the LOD0 carved faces."
+  ],
+  "verdict": "revise",
+  "summary": "Right ingredients: carved stone treads, rock soffit, posted rail, lanterns and a landing door, and the drum turn's scale and pitch look plausible. But the rail, the hero element of ref-spiral-stair, is a thin copper strap instead of a fat glossy timber rail. Lanterns are too sparse, the low LODs fall apart into white disconnected blocks, the lava variant has stray struts, and the two drum seeds are near-identical."
+}

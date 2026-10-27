@@ -1,0 +1,86 @@
+{
+  "asset": "towel_folded",
+  "round": 5,
+  "reviewer": "independent model reviewer (mrev5_k), did not build the asset",
+  "rules_sha256": "024ea871984960c4af7351cb1987c369510be598fd9004f0989693c7cfb48e94",
+  "reviewed": [
+    "3d/renders/models/towel_folded/canonical.jpg",
+    "3d/renders/lod/towel_folded/sheet.jpg",
+    "3d/renders/lod/towel_folded/phone-lod2-lod3.jpg",
+    "3d/renders/lod/towel_folded/styles.jpg",
+    "refs/gen/sheet-ref-ground.png",
+    "lookbook/img/04-arrival-gate.jpg",
+    "lookbook/img/20-wave-grotto.jpg",
+    "lookbook/img/21-private-suite.jpg"
+  ],
+  "notes": [
+    "canonical.jpg has no concept-crop panel on its right side; the brief says it should.",
+    "No refs/gen/sheet-vs-* or sheet-mod-* concept sheet is listed for towel_folded in asset_list.csv; the concept sheet cited is sheet-ref-ground.png.",
+    "sheet.jpg size flags (proxy 0.30) are stale and ignored, per the brief. The generator docstring still says proxy 0.40 x 0.30 x 0.30 m; the current proxy is 0.40 x 0.34 x 0.34 m."
+  ],
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 4,
+    "lod_recognition": 3,
+    "variation": 2
+  },
+  "overall_10": 6.33,
+  "fixes": [
+    "LOD tier count (tools/gen/gen_towel_folded.py build(), tiers = {0: n, 1: 3, 2: 2}[lod]): LOD1 shows 3 towels, LOD2 shows 2, LOD3 shows 4 slabs, LOD0 shows 4-5. In sheet.jpg the silhouette goes 2 layers at LOD2 to 4 at LOD3, so the stack changes count at the switch. Target: every LOD uses the seeded n (4-5 towels). Fit LOD2 inside its 150-tri budget by dropping per-towel tris to about 24-26 (2 rings, no corner arcs, flat top with a 16 mm puff) so 5 towels plus tray stay under 150.",
+    "Drape form (style drape, styles.jpg panels 5-6): the cloth reads as a flat rigid board. The top flap is a flat disc inside the tub and the front is a straight vertical plane, not cloth wrapping a round rim. Target: lay the cloth on the rim circle (rim_r + 3 mm, 2-3 mm air gap, not a flat X-extrude), add a 0.03-0.04 m sag across the opening, put one soft fold down the front face, keep the front drop 0.12-0.15 m and back drop about 0.04 m, and give the cloth a 4-5 mm thickness so the hem reads as terry, not paper.",
+    "Visible fold (all stacks): the 9 mm crease is in the code, but canonical.jpg shows no fold line on any towel. The crease sits at a seeded x in [-0.35, 0.35] W, so it often falls out of frame or on the back. Target: put the main crease at x = +-W/3 on the top 2 towels of every seed, depth 9-10 mm, width 25-30 mm, with a second crease at the other third on alternate seeds. Confirm in canonical.jpg that a fold line is visible on the front face.",
+    "Roll (style roll, styles.jpg panel 4): reads as a plain tube on a walnut tray. The docstring promises a soft mid-length fold seam; _roll() has no mid seam (the body profile is one straight line). Target: add a 3-4 mm dip at mid-length, and make the roll tray optional. The concept roll sits on a lounger mattress (lookbook/img/20-wave-grotto.jpg), so the roll style should omit the tray or use a 10 mm pad. Keep rad 0.065-0.075 m.",
+    "Seed variation: yaw is still +-0.10 rad. The r3 target (+-0.15) and r4 target (+-0.15 with a 0.44 m tray) have not landed. Offsets (+-0.02 m) and count (4 vs 5) have landed, but the three seeds still look almost identical in sheet.jpg. Target: yaw +-0.15 rad with the tray widened to W + 0.04 m, pitch jitter +-3 mm per towel, and the visible fold in fix 3 moving across seeds."
+  ],
+  "library_issues": [
+    "terry (cream) normal: at canonical scale the cloth reads as horizontal ribbing striations, not terry loops. Target a loop-scale weave of about 2-3 mm with lower normal strength. Library fix, not generator geometry.",
+    "tub for the drape style: the generator does not model the tub, and styles.jpg uses an oke_bucket for context. Confirm the oke_bucket has the staves and copper hoop the concept shows (refs/gen/sheet-vs-bath-props.png, towel #2 bottom row) and that its rim sits at 0.30 m, r 0.20 m, to match the drape generator's default.",
+    "hinoki walnut tray: matte and reads correctly in canonical.jpg and styles.jpg. No change needed."
+  ],
+  "consistency": {
+    "r1": {
+      "colour cream, not lavender": "landed (canonical.jpg)",
+      "tray matte walnut, no chrome bevel": "landed",
+      "roll and drape styles present": "landed",
+      "LOD2/LOD3 recognisable": "partly (LOD2 2-tier vs LOD3 4-slab mismatch, see fix 1)",
+      "seed range wider": "partly (count yes, yaw no)",
+      "docstring count reconciled to 4-5": "landed"
+    },
+    "r2": {
+      "stack height 0.22-0.30 m with 4-5 towels": "landed (0.26-0.33 m computed)",
+      "LOD0/LOD1 budget": "landed (LOD0 420-516 of 700; LOD1 204 of 260)",
+      "LOD3 light top, about 60 tris": "landed (60)",
+      "tray dark walnut": "partly (reads medium brown, not dark)",
+      "drape lies over the rim": "landed in plan; flat-board read remains (fix 2)"
+    },
+    "r3": {
+      "pitch 54-56 mm": "superseded by r4 (62 mm with puff); accepted, not reversed",
+      "corner radius 40-50 mm": "landed (40-50 mm)",
+      "soft 8 mm edge roll": "landed (7 mm shoulder, 35 % edge band)",
+      "drape open sheet 0.4 m wide": "not landed; r4 set 0.30 m and that is what is built (0.27-0.28 m with s)",
+      "yaw +-0.15 rad": "not landed (+-0.10)",
+      "offsets +-0.02 m": "landed",
+      "fold crease moves across the width": "landed in code, not visible in render (fix 3)",
+      "LOD3 four slabs": "landed (4 boxes; reads as stripes at 10 m)"
+    },
+    "r4": {
+      "edge profile, no knife edge": "landed (rounded shoulder and edge band)",
+      "crease 8-10 mm, about 30 mm wide": "landed in code (9 mm, 20 mm sigma); not visible (fix 3)",
+      "TOWEL_T 0.046 m": "not exact (0.044 m); minor, accepted",
+      "PITCH 0.062 m, puff 16-18 mm": "landed",
+      "roll rad 0.065-0.075 m": "landed",
+      "roll tucked ends with ridges": "landed",
+      "roll mid-length soft seam": "not landed (fix 4)",
+      "tub 0.30 m tall, 0.40 m dia, staves, copper hoop, in towel generator": "moved out of the generator by design; check oke_bucket (library_issues)",
+      "drape front 0.12-0.15 m, back about 0.04 m, 0.30 m wide": "landed",
+      "offsets +-0.02 m": "landed",
+      "yaw +-0.15 rad": "not landed (fix 5)",
+      "terry library instead of NEW:linen": "landed (CSV and generator both say terry cream)",
+      "LOD2 under budget (116 of 120)": "landed (140 of 150)"
+    }
+  },
+  "verdict": "pass",
+  "summary": "The stack is the asset that works: a neat white stack of 4-5 soft towels on a walnut tray, about 0.26-0.33 m tall on a 0.40 x 0.30 m footprint, which matches the concept scale. The knife-edge, pitch, colour and tray problems from earlier rounds have landed. The weak parts are the drape, which reads as a flat board over the tub rather than cloth on a rim, and the roll, which reads as a plain tube. The fold crease is in the code but not visible in canonical.jpg. LOD2 has 2 towels against LOD3's 4, which is a regression to fix. Variation is weak: yaw is still +-0.10 and the seeds look almost identical. The score is 6.33, just over the pass line, and the pass rests on the stack. Fix the LOD tier count, the drape form and the visible fold first; the drape is the main reason this would not sit convincingly next to the suite and wave-grotto towels at real viewing distance."
+}

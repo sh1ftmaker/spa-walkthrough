@@ -1,0 +1,20 @@
+{
+  "asset": "noren",
+  "round": 2,
+  "scores": {"likeness": 3, "silhouette_proportion": 3, "construction_detail": 2, "material_use": 3, "lod_recognition": 4, "variation": 4},
+  "fixes": [
+    "Cloth form (LOD0/1): the panels render as rigid flat boards with straight hems; the documented pleats (0.5-2 cm) don't read at all. Concept: soft hanging cotton with gentle vertical ripples and a weighted hem. Raise the pleat amplitude to ~1.5 cm under the band and ~3-4 cm at the hem, with 4-6 ripples per panel, add a 2-3 cm forward belly in the lower third, and let the slit edges peel apart 2-4 cm at the hem. LOD0 is at ~430 of 640 tris, so there is room for 2 more columns per panel.",
+    "Hang/rod default: the concept (sheet-mod-lights #7) shows 5 chichi tab loops over a turned wooden rod with bronze end caps on a dark wall bracket. The default seeds mostly render a thin bronze tube with ball finials and a sleeve hang, and the canonical hides the rod behind the door lintel. Make tabs + hinoki rod the default for door noren (seeds %4 in {1,3,0}): 5 tabs (n_splits+2 minimum), each 0.07 m wide x 0.08 m tall, rod diameter 0.04-0.045 m with 0.06 m bronze caps, and visible bronze/iron L-brackets 0.10 m deep. Then re-shoot the canonical with the rod in view below the lintel.",
+    "Head band: a lighter, flat 0.08-0.12 m band runs across the top, which the concept doesn't show (its slits run up to the tab line, about 0.08 m below the rod). Drop the band's tone difference to within 5% of the cloth, or make it the same colour with only a stitched seam line, and start the slit no more than 0.10 m below the cloth top on door noren.",
+    "Split count, seed 1: the hero indigo door noren uses 3 splits; the concept hero has 2 panels with a single centre slit through the crest. Make seed 1 splits=2 and keep 3-5 splits for the wide and half variants.",
+    "LOD1/LOD2 crest: the simplified mark becomes stacked trapezoids plus bars that read like a lamp or pagoda, not a volcano. Keep a 5-7 vertex mountain silhouette with the notched snow-line, plus 3 thin wisp quads at LOD1, and a 4-vertex peak at LOD2 instead of the flat-topped trapezoid.",
+    "Depth/side: the concept side view shows 0.10 m total depth with the cloth hanging 0.06-0.07 m off the wall from the bracket. Confirm the cloth isn't hugging the rod plane (the canonical looks paper-flat against the doorway) and add a slight 2-3 degree outward hang under the rod."
+  ],
+  "library_issues": [
+    "noren (indigo): manifest tint [0.03,0.045,0.12] should be a deep navy, but it renders as a desaturated slate blue-grey (canonical, styles seed 1), with no visible slub weave or sashiko texture as in sheet-tex-cloth #1. Check the base texture and sheen (0.05) and the translucency lift; the target is a saturated navy around sRGB #1c2a4d with a visible weave at 1-2 m.",
+    "noren vermilion variant reads salmon-coral (around sRGB #e06a50); the concept (09 vermilion noren) is a deep madder red around #7e1e18. Darken and saturate the variant tint.",
+    "hinoki 'handled' on the rod reads pink-orange; the concept rod is a darker oiled or stained wood. This is the stained/dark wood gap being fixed."
+  ],
+  "verdict": "revise",
+  "summary": "The crest artwork, colour set, split-panel layout and the full/half/wide variants are right, and the LOD2/LOD3 silhouettes still read as a split curtain on a rod within tiny budgets. It doesn't yet look like cloth: the panels are flat rigid boards with no drape. The hero default also misses the concept's tab-loops-on-wooden-rod-with-bracket hang, has an extra light head band and the wrong split count. The indigo and vermilion colours are off, which is a library issue."
+}

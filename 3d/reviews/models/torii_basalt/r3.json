@@ -1,0 +1,45 @@
+{
+  "asset": "torii_basalt",
+  "round": 3,
+  "scores": {
+    "likeness": 4,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 5,
+    "variation": 4
+  },
+  "fixes": [
+    "Nuki height and thickness (priority 1): the nuki sits too low under the shimaki and is too thin. Measured on sheet-mod-arrival (front view, kasagi tip to tip = 415 px = 9 m, ~46 px/m), the nuki centre is at 0.68 H above grade, it is ~0.8 m deep (vertically), and the clear gap between the shimaki soffit and the nuki top is only ~0.45 m (0.06 H). 04-arrival-gate agrees: nuki centre at ~0.70 H, gap about half the nuki depth. On the LOD0 sheet (seed 1, ~108 px/m in a 4x crop), the nuki centre is at 0.61 H, the nuki is ~0.65 m deep and the gap is ~1.4 m (0.17 H), so the window above the nuki is about 3x too tall. Target: nuki centre 0.68 H, nuki depth 0.75-0.8 m, shimaki-to-nuki gap 0.45-0.55 m. Keep the plaque overlapping both the shimaki and the nuki as it does now. Note: r1 called the nuki height 'about right at ~60 %'. This revises that figure on the strength of the measurements above.",
+    "Kasagi tips: the upsweep now sits in the right place (centre level, rise ~0.45 m at the tips, as r1 asked), but the last ~0.8 m thins into pointed horns. These read as spikes in the LOD0 sheet and the LOD2 phone silhouette. The concept tips stay full depth (~0.6-0.7 m) and end in a blunt, slightly raked cut face. Target: spread the rise over the outer 1.5-2.0 m (not ~0.8 m), keep the beam depth at the tip >= 90 % of the centre depth, and end the tip in a cut face raked 10-15 deg outward. Keep the total rise at 0.4-0.5 m.",
+    "Post cladding (r2 fix 1, not landed): the posts and beams still read as crumpled foil. In the canonical crop the plates are ~0.2-0.3 m chips with bright silver edge glints. The concept shows chunky polygonal plates ~0.45-0.65 m across, separated by dark recessed seams. Keep r2's targets: cell 0.5 m +-20 %, seam depth 0.05 m, plate-scale outline bump 0.06 m. Also remove the low-frequency bow, which is a different thing from plate bump: the left post in the LOD0 sheet bulges and kinks at mid-height. Hold the long-wavelength (> 2 m) outline deviation <= 0.03 m (r1's target) so the post edges read as straight tapered lines with a plate-scale ripple. Also tighten the taper: the concept post is ~1.55 m at the base and ~1.0-1.1 m under the shimaki (top/base 0.63-0.73, measured on sheet-mod-arrival and 04). The model measures ~1.39 m to ~1.1 m (0.79). Target: base 1.5-1.55 m, top 1.05-1.1 m.",
+    "Plaque glyphs: the frame and black field landed, but 火山湯 is too small and too dim to read at the gate's viewing distance. The glyphs fill ~30 % of the plaque's inner width (LOD0 sheet and canonical crop). In sheet-mod-arrival they fill ~60 % (each character ~0.5 m wide x 0.45 m tall on a ~0.87 m inner field) and read bright gold. Target: glyph em size ~0.5-0.55 m, characters spaced to fill ~85 % of the inner height, and bronze with low wear/roughness on the glyph faces so they read gold, not dull orange. Clamp the bronze tint so seed 3 does not drift pink (the LOD1 seed 3 frame is still salmon). At LOD3, darken the plaque field to near-black: it currently renders mid-grey with an orange rim.",
+    "Plinths (r2 fix 5, not landed): they are still two neat stacked pillow-tiers with continuous horizontal joints, about 2.36 m wide x 0.97 m tall. The size is right; the build is not. The concept footing is a single rough cobbled block made of 3-5 irregular boulders with an uneven top ledge on which the uplights sit. Target: 3-5 boulder lumps per plinth, no continuous horizontal joint, top height jitter +-0.1 m, a slight 5-8 deg batter on the faces.",
+    "Stone value (generator-side portion of r2 fix 2): in the canonical the post plates still catch broad silver highlights and the post body reads mid grey. Drop the basalt tint toward an albedo of ~0.04 and keep the seams rough. The speckle and blue sheen are library issues (see library_issues)."
+  ],
+  "library_issues": [
+    "basalt_dry: the white granite-like speckle and cool blue sheen still dominate the LOD sheet at every LOD, including LOD3 (a known issue, not a generator fault). The concept basalt is near-black with warm plate-edge highlights.",
+    "obsidian on the plaque field reads correctly black at LOD0-2. At LOD3 the plaque reads mid-grey; this may be a baked or LOD material simplification rather than the generator."
+  ],
+  "consistency": {
+    "r1": {
+      "plaque black field + gold frame + glyph relief": "landed for the field and frame; glyphs still too small and dim (fix 4)",
+      "straight crisp tapered posts, plate cladding": "partially; plates still foil-like and the mid-height bow remains (fix 3)",
+      "kasagi centre level, upsweep at tips ~0.5 m": "landed; tips now over-thinned into horns (fix 2)",
+      "plinths ~0.9 m tall, wider, lamp niches": "landed for size (0.97 m x 2.36 m); niches replaced by r2's plinth-top uplights",
+      "soffit glow grooves": "landed (amber lines under the kasagi, shimaki and nuki)",
+      "LOD3 keeps plaque + upsweep": "landed (field should be darker)"
+    },
+    "r2": {
+      "chunky post cladding 0.45-0.65 m plates": "not landed",
+      "near-black stone, no speckle": "not landed (mostly library)",
+      "amber uplights on plinth top, no visible cards": "landed (amber emitters at the post feet wash the lower posts; no floating cards in frame)",
+      "LOD2 phone framing": "landed; LOD2 at 35 m reads clearly as a torii, shaded and as a silhouette",
+      "boulder plinths": "not landed",
+      "plaque tint clamp": "partially (seed 3 LOD1 frame still salmon)"
+    },
+    "reversals": "One: nuki height. r1 called ~0.60 H about right; sheet-mod-arrival measures 0.68 H and 04-arrival-gate ~0.70 H (fix 1). Taper: r1's 1.6->1.25 m is tightened to ~1.55->1.05-1.1 m on the same evidence. The r1 limit on outline displacement (<= 0.03 m) and r2's target (0.06-0.08 m) are reconciled as a long-wavelength limit and a plate-scale bump respectively; neither is reversed."
+  },
+  "verdict": "revise",
+  "summary": "It is unmistakably the Basalt Gate. It has the right plan, two-tier upswept kasagi, through-nuki, black-and-gold plaque, plinth uplights and soffit glow, and recognition at LOD2/LOD3 on a phone is now excellent. It still does not sit convincingly in the arrival-gate concept up close. The nuki hangs ~1 m too low, leaving a tall window under the shimaki. The kasagi tips thin into horns. The posts and beams read as crumpled foil rather than chunky columnar plates. The plinths are tidy pillow-tiers. The 火山湯 glyphs are half the concept's size. The nuki and tip fixes are cheap parameter changes; the cladding is the larger job."
+}

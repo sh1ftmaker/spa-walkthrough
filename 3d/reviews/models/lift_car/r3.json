@@ -1,0 +1,73 @@
+{
+  "asset": "lift_car",
+  "round": 3,
+  "reviewer": "mrev3_h (independent)",
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 3,
+    "variation": 4
+  },
+  "overall_10": 6.7,
+  "fixes": [
+    {
+      "rank": 1,
+      "part": "bronze tone (base band, cornice band, mullions) vs lift_drum",
+      "problem": "In the Cycles canonical, the whole base band (~0.22 m), the whole cornice band and the mullion faces read as bright polished copper-orange. lift_drum (canonical r6, styles.jpg) and the concept (sheet-vs-lift-cable #2) are near-black blackened bronze, with polish only on thin edge beads and rivets. Side by side, the car will look like a different product from the drum it rides in.",
+      "target": "Make the base and cornice bands dark blackened bronze (the same slot as the lift_drum body), with two 0.02-0.03 m polished beads at the top and bottom edge of each band. Keep the rivets polished. Mullions: dark body, with the polished bead only on the outer 0.01 m face."
+    },
+    {
+      "rank": 2,
+      "part": "crosshead sheaves",
+      "problem": "The two sheaves render as flat, blown-out white D-shaped discs with no rim, groove or hub. They are the brightest thing in the frame and read as paper or emissive cards, not machinery. The crossbar under them is a rough slab, and the 4 guide rods barely register.",
+      "target": "Bronze (not emissive or white) sheaves, r 0.16-0.18 m and 0.05 m thick, with a polished grooved rim, a 0.06 m hub boss and a 4-6 spoke or pierced web. Set them on a turned crosshead beam ~0.9 m long with polished end caps. Make the rods 0.03-0.04 m dia polished and rising 0.5-0.6 m so they read against a dark well."
+    },
+    {
+      "rank": 3,
+      "part": "interior glow / LOD1->LOD2 transition",
+      "problem": "At LOD0/1 the cabin is dark below the ceiling (sheet_34: an empty cage with a lit floor ring). At LOD2 it jumps to a fully opaque, fibre-textured glowing paper drum. That is a large brightness and texture pop at the ~30 m switch. The concept and ref-spiral-stair show the car as an amber lantern filled with light, with two small wall lanterns inside flanking the door at about 2.0 m.",
+      "target": "Raise the sunburst ceiling emission ~2x. Move the two door lanterns (0.3 x 0.1 m at 2.0 m) inside the glass, as in the concept, which also removes the +0.13 m outside the well clearance. At LOD2/3, drop the core to emissive ~0.3 and use a smooth warm amber with no washi fibre texture, so LOD1 and LOD2 match in brightness."
+    },
+    {
+      "rank": 4,
+      "part": "LOD2/LOD3 dado ring and LOD3 hub",
+      "problem": "The dado/rail ring has a visible notch or step on the front-left at LOD2 (all seeds) and at LOD3 (seeds 1-2) in sheet_34. In the stock front view, LOD2 shows black stubs at each end of the ring. The LOD3 crosshead is a square box, which reads as a chimney.",
+      "target": "Close the ring arc cleanly to 360 degrees, or end it flush at the door jambs with no overlap. Make the LOD3 hub a 6-sided turned cylinder (r ~0.25, h 0.25). This stays within the 120-tri budget."
+    },
+    {
+      "rank": 5,
+      "part": "glazing presence at 3/4",
+      "problem": "Front-on in the Cycles canonical the glass is clear (r1/r2 fix landed). In the Cycles 3/4 sheet the panes are fully invisible, so the car reads as an open birdcage. The concept shows curved glass with vertical highlight streaks. The canonical also shows a crisp white rectangle and a dark-blue band through the front door leaves. These are probably key-light and HDRI reflections, but this is not verified.",
+      "target": "Give the cabin glass a faint warm tint (transmission ~0.95/0.90/0.82) and roughness 0.03, so pane curvature catches light at grazing angles. Add 0.015 m polished glazing beads on each mullion. Verify the white rectangle with a key-light-off canonical. If it persists, it is still a door-leaf normal or material bug."
+    },
+    {
+      "rank": 6,
+      "part": "dome rise (seed 1 'low')",
+      "problem": "The low dome rises only ~0.1 m and is nearly flat from eye height in the canonical. The concept dome rises ~0.33 m above the cornice (118->150 px at 96 px/m on the sheet scale bar), with ribs.",
+      "target": "Low dome rise >= 0.25 m, with 8 polished ribs (0.03 m) that read in silhouette. Keep tall and onion as they are."
+    }
+  ],
+  "earlier_fixes": {
+    "r1_1_clear_glass": "landed (canonical clear; see fix 5 for 3/4 presence)",
+    "r1_2_dark_bronze_polished_bands": "partial: bands added but polished over full height, frame not as dark as lift_drum (fix 1)",
+    "r1_3_key_fret_band_and_rail": "landed (lift_drum key fret, rail ring ~0.95 m)",
+    "r1_4_sunburst_and_lanterns": "landed (sunburst spokes visible, lanterns at ~2.0 m measured) but lanterns are outside the glass",
+    "r1_5_crosshead": "partial: hub, sheaves and rods exist; sheaves render white and flat (fix 2)",
+    "r1_6_closed_doors_and_variation": "landed",
+    "r2_1_proportion_hD_ge_1_1": "landed: seed 1 body 2.79 / D 2.54 = 1.10; seed 3 2.5 / 2.28 = 1.10; concept measured 2.52 / 2.2 = 1.15",
+    "r2_2_emissive_interior": "partial: ceiling, floor ring and LOD2/3 lit core done; LOD0/1 still dark inside, LOD2 pop (fix 3)",
+    "r2_3_smooth_bronze_rivets": "landed",
+    "r2_4_door_glass_and_lod3_green": "LOD3 green landed; door leaves likely fixed, verify (fix 5)",
+    "r2_5_crosshead_detail": "partial (fix 2)",
+    "r2_6_seed_variation": "landed (low/tall/onion, 10-13 bays, 3-6 rings, r and body height vary)"
+  },
+  "library_issues": [
+    "bronze polish slot reads copper-orange rather than the gold-bronze of the concept's polished trims; the lift_drum trims look the same, so this is a library tone issue as much as a slot-assignment issue.",
+    "glass_clear has no tint or grazing-angle response, so the panes vanish entirely in 3/4 Cycles views.",
+    "the key fret behind the lower glass reads teal/cyan-green in the canonical, probably from env reflection on the polish slot. Worth checking the polish slot under the scene's lighting."
+  ],
+  "verdict": "pass",
+  "summary": "It now reads as the concept's object: a round glass-and-bronze cabin with the right h/D (1.10 vs a measured 1.15), polished rivet bands, a lift_drum key-fret dado with handrail, a sunburst ceiling, a ringed lit floor, a crosshead with rods, and three clearly different seeds. It passes at 6.7. The remaining gaps are style and finish. The frame bronze is too bright and polished next to lift_drum's blackened bronze. The sheaves render as blown-out white cards. The cabin is dark inside at LOD0/1 and then pops to an opaque paper lantern at LOD2. There is a ring notch at LOD2/3 and a box hub at LOD3. Fixes 1-3 are the priority before final scene placement."
+}

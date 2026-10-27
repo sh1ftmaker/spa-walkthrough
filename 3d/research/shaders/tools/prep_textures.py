@@ -41,22 +41,22 @@ NAMES = {
 # across 512 px), roughness (dry, glossy-pocket), metal, de-light strength, specular clamp, crop box
 # fraction (l, t, r, b) inside the plate (noren: avoid the logo).
 P = {
-    'basalt_columnar_wet': dict(pol=1, ns=6, r=(0.55, 0.06), metal=0, delight=0.85, spec=1.0),
-    'basalt_vesicular':    dict(pol=1, ns=8, r=(0.80, 0.45), metal=0, delight=0.85, spec=0.4),
-    'paving_wet':          dict(pol=1, ns=5, r=(0.45, 0.05), metal=0, delight=0.8, spec=1.0),
-    'obsidian':            dict(pol=1, ns=2, r=(0.12, 0.03), metal=0, delight=0.7, spec=1.0),
+    'basalt_columnar_wet': dict(pol=1, ns=6, r=(0.55, 0.06), metal=0, delight=0.85, spec=1.0, sat=0.3),
+    'basalt_vesicular':    dict(pol=1, ns=8, r=(0.80, 0.45), metal=0, delight=0.85, spec=0.4, sat=0.35),
+    'paving_wet':          dict(pol=1, ns=5, r=(0.45, 0.05), metal=0, delight=0.8, spec=1.0, sat=0.45),
+    'obsidian':            dict(pol=1, ns=2, r=(0.12, 0.03), metal=0, delight=0.7, spec=1.0, sat=0.3),
     'rimstone':            dict(pol=1, ns=6, r=(0.60, 0.20), metal=0, delight=0.6, spec=0.3),
-    'black_sand':          dict(pol=1, ns=7, r=(0.75, 0.15), metal=0, delight=0.85, spec=0.8),
-    'rock_wet_ore':        dict(pol=1, ns=6, r=(0.50, 0.06), metal=0, delight=0.85, spec=1.0),
+    'black_sand':          dict(pol=1, ns=7, r=(0.75, 0.15), metal=0, delight=0.85, spec=0.8, sat=0.45),
+    'rock_wet_ore':        dict(pol=1, ns=6, r=(0.50, 0.06), metal=0, delight=0.85, spec=1.0, sat=0.25),
     'rock_teal_glass':     dict(pol=1, ns=4, r=(0.30, 0.05), metal=0, delight=0.8, spec=1.0),
     'sulfur_travertine':   dict(pol=1, ns=5, r=(0.65, 0.30), metal=0, delight=0.5, spec=0.3),
     'ash_clay':            dict(pol=1, ns=4, r=(0.85, 0.70), metal=0, delight=0.7, spec=0.0),
     'lava_crust':          dict(pol=-1, ns=6, r=(0.75, 0.40), metal=0, delight=0.3, spec=0.0),
     'glacier_ice':         dict(pol=1, ns=3, r=(0.15, 0.04), metal=0, delight=0.5, spec=0.5),
-    'hinoki':              dict(pol=1, ns=3, r=(0.70, 0.50), metal=0, delight=0.6, spec=0.0),
-    'lacquer':             dict(pol=1, ns=1.5, r=(0.25, 0.10), metal=0, delight=0.7, spec=0.8),
+    'hinoki':              dict(pol=1, ns=3, r=(0.70, 0.50), metal=0, delight=0.6, spec=0.0, boards=[0, 74, 184, 283, 392, 483]),
+    'lacquer':             dict(pol=1, ns=1.5, r=(0.25, 0.10), metal=0, delight=0.7, spec=0.8, boards=[0, 147, 312, 482]),
     'bamboo':              dict(pol=1, ns=4, r=(0.45, 0.30), metal=0, delight=0.5, spec=0.3),
-    'tatami':              dict(pol=1, ns=5, r=(0.75, 0.60), metal=0, delight=0.6, spec=0.0),
+    'tatami':              dict(pol=1, ns=5, r=(0.75, 0.60), metal=0, delight=0.6, spec=0.0, crop=(0.1, 0.0, 1.0, 1.0)),
     'washi':               dict(pol=1, ns=2, r=(0.85, 0.80), metal=0, delight=0.6, spec=0.0),
     'washi_backlit':       dict(pol=1, ns=1, r=(0.85, 0.80), metal=0, delight=0.2, spec=0.0),
     'noren':               dict(pol=1, ns=3, r=(0.90, 0.85), metal=0, delight=0.6, spec=0.0, crop=(0.0, 0.0, 0.36, 0.42)),
@@ -67,7 +67,7 @@ P = {
     'foam_sand':           dict(pol=1, ns=4, r=(0.60, 0.10), metal=0, delight=0.6, spec=0.5),
 }
 LIB_SETS = ['basalt_dry', 'basalt_wet', 'obsidian', 'paving', 'black_sand', 'rimstone', 'rimstone_side', 'ash_clay',
-            'hinoki', 'tatami', 'washi', 'lava', 'glacier_ice', 'iron', 'bronze', 'bamboo', 'lacquer_dark', 'noren', 'rope']
+            'hinoki', 'tatami', 'washi', 'lava', 'glacier_ice', 'iron', 'bronze', 'bamboo', 'lacquer_dark', 'noren', 'rope', 'lava_flow']
 
 
 def runs(v, thr=40):
@@ -105,14 +105,16 @@ def gw(a, s):
     return gaussian_filter(a, s, mode='wrap')
 
 
-def seamless(a, w=0.18):
+def seamless(a, w=0.18, axes='uv'):
     """Offset cross-fade: centre = original, borders = half-rolled copy (which is continuous there)."""
     n = a.shape[0]
-    r = np.roll(np.roll(a, n // 2, 0), n // 2, 1)
+    r = np.roll(a, n // 2, 0)
+    if 'u' in axes:
+        r = np.roll(r, n // 2, 1)
     t = np.linspace(0, 1, n)
     e = np.minimum(t, 1 - t)  # 0 at the border, 0.5 at the centre
     m1 = np.clip(e / w, 0, 1)
-    m = (m1[:, None] * m1[None, :])
+    m = m1[:, None] * (m1[None, :] if 'u' in axes else np.ones((1, n)))
     m = m * m * (3 - 2 * m)
     if a.ndim == 3:
         m = m[..., None]
@@ -133,10 +135,18 @@ def process(name, rgb_srgb, prm):
     sat = (flat.max(-1) - flat.min(-1)) / (flat.max(-1) + 1e-4)
     spec = np.clip((Lf / loc - 1.35) / 1.2, 0, 1) * np.clip(1.4 - 1.6 * sat, 0, 1)
     spec = gaussian_filter(spec, 1.0)
-    # replace glints by local colour (they come back as real specular from the roughness map)
-    blur = np.stack([gaussian_filter(flat[..., i], 5, mode='reflect') for i in range(3)], -1)
+    # replace glints: soft-clip luminance above a knee relative to the median (wet plates: low knee,
+    # i.e. the photo's specular sheen is removed from albedo and comes back from the roughness map)
+    med = np.median(Lf)
+    knee = med * (1.4 + 3.0 * (1.0 - prm['spec']))
+    L2 = np.where(Lf > knee, knee + (knee * 0.35) * (1 - np.exp(-(Lf - knee) / (knee * 0.35 + 1e-6))), Lf)
+    alb = flat * (L2 / (Lf + 1e-6))[..., None]
+    blur = np.stack([gaussian_filter(alb[..., i], 3, mode='reflect') for i in range(3)], -1)
     sm = (spec * prm['spec'])[..., None]
-    alb = flat * (1 - sm) + np.minimum(flat, blur * 1.1) * sm
+    alb = alb * (1 - 0.6 * sm) + blur * 0.6 * sm
+    if 'sat' in prm:   # stone plates: remove the photo's warm cast, keep a slightly cool neutral
+        La = (alb @ np.array([0.2126, 0.7152, 0.0722]))[..., None]
+        alb = (La + (alb - La) * prm['sat']) * np.array([0.96, 1.0, 1.07])
     # 3. height from luminance band-pass
     hsrc = gaussian_filter(L, 1.0, mode='reflect') - gaussian_filter(L, 30, mode='reflect')
     hsrc = hsrc * prm['pol']
@@ -152,11 +162,12 @@ def process(name, rgb_srgb, prm):
     rough = r0 + (r1 - r0) * wet
     metal = np.full_like(h, float(prm['metal']))
     # make everything seamless (offset cross-fade), then normals from the seamless height
-    alb, h, ao, rough, metal, wet = [seamless(x) for x in (alb, h, ao, rough, metal, wet)]
+    ax = 'v' if 'boards' in prm else 'uv'
+    alb, h, ao, rough, metal, wet = [seamless(x, axes=ax) for x in (alb, h, ao, rough, metal, wet)]
     hs = gw(h, 0.7)
     gy, gx = np.gradient(hs)
     ns = prm['ns']
-    nx, ny = -gx * ns * 8, gy * ns * 8  # image rows go down; +Y normal = +v (up)
+    nx, ny = -gx * ns * 2.5, gy * ns * 2.5  # image rows go down; +Y normal = +v (up)
     nz = np.ones_like(nx)
     ln = np.sqrt(nx * nx + ny * ny + nz * nz)
     nx, ny = nx / ln, ny / ln
@@ -202,6 +213,13 @@ def main():
             if 'crop' in prm:
                 l, t, r, b = prm['crop']; W, H = plate.size
                 plate = plate.crop((int(l * W), int(t * H), int(r * W), int(b * H)))
+            if 'boards' in prm:   # regularise: N equal-width boards side by side
+                b = prm['boards']; N = len(b) - 1; W, H = plate.size
+                reg = Image.new('RGB', (512, 512))
+                for i in range(N):
+                    strip = plate.crop((b[i], 0, b[i + 1], H)).resize((512 // N if i < N - 1 else 512 - (512 // N) * (N - 1), 512), Image.LANCZOS)
+                    reg.paste(strip, ((512 // N) * i, 0))
+                plate = reg
             plate = plate.resize((512, 512), Image.LANCZOS)
             a = np.asarray(plate).astype(np.float64) / 255
             stats[name] = dict(sheet=sheet, box=box, **process(name, a, prm))

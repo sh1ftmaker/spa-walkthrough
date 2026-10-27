@@ -1,0 +1,26 @@
+{
+  "asset": "stool",
+  "round": 2,
+  "scores": {
+    "likeness": 4,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 2,
+    "variation": 2
+  },
+  "fixes": [
+    "LOD3 is wrong: the LOD3 row of the sheet shows a flared 50-tri block with no legs, but the generator docstring says LOD3 keeps four legs and the round seat (about 40 tris). Rebuild LOD3 as seat disc plus four square-section legs and a footring stub, about 90-120 tris, so it reads as a stool at 18 m.",
+    "LOD0 1048 tris against a 600 budget and LOD1 672 against 240 (sheet problems line). Drop seat from 24 to 16 segments, legs from 8 to 6 sides, and footring from 12 to 8 segments at LOD1.",
+    "Wood colour: canonical bar stool is pale natural hinoki. The ramen counter (09) and treatment-hall stools read dark stained timber. Apply lacquer_dark to the bar and vanity legs and seat, keep hinoki for the bath stool only.",
+    "Cushion: flat salmon disc with no dome or edge. Concept cushion is a domed, padded seat with a welt. Dome 40-50 mm, add a 6 mm welt at the perimeter, and use a deeper red than the current coral.",
+    "Joinery: legs butt straight onto the underside of the seat with no visible tenon, apron or stretcher line. Add a short under-seat apron (about 0.03 m deep) and tenon-style leg ends so the joint reads as carpentry.",
+    "Variation: bar cushion is always red and the three seeds are almost identical. Seed the cushion colour from red, indigo and cream, and seed leg splay and seat diameter (0.36-0.45 m)."
+  ],
+  "library_issues": [
+    "lacquer_dark is in the library but is not applied to the stool legs, so the material may be unassigned in the stool generator rather than missing from the library.",
+    "No fabric or velvet cushion material in the library, so the cushion reads as plastic."
+  ],
+  "verdict": "revise",
+  "summary": "The bar stool matches the ramen-counter concept proportions (about 1.8 height to seat width, close to 0.75 m by 0.42 m) and the vanity and bath styles match the ground sheet. LOD3 contradicts the generator (no legs), LOD0 and LOD1 are over budget, the wood is too pale, and the cushion is flat. Seeds barely change the bar stool."
+}

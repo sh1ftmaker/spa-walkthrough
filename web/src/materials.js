@@ -1,6 +1,8 @@
 // Material library, shader patches (height fog/mist, box-projected probes, RGBM lightmaps) and shared uniforms.
 import * as THREE from 'three';
 import { FOG, LIGHTMAP_INTENSITY } from './config.js';
+import { KZS } from './vendor/kzshader.js';
+import { makeKzMaterial, addFlow } from './kzlib.js';
 
 // ---- shared uniforms (same objects referenced by every patched program) ----
 export const KZ = {
@@ -25,6 +27,7 @@ export const KZ = {
   kzProbeIntensity: { value: 1 },
   kzTime: { value: 0 },
 };
+KZS.time = KZ.kzTime; // the material kit's animation clock is the runtime clock
 
 const N = FOG.maxWaters;
 export const FOG_PARS = /* glsl */ `
@@ -44,12 +47,14 @@ vec4 kzFogTerms(vec3 wp) {
   float H = kzMistHeight;
   for (int i = 0; i < ${N}; i++) {
     if (i >= kzWaterCount) break;
-    float w = 0.5 * (kzInRect(wp.xz, kzWaterRect[i]) + kzInRect(ro.xz, kzWaterRect[i]));
+    // water: mist where the ray starts or ends over it; fx patches (negative amount): only where the ray ends
+    float m = kzWaterMist[i];
+    float w = m < 0.0 ? kzInRect(wp.xz, kzWaterRect[i]) : 0.5 * (kzInRect(wp.xz, kzWaterRect[i]) + kzInRect(ro.xz, kzWaterRect[i]));
     if (w <= 0.0) continue;
     float y0 = kzWaterY[i];
     float ya = max(ro.y - y0, 0.0), yb = max(wp.y - y0, 0.0), dy = yb - ya;
     float f = abs(dy) < 1e-3 ? exp(-ya / H) : H * (exp(-ya / H) - exp(-yb / H)) / dy;
-    od += kzWaterMist[i] * w * dist * f;
+    od += abs(m) * w * (m < 0.0 ? min(dist, 4.0) : dist) * f; // a patch holds at most ~4 m of the ray
   }
   float mist = 1.0 - exp(-kzMistDensity * od);
   vec3 c = kzFogColor * base;
@@ -110,13 +115,25 @@ function patchedLightsMapsChunk(rgbm) {
   return src;
 }
 let ENV_CHUNK = null;
+const SPEC_ONLY = /* glsl */ `
+#if defined( USE_LIGHTMAP ) || defined( KZ_SPEC_ONLY )
+void RE_Direct_KzSpec( const in IncidentLight directLight, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, const in PhysicalMaterial material, inout ReflectedLight reflectedLight ) {
+  float dotNL = saturate( dot( geometryNormal, directLight.direction ) );
+  // the pool lights are points standing in for lamps of some size: widen the lobe (no pin-point sparkle on wet rock)
+  PhysicalMaterial m = material;
+  m.roughness = max( m.roughness, 0.15 );
+  reflectedLight.directSpecular += dotNL * directLight.color * BRDF_GGX( directLight.direction, geometryViewDir, geometryNormal, m ) * m.multiScatteringCompensation;
+}
+#endif
+`;
+const GREY = (() => { try { const v = new URLSearchParams(location.search).get('albedo'); return v == null ? null : Number(v); } catch { return null; } })();
 
 // Patch any built-in material (Standard/Physical/Basic/Lambert...) with fog + probes (+ RGBM decode).
 export function patchMaterial(mat, { rgbm = null } = {}) {
   if (mat.userData.kzPatched) return mat;
   mat.userData.kzPatched = true;
   ENV_CHUNK ??= patchedEnvChunk();
-  const key = `kz1|${rgbm ? `rgbm${rgbm.range}_${rgbm.gamma}` : ''}`;
+  const key = `kz6|${rgbm ? `rgbm${rgbm.range}_${rgbm.gamma}` : ''}`;
   mat.customProgramCacheKey = () => key;
   mat.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, KZ);
@@ -126,8 +143,12 @@ export function patchMaterial(mat, { rgbm = null } = {}) {
     if (rgbm) fs = `#define KZ_RGBM_RANGE ${rgbm.range.toFixed(4)}\n#define KZ_RGBM_GAMMA ${rgbm.gamma.toFixed(4)}\n` + fs;
     fs = fs.replace('#include <envmap_physical_pars_fragment>', ENV_CHUNK);
     fs = fs.replace('#include <lights_fragment_maps>', patchedLightsMapsChunk(!!rgbm));
+    // lightmapped surfaces already hold the diffuse of every baked light: the light pool adds only their specular there
+    // (wet basalt, lacquer and water films read through lamp highlights); unbaked meshes get the full light
+    fs = fs.replace('#include <lights_physical_pars_fragment>', '#include <lights_physical_pars_fragment>\n' + SPEC_ONLY);
+    fs = fs.replace('#include <lights_fragment_begin>', '#ifdef KZ_NO_DIRECT\n#undef RE_Direct\n#elif defined( USE_LIGHTMAP ) || defined( KZ_SPEC_ONLY )\n#undef RE_Direct\n#define RE_Direct RE_Direct_KzSpec\n#endif\n#include <lights_fragment_begin>');
     // fog in linear HDR, before tone mapping
-    fs = fs.replace('#include <tonemapping_fragment>', '{ vec4 kzF = kzFogTerms( kzWorldPos ); gl_FragColor.rgb = gl_FragColor.rgb * ( 1.0 - kzF.a ) + kzF.rgb; }\n#include <tonemapping_fragment>');
+    fs = fs.replace('#include <tonemapping_fragment>', '{ vec4 kzF = kzFogTerms( kzWorldPos ); gl_FragColor.rgb = min( gl_FragColor.rgb, vec3( 4.0 ) ) * ( 1.0 - kzF.a ) + kzF.rgb; }\n#include <tonemapping_fragment>');
     shader.fragmentShader = fs;
   };
   return mat;
@@ -161,18 +182,35 @@ export function makeStubEnvironment(renderer) {
 
 // ---- library ----
 export class MaterialLibrary {
-  constructor(manifest, textures, env) {
+  constructor(manifest, textures, env, tier = 'low') {
+    this.tier = tier;
     this.def = manifest.materials;
     this.textures = textures; // id -> THREE.Texture
     this.env = env;
     this.cache = new Map();
   }
-  get(name, { lightMap = null, lightMapInfo = null, side = THREE.FrontSide } = {}) {
-    const key = `${name}|${lightMapInfo?.id ?? ''}|${side}`;
+  get(name, { lightMap = null, lightMapInfo = null, side = THREE.FrontSide, flow = false } = {}) {
+    const key = `${name}|${lightMapInfo?.id ?? ''}|${side}|${flow}`;
     let m = this.cache.get(key);
     if (m) return m;
     const d = this.def[name];
     if (!d) throw new Error(`material "${name}" is not in the manifest material library`);
+    if (d.type === 'kz') {
+      const rgbm = lightMap && lightMapInfo?.encoding === 'rgbm' ? { range: lightMapInfo.range, gamma: lightMapInfo.gamma } : null;
+      const prepare = (mm) => {
+        if (lightMap && d.lightmap !== false) { mm.lightMap = lightMap; mm.lightMap.channel = 1; mm.lightMapIntensity = lightMapInfo.intensity ?? LIGHTMAP_INTENSITY; }
+        if (this.env) { mm.envMap = this.env; }
+        patchMaterial(mm, { rgbm });
+      };
+      if (GREY != null) { // ?albedo=0.18: lighting check against a Cycles grey override (contract §10)
+        m = new THREE.MeshStandardMaterial({ name, roughness: 1, metalness: 0, side });
+        m.color.setRGB(GREY, GREY, GREY, THREE.LinearSRGBColorSpace); prepare(m);
+      } else ({ mat: m } = makeKzMaterial(name, d, (id, cs) => this.tex(id, cs), this.tier, side, prepare));
+      addFlow(m, d.id, flow, KZ.kzTime);
+      m.userData.kzId = d.id;
+      this.cache.set(key, m);
+      return m;
+    }
     m = new THREE.MeshStandardMaterial({
       name, color: new THREE.Color().setRGB(...(d.color ?? [1, 1, 1]), THREE.SRGBColorSpace),
       roughness: d.roughness ?? 0.8, metalness: d.metalness ?? 0, side,

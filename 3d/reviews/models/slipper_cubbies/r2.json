@@ -1,0 +1,19 @@
+{
+  "asset": "slipper_cubbies",
+  "round": 2,
+  "scores": {"likeness": 4, "silhouette_proportion": 4, "construction_detail": 3, "material_use": 3, "lod_recognition": 3, "variation": 4},
+  "fixes": [
+    "Slippers (LOD0/1): they read as pale cream peaked 'paper hats' set toe-out, about 40% of the cell width and very low. Concept (sheet-mod-arrival #3, 04-arrival-gate) shows warm tan pairs seen heel-out with rounded heels, filling ~65-70% of the 0.30 m cell width and ~0.07-0.08 m tall. Turn the pairs heel-forward, widen each sole to ~0.095 m with a ~0.02 m gap between them, raise the visible height to 0.07 m (a thicker sole plus a rounded instep cover), and move the sole/top off the near-white tatami tone to a tan (hinoki or a warm tatami variant). Spend the unused LOD0 budget here: it sits at ~8000 of 14000 tris.",
+    "Divider hierarchy: the vertical stiles and the shelves are the same ~20 mm board, so the grid reads as a flat lattice. Concept: verticals ~40 mm with a visible front face, shelves ~25 mm with a slight front lip, and module posts ~70 mm. Thicken the verticals to 0.04 m, add a 5 mm proud lip or chamfer on the shelf fronts, and make the module posts 0.07 m with the iron plates on them.",
+    "Lit plinth niches: the end niches are flat, flush emissive rectangles that read as lightboxes. Concept: open recessed bays with lit wooden interiors and a warm spill onto the floor. Recess the glowing face by 0.25-0.3 m behind the drawer plane, give the niche wooden walls and floor that pick up the light, and keep the emissive area to a hidden strip on the niche ceiling. Keep the toe-kick floor glow, which already works.",
+    "LOD3 (74 of 80 tris): it drops every vertical and becomes a stack of horizontal slats, which reads as louvres or open shelving, not a pigeonhole grid. Keep the module posts plus 1-2 interior verticals per module as thin quads, or bake the cell grid and dark cell interiors into the LOD2/LOD3 front-face texture so the checkerboard of dark holes survives at 35-80 m.",
+    "Crown cornice (crown variant): the rounded bull-nose cap reads more like a Western bookcase. Concept: a flat top board with a ~30 mm overhang and a squared edge. Make the slab-style top the default for seed 1 and keep a flatter crown (0.04 m rise, squared fascia) as the alternative.",
+    "Side panels (check at 3/4): concept sides are vertical planks with dark iron straps at 3 heights and a 0.45-0.5 m depth. Make sure the plank seams (0.12-0.15 m pitch) and straps exist at LOD0/1 on the exposed end; the canonical 3/4 view doesn't clearly show them."
+  ],
+  "library_issues": [
+    "hinoki reads as a uniform saturated orange-pink with low grain contrast. The concept cubby wall is a darker, aged, stained timber with strong grain. This is the stained/dark wood gap already being fixed; re-judge colour once it lands.",
+    "tatami is too pale/near-white when used as the slipper top; with no strap or lacquer contrast the slippers read as paper."
+  ],
+  "verdict": "revise",
+  "summary": "Reads clearly as the arrival slipper-cubby wall: right grid, cell size, drawer band, toe-kick glow, module posts and iron corner plates, and the seeds vary width, rows, fill, cornice and lights well. It falls short on the slippers (pale, toe-out, undersized), on a flat single-thickness divider grid, on the flush lightbox niches, and on a LOD3 that loses the pigeonhole read. LOD0 uses only ~57% of its 14000-tri budget, so the slipper and divider fixes are affordable."
+}

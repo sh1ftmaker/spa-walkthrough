@@ -1,0 +1,18 @@
+{
+  "asset": "chochin",
+  "round": 1,
+  "scores": {"likeness": 4, "silhouette_proportion": 4, "construction_detail": 3, "material_use": 3, "lod_recognition": 4, "variation": 4},
+  "fixes": [
+    "Ribs: 11 horizontal ribs reading as painted lines; sheet-mod-lights #2 shows ~22-26 ribs at ~18-20 mm pitch on a 0.45 m body, with a visible pinch/bulge. Double the rib count at LOD0 (keep 11 at LOD1 as baked lines), deepen the pinch to ~3 mm so the outline scallops, and raise lathe segments from S=11 so the side silhouette stops showing polygon kinks at the shoulders (target >= 24 radial segments at LOD0).",
+    "Caps and hanging hardware: caps render as dark, almost invisible bands and the cord/ring are lost. Sheet: black lacquer caps ~0.06 m tall at ~0.55 of body diameter, each with two bright bronze rims and small rivet bosses, a bronze ring ~60 mm OD, and a twisted rope ~0.35-0.4 m. Make the rims 8-10 mm bronze bands that catch light, add 4 rivets, and thicken the rope to ~10 mm with a visible twist.",
+    "Print: logo is off-centre (~20 deg toward viewer's right) and lacks the KAZAN-YU latin line; in the LOD0 sheet the volcano shows white/cyan shards (overlapping snow-cap or z-fighting) and seed 3's 火山湯 overlaps the mountain and is garbled. Centre the print on the front bearing, stack steam / mountain / KAZAN-YU (cap height ~22 mm, tracking wide) / 火山湯 as on the sheet, offset the print 1 mm off the paper with no coplanar layers.",
+    "Top cap artefact: a cyan/blue rectangle sits on the top cap in the canonical render (and bronze rims read as mirror-chrome in the LOD sheet). Fix whatever is reflecting/assigned there; rims should be warm bronze, roughness ~0.35.",
+    "Unverified variants: giant_ramen (red ラーメン), chain and cluster are not shown in any sheet, and sheet seed 1 is red with the volcano logo rather than a crest (mon). Render a styles sheet with all six variants, confirm red_crest prints a mon, and check ラーメン at h 1.2 m (glyph height ~0.25 m, vertical)."
+  ],
+  "library_issues": [
+    "lantern_paper: the fibre texture reads as dark crack/vein lines (looks like cracked paper) at 0.45 m scale; reduce contrast and scale of the inclusion pattern so it reads as soft washi fibres.",
+    "LOD sheet harness: rows misregistered (models straddle row boundaries, LOD3 row clipped at the bottom); tri-count labels overlap the models."
+  ],
+  "verdict": "revise",
+  "summary": "Clearly a Kazan-yu chochin with the volcano-and-steam logo, correct 0.45 m round proportion and good warm glow, and seeds give genuinely different shapes and colours; LOD2/LOD3 still read as lanterns. What keeps it below the concept is construction finish: too few, painted-looking ribs and faceted shoulders, caps and bronze rims that disappear, a near-invisible cord and ring, an off-centre print missing KAZAN-YU with shard artefacts, and a cyan artefact on the top cap."
+}

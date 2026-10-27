@@ -41,6 +41,11 @@
   "portal p_s_rim_spring: floors differ by 1.50 m (s_rim 120 / s_spring 121.5) with no stair",
   "portal p_s_rim_moon: floors differ by 0.50 m (s_rim 120 / s_moon 120.5) with no stair"
  ],
+ "excluded": [
+  "b1_cor_mirror",
+  "b1_mirror",
+  "g_arrival"
+ ],
  "doors_spiral_stair": [
   {
    "space": "g_arrival",
@@ -132,6 +137,9 @@
    "z": -67,
    "portal": "p_b3_slide_foot_lava_stair"
   }
+ ],
+ "excluded_water": [
+  "w_mirror"
  ],
  "endpoints": [
   {
@@ -539,9 +547,9 @@
     "c_terrace_path",
     "cliff"
    ],
-   "renderTris": 4344,
-   "walkTris": 4140,
-   "glbKB": 134.8
+   "renderTris": 3720,
+   "walkTris": 3612,
+   "glbKB": 122.3
   },
   {
    "id": "b1",
@@ -550,9 +558,9 @@
     "b2",
     "c_lava_stair"
    ],
-   "renderTris": 5900,
-   "walkTris": 4200,
-   "glbKB": 167.1
+   "renderTris": 4858,
+   "walkTris": 3422,
+   "glbKB": 138.9
   },
   {
    "id": "b2",
@@ -562,9 +570,9 @@
     "b3",
     "c_lava_stair"
    ],
-   "renderTris": 12194,
-   "walkTris": 10272,
-   "glbKB": 342.5
+   "renderTris": 12262,
+   "walkTris": 10324,
+   "glbKB": 344.8
   },
   {
    "id": "b3",
@@ -582,9 +590,9 @@
    "neighbors": [
     "c_spiral_stair"
    ],
-   "renderTris": 1472,
-   "walkTris": 800,
-   "glbKB": 51.3
+   "renderTris": 1752,
+   "walkTris": 1024,
+   "glbKB": 59.5
   },
   {
    "id": "summit",
@@ -602,9 +610,9 @@
     "ground",
     "c_cliff_stair_4"
    ],
-   "renderTris": 16620,
-   "walkTris": 16116,
-   "glbKB": 487.1
+   "renderTris": 16392,
+   "walkTris": 15888,
+   "glbKB": 483.3
   },
   {
    "id": "c_spiral_stair",
@@ -647,9 +655,9 @@
     "summit"
    ],
    "renderTris": 17332,
-   "walkTris": 17152,
-   "glbKB": 513.2
+   "walkTris": 17140,
+   "glbKB": 510.4
   }
  ],
- "seconds": 39.946
+ "seconds": 37.131
 }

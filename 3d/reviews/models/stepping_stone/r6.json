@@ -1,0 +1,28 @@
+{
+  "asset": "stepping_stone",
+  "round": 6,
+  "reviewer": "independent model reviewer (mrev6_k2), did not build the generator; no browser or Blender used",
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 2,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 3,
+    "variation": 3
+  },
+  "overall_10": 4.67,
+  "fixes": [
+    "Shoulder tier (gen_stepping_stone.py LOD0: band(S2, C1, m_upper) and band(C1, T, m_top), rings S2 at 0.72 t and C1 at 0.80 t, both radius 1.00 R): canonical.jpg shows a horizontal tan ledge at about 0.7 t, so the stone reads as a two-tier block, not a cobble. This is the r5 fix still open. Drop C1, so the chamfer band runs straight from S2 to T. Target: no visible horizontal step in the side profile on canonical.jpg; the chamfer stays 8-15 mm.",
+    "Lower side tone (LOD0: band(S1, S2, m_lower), the basalt_dry slot with roughness_offset 0.3): this band is the pale tan that dominates the canonical and the LOD0 seeds in sheet_34. The concept (lookbook/img/05-mist-corridor.jpg, refs/gen/ref-b1-lobby.png) shows one near-black wet basalt around the whole edge. Generator-side change: assign S1-S2 to m_upper (basalt_wet, wetness 0.35) and keep basalt_dry only for the skirt band(B, S1). Target: the side band is darker than the top face on canonical.jpg.",
+    "Variation (build(): aspect 0.8-1.25, N 9-12, bites 1-2): sheet_34 seeds 1-3 differ mainly in whether a step shows and in the outline, and their footprints are within about 15% of each other. Widen the seeded aspect to 0.72-1.35 and the thickness to 0.13-0.18 so the seeds separate in plan and in profile. Keep N and the 0.20 radial noise as they are; they already match the r5 target.",
+    "Footprint range (build(): R 0.22-0.29, half-extent clamp 0.25-0.35): the footprint comes out 0.50-0.70 m, while asset_list.csv gives r 0.25-0.45 m (0.5-0.9 m). The concept stones look at the low end of that, so this is a judgement call. Proposed: half-extent 0.30-0.40 and R 0.25-0.32, which keeps the 0.6 m typical size and adds a larger seed. Check the 0.6 x 0.6 x 0.2 m proxy still fits.",
+    "LOD2 and LOD3 recognition (phone-lod2-lod3.jpg): at 7 m the LOD2 is a dark block with a teal top, nameable only as a lump. At 18 m the LOD3 is a 4-6 px dash. The LOD3 hex disc is correct as built (20 tris, closed, flat top), so the fix is a lead decision: move the LOD3 switch to about 10 m, or accept LOD3 as a dot role. Generator-side, keep the 0.95 top ratio and the LOD2 bump so the LOD2 silhouette stays lumpy at 7 m."
+  ],
+  "library_issues": [
+    "basalt_dry (the S1-S2 side slot today) renders as pale, glossy tan with speckle in canonical.jpg and the LOD0 seeds of sheet_34. It reads as sandstone or glass, not basalt. Library owner to darken the albedo and reduce the speckle. The generator change in fix 2 hides this, but the library fix is still needed for the skirt.",
+    "basalt_wet tops show cyan and teal streaks across the canonical top and in the LOD0 seeds. They read as an overlay or environment reflection, not as wet basalt. Library owner to check the top's specular and reflection setup.",
+    "asset_list.csv gives thickness 0.15-0.3 m; the generator uses 0.13-0.16 m. The two overlap at 0.15 m. Lead to decide which range is the target. This is a spec question, not a generator error."
+  ],
+  "verdict": "revise",
+  "summary": "Still a two-tier block with a pale tan lower band, not a dark, wet, split cobble. The concept object is one near-black stone with a slightly sunk top. Proportion and footprint are plausible at 0.6 m, and the LOD0 outline now reads as rounded lobes. Landed from earlier rounds: the 9-12 vertex outline with bites, the 8-15 mm chamfer, the 0.0015 m top noise cap and the 2.8 mm dish, the removed notch, the LOD2 lump and the closed 20-tri LOD3. Not landed: the C1 shoulder ring (r5), the dark side tone (r4, r5), the LOD3 switch decision (r4, r5). The top two fixes are generator-side and cheap. Score 4.67 is below the pass line of 6."
+}

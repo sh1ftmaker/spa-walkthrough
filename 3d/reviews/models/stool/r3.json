@@ -1,0 +1,25 @@
+{
+  "asset": "stool",
+  "round": 3,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 4,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 3
+  },
+  "fixes": [
+    "bath style: the drum reads as a bin or a log, not a stool. Target: taper top 0.32 m to base 0.28 m, a 12 mm bevelled top edge with a shallow dished top, two hinoki hoops matching the bucket (oke_bucket), and a 20 mm chamfer at the base. Keep h 0.27.",
+    "seat (bar and vanity): the stacked stepped rings read as a cake. Target: one 30 mm slab seat with a 10 mm chamfer over a 25 mm apron, and a cushion with a 6 mm welt and a 15 mm dome, as the cloth header describes.",
+    "footring (bar): the ring is about 12 mm and reads thin, and the spokes do not sit flush with it. Target: 25 mm square-section ring with flush spokes at the same height.",
+    "budget: LOD2 is 208 tris against 200 in asset_list.csv (+4%). The sheet says 'budgets OK' because it uses an old budget. Cut the LOD2 apron to 6 segments to get to 200 or fewer.",
+    "defaults and variation: the concept bar stool has a red cushion, but the default cushion is seeded and seed 1 is cream. Set the bar default to red. Widen leg splay and seat diameter so seeds differ in silhouette, not only in cushion colour."
+  ],
+  "library_issues": [
+    "stained or dark wood: the concept bar stool is dark lacquered or stained timber with a red cushion. The hinoki legs render pale, so the bar stool loses its ramen-counter look. Library gap, already being fixed. Judge the colour after that lands.",
+    "cushion fabric: no cushion-specific fabric in the library, so the cushion is a flat dyed surface. Consider a woven or quilted fabric when available."
+  ],
+  "verdict": "revise",
+  "summary": "The bar stool is a credible timber stool: height 0.72 m and seat about 0.42 m match the concept's proportions, the eight-sided legs splay, and the footring reads from the LOD2 and LOD3 phone silhouettes. The bath drum is the weak part: it reads as a bin or log, which fails the 'low hinoki bath stool' concept. Budget: LOD2 is 208 against 200. Revise: rebuild the bath drum, flatten the seat, make the footring read, fix the LOD2 budget, and set red as the bar default. The wood colour is a library gap."
+}

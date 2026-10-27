@@ -1,0 +1,3120 @@
+{
+ "generated": "2026-10-27T16:44:15.165Z",
+ "manifest": {
+  "source": "mixed",
+  "generated": "2026-10-27T16:44:13.780Z",
+  "places_blender": [
+   "b1_cor_mirror",
+   "b1_mirror",
+   "g_arrival"
+  ]
+ },
+ "budget": {
+  "drawCalls": 150,
+  "triangles": 500000,
+  "textureMB": 250
+ },
+ "shots": [
+  {
+   "place": "g_arrival",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/g_arrival-concept-low-16x9.jpg",
+   "tag": "16x9",
+   "viewport": {
+    "width": 1280,
+    "height": 720
+   },
+   "dpr": 1.25,
+   "info": {
+    "fps": 62.2,
+    "ms": 17.5,
+    "drawCalls": 112,
+    "triangles": 267515,
+    "textures": 109,
+    "textureMB": 163.8,
+    "programs": 59,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     82,
+     71,
+     1.6
+    ],
+    "heading": 251.1,
+    "space": "g_arrival",
+    "zone": "p_g_arrival",
+    "interactiveMs": 674
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "g_arrival",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/g_arrival-concept-low-9x16.jpg",
+   "tag": "9x16",
+   "viewport": {
+    "width": 405,
+    "height": 720
+   },
+   "dpr": 2.2222222222222223,
+   "info": {
+    "fps": 64.2,
+    "ms": 17.42,
+    "drawCalls": 88,
+    "triangles": 259833,
+    "textures": 99,
+    "textureMB": 127.5,
+    "programs": 59,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     82,
+     71,
+     1.6
+    ],
+    "heading": 251.1,
+    "space": "g_arrival",
+    "zone": "p_g_arrival",
+    "interactiveMs": 651
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "g_arrival",
+   "cam": "concept",
+   "tier": "high",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/g_arrival-concept-high-16x9.jpg",
+   "tag": "16x9",
+   "viewport": {
+    "width": 1280,
+    "height": 720
+   },
+   "dpr": 1.25,
+   "info": {
+    "fps": 61.5,
+    "ms": 17.72,
+    "drawCalls": 141,
+    "triangles": 261214,
+    "textures": 119,
+    "textureMB": 238.1,
+    "programs": 67,
+    "tier": "high",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     82,
+     71,
+     1.6
+    ],
+    "heading": 251.1,
+    "space": "g_arrival",
+    "zone": "p_g_arrival",
+    "interactiveMs": 725
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "g_arrival",
+   "cam": "concept",
+   "tier": "high",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/g_arrival-concept-high-9x16.jpg",
+   "tag": "9x16",
+   "viewport": {
+    "width": 405,
+    "height": 720
+   },
+   "dpr": 2.2222222222222223,
+   "info": {
+    "fps": 63.9,
+    "ms": 17.64,
+    "drawCalls": 116,
+    "triangles": 253316,
+    "textures": 109,
+    "textureMB": 214.7,
+    "programs": 67,
+    "tier": "high",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     82,
+     71,
+     1.6
+    ],
+    "heading": 251.1,
+    "space": "g_arrival",
+    "zone": "p_g_arrival",
+    "interactiveMs": 712
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "g_arrival",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/g_arrival-concept-phone.jpg",
+   "tag": "phone",
+   "viewport": {
+    "width": 390,
+    "height": 844
+   },
+   "dpr": 3,
+   "info": {
+    "fps": 69.5,
+    "ms": 17.13,
+    "drawCalls": 88,
+    "triangles": 259833,
+    "textures": 96,
+    "textureMB": 131.4,
+    "programs": 58,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     82,
+     71,
+     1.6
+    ],
+    "heading": 251.1,
+    "space": "g_arrival",
+    "zone": "p_g_arrival",
+    "interactiveMs": 631
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_cor_mirror",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_cor_mirror-concept-low-16x9.jpg",
+   "tag": "16x9",
+   "viewport": {
+    "width": 1280,
+    "height": 720
+   },
+   "dpr": 1.25,
+   "info": {
+    "fps": 61,
+    "ms": 17.14,
+    "drawCalls": 110,
+    "triangles": 321891,
+    "textures": 132,
+    "textureMB": 163.8,
+    "programs": 64,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     70.4,
+     91.55,
+     -18.4
+    ],
+    "heading": 87.9,
+    "space": "b1_cor_mirror",
+    "zone": "p_b1_cor_mirror",
+    "interactiveMs": 640
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_cor_mirror",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_cor_mirror-concept-low-9x16.jpg",
+   "tag": "9x16",
+   "viewport": {
+    "width": 405,
+    "height": 720
+   },
+   "dpr": 2.2222222222222223,
+   "info": {
+    "fps": 62.9,
+    "ms": 17.24,
+    "drawCalls": 109,
+    "triangles": 321703,
+    "textures": 122,
+    "textureMB": 127.5,
+    "programs": 64,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     70.4,
+     91.55,
+     -18.4
+    ],
+    "heading": 87.9,
+    "space": "b1_cor_mirror",
+    "zone": "p_b1_cor_mirror",
+    "interactiveMs": 645
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_cor_mirror",
+   "cam": "concept",
+   "tier": "high",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_cor_mirror-concept-high-16x9.jpg",
+   "tag": "16x9",
+   "viewport": {
+    "width": 1280,
+    "height": 720
+   },
+   "dpr": 1.25,
+   "info": {
+    "fps": 60.4,
+    "ms": 17.5,
+    "drawCalls": 290,
+    "triangles": 735241,
+    "textures": 144,
+    "textureMB": 238.1,
+    "programs": 72,
+    "tier": "high",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     70.4,
+     91.55,
+     -18.4
+    ],
+    "heading": 87.9,
+    "space": "b1_cor_mirror",
+    "zone": "p_b1_cor_mirror",
+    "interactiveMs": 757
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_cor_mirror",
+   "cam": "concept",
+   "tier": "high",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_cor_mirror-concept-high-9x16.jpg",
+   "tag": "9x16",
+   "viewport": {
+    "width": 405,
+    "height": 720
+   },
+   "dpr": 2.2222222222222223,
+   "info": {
+    "fps": 64.2,
+    "ms": 17.3,
+    "drawCalls": 289,
+    "triangles": 735053,
+    "textures": 134,
+    "textureMB": 214.7,
+    "programs": 72,
+    "tier": "high",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     70.4,
+     91.55,
+     -18.4
+    ],
+    "heading": 87.9,
+    "space": "b1_cor_mirror",
+    "zone": "p_b1_cor_mirror",
+    "interactiveMs": 721
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_cor_mirror",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_cor_mirror-concept-phone.jpg",
+   "tag": "phone",
+   "viewport": {
+    "width": 390,
+    "height": 844
+   },
+   "dpr": 3,
+   "info": {
+    "fps": 62.3,
+    "ms": 17.22,
+    "drawCalls": 109,
+    "triangles": 321703,
+    "textures": 121,
+    "textureMB": 131.4,
+    "programs": 63,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     70.4,
+     91.55,
+     -18.4
+    ],
+    "heading": 87.9,
+    "space": "b1_cor_mirror",
+    "zone": "p_b1_cor_mirror",
+    "interactiveMs": 645
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_mirror",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_mirror-concept-low-16x9.jpg",
+   "tag": "16x9",
+   "viewport": {
+    "width": 1280,
+    "height": 720
+   },
+   "dpr": 1.25,
+   "info": {
+    "fps": 60.7,
+    "ms": 17.19,
+    "drawCalls": 97,
+    "triangles": 334469,
+    "textures": 128,
+    "textureMB": 163.8,
+    "programs": 64,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     99.2,
+     91.4,
+     -18.4
+    ],
+    "heading": 92.6,
+    "space": "b1_mirror",
+    "zone": "p_b1_mirror",
+    "interactiveMs": 643
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_mirror",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_mirror-concept-low-9x16.jpg",
+   "tag": "9x16",
+   "viewport": {
+    "width": 405,
+    "height": 720
+   },
+   "dpr": 2.2222222222222223,
+   "info": {
+    "fps": 63.1,
+    "ms": 17.23,
+    "drawCalls": 91,
+    "triangles": 333645,
+    "textures": 118,
+    "textureMB": 127.5,
+    "programs": 64,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     99.2,
+     91.4,
+     -18.4
+    ],
+    "heading": 92.6,
+    "space": "b1_mirror",
+    "zone": "p_b1_mirror",
+    "interactiveMs": 662
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_mirror",
+   "cam": "concept",
+   "tier": "high",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_mirror-concept-high-16x9.jpg",
+   "tag": "16x9",
+   "viewport": {
+    "width": 1280,
+    "height": 720
+   },
+   "dpr": 1.25,
+   "info": {
+    "fps": 65,
+    "ms": 17.4,
+    "drawCalls": 139,
+    "triangles": 341360,
+    "textures": 140,
+    "textureMB": 238.1,
+    "programs": 72,
+    "tier": "high",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     99.2,
+     91.4,
+     -18.4
+    ],
+    "heading": 92.6,
+    "space": "b1_mirror",
+    "zone": "p_b1_mirror",
+    "interactiveMs": 742
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_mirror",
+   "cam": "concept",
+   "tier": "high",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_mirror-concept-high-9x16.jpg",
+   "tag": "9x16",
+   "viewport": {
+    "width": 405,
+    "height": 720
+   },
+   "dpr": 2.2222222222222223,
+   "info": {
+    "fps": 70.4,
+    "ms": 17.02,
+    "drawCalls": 139,
+    "triangles": 400371,
+    "textures": 130,
+    "textureMB": 214.7,
+    "programs": 72,
+    "tier": "high",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     99.2,
+     91.4,
+     -18.4
+    ],
+    "heading": 92.6,
+    "space": "b1_mirror",
+    "zone": "p_b1_mirror",
+    "interactiveMs": 720
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  {
+   "place": "b1_mirror",
+   "cam": "concept",
+   "tier": "low",
+   "file": "/home/agent-tom/Desktop/volcanospa/3d/renders/web/slice/r2/b1_mirror-concept-phone.jpg",
+   "tag": "phone",
+   "viewport": {
+    "width": 390,
+    "height": 844
+   },
+   "dpr": 3,
+   "info": {
+    "fps": 67.5,
+    "ms": 17.13,
+    "drawCalls": 91,
+    "triangles": 333645,
+    "textures": 117,
+    "textureMB": 131.4,
+    "programs": 63,
+    "tier": "low",
+    "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+    "pos": [
+     99.2,
+     91.4,
+     -18.4
+    ],
+    "heading": 92.6,
+    "space": "b1_mirror",
+    "zone": "p_b1_mirror",
+    "interactiveMs": 626
+   },
+   "logs": [
+    "error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Failed to create WebGL2RenderingContext.",
+    "error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: [kz] high-performance context refused, retrying with defaults: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.",
+    "warning: THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  }
+ ],
+ "summary": {
+  "shots": 15,
+  "low_worst": {
+   "drawCalls": 112,
+   "triangles": 334469,
+   "textureMB": 163.8
+  },
+  "high_worst": {
+   "drawCalls": 290,
+   "triangles": 735241
+  },
+  "errors": [],
+  "low_within_budget": true
+ },
+ "flythrough": {
+  "route": "web/tools/routes/arrival-to-mirror.json",
+  "video": "3d/renders/web/slice/flythrough.mp4 (High)",
+  "high": {
+   "out": "3d/renders/web/slice/flythrough.mp4",
+   "seconds": 69.48,
+   "frames": 4159,
+   "skippedWaypoints": [],
+   "fpsMin": 59.8,
+   "drawMax": 296,
+   "triMax": 741872,
+   "end": {
+    "pos": [
+     100.267,
+     99.016,
+     -18.4
+    ],
+    "space": "b1_mirror",
+    "zone": "p_b1_mirror",
+    "tier": "high"
+   }
+  },
+  "low": {
+   "seconds": 69.48,
+   "frames": 4159,
+   "skippedWaypoints": [],
+   "fpsMin": 59.8,
+   "drawMax": 141,
+   "triMax": 403278,
+   "end": {
+    "pos": [
+     100.267,
+     99.016,
+     -18.4
+    ],
+    "space": "b1_mirror",
+    "zone": "p_b1_mirror",
+    "tier": "low"
+   }
+  }
+ },
+ "colour_match": {
+  "method": "Cycles (tools/export/render_compare.py, 96 spp, AgX, exposure 0) and the web at the same concept camera, 1280x720, UI hidden; display-linear luminance (sRGB decoded): mean and 97th percentile (bright lantern pools); stops = log2(web / Cycles). Note: the Cycles render has no mist (the place previews mist only).",
+  "high": {
+   "g_arrival": {
+    "cycles_mean": 0.04301193356513977,
+    "web_mean": 0.03782597929239273,
+    "mean_stops": -0.19,
+    "cycles_p97": 0.44695621728897095,
+    "web_p97": 0.2639191448688507,
+    "p97_stops": -0.76,
+    "cycles_p50": 0.008819540031254292,
+    "web_p50": 0.010314356535673141
+   },
+   "b1_cor_mirror": {
+    "cycles_mean": 0.030624140053987503,
+    "web_mean": 0.03013683669269085,
+    "mean_stops": -0.02,
+    "cycles_p97": 0.24728582799434662,
+    "web_p97": 0.1716843843460083,
+    "p97_stops": -0.53,
+    "cycles_p50": 0.004372521303594112,
+    "web_p50": 0.01032982300966978
+   },
+   "b1_mirror": {
+    "cycles_mean": 0.020520100370049477,
+    "web_mean": 0.003337700152769685,
+    "mean_stops": -2.62,
+    "cycles_p97": 0.19051603972911835,
+    "web_p97": 0.017747486010193825,
+    "p97_stops": -3.42,
+    "cycles_p50": 0.0016673951176926494,
+    "web_p50": 0.0011248709633946419
+   }
+  },
+  "low": {
+   "g_arrival": {
+    "cycles_mean": 0.04301193356513977,
+    "web_mean": 0.03618971258401871,
+    "mean_stops": -0.25,
+    "cycles_p97": 0.44695621728897095,
+    "web_p97": 0.2583812177181244,
+    "p97_stops": -0.79,
+    "cycles_p50": 0.008819540031254292,
+    "web_p50": 0.010337007232010365
+   },
+   "b1_cor_mirror": {
+    "cycles_mean": 0.030624140053987503,
+    "web_mean": 0.02851172164082527,
+    "mean_stops": -0.1,
+    "cycles_p97": 0.24728582799434662,
+    "web_p97": 0.14726504683494568,
+    "p97_stops": -0.75,
+    "cycles_p50": 0.004372521303594112,
+    "web_p50": 0.010943952016532421
+   },
+   "b1_mirror": {
+    "cycles_mean": 0.020520100370049477,
+    "web_mean": 0.003299106378108263,
+    "mean_stops": -2.64,
+    "cycles_p97": 0.19051603972911835,
+    "web_p97": 0.017013395205140114,
+    "p97_stops": -3.49,
+    "cycles_p50": 0.0016673951176926494,
+    "web_p50": 0.0011894007911905646
+   }
+  },
+  "images": "measure-<space>-{cycles,high,low}.png and compare-cycles-high-low.jpg in 3d/renders/web/slice/r2/",
+  "within_half_stop_mean": {
+   "g_arrival": true,
+   "b1_cor_mirror": true,
+   "b1_mirror": false
+  },
+  "b1_mirror_note": "about -2.7 stops: the bright band on the dome wall in Cycles is the wet-rock specular of ~30 raking rim lamps (Cycles with visible_glossy off on the lights looks like the web); the 6-light pool cannot carry it. Lighting alone (grey 0.18 override on both sides) matches."
+ },
+ "seams": [
+  {
+   "space": "b1_cor_mirror",
+   "portal": "p_b1_lobby_cor",
+   "other": "b1_lobby",
+   "other_zone": "b1",
+   "at": [
+    78,
+    72
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -20.001
+      ],
+      [
+       -0.55,
+       null,
+       -20.001
+      ],
+      [
+       -0.45,
+       null,
+       -20.001
+      ],
+      [
+       -0.35,
+       null,
+       -20.001
+      ],
+      [
+       -0.25,
+       null,
+       -20.001
+      ],
+      [
+       -0.15,
+       null,
+       -20.001
+      ],
+      [
+       -0.05,
+       null,
+       -20.001
+      ],
+      [
+       0.05,
+       null,
+       -20.001
+      ],
+      [
+       0.15,
+       null,
+       -20.001
+      ],
+      [
+       0.25,
+       null,
+       -20.001
+      ],
+      [
+       0.35,
+       null,
+       -20.001
+      ],
+      [
+       0.45,
+       null,
+       -20.001
+      ],
+      [
+       0.55,
+       null,
+       -20.001
+      ],
+      [
+       0.65,
+       null,
+       -20.001
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -20.001
+      ],
+      [
+       -0.55,
+       null,
+       -20.001
+      ],
+      [
+       -0.45,
+       null,
+       -20.001
+      ],
+      [
+       -0.35,
+       null,
+       -20.001
+      ],
+      [
+       -0.25,
+       null,
+       -20.001
+      ],
+      [
+       -0.15,
+       null,
+       -20.001
+      ],
+      [
+       -0.05,
+       null,
+       -20.001
+      ],
+      [
+       0.05,
+       -20,
+       null
+      ],
+      [
+       0.15,
+       -20,
+       null
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20,
+       null
+      ],
+      [
+       0.55,
+       -20,
+       null
+      ],
+      [
+       0.65,
+       -20,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       null
+      ],
+      [
+       -0.55,
+       -20,
+       null
+      ],
+      [
+       -0.45,
+       -20,
+       null
+      ],
+      [
+       -0.35,
+       -20,
+       null
+      ],
+      [
+       -0.25,
+       -20,
+       null
+      ],
+      [
+       -0.15,
+       -20,
+       null
+      ],
+      [
+       -0.05,
+       -20,
+       null
+      ],
+      [
+       0.05,
+       -20,
+       null
+      ],
+      [
+       0.15,
+       -20,
+       null
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20,
+       null
+      ],
+      [
+       0.55,
+       -20,
+       null
+      ],
+      [
+       0.65,
+       -20,
+       null
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "space": "b1_cor_mirror",
+   "portal": "p_b1_cor_mirror",
+   "other": "b1_mirror",
+   "other_zone": "p_b1_mirror",
+   "at": [
+    93.5,
+    92
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20
+      ],
+      [
+       -0.55,
+       -20,
+       -20
+      ],
+      [
+       -0.45,
+       -20,
+       -20
+      ],
+      [
+       -0.35,
+       -20,
+       -20
+      ],
+      [
+       -0.25,
+       -20,
+       -20
+      ],
+      [
+       -0.15,
+       -20,
+       -20
+      ],
+      [
+       -0.05,
+       -20,
+       -20
+      ],
+      [
+       0.05,
+       -20,
+       -20
+      ],
+      [
+       0.15,
+       -20,
+       -20
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20.18,
+       null
+      ],
+      [
+       0.55,
+       -20.18,
+       null
+      ],
+      [
+       0.65,
+       -20.18,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -20
+      ],
+      [
+       -0.55,
+       null,
+       -20
+      ],
+      [
+       -0.45,
+       null,
+       -20
+      ],
+      [
+       -0.35,
+       null,
+       -20
+      ],
+      [
+       -0.25,
+       null,
+       -20
+      ],
+      [
+       -0.15,
+       null,
+       -20
+      ],
+      [
+       -0.05,
+       -20,
+       -20
+      ],
+      [
+       0.05,
+       -20,
+       -20
+      ],
+      [
+       0.15,
+       -20,
+       -20
+      ],
+      [
+       0.25,
+       -20,
+       -20
+      ],
+      [
+       0.35,
+       -20,
+       -20
+      ],
+      [
+       0.45,
+       -20,
+       -20
+      ],
+      [
+       0.55,
+       -20,
+       -20
+      ],
+      [
+       0.65,
+       -20,
+       -20
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -20
+      ],
+      [
+       -0.55,
+       null,
+       -20
+      ],
+      [
+       -0.45,
+       null,
+       -20
+      ],
+      [
+       -0.35,
+       null,
+       -20
+      ],
+      [
+       -0.25,
+       null,
+       -20
+      ],
+      [
+       -0.15,
+       null,
+       -20
+      ],
+      [
+       -0.05,
+       null,
+       -20
+      ],
+      [
+       0.05,
+       null,
+       -20
+      ],
+      [
+       0.15,
+       null,
+       -20
+      ],
+      [
+       0.25,
+       null,
+       -20
+      ],
+      [
+       0.35,
+       null,
+       -20
+      ],
+      [
+       0.45,
+       null,
+       -20
+      ],
+      [
+       0.55,
+       null,
+       -20
+      ],
+      [
+       0.65,
+       -20,
+       -20
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "space": "b1_cor_mirror",
+   "portal": "p_b1_junction_mirror",
+   "other": "b1_junction_w",
+   "other_zone": "b1",
+   "at": [
+    70,
+    76
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20.001
+      ],
+      [
+       -0.55,
+       -20,
+       -20.001
+      ],
+      [
+       -0.45,
+       -20,
+       -20.001
+      ],
+      [
+       -0.35,
+       -20,
+       -20.001
+      ],
+      [
+       -0.25,
+       -20,
+       -20.001
+      ],
+      [
+       -0.15,
+       -20,
+       -20.001
+      ],
+      [
+       -0.05,
+       -20,
+       -20.001
+      ],
+      [
+       0.05,
+       -20,
+       -20.001
+      ],
+      [
+       0.15,
+       -20,
+       -20.001
+      ],
+      [
+       0.25,
+       null,
+       -20.001
+      ],
+      [
+       0.35,
+       null,
+       -20.001
+      ],
+      [
+       0.45,
+       null,
+       -20.001
+      ],
+      [
+       0.55,
+       null,
+       -20.001
+      ],
+      [
+       0.65,
+       null,
+       -20.001
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20.001
+      ],
+      [
+       -0.55,
+       -20,
+       -20.001
+      ],
+      [
+       -0.45,
+       -20,
+       -20.001
+      ],
+      [
+       -0.35,
+       -20,
+       -20.001
+      ],
+      [
+       -0.25,
+       null,
+       -20.001
+      ],
+      [
+       -0.15,
+       null,
+       -20.001
+      ],
+      [
+       -0.05,
+       null,
+       -20.001
+      ],
+      [
+       0.05,
+       null,
+       -20.001
+      ],
+      [
+       0.15,
+       null,
+       -20.001
+      ],
+      [
+       0.25,
+       null,
+       -20.001
+      ],
+      [
+       0.35,
+       null,
+       -20.001
+      ],
+      [
+       0.45,
+       null,
+       -20.001
+      ],
+      [
+       0.55,
+       null,
+       -20.001
+      ],
+      [
+       0.65,
+       null,
+       -20.001
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20.001
+      ],
+      [
+       -0.55,
+       -20,
+       -20.001
+      ],
+      [
+       -0.45,
+       -20,
+       -20.001
+      ],
+      [
+       -0.35,
+       -20,
+       -20.001
+      ],
+      [
+       -0.25,
+       -20,
+       -20.001
+      ],
+      [
+       -0.15,
+       -20,
+       -20.001
+      ],
+      [
+       -0.05,
+       -20,
+       -20.001
+      ],
+      [
+       0.05,
+       -20,
+       -20.001
+      ],
+      [
+       0.15,
+       -20,
+       -20.001
+      ],
+      [
+       0.25,
+       -20,
+       -20.001
+      ],
+      [
+       0.35,
+       -20,
+       -20.001
+      ],
+      [
+       0.45,
+       -20,
+       -20.001
+      ],
+      [
+       0.55,
+       null,
+       -20.001
+      ],
+      [
+       0.65,
+       null,
+       -20.001
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "space": "b1_mirror",
+   "portal": "p_b1_cor_mirror",
+   "other": "b1_cor_mirror",
+   "other_zone": "p_b1_cor_mirror",
+   "at": [
+    93.5,
+    92
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20
+      ],
+      [
+       -0.55,
+       -20,
+       -20
+      ],
+      [
+       -0.45,
+       -20,
+       -20
+      ],
+      [
+       -0.35,
+       -20,
+       -20
+      ],
+      [
+       -0.25,
+       -20,
+       -20
+      ],
+      [
+       -0.15,
+       -20,
+       -20
+      ],
+      [
+       -0.05,
+       -20,
+       -20
+      ],
+      [
+       0.05,
+       -20,
+       -20
+      ],
+      [
+       0.15,
+       -20,
+       null
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20,
+       null
+      ],
+      [
+       0.55,
+       -20,
+       null
+      ],
+      [
+       0.65,
+       -20,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20
+      ],
+      [
+       -0.55,
+       -20,
+       -20
+      ],
+      [
+       -0.45,
+       -20,
+       -20
+      ],
+      [
+       -0.35,
+       -20,
+       -20
+      ],
+      [
+       -0.25,
+       -20,
+       -20
+      ],
+      [
+       -0.15,
+       -20,
+       -20
+      ],
+      [
+       -0.05,
+       -20,
+       -20
+      ],
+      [
+       0.05,
+       -20,
+       -20
+      ],
+      [
+       0.15,
+       -20,
+       null
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20,
+       null
+      ],
+      [
+       0.55,
+       -20,
+       null
+      ],
+      [
+       0.65,
+       -20,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20
+      ],
+      [
+       -0.55,
+       -20,
+       -20
+      ],
+      [
+       -0.45,
+       -20,
+       -20
+      ],
+      [
+       -0.35,
+       -20,
+       -20
+      ],
+      [
+       -0.25,
+       -20,
+       -20
+      ],
+      [
+       -0.15,
+       -20,
+       -20
+      ],
+      [
+       -0.05,
+       -20,
+       -20
+      ],
+      [
+       0.05,
+       -20,
+       -20
+      ],
+      [
+       0.15,
+       -20,
+       null
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20,
+       null
+      ],
+      [
+       0.55,
+       -20,
+       null
+      ],
+      [
+       0.65,
+       -20,
+       null
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "space": "b1_mirror",
+   "portal": "p_b1_mirror_east",
+   "other": "b1_cor_east",
+   "other_zone": "b1",
+   "at": [
+    130.5,
+    90
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20.001
+      ],
+      [
+       -0.55,
+       -20,
+       -20.001
+      ],
+      [
+       -0.45,
+       -20,
+       -20.001
+      ],
+      [
+       -0.35,
+       -20,
+       -20.001
+      ],
+      [
+       -0.25,
+       -20,
+       null
+      ],
+      [
+       -0.15,
+       -20,
+       null
+      ],
+      [
+       -0.05,
+       -20,
+       null
+      ],
+      [
+       0.05,
+       -20,
+       null
+      ],
+      [
+       0.15,
+       -20,
+       null
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20,
+       null
+      ],
+      [
+       0.55,
+       -20,
+       null
+      ],
+      [
+       0.65,
+       -20,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20.001
+      ],
+      [
+       -0.55,
+       -20,
+       -20.001
+      ],
+      [
+       -0.45,
+       -20,
+       -20.001
+      ],
+      [
+       -0.35,
+       -20,
+       -20.001
+      ],
+      [
+       -0.25,
+       -20,
+       null
+      ],
+      [
+       -0.15,
+       -20,
+       null
+      ],
+      [
+       -0.05,
+       -20,
+       null
+      ],
+      [
+       0.05,
+       -20,
+       null
+      ],
+      [
+       0.15,
+       -20,
+       null
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20,
+       null
+      ],
+      [
+       0.55,
+       -20,
+       null
+      ],
+      [
+       0.65,
+       -20,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       -20,
+       -20.001
+      ],
+      [
+       -0.55,
+       -20,
+       -20.001
+      ],
+      [
+       -0.45,
+       -20,
+       -20.001
+      ],
+      [
+       -0.35,
+       -20,
+       -20.001
+      ],
+      [
+       -0.25,
+       -20,
+       null
+      ],
+      [
+       -0.15,
+       -20,
+       null
+      ],
+      [
+       -0.05,
+       -20,
+       null
+      ],
+      [
+       0.05,
+       -20,
+       null
+      ],
+      [
+       0.15,
+       -20,
+       null
+      ],
+      [
+       0.25,
+       -20,
+       null
+      ],
+      [
+       0.35,
+       -20,
+       null
+      ],
+      [
+       0.45,
+       -20,
+       null
+      ],
+      [
+       0.55,
+       -20,
+       null
+      ],
+      [
+       0.65,
+       -20,
+       null
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "space": "g_arrival",
+   "portal": "p_gate_hall",
+   "other": "g_gate",
+   "other_zone": "ground",
+   "at": [
+    40,
+    55
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -0.001
+      ],
+      [
+       -0.55,
+       null,
+       -0.001
+      ],
+      [
+       -0.45,
+       null,
+       -0.001
+      ],
+      [
+       -0.35,
+       0,
+       null
+      ],
+      [
+       -0.25,
+       0,
+       null
+      ],
+      [
+       -0.15,
+       0,
+       null
+      ],
+      [
+       -0.05,
+       0,
+       null
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -0.001
+      ],
+      [
+       -0.55,
+       null,
+       -0.001
+      ],
+      [
+       -0.45,
+       null,
+       -0.001
+      ],
+      [
+       -0.35,
+       null,
+       -0.001
+      ],
+      [
+       -0.25,
+       null,
+       -0.001
+      ],
+      [
+       -0.15,
+       null,
+       -0.001
+      ],
+      [
+       -0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -0.001
+      ],
+      [
+       -0.55,
+       null,
+       -0.001
+      ],
+      [
+       -0.45,
+       null,
+       -0.001
+      ],
+      [
+       -0.35,
+       null,
+       -0.001
+      ],
+      [
+       -0.25,
+       null,
+       -0.001
+      ],
+      [
+       -0.15,
+       null,
+       -0.001
+      ],
+      [
+       -0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.15,
+       null,
+       -0.001
+      ],
+      [
+       0.25,
+       null,
+       -0.001
+      ],
+      [
+       0.35,
+       null,
+       -0.001
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "space": "g_arrival",
+   "portal": "p_hall_changing",
+   "other": "g_changing",
+   "other_zone": "ground",
+   "at": [
+    100,
+    52
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -0.001
+      ],
+      [
+       -0.55,
+       null,
+       -0.001
+      ],
+      [
+       -0.45,
+       null,
+       -0.001
+      ],
+      [
+       -0.35,
+       null,
+       -0.001
+      ],
+      [
+       -0.25,
+       null,
+       -0.001
+      ],
+      [
+       -0.15,
+       null,
+       -0.001
+      ],
+      [
+       -0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.15,
+       null,
+       -0.001
+      ],
+      [
+       0.25,
+       null,
+       -0.001
+      ],
+      [
+       0.35,
+       null,
+       -0.001
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -0.001
+      ],
+      [
+       -0.55,
+       null,
+       -0.001
+      ],
+      [
+       -0.45,
+       null,
+       -0.001
+      ],
+      [
+       -0.35,
+       null,
+       -0.001
+      ],
+      [
+       -0.25,
+       null,
+       -0.001
+      ],
+      [
+       -0.15,
+       null,
+       -0.001
+      ],
+      [
+       -0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -0.001
+      ],
+      [
+       -0.55,
+       null,
+       -0.001
+      ],
+      [
+       -0.45,
+       null,
+       -0.001
+      ],
+      [
+       -0.35,
+       0,
+       null
+      ],
+      [
+       -0.25,
+       0,
+       null
+      ],
+      [
+       -0.15,
+       0,
+       null
+      ],
+      [
+       -0.05,
+       0,
+       null
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "space": "g_arrival",
+   "portal": "p_hall_terrace",
+   "other": "g_terrace",
+   "other_zone": "ground",
+   "at": [
+    60,
+    42
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -0.001
+      ],
+      [
+       -0.55,
+       null,
+       -0.001
+      ],
+      [
+       -0.45,
+       null,
+       -0.001
+      ],
+      [
+       -0.35,
+       null,
+       -0.001
+      ],
+      [
+       -0.25,
+       null,
+       -0.001
+      ],
+      [
+       -0.15,
+       null,
+       -0.001
+      ],
+      [
+       -0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.15,
+       null,
+       -0.001
+      ],
+      [
+       0.25,
+       null,
+       -0.001
+      ],
+      [
+       0.35,
+       null,
+       -0.001
+      ],
+      [
+       0.45,
+       null,
+       -0.001
+      ],
+      [
+       0.55,
+       null,
+       -0.001
+      ],
+      [
+       0.65,
+       null,
+       -0.001
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       null,
+       -0.001
+      ],
+      [
+       -0.55,
+       null,
+       -0.001
+      ],
+      [
+       -0.45,
+       null,
+       -0.001
+      ],
+      [
+       -0.35,
+       null,
+       -0.001
+      ],
+      [
+       -0.25,
+       null,
+       -0.001
+      ],
+      [
+       -0.15,
+       null,
+       -0.001
+      ],
+      [
+       -0.05,
+       null,
+       -0.001
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       0,
+       null
+      ],
+      [
+       -0.55,
+       0,
+       null
+      ],
+      [
+       -0.45,
+       0,
+       null
+      ],
+      [
+       -0.35,
+       0,
+       null
+      ],
+      [
+       -0.25,
+       0,
+       null
+      ],
+      [
+       -0.15,
+       0,
+       null
+      ],
+      [
+       -0.05,
+       0,
+       null
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "space": "g_arrival",
+   "portal": "p_g_arrival_spiral_stair",
+   "other": "spiral_stair",
+   "other_zone": "c_spiral_stair",
+   "at": [
+    90,
+    62
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       null,
+       null
+      ],
+      [
+       -0.55,
+       null,
+       null
+      ],
+      [
+       -0.45,
+       null,
+       null
+      ],
+      [
+       -0.35,
+       null,
+       null
+      ],
+      [
+       -0.25,
+       null,
+       null
+      ],
+      [
+       -0.15,
+       null,
+       null
+      ],
+      [
+       -0.05,
+       null,
+       null
+      ],
+      [
+       0.05,
+       null,
+       null
+      ],
+      [
+       0.15,
+       null,
+       null
+      ],
+      [
+       0.25,
+       null,
+       null
+      ],
+      [
+       0.35,
+       null,
+       null
+      ],
+      [
+       0.45,
+       null,
+       null
+      ],
+      [
+       0.55,
+       null,
+       null
+      ],
+      [
+       0.65,
+       null,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       0,
+       null
+      ],
+      [
+       -0.55,
+       0,
+       null
+      ],
+      [
+       -0.45,
+       0,
+       null
+      ],
+      [
+       -0.35,
+       0,
+       null
+      ],
+      [
+       -0.25,
+       0,
+       null
+      ],
+      [
+       -0.15,
+       0,
+       null
+      ],
+      [
+       -0.05,
+       0,
+       null
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       0,
+       null
+      ],
+      [
+       -0.55,
+       0,
+       null
+      ],
+      [
+       -0.45,
+       0,
+       null
+      ],
+      [
+       -0.35,
+       0,
+       null
+      ],
+      [
+       -0.25,
+       0,
+       null
+      ],
+      [
+       -0.15,
+       0,
+       null
+      ],
+      [
+       -0.05,
+       0,
+       null
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "ok": false
+  },
+  {
+   "space": "g_arrival",
+   "portal": "p_g_arrival_lift",
+   "other": "main_lift",
+   "other_zone": null,
+   "at": [
+    90,
+    78
+   ],
+   "lines": [
+    {
+     "off": -0.3,
+     "samples": [
+      [
+       -0.65,
+       0,
+       null
+      ],
+      [
+       -0.55,
+       0,
+       null
+      ],
+      [
+       -0.45,
+       0,
+       null
+      ],
+      [
+       -0.35,
+       0,
+       null
+      ],
+      [
+       -0.25,
+       0,
+       null
+      ],
+      [
+       -0.15,
+       0,
+       null
+      ],
+      [
+       -0.05,
+       0,
+       null
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0,
+     "samples": [
+      [
+       -0.65,
+       0,
+       null
+      ],
+      [
+       -0.55,
+       0,
+       null
+      ],
+      [
+       -0.45,
+       0,
+       null
+      ],
+      [
+       -0.35,
+       0,
+       null
+      ],
+      [
+       -0.25,
+       0,
+       null
+      ],
+      [
+       -0.15,
+       0,
+       null
+      ],
+      [
+       -0.05,
+       0,
+       null
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "off": 0.3,
+     "samples": [
+      [
+       -0.65,
+       0,
+       null
+      ],
+      [
+       -0.55,
+       0,
+       null
+      ],
+      [
+       -0.45,
+       0,
+       null
+      ],
+      [
+       -0.35,
+       0,
+       null
+      ],
+      [
+       -0.25,
+       0,
+       null
+      ],
+      [
+       -0.15,
+       0,
+       null
+      ],
+      [
+       -0.05,
+       0,
+       null
+      ],
+      [
+       0.05,
+       0,
+       null
+      ],
+      [
+       0.15,
+       0,
+       null
+      ],
+      [
+       0.25,
+       0,
+       null
+      ],
+      [
+       0.35,
+       0,
+       null
+      ],
+      [
+       0.45,
+       0,
+       null
+      ],
+      [
+       0.55,
+       0,
+       null
+      ],
+      [
+       0.65,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "ok": true
+  }
+ ],
+ "round": "r2 look-dev (2026-10-27)",
+ "flythrough_low_r2": {
+  "out": "/home/agent-tom/Desktop/volcanospa/.scratch/export/fly_low2.mp4",
+  "seconds": 69.58,
+  "frames": 4160,
+  "skippedWaypoints": [],
+  "fpsMin": 59.8,
+  "drawMax": 150,
+  "triMax": 403278,
+  "end": {
+   "pos": [
+    100.267,
+    99.016,
+    -18.4
+   ],
+   "space": "b1_mirror",
+   "zone": "p_b1_mirror",
+   "tier": "low"
+  }
+ }
+}

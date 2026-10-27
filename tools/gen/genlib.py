@@ -55,7 +55,18 @@ class MeshBuilder:
         for f in faces:
             f.material_index = mi
 
+    def _mark_old(self):
+        """mark every existing face (bevel/subdivide clear BMElem.tag, so use an int layer)"""
+        lay = self.bm.faces.layers.int.get('_old') or self.bm.faces.layers.int.new('_old')
+        for f in self.bm.faces:
+            f[lay] = 1
+        return lay
+
+    def _new_faces(self, lay):
+        return [f for f in self.bm.faces if f[lay] == 0]
+
     def box(self, center, size, mi, rot=(0, 0, 0), bevel=0.0, bevel_segs=1):
+        lay = self._mark_old()
         r = bmesh.ops.create_cube(self.bm, size=1.0)
         vs = r['verts']
         bmesh.ops.scale(self.bm, vec=size, verts=vs)
@@ -64,9 +75,8 @@ class MeshBuilder:
         faces = list({f for v in vs for f in v.link_faces})
         if bevel > 0:
             edges = list({e for f in faces for e in f.edges})
-            res = bmesh.ops.bevel(self.bm, geom=edges + vs, offset=bevel, segments=bevel_segs, affect='EDGES', profile=0.5)
-            faces = list(set(faces) | set(res['faces']))
-            faces = [f for f in faces if f.is_valid]
+            bmesh.ops.bevel(self.bm, geom=edges + vs, offset=min(bevel, 0.45 * min(size)), segments=bevel_segs, affect='EDGES', profile=0.5, clamp_overlap=True)
+            faces = self._new_faces(lay)          # every face of this box, flat and bevel faces alike
         self._tag(faces, mi)
         return faces
 
@@ -146,6 +156,8 @@ def uv0_metric(obj):
 def uv1_lightmap(obj, margin=0.02):
     """Non-overlapping UV1 for lightmaps (Smart UV Project, then packed)."""
     me = obj.data
+    if not me.polygons:                      # points/edges-only meshes (glowworms) have nothing to unwrap
+        return
     if 'UVLight' not in me.uv_layers:
         me.uv_layers.new(name='UVLight')
     me.uv_layers.active = me.uv_layers['UVLight']
@@ -214,6 +226,13 @@ def check(obj, asset, lod, budget=None, tol=0.05):
 def budget_of(asset):
     """triangle budget per LOD from inventory.csv ('a/b/c/d')"""
     import csv
+    for r in csv.DictReader(open(os.path.join(ROOT, '3d', 'asset_list.csv'))):   # master list first
+        if r['id'] == asset:
+            try:
+                import re
+                return [int(re.sub(r'\D', '', x)) for x in r['tri_budget (LOD0/1/2/3)'].split('(')[0].split(':')[-1].split('/')[:4]]
+            except ValueError:
+                break
     for r in csv.DictReader(open(os.path.join(ROOT, '3d', 'inventory.csv'))):
         if r['id'] == asset:
             try:

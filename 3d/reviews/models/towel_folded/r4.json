@@ -1,0 +1,41 @@
+{
+  "asset": "towel_folded",
+  "round": 4,
+  "reviewer": "independent model reviewer (mrev4_k), did not build the asset",
+  "rules_sha256": "024ea871984960c4af7351cb1987c369510be598fd9004f0989693c7cfb48e94",
+  "reviewed": [
+    "3d/renders/models/towel_folded/canonical.jpg",
+    "3d/renders/lod/towel_folded/sheet.jpg",
+    "3d/renders/lod/towel_folded/phone-lod2-lod3.jpg",
+    "3d/renders/lod/towel_folded/styles.jpg",
+    "lookbook/img/04-arrival-gate.jpg",
+    "lookbook/img/20-wave-grotto.jpg",
+    "lookbook/img/21-private-suite.jpg",
+    "refs/gen/sheet-ref-ground.png",
+    "refs/gen/sheet-vs-bath-props.png (towel panel #2)"
+  ],
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 2,
+    "variation": 2
+  },
+  "overall_10": 4.7,
+  "fixes": [
+    "Towel edge profile (all LODs): tools/gen/gen_towel_folded.py pillow() evaluates top_z and the bottom ring at s=1 as 0 (dz = T/2*sqrt(1-s^2) + bulge*(1-s^2) - sag*(1-s)*s), so every towel has a zero-thickness knife edge at its outline. This is the cause of the pointed diamond tips in canonical.jpg and of the lens-shaped LOD1/LOD2 towels in sheet.jpg. Target: the outer 6-8 mm of each towel carries its full 40 mm thickness, with a rounded roll (radius about 8 mm) instead of a knife edge. Keep the ring count at LOD0; at LOD1/LOD2 add one edge band so the top is flat with puff only in the centre. LOD2 is at 116 of 120 tris, so either raise its budget to about 150 or use 2 corner segments at LOD2.",
+    "Visible fold: the crease is 4 mm deep (top_z term 0.004*exp(...)) and is invisible in canonical.jpg, so the towels read as plain slabs. Concept towels show a fold line and folded thirds (refs/gen/sheet-vs-bath-props.png, towel #2 front). Target: crease depth 8-10 mm, width about 30 mm, at a seeded position across the width; a second crease at about 1/3 width on alternate seeds so the seed change is visible.",
+    "Towel thickness and pitch: concept towels measure about 0.07 m each in the front view (3 towels fill about 0.20-0.23 m against the labelled 0.30 m arrow, approximate). Generator pitch is 0.056 m, so each towel reads thinner and flatter than the concept terry. Target: TOWEL_T 0.046 m with a 16-18 mm puff, PITCH 0.062 m, keeping the 2 mm gap. This revises the r3 pitch target (54-56 mm) because the puff now fills the gap; the floating-plate problem is solved by the puff, not by a smaller pitch. Four towels then give about 0.26 m and five about 0.32 m, against the concept's 0.30 m.",
+    "Roll diameter and end: concept roll is about 0.14 m in diameter (front view, about 85 px against a 0.20 m arrow of about 120 px, approximate), sitting on a 0.40 m tray. Generator rad is 0.045-0.06 m (diameter 0.09-0.11 m), about 30% too thin. Target: rad 0.065-0.075 m. Replace the flat end caps with a tucked end showing 2-3 concentric spiral rings, and keep the mid-length groove only as a soft fold seam, not as a waist.",
+    "Drape tub: the tub is the weakest part. Concept tub is a full-height hinoki bucket, about 0.30 m tall with staves and a copper hoop (refs/gen/sheet-vs-bath-props.png, towel #2 bottom row). Generator rim is a 0.03 m band at z 0.22-0.25 m, 0.26-0.28 m in diameter, so the tub barely reads. Target: tub height 0.30 m, diameter 0.40 m (concept front width; the sheet labels the side view 0.60 m, but the two views are the same pixel width, so the lead should confirm), stave lines, one copper hoop at about 0.10 m. Towel: hangs mainly on the front face with a front drop of 0.12-0.15 m and a back drop of about 0.04 m, width 0.30 m, one fold over the rim with a 2-3 mm air gap. This refines the r3 target (both outside faces equal) because the concept shows the towel on one face.",
+    "Seed variation: count is the only visible change (4 vs 5 in styles.jpg). Yaw is +-0.10 rad (r3 asked +-0.15; the docstring says yaw is kept inside the proxy footprint, so the lead must pick a tray width that allows +-0.15), and offsets are +-0.01 m (r3 asked +-0.02). Target: offsets +-0.02 m, yaw +-0.15 rad with a 0.44 m tray if needed, and the fold count alternating between 1 and 2 creases (fix 2)."
+  ],
+  "library_issues": [
+    "terry (cream) cloth normal: at canonical scale the weave reads as stucco or plaster, not terry loops. Target a loop-scale weave of about 2-3 mm with lower normal strength. This is a library fix, not generator geometry.",
+    "Naming mismatch: asset_list.csv lists NEW:linen for this asset, but tools/gen/gen_towel_folded.py uses mb.slot('terry', variant='cream'). The lead should reconcile the CSV with the generator and the library.",
+    "hinoki walnut tray: reads correctly in canonical.jpg and styles.jpg. No change needed."
+  ],
+  "verdict": "revise",
+  "summary": "Stack reads as folded white cloth from distance, but up close each towel is a zero-thickness lens with no visible fold, so it reads as slabs or cushions rather than terry. Roll is too thin against the concept (about 0.10 m against about 0.14 m) and reads as a plain tube. Drape reads as a wide sheet over a dark disk, not a towel on a tub, because the tub is a 3 cm band. LOD2 is a pointed diamond stack at 4 m, LOD3 reads as horizontal stripes at 10 m. Consistency with earlier rounds: r1 colour fix landed (cream, not lavender); r1 tray chrome fix landed (walnut, matte); r1 roll and drape styles now present. r2 stack height landed (4-5 towels, about 0.22-0.28 m); r2 LOD0 budget landed (516-636 of 700); r2 LOD1 budget landed (100-116 of 260). r3 pitch landed at 56 mm, but the r3 outline fix only landed in plan (40-50 mm corner radius), not in the edge profile (8 mm roll not done). r3 drape: drop 0.12-0.15 m landed, sheet width 0.30 m not the r3 target of 0.40 m, and the tub is still too small. r3 variation: count landed, yaw (+-0.10 vs +-0.15) and offset (+-0.01 vs +-0.02) not landed, crease invisible. r3 LOD3 slab fix landed structurally, but the stripes still read at 10 m. Budgets are all in range. Priority: edge profile and fold first, then roll diameter and tub, then the terry library normal."
+}

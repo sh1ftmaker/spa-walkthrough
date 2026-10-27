@@ -34,9 +34,9 @@ def main():
     man = json.load(open(os.path.join(ROOT, '3d', 'materials.json')))
     blocks = []
     mk('-size', f'{W}x64', f'xc:{BG}', '-fill', FG, '-font', BOLD, '-pointsize', 28, '-gravity', 'west',
-       '-annotate', '+20+0', 'Kazan-yu material library (round 2)', '-fill', DIM, '-font', FONT, '-pointsize', 15,
+       '-annotate', '+20+0', 'Kazan-yu material library (shader kit + CC0 scans)', '-fill', DIM, '-font', FONT, '-pointsize', 15,
        '-gravity', 'east', '-annotate', '+20+0',
-       'Round 2: shipped 512/1024 px textures, Cycles + OptiX, AgX  |  2700 K key calibrated to the 18 % card, teal fill  |  water: 0.1/0.5/2 m steps',
+       'kit plates + macro + wet film  |  Cycles/OptiX, AgX  |  5000 K key + amber split, 18%% card',
        os.path.join(TMP, 'title.png'))
     blocks.append(os.path.join(TMP, 'title.png'))
     for cat in man['categories']:

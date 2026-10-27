@@ -1,0 +1,26 @@
+{
+  "asset": "oke_bucket",
+  "round": 2,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 2,
+    "variation": 2
+  },
+  "fixes": [
+    "Ladle head: canonical and styles.jpg show a straight dowel with no scoop. Concept sheet (sheet-vs-bath-props, item 1) shows a hishaku with a cup head. Add a cup about 0.12 m dia x 0.05 m deep on the end of a 0.45-0.55 m handle, joined with a notch, and bring the handle down onto the rim so it does not float over the water.",
+    "Bowl colour and form: canonical bowl is cream ceramic, styles.jpg bowl is dark wood with a copper rim, and the concept bowl is deep teal speckled glaze. Use one bowl, teal glaze, about 0.16 m dia x 0.06 m deep, sitting inside the rim.",
+    "Stray bump on rim: a second small cup/ring stub sits on the back rim of the canonical bucket and reads as a geometry error. Remove it or move the bowl into the water.",
+    "Budget: LOD0 is 1392 tris against an 800 budget and LOD1 466 against 320 (sheet problems line). Cut LOD0 staves from 30 to about 24 and drop the 3-band hoop section to 2 bands, to reach 800. Cut LOD1 belly segments to reach 320.",
+    "LOD2/LOD3 silhouette: at 5 m the LOD2 silhouette reads as a kettle or blob because the ladle and bowl bump sit on a plain rounded body. Keep a visible flared rim at LOD2 (top radius at least 1.15x bottom) and keep one hoop at LOD3 so the bucket reads as a bucket at 12 m.",
+    "Pivot: LOD0 seed 2 and LOD1 seed 2 are flagged off-centre by 0.05 m. Re-centre the origin on the base disc."
+  ],
+  "library_issues": [
+    "Library has 'ceramic' but no speckled teal glaze, so the bowl cannot match the concept.",
+    "Hoops read as flat tape-like bronze; library 'bronze' looks like copper-orange gradient. Check roughness so the hoops read as metal, not paint."
+  ],
+  "verdict": "revise",
+  "summary": "Recognisable hinoki bucket with copper hoops and a ladle, close to the steam-grotto and private-suite concept. Ladle has no scoop, bowl colour and form do not match, LOD0 and LOD1 are over budget, and the LOD2 and LOD3 silhouettes read as a generic pot. Seeds barely change the shape."
+}

@@ -869,6 +869,11 @@
    "check": "hero_brightest",
    "where": "mirror_pool",
    "reason": "The hero is a reflective black surface; its brightness is the reflected glowworm field over a large area. Individual lantern points may out-measure it per pixel, so lanterns here are 'low' intensity and the bake should be judged on area luminance."
+  },
+  {
+   "check": "hero_visible",
+   "where": "glowworm_ceiling",
+   "reason": "The lead made glowworm_ceiling an emissive marker (gb_emit cyan, no proxy box) so there is nothing to sample; it fills the top of every Mirror view."
   }
  ],
  "lighting_request": "glowworm_ceiling should render as cyan point emission (9000 K) and w_mirror as black mirror water; today only heroes glow and water is teal.",

@@ -1,0 +1,18 @@
+{
+  "asset": "obsidian_monolith",
+  "round": 1,
+  "scores": {"likeness": 3, "silhouette_proportion": 3, "construction_detail": 3, "material_use": 2, "lod_recognition": 3, "variation": 2},
+  "fixes": [
+    "Facet surfaces (LOD0/1): the conchoidal dishing does not read. Faces look like large flat planes with a few odd pale polygonal patches in the LOD sheet (probably flat-facet reflections of the key light card, or flipped/degenerate poked faces; check normals and manifold). In 17-glacier-plunge, every face carries shell-scar scallops with crisp curved ripple ridges. Target dish depth 3-6 % of facet width (~0.03-0.06 m on a 1 m facet), 2-3 concentric ripples rather than one, and 20-30 % of facets as several overlapping smaller scars, so specular streaks break up into curved arcs.",
+    "Silhouette: every seed is the same tapered pentagon with a central point, and the canonical seed 1 ends in a squat, flat bevelled top. The concept references show two distinct reads: the Mirror-pool spires in 10-waterpark-map (slender, sharply pointed, tip offset) and the glacier mass in 17 (a broken cluster of leaning planar shards). Target: a tip that rakes 25-40 deg off-axis, with the apex offset 20-35 % of w from centre; a top facet that is never horizontal; 1-2 secondary blades stuck to the main body (0.3-0.6 of h) on some seeds.",
+    "Seed variation: the three seeds differ only in small facet placement (tri counts 1458/1752/1560), and the lean is hardly visible. Spread the seeded parameters: h across 1.8-3.1 m, w/d ratio across 1.3-2.2, lean ±0.06-0.12 visible, plus a 'cluster' variant (main shard + 1-2 blades) for the b1_glacier hero versus a 'spire' variant for b1_mirror.",
+    "Base: a single small chip sits at the foot and the base meets the floor as a straight cut. In 17 the shard rises out of a skirt of broken rubble and smaller shards. At LOD0 add 4-6 fragments of 0.1-0.4 m, two of them leaning against the base, and sink the base 0.1 m with an irregular bottom so it does not look placed on the floor.",
+    "Ridges: keep the ridges razor-sharp (no shading smear across them) and add a thin 1-2 cm micro-bevel only on LOD0, so the edges catch the bright specular lines visible in 17. Make sure normals are split per facet (auto-smooth 20-30 deg) on all LODs."
+  ],
+  "library_issues": [
+    "obsidian renders brown, milky and translucent with whitish marble-like clouding (canonical), reading like smoky quartz or marble. The concept (mat-obsidian, 17-glacier-plunge) is jet black with mirror-sharp specular and only a fine silver crack network. Target albedo < 0.02, roughness ~0.03-0.06, little or no transmission or subsurface, and crack veins thin and sparse.",
+    "LOD sheet tooling: the noisy large-scale rock backdrop swamps every cell, and the phone 'shaded' panes at 75 m and 180 m show only noise with a speck. Recognition could only be judged from the silhouettes, which read as a dark sliver at LOD2 and a few pixels at LOD3. A separate phone-lod2-lod3.jpg was not produced. No sheet-vs/sheet-mod object sheet with a scale bar exists for this asset, so proportion was judged from the lookbook only."
+  ],
+  "verdict": "revise",
+  "summary": "It reads as a dark faceted standing stone, close to the slender Mirror-pool spires in map 10. It is not yet the concept's obsidian: the material reads as brown, milky marble, and the conchoidal fracture is invisible. The three seeds are near-identical tapered pentagons with weak lean. Nothing approaches the jagged multi-shard mass in 17-glacier-plunge. Fix the library material first, then make the fractures readable and widen the seed range."
+}

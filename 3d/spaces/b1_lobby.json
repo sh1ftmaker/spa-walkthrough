@@ -779,7 +779,8 @@
    "avoid": [
     "nav",
     "anchored"
-   ]
+   ],
+   "z": -20.0
   },
   {
    "asset": "rock_cluster",
@@ -799,7 +800,8 @@
     "water",
     "anchored"
    ],
-   "why": "Edge rocks on the outer wall, so each lantern pool has something to light."
+   "why": "Edge rocks on the outer wall, so each lantern pool has something to light.",
+   "z": -20.0
   }
  ],
  "mood": {

@@ -27,7 +27,9 @@ export function writeAddressed(root, dir, ext, bytes) {
 }
 
 /**
- * meshes: [{ name, material: {name, color:[r,g,b], roughness, metalness, emissive:[r,g,b]}, attrs: {position, normal?, uv0?, uv1?}, extras }]
+ * meshes: [{ name, material: {name, color:[r,g,b], roughness, metalness, emissive:[r,g,b]}, attrs: {position, normal?, uv0?, uv1?, color?},
+ *            custom?: { _NAME: { type: 'VEC2'|'VEC3'|'VEC4'|'SCALAR', array } }, mode?: 'triangles'|'points'|'lines', extras }]
+ * Custom attributes (glTF names starting with "_") stay float32 (only standard attributes are quantized).
  */
 export async function buildGLB(meshes, { generator = 'kazanyu-standin' } = {}) {
   const doc = new Document().setLogger(new Logger(Logger.Verbosity.ERROR));
@@ -57,6 +59,10 @@ export async function buildGLB(meshes, { generator = 'kazanyu-standin' } = {}) {
     if (m.attrs.normal) prim.setAttribute('NORMAL', acc('VEC3', m.attrs.normal));
     if (m.attrs.uv0) prim.setAttribute('TEXCOORD_0', acc('VEC2', m.attrs.uv0));
     if (m.attrs.uv1) prim.setAttribute('TEXCOORD_1', acc('VEC2', m.attrs.uv1));
+    if (m.attrs.color) prim.setAttribute('COLOR_0', acc('VEC4', m.attrs.color));
+    for (const [k, v] of Object.entries(m.custom ?? {})) prim.setAttribute(k, acc(v.type, v.array));
+    if (m.mode === 'points') prim.setMode(0);
+    else if (m.mode === 'lines') prim.setMode(1);
     if (mat) prim.setMaterial(mat);
     const mesh = doc.createMesh(m.name).addPrimitive(prim);
     const node = doc.createNode(m.name).setMesh(mesh).setExtras({ kz: m.extras ?? {} });
@@ -68,3 +74,4 @@ export async function buildGLB(meshes, { generator = 'kazanyu-standin' } = {}) {
   );
   return io.writeBinary(doc);
 }
+export { weld, meshopt, MeshoptEncoder };

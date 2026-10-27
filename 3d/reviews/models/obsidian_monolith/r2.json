@@ -1,0 +1,25 @@
+{
+  "asset": "obsidian_monolith",
+  "round": 2,
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 3,
+    "material_use": 3,
+    "lod_recognition": 4,
+    "variation": 4
+  },
+  "fixes": [
+    "Faceting language (priority 1): the main shards end in crystal-point pyramids with near-regular faces, so the canonical cluster and spires s2/s5 read as a black quartz or tourmaline crystal cluster. Obsidian is amorphous glass. In 17-glacier-plunge the mass is made of broad, slightly curved conchoidal sheets, 0.6-1.5 m across, stacked and overlapping, with sharp feathered edges and stepped breaks. Target: on the body use 5-8 broad planes per side that are fewer and bigger, add a 5-15% curvature (dish) to each face, cap the apex with one dominant raked break face (25-40 deg, already there) plus a stepped secondary break, and drop the multi-plane top pyramid.",
+    "Conchoidal scars: they are not visible at all in the canonical. The dish depth (about 0.045-0.065 x face width) is lost under the mirror reflections. Target: 1-3 clearly visible shell-shaped scallops on the two broadest faces, 0.3-0.8 m across, 0.03-0.06 m deep, with 2-3 concentric ripple rings and a crisp lip edge. These should catch the key light as curved highlight arcs, like the scallops in mat-obsidian.png.",
+    "Surface flecks: the dense, uniform white sparkle dots read as glitter or snowflake obsidian. The concept has clean mirror faces with sparse smoky fracture veins and warm reflections. Target: 70-80% fewer flecks, and replace them with sparse thin dark-grey fracture lines plus slight smoky translucency on the edges (see library_issues).",
+    "Base and grounding: the body is cut flat at z=0 with only 1-2 tiny chips, so it looks set down on the floor. In the concept the obsidian rises out of wet basalt boulders and rubble. Target: sink the body 0.15-0.3 m below grade, add 3-6 chunky shards or boulder fragments, 0.2-0.5 m, around the foot, and flare the lowest 0.3 m out by about 10%. Also widen the slab style toward the brief's 'slab': s3 reads as a rounded tooth, so target w/d around 2.0-2.5 with a thin broad face and a raked top, not a dome.",
+    "Scale and LOD sheet hygiene: no front/side scale-bar concept sheet exists for this asset (none of the sheet-vs-* or sheet-mod-* sheets includes it), so proportion can only be judged against the brief (h 1.5-3.5 m, w 0.8-1.6 m) and map 10, where the Mirror pool monoliths are tall, slender, obelisk-like spires well above head height. The LOD sheet's seed 1 column shows a blunt wedge rather than the cluster that is canonical seed 1, so the sheet looks stale against the current generator. LOD3 seed 1 is 44 tris against a 40 budget while the sheet says 'budgets OK'. The LOD3 shaded phone panel is letterboxed with grey bands. Regenerate the sheet and the phone test."
+  ],
+  "library_issues": [
+    "The obsidian library material has a white fleck or sparkle layer that is too dense and too bright; it reads as glitter. mat-obsidian.png shows smoky dark fracture veining and glassy edge translucency instead.",
+    "Under the stock LOD-sheet key light, large faces mirror it as flat cyan and white planes. As the brief notes this is expected, but it hides any scallop relief, so material judging stays on the canonical."
+  ],
+  "verdict": "revise",
+  "summary": "Glossy black, sharp-edged and raked, it reads as obsidian at a glance, and the three styles (cluster, spire, slab) give real shape variety with a clean LOD3 silhouette. But the body is built like a crystal cluster with pyramidal points, the conchoidal fracture faces that define the concept's volcanic glass are not visible, the fleck layer makes it look like glitter, and it sits on the floor with a flat cut instead of growing out of rubble. The LOD sheet also appears stale against the current seed-to-style mapping."
+}

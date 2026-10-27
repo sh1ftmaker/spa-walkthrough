@@ -1,0 +1,45 @@
+{
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 4,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 4,
+  "variation": 4
+ },
+ "fixes": [
+  "Plinth glow (carried from r1 and r2, NOT landed): floor light still reads as 5 separate scalloped half-discs with dark gaps in canonical.jpg; sheet-mod-arrival shows a continuous warm strip along the whole base, and lookbook 04 a lit toe-kick. Make a continuous 0.06 m emissive slot (about 2200K amber) the full length of every bay, recess the base 0.04 m so the strip is also visible on the front face.",
+  "Stone top: still a thin (~0.05 m) black slab that blends into the black floor and wall; sheet shows a chunky ~0.09-0.10 m veined basalt slab with a 0.03-0.05 m overhang and a lighter chamfer edge. Thicken to 0.09 m, 3 mm arris bevel, add vein/roughness variation so the top catches light.",
+  "Front boards: bays now have mid-rails and iron straps (landed) but all boards are the same width and tone, so the face still reads as a fence. Add per-board tone/width jitter (60-90 mm) and 2 mm V-grooves; strap plates should be thin (0.12 x 0.25 m) with 4 bolt heads, currently still plain slabs.",
+  "Towel stacks: still identical white cuboids that read as books. Cut to 0.12-0.18 m, add 3 rolled towels and a stack with visible fold edge and slight lean (lookbook 04 shows soft folded stacks).",
+  "受付 plaque: about 0.06 m wide on a 7 m counter, unreadable beyond 3 m and not in the concept. Make it 0.12 x 0.4 m or make it optional, off by default.",
+  "Wood tone: panels read light orange (pale hinoki); concept boards are dark amber-brown. Library-driven, but a per-asset darker tint of 0.55-0.65 value would help in the meantime."
+ ],
+ "library_issues": [
+  "hinoki is too pale and saturated orange against the sheet's dark warm walnut; not matching the concept's counter.",
+  "basalt_dry top reads as flat black plastic with little wet specular detail."
+ ],
+ "verdict": "revise",
+ "summary": "Reads as the concept's counter: right length, bay rhythm, black top, lit-plinth idea, and LODs hold at 35/80 m. Held below pass by the unlanded continuous plinth glow, thin top slab, block-like towels and pale wood. Variation (3 lengths, top finish, props) is good.",
+ "earlier": {
+  "r1": {
+   "top overhang/chamfer": "partly (overhang present, still thin)",
+   "recessed panels+iron straps": "landed",
+   "plinth light amber behind toe-kick": "partly, discontinuous",
+   "LOD2/3 steps": "landed",
+   "towels folded": "not landed",
+   "plaque shrink": "partly",
+   "seed variation": "landed"
+  },
+  "r2": {
+   "continuous plinth": "not landed",
+   "stone top 0.09": "not landed",
+   "thin straps with bolts": "partly",
+   "board jitter+mid rail": "mid-rail landed, jitter not visible",
+   "towels": "not landed",
+   "plaque": "not landed"
+  }
+ },
+ "asset": "reception_counter",
+ "round": 3
+}

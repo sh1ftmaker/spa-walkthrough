@@ -54,16 +54,16 @@
    "id": "g_arrival",
    "name": "Arrival hall (lava window)",
    "level": "ground",
-   "zone": "ground",
+   "zone": "p_g_arrival",
    "kind": "place",
    "number": null,
    "pos": [
-    70,
-    61,
+    82,
+    71,
     1.6
    ],
-   "yaw_deg": 90,
-   "pitch_deg": 0,
+   "yaw_deg": 251.1,
+   "pitch_deg": 4.8,
    "label": {
     "text": "Arrival hall (lava window)",
     "pos": [
@@ -72,7 +72,7 @@
      2.6
     ]
    },
-   "source": "layout-centroid"
+   "source": "place-camera-concept"
   },
   {
    "id": "g_changing",
@@ -246,18 +246,18 @@
    "id": "b1_cor_mirror",
    "name": "Mist corridor to the Mirror",
    "level": "b1",
-   "zone": "b1",
+   "zone": "p_b1_cor_mirror",
    "kind": "place",
    "number": null,
    "pos": [
-    74.347,
-    91.604,
+    70.4,
+    91.55,
     -18.4
    ],
-   "yaw_deg": 178.7,
-   "pitch_deg": 0,
+   "yaw_deg": 87.9,
+   "pitch_deg": -0.5,
    "label": null,
-   "source": "layout-centroid"
+   "source": "place-camera-concept"
   },
   {
    "id": "b1_junction_w",
@@ -297,16 +297,16 @@
    "id": "b1_mirror",
    "name": "05 Obsidian Mirror Float Pool",
    "level": "b1",
-   "zone": "b1",
+   "zone": "p_b1_mirror",
    "kind": "attraction",
    "number": 5,
    "pos": [
-    115.8,
-    103.4,
+    99.2,
+    91.4,
     -18.4
    ],
-   "yaw_deg": 198.4,
-   "pitch_deg": 0,
+   "yaw_deg": 92.6,
+   "pitch_deg": 1.8,
    "label": {
     "text": "Obsidian Mirror Float Pool",
     "pos": [
@@ -315,7 +315,7 @@
      -17.4
     ]
    },
-   "source": "layout-centroid"
+   "source": "place-camera-concept"
   },
   {
    "id": "b1_grotto",
@@ -575,6 +575,23 @@
      -37.4
     ]
    },
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b2_boardwalk_edge",
+   "name": "Boardwalk river edge (open to the river)",
+   "level": "b2",
+   "zone": "b2",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    167.864,
+    84.824,
+    -43
+   ],
+   "yaw_deg": 90,
+   "pitch_deg": 0,
+   "label": null,
    "source": "layout-centroid"
   },
   {
@@ -927,11 +944,11 @@
    "kind": "place",
    "number": null,
    "pos": [
-    57.819,
-    53.098,
+    58.17,
+    53.868,
     -98.4
    ],
-   "yaw_deg": 108.1,
+   "yaw_deg": 128.1,
    "pitch_deg": 0,
    "label": null,
    "source": "layout-centroid"

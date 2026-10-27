@@ -1,0 +1,26 @@
+{
+  "asset": "stepping_stone",
+  "round": 2,
+  "scores": {
+    "likeness": 2,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 3,
+    "lod_recognition": 2,
+    "variation": 2
+  },
+  "fixes": [
+    "Outline: replace the smooth geometric disc with an irregular fractured slab. Use 12-16 vertices with radial noise of +/-12-18% per vertex so the outline has 2-3 clear breaks per quarter arc, as in sheet-vs-bath-props (1 m scale bar, 0.6 x 0.6 x 0.2 m). The concept stones read as broken basalt, not coins.",
+    "Edge profile: the canonical shows a smooth bevelled wall. Replace it with a rough, broken side: 2 tiers, with an irregular 25-40 mm chamfer on the top rim and a rough face below. The LOD0 budget (256 tris) is too low to hold a fractured edge, so raise LOD0 to about 1200-1500 tris.",
+    "Canonical defect: a rectangular dark notch (about 0.1 m wide) cut into the front-right side wall. It looks like a boolean or cut artifact and must be removed.",
+    "Top surface: add a gentle, uneven top (+/-8-10 mm height noise plus one shallow dip) so it reads as a worn, uneven stone and not a flat lid. Keep the top just at or slightly under the water line (0.02-0.05 m submerged rim) per the concept sheet.",
+    "Seed variation: the three seeds are almost the same shape. Drive footprint aspect 0.8-1.25 and outline noise per seed so footprint area differs by at least 20% between seeds.",
+    "LOD2 and LOD3: at 5 m the LOD2 shaded render is a near-black dot with a 10-gon outline, and LOD3 at 15 m is a speck. Keep the lumpy outline at LOD2 (at least 8 px of irregularity at 5 m) and give the top a lighter wet sheen so it separates from the dark water."
+  ],
+  "library_issues": [
+    "Obsidian/wet-spec blotches: the top-down LOD sheet shows bright white and cyan patches on the stone tops, which look like planar-projected obsidian or a specular overlay, not basalt_wet. Check the material mapping on the top cap.",
+    "The sheet_34 (3/4 view) LOD0 tops show a dull, cracked basalt that does not match the glossy wet basalt of the concept. This is a library material tone question, not a generator issue."
+  ],
+  "verdict": "revise",
+  "summary": "The stepping stone reads as a clean wet disc or drum, not as the lumpy basalt slabs in the concept sheet. Its outline, edge and top are all too regular, the canonical has a boolean-style notch, and the seeds barely change the shape. At phone size and from LOD2/LOD3 it is only a dark dot, so it cannot be named. Proportion (0.6 m x 0.2 m) is right; the problem is form and recognition."
+}

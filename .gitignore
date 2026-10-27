@@ -13,3 +13,12 @@ __pycache__/
 tools/bin/
 tools/node_modules/
 web/node_modules/
+3d/materials/library.blend
+# build outputs (rebuildable: generators, place scripts, export chain, web build)
+3d/bake/
+3d/assets/*.blend
+3d/places/*.blend
+3d/renders/_v/
+web/public/assets/
+web/public/gallery/
+web/src/vendor/

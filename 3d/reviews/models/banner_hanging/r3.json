@@ -1,0 +1,44 @@
+{
+ "scores": {
+  "likeness": 3,
+  "silhouette_proportion": 4,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 4,
+  "variation": 4
+ },
+ "fixes": [
+  "Cloth (carried from r1 and r2, NOT landed): still a perfectly flat plane in canonical.jpg with no weave and no folds; sheet-tex-cloth shows slub linen with visible weft. Apply the cloth normal at 0.4 m tiling and add 2-3 soft vertical folds of 15 mm amplitude per metre.",
+  "Crest: octagonal outline plus a small black mountain, 0.35 of width; lookbook 04 banners carry a roundel and the sheet crest is a wide ridged mountain with 3 separated steam wisps. Enlarge to ~0.55 of width, make the mountain wider (wing ridges) and the wisps clear; add a small 火山湯 line below on cream.",
+  "Colour: indigo is a near-black grey-navy in seed 2 (reads black), and red is a flat brick. Set indigo #1E2F5A with lighter weft, and add the top-to-bottom gradient you see on cream. Cream in canonical reads tan; raise to #E9DDC1 plus a subtle back-glow.",
+  "Hardware: top rod is a thin orange bar with two tiny cords; concept noren/banners have a 0.04 m rod with end caps projecting 0.08 m each side and 3-4 tab loops 0.07 m wide. Add end caps, bottom 0.02 m weight bar.",
+  "Hem/edge: cream swallow-tail is unhemmed; add 0.01 m stitched hem line, and give seed 3 a straight hem vs seed 2 pointed (already) so shapes differ (partly landed).",
+  "LOD2: crest is a tiny triangle and on seeds 2 and 3 it nearly vanishes; keep crest at least 0.25 of width at LOD2 and the swallow-tail in silhouette at LOD3."
+ ],
+ "library_issues": [
+  "noren cloth normal/weave not used; albedo reads as flat painted gradient.",
+  "bronze rod reads orange."
+ ],
+ "verdict": "revise",
+ "summary": "Silhouette and LODs read as a long hanging crest banner at distance and the three colours/hems vary. Close up it is a flat decal plane: no weave, no drape, small crest, thin hardware. Biggest remaining gap to the concept is cloth surface.",
+ "earlier": {
+  "r1": {
+   "drape+weave": "not landed",
+   "hardware": "partly",
+   "colour": "partly",
+   "crest bigger": "not landed",
+   "edges/hem": "partly",
+   "LOD3 triangle": "landed"
+  },
+  "r2": {
+   "cloth weave": "not landed",
+   "crest 0.6w": "not landed",
+   "hanging hardware": "not landed",
+   "variation hems": "landed",
+   "cream albedo": "partly",
+   "LOD2/3": "partly"
+  }
+ },
+ "asset": "banner_hanging",
+ "round": 3
+}

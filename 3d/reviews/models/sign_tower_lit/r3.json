@@ -1,0 +1,45 @@
+{
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 4,
+  "construction_detail": 4,
+  "material_use": 3,
+  "lod_recognition": 4,
+  "variation": 4
+ },
+ "fixes": [
+  "Washi colour: face reads pink-salmon (#E8805A-ish) with a crumpled-foil mottle; lookbook 16 and 09 are cream-amber (#F2C77A) with a hot centre and darker edges. Lower saturation, add centre-to-edge vignette, soften fibre mottle. Mostly the washi_backlit tint library issue.",
+  "Lower box: the dark panel with a pale wooden door/louvre still looks like an unrelated cabinet at the base. Replace with a recessed 0.3 m dark kick panel with 4 corner iron straps as in lookbook 09, or fill with continuous glowing washi.",
+  "Posts: pale hinoki thin 0.04 m side posts. Lookbook 16 posts are dark and heavy, 0.12-0.15 m. Darken and thicken front posts to 0.08 m, add iron corner straps at 4 heights.",
+  "Cap: seed 1 flat boxed cap is good (bracket blocks landed); seed 2 hip cap reads as a tiny metal pyramid. Give it 0.10 m eaves with rafter ends to match seed 1.",
+  "Lattice: only a 3x3 grid in the bottom third now (landed), fine. Keep it and make the seed 3 box (1.4 m) use the same grid so it matches family.",
+  "LOD3 is a plain slab with 3 dark squares; add the crest triangle (it exists at LOD2) and the dark cap so it matches LOD2."
+ ],
+ "library_issues": [
+  "washi_backlit has a pink/salmon tint instead of cream amber and a crumpled-foil texture.",
+  "hinoki too pale for posts."
+ ],
+ "verdict": "revise",
+ "summary": "Large improvement: reads clearly as lookbook 16's lit tower with kanji, KAZAN-YU, crest, boxed cap, stone plinth and lattice skirt. LOD2/3 stay recognisable lit towers at 35/80 m. Only the washi colour (a library tint problem) holds material at 3, so it is one library fix away from pass.",
+ "earlier": {
+  "r1": {
+   "widen/thicken": "landed",
+   "lattice off text": "landed",
+   "glow gradient": "partly",
+   "characters ink": "landed",
+   "cap+plinth": "landed",
+   "seed variation": "landed"
+  },
+  "r2": {
+   "glow creamier": "not landed (library)",
+   "lattice off crest": "landed",
+   "base plinth": "partly",
+   "LOD2 stacked glyphs": "landed",
+   "LOD3 baked text": "not landed",
+   "cap eaves": "seed 1 landed, seed 2 not",
+   "corner straps": "not landed"
+  }
+ },
+ "asset": "sign_tower_lit",
+ "round": 3
+}

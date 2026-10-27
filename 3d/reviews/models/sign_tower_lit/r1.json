@@ -1,0 +1,26 @@
+{
+ "asset": "sign_tower_lit",
+ "round": 1,
+ "scores": {
+  "likeness": 4,
+  "silhouette_proportion": 3,
+  "construction_detail": 3,
+  "material_use": 3,
+  "lod_recognition": 4,
+  "variation": 4
+ },
+ "fixes": [
+  "Proportion: the tower is a thin 0.55 m x 3.3 m column; the lookbook signs are chunky (face about 1:2.2 wide) with a heavy 0.15 m post frame and a protruding eaves cap. Widen the standard to ~0.8-1.0 m, shorten the face ratio, and thicken the vertical posts to 0.12-0.15 m so it reads as timber and not a lantern.",
+  "Face lattice: the large 2x4 cross-grid of thin kumiko is a shoji pattern that bisects the kanji and the crest (text sits across grid bars). Concept has a single clean washi panel with the characters uninterrupted. Remove the horizontal bars across the text area, keep a single central rail or none, and use grid only in the lower third.",
+  "Glow: washi reads as flat pale peach with no gradient; concept is deep amber, brightest in the centre and darker at the edges, with paper fibre mottle. Lower the base colour to a ~#E8A04A, add vignette to the edges and a fibre texture; the emission looks uniformly overexposed in canonical.",
+  "Characters: black stencil on glow reads as a cut-out. Use an ink brown (#2a1a10) with slight edge feather, and place KAZAN-YU and the crest below at the concept's size (KAZAN-YU is tiny and the crest is tiny).",
+  "Cap and base: the cap is a thin dark hip roof with an ember finial; concept has a deep boxed lintel with bracket blocks. Add a 0.12 m overhang with 2 bracket blocks per side, and a stone/basalt footing 0.1 m taller than now. The lower timber panel (about 0.5 m) is a flat vented board and is weakly resolved; give it a framed panel.",
+  "Variation: seed 3 is a 1.4 m box version and seed 1/2 differ only in height; add a face-width change and a different cap (flat vs hipped) so the three feel like three signs."
+ ],
+ "library_issues": [
+  "washi_backlit appears pale, near white-pink and unlit near edges, which makes the lit tower look under-saturated against the amber lookbook.",
+  "hinoki frame reads orange-red; fine, but slightly too uniform."
+ ],
+ "verdict": "revise",
+ "summary": "Recognisable as a lit timber sign tower with correct text and crest, and its LODs hold up well at phone size. But slender proportions, shoji grid across the text, flat pale washi and a thin cap make it feel like a Japanese paper lamp rather than the chunky lookbook sign."
+}

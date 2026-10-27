@@ -1,0 +1,27 @@
+{
+ "asset": "stream_channel",
+ "round": 4,
+ "scores": {
+  "likeness": 2,
+  "silhouette_proportion": 3,
+  "construction_detail": 2,
+  "material_use": 2,
+  "lod_recognition": 2,
+  "variation": 4
+ },
+ "overall_10": 5.0,
+ "fixes": [
+  "Natural banks: boulders are smooth glossy bulbs (uniform ~0.25 m, evenly spaced like a bead row) sitting on a plain slab wall; concept 04 has dark, craggy, flat-topped basalt masses 0.3-0.6 m that overlap, vary in size and hide the wall. Use 2-3 sizes (0.2-0.6 m), overlap 30-40%, add a facet/crag pass (not a pure bevelled sphere) and drop the visible slab-wall under them on both banks.",
+  "Stepped: still reads as a tall stacked block (end-on section ~0.5 m wide, ~1.0 m tall, near-square). Sheet side view is a 0.17 m-per-step stair with ~0.3 m treads and water over each lip. Build 4-5 distinct treads descending from the top, walls no taller than step top + 0.25 m, so the stair profile is visible from the side, not a wall with a pool on top.",
+  "Kerbed: section ~0.18 m wide x ~0.45 m tall kerbs with a thin lid slab; sides are rubble-pattern texture and not cut stone. Concept (sheet row 2) is a low cut kerb 0.15-0.2 m high-ish around a shallow bed. Lower wall to ~0.3 m above bed, use ashlar coursing at 0.15 m with UV offset per block, drop the end boulders or make them a rock cluster.",
+  "Weirs: still no readable weir lip in any style; sheet shows 2-3 drops over 4 m with a pale lip. Give a 0.06 m projecting lip and a visible 0.12-0.17 m bed step in natural and kerbed.",
+  "Material: basalt_wet reads brown/bronze and glossy, not black wet basalt with warm highlights as in lookbook 04/30. Tint darker (albedo ~0.03-0.06), raise roughness variation, and scale UVs ~0.5 m/tile so the large blotches go.",
+  "LOD2/LOD3: at 35 m and 80 m the object is ~30 px or invisible, so recognition is nil. Keep LOD2 as two thin bank strips plus a lighter bed band; LOD3 should be a single bank-width slab with the same tone. Lead may consider that 35 m/80 m switch distances are too short for a 4 m run in the phone test."
+ ],
+ "library_issues": [
+  "basalt_wet reads brown metallic foil in Cycles with large stretched dark blotches; albedo too warm/light versus concept.",
+  "paving joint pattern absent on kerb/bed (no visible joints)."
+ ],
+ "verdict": "revise",
+ "summary": "Round 4: natural style now has a flat bed and rounded rock rows and the three styles differ well, but boulders look like glossy beads on a slab wall, stepped is a block not a stair, kerbed is bulky rubble, there are no weirs, material is brown not black basalt, and LOD2/3 are specks. 5.0/10."
+}

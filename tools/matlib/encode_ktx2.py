@@ -48,6 +48,14 @@ def png_channels(path):
 def jobs(ts):
     sid = ts['set']
     out = []
+    if sid == 'kz_noise':                                 # shared kit noise, linear RGBA
+        return [('base', [os.path.join(SRC, 'kz_noise.png')], ['--format', 'R8G8B8A8_UNORM', '--assign-tf', 'linear',
+                 *UASTC, '--uastc-quality', '3', '--uastc-rdo-l', '0.5', *MIP])]
+    if ts.get('kit_plate'):                               # kit plate: base sRGB + nh, both UASTC
+        return [('base', [os.path.join(SRC, f'{sid}_base.png')], ['--format', 'R8G8B8_SRGB', '--assign-tf', 'srgb',
+                 *UASTC, '--uastc-quality', '2', '--uastc-rdo-l', '1.0', *MIP]),
+                ('nh', [os.path.join(SRC, f'{sid}_nh.png')], ['--format', 'R8G8B8A8_UNORM', '--assign-tf', 'linear',
+                 *UASTC, '--uastc-quality', '3', '--uastc-rdo-l', '0.25', *MIP])]
     base = os.path.join(SRC, f'{sid}_base.png')
     rgba = png_channels(base) == 4
     if not ts['srgb_base']:                               # kz_macro: linear data
@@ -100,7 +108,7 @@ def main():
             continue
         st = {'encoded': False, 'files': {}}
         for kind, srcs, opts in jobs(ts):
-            dst = os.path.join(DST, f'{sid}_{kind}.ktx2')
+            dst = os.path.join(DST, f'{sid}_{kind}.ktx2' if sid != 'kz_noise' else 'kz_noise.ktx2')
             cmd = [KTX, 'create', *opts, *srcs, dst]
             print(' '.join(os.path.relpath(c, ROOT) if c.startswith(ROOT) else c for c in cmd), flush=True)
             if DRY:

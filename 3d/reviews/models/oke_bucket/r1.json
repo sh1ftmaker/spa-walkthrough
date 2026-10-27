@@ -1,0 +1,29 @@
+{
+  "asset": "oke_bucket",
+  "round": 1,
+  "reviewed_render": "3d/renders/models/oke_bucket/canonical_r2.jpg (no canonical.jpg present)",
+  "lod_sheet": "3d/renders/lod/oke_bucket/sheet.jpg (phone-lod2-lod3.jpg not present; phone panel taken from sheet)",
+  "concept_refs_checked": ["lookbook/img/16-steam-grotto.jpg", "lookbook/img/21-private-suite.jpg", "lookbook/img/22-brand-board.jpg", "refs/gen/sheet-vs-bath-props.png"],
+  "scores": {
+    "likeness": 3,
+    "silhouette_proportion": 3,
+    "construction_detail": 2,
+    "material_use": 2,
+    "lod_recognition": 2,
+    "variation": 2
+  },
+  "fixes": [
+    "Stave count: canonical shows about 16 wide staves; concept #1 in sheet-vs-bath-props.png shows about 30 narrow staves. Target 28-32 staves at LOD0 with a 1.5 mm V-groove between staves, not a single dark line.",
+    "Rim: top edge is a thin bevel. Concept rims are thick. Add a rolled top lip 15-20 mm tall, outward 6-8 mm from the wall, so the rim catches light as a band.",
+    "Ladle scoop: canonical scoop is a flat disc about 15 mm deep and reads as a paddle. Concept scoop is a deep cup. Target scoop bowl 0.12 m across and 0.05-0.06 m deep, handle 0.55 m long, 30 mm dia tapering to 20 mm at the tip.",
+    "Water line: the interior reads as a pale cream disc at rim height. Lower the water surface 0.06 m below the rim so the inner wall shows, and use a dark glossy surface so it reads as water.",
+    "Bowl: with_ladle default has no bowl in canonical; concept shows a shallow glazed bowl beside the bucket. Add the bowl (r 0.09 m, depth 0.04 m) to with_ladle and make sure it is in the canonical beauty view. Ceramic is not in the library (see library_issues)."
+  ],
+  "library_issues": [
+    "bronze: hoops render as crumpled, noisy bump texture in canonical and go near-black at LOD1-2 in the sheet. Needs a smoother bronze/copper with lower bump and a stable mid-tone at distance.",
+    "ceramic (NEW in asset_list) is not in the library; the bowl is built as lacquer_dark, so it renders black where the concept has teal glaze.",
+    "Water surface: no water material on the disc; a dark wet surface slot would fix the pale-disc read."
+  ],
+  "verdict": "revise",
+  "summary": "Recognisable as a hinoki bucket with bronze hoops and a long ladle, but staves are too wide and few, the rim is thin, the ladle reads as a paddle, the hoop material looks crumpled and goes black at LOD1-2, and the LOD2/LOD3 silhouettes are a few pixels at phone scale. Seeds look nearly identical in the sheet."
+}
