@@ -1,0 +1,80 @@
+{
+ "space": "b1_treatment",
+ "round": 1,
+ "reviewer": "b1_east_r1",
+ "frames": {
+  "entry": {
+   "focal": "A 3 m tall orange-brown wall (the tsuboniwa proxy) filling the left two-thirds of the frame, with a 1.05 m glowing lantern block in front.",
+   "is_hero": true,
+   "next_visible": "No. The hero box blocks the hall; nothing beyond is visible."
+  },
+  "reveal": {
+   "focal": "Same orange wall at close range, with a bench and a glowing lantern block in the foreground.",
+   "is_hero": true,
+   "next_visible": "The engawa running east on the left, dim grey room boxes."
+  },
+  "concept": {
+   "focal": "Vanishing point down the engawa: grey room boxes left, the orange garden wall right, small lantern blocks. The perspective works, but nothing glows like shoji.",
+   "is_hero": false,
+   "next_visible": "End of the hall is dark; the north passage is not readable."
+  },
+  "strip": {
+   "focal": "Walls and lantern blocks. strip-7 shows the teal corridor through the north door, a good glimpse but cool rather than warm.",
+   "is_hero": false,
+   "next_visible": "Yes at the end (cor_east's teal water through the north door)."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b1_treatment:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "tsuboniwa is an opaque 9x6.5x3 m box, so the 'small lit courtyard' reads as a solid wall that blocks both thresholds' sightlines. Replace the proxy with a sunken open court: a 0.3 m kerb, floor at -20.3, one 3 m pine, a stone toro, and an emissive washi light box (about 6x4 m) at the ceiling (-16.2) as the brightest thing in the hall."
+  },
+  {
+   "id": "anchored treatment_room (room_n1..n3, room_s1..s3)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Rooms are blank grey boxes. Their 80 W area light doesn't show. Make the engawa-facing front an emissive washi/shoji panel (warm, low) with one dark post every 1.8 m so the hall gets 'shoji glowing left and right' and dark gaps between rooms."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Nine 1.05 m fully emissive lantern_floor blocks are the brightest objects in every frame and spread evenly on both sides. Cut to 5 low andon (h ~0.6, 15 W), one per room door, alternating sides. Remove lights0:5 (125.9,63.17) and lights0:0 (122.85,64.7), which bracket an empty foyer, and lights0:6 (126.94,69.37), which sits in front of the bench and blocks the reveal."
+  },
+  {
+   "id": "dressing[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Gravel-strip stones sit at z -20.25 with h 0.3, so they read as flat tiles on the floor. Seat them at -20.05 (or drop them). The density problem is elsewhere: the hall needs posts, a tokonoma niche or bench groupings at the room doors."
+  },
+  {
+   "id": "b1_treatment:dressing0:2",
+   "action": "move",
+   "dx": -1.2,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The east-end bonsai at (158.8,72.6) closes the vista. Light it with a small uplight or spot so the engawa has an end-stop instead of a dark wall."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Turn the garden from a solid 3 m box into an open sunken court under a bright washi light box, so it becomes the calm bright focal point both doors look at.",
+ "plausibility": [
+  "Hero proxy is a 3 m solid block inside a 4 m hall: you couldn't see the garden 'diagonally from both thresholds'.",
+  "Gravel stones are sunk flush with the floor.",
+  "Hall reads cool grey, not warm hinoki (lighting/material only, but it changes the mood judgement)."
+ ]
+}

@@ -1,0 +1,22 @@
+{"space": "b3_rimstone", "round": 1, "reviewer": "rev_b3_west_r1",
+ "frames": {
+  "entry": {"focal": "A dark foreground slab (shelf/boulder) filling the lower half and a blown-out lantern_stone (lights3:0, about 2 m from the camera) on the right edge; the terraces are a thin dim teal band behind; the slide-shaft glow on the far left.", "is_hero": false, "next_visible": "Partly: the stair wedge leads down to the right, and the far glow pulls left (slide shaft, not the geyser)."},
+  "reveal": {"focal": "The teal pools filling the lower right, but the brightest things are standing and floating lanterns; the tiers read as flat parallel lap lanes, not stacked scalloped bowls.", "is_hero": true, "next_visible": "The stair ramp leads down the middle; there is a vault full of lantern dots beyond, but no single goal."},
+  "concept": {"focal": "One tall floor lantern (lights1, floating) and brown tier fronts. From the foot of the stair at eye level you see only 0.5 m risers, not pool surfaces.", "is_hero": false, "next_visible": "No. Dark rock and a lantern chain above."},
+  "strip": {"focal": "Frames 0-3: a far glow plus the stair ramp between pools (good). Frames 4-7: the pavilion's solid orange box and floating lanterns dominate; the pools go dark.", "is_hero": false, "next_visible": "The stair is always readable; the tube mouth at the foot is not lit enough to pull you on."}
+ },
+ "fixes": [
+  {"id": "lights[1]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "All 15 rim lantern_floor are at z -60.0 (top-shelf z) while the tiers drop to -66.5, so the lower ones float up to 6.5 m in the air (e.g. lights1:6 at (78.7,27.5)). They also landed on the outer field boundary as two straight even rows (x 51.5 and y 27.5, ~6.5 m apart) instead of 'rims of every other tier'. Snap each to its tier's rim_z = -60.45-0.5*i, place them on the scalloped rims of tiers 0,2,4,..., and bias them toward the stair side."},
+  {"id": "lights[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "pool_uplights are all at z -60.0 and have marker status, so they emit nothing and the hero field is dimmer than the lanterns. Snap them to each tier floor and make them real teal emitters in the graybox (or give the water an emissive base) so the field is the brightest thing."},
+  {"id": "dressing[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "50 boulder_rim in two dead-straight rows along x 51.2 and y 27.2 at 1.5-3 m read as a fence. Use spacing [3,7] with clusters of 2-4, offset [0.3,1.5], and skip the west back edge where nobody can see it."},
+  {"id": "dressing[2]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The edge_band rock scatter drops rocks into the footprint slivers that wrap b3_walk_north and the lobby (dressing2:0, 2:4, 2:5, 2:7, 2:8 at y 63-72, x 67-77) at shelf heights, where they float over the walk_north walls. Avoid the region x>64, y>63 and keep the band on the west and south walls."},
+  {"id": "b3_rimstone:overlook_pavilion", "action": "move", "dx": 2, "dy": 3, "deg": 0, "detail": "A solid 6x4.5x4 box 2.3 m off the spine at (74,50) blocks strip frames 4-7 and the reveal's right side. Move it to (82,55) on the east ledge (the footprint allows x<=86) so it frames the view from the edge instead of standing in it. Check the ledge floor z there."}
+ ],
+ "scores": {"composition": 2, "density": 2, "light_rhythm": 2},
+ "top_change": "Make the terraces the light source: snap the rim lanterns to their tiers (no floaters), make the pool uplights emit teal, and shape the tiers as stacked scalloped bowls rather than flat parallel lanes so the field reads as concept 18 at eye height.",
+ "plausibility": [
+  "Rim lanterns (lights1) float up to 6.5 m above the lower tiers.",
+  "pool_uplights are all at -60.0, above most of the water they should sit under.",
+  "Tiers read as long, level, parallel lanes with 0.5 m steps: there is no visible spill lip and they look like lap pools, not rimstone.",
+  "The concept camera at the stair foot (77,45,-63.41) can only see tier fronts. Move it to the mid-stair landing (66,58,-61.1) looking down the cascade to (62,36,-66) to match concept 18's downward view across the pools."
+ ]}

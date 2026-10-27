@@ -170,10 +170,9 @@
    ],
    "facing_deg": 90,
    "dims": {
-    "len": 6.0,
-    "w": 4.0,
-    "h": 3.0,
-    "roof": "hip, copper-edged, eaves to 1.2 m beyond"
+    "w": 4.4,
+    "d": 6.0,
+    "h": 3.2
    },
    "why": "Compressed passage (4 m wide, 3 m clear) before the 16 m arrival hall: noren, low eaves and dark timber make the lava window a reveal."
   },
@@ -181,8 +180,8 @@
    "id": "torii_toro_n",
    "asset": "lantern_stone",
    "at": [
-    19.0,
-    60.2,
+    16.4,
+    59.6,
     0
    ],
    "facing_deg": 270,
@@ -195,8 +194,8 @@
    "id": "torii_toro_s",
    "asset": "lantern_stone",
    "at": [
-    19.0,
-    49.8,
+    16.4,
+    50.4,
     0
    ],
    "facing_deg": 270,
@@ -215,10 +214,12 @@
    ],
    "facing_deg": 160,
    "dims": {
-    "h": 2.2,
-    "text": "Terrace Path · summit 120 m"
+    "w": 0.9,
+    "d": 0.4,
+    "h": 2.2
    },
-   "why": "Wayfinding at the stair foot, readable from the spine."
+   "why": "Wayfinding at the stair foot, readable from the spine.",
+   "snap": "ground"
   },
   {
    "id": "court_pine_n",
@@ -230,6 +231,8 @@
    ],
    "facing_deg": 200,
    "dims": {
+    "w": 2.6,
+    "d": 2.6,
     "h": 5.0
    },
    "why": "Niwaki pine leaning over the court (plans 31, 28); dark silhouette against the porch glow."
@@ -300,27 +303,28 @@
  "cameras": {
   "entry": {
    "pos": [
-    13.8,
-    55.0,
+    6.0,
+    56.0,
     1.6
    ],
    "target": [
-    37.0,
-    55.0,
-    3.5
+    30.0,
+    55.2,
+    3.6
    ],
-   "fov_v": 60
+   "fov_v": 58,
+   "outside_ok": "On the approach road: the gate is seen from it."
   },
   "reveal": {
    "pos": [
-    16.0,
-    53.0,
+    27.0,
+    55.6,
     1.6
    ],
    "target": [
-    19.0,
-    55.0,
-    7.5
+    12.0,
+    55.6,
+    4.0
    ],
    "fov_v": 62
   },
@@ -353,72 +357,25 @@
      55.0
     ]
    ],
-   "side": "both",
+   "side": "left",
    "spacing": [
-    5.0,
-    6.5
+    7.0,
+    9.0
    ],
    "offset": 2.4,
    "face": "path",
-   "why": "One pool of light per bay from the torii to the porch: a lit runway to the door."
-  },
-  {
-   "asset": "lantern_hanging",
-   "along": [
-    [
-     34.5,
-     57.2
-    ],
-    [
-     39.5,
-     57.2
-    ]
-   ],
-   "spacing": [
-    1.0,
-    1.6
-   ],
-   "height": [
-    2.4,
-    2.9
-   ],
-   "snap": "eave",
-   "cluster": true,
-   "why": "Lantern cluster under the porch eave (04): the brightest warm patch in the court after the torii's toro."
-  },
-  {
-   "asset": "lantern_hanging",
-   "along": [
-    [
-     34.5,
-     52.8
-    ],
-    [
-     39.5,
-     52.8
-    ]
-   ],
-   "spacing": [
-    1.0,
-    1.6
-   ],
-   "height": [
-    2.4,
-    2.9
-   ],
-   "snap": "eave",
-   "cluster": true
+   "why": "A few andon on the north side of the court walk; the porch cluster is the brighter pool."
   },
   {
    "asset": "lantern_post",
    "along": [
     [
      12.6,
-     40.6
+     40.55
     ],
     [
      29.0,
-     40.6
+     40.55
     ]
    ],
    "spacing": [
@@ -427,7 +384,10 @@
    ],
    "offset": 0.0,
    "face": "path",
-   "why": "Low lights on the south parapet; darker gap between them and the spine."
+   "why": "Low lights on the south parapet; darker gap between them and the spine.",
+   "allow_overlap": [
+    "railing"
+   ]
   },
   {
    "asset": "lantern_stone",
@@ -444,6 +404,55 @@
     ]
    ],
    "why": "Pair at the Terrace Path foot; the stair's first post lanterns continue the line up the flank."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     33.5,
+     52.8
+    ],
+    [
+     33.5,
+     57.2
+    ]
+   ],
+   "spacing": [
+    0.7,
+    1.1
+   ],
+   "height": [
+    2.0,
+    2.9
+   ],
+   "cluster": true,
+   "why": "One lantern cluster hanging in front of the porch mouth (04): the warm patch you see through the torii."
+  },
+  {
+   "asset": "noren_glow",
+   "at": [
+    [
+     19.0,
+     50.0,
+     0.02
+    ],
+    [
+     19.0,
+     60.0,
+     0.02
+    ],
+    [
+     20.2,
+     50.0,
+     0.02
+    ],
+    [
+     20.2,
+     60.0,
+     0.02
+    ]
+   ],
+   "why": "Warm uplights at the torii post feet: the torii is lit, not a silhouette."
   }
  ],
  "dressing": [
@@ -459,19 +468,23 @@
      40.3
     ]
    ],
-   "height": 1.0,
    "material": "basalt parapet 0.5 m + timber rail",
-   "why": "Edge over the cascade pools."
+   "why": "Edge over the cascade pools.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   }
   },
   {
    "asset": "banner",
    "along": [
     [
-     39.6,
+     39.2,
      47.0
     ],
     [
-     39.6,
+     39.2,
      51.5
     ]
    ],
@@ -479,19 +492,24 @@
     4.0,
     4.0
    ],
-   "height": 5.5,
+   "height": 1.8,
    "snap": "wall",
-   "why": "Mountain-crest banners on the facade either side of the porch (04)."
+   "why": "Mountain-crest banners on the facade either side of the porch (04).",
+   "dims": {
+    "w": 1.0,
+    "d": 0.05,
+    "h": 2.6
+   }
   },
   {
    "asset": "banner",
    "along": [
     [
-     39.6,
+     39.2,
      58.5
     ],
     [
-     39.6,
+     39.2,
      63.0
     ]
    ],
@@ -499,32 +517,54 @@
     4.0,
     4.0
    ],
-   "height": 5.5,
-   "snap": "wall"
+   "height": 1.8,
+   "snap": "wall",
+   "dims": {
+    "w": 1.0,
+    "d": 0.05,
+    "h": 2.6
+   }
   },
   {
    "asset": "boulder_rim",
-   "along": [
-    [
-     12.5,
-     42.0
-    ],
-    [
-     12.5,
-     50.5
-    ]
-   ],
-   "spacing": [
-    1.2,
-    2.0
-   ],
-   "offset": 0.3,
    "embed": 0.25,
    "scale": [
-    0.8,
-    1.4
+    0.6,
+    1.6
    ],
-   "why": "Rock edge where the court meets the A4 falls side."
+   "why": "Two rock groups: at the falls side and at the parapet corner.",
+   "at": [
+    [
+     12.9,
+     43.6,
+     0
+    ],
+    [
+     13.6,
+     44.6,
+     0
+    ],
+    [
+     12.8,
+     45.6,
+     0
+    ],
+    [
+     14.4,
+     41.6,
+     0
+    ],
+    [
+     15.6,
+     41.4,
+     0
+    ],
+    [
+     16.8,
+     41.7,
+     0
+    ]
+   ]
   },
   {
    "asset": "rock_cluster",
@@ -537,29 +577,36 @@
    "avoid": [
     "nav",
     "portals",
+    "anchored",
     "hero",
     3.0
-   ]
+   ],
+   "min_dist": 6.0
   },
   {
    "asset": "pine_bonsai",
-   "scatter": "edge_band",
-   "band": [
-    0.8,
-    3.0
-   ],
-   "density": 0.008,
-   "min_dist": 7.0,
    "scale": [
     0.6,
     1.0
    ],
-   "avoid": [
-    "nav",
-    "portals",
-    "hero",
-    4.0
-   ]
+   "at": [
+    [
+     31.0,
+     64.2,
+     0
+    ],
+    [
+     14.6,
+     62.0,
+     0
+    ]
+   ],
+   "dims": {
+    "w": 2.2,
+    "d": 2.2,
+    "h": 3.4
+   },
+   "why": "Pines on the court's north edge."
   }
  ],
  "mood": {

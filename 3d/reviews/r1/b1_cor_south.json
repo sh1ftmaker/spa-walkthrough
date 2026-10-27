@@ -1,0 +1,81 @@
+{
+ "space": "b1_cor_south",
+ "round": 1,
+ "reviewer": "b1_east_r1",
+ "frames": {
+  "entry": {
+   "focal": "Nearest niche cube on the right kerb and the stepping-stone line; the lava slot at the bend is visible dead-centre but renders as a dull brown unlit panel, so it reads as a closed door, not a hot slot.",
+   "is_hero": false,
+   "next_visible": "No. The bend is dark; nothing hints at the slide hall."
+  },
+  "reveal": {
+   "focal": "The two 1.05 m glowing lantern_floor blocks at the treatment door (left mid-ground), the brightest things in frame; the slide hall at the end is a small strip of white posts and a thin orange line.",
+   "is_hero": false,
+   "next_visible": "Yes, weakly: the slide hall's white lantern posts and the glowing rim band show at the end of the straight; the noren is not readable."
+  },
+  "concept": {
+   "focal": "Same as reveal: the treatment-door lantern pair; stepping stones lead the eye correctly to the far end.",
+   "is_hero": false,
+   "next_visible": "Slide hall end visible but not orange; there's no hot glow."
+  },
+  "strip": {
+   "focal": "An even run of niche cubes; at strip-2 the lava slot passes on the right as a dark brown slab; strip-7 opens on the slide hall's bright white rim band.",
+   "is_hero": false,
+   "next_visible": "Only at the very end (strip-6/7)."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b1_cor_south:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "lava_window does not emit in the render (reads as a brown panel); its 4000 W area light is probably facing into the wall or not being created. Make the glass face emissive orange and aim the light along facing 315 into the corridor. Also raise it by +0.5 m (pos z -20.2 -> -19.7) so the 0.3 m sill in the spec is honoured instead of the slot running 0.2 m below the floor/water."
+  },
+  {
+   "id": "lights[2]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0.45,
+   "deg": 0,
+   "detail": "Both treatment-door lanterns (lights2:0 at y 56.65, lights2:1 at y 56.55) stand ~0.25 m inside the water (pool north edge ~56.9, wall ~57.3), so move them dy +0.45. Swap them for a low andon (h ~0.6, 10-15 W): at 1.05 m and fully emissive they are the brightest objects in the reveal/concept views, which makes the 'quiet door' loud and outshines the hero."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "All 21 boulder_rim objects sit at z -20.4 with scale 0.35-0.7 (h <= 0.49), so their tops are at or below the water (-20.05) and they read as flat dark slabs or vanish. Base them on the bed (-20.18) with the stated embed 0.12, use scale [0.6,1.1], and cluster them (3-4 at the inside of the bend, 3-4 around the treatment door, a few at the lobby mouth) instead of a ~3 m even row on both kerbs."
+  },
+  {
+   "id": "b1_cor_south:slide_noren",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Make it read: it needs a warm backlight (or emissive vermilion) so the end of the straight glows orange (sightline 2). Right now the far end is the white rim band of the slide hall, which is cooler and flatter than the lanterns."
+  },
+  {
+   "id": "lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Second niche run is evenly staggered at 0.25 m on both walls. Keep the stagger but set the first lantern after the bend at >= 4 m from the slot (lights1:0 at 118.18 and lights1:2 at 118.34 are a pair right next to the slot: drop lights1:2) so the slot owns the bend."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the lava slot actually glow orange (emissive glass plus a light aimed into the corridor, raised to its 0.3 m sill) so it becomes the focal point of the entry view and the bend.",
+ "plausibility": [
+  "Lava slot bottom at z -20.2 runs 0.2 m below floor/water level; spec says sill 0.3 m.",
+  "Treatment-door floor lanterns stand partly in the 0.18 m pool rather than on the kerb.",
+  "Rim boulders are fully submerged (tops <= water level), so 'low wet rocks at the edge' don't exist at eye level.",
+  "Corridor is a smooth 3 m box. Graybox OK, but there is no mist proxy, so the knee-high mist (the main mood carrier of concept 05) can't be judged."
+ ]
+}

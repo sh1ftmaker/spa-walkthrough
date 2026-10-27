@@ -1,0 +1,80 @@
+{
+ "space": "b2_boat",
+ "round": 1,
+ "reviewer": "b2-r1-reviewer",
+ "frames": {
+  "entry": {
+   "focal": "The pontoon lantern post lights1:0 in front of a dark brown box (the boat). Half the frame is grey deck floor because the camera is pitched steeply down.",
+   "is_hero": false,
+   "next_visible": "Faintly: a Kawagiri pod corner top-left and two lanterns on the far bank."
+  },
+  "reveal": {
+   "focal": "The boat hull fills the right half (unlit) and lights1:0 the left; Kawagiri's deck and pods in the background centre",
+   "is_hero": false,
+   "next_visible": "Yes: Kawagiri ahead, though dim, with a white mist blob behind the boat."
+  },
+  "concept": {
+   "focal": "The Kawagiri sign gate frame at right (good, this matches 06's structure). The boat's dark hull in the right foreground.",
+   "is_hero": false,
+   "next_visible": "Yes, Kawagiri recedes along the river, but the gate is unlit and the deck reads as a slab at water level."
+  },
+  "strip": {
+   "focal": "Frames 0-1: the bright lava-link doorway on the right. Frames 2-7: a row of small lanterns along the water leading east to the boardwalk. Floor lanterns lights2:0/2:1 are the biggest bright things.",
+   "is_hero": false,
+   "next_visible": "Yes (lava link glow, boardwalk lantern line), but the boat (hero) never appears in the walk."
+  }
+ },
+ "fixes": [
+  {
+   "id": "hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The boat needs its lantern pole (about 2.5 m, emissive, the brightest warm point here) so it reads from the core door and the deck edge. It is currently an unlit brown box. Also dims d 8.0 vs the spec l 7.0."
+  },
+  {
+   "id": "lights1:0",
+   "action": "move",
+   "dx": -1.4,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Sits dead centre between the reveal camera and the boat's bow, so it becomes the focal point. Shift it to the pontoon's west end."
+  },
+  {
+   "id": "lights[2]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Two 1 m white floor lanterns stand in the middle of the hall floor (south of the spine) and outshine everything in the strip. Put them on the river side (side=left, offset 2.2) at the deck edge, so they frame the view down to the boat and the water."
+  },
+  {
+   "id": "dressing4:0",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "boulder_rim at z -44.8 and dressing3:1 rock_cluster at -44.85 are under the water (surface -42.41). Raise to the surface (dz about +2.1 / +1.9). dressing3:0 (rock at 122.97, 74.2) overlaps railing dressing0:0 at the deck edge: move dy -1.5."
+  },
+  {
+   "id": "dressing5:0",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Noren at the core door uses banner h 4.0 in a 3.2 m opening. Use h 0.9 hung from the lintel."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Light the boat (emissive lantern pole, brightest warm point) and frame it from the core door and the deck edge. It is the hero, but it is an unlit box that no strip frame sees.",
+ "plausibility": [
+  "The landing hall south of the spine (y about 56-68) is a large empty dark floor with only two rocks: a barren stretch.",
+  "No deck-edge railing is visible in entry, although dressing[0] is placed at y 74.4, 1.8 m from the camera.",
+  "Rim boulder and one rock are fully submerged."
+ ]
+}

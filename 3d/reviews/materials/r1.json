@@ -1,0 +1,409 @@
+{
+ "round": 1,
+ "reviewer": "independent-material-reviewer-r1",
+ "materials": {
+  "basalt_dry": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 3
+   },
+   "changes": [
+    "Albedo carries almost nothing (base std 2.5/255, AO channel mean 253, so AO is unused). With lightmaps the normal map barely affects diffuse, so on the phone this becomes a flat brown-grey wall. Move the detail into albedo, AO and roughness: vesicle holes 2-15 mm (a few up to 30 mm) darkened in albedo and AO, as in the 22 BASALT swatch; per-grain albedo jitter of ±15%; a 1-3% chance of pale feldspar or olivine flecks.",
+    "Add large-scale (3-6 m) brightness and hue variation (±20%, slightly cooler and bluer in patches) plus sparse vertical efflorescence and iron-stain streaks 0.5-2 m long. This means a second, low-res (128-256 px) macro layer at about 8 m per repeat, multiplied in the shader, which costs one extra sampler.",
+    "Make the neutral colour cool, not warm (about sRGB 40,42,46). Under 2700 K lanterns the current warm-neutral reads as tan stucco. Make the basalt_dry and basalt_wet textures one set (see basalt_wet) so wet/dry blending on the same mesh works."
+   ],
+   "notes": "The preview reads as beige plaster or sandstone, not black basalt. Part of that is the hot warm key light, but the texture itself is near-uniform noise with tiny dots. The 2x2 tile shows a repeating dark 'Y' blob every 2 m once contrast is raised. Columnar joints and blockiness belong in geometry, but the material should support them: sharp micro-chips and conchoidal fracture facets in the normal map at 5-20 cm. SCALE RENDER: Reads as a beige sprayed-stucco wall with pepper dots. It is uniform, with nothing to catch the eye at 3 m. The tiles/ sheet confirms flat albedo and ORM; all structure is in the normal map, and that has a repeating blob motif."
+  },
+  "basalt_dry~wetness1.0": {
+   "scores": {
+    "likeness": 3,
+    "richness": 3,
+    "tiling": 3,
+    "phone": 2
+   },
+   "changes": [
+    "This variant is closer to the wet-rock concepts (05, 16, 17, 11 show dense tiny glints on black rock) than basalt_wet is. Use this direction as the base for basalt_wet.",
+    "Glints are uniform 'glitter' everywhere. Concept glints cluster on upward-facing facets and edges, with broad smooth sheen on flatter planes. Modulate the wet roughness by a 10-40 cm noise so some areas are mirror-wet (rough 0.05) and others damp (0.35).",
+    "Phone risk: high-frequency normals with roughness 0.04 alias into sparkle and shimmer at 512 px with mips. Bake Toksvig/specular-AA into the roughness mips (roughness goes up where normal variance is high), or clamp wet roughness to at least 0.12 on mip 2 and below."
+   ],
+   "notes": "The wetness formula (rough goes to 0.04 in low areas) works. The sparkle density needs art direction and anti-aliasing."
+  },
+  "basalt_wet": {
+   "scores": {
+    "likeness": 1,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 3
+   },
+   "changes": [
+    "Remove the Voronoi crack network with dark outlines. It reads as crazy-paving, a turtle shell or a cracked glaze (see the tile: 15-30 cm cells with black borders), not natural rock. Start from the vesicular basalt_dry texture and add only sparse, irregular fractures (0.3-1 m, no albedo outline, just a shadowed groove and AO).",
+    "Wet look as in 05/16: near-black albedo (linear 0.015-0.025), broad specular sheets on flatter planes plus dense micro-glints. Use a roughness map with structure: water films in hollows (0.03-0.08), damp tops (0.2-0.35). Add vertical drip and run-off streaks (darker, glossier, 2-10 cm wide, 0.5-2 m long) and white mineral or salt rings near waterlines (driven by a vertex-colour mask on the asset side).",
+    "Add macro variation (3-6 m) as for basalt_dry. Walls in the corridor are 3-4 m tall, and a 1.5 m repeat will show as a pattern down a 30 m corridor."
+   ],
+   "notes": "This is the most-used surface in the vertical slice (corridor walls, stepping stones, pool rims, arrival rocks). The current cell pattern is the single biggest 'CG look' in the library. SCALE RENDER: At real scale wall and floor read unmistakably as crazy-paving or flagstone cladding with black grout. This is the clearest likeness failure in the library."
+  },
+  "obsidian": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 2,
+    "phone": 2
+   },
+   "changes": [
+    "Replace the small round-blob height (bumpy, wrinkled-plastic look) with large flat conchoidal facets: planar regions 8-40 cm with sharp ridge edges, and on some facets faint concentric ripple arcs (conchoidal rings, 2-10 mm spacing). The 22 obsidian chunk and the 17 monolith are big glassy planes with crisp edges.",
+    "Remove the orange sparkle dots, which read as snowflake obsidian or a starfield. Instead add a very subtle deep brown-red or smoky tint in thin-edge areas (albedo 0.02-0.04 with a slight warm shift) and keep the albedo otherwise flat black.",
+    "The material is defined almost entirely by what it reflects. On the phone it needs a reflection source: a baked cubemap or reflection probe per room (glowworm dots and lanterns) with envMapIntensity of about 1.0, not 0.6. Without one it is a black hole. Roughness 0.02-0.05 on facets and 0.15 in ridges or crevices for contrast."
+   ],
+   "notes": "In the preview the sphere is a dark blob with a few cyan streaks. The only reflections are the lantern dot and one fill rectangle, so the rig cannot show this material at all (see rig). SCALE RENDER: Reflections are broken into round 'bubble-wrap' cells that repeat every metre, and the repeat is visible in the reflected lights. It needs large flat facets so the reflections become long, clean, broken planes."
+  },
+  "rimstone": {
+   "scores": {
+    "likeness": 1,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 3
+   },
+   "changes": [
+    "Split into two surface behaviours, blended by world normal (cheap in the shader: one dot product). Tops get micro-gours: scalloped rim micro-terraces 2-10 cm with raised white crust rims and water-filled shiny pockets. Vertical faces get flowstone drapery: vertical drip flutes 1-4 cm wide with rounded bulbous drips. Concept 18 faces are full of vertical curtain drips. The current texture is horizontal wavy bands everywhere.",
+    "Colour: cream-white (sRGB 225-235), with pale teal or grey tint in wet low areas and a few warm ochre bands. Today it reads as yellow-tan birch bark. Increase albedo contrast (std is 4.6/255 now) between bright dry crust and darker, saturated wet zones.",
+    "Wetness pattern: rims and drip tips wet and glossy (rough 0.08), crust between them semi-matte (0.5). The teal water glow from the pool should be able to light it from below (that is lightmap work, but the albedo must be bright enough to catch it)."
+   ],
+   "notes": "Only one concept image (18), but it is the signature of that zone. 512 px over 1.5 m is fine if the pattern is bolder. SCALE RENDER: Reads as pale bleached maple or birch veneer with wavy figure, not mineral. Same pattern on top and side faces."
+  },
+  "black_sand": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 2,
+    "phone": 3
+   },
+   "changes": [
+    "Darker albedo (preview reads mid grey-brown; concept 20 is near-black, sRGB 25-35), with sparse bright glints: 0.5-1% of grains with roughness 0.1, set in the roughness map rather than the albedo, so they sparkle only at the specular angle.",
+    "Add 1-3 m macro variation: wet dark bands, drier lighter patches, footprint dimples. At 1 m per repeat the ripple height pattern will show as a grid on a 30-60 m beach. Use the second macro layer suggested for basalt, or scale the ripples to 3 m.",
+    "Wet gradient towards the waterline (shoreline mirror reflections in 20): drive the wetness param from a vertex-colour mask on the asset side, and make sure wet sand gets roughness 0.05-0.1 with a darkened albedo."
+   ],
+   "notes": "SCALE RENDER: Reads as fine grey-brown asphalt or terrazzo with even glitter. Too light and too even."
+  },
+  "ash_clay": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 2,
+    "phone": 3
+   },
+   "changes": [
+    "Decide what this is for. At 2 m per repeat with crackle it reads as a dried-mud or crazed-plaster wall. For the ash-glaze tea ware in 22 it needs a 0.1-0.2 m scale with grey-green glaze pooling, iron speckles and runs. For a tsuchikabe clay wall it needs straw fibres and trowel marks, not crackle.",
+    "Cracks are uniform-width Voronoi everywhere. Reduce them to a few hairline cracks and add trowel or wipe marks (soft 20-60 cm arcs in roughness and albedo).",
+    "Albedo std is 3.5/255. Add ±10% mottling at 10-50 cm."
+   ],
+   "notes": "Low priority for the slice. SCALE RENDER: A pale cracked-dry-mud wall. The crack clusters repeat visibly every 2 m."
+  },
+  "paving": {
+   "scores": {
+    "likeness": 1,
+    "richness": 2,
+    "tiling": 1,
+    "phone": 3
+   },
+   "changes": [
+    "Wrong pattern: a regular running bond of identical rectangles with checkerboard-like light/dark alternation, which reads as a beige brick wall. Concept 04/16 flagstones are large, dark (basalt-grey, linear 0.03-0.06), irregular slabs of 0.5-1.4 m with random widths in 3-5 sizes per course, thin barely visible joints and slight per-slab tilt (height ±3 mm).",
+    "The wet-polish look is the point (04 floor is a mirror of lanterns): per-slab roughness 0.08-0.3, with puddles in low height areas, plus a darker wet band along joints and walking-wear polish (lower roughness) on the main path. Most of this is roughness work, which survives on the phone.",
+    "Tiling: make the tile 4 m with 15+ slabs and no two adjacent slabs the same tone, or better, generate slabs as geometry or UV islands with per-slab random UV offset into a large stone texture. The current 2 m repeat with 2-row periodicity is visible from 1.6 m at once."
+   ],
+   "notes": "The main floor of the arrival hall. Second-largest area in the slice after the rock walls. SCALE RENDER: Confirmed. The wall and floor look like glazed beige subway or bathroom tiles with dark grout and a visible dark-tile rhythm."
+  },
+  "hinoki": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "changes": [
+    "Grain is too fine and too regular: straight parallel lines about 1-3 mm apart, all equal. At 1.6 m it averages to flat orange. Add growth rings 4-8 mm apart with early/late wood contrast (late wood 25-35% darker), occasional cathedral or flame figure on flat-sawn boards, and a few small pin knots. Fine fibre noise sits underneath.",
+    "Repetition: 0.5 m per repeat on 3 m posts and shoji frames shows as horizontal brightness bands. Make the texture non-square (about 0.25 m across × 2 m along the grain, e.g. 256×2048 or 512×2048) and randomise U offset and flip per board on the asset side.",
+    "Colour: the concept (05 posts, 16 bucket) is warm honey to pale blond with a soft satin sheen. The current saturated orange looks like pine stain under the lantern. Desaturate slightly (sRGB about 190,150,105) and give board-to-board tone variation of ±10% via tint. See hinoki~wear0.7 for wear."
+   ],
+   "notes": "SCALE RENDER: As a floor and wall it reads as clean new laminate: plausible but sterile. No board seams, no tone variation, no visible repeat at 3 m."
+  },
+  "hinoki~wear0.7": {
+   "scores": {
+    "likeness": 2,
+    "richness": 1,
+    "tiling": 3,
+    "phone": 4
+   },
+   "changes": [
+    "Wear wipes the grain out completely and gives a flat beige panel. Weathered or worn hinoki should have more relief, not less: raised late-wood grain (height), silvery grey-brown on exposed surfaces (worn colour about sRGB 150,140,125), and dark grime in the soft early wood.",
+    "Hand-polished areas (rails, bucket rims) should get darker and glossier (roughness 0.3), not paler. Consider separating two wear modes: 'weathered' (silver, raised grain) and 'handled' (darker, polished).",
+    "Keep the grain in the albedo after wear: mix towards the worn colour at most 60%."
+   ],
+   "notes": "The current wear formula, wear_m from height with worn_color pale, does not fit wood. Wood wear should follow the early/late-wood mask, not a height threshold."
+  },
+  "lacquer_dark": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "changes": [
+    "Fine horizontal stripes on a near-black red show through like a printed ribbed pattern. Urushi over wood shows grain only as very soft, wide, low-contrast figure (ring width 4-8 mm, 3-5% contrast) and, on worn edges, red undercoat or wood showing through (negoro-nuri). Add sparse edge wear to red (sRGB 120,30,20).",
+    "Add subtle surface imperfections in roughness only: faint brush ripples and dust or fingerprint patches (rough 0.08 to 0.25). The perfect clearcoat looks like plastic.",
+    "Concept 06/21 dark timbers are mostly dark-stained, oiled wood (rough 0.35-0.5, visible grain), not mirror lacquer. Consider a 'dark_timber' variant of hinoki (tint 0.25, rough +0.1) for structure and keep lacquer for furniture and trays."
+   ],
+   "notes": "SCALE RENDER: Glossy and mirror-like, which is good, but the horizontal micro-stripes show as a ribbed texture in the reflections."
+  },
+  "bamboo": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "changes": [
+    "Nodes are too faint (a thin line only). Make them a raised ring 3-5 mm with a darker band and a fine scar line, every 25-35 cm, and add fine longitudinal fibres.",
+    "Waxy skin: rough 0.25-0.35 with sheen and a green-yellow to straw gradient per culm (tint from the asset). Small dark speckles and fungal flecks for age.",
+    "As a texture it should map along the culm (V along length). The 0.5 m square repeat makes node spacing identical on every pole. Randomise V offset per pole."
+   ],
+   "notes": "Low priority (spouts, fences). SCALE RENDER: Nodes do exist but are faint, and they sit at the same height on every pole, so the panel reads as a grid of pipes. Per-pole random V offset and stronger node rings are required."
+  },
+  "tatami": {
+   "scores": {
+    "likeness": 2,
+    "richness": 1,
+    "tiling": 3,
+    "phone": 2
+   },
+   "changes": [
+    "The grid is symmetric (equal lines both ways), so it reads as graph paper or canvas. Tatami (21) is one-directional igusa rush rows at about 3-4 mm pitch, with warp threads every 15-20 mm that are barely visible, and a soft anisotropic sheen along the rows. Remove most of the cross lines.",
+    "Normal mean slope is 30°, far too strong. At 512 px or mip 2+ on the phone it will moiré and shimmer. Bring it to about 8-10° and put the row pattern mainly in albedo (±8%) and roughness.",
+    "Colour: aged golden straw with a faint green (sRGB 185,165,105), plus per-mat tone variation and slight darkening and polish along walking lines. The heri border is geometry, not this material."
+   ],
+   "notes": "SCALE RENDER: At 3 m the grid mips away to a plain beige floor with a faint screen-door shimmer. It has no tatami read at all."
+  },
+  "washi": {
+   "scores": {
+    "likeness": 2,
+    "richness": 1,
+    "tiling": 4,
+    "phone": 4
+   },
+   "changes": [
+    "Currently a flat cream card (albedo std 2/255). Washi needs visible kozo fibres: long translucent fibres of 5-30 mm in random directions, slight cloudiness (thickness variation 10-40 cm), and occasional embedded fibre bundles. Put this in albedo (±6%) and, more importantly, in a thickness or transmission mask (see washi_backlit).",
+    "Slightly warmer and less white (sRGB 230,220,195), with very faint yellowing or dirt at the bottom of panels (asset vertex colour)."
+   ],
+   "notes": "SCALE RENDER: A flat, featureless off-white wall. Nothing survives at 3 m."
+  },
+  "washi_backlit": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 3
+   },
+   "changes": [
+    "The back-lit glow is perfectly uniform. Lit washi (05 shoji, 22 lantern) shows a cloudy fibre structure, brighter where thin and darker where thick. Bake a transmission/thickness map (cloudy noise at 5-20 cm plus fibre strands) and use it as the emissive map in the web version.",
+    "The glow needs a falloff: brightest at the centre of each kumiko cell or lantern, about 40-60% at the frame edges, and soft shadows of the frame ribs. For shoji, ship an emissive gradient per panel; this can live in the lightmap or emissive, not the tiling texture."
+   ],
+   "notes": "SCALE RENDER: Same as lantern_paper: flat, uniform cylinders."
+  },
+  "noren": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 4
+   },
+   "changes": [
+    "Reads as grey-purple felt. Concept 09 noren are dark navy or black heavy cotton; 22 robe is indigo with a slub linen weave. Add a visible plain weave with slubs (thread pitch about 1 mm, slubs 5-20 mm), uneven indigo dyeing (fading, lighter at the bottom hem and folds) and fabric sheen (Sheen 0.3-0.5 in Blender; fake with roughness 0.7 plus a bright fresnel on the web).",
+    "Darker, more saturated indigo (sRGB 25,35,70)."
+   ],
+   "notes": "Kawagiri only. Low priority for the slice. SCALE RENDER: Grey felt boards. The indigo hue is lost under the warm key light."
+  },
+  "rope": {
+   "scores": {
+    "likeness": 2,
+    "richness": 1,
+    "tiling": 3,
+    "phone": 3
+   },
+   "changes": [
+    "Parallel diagonal grooves read as a striped candy or corrugated tube. A shimenawa rope (04 torii) or braided cord (22) needs strands that twist and fibres along each strand (fine hair lines following the strand direction, flyaway fuzz) with deep AO in the crevices between strands.",
+    "Per-strand colour variation (straw gold to grey-brown) and dirt in the crevices. Ideally the rope is a geometry twist with UV along its length, and this texture only provides fibres."
+   ],
+   "notes": "SCALE RENDER: Barber-pole stripes on a smooth cream cylinder. It reads as a candy cane, not rope."
+  },
+  "iron": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 4
+   },
+   "changes": [
+    "Metalness map averages 0.45, a physically odd half-metal everywhere. Use binary metal: black patina or oxide layer as non-metal (albedo 0.03-0.05, rough 0.6), bare worn iron as metal (rough 0.35) only on edges and high points, and rust as non-metal orange-brown (rough 0.85).",
+    "Add rust run-down streaks (orange-brown, 2-20 cm) and pitting. In a humid onsen, lantern frames and rails (04, 17) show these. Currently there are only tiny orange flecks and the albedo std is 2.8/255."
+   ],
+   "notes": "SCALE RENDER: A flat grey-brown panel with faint orange dots. No rust structure is visible."
+  },
+  "bronze": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 2,
+    "phone": 4
+   },
+   "changes": [
+    "Reads as freshly polished copper with a few pale-green dots. For onsen fittings (04 spout, 22 bucket hoops) make the base a dark brown patina (metal, F0 about 0.35,0.22,0.12, rough 0.45), with bright bronze only where polished by hands or water (wear on high points), and verdigris as a non-metal teal-green crust (sRGB 90,150,130, rough 0.85) in recesses and as streaks below where water runs.",
+    "Verdigris shape: drips and run-downs plus crusty patches, not round blobs. Add micro pitting in the normal map."
+   ],
+   "notes": "SCALE RENDER: The verdigris spots form a regular grid across wall and floor (obvious tiling). Large areas are a flat orange-to-green colour wash from the lights."
+  },
+  "glacier_ice": {
+   "scores": {
+    "likeness": 1,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 2
+   },
+   "changes": [
+    "The Voronoi crack network makes it look like a cracked phone screen or a football. Glacier ice in 17 has vertical melt flutes and icicle drips (1-5 cm), trapped bubble streams, a few large internal fracture planes (not surface lines) and frosted white surfaces on top or exposed edges.",
+    "It glows: in 17 the ice is lit from inside or behind and is the brightest thing in the scene (saturated cyan to deep blue). On a phone, transmission plus attenuation will not deliver that and is expensive. Ship a cheap fake: emissive = cyan × (1 - height) × thickness mask, at about 0.5-1.5 strength, plus a fresnel rim. Deep blue (sRGB 20,90,180) in thick parts, near-white cyan at thin edges.",
+    "Current albedo is close to white-cyan with white foam blobs. Drop the foam except as frost on top-facing surfaces."
+   ],
+   "notes": "Not in the vertical slice. SCALE RENDER: A wall of blue crackle-glaze tiles with white outlines. Nothing glows."
+  },
+  "lava_glass": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 4,
+    "phone": 2
+   },
+   "changes": [
+    "Physically plausible but generic clear glass. For a thick lava viewing window (04, 13, 16) add a subtle warm-amber tint at grazing angles and dark green-grey edges for thickness, plus imperfections in roughness only: condensation and mist haze rising from the floor in the bottom 30-60 cm (rough 0.3-0.5), faint wipe streaks, and dust at the mullion edges.",
+    "Phone: do not use transmission for a 10 m window. Render it as an alpha-blended or additive pane (opacity 0.1-0.2) with an env reflection and fresnel over the lava backdrop. Note this in materials.json → three."
+   ],
+   "notes": "Its job is to frame the lava. Reflections of interior lanterns on the glass help sell 'thick glass' in 04. SCALE RENDER: The glass is invisible except a cyan reflection rectangle. That is fine, but it gives no sense of a thick viewing window."
+  },
+  "water_still": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 2
+   },
+   "changes": [
+    "Absorption should read by depth: shallow (0.1 m) is clear pale teal over the visible bottom; 0.5 m is saturated teal (sRGB 0,170,170); 2 m and more is deep blue-black. The current density of 2/m gives near-black in the preview sphere. On the phone use a depth-fade (scene depth or a per-vertex depth attribute) to lerp between these colours instead of transmission, which costs a full extra pass per frame.",
+    "Teal 'glow from below' (05 corridor, 17, 18): an emissive or scatter term added under the surface (sRGB 0,200,190 × 0.2-0.6, masked by depth and by a lightmap 'underwater light' channel), plus a scrolling caustic texture projected on the pool floor (separate decal material, 256 px, 2 scroll layers). For the Obsidian Mirror pool keep it dark and mirror-like: emissive 0, roughness 0.01, a strong env or planar reflection of the glowworm ceiling.",
+    "Normals: two scrolling 512 px normal layers at different scales (0.7 m and 3 m) and directions break the 4 m repeat, which is visible in the 2x2 tile. Add ripple rings around stepping-stone contact points as a separate small decal."
+   ],
+   "notes": "The sphere preview hides everything that matters here (depth, bottom, reflection). It needs a pool-box preview. SCALE RENDER: The pool reads as black ink: no bottom, no teal, only the two light reflections. For the corridor (05) that is exactly wrong. It needs the depth-fade, under-glow and caustics in the changes list."
+  },
+  "water_river": {
+   "scores": {
+    "likeness": 3,
+    "richness": 2,
+    "tiling": 3,
+    "phone": 2
+   },
+   "changes": [
+    "Concept 12/06 rivers are bright, saturated turquoise, lit from within, with white aerated patches. Add the same underwater glow term as water_still (stronger, 0.5-1.0) and more foam coverage tied to flow speed or obstacles (vertex colour), not to a fixed noise.",
+    "Flow: the normal map should be a flow-map-driven scroll (two-phase flow), not a static texture. A 3 m repeat on a 100 m lazy river will be obvious otherwise."
+   ],
+   "notes": ""
+  },
+  "water_sea": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 2,
+    "phone": 2
+   },
+   "changes": [
+    "The foam band wraps the sphere and swatch as one thick white stripe. Foam must come from wave-crest height (top 10-15% of height) and the shoreline mask, as thin lacy lines and patches (20), not a solid band.",
+    "Crests should be translucent bright teal (backlit wave lip), troughs deep blue-green. Use a height-driven colour lerp. The 6 m repeat with large, identical crests will tile visibly; use vertex-animated swell geometry and keep the texture for small-scale chop only."
+   ],
+   "notes": "SCALE RENDER: A single solid white foam stripe runs across the pool. It reads as a stuck white ribbon, not surf."
+  },
+  "waterfall": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 2,
+    "phone": 3
+   },
+   "changes": [
+    "Reads as birch bark or grey marble: dirty grey-brown vertical streaks on an opaque sheet. Concept 19/18/11 falls are bright white, aerated, partly see-through at the edges, with teal tint where thin and lit from below. Make foam brighter (sRGB 230+) and the clear parts more transparent and teal, with soft alpha at streak edges.",
+    "It must scroll (UV V offset over time, two layers at different speeds and scales). Add a separate mist or spray card at the base. With a 2 m repeat on 15-20 m falls, the static streak pattern is very obvious.",
+    "Phone: alpha-blended, double-sided, no transmission. Keep it unlit or emissive-assisted so it reads bright in a dark cave."
+   ],
+   "notes": "SCALE RENDER: A grey-black streaked opaque board. The dark streaks look like dirt or birch bark. The splash zone has no foam."
+  },
+  "lava": {
+   "scores": {
+    "likeness": 2,
+    "richness": 2,
+    "tiling": 1,
+    "phone": 3
+   },
+   "changes": [
+    "Glowing seams are uniform-width, uniform-brightness flat orange lines on brown, a cartoon crackle. Real lava crust (13, 04) has seams with a hot core gradient (yellow-white about 1400 K at the centre, through orange, to deep red at the edges, then black), plus a faint red under-glow bleeding into the crust near seams. The crust should be black (not brown), with ropy or jagged aa texture and a slight sheen.",
+    "Coverage: 13 and 04 show mostly molten flowing rivers and lava falls with dark crust islands; the current tile is about 80% crust. Expose a 'molten fraction' (or ship two variants: lava_crust and lava_flow) so the lava window can be mostly molten.",
+    "Repetition: the same squiggle repeats 4× in the 2x2 tile. Scroll the emissive (slow flow, 2-5 cm/s) and add a second, larger-scale emissive multiplier noise (pulsing 0.7-1.2) so it does not read as a static repeat. Both are cheap in the shader."
+   ],
+   "notes": "The hero of the arrival hall's lava window. In practice this is a backdrop seen through glass at 10-50 m, so macro shapes matter more than micro detail. SCALE RENDER: The same squiggle cluster repeats 4-5 times across a 4 m wall and is instantly recognisable. Through the glass it reads as an orange wire net on brown, not a lava field."
+  },
+  "neon_tube": {
+   "scores": {
+    "likeness": 2,
+    "richness": 1,
+    "tiling": 4,
+    "phone": 4
+   },
+   "changes": [
+    "Reads as a flat pastel-pink plastic ball. AgX desaturates bright saturated emissives, so 'hot magenta' becomes 'bubblegum'. The tube needs a white-hot core with a saturated edge: emissive = mix(white-pink, saturated magenta, fresnel) so the centre line is near-white and the silhouette is deep magenta, plus a thin glass-tube specular highlight (rough 0.05) and bloom.",
+    "Lower the core intensity and rely on bloom plus a coloured halo or light card on the wall behind for the glow (09 shows a strong magenta spill onto the rock). Check the final hue in three.js AgX: you may need to pre-saturate the tint or use a lower emissive value so it does not wash out."
+   ],
+   "notes": "Kawagiri only. SCALE RENDER: A thin pastel-pink line with no visible spill on the wall behind. It reads as a pink plastic rod, not neon. It needs a white core, bloom and a light card or spill."
+  },
+  "neon_tube~cyan": {
+   "scores": {
+    "likeness": 2,
+    "richness": 1,
+    "tiling": 4,
+    "phone": 4
+   },
+   "changes": [
+    "Same as magenta: pale baby-blue, needs a white core with a saturated cyan (#00e5ff) edge from fresnel, a tube highlight and bloom. Check that it doesn't clash with the onsen-teal water. The neon cyan should be more electric and bluer than the water teal."
+   ],
+   "notes": ""
+  },
+  "lantern_paper": {
+   "scores": {
+    "likeness": 2,
+    "richness": 1,
+    "tiling": 4,
+    "phone": 4
+   },
+   "changes": [
+    "The emission is perfectly flat, so the lantern reads as a matte peach ball. Lanterns in 22/04/05 have horizontal bamboo ribs (every 2-3 cm) as darker lines, a brighter centre with falloff towards the top and bottom caps, and visible paper fibre or cloud. Bake an emissive map with ribs, cloud and a vertical gradient on the lantern UV (not a tiling 0.5 m texture), at 256-512 px. This costs nothing on the phone.",
+    "Colour temperature: the centre about 2700 K (warm cream-amber), edges more saturated amber (about 2000 K). The current tint is close to uniform peach-white. Make sure AgX doesn't push it to white: keep emissive moderate and let bloom do the glow.",
+    "Square kaku-andon lanterns (05, 12) need a variant with a wooden frame shadow (darker 1-2 cm border) instead of ribs."
+   ],
+   "notes": "Lanterns are the main light source in every concept image, and there are hundreds of them in the slice. Detail is cheap here because it is one small atlas. SCALE RENDER: Blank, evenly glowing peach cylinders. No ribs, frame or caps, and they barely light their surroundings."
+  }
+ },
+ "rig": "UPDATE after the scale renders (scale/<id>.jpg and tiles/<id>.jpg arrived mid-review): the real-scale corner fixes the scale and tiling blind spot and is much more useful. Several scores moved down because of it (lava and paving tiling, basalt_wet, rimstone and ice likeness). Remaining rig problems: (1) Exposure: basalt (base sRGB ~49, correct near-black in tiles/basalt_dry.jpg) still renders as beige stucco in the scale scene, so the lantern key is still far too hot for a black-rock world. Add an 18% grey and a 4% black reference card, and set lantern intensity to match the scene's planned lightmap levels. (2) The scale scene's floor and side walls borrow paving and basalt_dry, so every material is judged next to two weak neighbours. Use a neutral mid-grey surround for isolated judgement, plus one 'in-context' shot with basalt_wet walls. (3) Glossy materials still reflect only a near-black world, one point light and one teal rectangle. Add 20-40 small lantern dots and some cyan glowworm dots in the environment. (4) These are still Cycles renders of the live procedural patterns. Next round, also render the corner with only the shipped 512/1024 px PNGs (mipmapped) and, via shotq, the same corner in three.js with a baked lightmap. That shows what survives on the phone, which is the real bar. (5) Water: the pool box is good. Add a visible basalt bottom with steps at 0.1, 0.5 and 2 m depth so absorption can be judged. (6) Emissives: render in a darker room with bloom, and add a wall within 0.3 m to show spill. (7) Add a 10x10 m top-down repeat view next to the concept crop for big-area materials (basalt, paving, sand, water). ORIGINAL: The rig is misleading in four ways. (1) One very bright 2700 K point light at close range plus AgX makes every dark material read warm tan: basalt_dry (albedo 0.03) and paving (0.055) look like beige stucco and brick, and the owner sees 'simple' partly because there is no black anywhere. Add an 18% grey card and a 4% black card in frame, and match the lantern intensity to the actual scene lighting. (2) A near-black world means glossy materials (obsidian, wet basalt, lacquer, water, glass, ice) have nothing to reflect except one hotspot and one rectangle, so they look dead. Use a dim cave environment with 20-40 small warm lantern dots and a few cyan glowworm dots, which is what these surfaces reflect in 05/15. (3) The sphere hides scale and tiling, and the Blender previews use the live procedural patterns, not the 512 px web textures the phone will get. (4) Water and ice on a sphere show nothing about depth, bottom or reflection. Next round I would want for each material: (a) a 4×4 m wall-plus-floor corner at real UV scale, seen from 1.6 m eye height at 2 m and 6 m distance, rendered with only the baked PNGs at their shipping resolution (512 or 1024, mipmapped), lit by 3 lanterns plus a teal fill; (b) the same corner in three.js through shotq, with a baked lightmap, to show what survives on the phone; (c) a raking-light 0.5 m close-up for micro detail; (d) for water, a stepped pool box (0.1, 0.5, 2 m deep) over basalt, with a lantern reflection; (e) emissives in a dark room with bloom on and a wall behind to show spill; (f) a 10×10 m top-down tile view to judge repetition, side by side with the matching concept crop.",
+ "priority": [
+  "basalt_wet",
+  "water_still",
+  "paving",
+  "obsidian",
+  "lava"
+ ],
+ "summary": "Round 0 is a clean, consistent system (one core, exact tiling, sensible params), but almost every material carries its detail only in the normal/height channel. Albedo std is 2-5/255 for basalt, rimstone, washi, bronze, iron and noren, roughness std is about 2-3/255, and the AO channel is about 255 everywhere. With baked lightmaps, three.js normal maps barely change diffuse shading, so on the phone these become flat colour plus a little specular, which is exactly the 'kinda simple' the owner saw. Fix that across the board: put cavity and AO into orm.r, give albedo ±10-20% variation at 2-3 frequencies, give roughness real structure (wet pockets versus dry tops), and add one shared low-res macro-variation texture (about 8 m repeat) to kill repetition on big rock and floor areas. Pattern-level mistakes: Voronoi cell networks are used for wet basalt, obsidian, ice, lava and ash clay, and they all read as 'cracked tiles'. Paving is a regular beige brick bond instead of large dark wet flagstones. Hinoki grain is too fine and wear erases it. Tatami is a symmetric grid with too strong normals. Lanterns and neon are flat emissive fills that AgX desaturates. Water, ice and glass rely on transmission, which is too expensive at phone scale. Plan depth-fade colour, a fake under-glow emissive, scrolling normals and flow, and caustic decals instead. Five to invest in for the slice: basalt_wet (with basalt_dry as one family), water_still, paving, obsidian and lava. Next after those: lantern_paper and washi_backlit (cheap, everywhere, and they set the mood), lava_glass, and hinoki. The preview rig over-exposes dark materials and gives glossy ones nothing to reflect; replace it with a real-scale corner scene using the web textures (see rig). Scale renders (added mid-review) confirm and sharpen this. At 3 m from 1.6 m eye height, basalt_dry reads as beige stucco, basalt_wet as crazy-paving, paving as bathroom tile, rimstone as birch veneer, glacier ice as crackle-glaze tile, lava as a repeating orange wire net, still water as black ink, and lanterns and neon as blank glowing tubes. Tiling is clearly visible on lava (4-5 repeats per wall), bronze (verdigris grid), obsidian (round reflection cells) and ash clay."
+}

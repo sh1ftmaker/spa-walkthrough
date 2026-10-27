@@ -1,0 +1,81 @@
+{
+ "space": "g_arrival",
+ "round": 1,
+ "reviewer": "ground_a_r1",
+ "frames": {
+  "entry": {
+   "focal": "The lava window: a huge bright slab filling the left half. It is the intended hero and unmistakably the brightest thing.",
+   "is_hero": true,
+   "next_visible": "Partly: the lift-core drum and a scatter of lanterns to the right. There is no clear lit path; the floor lanterns are spread across the whole floor."
+  },
+  "reveal": {
+   "focal": "The lava window face-on. Stone and floor lanterns stand in the immediate foreground (lights1:2, lights2:2), the boulder pickets cut the bottom edge, and the banners hang across the window like dark teeth.",
+   "is_hero": true,
+   "next_visible": "No: the bridge and the lift are off-frame."
+  },
+  "concept": {
+   "focal": "Split: a big dark box at the near left (basin_tree, a 4 by 4 by 4.5 m proxy) blocks half the frame; lava window at right. The west front is a blank brown wall with a tiny porch frame, so the torii of 04 is not framed. The slipper wall and its lantern cluster are hidden behind the tree.",
+   "is_hero": true,
+   "next_visible": "No."
+  },
+  "strip": {
+   "focal": "Lava window for frames 0-3, then a dark scatter of floor lanterns (frames 4-6) with nothing leading to the lift door. Frame 7 is the core edge and a dark void ring around it.",
+   "is_hero": true,
+   "next_visible": "Weak: the lift doorway is never a lit opening; only the two flanking lanterns show."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights[1] lantern_floor (spine, both sides)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "13 identical white floor lanterns on both sides of a zig-zag spine read as an evenly spread field across the hall. Place them on one side only (the side away from the stream), spacing [5,9], and drop lights1:7 and lights1:8 by the door. Concentrate light at the slipper wall, the reception, the bridge abutments and the lift door instead."
+  },
+  {
+   "id": "g_arrival:lights2:2",
+   "action": "remove",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The stone lantern at (60.4,63.8) stands in front of the reveal camera and blocks the bottom of the lava window. Also move lights1:2 (59.2,61.8) dx -3."
+  },
+  {
+   "id": "dressing[2] banner",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The four banners at z 9 hang across the upper third of the 12 m window, so they read as dead pixels in the hero. Move them off the window: onto the south timber bays (y about 42.5) or the west front either side of the door, as in 04. Alternatively raise them to z 12.5 or more above the glass."
+  },
+  {
+   "id": "dressing[0] boulder_rim",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "31 equal boulders in two even lines (spacing about 1.8 m) make a picket fence and hide the stream; at eye level the 2.6 m stream at z -0.35 is invisible. Use spacing [0.8,4.5] with real gaps so the water shows, cluster the boulders at the spill under the window and at the bridge, raise the water to z -0.15, and add low mist."
+  },
+  {
+   "id": "g_arrival:basin_tree",
+   "action": "move",
+   "dx": -1.5,
+   "dy": -4.0,
+   "deg": 0,
+   "detail": "The 4 by 4 by 4.5 m proxy at (77.8,49.3) fills the left half of the concept view and hides the slipper wall and reception. Tuck it against the south wall behind the basin (about (76.3,45.3)) so it backs the basin instead of blocking the hall."
+  }
+ ],
+ "scores": {
+  "composition": 3,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Turn the floor lanterns from a field into a one-sided path from the door to the bridge to the lift, and clear the banners and foreground lanterns off the lava window.",
+ "plausibility": [
+  "The lava window renders as overexposed peach-white, not orange lava. Tone the emission to an orange gradient, or it reads as a lightbox (graybox lighting, but it sets the mood of the whole level).",
+  "There is an open dark ring around the lift core at the landing (strip-7). The railing is only an arc of separate 1.5 m segments (dressing[4]) with gaps, which is a fall risk at the stair landing.",
+  "Hall proportion: 60 by 38 m with a flat-looking ceiling, and the vault never reads. The 9-16 m vault should be visible over the window.",
+  "Concept 04 has the torii inside the hall, framed through the front. Here the west front is a solid wall, so the 'torii framed through the open west front' sightline is impossible (shell, lead)."
+ ]
+}

@@ -17,6 +17,7 @@ $B -b 3d/blend/assembled.blend -P checks/placement.py 2>&1 | grep -E "PLACEMENT|
 if [[ $RENDER == 1 ]]; then
   SPACES=("$@"); if [[ ${#SPACES[@]} -eq 0 ]]; then mapfile -t SPACES < <(ls 3d/spaces/*.json | xargs -n1 basename | sed 's/\.json$//' | grep -v -E '^(SCHEMA|suite_template)$'); fi
   $B -b 3d/blend/assembled.blend -P tools/graybox/render_views.py -- --set spaces --space "${SPACES[@]}" 2>&1 | grep -c WROTE
-  for s in "${SPACES[@]}"; do $PY tools/review/render_contact_sheet.py "$s" --round 1 >/dev/null; done
+  ROUND=${KZ_ROUND:-1}
+  for s in "${SPACES[@]}"; do $PY tools/review/render_contact_sheet.py "$s" --round $ROUND --review >/dev/null; done
   echo "contact sheets: ${#SPACES[@]}"
 fi

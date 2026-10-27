@@ -36,6 +36,31 @@ for f in sorted(glob.glob(os.path.join(D3, 'renders', 'materials', '*.jpg'))):
     added.append(dict(title=f"Material: {m.get('name', mid)}", kind='material', image=rel, concept=c, agent='matlib',
                       status='review', notes=f"{m.get('category', '')} · tiling {m.get('tiling_m_per_repeat', '?')} m · params {m.get('params', {})}"))
 
+for sub, label in (('scale', 'at real scale'), ('tiles', 'tiling check')):
+    for f in sorted(glob.glob(os.path.join(D3, 'renders', 'materials', sub, '*.jpg'))):
+        rel = os.path.relpath(f, D3); mid = os.path.splitext(os.path.basename(f))[0]
+        if rel in have:
+            continue
+        m = mats.get(mid, {})
+        added.append(dict(title=f"Material {label}: {m.get('name', mid)}", kind='material', image=rel,
+                          concept=concept_path((m.get('concept') or [None])[0]), agent='matlib', status='review',
+                          notes='wall + floor corner from 1.6 m eye height' if sub == 'scale' else 'base / ORM / normal+height repeated 2x2'))
+for f in sorted(glob.glob(os.path.join(kz.ROOT, 'refs', 'gen', '*.png'))):
+    name = os.path.splitext(os.path.basename(f))[0]
+    jpg = os.path.join(D3, 'renders', 'ref', name + '.jpg'); rel = os.path.relpath(jpg, D3)
+    if rel in have:
+        continue
+    from PIL import Image
+    im = Image.open(f).convert('RGB'); im.thumbnail((1600, 1600)); im.save(jpg, quality=86)
+    refs = ''
+    for line in [l for lf in ('list4.tsv', 'list5.tsv') if os.path.exists(os.path.join(kz.ROOT, 'prompts', lf)) for l in open(os.path.join(kz.ROOT, 'prompts', lf))]:
+        parts = line.rstrip('\n').split('\t')
+        if parts[0] == name:
+            refs = parts[1]
+    first = next((r for r in refs.split(',') if r and '/' not in r), None) if refs else None
+    added.append(dict(title=f"Codex reference: {name}", kind='render', image=rel, concept=f'../lookbook/img/{first}.jpg' if first else None,
+                      agent='codex', status='reference', notes=f'generated with inputs {refs}'))
+
 inv = {}
 if os.path.exists(os.path.join(D3, 'inventory.csv')):
     for r in csv.DictReader(open(os.path.join(D3, 'inventory.csv'))):

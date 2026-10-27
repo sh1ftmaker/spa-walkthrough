@@ -1,0 +1,81 @@
+{
+ "space": "b1_cor_east",
+ "round": 1,
+ "reviewer": "b1_east_r1",
+ "frames": {
+  "entry": {
+   "focal": "The treatment-door lantern_floor pair (bright 1.05 m blocks, right) and a hard cool-white disc of light on the water mid-corridor; the hero ice at the far end is a small dark brown slab.",
+   "is_hero": false,
+   "next_visible": "Glacier room at the end visible as a grey box; no blue light."
+  },
+  "reveal": {
+   "focal": "The hero ice_formation as a tall opaque brown-orange slab on the right, unlit, plus a white light disc on the water and grey frost blocks in the foreground.",
+   "is_hero": true,
+   "next_visible": "Yes: the glacier room through the door (grey hut wall, two warm lanterns, the pool) - but warm/neutral, not blue."
+  },
+  "concept": {
+   "focal": "Lantern_floor blocks at the treatment door (right foreground); stepping stones lead to the end.",
+   "is_hero": false,
+   "next_visible": "End wall and door, neutral grey."
+  },
+  "strip": {
+   "focal": "An evenly staggered niche run, then the frost blocks and the brown hero; strip-7 enters the glacier room facing its brown ice wall.",
+   "is_hero": false,
+   "next_visible": "Yes at the end."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b1_cor_east:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0.2,
+   "deg": 0,
+   "detail": "ice_formation has no light at all in placements_resolved (no 'light' key), so the 'only cold light on B1' is a dark brown slab. Add blue emission (translucent emissive ice, ~1000-1500 W area at 9000-10000 K behind it) and the icicle curtain over the door. Slim it to d 0.4 and push it dy +0.2 onto the wall so it doesn't stand 1 m into the water at the door; seat it at -20.0 rather than -20.2."
+  },
+  {
+   "id": "dressing[1] (frost patches)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Six 0.8x0.3x1.2 boxes stand at z -20.2, evenly spaced on both kerbs, and read as grey bollards in the water. Snap them to the walls at z -19.3 to -17.8 with d 0.1, varying w [0.4,1.4], denser toward the door (spacing [0.5,2.5]), and add 4-6 icicle proxies hanging from the ceiling in the last 6 m."
+  },
+  {
+   "id": "lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": -0.25,
+   "deg": 0,
+   "detail": "The treatment-door pair (144.4,84.3)/(147.6,84.15) half-overhangs the water (pool edge ~84.3), so move them dy -0.25. Replace them with low 0.6 m andon at 10-15 W; right now they are the brightest objects in the entry and concept views, ahead of the hero."
+  },
+  {
+   "id": "unexplained white light pool (x ~150-160 on the water)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "A crisp cool-white elliptical spot on the water, with a matching bright patch on the ceiling, appears in the entry and reveal views. It looks like world/background light leaking through a gap in the barrel shell (similar spots in b1_glacier and b1_outfall). Find the gap. If a cold spill is wanted, it should be blue and come from the hero."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Same as b1_cor_south: boulders at z -20.4 with h <= 0.49 are submerged. Seat them on the bed with scale [0.6,1.1] and cluster them near the Mirror arch and the treatment door."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Give the ice formation its blue emission and icicle curtain (it currently has no light at all), so the cold end is the brightest thing you walk toward.",
+ "plausibility": [
+  "Hero ice slab sits 0.2 m below floor and stands ~1 m into the corridor water at the door.",
+  "Frost patches are free-standing 1.2 m blocks in the water instead of on the walls.",
+  "Door lanterns half overhang the pool.",
+  "Rim boulders submerged."
+ ]
+}

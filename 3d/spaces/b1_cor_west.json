@@ -53,7 +53,7 @@
    "to": "b1_grotto",
    "at": [
     52,
-    82
+    82.75
    ],
    "width": 3.0,
    "height": 2.6
@@ -117,7 +117,7 @@
     ],
     [
      52.0,
-     82.0,
+     82.75,
      -20.0
     ]
    ]
@@ -127,114 +127,146 @@
   "asset": "spill_lip",
   "at": [
    49.0,
-   79.0,
+   78.85,
    -20.0
   ],
   "facing_deg": 180,
   "dims": {
-   "w": 4.0
+   "w": 4.0,
+   "d": 0.3,
+   "h": 0.05
   },
+  "borrowed_from": "mist_steps",
+  "note": "Built as the top-step nosing of the Mist Steps (stair generator + w_mist_steps sheet), so no proxy is placed here; it must not obstruct the stair head.",
   "why": "The corridor ends in a falling view: the whole pool slides over a polished basalt lip onto the first flight of the Mist Steps, mist pours down with it and the restaurant's warm (and faintly neon) glow rises from below. Lit from the flanking toro and from under the sheet, it is the brightest thing straight ahead from the junction."
  },
  "anchored": [
   {
-   "id": "grotto_door",
-   "asset": "portal_arch",
-   "variant": "basalt + hinoki lintel + noren",
-   "at": [
-    52.0,
-    81.9,
-    -20.0
-   ],
-   "facing_deg": 180,
-   "dims": {
-    "w": 3.0,
-    "h": 2.6
-   },
-   "why": "Grotto entrance in the north wall; steam puffs out under the noren."
-  },
-  {
    "id": "grotto_board",
    "asset": "sign_kanji",
    "at": [
-    54.15,
-    81.9,
+    54.0,
+    78.3,
     -20.0
    ],
-   "facing_deg": 180,
+   "facing_deg": 0,
    "dims": {
     "w": 0.6,
     "h": 1.8
    },
    "text": "蒸 45 · 55 · 65 °C",
-   "why": "Temperature board beside the steam door (concept 16 boards)."
-  },
-  {
-   "id": "steps_toro_e",
-   "asset": "lantern_stone",
-   "at": [
-    51.45,
-    79.45,
-    -20.0
-   ],
-   "facing_deg": 225,
-   "dims": {
-    "h": 1.3
-   },
-   "why": "Flanks the stair head on the east; lights the spill sheet."
+   "why": "Temperature board on the south wall facing the steam door (concept 16 boards)."
   },
   {
    "id": "steps_toro_w",
    "asset": "lantern_stone",
    "at": [
-    46.55,
-    80.4,
+    47.5,
+    81.85,
     -20.0
    ],
    "facing_deg": 135,
    "dims": {
+    "w": 0.6,
+    "d": 0.6,
     "h": 1.3
    },
-   "near_portal": "p_b1_cor_ms",
-   "why": "Flanks the stair head on the west, on the landing."
+   "why": "NW corner of the landing, off the walk line, so the head is framed by two toro.",
+   "snap": "given"
   },
   {
-   "id": "steps_rail_e",
-   "asset": "railing",
-   "along": [
-    [
-     51.15,
-     79.0
-    ],
-    [
-     51.15,
-     77.2
-    ]
+   "id": "bonsai_w",
+   "asset": "pine_bonsai",
+   "at": [
+    57.6,
+    80.85,
+    -20.2
    ],
+   "facing_deg": 200,
    "dims": {
-    "h": 1.0
+    "w": 0.9,
+    "d": 0.9,
+    "h": 1.2
    },
-   "near_portal": "p_b1_cor_ms",
-   "why": "Landing dressing: handrail starts at the stair head (continues down the flight in the stair generator)."
+   "why": "Single silhouette on the north kerb between the steam door and the junction.",
+   "snap": "given"
   },
   {
-   "id": "steps_rail_w",
-   "asset": "railing",
-   "along": [
-    [
-     46.85,
-     79.0
-    ],
-    [
-     46.85,
-     77.2
-    ]
+   "id": "steps_toro_e",
+   "asset": "lantern_stone",
+   "at": [
+    52.7,
+    78.75,
+    -20.2
    ],
+   "facing_deg": 225,
    "dims": {
-    "h": 1.0
+    "w": 0.6,
+    "d": 0.6,
+    "h": 1.3
    },
-   "near_portal": "p_b1_cor_ms",
-   "why": "Pair."
+   "why": "South-kerb corner by the stair head: frames the lip from the side instead of blocking the view down.",
+   "snap": "given"
+  },
+  {
+   "id": "door_brackets_0",
+   "asset": "lantern_niche",
+   "at": [
+    50.3,
+    82.17,
+    -18.2
+   ],
+   "facing_deg": 183.2,
+   "snap": "given",
+   "why": "Lanterns on the grotto door posts at 1.8 m (replace the floor pair)."
+  },
+  {
+   "id": "door_brackets_1",
+   "asset": "lantern_niche",
+   "at": [
+    53.7,
+    81.98,
+    -18.2
+   ],
+   "facing_deg": 183.2,
+   "snap": "given",
+   "why": "Lanterns on the grotto door posts at 1.8 m (replace the floor pair)."
+  },
+  {
+   "id": "niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    56.91,
+    77.17,
+    -19.75
+   ],
+   "facing_deg": 33.7,
+   "snap": "given",
+   "why": "Ankle niches: two mid-corridor pools; the lip owns the far end."
+  },
+  {
+   "id": "niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    55.79,
+    81.87,
+    -19.75
+   ],
+   "facing_deg": 183.2,
+   "snap": "given",
+   "why": "Ankle niches: two mid-corridor pools; the lip owns the far end."
+  },
+  {
+   "id": "niches_2",
+   "asset": "lantern_niche",
+   "at": [
+    53.59,
+    78.28,
+    -19.75
+   ],
+   "facing_deg": 3.2,
+   "snap": "given",
+   "why": "Ankle niches: two mid-corridor pools; the lip owns the far end."
   }
  ],
  "water": [
@@ -243,7 +275,8 @@
    "kind": "still",
    "z": -20.05,
    "rim_z": -20.0,
-   "bed_z": -20.2,
+   "depth": 0.18,
+   "bed_z": -20.18,
    "path": [
     [
      62.0,
@@ -333,8 +366,8 @@
   },
   "reveal": {
    "pos": [
-    50.6,
-    80.6,
+    49.3,
+    79.6,
     -18.4
    ],
    "target": [
@@ -362,148 +395,88 @@
  },
  "lights": [
   {
-   "asset": "lantern_niche",
-   "along": [
-    [
-     62.0,
-     76.0
-    ],
-    [
-     58.6,
-     78.0
-    ],
-    [
-     55.0,
-     79.9
-    ],
-    [
-     51.6,
-     80.8
-    ]
-   ],
-   "side": "both",
-   "stagger": true,
-   "spacing": [
-    4.0,
-    5.5
-   ],
-   "snap": "wall",
-   "height": 0.25,
-   "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Ankle-height niches alternating left/right: each lights the mist from inside and is doubled in the water; the stagger leaves dark gaps between pools of light."
-  },
-  {
-   "asset": "spill_lip",
-   "part": "under_sheet_light",
+   "asset": "oculus_glow",
    "at": [
     [
      49.0,
-     78.8,
-     -20.3
+     78.4,
+     -20.7
     ]
    ],
-   "why": "Warm light behind the falling sheet: hero brightest."
+   "outside_ok": true,
+   "why": "Warm under-sheet glow at the lip: the hero light (the lip itself is the stair's top nosing).",
+   "z": -20.2
   },
   {
-   "asset": "lantern_floor",
+   "asset": "oculus_glow",
    "at": [
     [
-     50.2,
-     81.25,
-     -20.0
-    ],
-    [
-     53.85,
-     81.0,
-     -20.0
+     49.0,
+     71.5,
+     -22.8
     ]
    ],
-   "face": "path",
-   "why": "Pair at the grotto door (concept 16 lanterns flank each opening)."
+   "outside_ok": true,
+   "why": "Warm glow part-way down flight 1 so the descent reads as steps falling toward Kawagiri.",
+   "z": -20.2
   }
  ],
  "dressing": [
   {
-   "asset": "stepping_stone",
-   "along": [
-    [
-     62.0,
-     76.0
-    ],
-    [
-     58.6,
-     78.0
-    ],
-    [
-     55.0,
-     79.9
-    ],
-    [
-     51.6,
-     80.8
-    ],
-    [
-     49.2,
-     80.3
-    ]
+   "asset": "boulder_rim",
+   "ring": [
+    58.4,
+    80.9
    ],
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
+   "radius": [
+    0.25,
+    0.9
    ],
-   "jitter": 0.08,
-   "top_z": -20.0,
+   "count": 2,
+   "jitter_deg": 25,
    "scale": [
-    0.95,
-    1.15
+    0.6,
+    1.1
    ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
    ],
-   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+   "optional": true,
+   "why": "Rocks at the bonsai.",
+   "z": -20.2
   },
   {
    "asset": "boulder_rim",
-   "along": "spine",
-   "side": "both",
-   "offset": 1.62,
-   "spacing": [
-    2.2,
-    4.0
+   "ring": [
+    51.6,
+    78.9
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 2,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
    ],
    "embed": 0.12,
-   "scale": [
-    0.35,
-    0.7
-   ],
+   "face": "out",
    "avoid": [
     "nav",
-    "portals"
+    "portals",
+    "anchored",
+    0.3
    ],
-   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
-  },
-  {
-   "asset": "pine_bonsai",
-   "at": [
-    [
-     57.6,
-     80.85,
-     -20.0
-    ]
-   ],
-   "why": "Single silhouette on the north kerb between the door and the junction."
+   "optional": true,
+   "why": "Rocks at the stair-head toro.",
+   "z": -20.2
   }
  ],
  "mood": {
@@ -511,6 +484,13 @@
   "palette": "amber, teal, black basalt; faint magenta haze rising from Kawagiri far below (neon light only, no neon objects on B1)",
   "mist": "Knee-high (0.4 m) layer over the whole pool, densest at the walls, thinning over the stones. Pours over the lip down the steps; puffs of white steam at the grotto door."
  },
- "waivers": [],
+ "waivers": [
+  {
+   "check": "hero_visible",
+   "where": "spill_lip",
+   "reason": "The lip is the top-step nosing of the Mist Steps (borrowed_from mist_steps; built by the stair generator), so no hero proxy is placed; it is centre-frame from the entry camera."
+  }
+ ],
+ "light_notes": "Warm light behind the falling sheet at the stair head (part of the mist_steps spill; no proxy).",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

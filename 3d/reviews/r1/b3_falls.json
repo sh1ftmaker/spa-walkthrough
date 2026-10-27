@@ -1,0 +1,21 @@
+{"space": "b3_falls", "round": 1, "reviewer": "rev_b3_west_r1",
+ "frames": {
+  "entry": {"focal": "falls_stair_2's flight and piers cross the whole frame at eye height; behind them the curtain is a dull orange slab.", "is_hero": true, "next_visible": "Two lanterns of the gallery are visible; the pool and the rimstone are not."},
+  "reveal": {"focal": "The curtain slab at centre-right, with the gallery lantern band visible behind its right edge.", "is_hero": true, "next_visible": "The gallery lanterns; the pool is black."},
+  "concept": {"focal": "The curtain is centred and well framed, with the gallery lantern band at its sides, but it is dim orange and the pool is a black floor with white marker dots. There is no foreground layer: no rocks, andon, pavilion or spouts read.", "is_hero": true, "next_visible": "falls_stair_2 on the right; the throat to the terraces is not lit."},
+  "strip": {"focal": "Frames 0-4 are essentially black: falls_stair_1 descends the shaft walls with no light at all. Frames 5-7 show the gallery band and the curtain edge.", "is_hero": false, "next_visible": "Only once the gallery lanterns appear; for most of the descent you see nothing."}
+ },
+ "fixes": [
+  {"id": "lights[2]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The lantern_post 'along stair:falls_stair_1, at_landings' rule produced zero placements, so the whole 20 m shaft descent is unlit. Place one lantern per landing (6-8) on the wall side. This is also the zigzag of lantern dots that concept 19 shows on the shaft walls."},
+  {"id": "lights[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The 4 plunge-zone uplights and the 18 scattered pool_uplights (lights[1]) are markers that do not emit: the pool reads black. Make them real teal emitters (or emissive water) and backlight the curtain base so the sheet and spray are the brightest thing in the shaft."},
+  {"id": "dressing[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "boulder_rim along the south rim (dressing0:0-12 at y 45.6) duplicates pool_steps (anchored2:0-7 at y 46.0), giving a double row of boulders. Also, pool_steps are meant to be two 25 cm seat steps, not boulders. Drop dressing[0] on the south edge, make pool_steps actual steps, and cluster the west-edge boulders (x 13.6, 15 in a straight row) into 3-4 groups."},
+  {"id": "dressing[1]", "action": "replace", "dx": 4, "dy": 1, "deg": 0, "detail": "7 boulders in a neat 2.5 m ring at (29,70), 3-5 m in front of the sheet, read as a ring of stools at the curtain's foot in the concept frame. Replace with 2-3 large boulders clustered off-centre at ~(33,71) so the landing zone stays clear white water."},
+  {"id": "cameras.entry", "action": "move", "dx": -1.4, "dy": -4.5, "deg": 0, "detail": "From (45.4,65.5) the eye line crosses falls_stair_2's flight where it is at eye height. From (44.0,61.0) the line to the curtain passes over the flight's low foot (y~63, z~-59.1 plus rail) and the curtain reads unobstructed. Alternatively, make stair 2 an open-riser flight with a slim rail."}
+ ],
+ "scores": {"composition": 2, "density": 2, "light_rhythm": 1},
+ "top_change": "Light the descent and the hero: put the missing landing lanterns on falls_stair_1 and make the curtain plus the uplit plunge pool emit, so the shaft goes dark stair, then glowing white sheet, then teal pool.",
+ "plausibility": [
+  "falls_stair_1 and falls_stair_2 show no railings in any frame (stair1_railing/stair2_railing have no placements) on a 20 m open shaft.",
+  "The south rim has a double boulder row where seat steps should be.",
+  "rest_pavilion (11.6,58) and the massage spouts are not readable in any camera; check that they exist at the right z."
+ ]}

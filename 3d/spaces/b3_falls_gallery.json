@@ -93,6 +93,7 @@
  "hero": {
   "asset": "falls_sheet",
   "ref": "b3_falls.hero",
+  "borrowed_from": "b3_falls",
   "at": [
    29,
    76,
@@ -115,18 +116,52 @@
    "asset": "railing",
    "along": [
     [
-     11.7,
-     77.2
+     12.0,
+     77.0
     ],
     [
-     42,
-     77.2
+     40.0,
+     77.0
     ]
    ],
+   "z": -55.0,
    "dims": {
     "h": 1.05
    },
-   "why": "Curtain side of the walkway; spray-wet hinoki rail as in concept 19."
+   "why": "Curtain side of the walkway (4.5 m drop to the pool)."
+  },
+  {
+   "id": "arcade_piers",
+   "asset": "obsidian_monolith",
+   "at": [
+    [
+     21,
+     76.4
+    ],
+    [
+     25,
+     76.4
+    ],
+    [
+     29,
+     76.4
+    ],
+    [
+     33,
+     76.4
+    ],
+    [
+     37,
+     76.4
+    ]
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 1.0,
+    "d": 0.8,
+    "h": 3.0
+   },
+   "why": "Basalt piers every 4 m behind the sheet: the arcade frames the curtain in bays."
   },
   {
    "id": "spray_bench",
@@ -134,15 +169,14 @@
    "at": [
     [
      29,
-     80.0,
-     -55.0
+     80.0
     ]
    ],
    "facing_deg": 180,
    "dims": {
     "w": 4.0
    },
-   "why": "A niche bench on the back wall dead centre behind the sheet: sit inside the waterfall."
+   "why": "A niche bench on the back wall dead centre behind the sheet."
   }
  ],
  "water": [],
@@ -180,7 +214,7 @@
   "entry": {
    "pos": [
     11.0,
-    78.5,
+    77.4,
     -53.4
    ],
    "target": [
@@ -192,8 +226,8 @@
   },
   "reveal": {
    "pos": [
-    24,
-    78.5,
+    24.0,
+    77.6,
     -53.4
    ],
    "target": [
@@ -205,12 +239,12 @@
   },
   "concept": {
    "pos": [
-    33,
-    79.2,
+    31.0,
+    77.6,
     -53.4
    ],
    "target": [
-    27,
+    26,
     76,
     -54
    ],
@@ -224,40 +258,81 @@
    "asset": "lantern_hanging",
    "along": [
     [
-     11,
-     79.9
+     13.5,
+     80.2
     ],
     [
-     42.5,
-     79.9
+     20,
+     80.2
     ]
    ],
    "spacing": [
-    1.6,
-    2.4
-   ],
-   "height": [
-    2.2,
-    2.6
+    3.5,
+    5
    ],
    "snap": "ceiling",
-   "why": "A dense warm band on the back wall: it backlights the curtain so the hero (in both spaces) is the brightest thing."
+   "why": "Thin, dark approach.",
+   "avoid": []
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     21,
+     80.2
+    ],
+    [
+     37,
+     80.2
+    ]
+   ],
+   "spacing": [
+    1.4,
+    1.8
+   ],
+   "snap": "ceiling",
+   "why": "Dense warm band behind the sheet: the backlit curtain section is the brightest.",
+   "avoid": []
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     38.5,
+     80.2
+    ],
+    [
+     42.5,
+     80.2
+    ]
+   ],
+   "spacing": [
+    3.5,
+    5
+   ],
+   "snap": "ceiling",
+   "why": "Thin, dark exit.",
+   "avoid": []
   },
   {
    "asset": "lantern_stone",
    "at": [
     [
      12.2,
-     77.0,
-     -55.0
-    ],
-    [
-     42.6,
-     77.0,
-     -55.0
+     79.7
     ]
    ],
-   "why": "Mark both stair mouths."
+   "why": "Marks the west stair mouth against the back wall."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     40.2,
+     76.5
+    ]
+   ],
+   "why": "Lights the throat where the walk turns down falls_stair_2."
   }
  ],
  "dressing": [
@@ -277,7 +352,8 @@
    "scale": [
     0.3,
     0.6
-   ]
+   ],
+   "optional": true
   }
  ],
  "mood": {
@@ -287,10 +363,13 @@
  },
  "waivers": [
   {
-   "check": "no_empty_areas",
-   "where": "whole gallery",
-   "reason": "2.4 m walkway; the lantern band covers it."
+   "check": "hero_visible",
+   "where": "entry camera (11, 78.5) in the gallery",
+   "reason": "The hero is b3_falls' 17 m sheet; from inside the 3 m gallery slot (floor -55, roof -52) only its middle 3 m band is in view, so the check's samples at 15/50/85 % of its height (-57, -51, -45) all lie behind the gallery floor or roof. The view of the curtain through the slot is the design."
   }
  ],
- "layout_issues": []
+ "layout_issues": [],
+ "lead_requests": [
+  "graybox: close the gallery's south side with rock (y 76, -55 to -52) for x 8-20.5 and 37.5-46; open only x 20.5-37.5 behind the sheet."
+ ]
 }

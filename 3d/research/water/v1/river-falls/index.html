@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thunder Falls water</title>
+<script type="importmap">{"imports":{"three":"../../../../../web/node_modules/three/build/three.module.js","three/addons/":"../../../../../web/node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+<script type="module">
+// Prototype (a): white-water river + 12 m x 17 m waterfall, walk-behind ledge, plunge pool, rapids.
+// Techniques: baked flow map (2-phase Vlachos blending), stationary standing waves, depth absorption +
+// caustics in the *bed* shader (no refraction pass), time-of-flight UV waterfall cards, GPU-only
+// instanced spray/spume/mist driven by hash(seed,time). See ../README.md.
+import * as THREE from 'three';
+import { createApp, GLSL_COMMON, BILLBOARD_GLSL, rockMaterial, bakeVertexLight, lumpify, makeNoise3, mulberry, instancedQuads, bakeProbe } from '../../common/kit.js';
+
+const app = createApp({
+  title: 'Thunder Curtain Falls + B2 rapids',
+  fog: { color: 0x3c5c5e, v: [0.0, 0.10, 0.5, 0.004], grad: [8, 60, -3.4] },
+  cams: [
+    { pos: [7.5, 2.1, 9.5], target: [-0.5, 7.0, -10], fov: 60 },
+    { pos: [0, 1.5, 34], target: [3.5, -1, 26], fov: 60 },
+    { pos: [1.2, 1.9, -14.4], target: [-1.5, 3.2, 2], fov: 65 },
+    { pos: [-19, 9, 26], target: [0, 4, -4], fov: 55 },
+  ],
+});
+const { scene, shared, renderer } = app;
+const G = 9.81;
+
+// ------------------------------------------------------------------ layout functions (stand-in for Blender data)
+const CL = [[0, 7], [1, 15], [4, 23], [3.5, 31], [-1.5, 39], [-3, 47], [-0.5, 55], [3, 63], [4, 72]];
+const segLen = []; let total = 0; for (let i = 0; i < CL.length - 1; i++) { const l = Math.hypot(CL[i + 1][0] - CL[i][0], CL[i + 1][1] - CL[i][1]); segLen.push(l); total += l; }
+function proj(x, z) { // closest point on centreline: s (m along), d (signed lateral), tangent
+  let best = { d2: 1e9 }; let acc = 0;
+  for (let i = 0; i < CL.length - 1; i++) {
+    const [ax, az] = CL[i], [bx, bz] = CL[i + 1]; const dx = bx - ax, dz = bz - az, L = segLen[i];
+    let t = ((x - ax) * dx + (z - az) * dz) / (L * L); const tc = Math.max(0, Math.min(1, t));
+    const px = ax + dx * tc, pz = az + dz * tc; const d2 = (x - px) ** 2 + (z - pz) ** 2;
+    if (d2 < best.d2) { const tx = dx / L, tz = dz / L; best = { d2, s: (i === 0 && t < 0) ? t * L : acc + tc * L, tx, tz, d: (x - px) * tz - (z - pz) * tx }; }
+    acc += L;
+  }
+  best.d = Math.sign(best.d) * Math.sqrt(best.d2); return best;
+}
+const sm = (a, b, x) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+const DROPS = [[13, 0.9, 3.5], [27, 1.1, 3.0], [41, 0.7, 4.0], [53, 1.0, 3.0]]; // s, height, length
+const level = s => { let y = 0; for (const [c, h, l] of DROPS) y -= h * sm(c - l / 2, c + l / 2, s); return y; };
+const slope = s => (level(s + 0.25) - level(s - 0.25)) / 0.5;
+const width = s => 3.4 - 0.9 * Math.min(1, Math.abs(slope(s)) * 2.5);
+const POOL = { cx: 0, cz: -1, rx: 15, rz: 12 };
+const LIP = { y: 17, z: -12.6, half: 6, vz: 1.6 };
+const TFALL = Math.sqrt(2 * LIP.y / G);
+const IMPACT_Z = LIP.z + LIP.vz * TFALL;
+const BOULDERS = [[2.2, 12.4, 0.8], [-1.0, 14.6, 0.65], [3.4, 26.5, 0.9], [5.0, 23.5, 0.6], [1.5, 30.0, 0.7], [-0.6, 40.5, 0.85], [-3.4, 42.0, 0.6], [-2.0, 52.5, 0.8], [0.2, 54.8, 0.6], [-6.5, -6, 1.4], [7.5, -7.5, 1.6], [-9.5, 1.5, 1.2], [9.0, 2.5, 1.0], [-3.5, -9.8, 0.9], [4.2, -10.4, 0.8]];
+
+function waterLevelAt(x, z) { const p = proj(x, z); return p.s <= 0 ? 0 : level(p.s); }
+function depthAt(x, z) {
+  const e = Math.hypot((x - POOL.cx) / POOL.rx, (z - POOL.cz) / POOL.rz);
+  let pool = 2.8 * (1 - e * e) + 1.6 * Math.exp(-((z - IMPACT_Z) ** 2) / 8 - Math.max(Math.abs(x) - LIP.half, 0) ** 2 / 6);
+  const p = proj(x, z); let river = -9;
+  if (p.s > -2) { const w = width(Math.max(p.s, 0)); river = 1.25 * (1 - (p.d / w) ** 2); }
+  return { D: Math.max(pool, river), e, p };
+}
+const nz = makeNoise3(7);
+function terrainY(x, z) {
+  const lv = waterLevelAt(x, z); const { D, e, p } = depthAt(x, z);
+  let y;
+  if (D > 0) y = lv - D + 0.22 * nz(x * 0.6, 0, z * 0.6, 3);
+  else { y = lv + 1.0 * sm(0, 0.8, -D) + 0.35 * nz(x * 0.4, 1, z * 0.4, 3); }
+  const qPool = (e - 1.3) * 11, qRiver = p.s > -1 ? Math.abs(p.d) - (width(Math.max(p.s, 0)) + 4.5) : 99;
+  const q = Math.min(qPool, qRiver);
+  y += 21 * sm(0, 7, q) + 2.2 * sm(0, 7, q) * nz(x * 0.15, 2, z * 0.15, 4);
+  if (z < -11.7 && Math.abs(x) < 10) y = Math.max(y, 0.45 + 0.03 * nz(x * 2, 3, z * 2, 2)); // walk-behind ledge
+  return { y, lv };
+}
+
+// ------------------------------------------------------------------ baked "lightmap" lights
+const WARM = new THREE.Color(1.0, 0.55, 0.22), TEAL = new THREE.Color(0.15, 0.95, 0.85);
+const lanterns = [];
+for (const x of [-8.5, -4, 4, 8.5]) lanterns.push([x, 1.3, -14.8]);
+for (let s = 4; s < 70; s += 9) for (const side of [-1, 1]) {
+  let acc = 0, i = 0; while (i < segLen.length - 1 && acc + segLen[i] < s) { acc += segLen[i]; i++; }
+  const t = (s - acc) / segLen[i]; const [ax, az] = CL[i], [bx, bz] = CL[i + 1]; const tx = (bx - ax) / segLen[i], tz = (bz - az) / segLen[i];
+  const x = ax + (bx - ax) * t + tz * side * (width(s) + 1.6), z = az + (bz - az) * t - tx * side * (width(s) + 1.6);
+  lanterns.push([x, terrainY(x, z).y + 0.9, z]);
+}
+for (const a of [0.3, 0.9, 2.3, 2.9]) { const x = Math.cos(a) * POOL.rx * 1.12, z = POOL.cz + Math.sin(a) * POOL.rz * 1.12; lanterns.push([x, terrainY(x, z).y + 0.9, z]); }
+const uplights = [[0, -1.6, IMPACT_Z + 1], [-4.5, -1.4, IMPACT_Z + 1.5], [4.5, -1.4, IMPACT_Z + 1.5], [-6, -1.2, 0], [6, -1.2, 1]];
+for (let s = 6; s < 66; s += 7) { const p = CL[Math.min(CL.length - 1, Math.round(s / total * (CL.length - 1)))]; uplights.push([p[0], level(s) - 0.9, p[1]]); }
+const LIGHTS = [
+  ...lanterns.map(p => ({ pos: new THREE.Vector3(...p), color: WARM, intensity: 6 })),
+  ...uplights.map(p => ({ pos: new THREE.Vector3(...p), color: TEAL, intensity: 7, wrap: 0.6 })),
+  { pos: new THREE.Vector3(0, 6, IMPACT_Z + 1.5), color: new THREE.Color(0.6, 0.85, 0.85), intensity: 22, wrap: 0.3 }, // glow of the white water itself
+];
+
+// ------------------------------------------------------------------ terrain (bed + banks + walls)
+const X0 = -28, X1 = 28, Z0 = -20, Z1 = 74;
+function buildTerrain(low) {
+  const nx = low ? 80 : 150, nzc = low ? 130 : 250;
+  const g = new THREE.PlaneGeometry(X1 - X0, Z1 - Z0, nx, nzc); g.rotateX(-Math.PI / 2); g.translate((X0 + X1) / 2, 0, (Z0 + Z1) / 2);
+  const pos = g.attributes.position; const lv = new Float32Array(pos.count);
+  for (let i = 0; i < pos.count; i++) { const x = pos.getX(i), z = pos.getZ(i); const t = terrainY(x, z); pos.setY(i, t.y); lv[i] = t.lv; }
+  g.setAttribute('aLevel', new THREE.BufferAttribute(lv, 1));
+  bakeVertexLight(g, LIGHTS, new THREE.Color(0.012, 0.016, 0.02), (p) => 1);
+  return g;
+}
+
+// ------------------------------------------------------------------ flow map bake (stand-in for a Blender/Houdini flow bake)
+const FM = { x0: -16, z0: -14, w: 32, h: 88, nx: 64, nz: 176, maxV: 6 };
+function bakeFlowMap() {
+  const data = new Uint8Array(FM.nx * FM.nz * 4);
+  for (let j = 0; j < FM.nz; j++) for (let i = 0; i < FM.nx; i++) {
+    const x = FM.x0 + (i + 0.5) / FM.nx * FM.w, z = FM.z0 + (j + 0.5) / FM.nz * FM.h;
+    const p = proj(x, z); const { D } = depthAt(x, z);
+    // pool: radial away from the impact line, plus drift to the outlet
+    const ix = Math.max(-LIP.half, Math.min(LIP.half, x)); const dxi = x - ix, dzi = z - IMPACT_Z; const di = Math.hypot(dxi, dzi) + 1e-3;
+    let fx = dxi / di * 3.2 * Math.exp(-di / 5), fz = dzi / di * 3.2 * Math.exp(-di / 5);
+    const ox = CL[0][0] - x, oz = CL[0][1] - z, od = Math.hypot(ox, oz) + 1e-3; fx += ox / od * 0.5; fz += oz / od * 0.5;
+    // river
+    const sp = 1.1 + 9 * Math.abs(slope(Math.max(p.s, 0)));
+    const w = width(Math.max(p.s, 0)); const core = Math.max(0, 1 - (p.d / w) ** 2 * 0.7);
+    const rb = sm(-3, 3, p.s);
+    fx = fx * (1 - rb) + p.tx * sp * core * rb; fz = fz * (1 - rb) + p.tz * sp * core * rb;
+    let foam = 0.9 * Math.exp(-di / 2.2) + 0.35 * Math.exp(-di / 6);
+    foam += rb * Math.min(0.85, Math.abs(slope(Math.max(p.s, 0))) * 2.6) * (0.6 + 0.4 * core);
+    for (const [c, h, l] of DROPS) { const e = p.s - (c + l / 2); if (e > 0) foam += rb * h * 0.45 * Math.exp(-e / 5) * (0.4 + 0.6 * core); }
+    foam += rb * 0.12 * sm(0.3, 1, Math.abs(p.d) / w);           // bank turbulence
+    // boulders: potential flow around a cylinder + pillow + wake
+    for (const [bx, bz, r] of BOULDERS) {
+      const rx = x - bx, rz = z - bz, rr = Math.hypot(rx, rz); if (rr > r * 7) continue;
+      const U = Math.hypot(fx, fz) + 1e-4, ex = fx / U, ez = fz / U;
+      const a = rx * ex + rz * ez, b = -rx * ez + rz * ex;           // along / across flow
+      const R = r * 1.1;
+      if (rr < R) { fx *= 0.1; fz *= 0.1; foam += 0.7; continue; }
+      const k = R * R / (rr * rr), c2 = (a * a - b * b) / (rr * rr), s2 = 2 * a * b / (rr * rr);
+      const ua = U * (1 - k * c2), ub = -U * k * s2;
+      fx = ua * ex - ub * ez; fz = ua * ez + ub * ex;
+      if (a < 0) foam += 0.55 * Math.exp(-(rr - R) / (0.5 * r));                              // pillow
+      else foam += 0.75 * Math.exp(-(b * b) / (r * r * 0.9)) * Math.exp(-a / (5.5 * r)) * Math.min(1, U / 2); // wake
+    }
+    const k4 = (j * FM.nx + i) * 4;
+    data[k4] = Math.round(255 * Math.max(0, Math.min(1, fx / FM.maxV * 0.5 + 0.5)));
+    data[k4 + 1] = Math.round(255 * Math.max(0, Math.min(1, fz / FM.maxV * 0.5 + 0.5)));
+    data[k4 + 2] = Math.round(255 * Math.max(0, Math.min(1, foam)));
+    data[k4 + 3] = Math.round(255 * Math.max(0, Math.min(1, D / 4)));
+  }
+  const t = new THREE.DataTexture(data, FM.nx, FM.nz, THREE.RGBAFormat);
+  t.magFilter = t.minFilter = THREE.LinearFilter; t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; t.needsUpdate = true;
+  return t;
+}
+const tFlow = bakeFlowMap();
+app.extraTexBytes += FM.nx * FM.nz * 4;
+const flowU = { tFlow: { value: tFlow }, uFlowRect: { value: new THREE.Vector4(FM.x0, FM.z0, 1 / FM.w, 1 / FM.h) }, uMaxV: { value: FM.maxV } };
+
+// ------------------------------------------------------------------ bed / bank shader (lightmapped look + underwater absorption + caustics)
+const UNDERWATER_GLSL = /* glsl */`
+uniform vec3 uAbsorb; uniform vec3 uScatter;
+// colour of an underwater surface point seen through 'd' metres of water along a view ray
+vec3 underwater(vec3 col, vec3 wpos, float d, float aer, float glow){
+  vec3 rd = normalize(wpos - cameraPosition);
+  float path = d/max(abs(rd.y),0.22) + d;            // light comes down, then back up to the eye
+  vec3 T = exp(-uAbsorb*path);
+  vec2 cuv = wpos.xz*0.32;
+  float b1 = texture(tNoise, cuv + uTime*vec2(0.031,0.019)).b;
+  float b2 = texture(tNoise, cuv*1.37 + vec2(0.4) - uTime*vec2(0.017,0.034)).b;
+  float caust = pow(clamp(1.0 - (b1+b2)*0.9, 0.0, 1.0), 3.0)*3.0;
+  col = vec3(dot(col, vec3(0.3,0.6,0.1)))*vec3(0.5,1.0,0.95);
+  col = col*0.75 + col*caust*exp(-d*0.35);
+  vec3 sc = mix(uScatter, vec3(0.75,0.95,0.95)*0.55, aer)*glow;
+  return col*T + sc*(1.0 - exp(-0.35*path));   // in-scatter uses a grey extinction, the colour lives in uScatter
+}`;
+const bedMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, ...flowU, uTint: { value: new THREE.Color(0x232425) }, uAbsorb: { value: new THREE.Vector3(0.55, 0.075, 0.11) }, uScatter: { value: new THREE.Color(0.01, 0.15, 0.14) } },
+  vertexShader: /* glsl */`
+    attribute vec3 color; attribute float aLevel; varying vec3 vCol; varying vec3 vW; varying vec3 vN; varying float vLevel;
+    void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; vCol = color; vLevel = aLevel; vN = normal; gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: GLSL_COMMON + UNDERWATER_GLSL + /* glsl */`
+    uniform vec3 uTint; uniform sampler2D tFlow; uniform vec4 uFlowRect;
+    varying vec3 vCol; varying vec3 vW; varying vec3 vN; varying float vLevel;
+    void main(){
+      vec3 an = abs(normalize(vN));
+      vec2 uv = an.y > 0.6 ? vW.xz : (an.x > an.z ? vW.zy : vW.xy);
+      vec4 n = texture(tNoise, uv*0.15);
+      float grain = texture(tNoise, uv*0.9).a;
+      vec3 alb = uTint*(0.5+1.0*n.r)*(0.75+0.5*grain);
+      vec3 col = alb*vCol;
+      float d = vLevel - vW.y;
+      float wet = smoothstep(0.6, 0.0, -d);           // dark wet band above the waterline
+      col *= mix(1.0, 0.55, wet);
+      vec3 v = normalize(cameraPosition - vW);
+      col += wet*pow(1.0-max(dot(v, normalize(vN)),0.0),5.0)*vCol*0.8;
+      if (d > 0.0){
+        float aer = texture(tFlow, (vW.xz-uFlowRect.xy)*uFlowRect.zw).b;
+        col = underwater(col, vW, d, aer*aer*aer, min(0.2 + 2.0*dot(vCol, vec3(0.3,0.5,0.2)), 2.0));
+      }
+      gl_FragColor = vec4(applyFog(col, vW), 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+});
+
+// ------------------------------------------------------------------ static rock: cliff with overhanging lip, ceiling, boulders
+function buildCliff() {
+  const g = new THREE.PlaneGeometry(60, 30, 120, 70); g.translate(0, 13, 0);
+  const pos = g.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i), y = pos.getY(i);
+    const lipMask = sm(LIP.half + 2.5, LIP.half, Math.abs(x));
+    const bump = sm(12, 16.9, y) * (1 - sm(17.0, 17.6, y));
+    let z = -16 + (16 - 12.6 + 0.25) * bump * lipMask - (y > 17.3 ? 2.5 * lipMask : 0);
+    const rough = (1 - 0.85 * lipMask * sm(16.2, 16.9, y) * (1 - sm(17.2, 17.8, y))) * 1.6;
+    z += rough * nz(x * 0.25, y * 0.25, 5, 4) + 0.6 * nz(x * 0.9, y * 0.9, 9, 2) * rough;
+    let yy = y; if (y > 17.3 && lipMask > 0.2) yy = 17.2 + (y - 17.3) * 0.2;  // flat river bed above the lip
+    pos.setXYZ(i, x + 0.8 * nz(x * 0.3, y * 0.3, 1, 2) * (1 - lipMask), yy, Math.min(z, LIP.z - 0.15 - 0.6 * (1 - sm(16.0, 17.0, y)) * lipMask));
+  }
+  bakeVertexLight(g, LIGHTS, new THREE.Color(0.01, 0.013, 0.016));
+  return g;
+}
+function buildCeiling() {
+  const g = new THREE.PlaneGeometry(X1 - X0 + 10, Z1 - Z0 + 10, 50, 80); g.rotateX(Math.PI / 2); g.translate((X0 + X1) / 2, 23, (Z0 + Z1) / 2);
+  const pos = g.attributes.position;
+  for (let i = 0; i < pos.count; i++) { const x = pos.getX(i), z = pos.getZ(i); pos.setY(i, 23 + 4 * nz(x * 0.08, 7, z * 0.08, 4) - Math.max(0, z - 20) * 0.12 - 4.6 * sm(-6, -11, z) * sm(14, 6, Math.abs(x))); }
+  bakeVertexLight(g, LIGHTS, new THREE.Color(0.006, 0.008, 0.01));
+  return g;
+}
+function buildBoulders() {
+  const geos = [];
+  BOULDERS.forEach(([x, z, r], i) => {
+    let g = new THREE.IcosahedronGeometry(r, 3); g = lumpify(g, r * 0.35, 1.6 / r, 11 + i);
+    g.scale(1, 0.7, 1); g.translate(x, waterLevelAt(x, z) - r * 0.15, z); geos.push(g);
+  });
+  const merged = mergeGeos(geos);
+  const lv = new Float32Array(merged.attributes.position.count);
+  for (let i = 0; i < lv.length; i++) lv[i] = waterLevelAt(merged.attributes.position.getX(i), merged.attributes.position.getZ(i));
+  merged.setAttribute('aLevel', new THREE.BufferAttribute(lv, 1));
+  bakeVertexLight(merged, LIGHTS, new THREE.Color(0.012, 0.016, 0.02));
+  return merged;
+}
+function mergeGeos(geos) {
+  let n = 0, m = 0; geos.forEach(g => { g = g.index ? g : g; n += g.attributes.position.count; m += g.index ? g.index.count : g.attributes.position.count; });
+  const pos = new Float32Array(n * 3), nor = new Float32Array(n * 3), idx = new Uint32Array(m); let o = 0, oi = 0;
+  for (const g of geos) {
+    const c = g.attributes.position.count; pos.set(g.attributes.position.array, o * 3); nor.set(g.attributes.normal.array, o * 3);
+    if (g.index) { for (let i = 0; i < g.index.count; i++) idx[oi++] = g.index.array[i] + o; } else for (let i = 0; i < c; i++) idx[oi++] = o + i;
+    o += c;
+  }
+  const out = new THREE.BufferGeometry(); out.setAttribute('position', new THREE.BufferAttribute(pos, 3)); out.setAttribute('normal', new THREE.BufferAttribute(nor, 3)); out.setIndex(new THREE.BufferAttribute(idx, 1));
+  return out;
+}
+
+const terrain = new THREE.Mesh(buildTerrain(app.state.low), bedMat); scene.add(terrain);
+const cliffGeo = buildCliff(); const lvC = new Float32Array(cliffGeo.attributes.position.count).fill(0);
+for (let i = 0; i < lvC.length; i++) lvC[i] = cliffGeo.attributes.position.getY(i) > 16 ? -99 : 0;
+cliffGeo.setAttribute('aLevel', new THREE.BufferAttribute(lvC, 1));
+const cliff = new THREE.Mesh(cliffGeo, bedMat); scene.add(cliff);
+const ceilGeo = buildCeiling(); ceilGeo.setAttribute('aLevel', new THREE.BufferAttribute(new Float32Array(ceilGeo.attributes.position.count).fill(-99), 1));
+const ceiling = new THREE.Mesh(ceilGeo, bedMat); scene.add(ceiling);
+const boulders = new THREE.Mesh(buildBoulders(), bedMat); scene.add(boulders);
+const lanternMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(0.2, 0.3, 0.2), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.4, 1.0, 0.32) }), lanterns.length);
+lanterns.forEach((p, i) => lanternMesh.setMatrixAt(i, new THREE.Matrix4().makeTranslation(...p))); scene.add(lanternMesh);
+
+// ------------------------------------------------------------------ water surface
+const WATER_VS = /* glsl */`
+uniform float uTime; uniform sampler2D tNoise; uniform sampler2D tFlow; uniform vec4 uFlowRect;
+varying vec3 vW; varying vec3 vN;
+float hgt(vec2 xz){
+  vec4 f = textureLod(tFlow, (xz-uFlowRect.xy)*uFlowRect.zw, 0.0);
+  float turb = f.b;
+  // standing waves do NOT move with the water: sample noise in fixed world space
+  float st  = textureLod(tNoise, xz*0.11, 0.0).a - 0.5;
+  float st2 = textureLod(tNoise, xz*0.27+0.31, 0.0).r - 0.5;
+  float boil = sin(uTime*2.7 + st2*25.0);
+  return turb*turb*(st*0.9 + st2*0.9) + turb*boil*0.04;
+}
+void main(){
+  vec3 p = (modelMatrix*vec4(position,1.0)).xyz;
+  float h = hgt(p.xz), e = 0.3;
+  float hx = hgt(p.xz+vec2(e,0.0)), hz = hgt(p.xz+vec2(0.0,e));
+  vN = normalize(vec3(-(hx-h)/e, 1.0, -(hz-h)/e));
+  p.y += h;
+  vW = p;
+  gl_Position = projectionMatrix*viewMatrix*vec4(p,1.0);
+}`;
+const WATER_FS = GLSL_COMMON + /* glsl */`
+uniform sampler2D tFlow; uniform vec4 uFlowRect; uniform float uMaxV; uniform sampler2D tNormal; uniform samplerCube tEnv;
+uniform vec4 uGl[6]; uniform vec3 uGlCol;
+varying vec3 vW; varying vec3 vN;
+void main(){
+  vec4 fm = texture(tFlow, (vW.xz-uFlowRect.xy)*uFlowRect.zw);
+  vec2 flow = (fm.rg*2.0-1.0)*uMaxV;
+  float foamP = fm.b, depth = fm.a*4.0, speed = length(flow);
+  // two-phase flow-map blending (Vlachos 2010) with a noise phase offset to hide the pulse
+  float jitter = texture(tNoise, vW.xz*0.05).r*2.0;
+  float cyc = 1.1;
+  float ph0 = fract(uTime/cyc + jitter), ph1 = fract(uTime/cyc + jitter + 0.5);
+  float w0 = 1.0 - abs(1.0-2.0*ph0), w1 = 1.0 - w0;
+  vec2 o0 = flow*ph0*cyc, o1 = flow*ph1*cyc;
+  vec2 uvN = vW.xz*0.22;
+  vec3 n0 = texture(tNormal, (vW.xz - o0)*0.22).xyz*2.0-1.0;
+  vec3 n1 = texture(tNormal, (vW.xz - o1)*0.22 + 0.5).xyz*2.0-1.0;
+  vec2 nd = (n0.xy*w0 + n1.xy*w1);
+#ifndef LOW
+  vec3 n2 = texture(tNormal, (vW.xz - o0)*0.61 + 0.27).xyz*2.0-1.0;
+  vec3 n3 = texture(tNormal, (vW.xz - o1)*0.61 + 0.77).xyz*2.0-1.0;
+  nd += (n2.xy*w0 + n3.xy*w1)*0.6;
+#endif
+  float strength = 0.25 + speed*0.1 + foamP*0.6;
+  vec3 N = normalize(vN + vec3(nd.x, 0.0, nd.y)*strength);
+  vec3 V = normalize(cameraPosition - vW);
+  float NdV = max(dot(N,V), 0.0);
+  float F = 0.02 + 0.98*pow(1.0-NdV, 5.0);
+  vec3 R = reflect(-V, N);
+  vec3 refl = textureLod(tEnv, R, 1.0 + foamP*3.0).rgb*0.75;
+  // sharp glints of the nearest lanterns (analytic, exact parallax)
+  vec3 spec = vec3(0.0);
+  for (int i=0;i<6;i++){ vec3 L = uGl[i].xyz - vW; float d2 = dot(L,L); L *= inversesqrt(d2); vec3 H = normalize(L+V);
+    spec += uGlCol*pow(max(dot(N,H),0.0), 420.0)*uGl[i].w*30.0/(1.0+d2*0.04); }
+  // foam: advected lace, thresholded by the baked foam potential so it breaks up instead of fading
+  // foam pattern in a flow-aligned frame so it streaks along the current, advected with the same two phases
+  vec2 dir = speed > 0.05 ? flow/speed : vec2(0.0, 1.0);
+  vec2 perp = vec2(-dir.y, dir.x);
+  vec2 pa = vec2(dot(vW.xz, perp), dot(vW.xz, dir));
+  float st = 1.0/(1.0 + speed*0.35);                 // faster water -> longer streaks
+  float a0 = speed*ph0*cyc, a1 = speed*ph1*cyc;
+  float l0 = 1.0 - texture(tNoise, vec2(pa.x*0.33, (pa.y - a0)*0.33*st)).g;
+  float l1 = 1.0 - texture(tNoise, vec2(pa.x*0.33 + 0.5, (pa.y - a1)*0.33*st + 0.5)).g;
+  float k0 = texture(tNoise, vec2(pa.x*0.07, (pa.y - a0)*0.07*st)).r;
+  float k1 = texture(tNoise, vec2(pa.x*0.07 + 0.5, (pa.y - a1)*0.07*st + 0.5)).r;
+  float lace = l0*w0 + l1*w1, big = k0*w0 + k1*w1;
+  // coverage threshold on the advected pattern: foam breaks into patches and holes instead of fading
+  float pat = lace*0.35 + big*0.65;
+  float cover = clamp(foamP*(0.45 + 1.0*big), 0.0, 0.93);
+  float foam = smoothstep(1.0-cover-0.09, 1.0-cover+0.09, pat) * smoothstep(0.03, 0.12, cover);
+  float fresh = smoothstep(0.4, 1.0, foamP);
+  float relief = clamp(0.5 + 1.3*dot(N, normalize(vec3(0.25, 0.8, 0.45))) - 0.75, 0.2, 1.2);
+  vec3 foamCol = vec3(0.60,0.78,0.78)*(0.22 + 0.5*fresh*pat + 0.15*lace)*relief + vec3(0.9,0.5,0.25)*0.03;
+  float a = clamp(F, 0.0, 1.0);
+  vec3 col = refl*F + spec;
+  vec4 outc = vec4(col*(1.0-foam) + foamCol*foam, a*(1.0-foam) + foam);
+  // shoreline: thin water fades out where it meets the bank
+  float shore = smoothstep(0.0, 0.08, depth);
+  outc *= shore;
+  outc = applyFogPM(outc, vW);
+  gl_FragColor = outc;
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+const glints = lanterns.slice(0, 6).map(p => new THREE.Vector4(p[0], p[1], p[2], 1));
+const waterMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, ...flowU, tNormal: { value: app.tex.normal }, tEnv: { value: null }, uGl: { value: glints }, uGlCol: { value: new THREE.Color(1.0, 0.6, 0.3) } },
+  vertexShader: WATER_VS, fragmentShader: WATER_FS, transparent: true, depthWrite: false,
+  blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+function buildWater(low) {
+  const nx = low ? 40 : 80, nzc = low ? 110 : 220;
+  const g = new THREE.PlaneGeometry(FM.w, FM.h, nx, nzc); g.rotateX(-Math.PI / 2); g.translate(FM.x0 + FM.w / 2, 0, FM.z0 + FM.h / 2);
+  const pos = g.attributes.position;
+  for (let i = 0; i < pos.count; i++) pos.setY(i, waterLevelAt(pos.getX(i), pos.getZ(i)));
+  return g;
+}
+const water = new THREE.Mesh(buildWater(app.state.low), waterMat); water.renderOrder = 1; scene.add(water);
+
+// ------------------------------------------------------------------ waterfall cards: v = time of flight, texture advects at true speed
+const FALL_VS = /* glsl */`
+uniform float uTime; uniform sampler2D tNoise; uniform vec4 uLip; uniform vec4 uLayer; // lip: y, z, halfWidth, vz | layer: dz, widen, seed, kind
+uniform float uT;
+varying vec2 vUv; varying float vTau; varying vec3 vW;
+void main(){
+  float lipN = textureLod(tNoise, vec2(uv.x*0.9 + uLayer.z*0.1, 0.37), 0.0).r - 0.5;
+  float tau = uv.y*uT;
+  float x = (uv.x-0.5)*2.0*uLip.z*(1.0 + uLayer.y*uv.y) ;
+  float yOff = lipN*1.6*(1.0-uv.y*0.6);
+  float wob = textureLod(tNoise, vec2(uv.x*1.7 + uLayer.z, tau*0.25 - uTime*0.07), 0.0).r - 0.5;
+  float z = uLip.y + uLip.w*tau + uLayer.x + wob*1.4*uv.y;
+  float y = uLip.x + yOff - 0.5*9.81*tau*tau;
+  vec3 p = vec3(x, y, z);
+  vUv = uv; vTau = tau; vW = (modelMatrix*vec4(p,1.0)).xyz;
+  gl_Position = projectionMatrix*viewMatrix*vec4(vW,1.0);
+}`;
+const FALL_FS = GLSL_COMMON + /* glsl */`
+uniform vec4 uLayer; uniform float uT; uniform samplerCube tEnv;
+varying vec2 vUv; varying float vTau; varying vec3 vW;
+void main(){
+  float s = vTau - uTime;                  // material coordinate: same water parcel => same s
+  float f = vTau/uT;                       // 0 at lip, 1 at impact
+  float sd = uLayer.z;
+  float n1 = texture(tNoise, vec2(vUv.x*7.0 + sd, s*0.35)).r;
+  float n2 = texture(tNoise, vec2(vUv.x*19.0 + sd*2.0, s*0.8)).a;
+  float n3 = texture(tNoise, vec2(vUv.x*47.0 + sd*3.0, s*1.9)).r;
+  float strands = n1*0.5 + n2*0.35 + n3*0.25;
+  float aer = smoothstep(0.0, 0.28, f);
+  // the glassy tongue near the lip becomes a broken white curtain lower down
+  float th = mix(0.12, 0.5, aer) + uLayer.w*0.12;
+  float alpha = smoothstep(th, th+0.16, strands);
+  float edge = min(vUv.x, 1.0-vUv.x)*2.0;
+  alpha *= smoothstep(0.0, 0.12 + 0.25*n2, edge - (1.0-n1)*0.08*f);
+  float glass = 1.0 - aer;
+  alpha = mix(alpha, 0.25 + 0.3*n1*n1, glass*(1.0-uLayer.w));
+  alpha *= mix(0.95, 0.55, uLayer.w);
+  alpha *= smoothstep(0.0, 0.05, f);
+  // lighting: teal-white uplight from the plunge pool, warm backlight shining through thin parts
+  float up = mix(0.22, 0.85, f*f);
+  float side = 1.0 - pow(abs(vUv.x*2.0-1.0), 3.0)*0.5;
+  vec3 white = mix(vec3(0.30,0.48,0.50), vec3(0.72, 0.90, 0.90), smoothstep(0.35, 0.75, strands))*up*side;
+  vec3 back = vec3(1.0, 0.55, 0.22)*0.6*(1.0-alpha)*smoothstep(0.2, 0.9, f)*(1.0-f*0.5);
+  vec3 V = normalize(cameraPosition - vW);
+  vec3 glassCol = textureLod(tEnv, reflect(-V, vec3(0.0,0.3,1.0)), 2.0).rgb*0.6 + vec3(0.05,0.3,0.28);
+  vec3 col = mix(white, glassCol, glass*0.7) + back;
+  col += pow(n3, 6.0)*0.6*aer*up;            // bright drop clumps
+  vec4 o = vec4(col*alpha, alpha);
+  o = applyFogPM(o, vW);
+  gl_FragColor = o;
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+const fallGeo = new THREE.PlaneGeometry(1, 1, 24, 60); { const uv = fallGeo.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setY(i, 1 - uv.getY(i)); }
+const fallLayers = [
+  [0.0, 0.10, 0.0, 0.0, 1],   // core sheet
+  [0.45, 0.22, 3.7, 1.0, 2],  // front veil, more broken
+  [-0.35, 0.05, 7.1, 0.5, 3], // back layer (seen from the walk-behind ledge)
+].map(([dz, widen, seed, kind, order]) => {
+  const m = new THREE.ShaderMaterial({
+    uniforms: { ...shared, uLip: { value: new THREE.Vector4(LIP.y, LIP.z, LIP.half, LIP.vz) }, uLayer: { value: new THREE.Vector4(dz, widen, seed, kind) }, uT: { value: TFALL }, tEnv: { value: null } },
+    vertexShader: FALL_VS, fragmentShader: FALL_FS, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+  });
+  const mesh = new THREE.Mesh(fallGeo, m); mesh.frustumCulled = false; mesh.renderOrder = 2 + order * 0.1; scene.add(mesh); return mesh;
+});
+
+// ------------------------------------------------------------------ particles: spray streaks, spume blobs, mist billows (all GPU-driven)
+const PART_HEAD = GLSL_COMMON + BILLBOARD_GLSL;
+const sprayMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, uImp: { value: new THREE.Vector4(-LIP.half, LIP.half, IMPACT_Z, 0) }, uRapids: { value: [] }, uNF: { value: 0 } },
+  vertexShader: PART_HEAD + /* glsl */`
+    attribute float aSeed; uniform vec4 uImp; uniform float uNF; uniform vec4 uRapids[4];
+    varying float vA; varying vec2 vUv; varying vec3 vW;
+    void main(){
+      bool falls = aSeed < uNF;
+      float life = falls ? 1.6 : 0.9;
+      vec3 r = hash31(aSeed*1.37+0.1);
+      float tt = uTime + r.x*life; float age = mod(tt, life); float cyc = floor(tt/life);
+      vec3 r2 = hash31(aSeed*7.13 + cyc*13.7), r3 = hash31(aSeed*3.1 + cyc*5.3 + 2.0);
+      vec3 p0, v0;
+      if (falls){
+        p0 = vec3(mix(uImp.x, uImp.y, r2.x), 0.05, uImp.z + (r2.y-0.5)*1.6);
+        float ang = r2.z*6.2832; float sp = mix(2.0, 11.0, r3.x*r3.x);
+        v0 = normalize(vec3(cos(ang)*0.75, mix(0.35,1.5,r3.y), sin(ang)*0.6 + 0.55))*sp;
+      } else {
+        vec4 e = uRapids[int(r2.x*3.999)];
+        p0 = e.xyz + vec3((r2.y-0.5)*e.w, 0.0, (r2.z-0.5)*0.8);
+        float sp = mix(1.0, 3.5, r3.x);
+        v0 = vec3((r3.y-0.5)*1.6, mix(1.0, 2.6, r3.z), (r3.z-0.5)*1.4 + 1.2)*sp*0.6;
+      }
+      float k = 0.8; float g = 9.81*0.8;
+      vec3 p = p0 + v0*(1.0-exp(-k*age))/k; p.y -= 0.5*g*age*age;
+      vec3 vel = v0*exp(-k*age) - vec3(0.0, g*age, 0.0);
+      float floorY = falls ? 0.0 : p0.y - 0.2;
+      float alive = step(floorY, p.y);
+      vA = alive*smoothstep(0.0, 0.08, age)*(1.0 - age/life);
+      float w = mix(0.008, 0.025, r3.z), len = 0.03 + length(vel)*0.025;
+      vec3 wp = p + streak(position.xy, p, vel, w, len)*alive;
+      vUv = uv; vW = wp;
+      gl_Position = projectionMatrix*viewMatrix*vec4(wp,1.0);
+    }`,
+  fragmentShader: PART_HEAD + /* glsl */`
+    varying float vA; varying vec2 vUv; varying vec3 vW;
+    void main(){
+      float x = vUv.x*2.0-1.0, y = vUv.y*2.0-1.0;
+      float a = (1.0-x*x)*(1.0-y*y)*vA*0.6*smoothstep(1.0, 3.0, distance(vW, cameraPosition));
+      vec3 col = vec3(0.75,0.92,0.92)*1.2;
+      vec4 o = applyFogPM(vec4(col*a, a), vW);
+      gl_FragColor = o;
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+  transparent: true, depthWrite: false, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+// rapids emitters at the drops
+const rapidEm = DROPS.map(([s]) => { const p = proj(0, 0); let acc = 0, i = 0; while (i < segLen.length - 1 && acc + segLen[i] < s) { acc += segLen[i]; i++; } const t = (s - acc) / segLen[i]; const x = CL[i][0] + (CL[i + 1][0] - CL[i][0]) * t, z = CL[i][1] + (CL[i + 1][1] - CL[i][1]) * t; return new THREE.Vector4(x, level(s + 1.5), z + 1.2, width(s) * 1.4); });
+sprayMat.uniforms.uRapids.value = rapidEm;
+const spray = new THREE.Mesh(instancedQuads(4000), sprayMat); spray.frustumCulled = false; spray.renderOrder = 5; scene.add(spray);
+
+const PUFF_VS = PART_HEAD + /* glsl */`
+attribute float aSeed; uniform vec4 uImp; uniform vec4 uP; // uP: life, size0, size1, rise
+uniform float uKind; uniform vec4 uEm[4]; varying float vA; varying vec2 vUv; varying vec3 vW; varying float vSeed;
+void main(){
+  float life = uP.x; vec3 r = hash31(aSeed*2.17+0.3);
+  float tt = uTime + r.x*life; float age = mod(tt, life)/life; float cyc = floor(tt/life);
+  vec3 r2 = hash31(aSeed*5.71 + cyc*9.1), r3 = hash31(aSeed*1.91 + cyc*3.3 + 1.0);
+  vec3 p = vec3(mix(uImp.x-1.0, uImp.y+1.0, r2.x), 0.0, uImp.z + (r2.y-0.3)*2.5);
+  float e = 1.0 - pow(1.0-age, 2.2);                    // fast start, slow end
+  if (uKind > 1.5) {                                    // churning white water at the river drops
+    vec4 em = uEm[int(r2.x*3.999)];
+    p = em.xyz + vec3((r2.y-0.5)*em.w, -0.1, (r2.z-0.5)*1.5);
+    p += vec3((r3.x-0.5)*0.8, uP.w*(0.3+0.7*r3.y), 1.0 + r3.z*2.5)*e;
+  } else
+  p += vec3((r3.x-0.5)*3.0, uP.w*(0.4+0.6*r3.y), 1.5 + r3.z*3.5)*e;
+  p.y += (uKind > 0.5 && uKind < 1.5) ? e*e*4.0 : 0.0;
+  float size = mix(uP.y, uP.z, e)*(0.7 + 0.6*r2.z);
+  vA = smoothstep(0.0, 0.12, age)*(1.0-age)*(1.0-age);
+  float rot = r.y*6.28 + age*(r.z-0.5)*1.5; vec2 c = mat2(cos(rot),-sin(rot),sin(rot),cos(rot))*position.xy;
+  vec3 wp = p + billboard(c, size);
+  vUv = uv; vW = wp; vSeed = aSeed;
+  gl_Position = projectionMatrix*viewMatrix*vec4(wp,1.0);
+}`;
+const PUFF_FS = PART_HEAD + /* glsl */`
+uniform sampler2D tPuff; uniform vec4 uTint; uniform float uKind; uniform float uFloorY; uniform vec4 uEm[4]; varying float vA; varying vec2 vUv; varying vec3 vW; varying float vSeed;
+void main(){
+  vec2 wob = (texture(tNoise, vUv*0.6 + vec2(vSeed*0.137, uTime*0.03)).rg - 0.5)*0.25;
+  vec4 t = texture(tPuff, vUv + wob);
+  float a = t.a*vA*uTint.a;
+  a *= smoothstep(-0.2, 0.9, vW.y - uFloorY);              // analytic soft-particle: fade into the water plane
+  a *= smoothstep(2.0, 7.0, distance(vW, cameraPosition)); // fade when the camera is inside the cloud
+  float up = mix(1.1, 0.6, clamp(vW.y/10.0, 0.0, 1.0));
+  float shade = 0.55 + 0.6*texture(tNoise, vUv*0.7 + vec2(vSeed*0.31, 0.0)).r;   // lumpy self-shadowing
+  vec3 col = uTint.rgb*t.rgb*up*shade;
+  gl_FragColor = applyFogPM(vec4(col*a, a), vW);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+function puffs(count, P, tint, kind, order) {
+  const m = new THREE.ShaderMaterial({
+    uniforms: { ...shared, uImp: sprayMat.uniforms.uImp, uP: { value: new THREE.Vector4(...P) }, uTint: { value: new THREE.Vector4(...tint) }, uKind: { value: kind }, tPuff: { value: app.tex.puff }, uEm: { value: [0, 0, 0, 0].map(() => new THREE.Vector4()) }, uFloorY: { value: 0 } },
+    vertexShader: PUFF_VS, fragmentShader: PUFF_FS, transparent: true, depthWrite: false,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+  });
+  const mesh = new THREE.Mesh(instancedQuads(count), m); mesh.frustumCulled = false; mesh.renderOrder = order; scene.add(mesh); return mesh;
+}
+const spume = puffs(220, [2.4, 0.8, 4.2, 3.2], [0.34, 0.48, 0.48, 0.24], 0, 3);
+const mist = puffs(60, [8.0, 4.0, 11.0, 9.0], [0.45, 0.62, 0.62, 0.10], 1, 4);
+const churn = puffs(120, [1.6, 0.5, 2.2, 0.9], [0.40, 0.55, 0.55, 0.30], 2, 3);
+churn.material.uniforms.uEm.value = rapidEm.map(v => new THREE.Vector4(v.x, v.y - 0.3, v.z - 1.0, v.w)); churn.material.uniforms.uFloorY.value = -4;
+
+// ------------------------------------------------------------------ reflection probe (stand-in for a baked Cycles cubemap)
+const fx = [water, spray, spume, mist, churn, ...fallLayers];
+const env = bakeProbe(renderer, scene, new THREE.Vector3(0, 1.5, 0), 128, fx);
+waterMat.uniforms.tEnv.value = env; fallLayers.forEach(m => m.material.uniforms.tEnv.value = env);
+app.extraTexBytes += 128 * 128 * 6 * 8 * 4 / 3;
+
+app.groups = { rock: [terrain, cliff, ceiling, boulders, lanternMesh], water: [water], falls: fallLayers, particles: [spray, spume, mist, churn] };
+
+// ------------------------------------------------------------------ tiers
+let lastLow = null;
+app.start;
+const setLow = low => {
+  if (lastLow === low) return; lastLow = low;
+  terrain.geometry.dispose(); terrain.geometry = buildTerrain(low);
+  water.geometry.dispose(); water.geometry = buildWater(low);
+  waterMat.defines = low ? { LOW: 1 } : {}; waterMat.needsUpdate = true;
+  spray.geometry.instanceCount = low ? 1200 : 4000; sprayMat.uniforms.uNF.value = low ? 900 : 3000;
+  spume.geometry.instanceCount = low ? 90 : 220; mist.geometry.instanceCount = low ? 24 : 60; churn.geometry.instanceCount = low ? 48 : 120;
+  fallLayers[2].visible = !low;
+};
+app.update = () => { if (lastLow !== app.state.low) setLow(app.state.low); };
+setLow(app.state.low);
+sprayMat.uniforms.uNF.value = app.state.low ? 900 : 3000;
+app.start();
+</script>
+</body>
+</html>

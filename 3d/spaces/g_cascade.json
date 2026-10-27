@@ -211,21 +211,18 @@
  "hero": {
   "asset": "falls_sheet",
   "at": [
-   13.5,
-   33.0,
-   -2.0
+   13.8,
+   33.2,
+   -2.05
   ],
   "facing_deg": 135,
   "dims": {
-   "w": 3.0,
-   "h": 2.0,
-   "lip_z": -0.65,
-   "lip": [
-    12.4,
-    35.5
-   ]
+   "w": 4.5,
+   "d": 0.6,
+   "h": 2.6
   },
-  "why": "The A4 falls, the end of the whole south-face cascade, pour white over a black lip into the top pool: the one moving, roaring, uplit element, seen across all four pools from the overlook, so the eye travels up the water to it."
+  "why": "The A4 falls, the end of the whole south-face cascade, pour white over a black lip into the top pool: the one moving, roaring, uplit element, seen across all four pools from the overlook, so the eye travels up the water to it.",
+  "note": "Sheet spans -2.05 (P1 surface) to +0.55: the lip is at -0.65 and the white water piles up 1.2 m above it as it leaves the flank channel."
  },
  "anchored": [
   {
@@ -336,6 +333,70 @@
     "h": 1.0
    },
    "why": "Edge of the overlook landing over the lower pools."
+  },
+  {
+   "id": "spill_p1",
+   "asset": "spill_lip",
+   "at": [
+    19.6,
+    23.0,
+    -2.0
+   ],
+   "facing_deg": 160,
+   "dims": {
+    "w": 3.0,
+    "d": 0.8,
+    "h": 0.4
+   },
+   "why": "P1 spills into P2."
+  },
+  {
+   "id": "spill_p2",
+   "asset": "spill_lip",
+   "at": [
+    30.8,
+    13.8,
+    -2.7
+   ],
+   "facing_deg": 100,
+   "dims": {
+    "w": 2.6,
+    "d": 0.8,
+    "h": 0.4
+   },
+   "why": "P2 spills into P3."
+  },
+  {
+   "id": "spill_p3",
+   "asset": "spill_lip",
+   "at": [
+    45.8,
+    11.6,
+    -3.3
+   ],
+   "facing_deg": 95,
+   "dims": {
+    "w": 2.6,
+    "d": 0.8,
+    "h": 0.4
+   },
+   "why": "P3 spills into P4."
+  },
+  {
+   "id": "spill_p4",
+   "asset": "spill_lip",
+   "at": [
+    59.9,
+    12.0,
+    -3.9
+   ],
+   "facing_deg": 80,
+   "dims": {
+    "w": 2.0,
+    "d": 0.8,
+    "h": 0.4
+   },
+   "why": "P4 overflows into the covered outflow."
   }
  ],
  "water": [
@@ -371,7 +432,8 @@
      25.5
     ]
    ],
-   "spill_to": "w_casc_p2"
+   "spill_to": "w_casc_p2",
+   "rim_generator": "cascade_pool"
   },
   {
    "id": "w_casc_p2",
@@ -405,7 +467,8 @@
      11.0
     ]
    ],
-   "spill_to": "w_casc_p3"
+   "spill_to": "w_casc_p3",
+   "rim_generator": "cascade_pool"
   },
   {
    "id": "w_casc_p3",
@@ -439,7 +502,8 @@
      8.0
     ]
    ],
-   "spill_to": "w_casc_p4"
+   "spill_to": "w_casc_p4",
+   "rim_generator": "cascade_pool"
   },
   {
    "id": "w_casc_p4",
@@ -473,7 +537,8 @@
      7.5
     ]
    ],
-   "spill_to": "w_terrace_culvert"
+   "spill_to": "w_terrace_culvert",
+   "rim_generator": "cascade_pool"
   },
   {
    "id": "w_casc_falls",
@@ -554,44 +619,44 @@
  "cameras": {
   "entry": {
    "pos": [
-    46.0,
-    22.5,
+    34.0,
+    21.4,
     0.6
    ],
    "floor_z": -1.0,
    "target": [
-    14.0,
+    14.5,
     32.0,
-    -1.0
+    -1.4
    ],
    "fov_v": 60
   },
   "reveal": {
    "pos": [
-    40.0,
-    20.5,
-    0.6
+    25.4,
+    22.4,
+    -0.4
    ],
-   "floor_z": -1.0,
+   "floor_z": -2.0,
    "target": [
-    15.0,
-    31.0,
-    -1.5
+    14.2,
+    32.6,
+    -1.2
    ],
    "fov_v": 62
   },
   "concept": {
    "image": "lookbook/img/01-hero-exterior.jpg",
    "pos": [
-    57.0,
-    17.5,
+    56.5,
+    18.0,
     -2.3
    ],
    "floor_z": -3.9,
    "target": [
-    18.0,
-    30.0,
-    -0.5
+    16.0,
+    31.0,
+    -1.2
    ],
    "fov_v": 55,
    "match": "01: low over the wet stone lip of the nearest pool, teal pools stepping up and away to falls and steam, stone toro on the near-left rock, warm lit facade on the skyline, purple-orange blue-hour sky."
@@ -600,181 +665,151 @@
  "lights": [
   {
    "asset": "lantern_stone",
-   "along": "spine",
-   "side": "right",
-   "spacing": [
-    6.0,
-    9.0
+   "at": [
+    [
+     12.6,
+     27.8,
+     -2.0
+    ],
+    [
+     20.6,
+     9.6,
+     -2.7
+    ],
+    [
+     34.4,
+     6.4,
+     -3.3
+    ],
+    [
+     57.4,
+     6.2,
+     -3.9
+    ]
    ],
-   "offset": 1.4,
-   "face": "water",
-   "avoid": [
-    "portals",
-    "water"
-   ],
-   "why": "Toro at the pool lips (01): one per pool, standing on rocks, reflected in the water."
+   "face": "hero",
+   "why": "One toro per pool on its outer lip (01's near-left toro), reflected in the water; none in the overlook foreground."
   },
   {
    "asset": "pool_uplight",
    "at": [
     [
+     16.0,
+     30.0,
+     -2.5
+    ],
+    [
+     18.0,
+     28.0,
+     -2.5
+    ],
+    [
      17.0,
-     29.0,
-     -2.4
+     31.5,
+     -2.5
     ],
     [
      23.0,
      15.0,
-     -3.1
+     -3.2
     ],
     [
      38.0,
      11.0,
-     -3.6999999999999997
+     -3.8
     ],
     [
      52.5,
      11.5,
-     -4.3
+     -4.4
     ]
    ],
-   "why": "Underwater teal glow per pool; P1 (under the falls) brightest."
+   "why": "Underwater teal: three in P1 under the falls (brightest), one in each lower pool, so the water is the light source."
   },
   {
    "asset": "falls_uplight",
    "at": [
     [
-     14.5,
-     31.5,
-     -2.4
-    ]
-   ],
-   "why": "Hero brightest."
-  },
-  {
-   "asset": "lantern_post",
-   "along": [
-    [
-     40.2,
-     19.8
-    ],
-    [
-     51.8,
-     19.8
-    ]
-   ],
-   "spacing": [
-    5.5,
-    6.5
-   ],
-   "face": "path"
-  }
- ],
- "dressing": [
-  {
-   "asset": "cascade_pool",
-   "at": [
-    [
-     17.0,
-     29.0,
+     14.6,
+     32.4,
      -2.0
     ],
     [
-     23.0,
-     15.0,
-     -2.7
-    ],
-    [
-     38.0,
-     11.0,
-     -3.3
-    ],
-    [
-     52.5,
-     11.5,
-     -3.9
+     13.2,
+     32.0,
+     -2.0
     ]
    ],
-   "why": "Generator: scalloped basalt rims per water footprint, spill notch toward the next pool."
+   "why": "White uplight raking the falls face."
   },
   {
-   "asset": "boulder_rim",
-   "along": "water:w_casc_p1",
-   "side": "out",
-   "spacing": [
-    1.0,
-    1.8
+   "asset": "lantern_post",
+   "at": [
+    [
+     40.4,
+     22.6,
+     -1.0
+    ],
+    [
+     51.6,
+     22.6,
+     -1.0
+    ]
    ],
-   "offset": 0.3,
-   "embed": 0.25,
-   "scale": [
-    0.7,
-    1.5
-   ],
-   "avoid": [
-    "nav",
-    "portals"
-   ]
-  },
-  {
-   "asset": "boulder_rim",
-   "along": "water:w_casc_p2",
-   "side": "out",
-   "spacing": [
-    1.2,
-    2.2
-   ],
-   "offset": 0.3,
-   "embed": 0.25,
-   "scale": [
-    0.6,
-    1.3
-   ],
-   "avoid": [
-    "nav"
-   ]
-  },
-  {
-   "asset": "boulder_rim",
-   "along": "water:w_casc_p3",
-   "side": "out",
-   "spacing": [
-    1.2,
-    2.2
-   ],
-   "offset": 0.3,
-   "embed": 0.25,
-   "scale": [
-    0.6,
-    1.3
-   ],
-   "avoid": [
-    "nav"
-   ]
-  },
-  {
-   "asset": "boulder_rim",
-   "along": "water:w_casc_p4",
-   "side": "out",
-   "spacing": [
-    1.0,
-    1.8
-   ],
-   "offset": 0.3,
-   "embed": 0.25,
-   "scale": [
-    0.7,
-    1.6
-   ],
-   "avoid": [
-    "nav"
-   ]
-  },
+   "face": 180,
+   "why": "Overlook ends only, on the overlook level."
+  }
+ ],
+ "dressing": [
   {
    "asset": "railing",
    "along": [
     [
      12.5,
+     4.5
+    ],
+    [
+     28.0,
+     4.5
+    ]
+   ],
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.0
+   },
+   "allow_overlap": [
+    "boulder_rim"
+   ],
+   "why": "Sea-side rail on the P2 terrace step."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     29.9,
+     4.5
+    ],
+    [
+     45.0,
+     4.5
+    ]
+   ],
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.0
+   },
+   "allow_overlap": [
+    "boulder_rim"
+   ],
+   "why": "Sea-side rail on the P3 terrace step."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     46.9,
      4.5
     ],
     [
@@ -786,41 +821,374 @@
      15.0
     ]
    ],
-   "height": 1.0,
-   "why": "Sea-side edge."
-  },
-  {
-   "asset": "pine_bonsai",
-   "scatter": "edge_band",
-   "band": [
-    0.5,
-    3.0
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.0
+   },
+   "allow_overlap": [
+    "boulder_rim"
    ],
-   "density": 0.006,
-   "min_dist": 8.0,
-   "scale": [
-    0.8,
-    1.3
-   ],
-   "avoid": [
-    "nav",
-    "portals",
-    "water"
-   ]
+   "why": "Sea-side rail on the P4 terrace step."
   },
   {
    "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.3,
-    2.5
+   "scale": [
+    0.8,
+    1.2
    ],
-   "density": 0.05,
+   "at": [
+    [
+     24.0,
+     6.4
+    ],
+    [
+     43.2,
+     6.6
+    ],
+    [
+     61.0,
+     18.8
+    ]
+   ],
+   "why": "Rock groups on the sea edge."
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     59.0,
+     22.0,
+     -1.0
+    ],
+    [
+     27.0,
+     7.0,
+     -2.7
+    ]
+   ],
+   "dims": {
+    "w": 2.4,
+    "d": 2.4,
+    "h": 3.5
+   },
+   "why": "Two pines on the outer corners, clear of pools and rocks."
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    16.0,
+    34.4
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "z": -2.2,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
    "avoid": [
     "nav",
     "portals",
-    "water"
-   ]
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    21.6,
+    25.6
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "z": -2.2,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    13.0,
+    25.0
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "z": -2.2,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    19.6,
+    21.2
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "z": -2.9,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    17.0,
+    11.0
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "z": -2.9,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    31.0,
+    15.6
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "z": -3.5,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    39.0,
+    6.0
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "z": -3.5,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    46.0,
+    9.0
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "z": -4.1,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    59.8,
+    9.0
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "z": -4.1,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    55.0,
+    5.8
+   ],
+   "radius": [
+    0.6,
+    1.3
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "z": -4.1,
+   "scale": [
+    0.6,
+    1.5
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "spill_lip"
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    "hero"
+   ],
+   "why": "Rock group at a rim or spill lip, set at that pool's rim level.",
+   "optional": true
+  },
+  {
+   "asset": "spray_card",
+   "at": [
+    [
+     14.6,
+     32.0,
+     -2.05
+    ]
+   ],
+   "dims": {
+    "w": 4.0,
+    "d": 3.0,
+    "h": 3.0
+   },
+   "why": "Spray and steam at the falls foot."
   }
  ],
  "mood": {

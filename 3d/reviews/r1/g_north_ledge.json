@@ -1,0 +1,81 @@
+{
+ "space": "g_north_ledge",
+ "round": 1,
+ "reviewer": "ground_b_r1",
+ "frames": {
+  "entry": {
+   "focal": "A huge black cliff plane on the left and empty sky on the right. The camera pitches about 40 deg up (target z 18 at 21 m). The falls show as a thin brown bar at the bottom edge.",
+   "is_hero": false,
+   "next_visible": "Balcony lantern dots climbing the cliff edge. The ledge, basins and stair foot are all cropped out."
+  },
+  "reveal": {
+   "focal": "Undersides of balcony slabs and rows of lantern dots on a steep, tilted cliff. You see the soffits, not the lit shoji fronts.",
+   "is_hero": false,
+   "next_visible": "The stair zigzag reads faintly at the top right. Nothing at ground level."
+  },
+  "concept": {
+   "focal": "The tier-1 balcony soffit cutting diagonally across the frame. Lantern dots are visible, but the four tiers of lit suite fronts in image 32 are not.",
+   "is_hero": false,
+   "next_visible": "The Cliff Stair lanterns at the top right."
+  },
+  "strip": {
+   "focal": "The 1.6 m lantern_stone row (bright white blocks) and the rail pines as big dark cubes. The falls is a brown opaque pillar (frames 1-2), never white or bright. Teal basins appear at the frame edges.",
+   "is_hero": false,
+   "next_visible": "Yes. The lantern line runs west to the stair foot, and the final frames show the stair treads. The stair_foot toro fills frame 7."
+  }
+ },
+ "fixes": [
+  {
+   "id": "g_north_ledge:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "falls_sheet renders as an opaque brown 10 m pillar that reads as a timber post. Make it emissive white-teal (or a translucent sheet with the pool_uplight raking it). Raise lights1:1 to about 3x lights1:0 and lights1:2 so the centre fall is the brightest thing on the ledge."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Six 1.6 m lantern_stone at almost even 8-10 m intervals, offset 2.4 m on the sea side. They are the brightest objects and pull the eye away from the falls. Replace the 'along spine' rule with pairs flanking each basin (x 152.5/157.5, 170.5/175.5, 188.5/193.5) plus the stair foot, leaving dark gaps between."
+  },
+  {
+   "id": "lights[2]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Sea-rail posts every 10-11 m make a second even row parallel to lights[0]. Use spacing [12,18] and skip posts within 3 m of the pines (162, 186), so the pines read as silhouettes against the surf."
+  },
+  {
+   "id": "cameras",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "All three cameras pitch 40-65 deg up. Lower the targets: entry (172,108,6), reveal (176,108,10), concept (165,108,12). Keep the ledge, basin and falls in the bottom third and the stacked suites above."
+  },
+  {
+   "id": "g_north_ledge:dressing3:0",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "boulder_rim at z -0.65 with h 0.7 is almost fully sunk. Raise it to z -0.22 like its siblings. Same for dressing4:2 (z -0.62) and dressing5:2 (z -0.39), or remove them."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 3,
+  "light_rhythm": 2
+ },
+ "top_change": "The ledge is 11 m deep at the foot of a 63 m near-vertical cliff, so the lit suite fronts can't be seen from it at eye height. Set each suite tier back 4-6 m into the cliff (a stepped elevation, as image 32 shows), or add a sea-stack lookout or jetty 30-40 m north, so the suite elevation becomes visible.",
+ "plausibility": [
+  "Upward cameras show balcony soffits only. With tiers stacked plumb, the lit shoji fronts are geometrically invisible from the ledge.",
+  "Several boulder_rim stones are sunk 0.4-0.65 m (dressing3:0, dressing4:2, dressing5:2).",
+  "Hero falls_sheet spans z -1.2 to 8.8 and ends 1.2 m below the tier-1 floor (z 10). Check that the gully trickle above continues down to meet it, so there is no visible gap.",
+  "Railings along the sea edge are not visible in any render (structural, z 1.05)."
+ ]
+}

@@ -1,0 +1,21 @@
+{"space": "s_moon", "round": 1, "reviewer": "summit-r1-indep",
+ "frames": {
+  "entry": {"focal": "The hero pavilion as a closed 7 x 7 x 6.5 m dark-brown cube, with a hanging lantern stuck to its outer face like a wall sconce. steps_toro is a white slab at the left edge.", "is_hero": true, "next_visible": "No: no sea, no moon, no rail. The deck reads as an empty black plane."},
+  "reveal": {"focal": "The pavilion wall 2.5 m away fills the left half; the right half is empty sky with two posts and a bench. Aimed at the moon/sea, the frame shows nothing.", "is_hero": false, "next_visible": "No."},
+  "concept": {"focal": "lights1:0 (162.6, 82.2), 0.2 m from the lens, fills the right third as a white slab; the pavilion cube fills the rest.", "is_hero": false, "next_visible": "The pool lanterns, faintly, at far left."},
+  "strip": {"focal": "Alternates between the pavilion wall and the dark sakura box. Frames 4-7 are an empty dark deck with two posts and a bench.", "is_hero": true, "next_visible": "No outward view to sea or moon at any point."}
+ },
+ "fixes": [
+  {"id": "s_moon:hero", "action": "replace", "dx": 2.0, "dy": 0, "deg": 0, "detail": "The 'open pavilion' is graybox-modelled as a solid cube, which swallows the sake_counter, the 8 zabuton and the floor paving and blocks every view east. Replace it with 4 corner posts plus a roof slab from +3.0 to +6.5 m. Shift it 2 m east (to 157, 91) so its open east side frames the sea over the rail, and move east_bench_1/2 to flank it on the rail at y 83 and y 99."},
+  {"id": "lights[0] (lantern_hanging ring)", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "radius 3.6 > the 3.5 half-width, so the lanterns are glued to the outside walls. Use radius 2.9 under the eaves (z about 123.6) with a warm point light each, so the pavilion interior glows and is the brightest thing on the deck, as in 32."},
+  {"id": "s_moon:lights1:0", "action": "move", "dx": 0, "dy": -1.4, "deg": 0, "detail": "It is 0.2 m from the concept camera (162.5, 82.0). Move it to the rail corner (162.6, 80.8), or move cameras.concept to (160.5, 83.0)."},
+  {"id": "dressing[1] (floor_paving)", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "dims 'area: footprint' produced a 4 x 4 m patch under the pavilion only; the 22 x 22 m hinoki deck reads as black ground. Lay the deck over the whole footprint at 120.5."},
+  {"id": "s_moon:sake_counter", "action": "move", "dx": -4.5, "dy": 0.0, "deg": 270, "detail": "It is hidden inside the hero box (y 87.9 lies within 87.5-94.5). Put it on the approach side west of the pavilion (about 150.5, 87.9), facing east, as a lit second focal point on the walk in from the steps. If the pavilion becomes an open frame, keeping it inside is also acceptable."}
+ ],
+ "scores": {"composition": 1, "density": 2, "light_rhythm": 1},
+ "top_change": "Open the pavilion and push it to the east rail so the moon and sea are framed through it at eye height; at present the hero is a closed brown cube that blocks the very view the deck exists for.",
+ "plausibility": [
+  "Railings (dressing[0], 12 pieces of 1.5 m at about 5 m pitch) are not visible in any frame on a cliff-top deck; even if rendered, they leave 3.5 m gaps over a 120 m drop.",
+  "No moon or sea proxy exists, so the reveal camera (target 175, 95, 130) shows empty sky. A moon disc and a cloud-sea plane are needed to judge this space at all.",
+  "The sake counter, cushions and paving are all inside a solid volume."
+ ]}

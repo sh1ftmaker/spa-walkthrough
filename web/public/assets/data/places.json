@@ -34,8 +34,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    26.032,
-    53.678,
+    26,
+    54,
     1.6
    ],
    "yaw_deg": 90,
@@ -106,8 +106,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    90.264,
-    32.961,
+    90,
+    33,
     1.6
    ],
    "yaw_deg": 90,
@@ -130,8 +130,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    34.874,
-    15.641,
+    34.5,
+    15.9,
     0.6
    ],
    "yaw_deg": 90,
@@ -178,11 +178,11 @@
    "kind": "place",
    "number": null,
    "pos": [
-    184.765,
+    191.92,
     80.041,
     1.6
    ],
-   "yaw_deg": 0,
+   "yaw_deg": 305.8,
    "pitch_deg": 0,
    "label": {
     "text": "Sea-cliff path round the NE shoulder",
@@ -226,8 +226,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    89.777,
-    69.777,
+    90,
+    70,
     -18.4
    ],
    "yaw_deg": 90,
@@ -250,11 +250,11 @@
    "kind": "place",
    "number": null,
    "pos": [
-    74.851,
-    90.007,
+    74.347,
+    91.604,
     -18.4
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 178.7,
    "pitch_deg": 0,
    "label": null,
    "source": "layout-centroid"
@@ -284,8 +284,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    54.847,
-    79.293,
+    54.999,
+    79.641,
     -18.4
    ],
    "yaw_deg": 90,
@@ -301,11 +301,11 @@
    "kind": "attraction",
    "number": 5,
    "pos": [
-    112,
-    92,
+    115.8,
+    103.4,
     -18.4
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 198.4,
    "pitch_deg": 0,
    "label": {
     "text": "Obsidian Mirror Float Pool",
@@ -325,8 +325,8 @@
    "kind": "attraction",
    "number": 6,
    "pos": [
-    56.868,
-    98.063,
+    57,
+    98.463,
     -18.4
    ],
    "yaw_deg": 90,
@@ -334,8 +334,8 @@
    "label": {
     "text": "Fumarole Steam Grotto",
     "pos": [
-     56.868,
-     98.063,
+     57.1,
+     98.668,
      -17.4
     ]
    },
@@ -350,10 +350,10 @@
    "number": null,
    "pos": [
     121.76,
-    113.254,
+    114.659,
     -18.4
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 188.9,
    "pitch_deg": 0,
    "label": null,
    "source": "layout-centroid"
@@ -366,8 +366,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    147.8,
-    86.024,
+    147.767,
+    85.963,
     -18.4
    ],
    "yaw_deg": 90,
@@ -383,8 +383,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    140.528,
-    69.942,
+    141,
+    70,
     -18.4
    ],
    "yaw_deg": 90,
@@ -407,11 +407,11 @@
    "kind": "attraction",
    "number": 7,
    "pos": [
-    180.473,
-    81.142,
+    179.244,
+    76.5,
     -18.4
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 14.8,
    "pitch_deg": 0,
    "label": {
     "text": "Glacier Plunge Ice Cave",
@@ -431,8 +431,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    118.818,
-    56.924,
+    118.104,
+    56.116,
     -18.4
    ],
    "yaw_deg": 90,
@@ -489,11 +489,11 @@
    "kind": "place",
    "number": null,
    "pos": [
-    83.856,
-    87.268,
+    84,
+    96.1,
     -38.4
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 180.9,
    "pitch_deg": 0,
    "label": {
     "text": "Kawagiri restaurant",
@@ -561,8 +561,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    167.863,
-    82.225,
+    167.897,
+    82.602,
     -38.4
    ],
    "yaw_deg": 90,
@@ -585,8 +585,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    141.297,
-    62.335,
+    141.309,
+    62.282,
     -38.4
    ],
    "yaw_deg": 90,
@@ -602,7 +602,7 @@
    "kind": "place",
    "number": null,
    "pos": [
-    43.5,
+    44.375,
     64,
     -38.4
    ],
@@ -626,11 +626,11 @@
    "kind": "place",
    "number": null,
    "pos": [
-    105.301,
-    85.802,
+    28.531,
+    77.304,
     -43
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 83.7,
    "pitch_deg": 0,
    "label": null,
    "source": "layout-centroid"
@@ -643,8 +643,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    102.144,
-    46.478,
+    102.05,
+    46.2,
     -65.4
    ],
    "yaw_deg": 90,
@@ -660,11 +660,11 @@
    "kind": "attraction",
    "number": 9,
    "pos": [
-    26.867,
-    57.847,
+    27,
+    45.4,
     -57.9
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 359.4,
    "pitch_deg": 0,
    "label": {
     "text": "Thunder Curtain Falls basin",
@@ -684,8 +684,8 @@
    "kind": "attraction",
    "number": 8,
    "pos": [
-    66.801,
-    48.003,
+    67.1,
+    47.6,
     -58.4
    ],
    "yaw_deg": 0,
@@ -733,10 +733,10 @@
    "number": 2,
    "pos": [
     114,
-    42,
+    37.375,
     -65.4
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 0,
    "pitch_deg": 0,
    "label": {
     "text": "Lava Tube Lazy River",
@@ -757,10 +757,10 @@
    "number": 4,
    "pos": [
     114,
-    42,
+    46.25,
     -65.4
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 180,
    "pitch_deg": 0,
    "label": {
     "text": "Geyser Plaza",
@@ -804,8 +804,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    156.798,
-    34.642,
+    156.181,
+    34.376,
     -65.4
    ],
    "yaw_deg": 90,
@@ -821,18 +821,18 @@
    "kind": "attraction",
    "number": 10,
    "pos": [
-    180.969,
-    38.581,
-    -66.4
+    170,
+    39,
+    -69.4
    ],
-   "yaw_deg": 0,
+   "yaw_deg": 92.2,
    "pitch_deg": 0,
    "label": {
     "text": "Wave Grotto beach",
     "pos": [
      180.969,
      38.581,
-     -65.4
+     -68.4
     ]
    },
    "source": "layout-centroid"
@@ -845,13 +845,37 @@
    "kind": "place",
    "number": null,
    "pos": [
-    71.484,
-    69.247,
+    71.628,
+    69.59,
     -65.4
    ],
    "yaw_deg": 90,
    "pitch_deg": 0,
    "label": null,
+   "source": "layout-centroid"
+  },
+  {
+   "id": "b3_falls_east",
+   "name": "Falls shaft (east, open to B2)",
+   "level": "b3",
+   "zone": "b3",
+   "kind": "place",
+   "number": null,
+   "pos": [
+    42,
+    57.25,
+    -57.9
+   ],
+   "yaw_deg": 0,
+   "pitch_deg": 0,
+   "label": {
+    "text": "Falls shaft (east, open to B2)",
+    "pos": [
+     42,
+     57.25,
+     -56.9
+    ]
+   },
    "source": "layout-centroid"
   },
   {
@@ -862,11 +886,11 @@
    "kind": "place",
    "number": null,
    "pos": [
-    27,
-    78.25,
+    43.15,
+    78.475,
     -53.4
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 269.2,
    "pitch_deg": 0,
    "label": null,
    "source": "layout-centroid"
@@ -903,11 +927,11 @@
    "kind": "place",
    "number": null,
    "pos": [
-    59.725,
+    57.819,
     53.098,
     -98.4
    ],
-   "yaw_deg": 0,
+   "yaw_deg": 108.1,
    "pitch_deg": 0,
    "label": null,
    "source": "layout-centroid"
@@ -920,8 +944,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    79.778,
-    19.556,
+    78.95,
+    19.5,
     -98.4
    ],
    "yaw_deg": 90,
@@ -944,17 +968,17 @@
    "kind": "attraction",
    "number": 1,
    "pos": [
-    111.248,
-    82.558,
+    107.9,
+    98.589,
     121.6
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 169.1,
    "pitch_deg": 0,
    "label": {
     "text": "Caldera Crown Infinity Pool",
     "pos": [
-     111.248,
-     82.558,
+     110.76,
+     83.689,
      122.6
     ]
    },
@@ -968,17 +992,17 @@
    "kind": "place",
    "number": null,
    "pos": [
-    68,
-    96,
+    60.2,
+    97.5,
     123.1
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 102.9,
    "pitch_deg": 0,
    "label": {
     "text": "Spring source and egg baskets",
     "pos": [
-     68,
-     96,
+     65.821,
+     96.214,
      124.1
     ]
    },
@@ -1016,11 +1040,11 @@
    "kind": "place",
    "number": null,
    "pos": [
-    97.858,
-    105.713,
+    99.145,
+    106.975,
     121.6
    ],
-   "yaw_deg": 90,
+   "yaw_deg": 181.5,
    "pitch_deg": 0,
    "label": {
     "text": "Rim walk",
@@ -1040,8 +1064,8 @@
    "kind": "place",
    "number": null,
    "pos": [
-    60.384,
-    70.196,
+    60.432,
+    70.118,
     121.6
    ],
    "yaw_deg": 90,

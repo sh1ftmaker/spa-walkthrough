@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mist solver bench</title>
+<style>body{margin:0;padding:12px;background:#080a0b;color:#e6eeee;font:13px/1.45 ui-monospace,Menlo,monospace}button{font:inherit;padding:6px 10px;background:#1c2a2c;color:#e6eeee;border:1px solid #3d6466;border-radius:5px}pre{white-space:pre-wrap}</style>
+</head>
+<body>
+<b>Mist solver bench</b> — the same MistSim stepped in a module Worker and on this thread, per grid size.
+Square pool domain (round rock wall, 45 °C water, one open edge, a jet, a burst, a walker, 10 vorticles).<br>
+<button id="go">run</button> <span id="st"></span>
+<pre id="out"></pre>
+<script type="module">
+import { MistSim } from '../mist-worker.js';
+const SIZES = (new URLSearchParams(location.search).get('sizes') ?? '32,64,96,128,192,256').split(',').map(Number);
+const STEPS = Number(new URLSearchParams(location.search).get('steps') ?? 150);
+const ITERS = (n) => n <= 64 ? 12 : 16;
+const cfgFor = (N) => {
+  const solid = new Uint8Array(N * N), temp = new Float32Array(N * N);
+  for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) { const x = i / N - 0.5, y = j / N - 0.5, r = Math.hypot(x, y);
+    solid[j * N + i] = r > 0.48 && !(x > 0.3 && Math.abs(y) < 0.1) ? 1 : 0; temp[j * N + i] = r < 0.36 ? 45 : 0; }
+  return { nx: N, ny: N, h: 16 / N, minX: 0, minZ: 0, solid, temp, open: { xmax: true }, params: { iters: ITERS(N) } };
+};
+const setup = (sim) => { sim.setJets([{ x: 4, z: 8, r: 1, vx: 1, vz: 0, dens: 1, div: 0.5 }]); sim.setMovers([{ x: 8, z: 8, vx: 1.2, vz: 0, r: 0.3 }]); sim.addEvent({ x: 10, z: 6, r: 1, dur: 1e6, dens: 2, heat: 2, div: 1 }); };
+// worker-side bench: a tiny inline module worker that imports the solver and times N steps
+const workerSrc = `import { MistSim } from '${new URL('../mist-worker.js', import.meta.url)}';
+onmessage = (e) => { const { cfg, steps } = e.data; const sim = new MistSim(cfg);
+  sim.setJets([{ x: 4, z: 8, r: 1, vx: 1, vz: 0, dens: 1, div: 0.5 }]); sim.setMovers([{ x: 8, z: 8, vx: 1.2, vz: 0, r: 0.3 }]); sim.addEvent({ x: 10, z: 6, r: 1, dur: 1e6, dens: 2, heat: 2, div: 1 });
+  for (let k = 0; k < 30; k++) sim.step(1/30);
+  const t = []; const out = new Uint8Array(cfg.nx*cfg.ny*4);
+  for (let k = 0; k < steps; k++){ const t0 = performance.now(); sim.step(1/30); t.push(performance.now() - t0); }
+  const p0 = performance.now(); for (let k = 0; k < 30; k++) sim.pack(out); const pack = (performance.now() - p0)/30;
+  t.sort((a,b)=>a-b); postMessage({ med: t[t.length>>1], p95: t[Math.floor(t.length*0.95)], min: t[0], pack, bytes: sim.bytes() }); };`;
+const wurl = URL.createObjectURL(new Blob([workerSrc], { type: 'text/javascript' }));
+async function runWorker(N) { const w = new Worker(wurl, { type: 'module' }); const r = await new Promise(res => { w.onmessage = e => res(e.data); w.postMessage({ cfg: cfgFor(N), steps: STEPS }); }); w.terminate(); return r; }
+function runMain(N) {
+  const sim = new MistSim(cfgFor(N)); setup(sim); for (let k = 0; k < 30; k++) sim.step(1 / 30);
+  const t = []; for (let k = 0; k < STEPS; k++) { const t0 = performance.now(); sim.step(1 / 30); t.push(performance.now() - t0); }
+  t.sort((a, b) => a - b); return { med: t[t.length >> 1], p95: t[Math.floor(t.length * 0.95)], min: t[0] };
+}
+// transfer round trip: post a packed frame to a worker and get it back (what the zone does every sim frame)
+async function transfer(N) {
+  const echo = new Worker(URL.createObjectURL(new Blob([`onmessage = e => postMessage(e.data, [e.data.buf]);`], { type: 'text/javascript' })));
+  let buf = new ArrayBuffer(N * N * 4); const t = [];
+  for (let k = 0; k < 60; k++) { const t0 = performance.now(); const r = await new Promise(res => { echo.onmessage = e => res(e.data); echo.postMessage({ buf }, [buf]); }); buf = r.buf; t.push(performance.now() - t0); }
+  echo.terminate(); t.sort((a, b) => a - b); return t[t.length >> 1];
+}
+async function run() {
+  const rows = []; const $ = (id) => document.getElementById(id);
+  $('out').textContent = 'grid      cells  iters | worker med  p95   | main med  p95   | pack  | rtt   | sim mem\n';
+  for (const N of SIZES) {
+    $('st').textContent = `running ${N}²…`; await new Promise(r => setTimeout(r, 30));
+    const w = await runWorker(N); const m = runMain(N); const rt = await transfer(N);
+    const row = { N, cells: N * N, iters: ITERS(N), worker: w, main: m, rtt: rt };
+    rows.push(row);
+    $('out').textContent += `${(N + '²').padEnd(8)} ${String(N * N).padStart(6)}  ${String(ITERS(N)).padStart(3)}   | ${w.med.toFixed(3).padStart(7)} ${w.p95.toFixed(3).padStart(6)} | ${m.med.toFixed(3).padStart(7)} ${m.p95.toFixed(3).padStart(6)} | ${w.pack.toFixed(3)} | ${rt.toFixed(3)} | ${(w.bytes / 1048576).toFixed(2)} MB\n`;
+  }
+  $('st').textContent = 'done'; window.__bench = rows; return rows;
+}
+document.getElementById('go').onclick = run;
+window.__run = run;
+window.__app = true; window.__stats = () => ({ ready: true });
+if (new URLSearchParams(location.search).has('auto')) run();
+</script>
+</body>
+</html>

@@ -117,7 +117,7 @@
    "id": "p_s_rim_spring",
    "to": "s_spring",
    "at": [
-    80,
+    77,
     101.7
    ],
    "width": 3.0,
@@ -156,7 +156,7 @@
  ],
  "spine": [
   [
-   98.0,
+   93.5,
    62.0,
    120.0
   ],
@@ -235,18 +235,17 @@
   "asset": "cable_car",
   "part": "top_station",
   "at": [
-   96.0,
-   57.0,
+   96.5,
+   61.2,
    120.0
   ],
-  "facing_deg": 195,
+  "facing_deg": 180,
   "dims": {
-   "w": 7.0,
-   "d": 6.0,
-   "h": 5.0
+   "w": 3.0,
+   "d": 2.0,
+   "h": 3.0
   },
-  "outside_ok": "Station platform cantilevers off the south cliff; its door opens onto the walk at (96, 60).",
-  "why": "The lit glass cabin docking at a timber-and-bronze station on the cliff lip (30) is the landmark at the rim's south end: seen from the Terrace Path head as the warm point beside the caldera glow, and the place cable riders step out."
+  "why": "The lit glass cabin docking at its timber-and-bronze station on the cliff lip (30), at the east end of the south leg: seen from the Terrace Path head as the warm point beside the caldera glow, and where cable riders step out."
  },
  "anchored": [
   {
@@ -259,9 +258,9 @@
    ],
    "facing_deg": 10,
    "dims": {
-    "span": 3.0,
     "w": 3.5,
-    "rise": 0.5
+    "d": 4.0,
+    "h": 0.5
    },
    "why": "Low arched deck over the spring rill's kerbed channel where it crosses the west leg."
   },
@@ -269,30 +268,35 @@
    "id": "cliff_stair_toro",
    "asset": "lantern_stone",
    "at": [
-    142.6,
-    105.0,
+    142.0,
+    107.8,
     120.0
    ],
    "facing_deg": 0,
    "dims": {
     "h": 2.2
    },
-   "why": "Marks the Cliff Stair head on the north arm."
+   "why": "Marks the Cliff Stair head on the north arm.",
+   "outside_ok": "Stands on the rock lip just beyond the walk band (the band is the deck; the lip is part of the same rim).",
+   "snap": "given"
   },
   {
    "id": "cliff_stair_sign",
    "asset": "sign_kanji",
    "at": [
-    137.6,
-    105.0,
+    138.2,
+    107.9,
     120.0
    ],
-   "facing_deg": 0,
+   "facing_deg": 90,
    "dims": {
-    "h": 1.8,
-    "text": "Cliff Stair · suites · ground"
+    "w": 0.9,
+    "d": 0.4,
+    "h": 1.8
    },
-   "why": "Wayfinding at the stair head."
+   "why": "Wayfinding at the stair head.",
+   "snap": "ground",
+   "outside_ok": "Stands on the rock lip just beyond the walk band (the band is the deck; the lip is part of the same rim)."
   }
  ],
  "water": [
@@ -361,9 +365,9 @@
     121.6
    ],
    "target": [
-    96.0,
-    60.0,
-    122.0
+    96.5,
+    61.2,
+    121.5
    ],
    "fov_v": 58
   },
@@ -383,103 +387,219 @@
   "concept": {
    "image": "lookbook/img/30-plan-summit.jpg",
    "pos": [
-    112.0,
-    108.2,
+    118.0,
+    108.6,
     121.6
    ],
    "target": [
-    100.0,
-    75.0,
-    120.0
+    92.0,
+    104.0,
+    120.5
    ],
    "fov_v": 55,
-   "match": "Plan 30's north boardwalk at eye height: lantern-lined hinoki walk on black rock, the caldera's islands and steam below to the left, the spring lanterns far right."
+   "match": "Plan 30's north boardwalk at eye height: lantern-lit hinoki walk receding west, the caldera's islands and steam below on the left."
   }
  },
  "lights": [
   {
    "asset": "lantern_post",
-   "along": "spine",
-   "side": "outer",
-   "spacing": [
-    6.0,
-    9.0
-   ],
-   "offset": 1.4,
    "face": "path",
-   "avoid": [
-    "portals"
+   "why": "Lit nodes: a pair of posts at each event (cable door, pool portals, rill bridge, spring steps, cliff stair, moon steps); dark stretches between.",
+   "at": [
+    [
+     92.3,
+     60.5,
+     120.25
+    ],
+    [
+     90.7,
+     60.5,
+     120.25
+    ],
+    [
+     76.52,
+     91.02,
+     120.25
+    ],
+    [
+     77.53,
+     96.52,
+     120.25
+    ],
+    [
+     78.24,
+     100.4,
+     120.25
+    ],
+    [
+     80.13,
+     103.89,
+     120.25
+    ],
+    [
+     101.26,
+     108.69,
+     120.25
+    ],
+    [
+     104.45,
+     109.0,
+     120.25
+    ],
+    [
+     138.47,
+     107.51,
+     120.25
+    ],
+    [
+     142.02,
+     106.93,
+     120.25
+    ],
+    [
+     146.16,
+     106.25,
+     120.25
+    ],
+    [
+     148.34,
+     105.76,
+     120.25
+    ]
    ],
-   "why": "One row on the drop / rock side, the rail line made visible."
+   "allow_overlap": [
+    "railing"
+   ]
   },
   {
    "asset": "lantern_stone",
-   "along": "spine",
-   "side": "inner",
-   "spacing": [
-    14.0,
-    20.0
+   "at": [
+    [
+     89.0,
+     63.2,
+     120.25
+    ],
+    [
+     103.12,
+     106.16,
+     120.25
+    ]
    ],
-   "offset": 1.4,
    "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Occasional toro on the pool side; long dark gaps."
+   "why": "Toro on the pool side at the two pool portals only."
   }
  ],
  "dressing": [
   {
    "asset": "railing",
    "along": "spine",
-   "side": "outer",
+   "side": "left",
    "offset": 1.6,
-   "height": 1.05,
    "avoid": [
-    "portals"
+    "portals",
+    {
+     "near": [
+      78.5,
+      93.5
+     ],
+     "r": 2.4
+    }
    ],
-   "note": "On the west leg (y 66-101) the outer side is the spring terrace's 1.5 m retaining wall: wall, not rail."
+   "note": "Rail stands on the deck edge (deck top 120.25).",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "z": 120.25
   },
   {
    "asset": "boardwalk",
    "along": "spine",
    "width": 2.6,
-   "why": "Hinoki deck on the rock (plan 30)."
+   "why": "Hinoki deck on the rock (plan 30).",
+   "allow_on_nav": true,
+   "dims": {
+    "w": 3.4,
+    "d": 2.1,
+    "h": 0.3
+   },
+   "spacing": [
+    2.0,
+    2.0
+   ],
+   "avoid": [
+    {
+     "near": [
+      78.5,
+      93.5
+     ],
+     "r": 2.2
+    }
+   ]
   },
   {
    "asset": "pine_bonsai",
-   "along": "spine",
-   "side": "inner",
-   "spacing": [
-    18.0,
-    26.0
+   "at": [
+    [
+     72.2,
+     64.6,
+     119.2
+    ],
+    [
+     78.6,
+     105.0,
+     119.4
+    ],
+    [
+     136.0,
+     109.0,
+     119.6
+    ]
    ],
-   "offset": 1.5,
-   "scale": [
-    0.7,
-    1.1
-   ],
-   "avoid": [
-    "portals"
-   ]
+   "dims": {
+    "w": 1.8,
+    "d": 1.8,
+    "h": 3.2
+   },
+   "why": "Pines on the outer drop at the SW and NW corners and beside the Cliff Stair head.",
+   "outside_ok": "Stands on the rock lip just beyond the walk band (the band is the deck; the lip is part of the same rim)."
   },
   {
    "asset": "rock_cluster",
-   "along": "spine",
-   "side": "both",
-   "spacing": [
-    4.0,
-    8.0
+   "at": [
+    [
+     76.0,
+     91.0,
+     119.5
+    ],
+    [
+     76.6,
+     96.2,
+     119.5
+    ],
+    [
+     80.8,
+     90.6,
+     119.5
+    ],
+    [
+     81.2,
+     96.4,
+     119.5
+    ]
    ],
-   "offset": 1.7,
-   "embed": 0.2,
    "scale": [
     0.4,
-    0.9
+    0.6
    ],
-   "avoid": [
-    "portals"
-   ]
+   "allow_overlap": [
+    "bridge_arched",
+    "boardwalk",
+    "railing"
+   ],
+   "why": "Rock groups at the rill bridge abutments.",
+   "outside_ok": "Stands on the rock lip just beyond the walk band (the band is the deck; the lip is part of the same rim)."
   }
  ],
  "mood": {
@@ -489,9 +609,107 @@
  },
  "waivers": [
   {
-   "check": "hero_inside_footprint",
-   "where": "hero top_station",
-   "reason": "Rim band is 3.5 m wide; the station hangs on the cliff beside it."
+   "check": "spacing",
+   "where": "boardwalk rule",
+   "reason": "The boardwalk is one continuous plank deck laid in 2 m pieces; regular spacing is the point, not a placement grid."
   }
+ ],
+ "allow_overlap": [
+  [
+   "bridge_arched",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "bridge_arched"
+  ],
+  [
+   "boardwalk",
+   "lantern_post"
+  ],
+  [
+   "lantern_post",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "lantern_stone"
+  ],
+  [
+   "lantern_stone",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "rock_cluster"
+  ],
+  [
+   "rock_cluster",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "sign_kanji"
+  ],
+  [
+   "sign_kanji",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "pine_bonsai"
+  ],
+  [
+   "pine_bonsai",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "cable_car"
+  ],
+  [
+   "cable_car",
+   "boardwalk"
+  ],
+  [
+   "railing",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "railing"
+  ],
+  [
+   "railing",
+   "pine_bonsai"
+  ],
+  [
+   "pine_bonsai",
+   "railing"
+  ],
+  [
+   "railing",
+   "lantern_post"
+  ],
+  [
+   "lantern_post",
+   "railing"
+  ],
+  [
+   "railing",
+   "bridge_arched"
+  ],
+  [
+   "bridge_arched",
+   "railing"
+  ]
  ]
 }

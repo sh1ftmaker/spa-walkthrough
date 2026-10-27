@@ -193,8 +193,8 @@
   "facing_deg": 270,
   "dims": {
    "w": 14.0,
-   "h": 3.4,
-   "d": 0.6
+   "d": 0.6,
+   "h": 3.4
   },
   "why": "A wall of folded undyed linen yukata in backlit hinoki cubbies, glowing like a washi lantern, sits dead on axis at the end of the low entry corridor. It is what you came here to do (change into the robe of this depth), it is the brightest surface in the hall, and it turns you toward the exit beside it."
  },
@@ -225,9 +225,9 @@
    ],
    "facing_deg": 0,
    "dims": {
-    "len": 24.0,
-    "h": 2.2,
-    "d": 0.6
+    "w": 24.0,
+    "d": 0.6,
+    "h": 2.2
    },
    "why": "Along the south wall, out of the walk; basalt-token locks."
   },
@@ -241,10 +241,9 @@
    ],
    "facing_deg": 180,
    "dims": {
-    "len": 30.0,
+    "w": 30.0,
     "d": 4.4,
-    "h": 2.4,
-    "booths": 15
+    "h": 2.4
    },
    "why": "Private booths with noren doors line the north wall (x 103-133); their lit noren are the second rhythm of light."
   },
@@ -258,10 +257,9 @@
    ],
    "facing_deg": 90,
    "dims": {
-    "len": 14.0,
+    "w": 14.0,
     "d": 4.4,
-    "h": 2.4,
-    "booths": 7
+    "h": 2.4
    },
    "why": "West wall booths (y 59-73), clear of the entry corridor."
   },
@@ -291,9 +289,9 @@
    ],
    "facing_deg": 90,
    "dims": {
-    "len": 6.0,
-    "w": 3.0,
-    "h": 2.6
+    "w": 3.6,
+    "d": 6.0,
+    "h": 2.9
    },
    "why": "Low dark hinoki passage to the east terrace: compression before the sea-cliff opening."
   },
@@ -302,15 +300,65 @@
    "asset": "pine_bonsai",
    "at": [
     118.0,
-    74.6,
+    74.2,
     0
    ],
    "facing_deg": 180,
    "dims": {
-    "h": 1.1,
-    "plinth": "lacquer dai 1.8 x 0.6"
+    "w": 1.8,
+    "d": 0.6,
+    "h": 1.1
    },
    "why": "A single bonsai on a lacquer stand at the head of the open floor: the hall's still point."
+  },
+  {
+   "id": "entry_corridor",
+   "asset": "timber_passage",
+   "at": [
+    104.0,
+    52.0,
+    0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 4.0,
+    "d": 8.0,
+    "h": 2.8
+   },
+   "why": "The low hinoki entry corridor (4 m wide, 2.8 m high, x 100-108): the hall and the robe wall open up at its end."
+  },
+  {
+   "id": "bench_island",
+   "asset": "bench_stone",
+   "at": [
+    122.0,
+    61.5,
+    0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 6.0,
+    "d": 0.9,
+    "h": 0.45
+   },
+   "why": "A long hinoki bench island on the axis: a mid-ground layer under the pendant row."
+  },
+  {
+   "id": "low_screen",
+   "asset": "shoji_wall_bay",
+   "at": [
+    118.0,
+    61.5,
+    0
+   ],
+   "facing_deg": 90,
+   "snap": "given",
+   "dims": {
+    "w": 6.0,
+    "d": 0.12,
+    "h": 1.5
+   },
+   "why": "Low lit washi screen behind the bench island."
   }
  ],
  "water": [],
@@ -413,11 +461,11 @@
    "along": [
     [
      112.0,
-     56.0
+     58.0
     ],
     [
      130.0,
-     56.0
+     58.0
     ]
    ],
    "spacing": [
@@ -434,18 +482,20 @@
    "asset": "noren_glow",
    "along": "anchored:booths_north",
    "spacing": [
-    2.0,
-    2.0
+    4.0,
+    4.0
    ],
-   "why": "Each booth's noren lit from behind: a soft band at the edge, not in the middle."
+   "why": "Each booth's noren lit from behind: a soft band at the edge, not in the middle.",
+   "height": 1.4
   },
   {
    "asset": "noren_glow",
    "along": "anchored:booths_west",
    "spacing": [
-    2.0,
-    2.0
-   ]
+    4.0,
+    4.0
+   ],
+   "height": 1.4
   },
   {
    "asset": "lantern_niche",
@@ -455,7 +505,10 @@
     6.0
    ],
    "height": 0.25,
-   "why": "Ankle lights under the lockers, darker band between."
+   "why": "Ankle lights set into the plinth of the lockers (light inside its host).",
+   "allow_overlap": [
+    "locker_bank"
+   ]
   },
   {
    "asset": "lantern_floor",
@@ -468,22 +521,92 @@
    ],
    "face": 90,
    "why": "One andon at the exit passage mouth."
+  },
+  {
+   "asset": "lantern_hanging",
+   "along": [
+    [
+     110.0,
+     47.5
+    ],
+    [
+     133.0,
+     47.5
+    ]
+   ],
+   "spacing": [
+    6.0,
+    7.5
+   ],
+   "height": [
+    3.6,
+    4.0
+   ],
+   "snap": "ceiling",
+   "why": "Pendant row over the locker aisle (was a dark 6 m patch at (126, 49))."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     136.2,
+     60.2,
+     0
+    ]
+   ],
+   "face": 270,
+   "why": "Andon at the robe counter's north end (was empty at (134, 59))."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     139.2,
+     72.2,
+     0
+    ]
+   ],
+   "face": 90,
+   "why": "Andon at the far end of the exit passage, so you see where to go."
   }
  ],
  "dressing": [
   {
    "asset": "bench_stone",
-   "along": "anchored:lockers_south",
-   "spacing": [
-    5.0,
-    7.0
-   ],
-   "offset": 1.4,
    "face": 0,
    "dims": {
-    "len": 2.4,
-    "material": "hinoki slat"
-   }
+    "w": 2.4,
+    "d": 0.6,
+    "h": 0.45
+   },
+   "at": [
+    [
+     110.5,
+     43.75,
+     0
+    ],
+    [
+     115.0,
+     43.75,
+     0
+    ],
+    [
+     121.8,
+     43.75,
+     0
+    ],
+    [
+     125.6,
+     43.75,
+     0
+    ],
+    [
+     131.9,
+     43.75,
+     0
+    ]
+   ],
+   "why": "Slatted benches in front of the lockers, irregular bays."
   },
   {
    "asset": "bench_stone",
@@ -510,12 +633,6 @@
   },
   {
    "asset": "towel_basket",
-   "scatter": "edge_band",
-   "band": [
-    0.4,
-    1.2
-   ],
-   "density": 0.02,
    "min_dist": 4.0,
    "avoid": [
     "nav",
@@ -523,7 +640,34 @@
     "hero",
     3.0
    ],
-   "snap": "ground"
+   "snap": "ground",
+   "at": [
+    [
+     106.0,
+     74.6,
+     0
+    ],
+    [
+     113.5,
+     74.6,
+     0
+    ],
+    [
+     127.5,
+     74.6,
+     0
+    ],
+    [
+     105.2,
+     61.0,
+     0
+    ],
+    [
+     135.6,
+     47.0,
+     0
+    ]
+   ]
   },
   {
    "asset": "banner",

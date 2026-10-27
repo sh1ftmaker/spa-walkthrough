@@ -51,7 +51,8 @@ const browser = await chromium.connectOverCDP(`http://127.0.0.1:${port}`);
 const results = [];
 try {
   for (const s of shots) {
-    const ctx = await browser.newContext({ viewport: s.viewport, deviceScaleFactor: s.dpr, isMobile: s.mobile, hasTouch: s.mobile });
+    const ctx = await browser.newContext({ viewport: s.viewport, deviceScaleFactor: s.dpr, isMobile: s.mobile, hasTouch: s.mobile,
+      ...(s.mobile && opt.device === 'phone' ? { userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1' } : {}) });
     const page = await ctx.newPage();
     const logs = [];
     page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') logs.push(`${m.type()}: ${m.text()}`); });

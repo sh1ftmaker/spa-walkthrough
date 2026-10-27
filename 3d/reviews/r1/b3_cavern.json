@@ -1,0 +1,23 @@
+{"space": "b3_cavern", "round": 1, "reviewer": "rev_b3_west_r1",
+ "frames": {
+  "entry": {"focal": "A big warm-white glowing slab right of the core drum (the slide shaft's glow at ~(150,50)), plus a curving chain of hanging lanterns; the foreground is grey slabs and teal terrace lanes.", "is_hero": false, "next_visible": "Lots of lantern dots and the drum with its helix stair, but no single goal. The geyser plume is not visible."},
+  "reveal": {"focal": "The same slide-shaft glow at centre, with the drum and helix stair on the left; a lantern chain descends from the top right.", "is_hero": false, "next_visible": "Rimstone stair ramp in the foreground; nothing points to the geyser."},
+  "concept": {"focal": "From the south bridge, dead ahead is a squat brown box (the geyser vent proxy) ringed by lanterns and small grey rocks: no 14 m plume. The slide-shaft glow on the right edge is the brightest object.", "is_hero": false, "next_visible": "Drum and helix stair on the left, slide glow on the right."},
+  "strip": {"focal": "Terrace lanes, then lazy-river lanterns, then the slide glow growing to fill frames 5-7.", "is_hero": false, "next_visible": "Yes, but the glow it pulls you toward is the slide, not the plume."}
+ },
+ "fixes": [
+  {"id": "hero (b3_geyser:geyser_vent)", "action": "replace", "dx": 0, "dy": 0, "deg": 0, "detail": "The vault's hero, a 14 m teal plume at (114,42) up to -53.5, is absent in every frame: only a ~1.5 m brown vent box exists. The graybox needs a 14 m emissive teal column (lit from below) that is brighter than anything else in the vault. This belongs to b3_geyser, but this space's whole reason fails without it."},
+  {"id": "b3_slide_foot hero glow", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The slide shaft's warm-white light is the brightest object from every cavern entry (and from the lobby SE exit), stealing the focal point. Reduce its emission to well below the plume's, and make it orange (lava) rather than white."},
+  {"id": "lights[5]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "13 lantern_hanging at a constant z -51.3 in an even ~4 m chain from the falls throat toward (93.5,41) lead the eye to the tube mouth, not the plume. lights5:0-2 near the west wall are above the -56 dome edge, i.e. inside rock. End the chain at the plume (114,42), follow the dome (z = dome-1.5), and vary spacing [3,7] with a gap before the plume."},
+  {"id": "b3_cavern:dressing0:31", "action": "remove", "dx": 0, "dy": 0, "deg": 0, "detail": "This stalactite_cluster at (92.8,73.4,-41.4) is inside the core drum shaft (4.3 m from (90,70), r 8) and 8.6 m above the vault crown."},
+  {"id": "dressing[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "All stalactites are at a fixed z -53 regardless of the dome, which is -56 at the walls, so edge ones float below the roof or sit in rock. In the frames they read as grey cubes hanging in mid-air. Snap to the dome surface. Also, dressing1/2 rock_cluster (81 rocks at fixed -67.2) includes ones under higher terrain (dressing1:42 at (48.9,45.1) next to tiers at ~-63.5; dressing1:3/14/17 at y 75-79 under the -60/-61.5 shelves): snap to the local floor and halve the south-band density (y 13-25 is a carpet of ~35 rocks)."}
+ ],
+ "scores": {"composition": 2, "density": 2, "light_rhythm": 2},
+ "top_change": "Build the geyser plume as a 14 m emissive teal column and make it the brightest object in the vault, then turn the slide-shaft glow down and orange, so every entry frame centres on the plume.",
+ "plausibility": [
+  "Geyser plume missing: the vault's focal object does not exist in the graybox.",
+  "Stalactites at constant -53 under a dome that is -56 at the walls; one stalactite is inside the drum shaft at -41.4.",
+  "Hanging lanterns lights5:0-2 sit above the dome edge (inside rock).",
+  "Rock clusters at -67.2 under terrain that is 4-7 m higher are sunk out of sight.",
+  "glowworm_ceiling and the lava_crack_seam markers do not emit, so the vault is a flat grey lid with no starfield or seams."
+ ]}

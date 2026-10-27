@@ -1,0 +1,80 @@
+{
+ "space": "b4_chamber",
+ "round": 1,
+ "reviewer": "rev_b3_east_b4_r1",
+ "frames": {
+  "entry": {
+   "focal": "A single orange hotspot on the glass wall at about x 81. The rest of the wall is dull brown. The white rail-post lanterns are brighter than the lava.",
+   "is_hero": true,
+   "next_visible": "n/a (terminal space). The return route to the tunnel is behind."
+  },
+  "reveal": {
+   "focal": "The long receding glass wall with its hotspot, the lantern posts and the benches. The perspective is good, but the east end fades to black.",
+   "is_hero": true,
+   "next_visible": "n/a"
+  },
+  "concept": {
+   "focal": "Square-on: one bright orange patch with a lumpy blob on the ceiling above it, and a bench in the foreground. There are no bays or mullions.",
+   "is_hero": true,
+   "next_visible": "n/a"
+  },
+  "strip": {
+   "focal": "Frames 0-3 are warm. Frames 4-7 (x 90-118) are almost black, with the wall barely visible.",
+   "is_hero": true,
+   "next_visible": "n/a"
+  }
+ },
+ "fixes": [
+  {
+   "id": "b4_chamber:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The magma_glass_wall is lit by one spot at x≈81 instead of being emissive along its whole 82 m length. Make each 7.5 m bay emissive (varied intensity, with dark bronze mullions between) so the whole wall is the key light and the strip's east half is not black."
+  },
+  {
+   "id": "lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "11 lantern_post (1.7 m white slabs) at an even 7.5 m on the rail are brighter than the lava; dim 0.3 is not taking effect. Use 0.6-0.8 m rail-post lights, actually dimmed."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The 53 railing pieces at y 9.3 are not visible in any view. Check that they are built (h 1.0 rail in front of the glass). They give the foreground layer in concept 23 and 36."
+  },
+  {
+   "id": "hero emitter blob (unknown)",
+   "action": "remove",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "An unexplained draped mesh hangs under the ceiling at about (81,8), above the hotspot, with a dark mound at the wall foot below it (visible in the concept and reveal views). Identify it and remove it, or hide it in the vault."
+  },
+  {
+   "id": "dressing[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "13 rock_cluster on the north wall are fine. Add 2-3 at the far east end (x 112-121) with a warm floor pool, so the end of the walk is not a black void."
+  }
+ ],
+ "scores": {
+  "composition": 3,
+  "density": 3,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the entire 82 m glass wall emissive bay by bay so it is unmistakably the brightest thing and lights the whole hall, then dim the rail-post lanterns below it.",
+ "plausibility": [
+  "An odd blob or emitter under the ceiling sits above the hotspot.",
+  "The railing is missing or invisible.",
+  "The east end of the hall is unlit, so a 'hush zone' guest would walk into darkness."
+ ]
+}

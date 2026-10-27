@@ -183,15 +183,14 @@
   "part": "base_station",
   "at": [
    88.0,
-   30.0,
+   28.3,
    0
   ],
   "facing_deg": 15,
   "dims": {
-   "w": 8.0,
-   "d": 9.0,
-   "h": 6.0,
-   "cabin": "glass, bronze frame"
+   "w": 5.0,
+   "d": 6.0,
+   "h": 5.0
   },
   "why": "The only lit thing that moves vertically on the south face: the glass cabin leaves this bronze-and-timber station and climbs the cable 120 m to the rim. Standing on the terrace your eye follows the cable line up to the summit glow, which ties ground to sky. Brightest object on the terrace (glazed station + lit cabin)."
  },
@@ -207,24 +206,10 @@
    "facing_deg": 0,
    "dims": {
     "w": 2.4,
-    "l": 3.0
+    "d": 3.0,
+    "h": 0.1
    },
    "why": "Where the cascade water sinks into the mountain (w_culvert top at (46,40), -4.2). A bronze grate over a steaming slot with the sound of falling water: the visible moment the spring goes underground."
-  },
-  {
-   "id": "cascade_overlook",
-   "asset": "railing",
-   "at": [
-    46.0,
-    24.4,
-    0
-   ],
-   "facing_deg": 180,
-   "dims": {
-    "len": 14.0,
-    "h": 1.05
-   },
-   "why": "Overlook rail over the pools either side of the stair head (portal kept clear)."
   },
   {
    "id": "terrace_tree",
@@ -236,6 +221,8 @@
    ],
    "facing_deg": 0,
    "dims": {
+    "w": 4.0,
+    "d": 4.0,
     "h": 5.0
    },
    "why": "Blossom tree on the south edge (plan 31 shows pink trees by the terrace stairs); breaks the long run."
@@ -253,6 +240,38 @@
     "len": 3.0
    },
    "why": "East end is a dead-end lookout over the sea cliff: a reason to walk there."
+  },
+  {
+   "id": "cabin",
+   "asset": "cable_car",
+   "at": [
+    89.0,
+    33.8,
+    16.0
+   ],
+   "facing_deg": 15,
+   "dims": {
+    "w": 2.4,
+    "d": 3.0,
+    "h": 2.6
+   },
+   "why": "The glass cabin 16 m up the cable, climbing: the vertical line of light the terrace exists to show."
+  },
+  {
+   "id": "cabin_lamp",
+   "asset": "lantern_hanging",
+   "at": [
+    89.0,
+    33.8,
+    15.3
+   ],
+   "facing_deg": 15,
+   "dims": {
+    "w": 0.45,
+    "d": 0.45,
+    "h": 0.6
+   },
+   "why": "The cabin's own lamp under its floor."
   }
  ],
  "water": [
@@ -330,22 +349,22 @@
   },
   "reveal": {
    "pos": [
-    78.0,
-    33.0,
+    80.0,
+    33.2,
     1.6
    ],
    "target": [
-    92.0,
-    45.0,
-    30.0
+    89.0,
+    33.8,
+    14.0
    ],
    "fov_v": 65
   },
   "concept": {
    "image": "lookbook/img/01-hero-exterior.jpg",
    "pos": [
-    48.0,
-    26.5,
+    52.0,
+    27.4,
     1.6
    ],
    "target": [
@@ -359,53 +378,107 @@
  },
  "lights": [
   {
-   "asset": "lantern_stone",
-   "along": "spine",
-   "side": "left",
-   "spacing": [
-    8.0,
-    11.0
-   ],
-   "offset": 2.6,
-   "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Toro on the hall side, one per facade bay; pools of light with dark gaps."
-  },
-  {
-   "asset": "lantern_post",
-   "along": [
-    [
-     62.0,
-     24.5
-    ],
-    [
-     149.5,
-     24.5
-    ],
-    [
-     149.5,
-     41.5
-    ]
-   ],
-   "spacing": [
-    7.0,
-    9.0
-   ],
-   "face": "path",
-   "why": "Low posts on the cliff railing, staggered against the toro."
-  },
-  {
    "asset": "lantern_hanging",
    "ring": [
     88.0,
-    30.0
+    28.3
    ],
-   "radius": 4.8,
+   "radius": 3.6,
    "count": 4,
-   "height": 3.2,
+   "height": 3.4,
    "why": "Eave lanterns on the cable station so it is the brightest thing on the terrace."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     57.4,
+     39.6,
+     0
+    ],
+    [
+     62.6,
+     39.6,
+     0
+    ],
+    [
+     31.6,
+     37.4,
+     0
+    ],
+    [
+     35.6,
+     36.2,
+     0
+    ],
+    [
+     84.4,
+     30.4,
+     0
+    ],
+    [
+     92.0,
+     31.0,
+     0
+    ],
+    [
+     144.0,
+     30.8,
+     0
+    ],
+    [
+     146.6,
+     31.2,
+     0
+    ]
+   ],
+   "face": "path",
+   "why": "Pools of light at the hall door, the gate door, the cable station and the east lookout; dark 15-30 m gaps between."
+  },
+  {
+   "asset": "lantern_post",
+   "at": [
+    [
+     31.0,
+     25.0,
+     0
+    ],
+    [
+     49.3,
+     25.0,
+     0
+    ],
+    [
+     86.0,
+     25.0,
+     0
+    ],
+    [
+     90.0,
+     25.0,
+     0
+    ],
+    [
+     120.0,
+     25.0,
+     0
+    ],
+    [
+     143.5,
+     25.0,
+     0
+    ],
+    [
+     148.0,
+     25.0,
+     0
+    ]
+   ],
+   "face": 0,
+   "allow_overlap": [
+    "railing"
+   ],
+   "why": "Sparse rail posts: overlook ends, station, mid-run, lookout."
   }
  ],
  "dressing": [
@@ -414,50 +487,62 @@
    "along": [
     [
      62.0,
-     24.3
+     24.8
     ],
     [
-     149.7,
-     24.3
+     149.3,
+     24.8
     ],
     [
-     149.7,
+     149.3,
      41.8
     ]
    ],
-   "height": 1.05,
-   "why": "Cliff edge."
+   "why": "Cliff edge.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "z": 0.0,
+   "note": "Rail on the terrace paving at 0.0 (the slab edge bevels down)."
   },
   {
    "asset": "railing",
    "along": [
     [
-     30.3,
+     30.8,
      25.0
     ],
     [
-     30.3,
+     30.8,
      39.6
     ]
    ],
-   "height": 1.05,
-   "why": "West edge over the cascade pools."
+   "why": "West edge over the cascade pools.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "z": 0.0,
+   "note": "Rail on the terrace paving at 0.0 (the slab edge bevels down)."
   },
   {
    "asset": "banner",
    "along": [
     [
      42.0,
-     41.7
+     41.2
     ],
     [
      146.0,
-     41.7
+     41.2
     ]
    ],
    "spacing": [
-    12.0,
-    14.0
+    9.0,
+    16.0
    ],
    "height": 4.5,
    "snap": "wall",
@@ -468,21 +553,6 @@
   },
   {
    "asset": "pine_bonsai",
-   "along": [
-    [
-     64.0,
-     26.0
-    ],
-    [
-     146.0,
-     26.0
-    ]
-   ],
-   "spacing": [
-    14.0,
-    20.0
-   ],
-   "offset": 0.0,
    "scale": [
     0.9,
     1.4
@@ -491,23 +561,122 @@
     "nav",
     "portals",
     "hero",
+    "anchored",
     6.0
-   ]
+   ],
+   "at": [
+    [
+     100.0,
+     27.2,
+     0
+    ],
+    [
+     118.0,
+     27.2,
+     0
+    ],
+    [
+     134.0,
+     27.2,
+     0
+    ],
+    [
+     66.0,
+     27.2,
+     0
+    ]
+   ],
+   "dims": {
+    "w": 2.4,
+    "d": 2.4,
+    "h": 3.6
+   },
+   "why": "Windswept pines on the cliff edge break the long east run."
   },
   {
    "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.3,
-    1.8
+   "at": [
+    [
+     147.6,
+     25.9
+    ],
+    [
+     146.8,
+     38.2
+    ],
+    [
+     126.0,
+     26.6
+    ],
+    [
+     80.0,
+     26.8
+    ]
    ],
-   "density": 0.03,
-   "avoid": [
-    "nav",
-    "portals",
-    "hero",
-    5.0
-   ]
+   "scale": [
+    0.7,
+    1.1
+   ],
+   "why": "Rock groups at the east lookout and along the cliff rail between pines."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     30.5,
+     24.8
+    ],
+    [
+     44.2,
+     24.8
+    ]
+   ],
+   "why": "Overlook rail over the cascade pools, west of the stair head.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "z": 0.0,
+   "note": "Rail on the terrace paving at 0.0 (the slab edge bevels down)."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     47.8,
+     24.8
+    ],
+    [
+     61.8,
+     24.8
+    ]
+   ],
+   "why": "Same, east of the stair head.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "z": 0.0,
+   "note": "Rail on the terrace paving at 0.0 (the slab edge bevels down)."
+  },
+  {
+   "asset": "bench_stone",
+   "at": [
+    [
+     38.0,
+     25.6,
+     0
+    ]
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 2.4,
+    "d": 0.6,
+    "h": 0.45
+   },
+   "why": "One seat on the overlook."
   }
  ],
  "mood": {
@@ -515,5 +684,21 @@
   "palette": "deep blue sky, amber toro, bronze station glow, teal pools to the west",
   "mist": "steam rising from the culvert grate and the cascade side"
  },
- "waivers": []
+ "waivers": [
+  {
+   "check": "empty_areas",
+   "where": "the walk between the light pools",
+   "reason": "Review r1: light pools at the doors, station and lookout with dark 15-30 m gaps between are the design, not missing dressing."
+  }
+ ],
+ "allow_overlap": [
+  [
+   "cable_car",
+   "lantern_hanging"
+  ],
+  [
+   "lantern_hanging",
+   "cable_car"
+  ]
+ ]
 }

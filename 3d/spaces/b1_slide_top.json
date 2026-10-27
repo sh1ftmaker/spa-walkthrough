@@ -83,14 +83,9 @@
    -20.0
   ],
   [
-   145.3,
-   50.0,
-   -19.0
-  ],
-  [
    146.4,
    50.0,
-   -19.0
+   -20.0
   ]
  ],
  "spurs": [
@@ -127,67 +122,55 @@
   }
  ],
  "hero": {
-  "asset": "slide_tube",
+  "asset": "lava_window",
   "at": [
    150.0,
-   50.0,
-   -19.0
+   40.3,
+   -20.0
   ],
-  "facing_deg": 180,
+  "facing_deg": 0,
   "dims": {
-   "r": 3.6,
-   "tube_d": 1.1,
-   "z_bottom": -66.8
+   "w": 20.0,
+   "d": 0.6,
+   "h": 7.5
   },
-  "why": "A clear glass helix dropping into a glowing shaft: the reason to come here. The lava glass on the south wall makes the water inside glow orange; the bridge, rails and lanterns all point at the tube mouth."
+  "why": "The wall of moving lava behind thick glass is what makes the glass tube glow (concept 13): with the graybox tube helix in front of it, the lava is the brightest thing in the room and the tube reads as a dark glass silhouette spiralling into the orange shaft."
  },
  "anchored": [
   {
-   "id": "lava_glass",
-   "asset": "lava_window",
-   "at": [
-    150.0,
-    40.3,
-    -20.0
-   ],
-   "facing_deg": 0,
-   "dims": {
-    "w": 20.0,
-    "h": 7.5
-   },
-   "why": "Concept 13 / B1 plan: lava behind thick glass beside the slide. Spans the room's south wall; propose it continues down the shaft's south half so the tube runs past lava all the way (coordinate with b2_lava_link and b3_slide_foot)."
-  },
-  {
    "id": "launch_bridge",
    "asset": "boardwalk",
-   "variant": "bridge with 6 steps up",
+   "variant": "level bridge",
    "at": [
-    143.65,
+    143.9,
     50.0,
-    -20.0
+    -20.3
    ],
+   "snap": "given",
    "facing_deg": 90,
    "dims": {
-    "l": 5.5,
     "w": 2.4,
-    "rise": 1.0
+    "d": 6.4,
+    "h": 0.3
    },
-   "why": "Crosses the Lava Stair void at bearing 270 (stair 4.8 m below there) from the west floor to the tube mouth."
+   "why": "Level deck (top -20.0) across the Lava Stair void at bearing 270 (stair 4.8 m below) from the west floor to the launch gate; the gate holds the 1 m step up to the tube mouth."
   },
   {
    "id": "launch_gate",
    "asset": "slide_launch_gate",
    "at": [
-    146.4,
+    146.2,
     50.0,
-    -19.0
+    -20.0
    ],
-   "facing_deg": 180,
+   "snap": "given",
+   "facing_deg": 90,
    "dims": {
-    "w": 1.4,
-    "h": 2.2
+    "w": 1.6,
+    "d": 1.4,
+    "h": 2.8
    },
-   "why": "Bronze start gate, grab bar and water manifold at the tube mouth."
+   "why": "Bronze start gate with 6 steps up to the tube mouth (-19.0), grab bar and water manifold; stands on the bridge end."
   },
   {
    "id": "shaft_rail",
@@ -196,7 +179,7 @@
     150.0,
     50.0
    ],
-   "radius": 9.05,
+   "radius": 9.3,
    "dims": {
     "h": 1.05
    },
@@ -211,24 +194,6 @@
     ]
    ],
    "why": "Rail round the shaft edge, open only at the bridge and the stair head."
-  },
-  {
-   "id": "stair_rail",
-   "asset": "railing",
-   "along": [
-    [
-     147.4,
-     58.3
-    ],
-    [
-     152.6,
-     58.3
-    ]
-   ],
-   "dims": {
-    "h": 1.0
-   },
-   "why": "Inner rail on the void side of the stair-head gallery."
   },
   {
    "id": "queue_bench",
@@ -248,17 +213,119 @@
    "id": "slide_board",
    "asset": "sign_kanji",
    "at": [
-    139.0,
-    56.8,
+    141.5,
+    59.7,
     -20.0
    ],
-   "facing_deg": 120,
+   "facing_deg": 180,
    "dims": {
     "w": 0.6,
     "h": 2.0
    },
    "text": "溶岩滑り台 · B3",
    "why": "Board by the door: slide to B3 left, Lava Stair right."
+  },
+  {
+   "id": "slide_tube_note",
+   "asset": "slide_tube",
+   "at": [
+    150.0,
+    50.0,
+    -19.0
+   ],
+   "why": "Marker only: the graybox builds the tube helix (layout glass_slide)."
+  },
+  {
+   "id": "bridge_lamps_0",
+   "asset": "lantern_niche",
+   "at": [
+    144.2,
+    48.9,
+    -18.8
+   ],
+   "facing_deg": 0,
+   "why": "Small lamps on the bridge rail posts at 1.2 m (replace the floating chochin)."
+  },
+  {
+   "id": "bridge_lamps_1",
+   "asset": "lantern_niche",
+   "at": [
+    144.2,
+    51.1,
+    -18.8
+   ],
+   "facing_deg": 180,
+   "why": "Small lamps on the bridge rail posts at 1.2 m (replace the floating chochin)."
+  },
+  {
+   "id": "bridge_lamps_2",
+   "asset": "lantern_niche",
+   "at": [
+    145.4,
+    48.9,
+    -18.8
+   ],
+   "facing_deg": 0,
+   "why": "Small lamps on the bridge rail posts at 1.2 m (replace the floating chochin)."
+  },
+  {
+   "id": "bridge_lamps_3",
+   "asset": "lantern_niche",
+   "at": [
+    145.4,
+    51.1,
+    -18.8
+   ],
+   "facing_deg": 180,
+   "why": "Small lamps on the bridge rail posts at 1.2 m (replace the floating chochin)."
+  },
+  {
+   "id": "corner_rocks_0",
+   "asset": "rock_cluster",
+   "at": [
+    139.2,
+    41.4,
+    -20.0
+   ],
+   "facing_deg": 45,
+   "dims": {
+    "w": 1.6,
+    "d": 1.2,
+    "h": 0.9
+   },
+   "why": "Rocks in the empty gallery corners."
+  },
+  {
+   "id": "corner_rocks_1",
+   "asset": "rock_cluster",
+   "at": [
+    160.8,
+    41.4,
+    -20.0
+   ],
+   "facing_deg": 315,
+   "dims": {
+    "w": 1.6,
+    "d": 1.2,
+    "h": 0.9
+   },
+   "why": "Rocks in the empty gallery corners."
+  },
+  {
+   "id": "corner_rocks_2",
+   "asset": "rock_cluster",
+   "at": [
+    160.8,
+    58.6,
+    -20.0
+   ],
+   "facing_deg": 225,
+   "dims": {
+    "w": 1.6,
+    "d": 1.2,
+    "h": 0.9
+   },
+   "why": "Rocks in the empty gallery corners."
   }
  ],
  "water": [
@@ -308,27 +375,27 @@
  "cameras": {
   "entry": {
    "pos": [
-    139.2,
-    53.6,
+    139.4,
+    53.4,
     -18.4
    ],
    "target": [
     150.0,
-    47.0,
+    44.0,
     -21.0
    ],
    "fov_v": 62
   },
   "reveal": {
    "pos": [
-    143.8,
-    50.4,
+    141.4,
+    50.6,
     -18.4
    ],
    "target": [
     151.0,
-    47.0,
-    -27.0
+    43.0,
+    -26.0
    ],
    "fov_v": 65
   },
@@ -350,108 +417,56 @@
  },
  "lights": [
   {
-   "asset": "lava_window",
-   "part": "emission",
-   "at": [
-    [
-     150.0,
-     40.3,
-     -16.0
-    ]
-   ],
-   "why": "Main light; the tube in front of it glows (hero group)."
-  },
-  {
-   "asset": "lantern_hanging",
-   "along": [
-    [
-     141.2,
-     50.0
-    ],
-    [
-     145.8,
-     50.0
-    ]
-   ],
-   "spacing": [
-    1.6,
-    2.0
-   ],
-   "height": [
-    2.6,
-    3.0
-   ],
-   "snap": "ceiling",
-   "why": "A short row of chochin over the bridge leads to the gate."
-  },
-  {
    "asset": "lantern_floor",
    "at": [
     [
      148.3,
-     59.2,
+     59.62,
      -20.0
     ],
     [
      151.8,
-     59.25,
-     -20.0
-    ],
-    [
-     138.8,
-     51.8,
-     -20.0
-    ],
-    [
-     138.8,
-     56.3,
+     59.62,
      -20.0
     ]
    ],
+   "dims": {
+    "h": 0.8
+   },
    "face": "path",
-   "why": "Landing pair at the Lava Stair head and a pair inside the door; kept dim against the lava."
+   "z": -20.0,
+   "why": "Landing pair at the Lava Stair head, outside the shaft rail."
   },
   {
    "asset": "lantern_post",
-   "ring": [
-    150.0,
-    50.0
-   ],
-   "radius": 9.3,
-   "spacing": [
-    7.0,
-    9.0
-   ],
-   "except_bearings": [
+   "at": [
     [
-     255,
-     285
+     154.95,
+     58.57,
+     -20.0
     ],
     [
-     340,
-     20
+     158.97,
+     54.18,
+     -20.0
+    ],
+    [
+     159.75,
+     48.28,
+     -20.0
     ]
    ],
-   "why": "Few posts on the rail; dark gaps let the lava own the room."
+   "face": "out",
+   "z": -20.0,
+   "why": "Three posts on the north-east arc only, just outside the rail; the lava owns the south."
   }
  ],
- "dressing": [
-  {
-   "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.2,
-    1.2
-   ],
-   "density": 0.04,
-   "avoid": [
-    "nav",
-    "portals",
-    "anchored:shaft_rail",
-    "anchored:launch_bridge"
-   ],
-   "why": "Corners only; the shaft rim stays clear."
-  }
+ "dressing": [],
+ "allow_overlap": [
+  [
+   "boardwalk",
+   "slide_launch_gate"
+  ]
  ],
  "mood": {
   "key": "glass tube against lava",
@@ -465,15 +480,11 @@
    "reason": "The slide shaft is fixed at the H4 cell centre by layout.json."
   },
   {
-   "check": "hero_brightest",
-   "where": "slide_tube",
-   "reason": "The lava glass directly behind the tube is brighter per pixel; tube and lava read as one hero group (as concept 13)."
-  },
-  {
    "check": "clearance",
    "where": "north gallery to the stair head (x 143-150, y 58.3-60)",
    "reason": "1.6-1.7 m clear between the stair void and the wall (>=1.2 m); widen by moving the north wall only if the treatment hall moves (see report)."
   }
  ],
+ "light_notes": "Lava glass is the main light (lava_window asset light); the tube glows from it.",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

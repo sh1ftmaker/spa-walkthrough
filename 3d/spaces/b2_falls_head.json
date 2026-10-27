@@ -52,6 +52,17 @@
    "width": 2.4,
    "height": null,
    "note": "Top of falls_stair_1, descending south along x 43."
+  },
+  {
+   "id": "p_b2_falls_balcony",
+   "to": "b3_falls_east",
+   "at": [
+    40,
+    64
+   ],
+   "width": 12.0,
+   "height": 8.0,
+   "note": "Railed balcony onto the falls shaft."
   }
  ],
  "spine": [
@@ -62,17 +73,12 @@
   ],
   [
    45.6,
-   66.8,
+   65.8,
    -40.0
   ],
   [
-   44.0,
-   68.3,
-   -40.0
-  ],
-  [
-   42.6,
-   67.6,
+   44.4,
+   66.6,
    -40.0
   ],
   [
@@ -98,14 +104,15 @@
    "id": "stair_gate",
    "asset": "sign_kanji",
    "at": [
-    44.6,
-    66.4,
+    46.4,
+    66.9,
     -40.0
    ],
-   "facing_deg": 0,
-   "height": 1.8,
+   "facing_deg": 240,
+   "snap": "ground",
    "dims": {
     "w": 0.4,
+    "d": 0.08,
     "h": 1.4
    },
    "variant": "滝_stair",
@@ -117,7 +124,7 @@
    "id": "w_river",
    "kind": "flow",
    "ref": "b2_river",
-   "z": -42.934,
+   "z_ref": -42.934,
    "note": "River beside the shaft just above the lip; lip at -43.0."
   }
  ],
@@ -151,14 +158,14 @@
    "target": [
     30.0,
     76.0,
-    -40.5
+    -42.0
    ],
    "fov_v": 60
   },
   "reveal": {
    "pos": [
-    41.0,
-    69.0,
+    43.8,
+    66.9,
     -38.4
    ],
    "target": [
@@ -171,8 +178,8 @@
   "concept": {
    "image": "lookbook/img/29-river-section.jpg",
    "pos": [
-    41.0,
-    66.8,
+    43.0,
+    68.6,
     -38.4
    ],
    "target": [
@@ -189,12 +196,12 @@
    "asset": "lantern_post",
    "at": [
     [
-     41.3,
-     66.4
+     41.0,
+     64.0
     ],
     [
-     44.7,
-     66.4
+     45.8,
+     69.2
     ]
    ],
    "why": "Pair at the stair head (landing dressing)."
@@ -203,30 +210,28 @@
    "asset": "lantern_stone",
    "at": [
     [
-     46.2,
-     62.0
+     46.3,
+     61.2
     ]
    ],
    "why": "One at the passage mouth."
   },
   {
-   "asset": "lantern_post",
-   "along": [
+   "asset": "lantern_niche",
+   "at": [
     [
-     44.6,
-     65.5
+     46.8,
+     61.0,
+     -40.6
     ],
     [
-     44.6,
-     58.2
+     46.8,
+     58.6,
+     -42.1
     ]
    ],
-   "spacing": [
-    3.5,
-    4.5
-   ],
-   "face": "path",
-   "why": "Down the first flight; continues in b3 along falls_stair_1."
+   "facing_deg": 270,
+   "why": "Two wall niches on the shaft wall beside the first flight (wall side, not in the stair)."
   }
  ],
  "dressing": [
@@ -235,7 +240,7 @@
    "along": [
     [
      40.2,
-     66.0
+     63.2
     ],
     [
      40.2,
@@ -246,65 +251,44 @@
      69.8
     ]
    ],
-   "spacing": [
-    1.5,
-    1.5
-   ],
+   "height": 0.0,
    "face": "out",
-   "why": "Overlook rail over the shaft (west) and toward the river (north)."
+   "why": "Balcony rail over the shaft (west) and toward the river (north).",
+   "allow_on_nav": true
   },
   {
    "asset": "railing",
    "along": [
     [
-     41.7,
+     41.85,
      66.0
     ],
     [
-     41.7,
+     41.85,
      58.0
     ]
    ],
-   "spacing": [
-    1.5,
-    1.5
-   ],
+   "height": 0.0,
    "face": 270,
-   "why": "West rail of the first flight of falls_stair_1 (landing dressing)."
+   "why": "West rail of the first flight, following the treads.",
+   "allow_on_nav": true
   },
   {
    "asset": "railing",
    "along": [
     [
-     44.3,
+     44.15,
      66.0
     ],
     [
-     44.3,
+     44.15,
      58.0
     ]
    ],
-   "spacing": [
-    1.5,
-    1.5
-   ],
+   "height": 0.0,
    "face": 90,
-   "why": "East rail of the first flight."
-  },
-  {
-   "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.2,
-    0.8
-   ],
-   "density": 0.06,
-   "avoid": [
-    "nav",
-    "portals",
-    "stairs"
-   ],
-   "why": "Wet rock at the passage wall."
+   "why": "East rail of the first flight, following the treads.",
+   "allow_on_nav": true
   }
  ],
  "mood": {
@@ -319,9 +303,19 @@
    "reason": "Borrowed view: the lip is in b2_river."
   },
   {
+   "check": "hero_visible",
+   "where": "entry camera",
+   "reason": "The hero is the thunder_lip placed by b2_river (proxy b2_river:thunder_lip); this space has no hero proxy to sample."
+  },
+  {
    "check": "clearance",
    "where": "landing y 66-70",
    "reason": "Landing is 4 m deep and 7 m wide with a U-turn onto the stair; 1.2 m corridor kept."
+  },
+  {
+   "check": "contact",
+   "where": "stair rails dressing[1], dressing[2] on falls_stair_1",
+   "reason": "Rails on the 30 deg flight are placed as straight 1.5 m pieces re-based at their centre, so each piece's low end dips 0.17-0.34 m into the tread line; the built rail is raked. Not a floating or buried object."
   }
  ]
 }

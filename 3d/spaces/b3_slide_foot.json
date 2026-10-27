@@ -146,19 +146,16 @@
    "id": "lava_wall",
    "asset": "lava_window",
    "at": [
-    161.6,
-    51,
+    156.5,
+    64.0,
     -67
    ],
-   "facing_deg": 270,
+   "facing_deg": 202,
    "dims": {
-    "w": 20,
-    "h": 14,
-    "y_span": [
-     41,
-     61
-    ]
+    "w": 12,
+    "h": 12
    },
+   "note": "on the cavern NE wall (y = 64 + (164 - x) * 18/44) behind the shaft",
    "why": "Backlight for the hero (concept 13's lava behind glass on the right). It is intentionally the brightest surface here because it is what makes the tube glow; seen from the geyser's east tip along y 42 it is the orange beacon that pulls guests east."
   },
   {
@@ -171,19 +168,12 @@
    ],
    "facing_deg": 0,
    "dims": {
+    "w": 3,
+    "d": 3,
+    "h": 0.6,
     "r": 4.5
    },
-   "why": "Layout pool, clear of the Lava Stair foot."
-  },
-  {
-   "id": "stair_rail",
-   "asset": "railing",
-   "along": "stair:lava_stair",
-   "side": "open",
-   "dims": {
-    "h": 1.0
-   },
-   "why": "Open side of the Lava Stair's last turn and landing."
+   "why": "Layout pool, clear of the Lava Stair foot (proxy = basin centre; real size r 4.5)."
   },
   {
    "id": "watch_bench",
@@ -197,6 +187,133 @@
    ],
    "facing_deg": 330,
    "why": "Watch the splashdowns, back to the shore wall."
+  },
+  {
+   "id": "stair_rail",
+   "asset": "railing",
+   "snap": "given",
+   "at": [
+    [
+     150.02,
+     58.2,
+     -58.145
+    ],
+    [
+     147.68,
+     57.87,
+     -58.656
+    ],
+    [
+     146.75,
+     57.53,
+     -59.167
+    ],
+    [
+     145.87,
+     57.08,
+     -59.507
+    ],
+    [
+     145.04,
+     56.53,
+     -60.188
+    ],
+    [
+     144.29,
+     55.89,
+     -60.529
+    ],
+    [
+     142.85,
+     54.02,
+     -60.87
+    ],
+    [
+     142.42,
+     53.13,
+     -61.38
+    ],
+    [
+     142.1,
+     52.19,
+     -62.062
+    ],
+    [
+     141.89,
+     51.22,
+     -62.572
+    ],
+    [
+     141.8,
+     50.24,
+     -62.913
+    ],
+    [
+     142.08,
+     47.89,
+     -63.424
+    ],
+    [
+     142.39,
+     46.95,
+     -63.935
+    ],
+    [
+     142.81,
+     46.06,
+     -64.275
+    ],
+    [
+     143.34,
+     45.22,
+     -64.786
+    ],
+    [
+     143.96,
+     44.45,
+     -65.297
+    ],
+    [
+     145.79,
+     42.96,
+     -65.638
+    ],
+    [
+     146.67,
+     42.5,
+     -66.149
+    ],
+    [
+     147.6,
+     42.16,
+     -66.659
+    ]
+   ],
+   "facing_deg": [
+    354.2,
+    342.4,
+    335.6,
+    328.6,
+    321.7,
+    309.9,
+    298.2,
+    291.3,
+    284.4,
+    277.3,
+    265.7,
+    254.0,
+    247.1,
+    240.0,
+    233.2,
+    221.5,
+    209.7,
+    202.7,
+    195.8
+   ],
+   "dims": {
+    "h": 1.0
+   },
+   "why": "Open (outer) side of the Lava Stair's last turn, on the treads."
   }
  ],
  "water": [
@@ -402,8 +519,8 @@
   },
   "reveal": {
    "pos": [
-    145.2,
-    40.0,
+    144.0,
+    38.0,
     -65.4
    ],
    "target": [
@@ -415,8 +532,8 @@
   },
   "concept": {
    "pos": [
-    143.6,
-    38.8,
+    143.0,
+    37.0,
     -65.4
    ],
    "target": [
@@ -439,72 +556,113 @@
    "radius": 3.0,
    "count": 5,
    "z": -68.2,
-   "why": "Teal pool glow under the outlet."
+   "why": "Teal pool glow under the outlet.",
+   "avoid": [
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      142.2,
+      41.8
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      144.0,
+      38.0
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      143.0,
+      37.0
+     ],
+     "r": 2.6
+    }
+   ]
   },
   {
-   "asset": "lantern_post",
-   "along": "spine",
-   "side": "left",
-   "spacing": [
-    4,
-    6
+   "asset": "lantern_floor",
+   "at": [
+    [
+     144.6,
+     55.5,
+     -67
+    ],
+    [
+     158.6,
+     54.5,
+     -67
+    ],
+    [
+     150.5,
+     60.0,
+     -67
+    ]
    ],
-   "offset": 1.6,
-   "face": "path",
-   "avoid": [
-    "portals",
-    "water"
-   ],
-   "why": "Leads from the tube mouth to the shore path."
+   "why": "Under the stair helix and by the lava wall: no dark patch in the cave."
   },
   {
    "asset": "lantern_stone",
    "at": [
     [
      146.41,
-     41.58,
-     -67
+     41.58
     ],
     [
      149.73,
-     40.84,
-     -67
+     40.84
     ],
     [
-     152.4,
-     37.2,
-     -67
+     153.9,
+     39.0
     ]
    ],
    "why": "Flank the Lava Stair door (1.7 m either side) and mark the shore mouth."
-  },
-  {
-   "asset": "lantern_post",
-   "along": "stair:lava_stair",
-   "spacing": [
-    6,
-    8
-   ],
-   "side": "wall",
-   "at_landings": true,
-   "why": "Landings of the last turn (concept 13 balconies)."
   }
  ],
  "dressing": [
   {
    "asset": "boulder_rim",
    "along": "water:w_splash",
-   "side": "out",
+   "side": "right",
    "spacing": [
     1.2,
     2.2
    ],
-   "offset": 0.4,
-   "embed": 0.25,
+   "offset": 1.0,
    "avoid": [
     "portals",
     "nav",
-    "stair"
+    "stairs",
+    {
+     "near": [
+      150.5,
+      60.0
+     ],
+     "r": 2.2
+    },
+    {
+     "near": [
+      153.9,
+      39.0
+     ],
+     "r": 1.6
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    }
    ],
    "rule": "skip the outlet arc"
   },
@@ -516,10 +674,60 @@
     2.0
    ],
    "density": 0.05,
+   "min_dist": 5.0,
    "avoid": [
     "nav",
     "portals",
-    "hero"
+    "hero",
+    {
+     "near": [
+      141.6,
+      60.5
+     ],
+     "r": 2.4
+    },
+    {
+     "poly": [
+      [
+       148,
+       60.5
+      ],
+      [
+       164,
+       60.5
+      ],
+      [
+       164,
+       64
+      ],
+      [
+       148,
+       64
+      ]
+     ]
+    },
+    "space:b3_shore",
+    {
+     "near": [
+      151,
+      36.5
+     ],
+     "r": 3.0
+    },
+    {
+     "near": [
+      150.5,
+      60.0
+     ],
+     "r": 2.2
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    }
    ]
   },
   {
@@ -540,5 +748,20 @@
   "mist": "spray and steam at the outlet"
  },
  "waivers": [],
- "layout_issues": []
+ "layout_issues": [],
+ "allow_overlap": [
+  [
+   "railing",
+   "railing"
+  ],
+  [
+   "slide_tube",
+   "splash_pool"
+  ],
+  [
+   "splash_pool",
+   "slide_tube"
+  ]
+ ],
+ "allow_overlap_why": "Rail pieces meet round the helix. The slide tube ends inside its splash pool by design."
 }

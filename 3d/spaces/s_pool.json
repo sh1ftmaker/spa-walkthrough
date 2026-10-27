@@ -150,18 +150,14 @@
   "part": "infinity_edge",
   "at": [
    116.0,
-   68.0,
+   67.4,
    120.0
   ],
   "facing_deg": 180,
   "dims": {
-   "len": 40.0,
-   "x_range": [
-    96,
-    136
-   ],
-   "lip_z": 120.0,
-   "drop_to_cloud": 60.0
+   "w": 40.0,
+   "d": 1.2,
+   "h": 0.6
   },
   "why": "The vanishing south lip: teal water slides over a black basalt edge and falls toward the cloud sea (11). With the rim walk now kept off it, from anywhere in the pool the horizon is water, then cloud, then moon; it is the image the whole resort sells."
  },
@@ -170,13 +166,14 @@
    "id": "island_w",
    "asset": "rock_cluster",
    "at": [
-    104.0,
-    86.0,
+    99.0,
+    88.0,
     119.6
    ],
    "facing_deg": 0,
    "dims": {
-    "r": 4.0,
+    "w": 6.0,
+    "d": 5.0,
     "h": 2.2
    },
    "why": "Rock island with pines (plan 30), breaks the 50 m water into bays."
@@ -185,12 +182,14 @@
    "id": "island_w_pine",
    "asset": "pine_bonsai",
    "at": [
-    104.5,
-    86.5,
+    99.5,
+    88.5,
     121.6
    ],
    "facing_deg": 180,
    "dims": {
+    "w": 2.6,
+    "d": 2.6,
     "h": 4.5
    }
   },
@@ -204,7 +203,8 @@
    ],
    "facing_deg": 0,
    "dims": {
-    "r": 3.0,
+    "w": 4.5,
+    "d": 4.0,
     "h": 1.8
    }
   },
@@ -218,6 +218,8 @@
    ],
    "facing_deg": 200,
    "dims": {
+    "w": 2.2,
+    "d": 2.2,
     "h": 3.5
    }
   },
@@ -225,16 +227,18 @@
    "id": "inflow_spout",
    "asset": "falls_sheet",
    "at": [
-    85.6,
-    92.6,
+    87.2,
+    92.5,
     120.0
    ],
    "facing_deg": 120,
    "dims": {
     "w": 1.0,
+    "d": 0.4,
     "h": 0.3
    },
-   "why": "Where the spring's rill enters, steaming: the hottest corner."
+   "why": "Where the spring's rill enters, steaming: the hottest corner.",
+   "snap": "given"
   },
   {
    "id": "pool_steps_sw",
@@ -267,6 +271,54 @@
     "steps": 6
    },
    "why": "Entry steps from the north portal."
+  },
+  {
+   "id": "island_n",
+   "asset": "rock_cluster",
+   "at": [
+    115.0,
+    95.0,
+    119.6
+   ],
+   "facing_deg": 20,
+   "dims": {
+    "w": 4.0,
+    "d": 3.0,
+    "h": 1.6
+   },
+   "why": "A third rock finger off the north deck breaks the open water."
+  },
+  {
+   "id": "island_n_pine",
+   "asset": "pine_bonsai",
+   "at": [
+    115.2,
+    95.3,
+    121.2
+   ],
+   "facing_deg": 200,
+   "dims": {
+    "w": 1.8,
+    "d": 1.8,
+    "h": 3.0
+   }
+  },
+  {
+   "id": "moon",
+   "asset": "moon_sky",
+   "at": [
+    175.0,
+    30.0,
+    135.0
+   ],
+   "facing_deg": 305,
+   "dims": {
+    "w": 60,
+    "d": 1,
+    "h": 40
+   },
+   "outside_ok": "Sky backdrop over the cloud sea to the south-east.",
+   "why": "Moon over the cloud sea beyond the lip (11)."
   }
  ],
  "water": [
@@ -298,8 +350,8 @@
      93.4
     ],
     [
-     86.0,
-     92.4
+     87.6,
+     92.5
     ]
    ],
    "width": 0.6,
@@ -381,19 +433,45 @@
  "lights": [
   {
    "asset": "lantern_stone",
-   "along": "water:w_caldera",
-   "side": "out",
-   "spacing": [
-    6.0,
-    9.0
-   ],
-   "offset": 1.4,
-   "face": "water",
-   "avoid": [
-    "portals",
-    "hero"
-   ],
-   "why": "Toro round the deck (plan 30), pooling light on the rim; none on the lip so the edge stays clean."
+   "face": "hero",
+   "why": "Toro bracket both lip ends, mark the SW entry (11's lower-left lantern), the east deck and the north deck.",
+   "at": [
+    [
+     85.0,
+     69.6,
+     120.0
+    ],
+    [
+     95.5,
+     66.4,
+     120.0
+    ],
+    [
+     136.5,
+     66.4,
+     120.0
+    ],
+    [
+     140.0,
+     72.0,
+     120.0
+    ],
+    [
+     140.6,
+     82.0,
+     120.0
+    ],
+    [
+     92.0,
+     101.8,
+     120.0
+    ],
+    [
+     125.0,
+     101.6,
+     120.0
+    ]
+   ]
   },
   {
    "asset": "pool_uplight",
@@ -408,8 +486,8 @@
     ]
    ],
    "spacing": [
-    3.0,
-    3.0
+    6.0,
+    6.0
    ],
    "height": -0.4,
    "why": "Underwater strip along the lip: the hero glows teal (brightest)."
@@ -418,12 +496,12 @@
    "asset": "lantern_floor",
    "at": [
     [
-     86.8,
-     64.6,
+     86.0,
+     64.4,
      120.0
     ],
     [
-     91.2,
+     92.4,
      64.6,
      120.0
     ],
@@ -444,56 +522,214 @@
  "dressing": [
   {
    "asset": "boulder_rim",
-   "along": "water:w_caldera",
-   "side": "out",
-   "spacing": [
-    1.4,
-    2.6
+   "ring": [
+    86.6,
+    94.6
    ],
-   "offset": 0.5,
-   "embed": 0.25,
+   "radius": [
+    0.5,
+    1.0
+   ],
+   "count": 4,
+   "jitter_deg": 25,
    "scale": [
-    0.7,
-    1.4
+    0.6,
+    1.2
    ],
    "avoid": [
     "nav",
     "portals",
     "hero"
-   ]
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "falls_sheet"
+   ],
+   "why": "Rock group at a spout, stair entry or lip end.",
+   "optional": true
   },
   {
-   "asset": "pine_bonsai",
-   "scatter": "edge_band",
-   "band": [
-    0.3,
-    1.5
+   "asset": "boulder_rim",
+   "ring": [
+    86.6,
+    69.8
    ],
-   "density": 0.004,
-   "min_dist": 10.0,
+   "radius": [
+    0.5,
+    1.0
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.2
+   ],
    "avoid": [
     "nav",
     "portals",
-    "hero",
-    8.0
-   ]
+    "hero"
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "falls_sheet"
+   ],
+   "why": "Rock group at a spout, stair entry or lip end.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    103.0,
+    98.9
+   ],
+   "radius": [
+    0.5,
+    1.0
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.2
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "falls_sheet"
+   ],
+   "why": "Rock group at a spout, stair entry or lip end.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    94.6,
+    65.2
+   ],
+   "radius": [
+    0.5,
+    1.0
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.2
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "falls_sheet"
+   ],
+   "why": "Rock group at a spout, stair entry or lip end.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    137.4,
+    65.2
+   ],
+   "radius": [
+    0.5,
+    1.0
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.2
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "falls_sheet"
+   ],
+   "why": "Rock group at a spout, stair entry or lip end.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    121.5,
+    97.8
+   ],
+   "radius": [
+    0.5,
+    1.0
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.2
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    "hero"
+   ],
+   "allow_overlap": [
+    "lantern_stone",
+    "falls_sheet"
+   ],
+   "why": "Rock group at a spout, stair entry or lip end.",
+   "optional": true
+  },
+  {
+   "asset": "pine_bonsai",
+   "at": [
+    [
+     95.0,
+     103.2,
+     120.0
+    ],
+    [
+     110.0,
+     104.0,
+     120.0
+    ]
+   ],
+   "dims": {
+    "w": 1.8,
+    "d": 1.8,
+    "h": 3.2
+   },
+   "why": "Pines on the north deck opposite the island bays."
   },
   {
    "asset": "steam_bench",
    "variant": "bucket_only",
-   "scatter": "edge_band",
-   "band": [
-    0.3,
-    1.2
+   "at": [
+    [
+     84.6,
+     78.0,
+     120.0
+    ],
+    [
+     131.0,
+     99.6,
+     120.0
+    ]
    ],
-   "density": 0.003,
-   "min_dist": 12.0,
-   "avoid": [
-    "nav",
-    "portals",
-    "hero",
-    8.0
-   ]
+   "dims": {
+    "w": 0.5,
+    "d": 0.5,
+    "h": 0.5
+   },
+   "why": "Buckets at the deck edge."
   }
  ],
  "mood": {
@@ -501,5 +737,11 @@
   "palette": "glowing teal water, cold blue-silver night sky, amber toro, black wet rock",
   "mist": "steam over the whole surface, cloud sea below the lip"
  },
- "waivers": []
+ "waivers": [],
+ "allow_overlap": [
+  [
+   "rock_cluster",
+   "pine_bonsai"
+  ]
+ ]
 }

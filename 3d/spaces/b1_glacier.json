@@ -121,7 +121,7 @@
   "variant": "ice wall + icicle curtain",
   "at": [
    182.0,
-   94.4,
+   93.4,
    -20.0
   ],
   "facing_deg": 180,
@@ -149,23 +149,6 @@
     "floor": 0.45
    },
    "why": "Concept 17 right: a warm timber hut with shoji and lanterns; you climb into it out of the cold water."
-  },
-  {
-   "id": "hut_steps",
-   "asset": "stair",
-   "variant": "pool steps",
-   "at": [
-    190.3,
-    83.2,
-    -20.0
-   ],
-   "facing_deg": 270,
-   "dims": {
-    "w": 2.0,
-    "steps": 5,
-    "riser": 0.17
-   },
-   "why": "Timber-edged stone steps from the hut's engawa down into the plunge (concept 17)."
   },
   {
    "id": "hut_rail",
@@ -214,20 +197,196 @@
    "why": "Temperature board inside the door."
   },
   {
+   "id": "hut_steps",
+   "asset": "stair",
+   "variant": "pool steps",
+   "at": [
+    190.3,
+    83.2,
+    -20.0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "w": 2.0,
+    "steps": 8,
+    "riser": 0.17
+   },
+   "why": "Eight steps from the 0.45 m engawa to a submerged landing on the -21.3 bed."
+  },
+  {
    "id": "return_noren",
    "asset": "banner",
    "variant": "noren (warm)",
    "at": [
     170.0,
-    96.4,
-    -17.6
+    96.6,
+    -17.85
    ],
    "facing_deg": 180,
    "dims": {
     "w": 2.8,
-    "h": 0.9
+    "d": 0.05,
+    "h": 0.45
    },
-   "why": "Lookbook: 'one door leads straight back into the steam'. A warm-lit noren at the NW door marks it from the pool."
+   "why": "On the return door head (2.15 m clear)."
+  },
+  {
+   "id": "return_glow",
+   "asset": "noren_glow",
+   "at": [
+    170.0,
+    98.6,
+    -18.6
+   ],
+   "outside_ok": true,
+   "why": "Warm light behind the return noren: the way back to the steam reads from the hut."
+  },
+  {
+   "id": "hut_glow_0",
+   "asset": "noren_glow",
+   "at": [
+    192.3,
+    80.8,
+    -19.0
+   ],
+   "why": "Warm shoji glow on the hut's pool front."
+  },
+  {
+   "id": "hut_glow_1",
+   "asset": "noren_glow",
+   "at": [
+    192.3,
+    85.0,
+    -19.0
+   ],
+   "why": "Warm shoji glow on the hut's pool front."
+  },
+  {
+   "id": "icicles_0",
+   "asset": "stalactite_cluster",
+   "variant": "icicles",
+   "at": [
+    177.0,
+    91.4,
+    -12.5
+   ],
+   "snap": "ceiling",
+   "dims": {
+    "w": 1.4,
+    "d": 1.4,
+    "h": 4.0
+   },
+   "why": "Icicles hanging over the pool's north edge."
+  },
+  {
+   "id": "icicles_1",
+   "asset": "stalactite_cluster",
+   "variant": "icicles",
+   "at": [
+    181.5,
+    91.0,
+    -12.5
+   ],
+   "snap": "ceiling",
+   "dims": {
+    "w": 1.4,
+    "d": 1.4,
+    "h": 4.0
+   },
+   "why": "Icicles hanging over the pool's north edge."
+  },
+  {
+   "id": "icicles_2",
+   "asset": "stalactite_cluster",
+   "variant": "icicles",
+   "at": [
+    186.0,
+    90.9,
+    -12.5
+   ],
+   "snap": "ceiling",
+   "dims": {
+    "w": 1.4,
+    "d": 1.4,
+    "h": 4.0
+   },
+   "why": "Icicles hanging over the pool's north edge."
+  },
+  {
+   "id": "west_rock",
+   "asset": "rock_cluster",
+   "at": [
+    165.2,
+    91.2,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 1.4,
+    "d": 1.0,
+    "h": 0.8
+   },
+   "why": "Rock at the west wall by the return path (was an empty patch)."
+  },
+  {
+   "id": "west_niche_0",
+   "asset": "lantern_niche",
+   "at": [
+    164.15,
+    87.8,
+    -19.75
+   ],
+   "facing_deg": 90.0,
+   "snap": "given",
+   "why": "One warm niche on the west wall between the doors."
+  },
+  {
+   "id": "ne_rocks_0",
+   "asset": "rock_cluster",
+   "at": [
+    195.4,
+    93.0,
+    -20.0
+   ],
+   "facing_deg": 200,
+   "dims": {
+    "w": 1.6,
+    "d": 1.2,
+    "h": 1.0
+   },
+   "why": "Rocks at the east end of the ice wall."
+  },
+  {
+   "id": "ne_rocks_1",
+   "asset": "rock_cluster",
+   "at": [
+    194.2,
+    90.6,
+    -20.0
+   ],
+   "facing_deg": 250,
+   "dims": {
+    "w": 1.6,
+    "d": 1.2,
+    "h": 1.0
+   },
+   "why": "Rocks at the east end of the ice wall."
+  },
+  {
+   "id": "pool_toro",
+   "asset": "lantern_stone",
+   "at": [
+    172.3,
+    85.6,
+    -20.0
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 0.6,
+    "d": 0.6,
+    "h": 1.1
+   },
+   "why": "Low toro on the west rim (empty patch); warm point against the blue."
   }
  ],
  "water": [
@@ -379,11 +538,11 @@
    "path": [
     [
      176.0,
-     92.6
+     92.2
     ],
     [
-     186.0,
-     92.6
+     188.0,
+     92.2
     ]
    ],
    "width": 0.3,
@@ -468,48 +627,16 @@
  },
  "lights": [
   {
-   "asset": "ice_formation",
-   "part": "backlight",
-   "along": [
-    [
-     172.0,
-     95.5
-    ],
-    [
-     192.0,
-     95.5
-    ]
-   ],
-   "spacing": [
-    3.0,
-    4.0
-   ],
-   "color": "cold blue",
-   "why": "Light behind/inside the ice wall: the hero is the brightest thing."
-  },
-  {
-   "asset": "pavilion_engawa",
-   "part": "shoji_glow",
-   "at": [
-    [
-     194.1,
-     82.6,
-     -20.0
-    ]
-   ],
-   "why": "Warm interior of the hut (the only warm block)."
-  },
-  {
    "asset": "lantern_floor",
    "at": [
     [
-     190.9,
-     81.0,
+     191.5,
+     81.7,
      -20.0
     ],
     [
-     190.9,
-     86.0,
+     191.5,
+     85.4,
      -20.0
     ]
    ],
@@ -546,71 +673,128 @@
    "why": "Very sparse warm points on the outer side of the loop path; the room stays blue."
   },
   {
-   "asset": "lantern_hanging",
+   "asset": "lantern_stone",
    "at": [
     [
-     170.0,
-     95.8,
-     -16.8
+     168.3,
+     73.6,
+     -20.0
+    ],
+    [
+     188.6,
+     69.4,
+     -20.0
     ]
    ],
-   "snap": "ceiling",
-   "why": "Warm chochin at the return door."
+   "why": "Warm toro in the SW and SE corners by the loop path, so the corners are not dead zones."
   }
  ],
  "dressing": [
   {
    "asset": "boulder_rim",
    "ring": [
-    182.0,
-    84.0
+    175.6,
+    78.0
    ],
-   "radius": 8.3,
-   "spacing": [
+   "radius": [
+    0.5,
+    1.8
+   ],
+   "count": 6,
+   "jitter_deg": 25,
+   "scale": [
     0.9,
     1.6
    ],
-   "embed": 0.15,
-   "scale": [
-    0.5,
-    1.2
-   ],
-   "avoid": [
-    "nav",
-    "anchored:hut_steps",
-    "anchored:monolith"
-   ],
-   "why": "Wet black boulders round the plunge (concept 17 foreground)."
-  },
-  {
-   "asset": "ice_formation",
-   "variant": "small ice + frost",
-   "along": [
-    [
-     164.4,
-     88.0
-    ],
-    [
-     164.4,
-     95.6
-    ],
-    [
-     197.4,
-     95.6
-    ]
-   ],
-   "spacing": [
-    1.2,
-    2.4
-   ],
-   "snap": "wall",
-   "jitter": 0.3,
+   "embed": 0.12,
+   "face": "out",
    "avoid": [
     "nav",
     "portals",
-    "hero"
+    "anchored",
+    0.3
    ],
-   "why": "Ice creeping along the north walls only."
+   "optional": true,
+   "why": "Big boulders on the SW foreground arc, some half in the water (frames entry/concept)."
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    180.0,
+    76.4
+   ],
+   "radius": [
+    0.4,
+    1.4
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.8,
+    1.4
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    176.5,
+    92.3
+   ],
+   "radius": [
+    0.3,
+    1.2
+   ],
+   "count": 5,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.2
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Jumble at the ice foot."
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    188.0,
+    91.6
+   ],
+   "radius": [
+    0.3,
+    1.2
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.2
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true
   },
   {
    "asset": "rock_cluster",
@@ -619,14 +803,15 @@
     0.3,
     2.2
    ],
-   "density": 0.04,
+   "density": 0.03,
    "avoid": [
     "nav",
     "portals",
     "water",
     "hero",
-    "anchored:warm_hut"
-   ]
+    "anchored"
+   ],
+   "optional": true
   }
  ],
  "mood": {
@@ -635,5 +820,13 @@
   "mist": "Flat cold fog lying on the water, warm steam curling off the hut's engawa where the two airs meet."
  },
  "waivers": [],
+ "layout_request": "w_glacier: make the plunge irregular and run its north edge up to the ice (y ~93) with a rocky inlet under the drip line (layout.json water footprint).",
+ "allow_overlap": [
+  [
+   "ice_formation",
+   "boulder_rim"
+  ]
+ ],
+ "light_notes": "Cold blue backlight inside the ice wall (hero emission) is the brightest; the hut's shoji glow is pavilion_engawa's own light.",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

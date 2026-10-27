@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wave Grotto shoreline</title>
+<script type="importmap">{"imports":{"three":"../../../../web/node_modules/three/build/three.module.js","three/addons/":"../../../../web/node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+<script type="module">
+// Prototype (b): Wave Grotto. Slow heated waves over a black-sand beach in a sea cave, ocean beyond the mouth.
+// One analytic wave function (shoaling over a linear beach, breaking, swash run-up) is shared by the water
+// vertex shader, the sand shader (wet-sand memory, underwater tint) and the crest spray, so all three agree
+// with zero simulation state. See ../README.md.
+import * as THREE from 'three';
+import { createApp, GLSL_COMMON, GLSL_FRAG, BILLBOARD_GLSL, rockMaterial, bakeVertexLight, lumpify, makeNoise3, instancedQuads, bakeProbe, mergeVertices } from '../common/kit.js';
+
+const app = createApp({
+  title: 'Wave Grotto: surf, swash, wet sand',
+  fog: { color: 0x1a2c33, v: [0.0, 0.10, 0.6, 0.004] },
+  cams: [
+    { pos: [-21, 2.0, 7], target: [-6, 0.6, 11], fov: 60 },
+    { pos: [-8, 2.5, -4.5], target: [6, 0.5, 9], fov: 62 },
+    { pos: [1.5, 2.3, -5.5], target: [5, 0.0, 2.5], fov: 55 },
+    { pos: [-18, 9, -12], target: [4, 0, 20], fov: 60 },
+  ],
+});
+const { scene, shared, renderer } = app;
+const nz = makeNoise3(21);
+
+// ------------------------------------------------------------------ the shared wave model
+// Linear beach: bed y = -SLOPE*z for z>0 (sea), sand rises for z<0. Deep part depth DD.
+const W = { P: 5.5, A: 0.7, SLOPE: 0.18, DD: 4.0, R0: 0.5, TU: 2.3, DRY: 7.0 };
+const WAVE_GLSL = /* glsl */`
+uniform vec4 uWave;   // P, A deep, slope, deep depth
+uniform vec4 uSwash;  // R0, Tu, dry time, -
+#define GRAV 9.81
+float tArr(float z){                     // shallow-water travel time from the shoreline out to z
+  float s = uWave.z, Dd = uWave.w, zd = Dd/s, zz = max(z, 0.0);
+  float t = 2.0*sqrt(min(zz, zd))/sqrt(GRAV*s);
+  if (zz > zd) t += (zz - zd)/sqrt(GRAV*Dd);
+  return t;
+}
+float lat(float x){ return x*0.009 + 0.25*(texture(tNoise, vec2(x*0.011, 0.31)).r - 0.5); }  // oblique, wavy crest lines
+float phaseAt(vec2 xz, float t){ return (t + tArr(xz.y))/uWave.x + lat(xz.x); }
+float bedY(vec2 xz){ return xz.y > 0.0 ? -min(xz.y*uWave.z, uWave.w) : -xz.y*uWave.z*(1.0 - smoothstep(-9.0, -4.0, xz.y)*0.0); }
+float hash1(float n){ return fract(sin(n*127.1)*43758.5453); }
+// wave elevation + breaking factor + crest phase
+vec3 waves(vec2 xz, float t){
+  // Explicit crest-relative profile instead of a sine: a gentle back slope and a front face whose length shrinks to
+  // ~0.5 H once the wave passes its breaking depth, so the face stands up (concave, near vertical) under the lip.
+  float D = clamp(xz.y*uWave.z, 0.0, uWave.w);
+  float ph = phaseAt(xz, t);
+  float n = floor(ph); float p = ph - n;
+  float lam = sqrt(GRAV*max(D, 0.12))*uWave.x;                       // local wavelength from the shallow-water speed
+  float shoal = pow(uWave.w/max(D, 0.06), 0.25);                     // Green's law
+  float mulF = 0.75 + 0.5*hash1(n + 1.0), mulB = 0.75 + 0.5*hash1(n); // per-wave height (front = arriving crest)
+  float AsF = uWave.y*mulF*shoal, AsB = uWave.y*mulB*shoal;
+  float br = smoothstep(0.75, 1.15, AsF/(0.45*max(D, 0.01)));        // past H/D ~ 0.9
+  float AF = min(AsF, 0.5*D + 0.02), AB = min(AsB, 0.5*D + 0.02);
+  float df = (1.0 - p)*lam, db = p*lam;
+  float faceLen = mix(lam*0.33, max(0.75*2.0*AF, 0.5), br);
+  float front = AF - 2.0*AF*pow(smoothstep(0.0, faceLen, df), 0.65);
+  float back  = AB - 2.0*AB*smoothstep(0.0, lam*0.55, db);
+  float e = max(front, back);
+  e += 0.05*min(D, 1.0)*sin(6.2832*((t + tArr(xz.y)*1.15)/3.9) - xz.x*0.21);   // crossing chop
+  e *= 1.0 - smoothstep(60.0, 85.0, xz.y);
+  return vec3(e, br, p);
+}
+// shoreline elevation from the last few waves' run-up (ballistic swash lens)
+float swash(float x, float t){
+  float ph = t/uWave.x + lat(x); float n = floor(ph); float best = -1.0;
+  for (int k = 0; k < 3; k++){
+    float nk = n - float(k); float tau = (ph - nk)*uWave.x;
+    float R = uSwash.x*(0.6 + 0.8*hash1(nk));
+    float u = (tau - uSwash.y)/uSwash.y;
+    if (tau < 2.0*uSwash.y) best = max(best, R*(1.0 - u*u));
+  }
+  return best;
+}
+// how wet sand at elevation b is: 1 while covered, then dries over uSwash.z seconds
+float wetness(float x, float b, float t){
+  float ph = t/uWave.x + lat(x); float n = floor(ph); float w = 0.0;
+  for (int k = 0; k < 4; k++){
+    float nk = n - float(k); float tau = (ph - nk)*uWave.x;
+    float R = uSwash.x*(0.6 + 0.8*hash1(nk));
+    if (b < R){
+      float h = uSwash.y*sqrt(1.0 - b/R);
+      float ex = uSwash.y + h;
+      if (tau > uSwash.y - h && tau < ex) w = 1.0;
+      else if (tau >= ex) w = max(w, exp(-(tau - ex)/uSwash.z));
+    }
+  }
+  return max(w, 0.45*smoothstep(uSwash.x*1.1, uSwash.x*0.3, b));
+}
+float surfaceY(vec2 xz, float t, out vec3 wv){
+  wv = waves(xz, t);
+  float s = swash(xz.x, t);
+  float shore = 1.0 - smoothstep(0.0, 2.5, xz.y);
+  return max(wv.x, mix(-9.0, s, shore));
+}`;
+const waveU = { uWave: { value: new THREE.Vector4(W.P, W.A, W.SLOPE, W.DD) }, uSwash: { value: new THREE.Vector4(W.R0, W.TU, W.DRY, 0) } };
+
+// ------------------------------------------------------------------ baked lights
+const WARM = new THREE.Color(1.0, 0.55, 0.22), TEAL = new THREE.Color(0.12, 0.95, 0.85), MOON = new THREE.Color(0.45, 0.6, 0.9);
+const lanterns = [[-20, 1.4, -7], [-15, 1.4, -11], [-6, 1.4, -11.5], [3, 1.4, -10.5], [10, 1.4, -11], [-22, 3.5, -2], [-23, 3.2, 8]];
+const uplights = []; for (let z = 4; z < 40; z += 7) for (let x = -20; x <= 20; x += 10) uplights.push([x + (z % 2) * 3, -bed(z) * 0 - Math.min(z * W.SLOPE, W.DD) + 0.3, z]);
+function bed(z) { return z > 0 ? -Math.min(z * W.SLOPE, W.DD) : -z * W.SLOPE; }
+const LIGHTS = [
+  ...lanterns.map(p => ({ pos: new THREE.Vector3(...p), color: WARM, intensity: 7 })),
+  ...uplights.map(p => ({ pos: new THREE.Vector3(...p), color: TEAL, intensity: 6, wrap: 0.5 })),
+  { pos: new THREE.Vector3(10, 30, 140), color: MOON, intensity: 2600 },
+];
+
+// ------------------------------------------------------------------ sand (lightmapped look + wet memory + underwater tint)
+const sandMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, ...waveU, tEnv: { value: null }, uGl: { value: lanterns.slice(0, 5).map(p => new THREE.Vector4(...p, 1)) } },
+  vertexShader: /* glsl */`attribute vec3 color; varying vec3 vCol; varying vec3 vW;
+    void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; vCol = color; gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: GLSL_COMMON + WAVE_GLSL + /* glsl */`
+    uniform samplerCube tEnv; uniform vec4 uGl[5];
+    varying vec3 vCol; varying vec3 vW;
+    void main(){
+      float b = vW.y;
+      vec4 n = texture(tNoise, vW.xz*0.35);
+      float grain = texture(tNoise, vW.xz*3.1).a;
+      vec3 alb = vec3(0.055, 0.052, 0.05)*(0.75 + 0.5*n.r)*(0.8 + 0.4*grain);
+      vec3 wv; float sy = surfaceY(vW.xz, uTime, wv);
+      float d = sy - b;
+      float w = wetness(vW.x, b, uTime);
+      float film = smoothstep(0.55, 1.0, w);                  // a glassy film right after the water leaves
+      alb *= mix(1.0, 0.45, w);
+      vec3 col = alb*vCol*3.0;
+      vec3 V = normalize(cameraPosition - vW);
+      vec3 N = normalize(vec3(0.0, 1.0, 0.12) + vec3(n.g-0.5, 0.0, n.a-0.5)*0.12*(1.0-film));
+      float F = 0.02 + 0.98*pow(1.0 - max(dot(N, V), 0.0), 5.0);
+      vec3 refl = textureLod(tEnv, reflect(-V, N), mix(5.0, 1.0, film)).rgb;
+      vec3 spec = vec3(0.0);
+      for (int i=0;i<5;i++){ vec3 L = uGl[i].xyz - vW; float d2 = dot(L,L); L *= inversesqrt(d2); spec += vec3(1.0,0.6,0.3)*pow(max(dot(N, normalize(L+V)),0.0), mix(40.0, 600.0, film))*mix(0.3, 18.0, film)/(1.0+d2*0.05); }
+      col += (refl*F*1.4 + spec)*w;
+      // black-sand mica sparkle on the dry part
+      col += vec3(1.0,0.8,0.6)*pow(texture(tNoise, vW.xz*9.0 + V.xz*0.3).g < 0.035 ? 1.0 : 0.0, 1.0)*0.25*(1.0-w)*dot(vCol, vec3(0.5));
+      if (d > 0.0){
+        vec3 rd = -V; float path = d/max(abs(rd.y),0.2) + d;
+        vec3 T = exp(-vec3(0.5, 0.07, 0.10)*path);
+        float b1 = texture(tNoise, vW.xz*0.3 + uTime*vec2(0.02,-0.05)).b, b2 = texture(tNoise, vW.xz*0.41 - uTime*vec2(0.035,0.02)).b;
+        float caust = pow(clamp(1.0 - (b1+b2)*0.9, 0.0, 1.0), 3.0)*4.0;
+        col = vec3(dot(col, vec3(0.3,0.6,0.1)))*vec3(0.5,1.0,0.95);
+        col = col + alb*caust*vec3(0.3,1.0,0.9)*exp(-d*0.4)*(0.3 + dot(vCol, vec3(0.2,0.6,0.2))*2.0);
+        vec3 sc = vec3(0.006, 0.11, 0.10)*(0.3 + 1.4*min(dot(vCol, vec3(0.2,0.6,0.2)), 1.5));
+        col = col*T + sc*(1.0 - exp(-0.3*path));
+      }
+      gl_FragColor = vec4(applyFog(col, vW), 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+});
+function buildSand(low) {
+  // dense near the shoreline, coarse far out
+  const nx = low ? 70 : 140, nzc = low ? 70 : 150;
+  const g = new THREE.PlaneGeometry(1, 1, nx, nzc); g.rotateX(-Math.PI / 2);
+  const pos = g.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const u = pos.getX(i) + 0.5, v = pos.getZ(i) + 0.5;
+    const x = -27 + 54 * u; const z = -14 + 72 * Math.pow(v, 1.6);
+    let y = bed(z);
+    if (z < -9) y = 9 * W.SLOPE + (-9 - z) * 0.05;
+    y += 0.025 * nz(x * 0.7, 0, z * 0.7, 2) + (z > 6 ? 0.25 * nz(x * 0.15, 1, z * 0.15, 3) : 0);
+    y -= Math.max(0, Math.abs(x) - 22) * 0.6;   // tuck under the cave walls
+    pos.setXYZ(i, x, y, z);
+  }
+  bakeVertexLight(g, LIGHTS, new THREE.Color(0.01, 0.014, 0.02));
+  return g;
+}
+const sand = new THREE.Mesh(buildSand(app.state.low), sandMat); scene.add(sand);
+
+// ------------------------------------------------------------------ cave: half-tunnel + back wall + stalactites
+function buildCave() {
+  let g = new THREE.CylinderGeometry(26, 26, 70, 64, 40, true, Math.PI * 0.38, Math.PI * 1.24);
+  g.rotateX(Math.PI / 2); g.translate(0, -2, 19);
+  { const ix = g.index.array; for (let i = 0; i < ix.length; i += 3) { const t = ix[i + 1]; ix[i + 1] = ix[i + 2]; ix[i + 2] = t; } }  // inward-facing
+  g = lumpify(g, 2.4, 0.09, 4, 5);
+  const pos = g.attributes.position;
+  for (let i = 0; i < pos.count; i++) { pos.setY(i, pos.getY(i) * 0.66 - 1.0); }
+  // stalactites
+  const parts = [g];
+  for (let i = 0; i < 34; i++) {
+    const x = (Math.random() - 0.5) * 36, z = -10 + Math.random() * 60;
+    const yTop = Math.sqrt(Math.max(0, 26 * 26 - x * x)) * 0.66 - 3.0;
+    const L = 0.8 + Math.random() * Math.random() * 4;
+    let c = new THREE.ConeGeometry(0.45 + L * 0.2, L, 8, 4); c.rotateX(Math.PI); c.translate(x, yTop - L / 2 + 0.5, z);
+    c = lumpify(c, 0.12, 1.2, 30 + i, 2);
+    parts.push(c);
+  }
+  let back = new THREE.CircleGeometry(27, 40); back.translate(0, 2, -16); back = lumpify(back, 2.0, 0.12, 9, 4); parts.push(back);
+  let merged = mergeAll(parts.map(p => { const q = p.index ? p.toNonIndexed() : p; q.deleteAttribute('uv'); q.deleteAttribute('normal'); return q; }));
+  merged = mergeVertices(merged); merged.computeVertexNormals();
+  return merged;
+}
+function mergeAll(geos) {
+  let n = 0; geos.forEach(g => n += g.attributes.position.count);
+  const pos = new Float32Array(n * 3); let o = 0;
+  for (const g of geos) { pos.set(g.attributes.position.array, o); o += g.attributes.position.array.length; }
+  const out = new THREE.BufferGeometry(); out.setAttribute('position', new THREE.BufferAttribute(pos, 3)); return out;
+}
+const caveMat = rockMaterial(shared, { tint: 0x2a2b2e, wet: 0.6, scale: 0.5 }); caveMat.side = THREE.DoubleSide;
+const caveGeo = buildCave();
+bakeVertexLightKeepNormals(caveGeo, LIGHTS, new THREE.Color(0.012, 0.016, 0.022));
+function bakeVertexLightKeepNormals(geo, lights, amb) {
+  const pos = geo.attributes.position, nor = geo.attributes.normal; const col = new Float32Array(pos.count * 3);
+  const p = new THREE.Vector3(), nn = new THREE.Vector3(), L = new THREE.Vector3();
+  for (let i = 0; i < pos.count; i++) {
+    p.fromBufferAttribute(pos, i); nn.fromBufferAttribute(nor, i); let r = amb.r, g = amb.g, b = amb.b;
+    for (const l of lights) { L.copy(l.pos).sub(p); const d2 = Math.max(L.lengthSq(), 0.25); L.normalize(); const ndl = l.wrap ? Math.max((nn.dot(L) + l.wrap) / (1 + l.wrap), 0) : Math.max(nn.dot(L), 0); const f = ndl * l.intensity / d2; r += l.color.r * f; g += l.color.g * f; b += l.color.b * f; }
+    col[i * 3] = r; col[i * 3 + 1] = g; col[i * 3 + 2] = b;
+  }
+  geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+}
+const cave = new THREE.Mesh(caveGeo, caveMat); scene.add(cave);
+
+// sea stacks outside the mouth (silhouettes)
+const stacks = []; for (const [x, z, h, r] of [[-30, 120, 22, 6], [-12, 170, 14, 4], [25, 140, 26, 7], [40, 200, 12, 5], [6, 260, 9, 3]]) {
+  let c = new THREE.CylinderGeometry(r * 0.5, r, h, 12, 8); c.translate(x, h / 2 - 2, z); c = lumpify(c, r * 0.25, 0.25, x | 0, 3); stacks.push(c.toNonIndexed());
+}
+const stackGeo = mergeAll(stacks); stackGeo.computeVertexNormals(); bakeVertexLight(stackGeo, [{ pos: new THREE.Vector3(10, 30, 400), color: MOON, intensity: 9000 }], new THREE.Color(0.004, 0.006, 0.01));
+const stackMesh = new THREE.Mesh(stackGeo, rockMaterial(shared, { tint: 0x2a2b2e, scale: 0.3 })); scene.add(stackMesh);
+
+// ------------------------------------------------------------------ sky + moon (one draw)
+const MOON_DIR = new THREE.Vector3(0.1, 0.16, 1).normalize();
+const sky = new THREE.Mesh(new THREE.SphereGeometry(900, 32, 16), new THREE.ShaderMaterial({
+  uniforms: { ...shared, uMoon: { value: MOON_DIR } }, side: THREE.BackSide, depthWrite: false,
+  vertexShader: `varying vec3 vD; void main(){ vD = normalize(position); gl_Position = projectionMatrix*viewMatrix*vec4(position + cameraPosition, 1.0); gl_Position.z = gl_Position.w; }`,
+  fragmentShader: GLSL_COMMON + /* glsl */`uniform vec3 uMoon; varying vec3 vD;
+    void main(){
+      vec3 d = normalize(vD); float h = max(d.y, 0.0);
+      vec3 col = mix(vec3(0.025,0.035,0.06), vec3(0.004,0.006,0.015), pow(h, 0.5));
+      float m = dot(d, uMoon);
+      col += vec3(1.0,0.97,0.9)*smoothstep(0.99955, 0.9997, m)*6.0 + vec3(0.25,0.32,0.45)*pow(max(m,0.0), 400.0)*0.5 + vec3(0.05,0.07,0.1)*pow(max(m,0.0), 30.0)*0.3;
+      float cl = texture(tNoise, d.xz/(d.y+0.15)*0.6 + vec2(uTime*0.002, 0.0)).r;
+      col = mix(col, vec3(0.04,0.05,0.07)*(0.6 + pow(max(m,0.0), 8.0)*2.5), smoothstep(0.5, 0.75, cl)*0.7*smoothstep(0.0, 0.15, d.y));
+      float st = texture(tNoise, d.xz/(d.y+0.3)*3.0).g; col += smoothstep(0.03, 0.0, st)*0.5*h;
+      gl_FragColor = vec4(col, 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+}));
+sky.frustumCulled = false; sky.renderOrder = -1; scene.add(sky);
+
+// ------------------------------------------------------------------ water
+const WATER_VS = GLSL_COMMON + WAVE_GLSL + /* glsl */`
+varying vec3 vW; varying vec3 vN; varying vec3 vWave; varying float vBed;
+void main(){
+  vec3 p = (modelMatrix*vec4(position,1.0)).xyz;
+  vec3 wv, w1, w2; float e = 0.25;
+  float y  = surfaceY(p.xz, uTime, wv);
+  float yx = surfaceY(p.xz + vec2(e, 0.0), uTime, w1);
+  float yz = surfaceY(p.xz + vec2(0.0, e), uTime, w2);
+  vN = normalize(vec3(-(yx-y)/e, 1.0, -(yz-y)/e));
+  vWave = wv; vBed = p.z < 0.0 ? -p.z*uWave.z : -min(p.z*uWave.z, uWave.w);
+  p.y = y; vW = p;
+  gl_Position = projectionMatrix*viewMatrix*vec4(p,1.0);
+}`;
+const CURL_BASE = /* glsl */`
+float zOfT0(float tt){ float c = sqrt(GRAV*uWave.z)*0.5; return (tt*c)*(tt*c); }
+float breakZ0(float n){ float mul = 0.75 + 0.5*hash1(n); float Db = pow(uWave.y*mul*pow(uWave.w, 0.25)/0.45, 0.8); return Db/uWave.z; }
+// shadow inside the barrel: the front face just below a throwing lip is enclosed and darker
+float barrel(vec2 xz, float t){
+  float sh = 0.0;
+  for (int k = 0; k < 2; k++){
+    float n = floor(phaseAt(vec2(xz.x, 15.0), t)) - float(k);
+    float tz = (n - lat(xz.x))*uWave.x - t; if (tz <= 0.05) continue;
+    float zc = zOfT0(tz);
+    float s = clamp((breakZ0(n) - zc)/4.5, 0.0, 1.4);
+    float d = zc - xz.y;                                   // metres shoreward of the crest
+    sh = max(sh, smoothstep(0.15, 0.5, s)*(1.0 - smoothstep(0.9, 1.2, s))*smoothstep(-0.2, 0.3, d)*(1.0 - smoothstep(1.2, 2.6, d)));
+  }
+  return sh;
+}`;
+const WATER_FS = GLSL_COMMON + GLSL_FRAG + WAVE_GLSL + CURL_BASE + /* glsl */`
+uniform sampler2D tNormal; uniform samplerCube tEnv; uniform vec3 uMoon; uniform vec4 uGl[5];
+varying vec3 vW; varying vec3 vN; varying vec3 vWave; varying float vBed;
+void main(){
+  float depth = vW.y - vBed;
+  float br = vWave.y, p = vWave.z;
+  vec2 uv = vW.xz*0.16;
+  vec3 n0 = texture(tNormal, uv + vec2(0.0, uTime*0.025)).xyz*2.0-1.0;
+  vec3 n1 = texture(tNormal, uv*2.3 + vec2(uTime*0.02, -uTime*0.03)).xyz*2.0-1.0;
+#ifdef LOW
+  vec2 nd = n0.xy;
+#else
+  vec2 nd = n0.xy + n1.xy*0.6;
+#endif
+  vec3 N = normalize(vN + vec3(nd.x, 0.0, nd.y)*0.22);
+  vec3 V = normalize(cameraPosition - vW);
+  float F = 0.02 + 0.98*pow(1.0 - max(dot(N,V),0.0), 5.0);
+  vec3 refl = textureLod(tEnv, reflect(-V, N), 1.0).rgb;
+  vec3 R = reflect(-V, N);
+  vec3 spec = vec3(1.0,0.95,0.85)*pow(max(dot(R, uMoon), 0.0), 900.0)*25.0;
+  for (int i=0;i<5;i++){ vec3 L = uGl[i].xyz - vW; float d2 = dot(L,L); L *= inversesqrt(d2); spec += vec3(1.0,0.6,0.3)*pow(max(dot(N, normalize(L+V)),0.0), 500.0)*20.0/(1.0+d2*0.05); }
+  // glowing wave bodies: thin crests and steep faces let the underwater light through
+  float crest = smoothstep(-0.1, 0.5, vWave.x)*smoothstep(0.3, 3.5, depth);
+  float face = clamp(1.0 - vN.y*1.15, 0.0, 1.0);
+  vec3 glow = vec3(0.03, 0.42, 0.38)*(crest*0.9 + face*2.6)*(1.0 - smoothstep(30.0, 60.0, vW.z));
+  float bshade = barrel(vW.xz, uTime);
+  glow *= 1.0 - 0.7*bshade;
+  // foam: breaking crests, trailing surf foam, swash edge
+  float shoreDrift = clamp(-vW.z, 0.0, 6.0);
+  vec2 fuv = vec2(vW.x*0.22, vW.z*0.22 + uTime*0.05 + (vW.y - 0.0)*0.6);
+  // lace = bright cell borders at two scales (bubble network), modulated by low-frequency patches
+  fuv += (texture(tNoise, fuv*0.45 + 0.6).ra - 0.5)*0.45;                        // domain warp: organic, not Voronoi
+  float lace = 1.0 - texture(tNoise, fuv).b;
+  float laceF = 1.0 - texture(tNoise, fuv*2.3 + 0.17).b;
+  float lace2 = texture(tNoise, fuv*0.37 + 0.3).r;
+  float pat = max(lace, laceF*0.85)*0.6 + lace2*0.55 - 0.1;
+  float front = smoothstep(0.86, 0.99, p) + smoothstep(0.32, 0.0, p);            // crest front + roller
+  float trail = exp(-p*4.0)*0.75 + 0.08*pat;                                     // fading foam behind the bore
+  float cover = br*(front*0.75 + trail*0.5);
+  float edge = 1.0 - smoothstep(0.0, 0.06, depth);                               // thin swash edge
+  cover = max(cover, edge*0.95 + (1.0 - smoothstep(0.0, 0.12, depth))*0.3*step(vW.z, 1.0));
+  cover = clamp(cover, 0.0, 0.97);
+  float foam = smoothstep(1.0-cover-0.08, 1.0-cover+0.08, pat);
+  float relief = clamp(0.4 + 0.8*N.y, 0.3, 1.1);
+  vec3 foamCol = vec3(0.62, 0.80, 0.82)*(0.35 + 0.55*pat)*relief + glow*0.5;
+  float a = clamp(F, 0.0, 1.0);
+  vec3 col = (refl*F + spec)*(1.0 - 0.6*bshade) + glow;
+  if (uSceneOn > 0.5){
+    // High: refract the sand/seabed through the wave surface (depth-checked so nothing in front leaks in)
+    vec2 off = N.xz*0.05*clamp(sceneGap(vW), 0.0, 1.0);
+    if (sceneDepthAt(off) < viewDepth(vW)) off = vec2(0.0);
+    col += sceneColor(off)*(1.0 - F); a = 1.0;
+  }
+  vec4 outc = vec4(col*(1.0-foam) + foamCol*foam, a*(1.0-foam) + foam);
+  outc *= smoothstep(0.0, 0.015, depth);
+  outc = applyFogPM(outc, vW);
+  gl_FragColor = outc;
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+const waterMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, ...waveU, tNormal: { value: app.tex.normal }, tEnv: { value: null }, uMoon: { value: MOON_DIR }, uGl: sandMat.uniforms.uGl },
+  vertexShader: WATER_VS, fragmentShader: WATER_FS, transparent: true, depthWrite: false,
+  blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+function buildWater(low) {
+  const nx = low ? 130 : 260, nzc = low ? 150 : 300;
+  const g = new THREE.PlaneGeometry(1, 1, nx, nzc); g.rotateX(-Math.PI / 2);
+  const pos = g.attributes.position;
+  // 70% of the rows in the surf zone (z -5..17): steep breaker faces need short rows
+  const zOf = v => v < 0.7 ? -5 + 22 * (v / 0.7) : 17 + 73 * Math.pow((v - 0.7) / 0.3, 1.6);
+  for (let i = 0; i < pos.count; i++) { const u = pos.getX(i) + 0.5, v = pos.getZ(i) + 0.5; pos.setXYZ(i, -26 + 52 * u, 0, zOf(v)); }
+  g.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 0, 40), 80);
+  return g;
+}
+const water = new THREE.Mesh(buildWater(app.state.low), waterMat); water.renderOrder = 1; water.frustumCulled = false; scene.add(water);
+// far ocean beyond the mouth: flat plane, normal map + moon glitter
+const farMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, tNormal: { value: app.tex.normal }, uMoon: { value: MOON_DIR } },
+  vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: GLSL_COMMON + /* glsl */`uniform sampler2D tNormal; uniform vec3 uMoon; varying vec3 vW;
+    void main(){
+      float dist = length(vW - cameraPosition);
+      vec2 nd = (texture(tNormal, vW.xz*0.03 + vec2(0.0, uTime*0.01)).xy*2.0-1.0) + (texture(tNormal, vW.xz*0.011 - vec2(uTime*0.004, 0.0)).xy*2.0-1.0);
+      vec3 N = normalize(vec3(nd.x*0.35, 1.0, nd.y*0.35));
+      vec3 V = normalize(cameraPosition - vW); vec3 R = reflect(-V, N);
+      float F = 0.02 + 0.98*pow(1.0 - max(dot(N,V),0.0), 5.0);
+      vec3 skyc = mix(vec3(0.025,0.035,0.06), vec3(0.004,0.006,0.015), pow(max(R.y,0.0), 0.5));
+      vec3 col = vec3(0.004,0.02,0.03) + skyc*F + vec3(1.0,0.95,0.85)*pow(max(dot(R, uMoon),0.0), 300.0)*8.0;
+      col = mix(col, vec3(0.025,0.035,0.06), smoothstep(200.0, 900.0, dist));
+      gl_FragColor = vec4(col, 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+});
+const far = new THREE.Mesh(new THREE.PlaneGeometry(3000, 1600, 1, 1).rotateX(-Math.PI / 2).translate(0, -0.15, 85 + 800), farMat); scene.add(far);
+
+// ------------------------------------------------------------------ plunging lips: crest-driven curl sheets
+// For the two crests inside the surf zone, a strip follows each crest line (x across the cave). Its cross-section is
+// an elliptical arc thrown shoreward from the crest top; the arc length grows with the breaking stage s, which comes
+// from how far that crest has travelled past its own breaking depth (Green's-law shoaling, H/D ~ 0.9). Because the
+// crest lines are oblique and wavy, s differs along x and the curl PEELS along the wave. s > 1: the lip has landed,
+// the sheet dissolves into the whitewater bore and the plunge splash below.
+const CURL_GLSL = /* glsl */`
+float zOfT(float tt){ float c = sqrt(GRAV*uWave.z)*0.5; return (tt*c)*(tt*c); }
+float breakZ(float n){ float mul = 0.75 + 0.5*hash1(n); float Db = pow(uWave.y*mul*pow(uWave.w, 0.25)/0.45, 0.8); return Db/uWave.z; }
+// crest k (0 = newest inside the zone) at lateral x: returns (z, stage, height), height<0 when none
+vec3 crestInfo(float x, float k, float t){
+  float n = floor(phaseAt(vec2(x, 15.0), t)) - k;
+  float tz = (n - lat(x))*uWave.x - t;
+  if (tz <= 0.05) return vec3(0.0, 0.0, -1.0);
+  float zc = zOfT(tz);
+  float s = clamp((breakZ(n) - zc)/4.5, 0.0, 1.4);
+  vec3 wv = waves(vec2(x, zc), t);
+  return vec3(zc, s, max(wv.x, 0.04));
+}
+vec3 lipPoint(float x, float zc, float s, float Hc, float j, out vec3 N){
+  // lip varies along the crest: some sections throw further and earlier than others
+  float vx = texture(tNoise, vec2(x*0.045, 0.73)).r - 0.5;
+  float sl = clamp(s + vx*0.5, 0.0, 1.4);
+  float thMax = min(sl, 1.0)*3.3;
+  float th = j*thMax;
+  float H = 2.0*Hc;                               // crest-to-trough
+  float a = H*(0.35 + 0.85*min(sl, 1.0))*(1.0 + vx*0.5), b = H*0.5;
+  // spiral: the radius tightens toward the tip, so the lip curls in instead of drawing a circle
+  float k = 1.0 - 0.28*(th/3.3);
+  float lift = H*0.14*sin(th*0.5)*min(sl*2.0, 1.0);
+  vec3 C = vec3(x, Hc - b, zc);
+  vec3 T = vec3(0.0, -b*k*sin(th), -a*k*cos(th));
+  N = normalize(cross(vec3(1.0, 0.0, 0.0), T));
+  return C + vec3(0.0, b*k*cos(th) + b*(1.0 - k) + lift, -a*k*sin(th));
+}`;
+const CURL_VS = GLSL_COMMON + WAVE_GLSL + CURL_GLSL + /* glsl */`
+uniform float uK; varying vec3 vW; varying vec3 vN; varying float vS; varying float vJ; varying float vAlive;
+void main(){
+  float x = mix(-24.0, 24.0, uv.x);
+  vec3 ci = crestInfo(x, uK, uTime);
+  float alive = step(0.0, ci.z)*smoothstep(0.02, 0.1, ci.y)*(1.0 - smoothstep(1.05, 1.35, ci.y));
+  vec3 N; vec3 p = lipPoint(x, ci.x, ci.y, ci.z, uv.y, N);
+  if (alive <= 0.0) p = vec3(x, -10.0, 0.0);
+  vW = p; vN = N; vS = ci.y; vJ = uv.y; vAlive = alive;
+  gl_Position = projectionMatrix*viewMatrix*vec4(p, 1.0);
+}`;
+const CURL_FS = GLSL_COMMON + GLSL_FRAG + /* glsl */`
+uniform samplerCube tEnv; uniform vec3 uMoon;
+varying vec3 vW; varying vec3 vN; varying float vS; varying float vJ; varying float vAlive;
+void main(){
+  vec3 V = normalize(cameraPosition - vW);
+  vec3 N = normalize(gl_FrontFacing ? vN : -vN);
+  float n1 = texture(tNoise3, vec3(vW.x*0.09, vJ*0.5 + uTime*0.05, vS*0.3)).r;
+  float n2 = texture(tNoise3, vec3(vW.x*0.31, vJ*1.7 - uTime*0.21, 0.6)).b;
+  N = normalize(N + vec3((n1 - 0.5)*0.5, 0.0, (n2 - 0.5)*0.5));
+  float F = 0.02 + 0.98*pow(1.0 - abs(dot(N, V)), 5.0);
+  vec3 refl = textureLod(tEnv, reflect(-V, N), 1.0).rgb;
+  float thin = mix(0.35, 1.0, vJ);                        // the lip thins toward its tip: more light gets through
+  vec3 glow = vec3(0.04, 0.62, 0.56)*(0.55 + 1.3*thin)*(0.8 + 0.4*n1)*(gl_FrontFacing ? 1.0 : 0.45);   // barrel interior is darker
+  glow += vec3(0.35, 0.75, 0.8)*pow(max(dot(-V, uMoon), 0.0), 6.0)*thin*1.5;                         // moon behind the wave shines through the lip
+  // whitewater: the tip feathers first, everything goes white as the lip lands
+  float tip = smoothstep(0.78, 1.0, vJ)*smoothstep(0.35, 0.95, vS);
+  float landed = smoothstep(0.85, 1.25, vS);
+  float lace = texture(tNoise3, vec3(vW.x*0.45, vJ*2.2 - uTime*0.35, 0.3)).a;
+  float cover = clamp(tip*0.9 + landed, 0.0, 0.97);
+  float foam = smoothstep(1.0 - cover - 0.12, 1.0 - cover + 0.12, (1.0 - lace)*0.7 + n2*0.5);
+  vec3 foamCol = vec3(0.62, 0.82, 0.84)*(0.5 + 0.5*n2) + glow*0.3;
+  vec3 col; float a;
+  if (uSceneOn > 0.5){
+    vec3 refr = sceneColor(N.xy*0.06)*vec3(0.35, 0.95, 0.85);  // see the sand and the moonlit sea through the lip
+    col = refr*(1.0 - F)*0.7 + glow*0.55 + refl*F; a = 1.0;
+  } else { col = glow*0.8 + refl*F; a = 0.85; }
+  vec4 o = vec4(col*(1.0 - foam) + foamCol*foam, a*(1.0 - foam) + foam);
+  float rag = texture(tNoise3, vec3(vW.x*0.6, uTime*0.4, vS)).r;
+  o *= vAlive*(1.0 - smoothstep(0.82 + 0.3*(rag - 0.5), 1.0, vJ)*0.9);        // torn, uneven lip edge
+  o *= smoothstep(0.25, 0.45, n2 + 0.35 + (1.0 - vJ));                        // the thin tip opens holes
+  gl_FragColor = applyFogPM(o, vW);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+const curlGeo = low => new THREE.PlaneGeometry(1, 1, low ? 100 : 220, low ? 12 : 24);
+const curls = [0, 1].map(k => {
+  const m = new THREE.ShaderMaterial({
+    uniforms: { ...shared, ...waveU, uK: { value: k }, tEnv: { value: null }, uMoon: { value: MOON_DIR } },
+    vertexShader: CURL_VS, fragmentShader: CURL_FS, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+  });
+  const mesh = new THREE.Mesh(curlGeo(app.state.low), m); mesh.frustumCulled = false; mesh.renderOrder = 2; scene.add(mesh); return mesh;
+});
+
+// ------------------------------------------------------------------ spray off the lips and the plunge splash: lit droplets + eroded mist
+const SPRAY_VS = GLSL_COMMON + BILLBOARD_GLSL + WAVE_GLSL + CURL_GLSL + /* glsl */`
+attribute float aSeed; uniform vec4 uP; uniform float uPix; // life, size0, size1, kind (0 droplets, 1 mist)
+varying float vA; varying vec2 vUv; varying vec3 vW; varying vec3 vCol; varying float vSeed; varying float vAge;
+void main(){
+  float life = uP.x; vec3 r = hash31(aSeed*1.73 + 0.2 + uP.w);
+  float tt = uTime + r.x*life; float age = mod(tt, life); float cyc = floor(tt/life);
+  vec3 r2 = hash31(aSeed*4.31 + cyc*7.7), r3 = hash31(aSeed*2.9 + cyc*3.1 + 5.0);
+  float x = mix(-22.0, 22.0, r2.x);
+  float t0 = uTime - age;
+  vec3 ci = crestInfo(x, floor(r2.y*1.999), t0);
+  vec3 Nn; float ok = step(0.0, ci.z);
+  vec3 p0, v0; float drag, grav;
+  float c = sqrt(GRAV*clamp(ci.x*uWave.z, 0.3, uWave.w));           // crest speed
+  if (uP.w < 0.5){
+    // droplets torn off the throwing lip, or blasted up where it lands
+    float splash = step(0.5, r3.z);
+    if (splash < 0.5){
+      ok *= step(0.2, ci.y)*step(ci.y, 1.0);
+      p0 = lipPoint(x, ci.x, ci.y, ci.z, mix(0.75, 1.0, r3.x), Nn);
+      v0 = vec3((r3.y - 0.5)*0.8, mix(0.2, 1.8, r3.x), -c*mix(0.6, 1.1, r3.y));
+    } else {
+      ok *= step(0.9, ci.y)*step(ci.y, 1.35);
+      p0 = lipPoint(x, ci.x, 1.0, ci.z, 1.0, Nn);
+      v0 = vec3((r3.y - 0.5)*2.5, mix(1.5, 5.5, r3.x*r3.x), -c*mix(0.2, 0.8, r3.y) + (r3.z - 0.75)*3.0);
+    }
+    drag = 0.6; grav = 9.81;
+  } else {
+    // mist: crest smoke blown back off the feathering lip, and the plume over each landing
+    ok *= step(0.15, ci.y)*step(ci.y, 1.35);
+    p0 = lipPoint(x, ci.x, ci.y, ci.z, mix(0.0, 1.0, r3.x), Nn);
+    v0 = vec3((r3.y - 0.5)*0.6, mix(0.3, 1.2, r3.z), -c*0.25 + 0.4);
+    drag = 1.2; grav = 0.2;
+  }
+  vec3 p = p0 + v0*(1.0 - exp(-drag*age))/drag; p.y -= 0.5*grav*age*age;
+  vec3 vel = v0*exp(-drag*age) - vec3(0.0, grav*age, 0.0);
+  float alive = ok*step(-0.4, p.y);
+  float tl = age/life;
+  vec3 V = normalize(cameraPosition - p);
+  vec3 wp;
+  if (uP.w < 0.5){
+    float dist = distance(p, cameraPosition);
+    float wPhys = mix(0.006, 0.02, r3.z), w = max(wPhys, dist*uPix*1.3);
+    vCol = litScatter(p, V, 0.6, 0.15)*vec3(0.8, 0.97, 0.97);
+    vA = alive*smoothstep(0.0, 0.05, tl)*(1.0 - tl)*mix(0.35, 1.0, wPhys/w)*0.6;
+    wp = p + streak(position.xy, p, vel, w, w + length(vel)/40.0)*alive;
+  } else {
+    float size = mix(uP.y, uP.z, 1.0 - pow(1.0 - tl, 2.0))*(0.7 + 0.6*r2.z);
+    vCol = litScatter(p, V, 0.35, 0.6);
+    vA = alive*smoothstep(0.0, 0.12, tl)*(1.0 - tl)*(1.0 - tl);
+    wp = p + billboard(position.xy, size)*alive;
+  }
+  vUv = uv; vW = wp; vSeed = aSeed; vAge = tl;
+  gl_Position = projectionMatrix*viewMatrix*vec4(wp, 1.0);
+}`;
+const SPRAY_FS = GLSL_COMMON + GLSL_FRAG + /* glsl */`
+uniform vec4 uP; uniform vec4 uTint; varying float vA; varying vec2 vUv; varying vec3 vW; varying vec3 vCol; varying float vSeed; varying float vAge;
+void main(){
+  vec2 q = vUv*2.0 - 1.0; float a;
+  if (uP.w < 0.5) { a = (1.0 - q.x*q.x)*(1.0 - q.y*q.y*q.y*q.y); }
+  else {
+    float n = texture(tNoise3, vec3(vUv*0.45 + vSeed*0.0137, vAge*0.35 + uTime*0.01)).r;
+    a = smoothstep(1.0, 0.0, dot(q, q) + (0.5 - n)*0.9)*smoothstep(0.1, 0.6, texture(tNoise3, vec3(vUv*1.3 + vSeed*0.031, vAge*0.6)).b + 0.25);
+  }
+  a *= vA*uTint.a*softFade(vW, uP.w < 0.5 ? 0.2 : 1.2)*smoothstep(0.8, 3.0, distance(vW, cameraPosition));
+  gl_FragColor = applyFogPM(vec4(uTint.rgb*vCol*a, a), vW);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+function sprayMesh(count, P, tint, order) {
+  const m = new THREE.ShaderMaterial({
+    uniforms: { ...shared, ...waveU, uP: { value: new THREE.Vector4(...P) }, uTint: { value: new THREE.Vector4(...tint) }, uPix: { value: 0.001 } },
+    vertexShader: SPRAY_VS, fragmentShader: SPRAY_FS, transparent: true, depthWrite: false,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+  });
+  const mesh = new THREE.Mesh(instancedQuads(count), m); mesh.frustumCulled = false; mesh.renderOrder = order; scene.add(mesh); return mesh;
+}
+const spray = sprayMesh(14000, [1.3, 0, 0, 0], [1.0, 1.0, 1.0, 1.0], 3);
+const smoke = sprayMesh(600, [3.2, 0.8, 3.2, 1], [0.9, 1.0, 1.0, 0.07], 4);
+
+// lanterns
+const lanternMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(0.22, 0.34, 0.22), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.4, 1.0, 0.32) }), lanterns.length);
+lanterns.forEach((p, i) => lanternMesh.setMatrixAt(i, new THREE.Matrix4().makeTranslation(...p))); scene.add(lanternMesh);
+
+// ------------------------------------------------------------------ probe, groups, tiers
+app.setLights([
+  { pos: new THREE.Vector3(-8, -1.0, 8), color: TEAL, i: 2.0, falloff: 0.04 }, { pos: new THREE.Vector3(8, -1.0, 9), color: TEAL, i: 2.0, falloff: 0.04 },
+  { pos: new THREE.Vector3(0, -1.2, 14), color: TEAL, i: 2.0, falloff: 0.04 },
+  { pos: new THREE.Vector3(10, 40, 160), color: MOON, i: 2.2, falloff: 0.0 },
+  ...lanterns.slice(0, 4).map(p => ({ pos: new THREE.Vector3(...p), color: WARM, i: 2.5, falloff: 0.2 })),
+], new THREE.Color(0.02, 0.06, 0.06));
+const fxMeshes = [water, ...curls, spray, smoke];
+const env = bakeProbe(renderer, scene, new THREE.Vector3(0, 1.2, 4), 128, fxMeshes);
+waterMat.uniforms.tEnv.value = env; sandMat.uniforms.tEnv.value = env; curls.forEach(c => c.material.uniforms.tEnv.value = env);
+app.extraTexBytes += 128 * 128 * 6 * 8 * 4 / 3;
+app.sceneTexture = true; app.fx(...fxMeshes);
+app.groups = { rock: [sand, cave, stackMesh, sky, far, lanternMesh], water: [water], curls, particles: [spray, smoke] };
+let lastLow = null;
+app.update = () => {
+  const px = 2 * Math.tan(app.camera.fov * Math.PI / 360) / Math.max(1, renderer.domElement.height);
+  spray.material.uniforms.uPix.value = px;
+  const low = app.state.low; if (low === lastLow) return; lastLow = low;
+  sand.geometry.dispose(); sand.geometry = buildSand(low);
+  water.geometry.dispose(); water.geometry = buildWater(low);
+  curls.forEach(c => { c.geometry.dispose(); c.geometry = curlGeo(low); });
+  waterMat.defines = low ? { LOW: 1 } : {}; waterMat.needsUpdate = true;
+  spray.geometry.instanceCount = low ? 3000 : 14000; smoke.geometry.instanceCount = low ? 120 : 600; smoke.material.uniforms.uTint.value.w = low ? 0.12 : 0.07;
+};
+app.start();
+</script>
+</body>
+</html>

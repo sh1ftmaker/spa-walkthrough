@@ -1,0 +1,21 @@
+{"space": "s_spring", "round": 1, "reviewer": "summit-r1-indep",
+ "frames": {
+  "entry": {"focal": "Split: the hero gantry is a solid brown 6 x 2.5 x 4.5 m box in the pool at centre, and lantern lights0:2 (73.4, 101.1) is a big white slab filling the right third, 3 m from the camera. The three hanging lanterns float above the box roof.", "is_hero": true, "next_visible": "Little: a far lantern on the left and a dark box on the right. Nothing points back to the rim or the pool."},
+  "reveal": {"focal": "The hero box fills the centre; it is solid and dark, so the pool behind is hidden. The floating lanterns above it are the brightest things.", "is_hero": true, "next_visible": "Yes: the rim/pool lantern lines and the pool water on the right."},
+  "concept": {"focal": "lights0:2, a white slab filling about 70% of the frame from 0.7 m away. The hero shows above it.", "is_hero": false, "next_visible": "No."},
+  "strip": {"focal": "The loop walks around the pool with the camera looking outward. The hero is out of frame in 6 of 8 frames; the ring of toro and dark pine boxes (dressing[2]) dominate.", "is_hero": false, "next_visible": "Frames 4-7: the pool, rim lanterns and moon pavilion. This is the best next-space view in the group."}
+ },
+ "fixes": [
+  {"id": "s_spring:hero", "action": "replace", "dx": 0, "dy": 0, "deg": 0, "detail": "The graybox gantry must be an open frame (two posts at about x 60.5 and 71.5 plus a beam at +4.3 m, with basket boxes 0.5 m wide hanging to +1.5 m), not a solid box. As built it hides the source pool and steam, which are the point of the space."},
+  {"id": "lights[1] (lantern_hanging)", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The lanterns sit at z 125.5-126.2, but the hero box top is 125.0 (pos z 120.5 + 4.5), so they float 0.5 m above the roof. Set height so they hang under the beam (base at about z 123.8) and add a warm point light at each, so the baskets are the brightest point."},
+  {"id": "s_spring:lights0:2", "action": "remove", "dx": 0, "dy": 0, "deg": 0, "detail": "It is 0.7 m from the concept camera and 3 m from the entry camera, covering both frames. It also duplicates stair_head_toro 2.5 m away at the same portal."},
+  {"id": "dressing[0] (boulder_rim)", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "Only 4 boulders survived, all on the north-east, so the 44 degree source has a bare edge. offset 1.4 -> 0.6 (on the rim, inside the nav buffer) and cluster them on the west and south sides, away from the entry sightline, to give the pool a rock lip as in plan 30."},
+  {"id": "cameras.strip/spine", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The spine loop hugs the footprint edge 7-9 m from the hero. Pull the west and south legs about 2 m inward (spine points [59.0,101.5] -> [61.0,101.0], [58.5,93.0] -> [60.5,93.0], [63.0,88.5] -> [63.5,90.0]) and aim the strip cameras toward the hero, so the gantry stays in view as you circle it."}
+ ],
+ "scores": {"composition": 2, "density": 2, "light_rhythm": 2},
+ "top_change": "Open the gantry into a frame with lanterns hanging under its beam over the visible teal pool, so the eye-level view is baskets in steam rather than a solid brown box with lights floating on top.",
+ "plausibility": [
+  "Hanging lanterns float 0.5 m above the top of the hero box (lights1:0-2 at z 125.5 vs box top 125.0).",
+  "The hero box base is at z 120.5, 1 m below the 121.5 floor and through the pool bed. That is acceptable for gantry legs in the water, but it confirms the solid box occupies the whole middle of the pool.",
+  "The outflow rill and rill_bridge (73.9, 94.4) are not legible in any frame: the drop from 121.5 to the rim at 120.1 should be visible from the reveal."
+ ]}

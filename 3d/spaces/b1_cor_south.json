@@ -53,7 +53,7 @@
    "to": "b1_treatment",
    "at": [
     124,
-    56
+    58.6
    ],
    "width": 2.0,
    "height": 2.4
@@ -122,7 +122,7 @@
     ],
     [
      124.0,
-     57.2,
+     58.6,
      -20.0
     ]
    ],
@@ -135,39 +135,23 @@
   "at": [
    114.2,
    54.1,
-   -20.0
+   -19.7
   ],
   "facing_deg": 315,
   "dims": {
    "w": 1.4,
-   "h": 2.4,
-   "sill": 0.3
+   "d": 0.3,
+   "h": 2.4
   },
   "why": "Walking from the lobby you face the outside of the bend for 15 m: a narrow slot of thick glass with lava moving behind it, the first orange light since the arrival hall and a promise of the slide room; it glows on the water and the mist."
  },
  "anchored": [
   {
-   "id": "treat_door",
-   "asset": "portal_arch",
-   "variant": "hinoki frame + noren",
-   "at": [
-    124.0,
-    57.05,
-    -20.0
-   ],
-   "facing_deg": 180,
-   "dims": {
-    "w": 2.0,
-    "h": 2.4
-   },
-   "why": "Treatment rooms door in the north wall."
-  },
-  {
    "id": "treat_sign",
    "asset": "sign_kanji",
    "at": [
-    125.7,
-    56.95,
+    126.3,
+    56.9,
     -20.0
    ],
    "facing_deg": 180,
@@ -185,14 +169,111 @@
    "at": [
     137.6,
     54.05,
-    -17.1
+    -17.8
    ],
    "facing_deg": 90,
    "dims": {
     "w": 3.6,
-    "h": 1.0
+    "d": 0.05,
+    "h": 0.8
    },
-   "why": "Threshold into the slide hall; lit orange from behind."
+   "why": "Threshold into the slide hall at the door head, lit from behind."
+  },
+  {
+   "id": "slide_glow",
+   "asset": "oculus_glow",
+   "at": [
+    139.2,
+    54.0,
+    -20.0
+   ],
+   "outside_ok": true,
+   "why": "Orange glow behind the noren so the end of the straight burns orange.",
+   "snap": "given"
+  },
+  {
+   "id": "door_niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    122.61,
+    57.14,
+    -19.75
+   ],
+   "facing_deg": 184.8,
+   "snap": "given",
+   "why": "Low niches on the treatment-door jambs."
+  },
+  {
+   "id": "door_niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    125.4,
+    56.91,
+    -19.75
+   ],
+   "facing_deg": 184.8,
+   "snap": "given",
+   "why": "Low niches on the treatment-door jambs."
+  },
+  {
+   "id": "niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    103.84,
+    60.08,
+    -19.75
+   ],
+   "facing_deg": 31.6,
+   "snap": "given",
+   "why": "Pools: one at the lobby mouth, one before the bend (the slot owns the bend), one each side of the treatment door, one before the slide hall."
+  },
+  {
+   "id": "niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    108.16,
+    61.76,
+    -19.75
+   ],
+   "facing_deg": 211.6,
+   "snap": "given",
+   "why": "Pools: one at the lobby mouth, one before the bend (the slot owns the bend), one each side of the treatment door, one before the slide hall."
+  },
+  {
+   "id": "niches_2",
+   "asset": "lantern_niche",
+   "at": [
+    121.97,
+    53.48,
+    -19.75
+   ],
+   "facing_deg": 4.8,
+   "snap": "given",
+   "why": "Pools: one at the lobby mouth, one before the bend (the slot owns the bend), one each side of the treatment door, one before the slide hall."
+  },
+  {
+   "id": "niches_3",
+   "asset": "lantern_niche",
+   "at": [
+    130.03,
+    56.52,
+    -19.75
+   ],
+   "facing_deg": 184.8,
+   "snap": "given",
+   "why": "Pools: one at the lobby mouth, one before the bend (the slot owns the bend), one each side of the treatment door, one before the slide hall."
+  },
+  {
+   "id": "niches_4",
+   "asset": "lantern_niche",
+   "at": [
+    131.37,
+    52.7,
+    -19.75
+   ],
+   "facing_deg": 4.8,
+   "snap": "given",
+   "why": "Pools: one at the lobby mouth, one before the bend (the slot owns the bend), one each side of the treatment door, one before the slide hall."
   }
  ],
  "water": [
@@ -201,7 +282,8 @@
    "kind": "still",
    "z": -20.05,
    "rim_z": -20.0,
-   "bed_z": -20.2,
+   "depth": 0.18,
+   "bed_z": -20.18,
    "path": [
     [
      101.5,
@@ -317,141 +399,91 @@
    "match": "Corridor mood with a hot end: stepping stones, knee-high mist, ankle niches, and an orange glow (the slide hall) where it ends."
   }
  },
- "lights": [
-  {
-   "asset": "lantern_niche",
-   "along": [
-    [
-     101.5,
-     64.0
-    ],
-    [
-     105.0,
-     62.0
-    ],
-    [
-     109.5,
-     58.8
-    ],
-    [
-     112.0,
-     57.2
-    ]
-   ],
-   "side": "both",
-   "stagger": true,
-   "spacing": [
-    4.0,
-    5.5
-   ],
-   "snap": "wall",
-   "height": 0.25,
-   "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Warm niches up to 2 m before the bend; none near the slot so it is the brightest thing on the bend."
-  },
-  {
-   "asset": "lantern_niche",
-   "along": [
-    [
-     117.5,
-     55.7
-    ],
-    [
-     124.0,
-     55.25
-    ],
-    [
-     131.0,
-     54.6
-    ],
-    [
-     134.5,
-     54.3
-    ]
-   ],
-   "side": "both",
-   "stagger": true,
-   "spacing": [
-    4.5,
-    6.5
-   ],
-   "snap": "wall",
-   "height": 0.25,
-   "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Second run after the bend; stops 3.5 m before the slide hall so its orange spill reads."
-  },
-  {
-   "asset": "lantern_floor",
-   "at": [
-    [
-     122.95,
-     56.9,
-     -20.0
-    ],
-    [
-     125.05,
-     56.85,
-     -20.0
-    ]
-   ],
-   "face": "path",
-   "why": "Pair flanking the treatment door."
-  }
- ],
+ "lights": [],
  "dressing": [
   {
-   "asset": "stepping_stone",
-   "along": "spine",
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
-   ],
-   "jitter": 0.08,
-   "top_z": -20.0,
-   "scale": [
-    0.95,
-    1.15
-   ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
-   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
-  },
-  {
    "asset": "boulder_rim",
-   "along": "spine",
-   "side": "both",
-   "offset": 1.62,
-   "spacing": [
-    2.2,
-    4.0
+   "ring": [
+    113.4,
+    57.4
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
    ],
    "embed": 0.12,
-   "scale": [
-    0.35,
-    0.7
-   ],
+   "face": "out",
    "avoid": [
     "nav",
     "portals",
-    "hero"
+    "anchored",
+    0.3
    ],
-   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
+   "optional": true,
+   "why": "Rocks on the inside of the bend.",
+   "z": -20.2
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    126.6,
+    56.7
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Rocks by the treatment door.",
+   "z": -20.2
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    102.6,
+    62.0
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 2,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Rocks at the lobby mouth.",
+   "z": -20.2
   }
  ],
  "mood": {
@@ -460,5 +492,6 @@
   "mist": "Knee-high (0.4 m) layer over the whole pool, densest at the walls, thinning over the stones. Lit orange near the slot."
  },
  "waivers": [],
+ "light_notes": "Lava slot is emissive (lava_window light).",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

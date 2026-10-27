@@ -1,0 +1,79 @@
+{
+ "space": "b1_mirror",
+ "round": 1,
+ "reviewer": "b1_west_r1",
+ "frames": {
+  "entry": {
+   "focal": "A big white disc in the foreground water: the specular reflection of the renderer's cool fill light at the footprint centroid. Behind it, a teal pool with evenly spaced white lantern blocks and a grey ceiling lid.",
+   "is_hero": false,
+   "next_visible": "Yes: the east arch is visible across the pool with lights beyond."
+  },
+  "reveal": {
+   "focal": "The white fill-light disc on the water, then pavilion_se as a blank grey slab with three evenly spaced lanterns in front. The ceiling is a featureless grey plane taking about 40% of the frame.",
+   "is_hero": false,
+   "next_visible": "The west arch (back to the corridor) at left. The east arch is not prominent."
+  },
+  "concept": {
+   "focal": "The white disc in the bottom centre. A teal (not black) pool, the east arch small at the far end, lanterns in a row. No starfield, no framing pavilions, no mist.",
+   "is_hero": false,
+   "next_visible": "East arch, small and dim."
+  },
+  "strip": {
+   "focal": "Walking the north arc: grey wall planes, a noisy cool-lit patch, low rock boxes, single lanterns. The pool is mostly out of frame on the right. It ends in the corridor looking back.",
+   "is_hero": false,
+   "next_visible": "Doorway boxes in strip 4–6. The east arch is not lit as a goal."
+  }
+ },
+ "fixes": [
+  {
+   "id": "glowworms",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The glowworm ceiling (30x30 at z -7) renders as a flat grey lid. Give it cyan point emission (a starfield texture or many small emitters), keep the pool surface black and mirror-like (drop the teal emission), and make the ceiling the brightest surface. That reflection IS the hero."
+  },
+  {
+   "id": "pavilion_nw",
+   "action": "move",
+   "dx": 9,
+   "dy": 2,
+   "deg": 42,
+   "detail": "pavilion_nw sits at bearing ~68 deg left of the entry axis and is invisible from entry and concept. Move it by (+9,+2) and rotate it to face 180 (across the pool), outboard of the north spine arc (nudge the spine inside it if needed), so it frames the left of the entry view the way concept 15 frames both sides. Give both pavilions a warm shoji glow."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "1.05 m floor lanterns along the rim (3 groups of 3 at ~3.4 m, plus singles) are the brightest objects and form a regular bright ring. Replace them with 0.35 m rim lanterns in tight pairs at the two pavilions, the pool steps and the lounges only, and leave long dark rim stretches so the stars dominate."
+  },
+  {
+   "id": "dressing2:0",
+   "action": "remove",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "With dressing2:1, these are floor lanterns flanking the inside of the west arch (95.4, 90.1/93.9). They turn the corridor's 'dark arch' into a bright gate. Remove both, or move each 3 m sideways along the wall (dy ±3)."
+  },
+  {
+   "id": "east_arch",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The exit goal (to the glacier side) is a dim grey frame. Give it a cold blue spill from beyond (the concept's waterfall arch) so it reads as the next place across the water."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the pool black and the ceiling a cyan starfield (plus turn off the fill-light reflection): right now the reveal of B1 is a grey room around a teal pool lit by a white disc.",
+ "plausibility": [
+  "The renderer's per-space cool fill light (render_views.level_lights, r 3 m, at the footprint centroid, floor +4 m) reflects in the pool as a huge white disc in every view. This is a render artefact, not geometry, but it is the brightest thing in the room.",
+  "The dome reads as a ~8 m flat faceted lid, not a 13.5 m dome. Check that the ceiling mesh follows the dome profile."
+ ]
+}

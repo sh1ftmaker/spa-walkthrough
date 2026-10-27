@@ -1,0 +1,1976 @@
+{
+ "_doc": "Proposed per-space `audio` blocks (see README section 'Schema'). In the real build each block lives inside 3d/spaces/<id>.json as \"audio\": {...}; here they are collected in one file so the demo does not touch shared files. Geometry refs: water:<id> (path/lip/footprint from the space's water list), anchored:<id> or anchored_asset:<asset> (all instances), hero, or explicit at/points/polygon. gain_db is the level at ref_m relative to the asset's baked loudness (loops are normalised to about -20 dBFS RMS). Round 2 (owner feedback): rushing and thunder are the bed wherever water moves; bubbles and trickles are sparse close-range accents (high rolloff, low gain); B1 corridors carry a distant through-rock rumble; big sources have leak_db paths; levels are sized by hydraulic power (flow x drop), see README section 11. Round 3: CC0 anchor recordings (anchor_thunder, anchor_river, anchor_surf; see CREDITS.md) layered under the procedural beds of the three big waters.",
+ "reverb_presets": {
+  "outdoor": {
+   "rt": 0.6,
+   "rtHigh": 0.35,
+   "predelay": 0.02,
+   "size": 40,
+   "wet_db": -24
+  },
+  "stone_hall": {
+   "rt": 2.4,
+   "rtHigh": 1.4,
+   "predelay": 0.025,
+   "size": 30,
+   "wet_db": -13
+  },
+  "corridor": {
+   "rt": 1.3,
+   "rtHigh": 0.8,
+   "predelay": 0.006,
+   "size": 6,
+   "wet_db": -12
+  },
+  "dome": {
+   "rt": 3.8,
+   "rtHigh": 2.0,
+   "predelay": 0.03,
+   "size": 25,
+   "wet_db": -8
+  },
+  "steam_room": {
+   "rt": 1.1,
+   "rtHigh": 0.4,
+   "predelay": 0.008,
+   "size": 10,
+   "wet_db": -13
+  },
+  "timber": {
+   "rt": 0.8,
+   "rtHigh": 0.45,
+   "predelay": 0.01,
+   "size": 12,
+   "wet_db": -19
+  },
+  "river_hall": {
+   "rt": 2.6,
+   "rtHigh": 1.3,
+   "predelay": 0.03,
+   "size": 40,
+   "wet_db": -13
+  },
+  "falls_shaft": {
+   "rt": 3.0,
+   "rtHigh": 1.5,
+   "predelay": 0.02,
+   "size": 25,
+   "wet_db": -13
+  },
+  "cavern": {
+   "rt": 5.0,
+   "rtHigh": 2.2,
+   "predelay": 0.06,
+   "size": 90,
+   "wet_db": -10
+  },
+  "tube": {
+   "rt": 1.8,
+   "rtHigh": 1.0,
+   "predelay": 0.012,
+   "size": 8,
+   "wet_db": -11
+  },
+  "sea_cave": {
+   "rt": 2.8,
+   "rtHigh": 1.2,
+   "predelay": 0.04,
+   "size": 40,
+   "wet_db": -13
+  },
+  "magma_hall": {
+   "rt": 3.0,
+   "rtHigh": 1.0,
+   "predelay": 0.03,
+   "size": 45,
+   "wet_db": -11
+  },
+  "ice_cave": {
+   "rt": 2.2,
+   "rtHigh": 1.8,
+   "predelay": 0.015,
+   "size": 18,
+   "wet_db": -10
+  }
+ },
+ "portal_overrides": {
+  "syn_thunder_falls_b2_river": {
+   "loss_db": 4,
+   "lp": 0.9,
+   "note": "open falls shaft: the roar comes straight up, around the lip"
+  },
+  "syn_thunder_falls_b3_falls": {
+   "loss_db": 0,
+   "lp": 1.0
+  },
+  "p_b3_falls_arch": {
+   "loss_db": 1,
+   "lp": 0.8
+  },
+  "syn_mist_steps_b2_core": {
+   "loss_db": 1,
+   "lp": 0.8
+  },
+  "p_b1_cor_ms": {
+   "loss_db": 1,
+   "lp": 0.8
+  },
+  "p_b2_falls_balcony": {
+   "loss_db": 1,
+   "lp": 0.9,
+   "note": "railed balcony open onto the falls shaft"
+  }
+ },
+ "rules": {
+  "quiet_hours": {
+   "from": "22:00",
+   "mute_tags": [
+    "human"
+   ],
+   "duck_tags": {
+    "feature": -6,
+    "trickle": -15
+   },
+   "bell_only": true
+  },
+  "max_voices": 16,
+  "geyser_big_period_s": 1200
+ },
+ "spaces": {
+  "g_road": {
+   "reverb": "outdoor",
+   "open_to": [
+    "g_gate",
+    "g_terrace",
+    "g_cascade",
+    "g_east",
+    "g_east_path",
+    "g_north_ledge"
+   ],
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -20
+    }
+   ],
+   "emitters": [
+    {
+     "id": "road_falls",
+     "asset": "falls_mid",
+     "shape": "point",
+     "from": "hero",
+     "z": 6,
+     "gain_db": -1,
+     "ref_m": 6,
+     "spread_m": 6,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "road_falls_plunge",
+     "asset": "spray",
+     "shape": "point",
+     "at": [
+      3.2,
+      61
+     ],
+     "z": 0,
+     "gain_db": -6,
+     "ref_m": 2,
+     "rolloff": 1.6
+    },
+    {
+     "id": "road_stream",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_road_stream",
+     "z": -0.4,
+     "gain_db": -8,
+     "ref_m": 2
+    }
+   ]
+  },
+  "g_gate": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -22
+    }
+   ]
+  },
+  "g_terrace": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -20
+    }
+   ],
+   "emitters": [
+    {
+     "id": "culvert",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_terrace_culvert",
+     "z": -3,
+     "gain_db": -12,
+     "ref_m": 2,
+     "lp_hz": 1500
+    }
+   ]
+  },
+  "g_cascade": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -22
+    }
+   ],
+   "emitters": [
+    {
+     "id": "a4_falls",
+     "asset": "sheet",
+     "shape": "line",
+     "from": "water:w_casc_falls",
+     "z": -1.3,
+     "gain_db": 0,
+     "ref_m": 3,
+     "spread_m": 3,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "pool_spills",
+     "asset": "cascade",
+     "shape": "line",
+     "points": [
+      [
+       20,
+       24
+      ],
+      [
+       26,
+       14
+      ],
+      [
+       38,
+       9
+      ],
+      [
+       52,
+       10
+      ]
+     ],
+     "z": -3,
+     "gain_db": -4,
+     "ref_m": 4,
+     "rolloff": 0.8
+    },
+    {
+     "id": "casc_out",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_casc_out",
+     "z": -3.9,
+     "gain_db": -12,
+     "ref_m": 2
+    }
+   ]
+  },
+  "g_east": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -12
+    }
+   ],
+   "emitters": [
+    {
+     "id": "surf_below",
+     "asset": "surf",
+     "shape": "line",
+     "points": [
+      [
+       165,
+       40
+      ],
+      [
+       170,
+       80
+      ]
+     ],
+     "z": -68,
+     "gain_db": 2,
+     "ref_m": 20,
+     "lp_hz": 2500
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "east_furin",
+     "asset": "furin",
+     "at": [
+      152,
+      62
+     ],
+     "z": 2.4,
+     "gain_db": -10,
+     "trigger": "gust",
+     "rate_hz": 0.6
+    }
+   ]
+  },
+  "g_east_path": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -9
+    }
+   ]
+  },
+  "g_north_ledge": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -16
+    }
+   ],
+   "emitters": [
+    {
+     "id": "trickle_basins",
+     "asset": "sheet",
+     "shape": "point",
+     "from": "water:w_trickle_basin_a,w_trickle_basin_b,w_trickle_basin_c",
+     "z": 0,
+     "gain_db": -6,
+     "ref_m": 2
+    }
+   ]
+  },
+  "g_arrival": {
+   "reverb": "stone_hall",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": 0
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -20
+    }
+   ],
+   "emitters": [
+    {
+     "id": "hall_stream",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_hall_stream",
+     "z": -0.2,
+     "gain_db": -5,
+     "ref_m": 2.5,
+     "spread_m": 2
+    },
+    {
+     "id": "lava_window",
+     "asset": "lava",
+     "shape": "line",
+     "points": [
+      [
+       44,
+       79.6
+      ],
+      [
+       78,
+       79.6
+      ]
+     ],
+     "z": 4,
+     "gain_db": -2,
+     "ref_m": 6,
+     "spread_m": 5,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "hall_basin",
+     "asset": "basin",
+     "shape": "point",
+     "from": "anchored:basin",
+     "z": 0.8,
+     "gain_db": -18,
+     "ref_m": 1,
+     "rolloff": 1.5
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "lava_blorps",
+     "asset": "blorp",
+     "along": "emitter:lava_window",
+     "z": 3,
+     "every_s": [
+      3,
+      10
+     ],
+     "gain_db": -2,
+     "pitch": [
+      0.75,
+      1.25
+     ]
+    }
+   ]
+  },
+  "g_changing": {
+   "reverb": "timber",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -6
+    }
+   ]
+  },
+  "b1_lobby": {
+   "reverb": "corridor",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -2
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -13
+    }
+   ],
+   "emitters": [
+    {
+     "id": "lobby_rill",
+     "asset": "rill",
+     "shape": "line",
+     "from": "water:w_b1_lobby_rill",
+     "z": -19.9,
+     "gain_db": -13,
+     "ref_m": 1.2,
+     "rolloff": 1.4,
+     "tags": [
+      "trickle"
+     ]
+    },
+    {
+     "id": "lobby_spout",
+     "asset": "basin",
+     "shape": "point",
+     "from": "anchored:rill_spout",
+     "z": -19.2,
+     "gain_db": -17,
+     "ref_m": 1,
+     "rolloff": 1.5,
+     "tags": [
+      "trickle"
+     ]
+    }
+   ]
+  },
+  "b1_cor_mirror": {
+   "reverb": "corridor",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -2
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -14
+    }
+   ],
+   "emitters": [
+    {
+     "id": "wall_trickles",
+     "asset": "rill",
+     "shape": "point",
+     "from": "anchored_asset:wall_trickle",
+     "z": -18.8,
+     "gain_db": -11,
+     "ref_m": 1,
+     "rolloff": 1.5,
+     "tags": [
+      "trickle"
+     ]
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "cor_drips",
+     "asset": "drip",
+     "along": "spine",
+     "z": -20,
+     "every_s": [
+      5,
+      14
+     ],
+     "gain_db": -13,
+     "pitch": [
+      0.8,
+      1.3
+     ]
+    }
+   ]
+  },
+  "b1_junction_w": {
+   "reverb": "corridor",
+   "open_to": [
+    "b1_cor_mirror"
+   ],
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -2
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -13
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "junction_bell",
+     "asset": "bell",
+     "from": "anchored:bell",
+     "z": -18.5,
+     "gain_db": -3,
+     "trigger": "proximity",
+     "radius_m": 4,
+     "cooldown_s": 25,
+     "every_s": [
+      60,
+      150
+     ],
+     "quiet_ok": true
+    },
+    {
+     "id": "koi",
+     "asset": "plop",
+     "around": "hero",
+     "radius_m": 3,
+     "z": -20,
+     "every_s": [
+      15,
+      40
+     ],
+     "gain_db": -16,
+     "pitch": [
+      0.8,
+      1.2
+     ]
+    }
+   ]
+  },
+  "b1_cor_west": {
+   "reverb": "corridor",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -2
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -8
+    }
+   ],
+   "emitters": [
+    {
+     "id": "spill_lip",
+     "asset": "sheet",
+     "shape": "line",
+     "points": [
+      [
+       49,
+       77.2
+      ],
+      [
+       49,
+       80.8
+      ]
+     ],
+     "z": -20.2,
+     "gain_db": -3,
+     "ref_m": 2.5,
+     "spread_m": 3,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "mist_steps_fall",
+     "asset": "cascade",
+     "shape": "point",
+     "at": [
+      47,
+      74
+     ],
+     "z": -28,
+     "gain_db": -1,
+     "ref_m": 5,
+     "spread_m": 4
+    },
+    {
+     "id": "grotto_door_steam",
+     "asset": "steam",
+     "shape": "point",
+     "at": [
+      52,
+      82
+     ],
+     "z": -18.5,
+     "gain_db": -18,
+     "ref_m": 2
+    }
+   ]
+  },
+  "b1_grotto": {
+   "reverb": "steam_room",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -4
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -16
+    }
+   ],
+   "emitters": [
+    {
+     "id": "vents",
+     "asset": "steam",
+     "shape": "point",
+     "from": "anchored_asset:fumarole_vent",
+     "z": -19.5,
+     "gain_db": -6,
+     "ref_m": 2
+    },
+    {
+     "id": "grotto_lava",
+     "asset": "lava",
+     "shape": "point",
+     "from": "anchored:lava_glass",
+     "z": -18,
+     "gain_db": -8,
+     "ref_m": 3
+    }
+   ]
+  },
+  "b1_mirror": {
+   "reverb": "dome",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -9
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -22
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "mirror_drips",
+     "asset": "drip",
+     "area": "water:w_mirror",
+     "z": -20,
+     "every_s": [
+      12,
+      30
+     ],
+     "gain_db": -12,
+     "pitch": [
+      0.7,
+      1.0
+     ]
+    }
+   ]
+  },
+  "b1_cor_south": {
+   "reverb": "corridor",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -2
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -15
+    }
+   ],
+   "emitters": [
+    {
+     "id": "slot_lava",
+     "asset": "lava",
+     "shape": "point",
+     "from": "hero",
+     "z": -18.8,
+     "gain_db": -10,
+     "ref_m": 2
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "south_drips",
+     "asset": "drip",
+     "along": "spine",
+     "z": -20,
+     "every_s": [
+      8,
+      20
+     ],
+     "gain_db": -14,
+     "pitch": [
+      0.8,
+      1.3
+     ]
+    }
+   ]
+  },
+  "b1_cor_east": {
+   "reverb": "corridor",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -3
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -13
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "east_drips",
+     "asset": "drip",
+     "along": "spine",
+     "z": -20,
+     "every_s": [
+      6,
+      15
+     ],
+     "gain_db": -13,
+     "pitch": [
+      1.0,
+      1.5
+     ]
+    }
+   ]
+  },
+  "b1_cor_north": {
+   "reverb": "corridor",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -3
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -12
+    }
+   ],
+   "emitters": [
+    {
+     "id": "north_thread",
+     "asset": "sheet",
+     "shape": "point",
+     "from": "hero",
+     "z": -18,
+     "gain_db": -10,
+     "ref_m": 1.5,
+     "rolloff": 1.3,
+     "tags": [
+      "feature",
+      "trickle"
+     ]
+    }
+   ]
+  },
+  "b1_glacier": {
+   "reverb": "ice_cave",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -6
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -14
+    }
+   ],
+   "emitters": [
+    {
+     "id": "meltwater",
+     "asset": "sheet",
+     "shape": "line",
+     "from": "water:w_glacier_drip",
+     "z": -19.5,
+     "gain_db": -14,
+     "ref_m": 2,
+     "rolloff": 1.3
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "ice_drips",
+     "asset": "drip",
+     "along": "water:w_glacier_drip",
+     "z": -20,
+     "every_s": [
+      1.2,
+      4
+     ],
+     "gain_db": -10,
+     "pitch": [
+      1.1,
+      1.7
+     ]
+    }
+   ]
+  },
+  "b1_outfall": {
+   "reverb": "corridor",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -3
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -6
+    }
+   ],
+   "emitters": [
+    {
+     "id": "outfall_shaft",
+     "asset": "falls_mid",
+     "shape": "point",
+     "from": "hero",
+     "z": -28,
+     "gain_db": 0,
+     "ref_m": 5,
+     "spread_m": 5,
+     "leak_db": -24,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "outfall_run",
+     "asset": "sheet",
+     "shape": "line",
+     "from": "water:w_outfall_run",
+     "z": -20,
+     "gain_db": -6,
+     "ref_m": 3
+    }
+   ]
+  },
+  "b1_treatment": {
+   "reverb": "timber",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -12
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -24
+    }
+   ]
+  },
+  "b1_slide_top": {
+   "reverb": "stone_hall",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -3
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -14
+    }
+   ],
+   "emitters": [
+    {
+     "id": "slide_lava",
+     "asset": "lava",
+     "shape": "point",
+     "z": -16,
+     "gain_db": -4,
+     "ref_m": 5,
+     "at": [
+      150,
+      41
+     ]
+    },
+    {
+     "id": "slide_water",
+     "asset": "sheet",
+     "shape": "point",
+     "from": "hero",
+     "z": -30,
+     "gain_db": -12,
+     "ref_m": 4
+    }
+   ]
+  },
+  "b2_river": {
+   "reverb": "river_hall",
+   "open_to": [
+    "b2_kawagiri",
+    "b2_boat",
+    "b2_boardwalk",
+    "b2_falls_head"
+   ],
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -4
+    }
+   ],
+   "emitters": [
+    {
+     "id": "river",
+     "asset": "river",
+     "shape": "line",
+     "z": -42.8,
+     "gain_db": -1,
+     "ref_m": 6,
+     "spread_m": 12,
+     "rolloff": 0.6,
+     "leak_db": -26,
+     "points": [
+      [
+       200,
+       94
+      ],
+      [
+       176,
+       92
+      ],
+      [
+       150,
+       86
+      ],
+      [
+       130,
+       84
+      ],
+      [
+       118,
+       85
+      ],
+      [
+       64,
+       85
+      ],
+      [
+       46,
+       84
+      ]
+     ]
+    },
+    {
+     "id": "river_head",
+     "asset": "inflow",
+     "shape": "point",
+     "from": "hero",
+     "z": -37,
+     "gain_db": 3,
+     "ref_m": 6,
+     "spread_m": 6,
+     "leak_db": -26,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "river_head_spray",
+     "asset": "spray",
+     "shape": "point",
+     "at": [
+      192,
+      96
+     ],
+     "z": -42,
+     "gain_db": -3,
+     "ref_m": 2.5,
+     "rolloff": 1.6
+    },
+    {
+     "id": "thunder_lip",
+     "asset": "falls",
+     "shape": "line",
+     "points": [
+      [
+       23,
+       76
+      ],
+      [
+       35,
+       76
+      ]
+     ],
+     "z": -44,
+     "gain_db": 2,
+     "ref_m": 6,
+     "spread_m": 8,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "north_trickle_in",
+     "asset": "sheet",
+     "shape": "point",
+     "from": "anchored:north_trickle",
+     "z": -40,
+     "gain_db": -8,
+     "ref_m": 2
+    },
+    {
+     "id": "river_anchor",
+     "asset": "anchor_river",
+     "shape": "line",
+     "points": [
+      [
+       200,
+       94
+      ],
+      [
+       176,
+       92
+      ],
+      [
+       150,
+       86
+      ],
+      [
+       130,
+       84
+      ],
+      [
+       118,
+       85
+      ],
+      [
+       64,
+       85
+      ],
+      [
+       46,
+       84
+      ]
+     ],
+     "z": -42.8,
+     "gain_db": 2,
+     "ref_m": 6,
+     "spread_m": 12,
+     "rolloff": 1.0,
+     "tags": [
+      "cc0"
+     ]
+    }
+   ]
+  },
+  "b2_kawagiri": {
+   "reverb": "river_hall",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -4
+    }
+   ],
+   "emitters": [
+    {
+     "id": "river_under_deck",
+     "asset": "river2",
+     "shape": "area",
+     "polygon": [
+      [
+       60,
+       77
+      ],
+      [
+       124,
+       77
+      ],
+      [
+       124,
+       91
+      ],
+      [
+       60,
+       91
+      ]
+     ],
+     "z": -42.6,
+     "gain_db": -7,
+     "ref_m": 4,
+     "spread_m": 8,
+     "rolloff": 0.8
+    },
+    {
+     "id": "pod_curtains",
+     "asset": "curtain",
+     "shape": "point",
+     "from": "anchored_asset:kawagiri_pod",
+     "z": -39,
+     "gain_db": -10,
+     "ref_m": 1.5,
+     "rolloff": 1.3
+    },
+    {
+     "id": "diners",
+     "asset": "murmur",
+     "shape": "area",
+     "polygon": [
+      [
+       60,
+       76
+      ],
+      [
+       124,
+       76
+      ],
+      [
+       124,
+       92
+      ],
+      [
+       60,
+       92
+      ]
+     ],
+     "z": -38.4,
+     "gain_db": -13,
+     "ref_m": 5,
+     "spread_m": 12,
+     "tags": [
+      "human"
+     ]
+    },
+    {
+     "id": "deck_anchor",
+     "asset": "anchor_river",
+     "shape": "area",
+     "polygon": [
+      [
+       60,
+       77
+      ],
+      [
+       124,
+       77
+      ],
+      [
+       124,
+       91
+      ],
+      [
+       60,
+       91
+      ]
+     ],
+     "z": -42.6,
+     "gain_db": -3,
+     "ref_m": 4,
+     "spread_m": 8,
+     "rolloff": 1.0,
+     "tags": [
+      "cc0"
+     ]
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "bowls",
+     "asset": "clink",
+     "points": "anchored_asset:kawagiri_pod",
+     "z": -39,
+     "every_s": [
+      0.5,
+      2
+     ],
+     "gain_db": -13,
+     "pitch": [
+      0.9,
+      1.1
+     ],
+     "tags": [
+      "human"
+     ]
+    }
+   ]
+  },
+  "b2_core": {
+   "reverb": "timber",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -4
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -9
+    }
+   ],
+   "emitters": [
+    {
+     "id": "wok",
+     "asset": "sizzle",
+     "shape": "point",
+     "from": "anchored:kitchen",
+     "z": -39,
+     "gain_db": -8,
+     "ref_m": 3,
+     "tags": [
+      "human"
+     ]
+    },
+    {
+     "id": "kitchen_vent",
+     "asset": "steam",
+     "shape": "point",
+     "from": "anchored:kitchen_vent",
+     "z": -38,
+     "gain_db": -12,
+     "ref_m": 2
+    },
+    {
+     "id": "counter",
+     "asset": "murmur",
+     "shape": "point",
+     "from": "hero",
+     "z": -38.4,
+     "gain_db": -10,
+     "ref_m": 4,
+     "spread_m": 6,
+     "tags": [
+      "human"
+     ]
+    },
+    {
+     "id": "mist_steps_sheet",
+     "asset": "cascade",
+     "shape": "point",
+     "at": [
+      49,
+      70
+     ],
+     "z": -36,
+     "gain_db": -1,
+     "ref_m": 4
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "counter_bowls",
+     "asset": "clink",
+     "around": "hero",
+     "radius_m": 6,
+     "z": -39,
+     "every_s": [
+      0.8,
+      2.5
+     ],
+     "gain_db": -14,
+     "pitch": [
+      0.9,
+      1.1
+     ],
+     "tags": [
+      "human"
+     ]
+    }
+   ]
+  },
+  "b2_boat": {
+   "reverb": "river_hall",
+   "emitters": [
+    {
+     "id": "hull_lap",
+     "asset": "lapping",
+     "shape": "point",
+     "from": "hero",
+     "z": -42.4,
+     "gain_db": -6,
+     "ref_m": 2
+    }
+   ]
+  },
+  "b2_boardwalk": {
+   "reverb": "river_hall"
+  },
+  "b2_falls_head": {
+   "reverb": "falls_shaft"
+  },
+  "b2_lava_link": {
+   "reverb": "tube",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -3
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -12
+    }
+   ]
+  },
+  "b3_cavern": {
+   "reverb": "cavern",
+   "open_to": [
+    "b3_rimstone",
+    "b3_geyser",
+    "b3_slide_foot"
+   ],
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": 0
+    }
+   ]
+  },
+  "b3_falls": {
+   "reverb": "falls_shaft",
+   "open_to": [
+    "b3_falls_gallery",
+    "b3_falls_east"
+   ],
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -2
+    }
+   ],
+   "emitters": [
+    {
+     "id": "thunder_curtain",
+     "asset": "falls",
+     "shape": "line",
+     "from": "water:w_thunder",
+     "z": -52,
+     "gain_db": 5,
+     "ref_m": 8,
+     "spread_m": 14,
+     "rolloff": 0.8,
+     "leak_db": -20,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "plunge",
+     "asset": "falls2",
+     "shape": "area",
+     "from": "water:w_falls_pool",
+     "z": -60,
+     "gain_db": -4,
+     "ref_m": 6,
+     "rolloff": 1.0
+    },
+    {
+     "id": "curtain_spray",
+     "asset": "spray",
+     "shape": "line",
+     "points": [
+      [
+       22,
+       75
+      ],
+      [
+       36,
+       75
+      ]
+     ],
+     "z": -58,
+     "gain_db": -2,
+     "ref_m": 3,
+     "rolloff": 1.6
+    },
+    {
+     "id": "massage",
+     "asset": "curtain",
+     "shape": "point",
+     "from": "anchored_asset:massage_spout",
+     "z": -58.5,
+     "gain_db": -12,
+     "ref_m": 1.5,
+     "rolloff": 1.3
+    },
+    {
+     "id": "thunder_anchor",
+     "asset": "anchor_thunder",
+     "shape": "line",
+     "from": "water:w_thunder",
+     "z": -52,
+     "gain_db": 6,
+     "ref_m": 8,
+     "spread_m": 14,
+     "rolloff": 1.0,
+     "leak_db": -22,
+     "tags": [
+      "feature",
+      "cc0"
+     ]
+    }
+   ]
+  },
+  "b3_falls_gallery": {
+   "reverb": "falls_shaft"
+  },
+  "b3_rimstone": {
+   "reverb": "cavern",
+   "emitters": [
+    {
+     "id": "terraces",
+     "asset": "cascade",
+     "shape": "line",
+     "points": [
+      [
+       54,
+       64
+      ],
+      [
+       60,
+       55
+      ],
+      [
+       64,
+       45
+      ],
+      [
+       72,
+       36
+      ],
+      [
+       82,
+       30
+      ]
+     ],
+     "z": -63,
+     "gain_db": 1,
+     "ref_m": 6,
+     "spread_m": 8,
+     "rolloff": 0.75,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "walk_feed",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_walk_feed",
+     "z": -61,
+     "gain_db": -12,
+     "ref_m": 2
+    }
+   ]
+  },
+  "b3_geyser": {
+   "reverb": "cavern",
+   "emitters": [
+    {
+     "id": "geyser_pool",
+     "asset": "boil",
+     "shape": "area",
+     "from": "water:w_geyser",
+     "z": -67.5,
+     "gain_db": -10,
+     "ref_m": 2,
+     "rolloff": 1.3
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "vents_small",
+     "asset": "geyser_small",
+     "around": "hero",
+     "radius_m": 6,
+     "z": -67,
+     "every_s": [
+      9,
+      16
+     ],
+     "gain_db": -2
+    },
+    {
+     "id": "geyser_big",
+     "asset": "geyser_big",
+     "from": "hero",
+     "z": -62,
+     "trigger": "timer",
+     "period_s": 1200,
+     "demo_period_s": 75,
+     "gain_db": 10,
+     "ref_m": 8,
+     "leak_db": -30
+    }
+   ]
+  },
+  "b3_lazy": {
+   "reverb": "tube",
+   "emitters": [
+    {
+     "id": "lazy_river",
+     "asset": "lapping",
+     "shape": "line",
+     "from": "water:w_lazy",
+     "z": -67.4,
+     "gain_db": -4,
+     "ref_m": 3,
+     "closed": true
+    }
+   ]
+  },
+  "b3_lobby": {
+   "reverb": "stone_hall",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -2
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -9
+    }
+   ],
+   "emitters": [
+    {
+     "id": "spring_basin",
+     "asset": "basin",
+     "shape": "point",
+     "from": "anchored:spring_basin",
+     "z": -66.2,
+     "gain_db": -16,
+     "ref_m": 1,
+     "rolloff": 1.5
+    }
+   ]
+  },
+  "b3_walk_north": {
+   "reverb": "corridor",
+   "emitters": [
+    {
+     "id": "walk_runnel",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_walk_runnel",
+     "z": -64,
+     "gain_db": -10,
+     "ref_m": 1.5
+    }
+   ],
+   "beds": [
+    {
+     "asset": "rumble",
+     "gain_db": -10
+    }
+   ]
+  },
+  "b3_slide_foot": {
+   "reverb": "cavern",
+   "emitters": [
+    {
+     "id": "lava_wall",
+     "asset": "lava",
+     "shape": "point",
+     "from": "anchored:lava_wall",
+     "z": -63,
+     "gain_db": -4,
+     "ref_m": 5
+    },
+    {
+     "id": "splash_out",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_splash_out",
+     "z": -67.5,
+     "gain_db": -12,
+     "ref_m": 2
+    }
+   ]
+  },
+  "b3_shore": {
+   "reverb": "tube",
+   "beds": [
+    {
+     "asset": "roomtone",
+     "gain_db": -2
+    },
+    {
+     "asset": "rumble",
+     "gain_db": -16
+    }
+   ],
+   "emitters": [
+    {
+     "id": "shore_runnel",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_shore_runnel",
+     "z": -67,
+     "gain_db": -12,
+     "ref_m": 1.5
+    }
+   ]
+  },
+  "b3_wave": {
+   "reverb": "sea_cave",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -24
+    }
+   ],
+   "emitters": [
+    {
+     "id": "surf",
+     "asset": "surf",
+     "shape": "line",
+     "points": [
+      [
+       172,
+       20
+      ],
+      [
+       170,
+       40
+      ],
+      [
+       176,
+       58
+      ]
+     ],
+     "z": -69.6,
+     "gain_db": 0,
+     "ref_m": 6,
+     "spread_m": 10,
+     "rolloff": 0.7,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "sea",
+     "asset": "lapping",
+     "shape": "area",
+     "from": "water:w_sea",
+     "z": -70,
+     "gain_db": -14,
+     "ref_m": 6
+    },
+    {
+     "id": "mouth_wind",
+     "asset": "wind",
+     "shape": "line",
+     "points": [
+      [
+       200,
+       18
+      ],
+      [
+       200,
+       58
+      ]
+     ],
+     "z": -62,
+     "gain_db": -2,
+     "ref_m": 10,
+     "spread_m": 8
+    },
+    {
+     "id": "beach_stream",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_beach_stream",
+     "z": -68.5,
+     "gain_db": -12,
+     "ref_m": 1.5
+    },
+    {
+     "id": "surf_anchor",
+     "asset": "anchor_surf",
+     "shape": "line",
+     "points": [
+      [
+       172,
+       20
+      ],
+      [
+       170,
+       40
+      ],
+      [
+       176,
+       58
+      ]
+     ],
+     "z": -69.6,
+     "gain_db": 3,
+     "ref_m": 6,
+     "spread_m": 10,
+     "rolloff": 1.0,
+     "tags": [
+      "cc0"
+     ]
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "pavilion_furin",
+     "asset": "furin",
+     "from": "anchored:beach_pavilion",
+     "z": -63.5,
+     "gain_db": -8,
+     "trigger": "gust",
+     "rate_hz": 0.9
+    }
+   ]
+  },
+  "b4_lobby": {
+   "reverb": "timber",
+   "beds": [
+    {
+     "asset": "heartbeat",
+     "gain_db": -16
+    },
+    {
+     "asset": "roomtone",
+     "gain_db": -6
+    }
+   ]
+  },
+  "b4_tunnel": {
+   "reverb": "tube",
+   "beds": [
+    {
+     "asset": "heartbeat",
+     "gain_db": -9
+    }
+   ]
+  },
+  "b4_chamber": {
+   "reverb": "magma_hall",
+   "beds": [
+    {
+     "asset": "heartbeat",
+     "gain_db": -3
+    }
+   ],
+   "emitters": [
+    {
+     "id": "magma_glass",
+     "asset": "lava",
+     "shape": "line",
+     "points": [
+      [
+       41,
+       8
+      ],
+      [
+       121,
+       8
+      ]
+     ],
+     "z": -96,
+     "gain_db": -3,
+     "ref_m": 8,
+     "spread_m": 8,
+     "tags": [
+      "feature"
+     ]
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "magma_blorps",
+     "asset": "blorp",
+     "along": "emitter:magma_glass",
+     "z": -96,
+     "every_s": [
+      2.5,
+      8
+     ],
+     "gain_db": -3,
+     "pitch": [
+      0.6,
+      1.0
+     ]
+    }
+   ]
+  },
+  "s_rim": {
+   "reverb": "outdoor",
+   "open_to": [
+    "s_pool",
+    "s_spring",
+    "s_moon",
+    "s_rim_west"
+   ],
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -12
+    }
+   ],
+   "emitters": [
+    {
+     "id": "rim_rill",
+     "asset": "rill",
+     "shape": "line",
+     "from": "water:w_rim_rill",
+     "z": 120,
+     "gain_db": -14,
+     "ref_m": 1,
+     "rolloff": 1.5
+    }
+   ]
+  },
+  "s_pool": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -16
+    }
+   ],
+   "emitters": [
+    {
+     "id": "infinity_edge",
+     "asset": "sheet",
+     "shape": "line",
+     "points": [
+      [
+       96,
+       67.6
+      ],
+      [
+       136,
+       67.6
+      ]
+     ],
+     "z": 119.4,
+     "gain_db": 0,
+     "ref_m": 5,
+     "spread_m": 6,
+     "rolloff": 0.8,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "infinity_spray",
+     "asset": "spray",
+     "shape": "line",
+     "points": [
+      [
+       96,
+       67
+      ],
+      [
+       136,
+       67
+      ]
+     ],
+     "z": 118.5,
+     "gain_db": -6,
+     "ref_m": 2,
+     "rolloff": 1.6
+    },
+    {
+     "id": "pool_inflow",
+     "asset": "sheet",
+     "shape": "point",
+     "from": "anchored:inflow_spout",
+     "z": 120.6,
+     "gain_db": -8,
+     "ref_m": 2,
+     "rolloff": 1.3
+    }
+   ]
+  },
+  "s_spring": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "steam",
+     "gain_db": -22
+    }
+   ],
+   "emitters": [
+    {
+     "id": "spring_boil",
+     "asset": "boil",
+     "shape": "area",
+     "from": "water:w_spring",
+     "z": 121.4,
+     "gain_db": -3,
+     "ref_m": 3,
+     "rolloff": 1.2,
+     "tags": [
+      "feature"
+     ]
+    },
+    {
+     "id": "spring_out",
+     "asset": "stream",
+     "shape": "line",
+     "from": "water:w_spring_out",
+     "z": 121.3,
+     "gain_db": -10,
+     "ref_m": 2
+    }
+   ]
+  },
+  "s_moon": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -10
+    }
+   ],
+   "oneshots": [
+    {
+     "id": "moon_furin",
+     "asset": "furin",
+     "at": [
+      155,
+      93
+     ],
+     "z": 123,
+     "gain_db": -10,
+     "trigger": "gust",
+     "rate_hz": 0.6
+    }
+   ]
+  },
+  "s_rim_west": {
+   "reverb": "outdoor",
+   "beds": [
+    {
+     "asset": "wind",
+     "gain_db": -10
+    }
+   ]
+  },
+  "b3_falls_east": {
+   "reverb": "falls_shaft"
+  }
+ }
+}

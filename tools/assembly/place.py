@@ -194,7 +194,7 @@ def z_for(sp, rule, d, rng):
     if 'height' in rule:
         h = rule['height']
         h = rng.uniform(*h) if isinstance(h, list) else h
-        return fz + h, 'height'
+        return fz + h, 'height:%.3f' % h        # assemble re-bases this on the LOCAL floor under the item
     snap = rule.get('snap', d.get('snap', 'ground'))
     if snap == 'ceiling':
         top = sp.get('ceiling_z') or (fz + 6)
@@ -238,7 +238,8 @@ def place_space(sp):
         h = sp['hero']
         z = h['at'][2] if len(h['at']) > 2 else sp['floor_z']
         add(f"{sp['id']}:hero", h['asset'], h['at'][0], h['at'][1], z, h.get('facing_deg', 0) if not isinstance(h.get('facing_deg'), (list, str)) else 0, 'hero',
-            snap=dims(h['asset']).get('snap', 'ground'), dd=h.get('dims'), extra=dict(hero=True))
+            snap=h.get('snap') or ('given' if len(h['at']) > 2 and abs(h['at'][2] - sp['floor_z']) > 0.05 else dims(h['asset']).get('snap', 'ground')),
+            dd=h.get('dims'), extra=dict(hero=True))
     for a in sp.get('anchored', []):
         if 'at' not in a:
             continue                                   # line / ring anchored items run through the rule engine below
@@ -250,8 +251,9 @@ def place_space(sp):
                 yaw = fd[k % len(fd)] if isinstance(fd, list) else fd
                 if isinstance(yaw, str):
                     yaw = face_deg(yaw, q[0], q[1], 0, 1, sp) or 0
+                snap_ = a.get('snap') or ('given' if len(q) > 2 and abs(q[2] - sp['floor_z']) > 0.05 else dims(a['asset']).get('snap', 'ground'))
                 add(f"{sp['id']}:{a['id']}" + (f"#{k}" if len(pts) > 1 else ''), a['asset'], q[0], q[1], z, yaw, f"anchored:{a['id']}",
-                    snap=a.get('snap', dims(a['asset']).get('snap', 'ground')), dd=a.get('dims'))
+                    snap=snap_, dd=a.get('dims'))
         except Exception as ex:
             WARN.append(f"{sp['id']}:anchored {a.get('id')}: {type(ex).__name__}: {ex}")
 
@@ -265,6 +267,9 @@ def place_space(sp):
                 continue
             rng = random.Random(rng_base * 1000 + ri * 7 + (1 if group == 'lights' else 0))
             asset = rule['asset']; d = dims(asset, rule.get('dims'))
+            if asset == 'railing' and 'along' in rule:      # rails are continuous: 1.5 m pieces end to end, long axis along the line
+                rule = dict(rule, spacing=[1.5, 1.5], face='path', snap=rule.get('snap', 'ground'))
+                rule.pop('height', None)
             ref = f'{group}[{ri}]'
             _rad = [a for a in rule.get('avoid', []) if isinstance(a, (int, float))]
             av = avoid_geom(sp, rule.get('avoid'), extra=max(_rad) if _rad else 0.0)
@@ -301,11 +306,18 @@ def place_space(sp):
                         snap=snap, dd=rule.get('dims'), scale=rng.uniform(*sc) if sc else 1.0, seed=rng.choice(variants))
             elif 'along' in rule:
                 line = line_of(sp, rule['along'])
-                sides = {'left': [1], 'right': [-1], 'both': [1, -1]}.get(rule.get('side', 'both' if rule.get('offset', 0) else 'left'), [1])
+                side_kw = rule.get('side', 'both' if rule.get('offset', 0) else 'left')
+                # 'out'/'outer' and 'in'/'inner' are relative to the polyline's centroid (pool rims, rings)
+                cen = LineString(line).centroid if side_kw in ('out', 'outer', 'in', 'inner') else None
+                sides = {'left': [1], 'right': [-1], 'both': [1, -1]}.get(side_kw, [1])
                 k = 0
                 for side in sides:
                     for x, y, ang, s in sample_along(line, rule.get('spacing', [4, 6]), rng):
                         off = rule.get('offset', 0.0)
+                        if cen is not None:
+                            lx, ly = x - math.sin(ang), y + math.cos(ang)          # a point 1 m to the left
+                            left_is_out = math.hypot(lx - cen.x, ly - cen.y) > math.hypot(x - cen.x, y - cen.y)
+                            side = (1 if left_is_out else -1) * (1 if side_kw in ('out', 'outer') else -1)
                         jx = rng.uniform(-1, 1) * rule.get('jitter', 0.0); jy = rng.uniform(-1, 1) * rule.get('jitter', 0.0)
                         px = x - side * math.sin(ang) * off + jx; py = y + side * math.cos(ang) * off + jy
                         if rule.get('cluster'):
@@ -370,6 +382,8 @@ def place_space(sp):
                     yaw = face_deg(f, px, py, 0, 1, sp)
                     yaw = (yaw if yaw is not None else 0) + rng.uniform(-25, 25)
                     emit(k, px, py, yaw); k += 1
+            if not any(e['rule'] == ref for e in out) and not ASSETS.get(asset, {}).get('marker') and not rule.get('optional'):
+                WARN.append(f"ZERO {sp['id']}:{ref} {asset}: rule placed nothing")
           except Exception as ex:
             WARN.append(f"{sp['id']}:{group}[{ri}] {rule.get('asset')}: {type(ex).__name__}: {ex}")
     # overrides (deliberate nudges with reasons)

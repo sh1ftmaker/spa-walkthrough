@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Water curtains and sheets</title>
+<script type="importmap">{"imports":{"three":"../../../../../web/node_modules/three/build/three.module.js","three/addons/":"../../../../../web/node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+<script type="module">
+// Prototype (d): thin sheets. Kawagiri dining-pod water curtain that parts for a passing server (the gap is
+// decided at the nozzle and then falls with the water), an infinity-edge overflow, and the Mist Steps sheet.
+// All three are single meshes with analytic shaders: no textures beyond the shared procedural noise.
+import * as THREE from 'three';
+import { createApp, GLSL_COMMON, BILLBOARD_GLSL, bakeVertexLight, lumpify, makeNoise3, instancedQuads, bakeProbe } from '../../common/kit.js';
+
+const app = createApp({
+  title: 'Kawagiri curtains, infinity edge, Mist Steps',
+  fog: { color: 0x34474a, v: [0.0, 0.10, 0.45, 0.004] },
+  cams: [
+    { pos: [-5.8, 1.7, 5.2], target: [0, 1.3, 0], fov: 60 },
+    { pos: [9.5, 1.5, 4.5], target: [9.5, 0.2, -1.6], fov: 60 },
+    { pos: [-6.2, 2.4, -8.6], target: [-6.0, 0.8, -3.8], fov: 60 },
+    { pos: [-12, 7, 10], target: [2, 0, -2], fov: 55 },
+  ],
+});
+const { scene, shared, renderer } = app;
+const nz = makeNoise3(13);
+
+// ------------------------------------------------------------------ static set: floor, pod, pool, stairs
+const WARM = new THREE.Color(1.0, 0.55, 0.22), TEAL = new THREE.Color(0.12, 0.95, 0.85);
+const lanterns = [[0, 2.35, 0], [-3.5, 0.9, 3.5], [3.8, 0.9, 3.0], [6.5, 0.9, 1.5], [12.5, 0.9, 1.5], [-8.2, 1.4, -2.5], [-3.6, 1.4, -2.5]];
+const LIGHTS = [
+  ...lanterns.map((p, i) => ({ pos: new THREE.Vector3(...p), color: WARM, intensity: i === 0 ? 4 : 5 })),
+  { pos: new THREE.Vector3(0, -0.5, 2.8), color: TEAL, intensity: 3 }, { pos: new THREE.Vector3(9.5, -0.4, -2), color: TEAL, intensity: 5 },
+  { pos: new THREE.Vector3(-6, 0.2, -6.5), color: TEAL, intensity: 3 }, { pos: new THREE.Vector3(0, 1.3, 0), color: WARM, intensity: 2.5 },
+];
+const SURF = /* glsl */`attribute vec3 color; varying vec3 vCol; varying vec3 vW; varying vec3 vN;
+  void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; vCol = color; vN = normalize(mat3(modelMatrix)*normal); gl_Position = projectionMatrix*viewMatrix*w; }`;
+function stoneMat(tint, under = 0) {
+  return new THREE.ShaderMaterial({
+    uniforms: { ...shared, uTint: { value: new THREE.Color(tint) }, uUnder: { value: under } },
+    vertexShader: SURF,
+    fragmentShader: GLSL_COMMON + /* glsl */`uniform vec3 uTint; uniform float uUnder; varying vec3 vCol; varying vec3 vW; varying vec3 vN;
+      void main(){ vec3 an = abs(vN); vec2 uv = an.y > 0.6 ? vW.xz : (an.x > an.z ? vW.zy : vW.xy);
+        vec3 alb = uTint*(0.6 + 0.8*texture(tNoise, uv*0.3).r)*(0.8 + 0.4*texture(tNoise, uv*2.0).a);
+        vec3 col = alb*vCol;
+        if (uUnder > 0.5) { float d = 0.6; vec3 T = exp(-vec3(0.5,0.08,0.1)*d*2.0);
+          float b1 = texture(tNoise, vW.xz*0.5 + uTime*vec2(0.02,0.015)).b, b2 = texture(tNoise, vW.xz*0.67 + 0.4 - uTime*vec2(0.012,0.024)).b;
+          col = vec3(dot(col, vec3(0.3,0.6,0.1)))*vec3(0.5,1.0,0.95)*(0.8 + pow(clamp(1.0-(b1+b2)*0.9,0.0,1.0),3.0)*3.0);
+          col = col*T + vec3(0.01,0.16,0.15)*(0.3 + 1.5*dot(vCol, vec3(0.2,0.6,0.2))); }
+        gl_FragColor = vec4(applyFog(col, vW), 1.0);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+      }`,
+  });
+}
+function add(geo, mat) { bakeVertexLight(geo, LIGHTS, new THREE.Color(0.012, 0.016, 0.02)); const m = new THREE.Mesh(geo, mat); scene.add(m); return m; }
+// floor with a channel under the pod
+const floorGeo = new THREE.PlaneGeometry(40, 30, 120, 90).rotateX(-Math.PI / 2);
+{ const p = floorGeo.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i), z = p.getZ(i); const r = Math.hypot(x, z); let y = -0.6 * (1 - Math.min(1, Math.max(0, (r - 3.25) / 0.35))); if (x > 6.5 && x < 12.5 && z > -4.5 && z < 0.5) y = -0.8; y += 0.02 * nz(x, 0, z, 2); p.setY(i, y); } }
+const floor = add(floorGeo, stoneMat(0x2a2a2b));
+const channelFloor = add(new THREE.CircleGeometry(3.4, 48).rotateX(-Math.PI / 2).translate(0, -0.59, 0), stoneMat(0x26282a, 1));
+// pod: platform, roof, gutter ring, posts
+const pod = add(new THREE.CylinderGeometry(2.2, 2.2, 0.35, 48).translate(0, 0.05, 0), stoneMat(0x3a2c22));
+const roof = add(new THREE.CylinderGeometry(2.75, 2.55, 0.25, 48).translate(0, 2.75, 0), stoneMat(0x221a15));
+// infinity pool: basin rim (the lip at z = -1.6 drops into a catch trough)
+const poolRim = add(new THREE.BoxGeometry(6.2, 0.9, 0.35).translate(9.5, -0.0, -1.75), stoneMat(0x2b2b2d));
+const poolBack = add(new THREE.BoxGeometry(6.2, 0.9, 4.0).translate(9.5, -0.95, -3.8), stoneMat(0x23272a, 1));
+// Mist Steps: 7 steps descending toward -z
+const STEP = { n: 7, rise: 0.18, run: 0.42, x0: -7.2, x1: -4.8, z0: -3.2, y0: 1.26 };
+const stepGeos = []; for (let i = 0; i < STEP.n; i++) { const top = STEP.y0 - i * STEP.rise; const z = STEP.z0 - i * STEP.run; stepGeos.push(new THREE.BoxGeometry(STEP.x1 - STEP.x0, top + 0.2, STEP.run).translate((STEP.x0 + STEP.x1) / 2, (top - 0.2) / 2, z - STEP.run / 2)); }
+let stairsGeo = stepGeos[0]; { const merged = []; for (const g of stepGeos) merged.push(g.toNonIndexed()); let n = 0; merged.forEach(g => n += g.attributes.position.count); const pos = new Float32Array(n * 3), nor = new Float32Array(n * 3); let o = 0; merged.forEach(g => { pos.set(g.attributes.position.array, o); nor.set(g.attributes.normal.array, o); o += g.attributes.position.array.length; }); stairsGeo = new THREE.BufferGeometry(); stairsGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); stairsGeo.setAttribute('normal', new THREE.BufferAttribute(nor, 3)); }
+{ const c = stairsGeo.attributes.position; const lv = new Float32Array(c.count * 3); stairsGeo.computeVertexNormals = () => {}; }
+const stairs = add(stairsGeo, stoneMat(0x2c2c2e));
+const lanternMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(0.2, 0.3, 0.2), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.4, 1.0, 0.32) }), lanterns.length);
+lanterns.forEach((p, i) => lanternMesh.setMatrixAt(i, new THREE.Matrix4().makeTranslation(...p))); scene.add(lanternMesh);
+// a stand-in server who walks a loop that passes through the curtain
+const server = new THREE.Mesh(new THREE.CapsuleGeometry(0.22, 1.1, 4, 12), new THREE.MeshBasicMaterial({ color: 0x1b1410 }));
+scene.add(server);
+const SERVER_GLSL = /* glsl */`
+vec2 serverXZ(float t){ float a = t*0.32; return vec2(cos(a)*3.1, sin(a)*3.1*0.55 + 0.6); }  // ellipse that crosses the curtain twice
+`;
+const serverXZ = t => { const a = t * 0.32; return [Math.cos(a) * 3.1, Math.sin(a) * 3.1 * 0.55 + 0.6]; };
+
+// ------------------------------------------------------------------ the curtain: free-fall sheet, nozzle-gated gap that falls with the water
+const CURTAIN = { r: 2.45, h: 2.62 };
+const curtainMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, uR: { value: CURTAIN.r }, uH: { value: CURTAIN.h }, tEnv: { value: null } },
+  vertexShader: GLSL_COMMON + /* glsl */`uniform float uR; uniform float uH; varying vec2 vUv; varying float vTau; varying vec3 vW;
+    void main(){
+      float tau = uv.y*sqrt(2.0*uH/9.81);
+      float th = uv.x*6.2832;
+      float r = uR + 0.05*tau;                                 // slight outward throw from the nozzles
+      vec3 p = vec3(cos(th)*r, uH - 0.5*9.81*tau*tau, sin(th)*r);
+      vUv = uv; vTau = tau; vW = p;
+      gl_Position = projectionMatrix*viewMatrix*vec4(p, 1.0);
+    }`,
+  fragmentShader: GLSL_COMMON + SERVER_GLSL + /* glsl */`uniform float uR; uniform float uH; uniform samplerCube tEnv; varying vec2 vUv; varying float vTau; varying vec3 vW;
+    void main(){
+      float T = sqrt(2.0*uH/9.81), f = vTau/T;
+      float s = vTau - uTime;
+      float th = vUv.x*6.2832;
+      // gap: decided when this water left the nozzle (time uTime - tau), using where the server was then
+      float te = uTime - vTau;
+      vec2 sp = serverXZ(te + 0.35);                              // valves lead the server by 0.35 s
+      vec2 nzl = vec2(cos(th), sin(th))*uR;
+      float dn = distance(sp, nzl);
+      float open = 1.0 - smoothstep(0.75, 1.15, dn + (texture(tNoise, vec2(vUv.x*40.0, te*0.7)).r - 0.5)*0.25);
+      // thin streams: a dense comb of nozzles, each stream slightly wavering
+      float u = vUv.x*620.0;
+      float strand = 1.0 - abs(fract(u + (texture(tNoise, vec2(vUv.x*3.0, s*0.4)).r - 0.5)*f*2.0) - 0.5)*2.0;
+      strand = mix(strand, 0.5, smoothstep(0.25, 0.8, fwidth(u)));   // fade the comb to its average when streams get sub-pixel (no moire)
+      float breakup = texture(tNoise, vec2(vUv.x*25.0, s*0.9)).r;
+      float a = smoothstep(0.15, 0.85, strand)*mix(0.9, 0.55, f)*smoothstep(0.25 + 0.4*f, 0.45 + 0.4*f, breakup + 0.35);
+      a = max(a, 0.18*(1.0 - f));                                 // glassy, continuous right below the gutter
+      a *= 1.0 - open;
+      a *= smoothstep(0.0, 0.04, f);
+      vec3 V = normalize(cameraPosition - vW);
+      vec3 N = normalize(vec3(cos(th), 0.0, sin(th)));
+      float F = 0.04 + 0.96*pow(1.0 - abs(dot(N, V)), 4.0);
+      vec3 env = textureLod(tEnv, reflect(-V, N), 2.0).rgb;
+      float bright = 0.6 + 0.8*texture(tNoise, vec2(vUv.x*55.0, 0.3)).a;           // each nozzle stream catches light differently
+      vec3 col = vec3(0.62, 0.84, 0.86)*(0.3 + 0.55*f)*bright + env*F*1.5 + vec3(1.0,0.55,0.25)*0.35*(1.0 - f);
+      gl_FragColor = applyFogPM(vec4(col*a, a), vW);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+  transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+const curtainGeo = (low) => { const g = new THREE.PlaneGeometry(1, 1, low ? 96 : 192, low ? 10 : 20); const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setY(i, 1 - uv.getY(i)); return g; };
+const curtain = new THREE.Mesh(curtainGeo(false), curtainMat); curtain.frustumCulled = false; curtain.renderOrder = 3; scene.add(curtain);
+
+// landing ring: churn where the curtain hits the channel (same gap logic, evaluated at landing time)
+const landMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, uR: { value: CURTAIN.r }, uH: { value: CURTAIN.h } },
+  vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: GLSL_COMMON + SERVER_GLSL + /* glsl */`uniform float uR; uniform float uH; varying vec3 vW;
+    void main(){
+      float T = sqrt(2.0*uH/9.81);
+      float th = atan(vW.z, vW.x); vec2 nzl = vec2(cos(th), sin(th))*uR;
+      float open = 1.0 - smoothstep(0.75, 1.15, distance(serverXZ(uTime - T + 0.35), nzl));
+      float r = length(vW.xz) - (uR + 0.05*T);
+      float band = exp(-r*r/0.02);
+      float lace = 1.0 - texture(tNoise, vec2(th*3.0, r*2.0 + uTime*0.4)).b;
+      float lace2 = texture(tNoise, vec2(th*1.3 - uTime*0.05, r*1.2 - uTime*0.2)).r;
+      float foam = smoothstep(0.35, 0.6, (lace*0.6 + lace2*0.5)*band*1.4)*(1.0 - open);
+      vec3 col = vec3(0.6, 0.8, 0.82)*0.55;
+      gl_FragColor = applyFogPM(vec4(col*foam, foam*0.9), vW);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+  transparent: true, depthWrite: false, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+const landRing = new THREE.Mesh(new THREE.RingGeometry(2.25, 2.9, 96, 2).rotateX(-Math.PI / 2).translate(0, -0.01, 0), landMat); landRing.renderOrder = 2; scene.add(landRing);
+
+// ------------------------------------------------------------------ water surfaces: channel ring, infinity pool (flow toward the lip), stair sheet
+const FLAT_FS = GLSL_COMMON + /* glsl */`uniform sampler2D tNormal; uniform samplerCube tEnv; uniform vec4 uFlow; // dir.xy, speed, accel-toward-lip
+  uniform vec3 uLip; // z of lip, on/off, -
+  varying vec3 vW;
+  void main(){
+    vec2 dir = uFlow.xy; float sp = uFlow.z;
+    float toLip = uLip.y > 0.5 ? clamp(1.0 - (vW.z - uLip.x)/(-1.2), 0.0, 1.0) : 0.0;   // 0 far, 1 at the lip
+    sp *= 1.0 + uFlow.w*toLip*toLip;
+    float ph0 = fract(uTime*0.6), ph1 = fract(uTime*0.6 + 0.5); float w0 = 1.0 - abs(1.0 - 2.0*ph0);
+    vec2 o0 = dir*sp*ph0/0.6, o1 = dir*sp*ph1/0.6;
+    vec2 nd = (texture(tNormal, (vW.xz - o0)*0.6).xy*2.0-1.0)*w0 + (texture(tNormal, (vW.xz - o1)*0.6 + 0.5).xy*2.0-1.0)*(1.0-w0);
+    nd *= mix(0.15, 0.05, toLip);                                   // surface goes glassy as it accelerates to the lip
+    vec3 N = normalize(vec3(nd.x, 1.0, nd.y));
+    vec3 V = normalize(cameraPosition - vW);
+    float F = 0.02 + 0.98*pow(1.0 - max(dot(N, V), 0.0), 5.0);
+    vec3 col = textureLod(tEnv, reflect(-V, N), 0.5).rgb*F;
+    float edge = uLip.y > 0.5 ? smoothstep(0.06, 0.0, abs(vW.z - uLip.x))*0.6 : 0.0;   // bright meniscus line on the lip
+    col += vec3(0.6,0.9,0.9)*edge;
+    gl_FragColor = applyFogPM(vec4(col, F + edge*0.5), vW);
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+  }`;
+function flatWater(geo, flow, lip) {
+  const m = new THREE.ShaderMaterial({
+    uniforms: { ...shared, tNormal: { value: app.tex.normal }, tEnv: { value: null }, uFlow: { value: new THREE.Vector4(...flow) }, uLip: { value: new THREE.Vector3(...lip) } },
+    vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+    fragmentShader: FLAT_FS, transparent: true, depthWrite: false, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+  });
+  const mesh = new THREE.Mesh(geo, m); mesh.renderOrder = 1; scene.add(mesh); return mesh;
+}
+const ring = flatWater(new THREE.RingGeometry(2.2, 3.4, 64, 1).rotateX(-Math.PI / 2).translate(0, -0.02, 0), [1, 0, 0.25, 0], [0, 0, 0]);
+const infinity = flatWater(new THREE.PlaneGeometry(5.9, 3.8).rotateX(-Math.PI / 2).translate(9.5, 0.44, -3.5), [0, 1, 0.12, 4.0], [-1.6, 1, 0]);
+
+// overflow sheet over the lip: thin, glassy, accelerating; breaks into streaks only near the trough
+const overflowMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, tEnv: { value: null } },
+  vertexShader: /* glsl */`varying vec2 vUv; varying vec3 vW; varying float vTau;
+    void main(){ float T = sqrt(2.0*0.75/9.81); float tau = uv.y*T; float x = 9.5 + (uv.x - 0.5)*5.9;
+      vec3 p = vec3(x, 0.45 - 0.5*9.81*tau*tau, -1.58 + 0.25*tau);
+      vUv = uv; vTau = tau; vW = p; gl_Position = projectionMatrix*viewMatrix*vec4(p,1.0); }`,
+  fragmentShader: GLSL_COMMON + /* glsl */`uniform samplerCube tEnv; varying vec2 vUv; varying vec3 vW; varying float vTau;
+    void main(){
+      float f = vUv.y; float s = vTau - uTime;
+      float n = texture(tNoise, vec2(vUv.x*30.0, s*0.5)).r;
+      vec3 V = normalize(cameraPosition - vW);
+      vec3 N = normalize(vec3((n - 0.5)*0.3, 0.15, 1.0));
+      float F = 0.04 + 0.96*pow(1.0 - abs(dot(N, V)), 5.0);
+      vec3 env = textureLod(tEnv, reflect(-V, N), 0.5).rgb;
+      float streak = smoothstep(0.55, 0.8, n)*smoothstep(0.4, 1.0, f);
+      float a = mix(0.22, 0.7, streak) + F*0.4;
+      vec3 col = env*F*1.4 + vec3(0.05,0.35,0.33)*0.6 + vec3(0.65,0.85,0.88)*streak*0.6 + vec3(0.6,0.9,0.9)*smoothstep(0.08, 0.0, f)*0.5;
+      a *= smoothstep(1.0, 0.92, f);
+      gl_FragColor = applyFogPM(vec4(col*a, a), vW);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+  transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+const overflowGeo = new THREE.PlaneGeometry(1, 1, 24, 12); { const uv = overflowGeo.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setY(i, 1 - uv.getY(i)); }
+const overflow = new THREE.Mesh(overflowGeo, overflowMat); overflow.frustumCulled = false; overflow.renderOrder = 3; scene.add(overflow);
+const trough = flatWater(new THREE.PlaneGeometry(6.0, 1.0).rotateX(-Math.PI / 2).translate(9.5, -0.35, -1.0), [1, 0, 0.3, 0], [0, 0, 0]);
+
+// Mist Steps sheet: a 1-2 cm film that follows the treads, falls off each nose, and forms a white line where it lands
+const stepSheetMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, tNormal: { value: app.tex.normal }, tEnv: { value: null }, uS: { value: new THREE.Vector4(STEP.y0, STEP.rise, STEP.run, STEP.z0) } },
+  vertexShader: /* glsl */`uniform vec4 uS; varying vec3 vW; varying float vK; varying float vFall;
+    void main(){
+      // position.z runs down the flight in "step units": k in [0, n), fractional part = where on the tread
+      float k = position.z; float i = floor(k), fk = k - i;
+      float z = uS.w - k*uS.z;
+      float y = uS.x - i*uS.y + 0.015;
+      // last 15% of each tread: the film throws off the nose and drops one riser
+      float fall = smoothstep(0.85, 1.0, fk);
+      y -= fall*fall*uS.y;
+      z -= fall*0.05;
+      vec3 p = vec3(position.x, y, z);
+      vW = (modelMatrix*vec4(p,1.0)).xyz; vK = k; vFall = fall;
+      gl_Position = projectionMatrix*viewMatrix*vec4(vW,1.0);
+    }`,
+  fragmentShader: GLSL_COMMON + /* glsl */`uniform sampler2D tNormal; uniform samplerCube tEnv; varying vec3 vW; varying float vK; varying float vFall;
+    void main(){
+      float fk = fract(vK);
+      vec2 uv = vec2(vW.x*1.5, vW.z*0.6 + uTime*0.9);
+      vec3 nd = texture(tNormal, uv).xyz*2.0-1.0;
+      vec3 N = normalize(vec3(nd.x*0.25, 1.0, nd.y*0.25 + vFall*1.5));
+      vec3 V = normalize(cameraPosition - vW);
+      float F = 0.03 + 0.97*pow(1.0 - max(dot(N, V), 0.0), 5.0);
+      vec3 col = textureLod(tEnv, reflect(-V, N), 1.0).rgb*F;
+      // white water: a churning line where each drop lands (start of the next tread) and on the nose
+      float land = smoothstep(0.18, 0.0, fk)*smoothstep(-0.02, 0.02, fk);
+      float lace = 1.0 - texture(tNoise, vec2(vW.x*0.9, vW.z*0.9 + uTime*0.6)).b;
+      float foam = smoothstep(0.35, 0.65, lace*(land*1.2 + vFall*0.6) + land*0.3);
+      vec3 foamCol = vec3(0.6, 0.8, 0.82)*0.7;
+      float a = F + 0.1;
+      gl_FragColor = applyFogPM(vec4(col*(1.0-foam) + foamCol*foam, a*(1.0-foam) + foam), vW);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+  transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+const stepSheetGeo = new THREE.PlaneGeometry(STEP.x1 - STEP.x0 - 0.1, STEP.n, 8, STEP.n * 14).rotateX(-Math.PI / 2);
+{ const p = stepSheetGeo.attributes.position; for (let i = 0; i < p.count; i++) { p.setX(i, p.getX(i) + (STEP.x0 + STEP.x1) / 2); p.setZ(i, Math.min(STEP.n - 0.001, p.getZ(i) + STEP.n / 2)); } }
+const stepSheet = new THREE.Mesh(stepSheetGeo, stepSheetMat); stepSheet.frustumCulled = false; stepSheet.renderOrder = 2; scene.add(stepSheet);
+
+// low mist sprites drifting over all of it (one draw)
+const mistMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, tPuff: { value: app.tex.puff } },
+  vertexShader: GLSL_COMMON + BILLBOARD_GLSL + /* glsl */`attribute float aSeed; varying float vA; varying vec2 vUv; varying vec3 vW;
+    void main(){ vec3 r = hash31(aSeed*1.7 + 0.2); float life = 9.0; float tt = uTime + r.x*life; float age = mod(tt, life)/life; float cyc = floor(tt/life);
+      vec3 r2 = hash31(aSeed*3.3 + cyc*5.1);
+      vec3 p = vec3(mix(-9.0, 13.0, r2.x), 0.25 + 0.5*age, mix(-7.0, 4.0, r2.y)) + vec3(age*1.2, 0.0, age*0.4);
+      vA = sin(age*3.14159); float size = mix(1.5, 3.5, r2.z);
+      vec3 wp = p + billboard(position.xy, size); vUv = uv; vW = wp; gl_Position = projectionMatrix*viewMatrix*vec4(wp,1.0); }`,
+  fragmentShader: GLSL_COMMON + /* glsl */`uniform sampler2D tPuff; varying float vA; varying vec2 vUv; varying vec3 vW;
+    void main(){ float w = texture(tNoise, vUv*vec2(0.8,0.4) + vW.xz*0.05 + uTime*0.02).r; float a = texture(tPuff, vUv).a*vA*0.05*smoothstep(0.3, 0.7, w + 0.15);
+      a *= smoothstep(1.0, 3.5, distance(vW, cameraPosition));
+      gl_FragColor = applyFogPM(vec4(vec3(0.55,0.68,0.7)*a, a), vW);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+  transparent: true, depthWrite: false, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+const mist = new THREE.Mesh(instancedQuads(40), mistMat); mist.frustumCulled = false; mist.renderOrder = 6; scene.add(mist);
+
+// ------------------------------------------------------------------ probe, groups, tiers, animation
+const fx = [curtain, landRing, ring, infinity, overflow, trough, stepSheet, mist, server];
+const env = bakeProbe(renderer, scene, new THREE.Vector3(1, 1.4, 4), 128, fx);
+for (const m of [curtain, ring, infinity, overflow, trough, stepSheet]) m.material.uniforms.tEnv.value = env;
+app.extraTexBytes += 128 * 128 * 6 * 8 * 4 / 3;
+app.groups = { rock: [floor, channelFloor, pod, roof, poolRim, poolBack, stairs, lanternMesh, server], curtain: [curtain, landRing], sheets: [ring, infinity, overflow, trough, stepSheet], mist: [mist] };
+let lastLow = null;
+app.update = (t) => {
+  const [x, z] = serverXZ(t); server.position.set(x, 0.85, z);
+  if (lastLow === app.state.low) return; lastLow = app.state.low;
+  curtain.geometry.dispose(); curtain.geometry = curtainGeo(lastLow);
+  mist.geometry.instanceCount = lastLow ? 16 : 40;
+};
+app.start();
+</script>
+</body>
+</html>

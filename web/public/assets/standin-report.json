@@ -2,25 +2,25 @@
  "layout": "/home/agent-tom/Desktop/volcanospa/3d/layout.json",
  "warnings": [
   "bridge p_b3_lobby_lift: no river nearby",
-  "portal p_b1_south_treat: 4.0 m from the nearest wall of b1_treatment",
-  "portal p_suite_1ab: 3.3 m from the nearest wall of suite_1a",
-  "portal p_suite_1ab: 3.3 m from the nearest wall of suite_1b",
-  "portal p_suite_1bc: 3.3 m from the nearest wall of suite_1b",
-  "portal p_suite_1bc: 3.3 m from the nearest wall of suite_1c",
-  "portal p_suite_2ab: 3.3 m from the nearest wall of suite_2a",
-  "portal p_suite_2ab: 3.3 m from the nearest wall of suite_2b",
-  "portal p_suite_2bc: 3.3 m from the nearest wall of suite_2b",
-  "portal p_suite_2bc: 3.3 m from the nearest wall of suite_2c",
-  "portal p_suite_3ab: 3.3 m from the nearest wall of suite_3a",
-  "portal p_suite_3ab: 3.3 m from the nearest wall of suite_3b",
-  "portal p_suite_3bc: 3.3 m from the nearest wall of suite_3b",
-  "portal p_suite_3bc: 3.3 m from the nearest wall of suite_3c",
-  "portal p_suite_4ab: 3.3 m from the nearest wall of suite_4a",
-  "portal p_suite_4ab: 3.3 m from the nearest wall of suite_4b",
-  "portal p_suite_4bc: 3.3 m from the nearest wall of suite_4b",
-  "portal p_suite_4bc: 3.3 m from the nearest wall of suite_4c",
+  "portal p_suite_1ab: 3.7 m from the nearest wall of suite_1a",
+  "portal p_suite_1ab: 3.2 m from the nearest wall of suite_1b",
+  "portal p_suite_1bc: 3.7 m from the nearest wall of suite_1b",
+  "portal p_suite_1bc: 3.2 m from the nearest wall of suite_1c",
+  "portal p_suite_2ab: 3.7 m from the nearest wall of suite_2a",
+  "portal p_suite_2ab: 3.2 m from the nearest wall of suite_2b",
+  "portal p_suite_2bc: 3.7 m from the nearest wall of suite_2b",
+  "portal p_suite_2bc: 3.2 m from the nearest wall of suite_2c",
+  "portal p_suite_3ab: 3.7 m from the nearest wall of suite_3a",
+  "portal p_suite_3ab: 3.2 m from the nearest wall of suite_3b",
+  "portal p_suite_3bc: 3.7 m from the nearest wall of suite_3b",
+  "portal p_suite_3bc: 3.2 m from the nearest wall of suite_3c",
+  "portal p_suite_4ab: 3.7 m from the nearest wall of suite_4a",
+  "portal p_suite_4ab: 3.2 m from the nearest wall of suite_4b",
+  "portal p_suite_4bc: 3.7 m from the nearest wall of suite_4b",
+  "portal p_suite_4bc: 3.2 m from the nearest wall of suite_4c",
   "falls_stair_1: end at (10.5,74.0) z -55.00 is -4.5 m from the floor of b3_falls",
   "falls_gallery: end at (10.5,74.0) z -55.00 is -4.5 m from the floor of b3_falls",
+  "spring_steps: end at (77.0,101.7) z 121.50 is -141.5 m from the floor of b1_grotto",
   "cliff_stair_0: end at (140.0,109.2) z 10.00 is -10 m from the floor of g_north_ledge",
   "cliff_stair_1: end at (140.0,109.2) z 26.00 is -26 m from the floor of g_north_ledge",
   "cliff_stair_1: end at (140.0,109.2) z 10.00 is -10 m from the floor of g_north_ledge",
@@ -28,15 +28,16 @@
   "cliff_stair_2: end at (140.0,109.2) z 26.00 is -26 m from the floor of g_north_ledge",
   "cliff_stair_3: end at (140.0,109.2) z 60.00 is -60 m from the floor of g_north_ledge",
   "cliff_stair_3: end at (140.0,109.2) z 43.00 is -43 m from the floor of g_north_ledge",
-  "cliff_stair_4: end at (140.0,109.2) z 120.00 is -120 m from the floor of g_north_ledge",
   "cliff_stair_4: end at (140.0,109.2) z 60.00 is -60 m from the floor of g_north_ledge",
+  "beach_steps: end at (163.5,35.5) z -68.00 is 1 m from the floor of b3_shore",
   "north_walk_stair: end at (66.0,66.0) z -61.50 is -5.5 m from the floor of b3_cavern",
   "portal p_terrace_cascade: floors differ by -1.00 m (g_terrace 0 / g_cascade -1) with no stair",
+  "portal p_b2_falls_balcony: floors differ by -19.50 m (b2_falls_head -40 / b3_falls_east -59.5) with no stair",
   "portal p_b3_falls_rim: floors differ by -0.50 m (b3_falls -59.5 / b3_rimstone -60) with no stair",
   "portal p_b3_walk_rim: floors differ by 7.00 m (b3_walk_north -67 / b3_rimstone -60) with no stair",
   "portal p_b3_rim_lazy: floors differ by -7.00 m (b3_rimstone -60 / b3_lazy -67) with no stair",
   "portal p_b3_falls_arch: floors differ by -7.50 m (b3_falls -59.5 / b3_cavern -67) with no stair",
-  "portal p_b3_shore_wave: floors differ by -1.00 m (b3_shore -67 / b3_wave -68) with no stair",
+  "portal p_b3_shore_wave: floors differ by -4.00 m (b3_shore -67 / b3_wave -71) with no stair",
   "portal p_s_rim_spring: floors differ by 1.50 m (s_rim 120 / s_spring 121.5) with no stair",
   "portal p_s_rim_moon: floors differ by 0.50 m (s_rim 120 / s_moon 120.5) with no stair"
  ],
@@ -300,8 +301,8 @@
     101.7
    ],
    "z": 121.5,
-   "space": "s_spring",
-   "dz": 0
+   "space": "b1_grotto",
+   "dz": -141.5
   },
   {
    "conn": "spring_steps",
@@ -417,11 +418,11 @@
    "conn": "cliff_stair_4",
    "at": [
     140,
-    109.15
+    107
    ],
    "z": 120,
-   "space": "g_north_ledge",
-   "dz": -120
+   "space": "s_rim",
+   "dz": 0
   },
   {
    "conn": "cliff_stair_4",
@@ -450,8 +451,8 @@
     35.5
    ],
    "z": -68,
-   "space": "b3_wave",
-   "dz": 0
+   "space": "b3_shore",
+   "dz": 1
   },
   {
    "conn": "north_walk_stair",
@@ -482,6 +483,12 @@
    "dz": -1
   },
   {
+   "portal": "p_b2_falls_balcony",
+   "a": "b2_falls_head",
+   "b": "b3_falls_east",
+   "dz": -19.5
+  },
+  {
    "portal": "p_b3_falls_rim",
    "a": "b3_falls",
    "b": "b3_rimstone",
@@ -509,7 +516,7 @@
    "portal": "p_b3_shore_wave",
    "a": "b3_shore",
    "b": "b3_wave",
-   "dz": -1
+   "dz": -4
   },
   {
    "portal": "p_s_rim_spring",
@@ -532,9 +539,9 @@
     "c_terrace_path",
     "cliff"
    ],
-   "renderTris": 4308,
+   "renderTris": 4344,
    "walkTris": 4140,
-   "glbKB": 133.9
+   "glbKB": 134.8
   },
   {
    "id": "b1",
@@ -543,9 +550,9 @@
     "b2",
     "c_lava_stair"
    ],
-   "renderTris": 5872,
-   "walkTris": 4172,
-   "glbKB": 166.3
+   "renderTris": 5900,
+   "walkTris": 4200,
+   "glbKB": 167.1
   },
   {
    "id": "b2",
@@ -555,9 +562,9 @@
     "b3",
     "c_lava_stair"
    ],
-   "renderTris": 12182,
-   "walkTris": 10284,
-   "glbKB": 342.3
+   "renderTris": 12194,
+   "walkTris": 10272,
+   "glbKB": 342.5
   },
   {
    "id": "b3",
@@ -566,9 +573,9 @@
     "b2",
     "c_lava_stair"
    ],
-   "renderTris": 18969,
-   "walkTris": 16206,
-   "glbKB": 534.2
+   "renderTris": 19041,
+   "walkTris": 16101,
+   "glbKB": 537.3
   },
   {
    "id": "b4",
@@ -585,9 +592,9 @@
     "c_terrace_path",
     "c_cliff_stair_4"
    ],
-   "renderTris": 1454,
-   "walkTris": 1378,
-   "glbKB": 53.6
+   "renderTris": 1514,
+   "walkTris": 1438,
+   "glbKB": 54.9
   },
   {
    "id": "cliff",
@@ -595,9 +602,9 @@
     "ground",
     "c_cliff_stair_4"
    ],
-   "renderTris": 16404,
+   "renderTris": 16620,
    "walkTris": 16116,
-   "glbKB": 480.7
+   "glbKB": 487.1
   },
   {
    "id": "c_spiral_stair",
@@ -608,9 +615,9 @@
     "b3",
     "b4"
    ],
-   "renderTris": 10996,
+   "renderTris": 11488,
    "walkTris": 10996,
-   "glbKB": 404.7
+   "glbKB": 417.9
   },
   {
    "id": "c_lava_stair",
@@ -619,9 +626,9 @@
     "b2",
     "b3"
    ],
-   "renderTris": 5980,
+   "renderTris": 6160,
    "walkTris": 5980,
-   "glbKB": 225.7
+   "glbKB": 231.7
   },
   {
    "id": "c_terrace_path",
@@ -629,9 +636,9 @@
     "ground",
     "summit"
    ],
-   "renderTris": 29248,
+   "renderTris": 29560,
    "walkTris": 29248,
-   "glbKB": 885.8
+   "glbKB": 894.9
   },
   {
    "id": "c_cliff_stair_4",
@@ -639,10 +646,10 @@
     "cliff",
     "summit"
    ],
-   "renderTris": 17248,
-   "walkTris": 17248,
+   "renderTris": 17332,
+   "walkTris": 17152,
    "glbKB": 513.2
   }
  ],
- "seconds": 41.85
+ "seconds": 39.946
 }

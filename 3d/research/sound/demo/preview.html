@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kazan-yu Sound Renders</title>
+<style>:root{--bg:#111;--fg:#ddd}body{background:var(--bg);color:var(--fg);font:14px system-ui;margin:16px}</style></head>
+<body><p>Offline render harness for the Kazan-yu sound research. Driven by tools/render_previews.mjs; exposes window.KZ.</p>
+<pre id="log"></pre>
+<script type="module">
+import { bakeAll, addAnchors } from './js/bank.js';
+import { SoundEngine, renderOffline } from './js/engine.js';
+import { SCENARIOS } from './js/scenarios.js';
+const log = (s) => (document.getElementById('log').textContent += s + '\n');
+const layout = await (await fetch('./data/layout_extract.json')).json();
+const blocks = await (await fetch('./data/audio_blocks.json')).json();
+let bank = null;
+function wavB64(buf) {
+  const n = buf.length, c = buf.numberOfChannels, out = new DataView(new ArrayBuffer(44 + n * c * 2));
+  const w = (o, s) => [...s].forEach((ch, i) => out.setUint8(o + i, ch.charCodeAt(0)));
+  w(0, 'RIFF'); out.setUint32(4, 36 + n * c * 2, true); w(8, 'WAVEfmt '); out.setUint32(16, 16, true); out.setUint16(20, 1, true); out.setUint16(22, c, true);
+  out.setUint32(24, buf.sampleRate, true); out.setUint32(28, buf.sampleRate * c * 2, true); out.setUint16(32, c * 2, true); out.setUint16(34, 16, true); w(36, 'data'); out.setUint32(40, n * c * 2, true);
+  const chs = [...Array(c).keys()].map((i) => buf.getChannelData(i)); let o = 44, clip = 0;
+  for (let i = 0; i < n; i++) for (let k = 0; k < c; k++) { let v = chs[k][i]; if (Math.abs(v) > 1) clip++; v = Math.max(-1, Math.min(1, v)); out.setInt16(o, Math.round(v * 32767), true); o += 2; }
+  const u8 = new Uint8Array(out.buffer); let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+  return { b64: btoa(s), clip };
+}
+window.KZ = {
+  async bake(sr = 48000) { const t0 = performance.now(); bank = await bakeAll(sr); if (!window.KZ_NO_ANCHORS) await addAnchors(new OfflineAudioContext(1, 1, sr), bank, './assets/'); return { ms: performance.now() - t0, MB: bank.meta.bytes / 1e6, per: bank.meta.ms }; },
+  async render(name, extra = {}) {
+    const sc = SCENARIOS[name]; const events = (sc.events || []).map((e) => ({ ...e }));
+    const r = await renderOffline(OfflineAudioContext, layout, blocks, bank, { secs: sc.secs, sr: 48000, keys: sc.keys, opts: { ...(sc.opts || {}), ...extra }, events });
+    const { b64, clip } = wavB64(r.buf);
+    return { name, wallMs: r.wallMs, updateMs: r.updateMs, stats: r.stats, clipOver1: clip, b64 };
+  },
+  // Pure DSP cost: static listener, no suspends. Returns wall time to render `secs` seconds.
+  async bench(name, t = 10, secs = 10, extra = {}) {
+    const sc = SCENARIOS[name]; const k = sc.keys.reduce((a, b) => (Math.abs(b.t - t) < Math.abs(a.t - t) ? b : a));
+    const ctx = new OfflineAudioContext(2, secs * 48000, 48000);
+    const eng = new SoundEngine(ctx, layout, blocks, bank, { ...(sc.opts || {}), ...extra }).init();
+    eng.setListener({ x: k.x, y: k.y, level: k.level, heading: k.heading }); eng.update();
+    if (extra.fire) eng.fireById(extra.fire);
+    const t0 = performance.now(); await ctx.startRendering(); const wall = performance.now() - t0;
+    return { name, secs, wallMs: wall, loadPct: (wall / (secs * 1000)) * 100, stats: eng.stats(), voices: eng.voiceList().map((v) => `${v.id}:${v.db}`) };
+  },
+};
+log('ready'); window.KZ_READY = true;
+</script></body></html>

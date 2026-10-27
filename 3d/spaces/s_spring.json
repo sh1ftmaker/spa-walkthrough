@@ -41,7 +41,7 @@
    "id": "p_s_rim_spring",
    "to": "s_rim",
    "at": [
-    80,
+    77,
     101.7
    ],
    "width": 3.0,
@@ -61,32 +61,32 @@
   ],
   [
    66.0,
-   104.5,
+   104.0,
    121.5
   ],
   [
-   59.0,
-   101.5,
+   59.2,
+   101.0,
    121.5
   ],
   [
-   58.5,
+   59.2,
    93.0,
    121.5
   ],
   [
-   63.0,
-   88.5,
+   63.5,
+   90.0,
    121.5
   ],
   [
    69.5,
-   88.8,
+   89.3,
    121.5
   ],
   [
-   73.8,
-   93.5,
+   73.4,
+   93.0,
    121.5
   ],
   [
@@ -110,23 +110,23 @@
   "at": [
    66.0,
    96.0,
-   121.5
+   121.0
   ],
   "facing_deg": 180,
   "dims": {
-   "span": 11.0,
-   "h": 4.5,
-   "baskets": 7
+   "w": 10.6,
+   "d": 0.6,
+   "h": 4.8
   },
-  "why": "A timber gantry straddling the source with bamboo baskets on ropes swinging in the steam (30, 24): the one ritual object at the top of the mountain, lit by its own hanging lanterns."
+  "why": "The gantry beam straddling the source with bamboo egg baskets on ropes in the steam (30, 24): an open frame over the teal pool, lit by lanterns under the beam, the one ritual object at the top of the mountain."
  },
  "anchored": [
   {
    "id": "stair_head_toro",
    "asset": "lantern_stone",
    "at": [
-    75.8,
-    103.6,
+    75.6,
+    104.6,
     121.5
    ],
    "facing_deg": 90,
@@ -145,10 +145,12 @@
    ],
    "facing_deg": 240,
    "dims": {
-    "h": 1.8,
-    "text": "源泉 44 °C"
+    "w": 0.9,
+    "d": 0.4,
+    "h": 1.8
    },
-   "why": "Source marker by the basket-rope cleats."
+   "why": "Source marker by the basket-rope cleats.",
+   "snap": "ground"
   },
   {
    "id": "rill_bridge",
@@ -160,10 +162,123 @@
    ],
    "facing_deg": 0,
    "dims": {
-    "span": 1.2,
-    "w": 2.6
+    "w": 2.6,
+    "d": 1.4,
+    "h": 0.4
    },
    "why": "Carries the walk loop over the outflow rill."
+  },
+  {
+   "id": "basket_0",
+   "asset": "egg_baskets",
+   "at": [
+    62.5,
+    95.6,
+    122.6
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.5,
+    "d": 0.5,
+    "h": 0.6
+   },
+   "why": "A guest's egg basket lowered on its rope into the steam."
+  },
+  {
+   "id": "basket_1",
+   "asset": "egg_baskets",
+   "at": [
+    64.0,
+    96.4,
+    122.6
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.5,
+    "d": 0.5,
+    "h": 0.6
+   },
+   "why": "A guest's egg basket lowered on its rope into the steam."
+  },
+  {
+   "id": "basket_2",
+   "asset": "egg_baskets",
+   "at": [
+    65.4,
+    95.6,
+    122.6
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.5,
+    "d": 0.5,
+    "h": 0.6
+   },
+   "why": "A guest's egg basket lowered on its rope into the steam."
+  },
+  {
+   "id": "basket_3",
+   "asset": "egg_baskets",
+   "at": [
+    66.8,
+    96.4,
+    122.6
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.5,
+    "d": 0.5,
+    "h": 0.6
+   },
+   "why": "A guest's egg basket lowered on its rope into the steam."
+  },
+  {
+   "id": "basket_4",
+   "asset": "egg_baskets",
+   "at": [
+    68.2,
+    95.6,
+    122.6
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.5,
+    "d": 0.5,
+    "h": 0.6
+   },
+   "why": "A guest's egg basket lowered on its rope into the steam."
+  },
+  {
+   "id": "basket_5",
+   "asset": "egg_baskets",
+   "at": [
+    69.6,
+    96.4,
+    122.6
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.5,
+    "d": 0.5,
+    "h": 0.6
+   },
+   "why": "A guest's egg basket lowered on its rope into the steam."
+  },
+  {
+   "id": "rill_lip",
+   "asset": "spill_lip",
+   "at": [
+    74.8,
+    94.0,
+    121.3
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 1.0,
+    "d": 0.6,
+    "h": 0.3
+   },
+   "why": "The rill's lip where it drops 1.2 m to the rim channel: lit, so the descent toward the pool reads."
   }
  ],
  "water": [
@@ -248,8 +363,8 @@
   "concept": {
    "image": "lookbook/img/30-plan-summit.jpg",
    "pos": [
-    74.0,
-    101.5,
+    72.0,
+    103.6,
     123.1
    ],
    "target": [
@@ -268,14 +383,37 @@
     66.0,
     96.0
    ],
-   "radius": 8.6,
+   "radius": 9.0,
    "spacing": [
     4.0,
     6.0
    ],
    "avoid": [
     "portals",
-    "nav"
+    "nav",
+    "anchored",
+    0.4,
+    {
+     "near": [
+      76.5,
+      101.6
+     ],
+     "r": 3.0
+    },
+    {
+     "near": [
+      74.0,
+      101.5
+     ],
+     "r": 3.0
+    },
+    {
+     "near": [
+      60.0,
+      90.0
+     ],
+     "r": 3.0
+    }
    ],
    "why": "Ring of small toro (plan 30)."
   },
@@ -283,54 +421,77 @@
    "asset": "lantern_hanging",
    "along": [
     [
-     61.5,
+     61.8,
      96.0
     ],
     [
-     70.5,
+     70.2,
      96.0
     ]
    ],
    "spacing": [
-    3.0,
-    3.0
+    2.8,
+    2.8
    ],
-   "height": 4.0,
-   "snap": "gantry",
-   "why": "Lanterns on the gantry beam light the baskets and steam (hero brightest)."
+   "height": 2.3,
+   "why": "Lanterns hanging under the beam (base about 123.8) light the baskets and steam: the brightest point."
   }
  ],
  "dressing": [
   {
-   "asset": "boulder_rim",
-   "along": "water:w_spring",
-   "side": "out",
-   "spacing": [
-    0.9,
-    1.6
-   ],
-   "offset": 0.3,
-   "embed": 0.2,
-   "scale": [
-    0.5,
-    1.1
-   ],
-   "avoid": [
-    "nav"
-   ]
-  },
-  {
    "asset": "rock_cluster",
    "scatter": "edge_band",
    "band": [
-    0.2,
+    0.6,
     2.0
    ],
    "density": 0.06,
    "avoid": [
     "nav",
     "portals",
-    "water"
+    "water",
+    "anchored",
+    {
+     "poly": [
+      [
+       73.0,
+       86.0
+      ],
+      [
+       80.0,
+       86.0
+      ],
+      [
+       80.0,
+       106.0
+      ],
+      [
+       73.0,
+       106.0
+      ]
+     ]
+    },
+    {
+     "near": [
+      57.5,
+      87.5
+     ],
+     "r": 2.2
+    },
+    {
+     "near": [
+      57.5,
+      104.5
+     ],
+     "r": 2.2
+    }
+   ],
+   "scale": [
+    0.5,
+    0.9
+   ],
+   "allow_overlap": [
+    "lantern_stone"
    ]
   },
   {
@@ -350,7 +511,56 @@
    "scale": [
     0.8,
     1.1
-   ]
+   ],
+   "dims": {
+    "w": 2.0,
+    "d": 2.0,
+    "h": 3.0
+   }
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    61.0,
+    97.6
+   ],
+   "radius": [
+    0.3,
+    0.6
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.5,
+    0.9
+   ],
+   "avoid": [
+    "portals"
+   ],
+   "why": "Rock lip groups on the west and south sides of the source, away from the entry sightline.",
+   "optional": true
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    62.4,
+    92.0
+   ],
+   "radius": [
+    0.3,
+    0.6
+   ],
+   "count": 4,
+   "jitter_deg": 25,
+   "scale": [
+    0.5,
+    0.9
+   ],
+   "avoid": [
+    "portals"
+   ],
+   "why": "Rock lip groups on the west and south sides of the source, away from the entry sightline.",
+   "optional": true
   }
  ],
  "mood": {
@@ -358,5 +568,23 @@
   "palette": "white steam lit amber, teal source, black rock",
   "mist": "dense steam rising, thickest of any summit space"
  },
- "waivers": []
+ "waivers": [],
+ "allow_overlap": [
+  [
+   "egg_baskets",
+   "lantern_hanging"
+  ],
+  [
+   "lantern_hanging",
+   "egg_baskets"
+  ],
+  [
+   "egg_baskets",
+   "egg_baskets"
+  ],
+  [
+   "egg_baskets",
+   "egg_baskets"
+  ]
+ ]
 }

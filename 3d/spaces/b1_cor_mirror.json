@@ -67,6 +67,16 @@
    "height": 3.0
   },
   {
+   "id": "p_b1_junction_mirror",
+   "to": "b1_junction_w",
+   "at": [
+    70,
+    76
+   ],
+   "width": 3.2,
+   "height": 3.0
+  },
+  {
    "id": "pi_mirror_junction_e",
    "to": "b1_junction_w",
    "at": [
@@ -219,13 +229,14 @@
   ],
   "facing_deg": 270,
   "dims": {
-   "w": 4.0,
-   "h": 3.0,
-   "depth": 1.2
+   "w": 5.4,
+   "d": 1.4,
+   "h": 3.4
   },
   "variant": "basalt, no noren",
   "shared_with": "b1_mirror (place once)",
-  "why": "The corridor exists to delay the Mirror. For the whole 26 m straight the vanishing point is this rough basalt arch, unlit on this side, with the glowworm dome's teal light leaking through it and doubled in the corridor water: the eye and the feet both go there. The last 7 m have no lanterns so the leak is the brightest thing in view."
+  "why": "The corridor exists to delay the Mirror. For the whole 26 m straight the vanishing point is this rough basalt arch, unlit on this side, with the glowworm dome's teal light leaking through it and doubled in the corridor water: the eye and the feet both go there. The last 7 m have no lanterns so the leak is the brightest thing in view. The arch is as wide as the portal box, so it is the only opening (no side slots).",
+  "snap": "given"
  },
  "anchored": [
   {
@@ -307,32 +318,202 @@
    "why": "On the south wall of the straight opposite the dark gap between the two shoji bays."
   },
   {
-   "id": "corner_lantern",
-   "asset": "lantern_floor",
-   "at": [
-    64.45,
-    93.35,
-    -20.0
-   ],
-   "facing_deg": 135,
-   "dims": {
-    "h": 1.0
-   },
-   "why": "Warm marker in the outside corner of the turn: seen the whole way up the north leg, tells you where it bends."
-  },
-  {
    "id": "bonsai_1",
    "asset": "pine_bonsai",
    "at": [
     71.9,
     93.45,
-    -20.0
+    -20.2
    ],
    "facing_deg": 180,
    "dims": {
+    "w": 0.9,
+    "d": 0.9,
     "h": 1.2
    },
-   "why": "On the kerb beside the first shoji bay, as in concept 05."
+   "why": "On the kerb beside the first shoji bay, as in concept 05.",
+   "snap": "given"
+  },
+  {
+   "id": "shoji_glow_0",
+   "asset": "noren_glow",
+   "at": [
+    73.6,
+    93.3,
+    -20.2
+   ],
+   "why": "Warm backlight on each shoji bay (stands in for the backlit washi until area lights render).",
+   "snap": "given"
+  },
+  {
+   "id": "shoji_glow_1",
+   "asset": "noren_glow",
+   "at": [
+    82.7,
+    93.3,
+    -20.2
+   ],
+   "why": "Warm backlight on each shoji bay (stands in for the backlit washi until area lights render).",
+   "snap": "given"
+  },
+  {
+   "id": "mouth_niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    76.94,
+    70.32,
+    -19.75
+   ],
+   "facing_deg": 11.3,
+   "snap": "given",
+   "why": "Lobby-mouth pair on the walls (replaces the floor lanterns standing in the pool)."
+  },
+  {
+   "id": "mouth_niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    77.46,
+    73.99,
+    -19.75
+   ],
+   "facing_deg": 191.3,
+   "snap": "given",
+   "why": "Lobby-mouth pair on the walls (replaces the floor lanterns standing in the pool)."
+  },
+  {
+   "id": "corner_lantern",
+   "asset": "lantern_floor",
+   "at": [
+    64.6,
+    93.3,
+    -20.2
+   ],
+   "facing_deg": 135,
+   "dims": {
+    "h": 0.8
+   },
+   "why": "Warm marker in the outside corner of the turn, on the kerb.",
+   "snap": "given"
+  },
+  {
+   "id": "niches_w_0",
+   "asset": "lantern_niche",
+   "at": [
+    74.96,
+    70.72,
+    -19.75
+   ],
+   "facing_deg": 11.3,
+   "snap": "given",
+   "why": "Pool of niches just inside the mouth."
+  },
+  {
+   "id": "niches_w_1",
+   "asset": "lantern_niche",
+   "at": [
+    74.02,
+    74.68,
+    -19.75
+   ],
+   "facing_deg": 191.3,
+   "snap": "given",
+   "why": "Pool of niches just inside the mouth."
+  },
+  {
+   "id": "niches_n_0",
+   "asset": "lantern_niche",
+   "at": [
+    65.07,
+    83.59,
+    -19.75
+   ],
+   "facing_deg": 83.7,
+   "snap": "given",
+   "why": "North leg: one pool by the wall trickle, one single opposite."
+  },
+  {
+   "id": "niches_n_1",
+   "asset": "lantern_niche",
+   "at": [
+    64.92,
+    84.99,
+    -19.75
+   ],
+   "facing_deg": 83.7,
+   "snap": "given",
+   "why": "North leg: one pool by the wall trickle, one single opposite."
+  },
+  {
+   "id": "niches_n_2",
+   "asset": "lantern_niche",
+   "at": [
+    68.35,
+    87.62,
+    -19.75
+   ],
+   "facing_deg": 263.7,
+   "snap": "given",
+   "why": "North leg: one pool by the wall trickle, one single opposite."
+  },
+  {
+   "id": "niches_e_0",
+   "asset": "lantern_niche",
+   "at": [
+    72.8,
+    90.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "East straight: pools by the shoji bays and the trickle, then nothing for the last 8 m before the arch so the teal leak is the brightest thing."
+  },
+  {
+   "id": "niches_e_1",
+   "asset": "lantern_niche",
+   "at": [
+    74.0,
+    90.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "East straight: pools by the shoji bays and the trickle, then nothing for the last 8 m before the arch so the teal leak is the brightest thing."
+  },
+  {
+   "id": "niches_e_2",
+   "asset": "lantern_niche",
+   "at": [
+    77.6,
+    93.85,
+    -19.75
+   ],
+   "facing_deg": 180.0,
+   "snap": "given",
+   "why": "East straight: pools by the shoji bays and the trickle, then nothing for the last 8 m before the arch so the teal leak is the brightest thing."
+  },
+  {
+   "id": "niches_e_3",
+   "asset": "lantern_niche",
+   "at": [
+    79.6,
+    90.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "East straight: pools by the shoji bays and the trickle, then nothing for the last 8 m before the arch so the teal leak is the brightest thing."
+  },
+  {
+   "id": "niches_e_4",
+   "asset": "lantern_niche",
+   "at": [
+    80.8,
+    90.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "East straight: pools by the shoji bays and the trickle, then nothing for the last 8 m before the arch so the teal leak is the brightest thing."
   }
  ],
  "water": [
@@ -341,7 +522,8 @@
    "kind": "still",
    "z": -20.05,
    "rim_z": -20.0,
-   "bed_z": -20.2,
+   "depth": 0.18,
+   "bed_z": -20.18,
    "path": [
     [
      78.0,
@@ -425,21 +607,8 @@
  "cameras": {
   "entry": {
    "pos": [
-    77.0,
-    72.25,
-    -18.4
-   ],
-   "target": [
-    64.0,
-    73.6,
-    -19.2
-   ],
-   "fov_v": 60
-  },
-  "reveal": {
-   "pos": [
-    67.2,
-    91.8,
+    67.4,
+    91.2,
     -18.4
    ],
    "target": [
@@ -447,7 +616,22 @@
     92.0,
     -18.3
    ],
-   "fov_v": 55
+   "fov_v": 55,
+   "note": "Entry to the straight (the corridor is bent on purpose, so the arch is first seen here); the lobby-mouth view is sightline 1."
+  },
+  "reveal": {
+   "pos": [
+    86.0,
+    92.0,
+    -18.4
+   ],
+   "target": [
+    104.0,
+    92.0,
+    -17.0
+   ],
+   "fov_v": 58,
+   "note": "Last steps before the arch: the Mirror dome opening through it."
   },
   "concept": {
    "pos": [
@@ -499,6 +683,7 @@
     ]
    ],
    "side": "both",
+   "offset": 1.9,
    "stagger": true,
    "spacing": [
     4.0,
@@ -508,7 +693,8 @@
    "height": 0.25,
    "face": "path",
    "avoid": [
-    "portals"
+    "portals",
+    "anchored"
    ],
    "why": "Stagger left/right, 4-6 m: pools of light with dark gaps; the run stops at x 86.5 (7 m before the arch) so the last stretch is dark and the Mirror's teal leak is the brightest thing ahead. Skips the junction stretch (lit by the pond)."
   },
@@ -527,128 +713,122 @@
     ]
    ],
    "face": "path",
-   "why": "Pair flanking the lobby mouth, behind the noren."
+   "why": "Pair flanking the lobby mouth, behind the noren.",
+   "z": -20.2
   }
  ],
  "dressing": [
   {
-   "asset": "stepping_stone",
-   "along": "spine",
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
+   "asset": "boulder_rim",
+   "ring": [
+    76.2,
+    71.0
    ],
-   "jitter": 0.08,
-   "top_z": -20.0,
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 3,
+   "jitter_deg": 25,
    "scale": [
-    0.95,
-    1.15
+    0.6,
+    1.1
    ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
    ],
-   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+   "optional": true,
+   "why": "Rocks at the lobby mouth pool.",
+   "z": -20.2
   },
   {
    "asset": "boulder_rim",
-   "along": [
-    [
-     78.0,
-     72.0
-    ],
-    [
-     74.0,
-     72.8
-    ],
-    [
-     71.45,
-     73.6
-    ],
-    [
-     69.2,
-     75.3
-    ],
-    [
-     67.4,
-     79.4
-    ],
-    [
-     66.9,
-     85.0
-    ],
-    [
-     66.5,
-     89.0
-    ],
-    [
-     67.6,
-     91.4
-    ],
-    [
-     70.0,
-     92.0
-    ],
-    [
-     76.0,
-     92.0
-    ],
-    [
-     82.0,
-     92.0
-    ],
-    [
-     87.5,
-     92.0
-    ]
+   "ring": [
+    65.1,
+    86.3
    ],
-   "side": "both",
-   "offset": 1.62,
-   "spacing": [
-    2.2,
-    4.0
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
    ],
    "embed": 0.12,
-   "scale": [
-    0.35,
-    0.7
-   ],
+   "face": "out",
    "avoid": [
     "nav",
     "portals",
-    "space:b1_junction_w"
+    "anchored",
+    0.3
    ],
-   "why": "Low wet rocks at the kerb; stops 6 m before the arch (dark approach)."
+   "optional": true,
+   "why": "Rocks at the foot of the wall trickle.",
+   "z": -20.2
   },
   {
-   "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.0,
-    0.45
+   "asset": "boulder_rim",
+   "ring": [
+    71.6,
+    93.5
    ],
-   "density": 0.03,
-   "snap": "ground",
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 3,
+   "jitter_deg": 25,
    "scale": [
-    0.3,
-    0.6
+    0.6,
+    1.1
    ],
+   "embed": 0.12,
+   "face": "out",
    "avoid": [
     "nav",
     "portals",
-    "space:b1_junction_w",
-    "anchored:shoji_bay_1",
-    "anchored:shoji_bay_2"
+    "anchored",
+    0.3
    ],
-   "why": "Sparse glossy rocks on the kerbs only."
+   "optional": true,
+   "why": "Rocks round the bonsai at the first shoji bay.",
+   "z": -20.2
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    78.4,
+    90.5
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 2,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Rocks under the south-wall trickle.",
+   "z": -20.2
   }
  ],
  "mood": {
@@ -663,5 +843,6 @@
    "reason": "Intentional dark gap so the Mirror's light reads from the corridor; it is 4 m wide, so never more than 2 m from a wall."
   }
  ],
+ "light_notes": "No fixture at the arch: the Mirror's teal glowworm light leaking through it is the hero light.",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

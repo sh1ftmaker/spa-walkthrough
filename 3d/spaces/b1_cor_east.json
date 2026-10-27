@@ -63,9 +63,9 @@
    "to": "b1_treatment",
    "at": [
     146,
-    82
+    81.83
    ],
-   "width": 2.0,
+   "width": 2.6,
    "height": 2.4
   }
  ],
@@ -117,7 +117,7 @@
     ],
     [
      146.0,
-     82.0,
+     81.83,
      -20.0
     ]
    ],
@@ -126,38 +126,23 @@
  ],
  "hero": {
   "asset": "ice_formation",
-  "variant": "ceiling icicles + frosted wall",
+  "variant": "frozen wall cascade + icicles",
   "at": [
    162.4,
-   84.35,
-   -17.15
+   82.6,
+   -20.0
   ],
-  "facing_deg": 270,
-  "snap": "ceiling",
+  "facing_deg": 0,
   "dims": {
-   "w": 4.0,
-   "l": 6.0,
-   "drop": 1.2
+   "w": 3.0,
+   "d": 0.4,
+   "h": 2.8
   },
-  "why": "In 35 m you go from 35 °C to 6 °C. The blue-lit ice hanging at the far end is the only cold light on B1's warm circuit; it is what you walk toward from the Mirror's east arch, and it hangs above the glacier door like a curtain."
+  "note": "A frozen cascade on the south wall at the corridor end, with icicles hanging from the ceiling above the door (ceiling part is mesh detail, not proxy).",
+  "why": "In 35 m you go from 35 °C to 6 °C. The blue-lit ice hanging at the far end is the only cold light on B1's warm circuit; it is what you walk toward from the Mirror's east arch, and it hangs above the glacier door like a curtain.",
+  "snap": "given"
  },
  "anchored": [
-  {
-   "id": "treat_door",
-   "asset": "portal_arch",
-   "variant": "hinoki frame + noren",
-   "at": [
-    146.0,
-    83.75,
-    -20.0
-   ],
-   "facing_deg": 0,
-   "dims": {
-    "w": 2.0,
-    "h": 2.4
-   },
-   "why": "Treatment rooms entrance: a quiet timber doorway with an indigo noren in the south wall."
-  },
   {
    "id": "treat_sign",
    "asset": "sign_kanji",
@@ -178,11 +163,11 @@
    "id": "glacier_board",
    "asset": "sign_kanji",
    "at": [
-    163.6,
-    82.45,
+    163.0,
+    86.15,
     -20.0
    ],
-   "facing_deg": 300,
+   "facing_deg": 180,
    "dims": {
     "w": 0.5,
     "h": 1.5
@@ -194,15 +179,170 @@
    "id": "bonsai_e",
    "asset": "pine_bonsai",
    "at": [
-    133.3,
-    90.55,
-    -20.0
+    135.6,
+    89.75,
+    -20.2
    ],
    "facing_deg": 200,
    "dims": {
+    "w": 0.9,
+    "d": 0.9,
     "h": 1.2
    },
-   "why": "Silhouette on the north kerb just outside the Mirror's arch."
+   "why": "Silhouette on the north kerb outside the Mirror arch.",
+   "snap": "given"
+  },
+  {
+   "id": "door_niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    144.59,
+    83.93,
+    -19.75
+   ],
+   "facing_deg": 4.8,
+   "snap": "given",
+   "why": "Low niches on the treatment-door jambs (replace the 1 m floor pair)."
+  },
+  {
+   "id": "door_niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    147.38,
+    83.7,
+    -19.75
+   ],
+   "facing_deg": 4.8,
+   "snap": "given",
+   "why": "Low niches on the treatment-door jambs (replace the 1 m floor pair)."
+  },
+  {
+   "id": "icicles_0",
+   "asset": "stalactite_cluster",
+   "variant": "icicles",
+   "at": [
+    160.0,
+    85.9,
+    -18.0
+   ],
+   "snap": "ceiling",
+   "dims": {
+    "w": 0.8,
+    "d": 0.5,
+    "h": 0.8
+   },
+   "why": "Icicle curtain hanging at the kerbs in the last 6 m, over the glacier door."
+  },
+  {
+   "id": "icicles_1",
+   "asset": "stalactite_cluster",
+   "variant": "icicles",
+   "at": [
+    160.4,
+    82.7,
+    -18.0
+   ],
+   "snap": "ceiling",
+   "dims": {
+    "w": 0.8,
+    "d": 0.5,
+    "h": 0.8
+   },
+   "why": "Icicle curtain hanging at the kerbs in the last 6 m, over the glacier door."
+  },
+  {
+   "id": "icicles_2",
+   "asset": "stalactite_cluster",
+   "variant": "icicles",
+   "at": [
+    163.2,
+    85.7,
+    -18.0
+   ],
+   "snap": "ceiling",
+   "dims": {
+    "w": 0.8,
+    "d": 0.5,
+    "h": 0.8
+   },
+   "why": "Icicle curtain hanging at the kerbs in the last 6 m, over the glacier door."
+  },
+  {
+   "id": "icicles_3",
+   "asset": "stalactite_cluster",
+   "variant": "icicles",
+   "at": [
+    164.2,
+    83.2,
+    -18.0
+   ],
+   "snap": "ceiling",
+   "dims": {
+    "w": 0.8,
+    "d": 0.5,
+    "h": 0.8
+   },
+   "why": "Icicle curtain hanging at the kerbs in the last 6 m, over the glacier door."
+  },
+  {
+   "id": "niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    133.08,
+    87.03,
+    -19.75
+   ],
+   "facing_deg": 18.4,
+   "snap": "given",
+   "why": "Warm niche pools near the Mirror arch and mid-corridor; none after x 153 so the blue ice owns the end."
+  },
+  {
+   "id": "niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    134.3,
+    90.51,
+    -19.75
+   ],
+   "facing_deg": 198.4,
+   "snap": "given",
+   "why": "Warm niche pools near the Mirror arch and mid-corridor; none after x 153 so the blue ice owns the end."
+  },
+  {
+   "id": "niches_2",
+   "asset": "lantern_niche",
+   "at": [
+    139.46,
+    88.79,
+    -19.75
+   ],
+   "facing_deg": 198.4,
+   "snap": "given",
+   "why": "Warm niche pools near the Mirror arch and mid-corridor; none after x 153 so the blue ice owns the end."
+  },
+  {
+   "id": "niches_3",
+   "asset": "lantern_niche",
+   "at": [
+    151.45,
+    83.36,
+    -19.75
+   ],
+   "facing_deg": 4.8,
+   "snap": "given",
+   "why": "Warm niche pools near the Mirror arch and mid-corridor; none after x 153 so the blue ice owns the end."
+  },
+  {
+   "id": "niches_4",
+   "asset": "lantern_niche",
+   "at": [
+    152.53,
+    86.98,
+    -19.75
+   ],
+   "facing_deg": 184.8,
+   "snap": "given",
+   "why": "Warm niche pools near the Mirror arch and mid-corridor; none after x 153 so the blue ice owns the end."
   }
  ],
  "water": [
@@ -211,7 +351,8 @@
    "kind": "still",
    "z": -20.05,
    "rim_z": -20.0,
-   "bed_z": -20.2,
+   "depth": 0.18,
+   "bed_z": -20.18,
    "path": [
     [
      130.5,
@@ -288,8 +429,8 @@
   },
   "reveal": {
    "pos": [
-    156.0,
-    84.85,
+    155.0,
+    84.95,
     -18.4
    ],
    "target": [
@@ -315,145 +456,100 @@
    "match": "Corridor mood with a cold end: stepping stones in clear water, warm niches doubled, the treatment door's glow on the right, blue icicles and cold light where the corridor ends."
   }
  },
- "lights": [
-  {
-   "asset": "lantern_niche",
-   "along": [
-    [
-     130.5,
-     90.0
-    ],
-    [
-     136.0,
-     88.1
-    ],
-    [
-     142.0,
-     86.0
-    ],
-    [
-     150.0,
-     85.3
-    ],
-    [
-     156.5,
-     84.75
-    ]
-   ],
-   "side": "both",
-   "stagger": true,
-   "spacing": [
-    4.5,
-    6.5
-   ],
-   "snap": "wall",
-   "height": 0.25,
-   "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Warm niches stagger to x 156.5 then stop: the last 8 m are lit only by the blue ice (cold gap, hero brightest)."
-  },
-  {
-   "asset": "lantern_floor",
-   "at": [
-    [
-     144.95,
-     84.2,
-     -20.0
-    ],
-    [
-     147.05,
-     84.2,
-     -20.0
-    ]
-   ],
-   "face": "path",
-   "why": "Pair flanking the treatment door."
-  },
-  {
-   "asset": "ice_formation",
-   "part": "backlight",
-   "at": [
-    [
-     163.0,
-     84.3,
-     -17.2
-    ]
-   ],
-   "color": "cold blue",
-   "why": "Blue light inside the ice, spilling from the glacier."
-  }
- ],
+ "lights": [],
  "dressing": [
-  {
-   "asset": "stepping_stone",
-   "along": "spine",
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
-   ],
-   "jitter": 0.08,
-   "top_z": -20.0,
-   "scale": [
-    0.95,
-    1.15
-   ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
-   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
-  },
-  {
-   "asset": "boulder_rim",
-   "along": "spine",
-   "side": "both",
-   "offset": 1.62,
-   "spacing": [
-    2.2,
-    4.0
-   ],
-   "embed": 0.12,
-   "scale": [
-    0.35,
-    0.7
-   ],
-   "avoid": [
-    "nav",
-    "portals"
-   ],
-   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
-  },
   {
    "asset": "ice_formation",
    "variant": "frost patches",
+   "dims": {
+    "w": 0.9,
+    "d": 0.1,
+    "h": 1.4
+   },
    "along": [
     [
-     159.0,
-     84.6
+     157.0,
+     84.7
     ],
     [
-     165.0,
-     84.0
+     164.5,
+     84.1
     ]
    ],
    "side": "both",
-   "offset": 1.8,
+   "offset": 1.85,
    "spacing": [
-    1.2,
-    2.0
+    0.6,
+    2.2
    ],
+   "scale": [
+    0.5,
+    1.3
+   ],
+   "height": 0.7,
    "snap": "wall",
-   "why": "Frost and small ice on the walls in the last 6 m, building toward the door."
+   "face": "path",
+   "avoid": [
+    "portals",
+    "anchored"
+   ],
+   "why": "Frost on the walls (not in the water), denser toward the door."
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    132.4,
+    88.0
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Rocks by the Mirror arch.",
+   "z": -20.2
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    143.2,
+    84.4
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Rocks by the treatment door.",
+   "z": -20.2
   }
  ],
  "mood": {
@@ -462,5 +558,6 @@
   "mist": "Warm knee-high mist near the Mirror thinning to a flat cold ground fog at the glacier end."
  },
  "waivers": [],
+ "light_notes": "Cold blue light inside the ice (hero emission) and spilling from the glacier door.",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

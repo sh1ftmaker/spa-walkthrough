@@ -1,0 +1,81 @@
+{
+ "space": "b3_lazy",
+ "round": 1,
+ "reviewer": "rev_b3_east_b4_r1",
+ "frames": {
+  "entry": {
+   "focal": "The hero proxy: a solid 6x3x4.5 m orange box standing on the floor ~10 m ahead, filling the centre of the frame like a wall across the SW channel. Behind it, top left, the blown-out cylinder of the slide shaft (60 m away) is the brightest thing.",
+   "is_hero": true,
+   "next_visible": "No. There is no receding tube curve, the south bridge is hidden behind the hero box, and the only bright cue is the slide shaft far to the east."
+  },
+  "reveal": {
+   "focal": "From the north bridge crown: the geyser island's squat orange vent box and a scatter of grey boulder and seat boxes. No plume and no vault opening. A huge black ceiling fills the top half.",
+   "is_hero": false,
+   "next_visible": "Weak. The island is visible but nothing on it is lit. The channel continuing east and west is unreadable."
+  },
+  "concept": {
+   "focal": "Mid-ground: the hero box seen from the other side (dark brown). Left: two tall lantern slabs. The rows of lantern_float dots are the only lead lines. Upper right: the lit spiral stair and pavilion.",
+   "is_hero": true,
+   "next_visible": "Partly. A dotted line of floating lanterns leads west, but there is no tube vault, no teal water and no bridge silhouette, so you cannot tell that this is a channel."
+  },
+  "strip": {
+   "focal": "Frames 1 to 7 are dominated by the giant overexposed slide-shaft cylinder ahead and right. Floating lantern cubes are spread evenly across the floor.",
+   "is_hero": false,
+   "next_visible": "Yes, too much so: the east mouth reads only through the over-bright shaft. You can never tell that you are walking beside water inside a low tube."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b3_lazy:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "lava_tube was ground-snapped (z -67.0 instead of the intended -63.3), so it is an opaque 4.5 m-high block in the channel. Replace it with an open arch/vault shell (inner clear height of about 4 m over the 6 m channel and the 2 m towpath) repeated along the W, S and E arcs (open on the north arc from x 104 to 124, per ceiling_profile). Without it, the space is an open hall, not a tube."
+  },
+  {
+   "id": "lights (new rule)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Add a pool_uplight row along water:w_lazy at the channel centre, spacing [6,10], z = bed + 0.05. The channel currently reads as dark floor at eye level; concept 12 is teal water glowing from below."
+  },
+  {
+   "id": "lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "lantern_niche produced 0 objects (snap: wall finds no wall because the tube shell is missing). Once the shell exists, place them on the outer wall with spacing [5,9], and add irregular amber crack emissive strips on the tube ribs (concept 12)."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "45 lantern_float at spacing [3,6] on both sides make an evenly spread carpet of dots. Use [4,9], alternate the sides, and leave a 10-15 m dark gap every ~25 m so the light pools alternate."
+  },
+  {
+   "id": "dressing[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "47 boulder_rim on the inner bank at spacing [1.5,3.0] read as a continuous ring of grey boxes from the bridge (reveal). Use spacing [3,7] in clusters of 2-3, scale [0.6,1.2]."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Build the tube: replace the floor-snapped hero box with a continuous low vault shell over the channel so every view becomes a receding curve, then light the water from below.",
+ "plausibility": [
+  "The hero box was snapped to the floor (z -67 vs -63.3) and stands as a 4.5 m wall across the SW channel and towpath, so floaters would collide with it.",
+  "No 4 m tube roof exists. Eye-level views show the b3_cavern vault ~14 m up with stalactites, which contradicts 'low lava tube'.",
+  "entry_steps are 0.2 m-high stair proxies for 4 steps into a channel whose bed is at -68.4 (1.4 m below the towpath), so the steps do not reach the bed.",
+  "The slide-shaft cylinder (r 9 at 150,50) renders as a blown-out emissive surface that outshines everything in this space."
+ ]
+}

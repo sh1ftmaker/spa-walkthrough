@@ -93,12 +93,57 @@
   ],
   "facing_deg": 270,
   "dims": {
-   "w": 3.4,
+   "w": 3.0,
    "h": 3.6
   },
   "why": "A sea torii marks the threshold from the spring's last pool to the open ocean; framed in it, the moonlit sea mouth is the brightest (cold) thing in this dark passage."
  },
- "anchored": [],
+ "anchored": [
+  {
+   "id": "overhang",
+   "asset": "rock_overhang",
+   "at": [
+    [
+     152.34,
+     35.83,
+     -64.0
+    ],
+    [
+     155.02,
+     34.49,
+     -64.0
+    ],
+    [
+     157.91,
+     34.0,
+     -64.0
+    ],
+    [
+     160.91,
+     34.0,
+     -62.5
+    ],
+    [
+     163.91,
+     34.0,
+     -62.5
+    ]
+   ],
+   "facing_deg": [
+    116.6,
+    116.6,
+    90.0,
+    90.0,
+    90.0
+   ],
+   "dims": {
+    "w": 4.6,
+    "d": 3.0,
+    "h": 0.6
+   },
+   "why": "The low rock overhang (3 m, flaring to 4.5 m at the torii) built from overhang pieces: a compressed dark passage before the beach."
+  }
+ ],
  "water": [
   {
    "id": "w_shore_runnel",
@@ -137,8 +182,8 @@
    "from": "p_b3_shore_wave",
    "see": "Looking back: the orange of the lava wall at the far end.",
    "target": [
-    161.6,
-    51,
+    156.5,
+    65.5,
     -62
    ]
   }
@@ -188,34 +233,40 @@
  },
  "lights": [
   {
-   "asset": "lantern_niche",
-   "along": "spine",
-   "side": "left",
-   "spacing": [
-    4,
-    6
-   ],
-   "snap": "wall",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Sparse ankle light only; long dark gaps so the blue end dominates."
-  },
-  {
-   "asset": "lantern_stone",
+   "asset": "lantern_floor",
    "at": [
     [
-     160.4,
-     35.8,
-     -67
+     152.6,
+     33.6
     ],
     [
-     160.4,
-     32.3,
-     -67
+     157.0,
+     32.6
     ]
    ],
-   "why": "Warm pair at the torii posts against the cold sea light."
+   "scale": [
+    0.5,
+    0.55
+   ],
+   "why": "Two small ankle pools on the south side of the dark walk."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     162.6,
+     35.5
+    ],
+    [
+     162.6,
+     32.5
+    ]
+   ],
+   "scale": [
+    0.55,
+    0.6
+   ],
+   "why": "A dim warm pair just past the torii posts; the sea stays the brightest."
   }
  ],
  "dressing": [
@@ -235,7 +286,21 @@
    ],
    "avoid": [
     "nav",
-    "portals"
+    "portals",
+    {
+     "near": [
+      152.6,
+      33.6
+     ],
+     "r": 1.4
+    },
+    {
+     "near": [
+      157.0,
+      32.6
+     ],
+     "r": 1.4
+    }
    ]
   },
   {
@@ -250,7 +315,8 @@
     "nav",
     "portals",
     "hero"
-   ]
+   ],
+   "optional": true
   }
  ],
  "mood": {
@@ -258,12 +324,13 @@
   "palette": "dark basalt, two warm lanterns, moon-blue ahead",
   "mist": "sea spray drifting in at the torii"
  },
- "waivers": [
-  {
-   "check": "no_empty_areas",
-   "where": "whole path",
-   "reason": "Darkness is the point here (contrast before the beach reveal)."
-  }
+ "waivers": [],
+ "layout_issues": [],
+ "allow_overlap": [
+  [
+   "rock_overhang",
+   "rock_overhang"
+  ]
  ],
- "layout_issues": []
+ "allow_overlap_why": "Overhang pieces overlap at the bend to make one roof."
 }

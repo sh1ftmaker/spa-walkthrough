@@ -117,9 +117,11 @@ async function quiet(fn) {
 }
 
 // kind: 'srgb' | 'linear' | 'normal'
-export async function encodeLDR(img, kind) {
+// etc1s: small downloads (Low-tier albedo); otherwise UASTC LDR 4x4 + zstd.
+export async function encodeLDR(img, kind, { etc1s = false } = {}) {
   const opts = {
-    isUASTC: true, generateMipmap: true, needSupercompression: true,
+    isUASTC: !etc1s, generateMipmap: true, needSupercompression: !etc1s,
+    ...(etc1s ? { qualityLevel: 160, compressionLevel: 2 } : {}),
     isSetKTX2SRGBTransferFunc: kind === 'srgb', isPerceptual: kind === 'srgb', isNormalMap: kind === 'normal',
     imageDecoder: async () => img,
   };

@@ -1,0 +1,10 @@
+{
+ "ground_a":  {"builder": "gs",   "spaces": ["g_road", "g_gate", "g_arrival", "g_terrace", "g_cascade", "g_changing"]},
+ "ground_b":  {"builder": "gs",   "spaces": ["g_east", "g_east_path", "g_north_ledge", "suite_1a", "suite_4c"], "note": "suites share suite_template.json: judge the template through suite_1a (lowest tier) and suite_4c (top tier, end of row)"},
+ "summit":    {"builder": "gs",   "spaces": ["s_rim_west", "s_rim", "s_pool", "s_spring", "s_moon"]},
+ "b1_west":   {"builder": "b1",   "spaces": ["b1_lobby", "b1_cor_mirror", "b1_mirror", "b1_junction_w", "b1_cor_west", "b1_grotto", "b1_cor_north"]},
+ "b1_east":   {"builder": "b1",   "spaces": ["b1_cor_south", "b1_slide_top", "b1_treatment", "b1_cor_east", "b1_glacier", "b1_outfall"]},
+ "b2":        {"builder": "b2b4", "spaces": ["b2_core", "b2_kawagiri", "b2_river", "b2_boat", "b2_boardwalk", "b2_lava_link", "b2_falls_head"]},
+ "b3_west":   {"builder": "b3",   "spaces": ["b3_lobby", "b3_walk_north", "b3_rimstone", "b3_falls", "b3_falls_gallery", "b3_cavern"]},
+ "b3_east_b4":{"builder": "b3+b2b4", "spaces": ["b3_lazy", "b3_geyser", "b3_slide_foot", "b3_shore", "b3_wave", "b4_lobby", "b4_tunnel", "b4_chamber"]}
+}

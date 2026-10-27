@@ -1,9 +1,9 @@
 {
-  "updated": "2026-10-26T22:59:09Z",
+  "updated": "2026-10-26T23:32:13Z",
   "phase": "Graybox + materials",
   "phase_index": 2,
   "scope_tier": "Must",
-  "headline": "Graybox built; all 60 spaces placed (~3.8k proxies). Four agents fixing their rules against the placement checks; water and sound research running; material library done (KTX2 awaiting owner approval).",
+  "headline": "Graybox review round 1 done (50 spaces, mean ~2/5: heroes not brightest, lanterns too bright). Lead fixed the render/placement pipeline; 4 space agents applying the reviews; round 2 next with fresh reviewers.",
   "phases": [
     "Preflight",
     "Plan",
@@ -19,13 +19,19 @@
       "result": "pass",
       "time": "2026-10-26T22:05:47Z",
       "notes": "GPU WebGL=RTX 4090 via ANGLE/Vulkan; Pages publish ok; release assets blocked by CORS so parts go in Pages"
+    },
+    {
+      "name": "Plan",
+      "result": "pass",
+      "time": "2026-10-26T22:59:18Z",
+      "notes": "layout.json (60 spaces, 22 stairs at 17 cm risers), rock + walk graph pass; 60 space files from 4 agents; graybox/assembly/checks pipeline running"
     }
   ],
   "metrics": {
-    "draw_calls": null,
-    "triangles": null,
-    "texture_mb": null,
-    "desktop_ms": null
+    "draw_calls": 74,
+    "triangles": 110000,
+    "texture_mb": 43,
+    "desktop_ms": 16.7
   },
   "checks": {
     "walk": "fail",

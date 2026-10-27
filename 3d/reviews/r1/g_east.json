@@ -1,0 +1,82 @@
+{
+ "space": "g_east",
+ "round": 1,
+ "reviewer": "ground_b_r1",
+ "frames": {
+  "entry": {
+   "focal": "Three 1.6 m stone lanterns (lights3 gauntlet) plus g_east:lights0:0, which fills the right third of the frame 1.4 m from the lens. The hero is a dim brown slab half hidden behind the lanterns.",
+   "is_hero": false,
+   "next_visible": "Weakly: rail-post lanterns on the far right. The cliff-path mouth (NE) is out of frame, and there is no sea or surf: the horizon is a flat black plane."
+  },
+  "reveal": {
+   "focal": "The lens itself, but it reads as an unlit brown 6x6 m stage 0.6 m high. Two lantern blocks at the frame edges are the brightest things.",
+   "is_hero": true,
+   "next_visible": "Rail posts along the east edge only. No sea, no surf, no cape lantern."
+  },
+  "concept": {
+   "focal": "A field of about ten evenly spread white lantern blocks. The lens is a sliver behind them.",
+   "is_hero": false,
+   "next_visible": "None. Plan 31's red tree, cliff rail with lanterns and white surf are all missing at eye height."
+  },
+  "strip": {
+   "focal": "The exit_tree box on the left and the lights0 lanterns. Frame 0 is fully black (camera inside the door geometry). Frames 6-7 look into the black slot of g_east_path with a few lanterns at the end.",
+   "is_hero": false,
+   "next_visible": "Yes, the lantern line of the cliff path ahead, but it reads as a corridor between walls, not a cliff edge."
+  }
+ },
+ "fixes": [
+  {
+   "id": "g_east:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Make it a lens flush with the paving: h 0.6 -> 0.08 (top at z 0.05), with an emissive lava-orange top face and a 3-4 m translucent steam column marker above it. As a raised brown plinth it reads as a stage or table and gives no light."
+  },
+  {
+   "id": "g_east:lights2:0",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "oculus_glow sits at z -1.0 under a solid 0.6 m slab, so none of its light gets out. Raise it to z -0.1 just under the glass and make it about 3x the lantern_stone output, so the hero is the brightest thing on the terrace."
+  },
+  {
+   "id": "lights[3]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The 'both' sides 1.6 m lantern_stone rows along branch to_oculus put 5 tall glowing blocks across the middle of the terrace. They form a gauntlet that hides the lens from the door. Change to side 'left' only (east side of the branch), asset lantern_niche or a 0.5 m ground lantern, spacing [4,7], offset 1.2. Then the lights lead to the lens without blocking it."
+  },
+  {
+   "id": "g_east:lights0:0",
+   "action": "remove",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "It sits 1.4 m from the entry camera and fills a third of the entry frame. The door is already lit by lights3:0. If the lead wants to keep it, move it by (+4.0, +1.5) so it lands beside the spine instead of in the first sightline."
+  },
+  {
+   "id": "lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The posts on the cliff rail are almost evenly spaced (44.4/53.3/60.8/67.8). Use spacing [5,12], cluster two posts at the lookout bench (y 44-48), and leave y 49-58 dark so the lens wins in the reveal. Separately, make sure railing segments render: none of the dressing[0], [1] or [4] rails appear in any frame."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Turn the hero into a flush, emissive orange lens with its glow actually escaping, and clear the 1.6 m lantern gauntlet between the door and the lens, so the first thing you see on stepping out is an orange glow on a dark terrace.",
+ "plausibility": [
+  "Hero is a 0.6 m raised slab, but the intent is a glass lens 'in the paving'. Walking over it would mean stepping up 0.6 m.",
+  "oculus_glow at z -1.0 is buried under the opaque hero box.",
+  "Railings (dressing[0], [1], [4], at z 1.05 with status 'structural') are invisible in every render. Either they are not rendered or they float at z 1.05 above the paving. The cliff edge currently reads as unguarded.",
+  "dressing[4] ring rail is missing indices 6-10 (the whole east half of the ring). If that is the access gap it is too wide; a 1.5-3 m gate is enough.",
+  "No sea plane or surf beyond the east and south rails: the terrace ends in a black horizon."
+ ]
+}

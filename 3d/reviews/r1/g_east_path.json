@@ -1,0 +1,80 @@
+{
+ "space": "g_east_path",
+ "round": 1,
+ "reviewer": "ground_b_r1",
+ "frames": {
+  "entry": {
+   "focal": "The posts and niche lanterns receding down a narrow slot. The best frame of the space: the lights lead well. But the hero (cape lantern) shows as an unlit dark-orange box at the end, not a warm beacon.",
+   "is_hero": false,
+   "next_visible": "The lantern line, yes. The sea and sky to the right, no: the south (sea) side is a solid wall taller than eye height."
+  },
+  "reveal": {
+   "focal": "Nothing. The camera pitches up (target z 25 at 26 m) into a sliver of sky between two black walls.",
+   "is_hero": false,
+   "next_visible": "No. The suite cliff and trickle the sightline promises are hidden by the inland wall and the overhang."
+  },
+  "concept": {
+   "focal": "A flat black rock face filling 80% of the frame. The camera is under the overhang looking into the cliff.",
+   "is_hero": false,
+   "next_visible": "No. Nothing of image 32 is visible."
+  },
+  "strip": {
+   "focal": "Lantern rhythm down leg 1 (good alternation of posts and ankle niches), the brown unlit hero block at the corner, then the overhang box. Only frame 7 opens onto the north ledge, with a teal basin.",
+   "is_hero": false,
+   "next_visible": "Yes, the far lanterns at each step. The release onto the north ledge only arrives in the last frame."
+  }
+ },
+ "fixes": [
+  {
+   "id": "g_east_path:hero",
+   "action": "replace",
+   "dx": 1.2,
+   "dy": -1.0,
+   "deg": 0,
+   "detail": "The cape lantern renders as an unlit brown box, the darkest object here. Give it an emissive firebox in its top third, brighter than the posts. Move it (+1.2, -1.0) onto a small 2x2 m bump-out beyond the rail at the outer corner, so it stops eating the outside of the turn on a 3 m path and stands against the sea."
+  },
+  {
+   "id": "shell: sea-side edge",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Both legs are slot canyons: walls well above eye height on both sides. The sea side (south of leg 1, east of leg 2) must drop away below the rail, with only the inland side as rock. Without that this is a corridor, not a 'cliff-top path with surf below'. This is layout or terrain work, so it goes to the lead."
+  },
+  {
+   "id": "cameras.concept",
+   "action": "move",
+   "dx": 0.4,
+   "dy": 6.5,
+   "deg": 0,
+   "detail": "From (193.6,104) the camera sees only rock. Move it to about (194,110.5) at the portal mouth, target (170,106,14) (pitch about 20 deg, not 50 deg). Also lower the reveal target z 25 -> 10 so the frame keeps the path and lanterns in the bottom third."
+  },
+  {
+   "id": "dressing[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The rock_cluster rule along the inland side produced 0 placements. Either fix it (spacing [4,8], scale [0.4,0.8], embed 0.2), so the niche lanterns have rocks to sit in, or delete it. As it stands the inland side is a bare flat wall."
+  },
+  {
+   "id": "g_east_path:overhang",
+   "action": "move",
+   "dx": 0,
+   "dy": -3.0,
+   "deg": 0,
+   "detail": "The compression is good, but the box hangs right where the concept and reveal cameras need to look up. Shift it 3 m south (y 92-102) so the release at the north portal gets 7 m of open sky before the ledge."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Open the sea side of both legs so this is a cliff-top path with sky and surf on one side, and make the cape lantern an actual lit beacon at the corner.",
+ "plausibility": [
+  "The hero lantern_stone (1.1x1.1x3.4) occupies the outer corner of a 3 m walkway at the turn. The walk check passes but people would brush it.",
+  "Railings (dressing[0], 'structural', z 1.05) are not visible anywhere. If z is the base, they float 1.05 m up.",
+  "The overhang underside at 2.8 m clears a 1.6 m eye height, but it is a 1.2 m box with no visible support or attachment to the inland wall."
+ ]
+}

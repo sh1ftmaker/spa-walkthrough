@@ -1,0 +1,82 @@
+{
+ "space": "suite_1a",
+ "round": 1,
+ "reviewer": "ground_b_r1",
+ "frames": {
+  "entry": {
+   "focal": "The floor andon lights0:2, a big glowing block 2 m from the lens in the left foreground. Behind it is a 9x11 m bare grey room with the tub as a low brown slab in the far corner.",
+   "is_hero": false,
+   "next_visible": "No. The north side is a solid 9 m shoji box. Only a 0.8 m dark slot above it hints at the outside, and no sea or sky reads."
+  },
+  "reveal": {
+   "focal": "The tub as a brown raised slab against the grey east wall, with the niche lantern beside it. Close to the hero, but it doesn't glow teal and has no backdrop.",
+   "is_hero": true,
+   "next_visible": "A black gap to the north of the tub. No sea, sky or falling trickle."
+  },
+  "concept": {
+   "focal": "The futon slab in the foreground and the tub far back, both grey and brown, in a large empty room. Nothing like image 21's futon-left, open-shoji, glowing-tub-over-the-valley framing.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "strip": {
+   "focal": "Frame 0 is fully black (camera inside geometry at the balcony start). After that come andon blocks and the tokonoma box in a warehouse-scale room. The tub appears only in the last frames as a brown slab.",
+   "is_hero": false,
+   "next_visible": "No outside view in any frame."
+  }
+ },
+ "fixes": [
+  {
+   "id": "suite_1a:shoji_front",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "A solid 9x2.4 m slab seals the room from the sea. Model it as a frame with 2 bays slid open (local x 6-10.5), translucent washi on the rest. Behind it there should be the veranda, the rail and open night sky or sea with a horizon. Template-wide: suite_template anchored.shoji_front."
+  },
+  {
+   "id": "suite_1a:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The stone tub renders as a brown raised slab with no water. Sink it so the rim is flush (z floor-0.6, top at floor) and render w_tub as glowing teal with pool_uplight lights2:0 at about 3x the andon output. Open the east wall of the tub niche (local x 16, y 7.5-12) onto the gully so the trickle falls visibly behind the tub, as in 21 and 32."
+  },
+  {
+   "id": "suite_1a:futon",
+   "action": "move",
+   "dx": 0,
+   "dy": 2.5,
+   "deg": 0,
+   "detail": "Bring the futon toward the shoji (local y 5.5 -> 8.0) so futon, open shoji and tub sit in one frame, as in 21. The south half of the room becomes the quiet tokonoma side. Move tea_table by (-1.0, +1.5) to stay between them."
+  },
+  {
+   "id": "suite_1a:lights0:2",
+   "action": "move",
+   "dx": 0,
+   "dy": -4.0,
+   "deg": 0,
+   "detail": "This andon sits 2 m in front of the entry camera and is the brightest object in the entry frame. Move it to local (3.6, 7.0) beside the futon head. Rule-wise, lights[0] puts andon in three corners evenly; instead cluster two around the futon and one at the tokonoma."
+  },
+  {
+   "id": "dressing[0] balcony:north_edge",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "It produces two parallel rails 0.2 m apart (y 109.95 facing 180 and y 109.75 facing 0), and lights[3] posts at y 109.9 sit inside them. Emit one rail on the outer edge and set the posts 0.3 m inboard."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Open the north (shoji) side to the night sea and make the tub a flush, teal-glowing basin backed by the falling trickle, framed through the open shoji from the futon. Right now the suite is a closed grey box with no view.",
+ "plausibility": [
+  "kakehi resolved at z 13.41, which is 3.41 m above the floor and above the 3.2 m ceiling (template says 1.2 m). The spout is floating in or above the rock.",
+  "The tub top sits 0.2 m above the floor, but the template says the rim is flush with water at -0.05. No water surface renders in the tub.",
+  "The tatami room is about 9x11 m with a 3.2 m ceiling, far larger than the image 32 plan (about 5x6 m tatami). The middle reads as barren.",
+  "Walk check FAILS: 0 of 1425 samples reached. The suite isn't connected to the walk graph (the Cliff Stair landing at (140,109.15,10) or the suite gate at local (1.5,14.25) doesn't link). This is the lowest tier, so the whole suite stack may be unreachable.",
+  "Strip frame 0 is black: the strip camera starts inside the balcony or stair geometry."
+ ]
+}

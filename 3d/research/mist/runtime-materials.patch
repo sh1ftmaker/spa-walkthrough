@@ -1,0 +1,72 @@
+--- a/web/src/materials.js	2026-10-26 17:41:13.000074132 -0700
++++ b/web/src/materials.js	2026-10-26 17:41:28.004498070 -0700
+@@ -1,6 +1,11 @@
+ // Material library, shader patches (height fog/mist, box-projected probes, RGBM lightmaps) and shared uniforms.
+ import * as THREE from 'three';
+ import { FOG, LIGHTMAP_INTENSITY } from './config.js';
++// Sim-driven mist layer (3d/research/mist): one active MistZone (the space the camera is in) writes into these
++// uniforms; every patched program and the water shaders sample its field. Off (uMistOn = 0) when no zone is live.
++import { MIST_GLSL, MistZone } from './mist/mist.js';
++export const MIST_U = new MistZone({ rect: [0, 0, 1, 1], y: -1e4, tiers: {} }).uniforms; // stable objects, values set per zone
++MIST_U.uMistOn.value = 0;
+ 
+ // ---- shared uniforms (same objects referenced by every patched program) ----
+ export const KZ = {
+@@ -24,13 +29,17 @@
+   kzEnvB: { value: null },
+   kzProbeIntensity: { value: 1 },
+   kzTime: { value: 0 },
++  kzMistWater: { value: -1 },  // index into kzWaterRect whose analytic layer the sim replaces (-1: none)
++  ...MIST_U,
+ };
+ 
+ const N = FOG.maxWaters;
+ export const FOG_PARS = /* glsl */ `
+ uniform vec3 kzFogColor; uniform float kzFogDensity; uniform vec3 kzMistColor; uniform float kzMistDensity; uniform float kzMistHeight;
+ uniform int kzWaterCount; uniform vec4 kzWaterRect[${N}]; uniform float kzWaterY[${N}]; uniform float kzWaterMist[${N}]; uniform float kzFogOn;
++uniform int kzMistWater;
+ varying vec3 kzWorldPos;
++${MIST_GLSL}
+ float kzInRect(vec2 p, vec4 r) {
+   vec2 a = smoothstep(r.xy - 0.75, r.xy + 0.75, p) * (1.0 - smoothstep(r.zw - 0.75, r.zw + 0.75, p));
+   return a.x * a.y;
+@@ -44,6 +53,7 @@
+   float H = kzMistHeight;
+   for (int i = 0; i < ${N}; i++) {
+     if (i >= kzWaterCount) break;
++    if (i == kzMistWater && uMistOn > 0.5) continue; // the live sim draws this water's layer
+     float w = 0.5 * (kzInRect(wp.xz, kzWaterRect[i]) + kzInRect(ro.xz, kzWaterRect[i]));
+     if (w <= 0.0) continue;
+     float y0 = kzWaterY[i];
+@@ -56,6 +66,9 @@
+   float a = base;
+   c = c * (1.0 - mist) + kzMistColor * mist;
+   a = a + mist - a * mist;
++  vec4 m = mistTerms(wp);            // sim layer (Low: analytic 2-tap, High: MIST_HIGH slices); haze off in runtime
++  c = c * (1.0 - m.a) + m.rgb;
++  a = a + m.a - a * m.a;
+   return vec4(c, a) * kzFogOn;
+ }
+ `;
+@@ -112,17 +125,19 @@
+ let ENV_CHUNK = null;
+ 
+ // Patch any built-in material (Standard/Physical/Basic/Lambert...) with fog + probes (+ RGBM decode).
++export let MIST_HIGH = false; // set from the tier before the first compile (tier change -> new cache key)
++export const setMistTier = (high) => { MIST_HIGH = high; };
+ export function patchMaterial(mat, { rgbm = null } = {}) {
+   if (mat.userData.kzPatched) return mat;
+   mat.userData.kzPatched = true;
+   ENV_CHUNK ??= patchedEnvChunk();
+-  const key = `kz1|${rgbm ? `rgbm${rgbm.range}_${rgbm.gamma}` : ''}`;
++  const key = `kz1|${rgbm ? `rgbm${rgbm.range}_${rgbm.gamma}` : ''}|mist${MIST_HIGH ? 'H' : 'L'}`;
+   mat.customProgramCacheKey = () => key;
+   mat.onBeforeCompile = (shader) => {
+     Object.assign(shader.uniforms, KZ);
+     shader.vertexShader = WORLDPOS_VERT_PARS + shader.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\n' + WORLDPOS_VERT);
+     let fs = shader.fragmentShader;
+-    fs = FOG_PARS + PROBE_PARS + fs;
++    fs = (MIST_HIGH ? '#define MIST_HIGH\n#define MIST_SLICES 10\n' : '') + FOG_PARS + PROBE_PARS + fs;
+     if (rgbm) fs = `#define KZ_RGBM_RANGE ${rgbm.range.toFixed(4)}\n#define KZ_RGBM_GAMMA ${rgbm.gamma.toFixed(4)}\n` + fs;
+     fs = fs.replace('#include <envmap_physical_pars_fragment>', ENV_CHUNK);
+     fs = fs.replace('#include <lights_fragment_maps>', patchedLightsMapsChunk(!!rgbm));

@@ -40,6 +40,7 @@ def setup():
     sc.view_settings.view_transform = 'AgX'
     sc.view_settings.look = 'None'
     sc.eevee.taa_render_samples = 32
+    sc.view_settings.exposure = 0.0
     try:
         sc.eevee.use_raytracing = True
     except Exception:
@@ -67,6 +68,7 @@ def cam(name, pos, target, fov_v=60, ortho=None, w=1600, h=900, clip=(0.1, 2000)
 
 def light(pos, energy, color=(1.0, 0.72, 0.42), r=0.3, kind='POINT'):
     l = bpy.data.lights.new('gb_l', kind); l.energy = energy; l.color = color
+    l.specular_factor = 0.0 if energy < 300 and color[2] > 0.8 else 1.0      # soft fills must not show as discs on water
     if kind == 'POINT':
         l.shadow_soft_size = r
     o = bpy.data.objects.new('gb_l', l); o.location = pos; sc.collection.objects.link(o)
@@ -96,7 +98,7 @@ def level_lights():
         area = (max(xs) - min(xs)) * (max(ys) - min(ys))
         top = s['ceiling_z'] if s['ceiling_z'] is not None else s['floor_z'] + 6
         z = s['floor_z'] + min(4.0, (top - s['floor_z']) * 0.6)
-        out.append(light((cx, cy, z), min(6000, 6 * area), r=2.0))
+        out.append(light((cx, cy, z), min(250, 0.25 * area), r=max(6.0, area ** 0.5 * 0.4), color=(0.8, 0.8, 0.85)))   # very soft fill; lanterns + heroes carry the scene
     out.append(light((61, 78, 6), 6000, (1.0, 0.35, 0.08), r=6))
     out.append(light((80, 10, -96), 8000, (1.0, 0.35, 0.08), r=10))
     out.append(light((150, 50, -40), 3000, (1.0, 0.4, 0.1), r=4))
@@ -144,10 +146,17 @@ def spaces():
         if 'cameras' not in sp:
             continue
         lights = level_lights()
-        hide(['terrain'], sp.get('level') not in ('ground', 'summit', 'cliff'))
+        outdoor = sp.get('level') in ('ground', 'summit', 'cliff')
+        hide(['terrain'], not outdoor)
+        sc.world.node_tree.nodes['Background'].inputs['Color'].default_value = (0.012, 0.02, 0.045, 1) if outdoor else (0.02, 0.025, 0.035, 1)
+        sc.world.node_tree.nodes['Background'].inputs['Strength'].default_value = 1.6 if outdoor else 1.0
+        if outdoor:      # moonlight so the sea, surf and cliffs read at night
+            mo = bpy.data.lights.new('moon', 'SUN'); mo.energy = 0.35; mo.color = (0.6, 0.7, 1.0); mo.angle = 0.02
+            moo = bpy.data.objects.new('moon', mo); moo.rotation_euler = (math.radians(55), 0, math.radians(120)); sc.collection.objects.link(moo)
+            lights.append(moo)
         for k, cdef in sp['cameras'].items():
-            if k not in ('entry', 'reveal', 'concept') or not isinstance(cdef, dict) or 'pos' not in cdef:
-                continue
+            if not isinstance(cdef, dict) or 'pos' not in cdef or 'target' not in cdef:
+                continue                 # every declared camera is rendered (entry/reveal/concept go on the sheet)
             for tag, (w, h) in (('16x9', (1280, 720)), ('9x16', (540, 960))):
                 cam(f'{sp["id"]}_{k}', cdef['pos'], cdef['target'], cdef.get('fov_v', 60), w=w, h=h)
                 render(os.path.join(OUTDIR, sp['id'], f'{k}-{tag}.jpg'))

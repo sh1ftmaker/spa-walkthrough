@@ -1,0 +1,70 @@
+{
+ "space": "b4_tunnel",
+ "round": 1,
+ "reviewer": "rev_b3_east_b4_r1",
+ "frames": {
+  "entry": {
+   "focal": "The vanishing point at the end of the first straight leg, framed by symmetric pairs of wall lanterns.",
+   "is_hero": false,
+   "next_visible": "A dead-end wall with a lantern. There is no orange hint of the turn."
+  },
+  "reveal": {
+   "focal": "The chamber opening framing the orange glass wall, with white lantern posts in front. This is the right idea.",
+   "is_hero": true,
+   "next_visible": "Yes, the chamber is clearly next."
+  },
+  "concept": {
+   "focal": "A straight leg with paired lanterns, symmetric. It reads as a service corridor.",
+   "is_hero": false,
+   "next_visible": "No orange is visible beyond the bend."
+  },
+  "strip": {
+   "focal": "Legs 1 and 2 have even mirrored lantern pairs. From frame 5 the orange chamber appears and grows. This is a good reveal at the end.",
+   "is_hero": true,
+   "next_visible": "From frame 5 onward."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "side: both plus spacing [4,5] gives mirrored pairs at identical stations (a runway). Stagger the sides (alternate) with spacing [4,7], and make fade_toward visible: the last 3-4 niches before the bend should be at ≤50% intensity."
+  },
+  {
+   "id": "spine/footprint (lead layout)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The tunnel is three straight legs with hard kinks; plan 36 is a smooth S-curve. Fillet the corners with r ≥ 12 m so the walls hide what is ahead and the glow spills round the curve."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "rock_cluster produced only 1 object (density 0.06, band [0,0.4]). Raise the density to 0.15 on the outside of the two bends so the walls are not bare boxes there."
+  },
+  {
+   "id": "b4_tunnel:bend_bench",
+   "action": "move",
+   "dx": 0.8,
+   "dy": -0.8,
+   "deg": 30,
+   "detail": "The bench at (50.4,47.4) is not visible in any frame. Shift it so it faces down the last leg toward the glow."
+  }
+ ],
+ "scores": {
+  "composition": 3,
+  "density": 2,
+  "light_rhythm": 3
+ },
+ "top_change": "Curve the tunnel and stagger and fade its lanterns so the orange chamber glow is hinted from the first bend instead of appearing only on the last leg.",
+ "plausibility": [
+  "None serious. The headroom (3.5 m) and the 4x3 m neck are fine."
+ ]
+}

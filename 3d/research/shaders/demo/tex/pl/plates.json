@@ -1,0 +1,386 @@
+{
+ "basalt_columnar_wet": {
+  "sheet": "stone",
+  "box": [
+   18,
+   17,
+   501,
+   500
+  ],
+  "mean_albedo_linear": [
+   0.0345,
+   0.0328,
+   0.0335
+  ],
+  "albedo_std_srgb255": 33.0,
+  "mean_roughness": 0.335
+ },
+ "basalt_vesicular": {
+  "sheet": "stone",
+  "box": [
+   526,
+   17,
+   1009,
+   500
+  ],
+  "mean_albedo_linear": [
+   0.0495,
+   0.0454,
+   0.0427
+  ],
+  "albedo_std_srgb255": 30.1,
+  "mean_roughness": 0.717
+ },
+ "paving_wet": {
+  "sheet": "stone",
+  "box": [
+   1034,
+   17,
+   1518,
+   500
+  ],
+  "mean_albedo_linear": [
+   0.0476,
+   0.0464,
+   0.0468
+  ],
+  "albedo_std_srgb255": 30.6,
+  "mean_roughness": 0.33
+ },
+ "obsidian": {
+  "sheet": "stone",
+  "box": [
+   18,
+   523,
+   501,
+   1006
+  ],
+  "mean_albedo_linear": [
+   0.0218,
+   0.0218,
+   0.0235
+  ],
+  "albedo_std_srgb255": 24.7,
+  "mean_roughness": 0.082
+ },
+ "rimstone": {
+  "sheet": "stone",
+  "box": [
+   526,
+   523,
+   1009,
+   1006
+  ],
+  "mean_albedo_linear": [
+   0.645,
+   0.4685,
+   0.3233
+  ],
+  "albedo_std_srgb255": 38.9,
+  "mean_roughness": 0.591
+ },
+ "black_sand": {
+  "sheet": "stone",
+  "box": [
+   1034,
+   523,
+   1518,
+   1006
+  ],
+  "mean_albedo_linear": [
+   0.0361,
+   0.0318,
+   0.028
+  ],
+  "albedo_std_srgb255": 30.5,
+  "mean_roughness": 0.464
+ },
+ "rock_wet_ore": {
+  "sheet": "rock",
+  "box": [
+   13,
+   9,
+   500,
+   501
+  ],
+  "mean_albedo_linear": [
+   0.0346,
+   0.0329,
+   0.0341
+  ],
+  "albedo_std_srgb255": 32.0,
+  "mean_roughness": 0.324
+ },
+ "rock_teal_glass": {
+  "sheet": "rock",
+  "box": [
+   523,
+   9,
+   1011,
+   501
+  ],
+  "mean_albedo_linear": [
+   0.0344,
+   0.0457,
+   0.0498
+  ],
+  "albedo_std_srgb255": 30.1,
+  "mean_roughness": 0.207
+ },
+ "sulfur_travertine": {
+  "sheet": "rock",
+  "box": [
+   1035,
+   9,
+   1522,
+   501
+  ],
+  "mean_albedo_linear": [
+   0.6044,
+   0.3021,
+   0.1786
+  ],
+  "albedo_std_srgb255": 61.2,
+  "mean_roughness": 0.634
+ },
+ "ash_clay": {
+  "sheet": "rock",
+  "box": [
+   13,
+   522,
+   500,
+   1014
+  ],
+  "mean_albedo_linear": [
+   0.2434,
+   0.1794,
+   0.1335
+  ],
+  "albedo_std_srgb255": 24.6,
+  "mean_roughness": 0.842
+ },
+ "lava_crust": {
+  "sheet": "rock",
+  "box": [
+   523,
+   522,
+   1011,
+   1014
+  ],
+  "mean_albedo_linear": [
+   0.1956,
+   0.0599,
+   0.0357
+  ],
+  "albedo_std_srgb255": 55.8,
+  "mean_roughness": 0.723
+ },
+ "glacier_ice": {
+  "sheet": "rock",
+  "box": [
+   1035,
+   522,
+   1522,
+   1014
+  ],
+  "mean_albedo_linear": [
+   0.0806,
+   0.2741,
+   0.4387
+  ],
+  "albedo_std_srgb255": 66.4,
+  "mean_roughness": 0.13
+ },
+ "hinoki": {
+  "sheet": "wood",
+  "box": [
+   19,
+   16,
+   502,
+   496
+  ],
+  "mean_albedo_linear": [
+   0.3014,
+   0.141,
+   0.0581
+  ],
+  "albedo_std_srgb255": 45.4,
+  "mean_roughness": 0.691
+ },
+ "lacquer": {
+  "sheet": "wood",
+  "box": [
+   527,
+   16,
+   1009,
+   496
+  ],
+  "mean_albedo_linear": [
+   0.0408,
+   0.0094,
+   0.0069
+  ],
+  "albedo_std_srgb255": 26.0,
+  "mean_roughness": 0.211
+ },
+ "bamboo": {
+  "sheet": "wood",
+  "box": [
+   1035,
+   16,
+   1517,
+   496
+  ],
+  "mean_albedo_linear": [
+   0.3007,
+   0.1632,
+   0.0486
+  ],
+  "albedo_std_srgb255": 55.4,
+  "mean_roughness": 0.444
+ },
+ "tatami": {
+  "sheet": "wood",
+  "box": [
+   19,
+   522,
+   502,
+   1002
+  ],
+  "mean_albedo_linear": [
+   0.3065,
+   0.1941,
+   0.0582
+  ],
+  "albedo_std_srgb255": 41.9,
+  "mean_roughness": 0.745
+ },
+ "washi": {
+  "sheet": "wood",
+  "box": [
+   527,
+   522,
+   1009,
+   1002
+  ],
+  "mean_albedo_linear": [
+   0.7455,
+   0.5681,
+   0.3981
+  ],
+  "albedo_std_srgb255": 25.0,
+  "mean_roughness": 0.85
+ },
+ "washi_backlit": {
+  "sheet": "wood",
+  "box": [
+   1035,
+   522,
+   1517,
+   1002
+  ],
+  "mean_albedo_linear": [
+   0.8886,
+   0.5421,
+   0.1511
+  ],
+  "albedo_std_srgb255": 68.0,
+  "mean_roughness": 0.849
+ },
+ "noren": {
+  "sheet": "cloth",
+  "box": [
+   9,
+   7,
+   501,
+   501
+  ],
+  "mean_albedo_linear": [
+   0.0173,
+   0.0374,
+   0.0768
+  ],
+  "albedo_std_srgb255": 34.4,
+  "mean_roughness": 0.894
+ },
+ "rope": {
+  "sheet": "cloth",
+  "box": [
+   520,
+   7,
+   1014,
+   501
+  ],
+  "mean_albedo_linear": [
+   0.2013,
+   0.1322,
+   0.082
+  ],
+  "albedo_std_srgb255": 47.5,
+  "mean_roughness": 0.836
+ },
+ "bronze": {
+  "sheet": "cloth",
+  "box": [
+   1034,
+   7,
+   1526,
+   501
+  ],
+  "mean_albedo_linear": [
+   0.1027,
+   0.0753,
+   0.0424
+  ],
+  "albedo_std_srgb255": 30.0,
+  "mean_roughness": 0.388
+ },
+ "iron": {
+  "sheet": "cloth",
+  "box": [
+   9,
+   521,
+   501,
+   1015
+  ],
+  "mean_albedo_linear": [
+   0.1182,
+   0.0547,
+   0.0343
+  ],
+  "albedo_std_srgb255": 34.6,
+  "mean_roughness": 0.768
+ },
+ "water_teal": {
+  "sheet": "cloth",
+  "box": [
+   520,
+   521,
+   1014,
+   1015
+  ],
+  "mean_albedo_linear": [
+   0.0655,
+   0.2256,
+   0.2641
+  ],
+  "albedo_std_srgb255": 61.6,
+  "mean_roughness": 0.045
+ },
+ "foam_sand": {
+  "sheet": "cloth",
+  "box": [
+   1034,
+   521,
+   1526,
+   1015
+  ],
+  "mean_albedo_linear": [
+   0.1506,
+   0.1557,
+   0.1693
+  ],
+  "albedo_std_srgb255": 58.2,
+  "mean_roughness": 0.46
+ }
+}

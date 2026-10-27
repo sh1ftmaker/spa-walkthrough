@@ -1,0 +1,79 @@
+{
+ "space": "b3_shore",
+ "round": 1,
+ "reviewer": "rev_b3_east_b4_r1",
+ "frames": {
+  "entry": {
+   "focal": "The orange torii, framing a cold grey-blue backdrop, though the white lantern slab on the left (slide_foot lights3:2) is brighter. A 2.4 m rock_cluster blocks the path 3 m ahead.",
+   "is_hero": true,
+   "next_visible": "Yes. The torii and the sea mouth beyond are the obvious goal."
+  },
+  "reveal": {
+   "focal": "Through the torii posts: the beach hero, a dull orange board across the sea mouth, with grey sea stacks and a glowing white dome at the waterline. The two lantern_stone slabs flanking the torii are the brightest objects.",
+   "is_hero": false,
+   "next_visible": "Yes, b3_wave is visible, but the sea mouth reads as a wall, not as open sea and moon."
+  },
+  "concept": {
+   "focal": "The torii, centred and framing the backdrop. Good composition.",
+   "is_hero": true,
+   "next_visible": "Yes."
+  },
+  "strip": {
+   "focal": "The torii grows steadily in the frame from 1 to 6. It reads well as a threshold.",
+   "is_hero": true,
+   "next_visible": "Yes. The torii and the blue light lead throughout."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b3_slide_foot:dressing1:1",
+   "action": "move",
+   "dx": 0,
+   "dy": -2.5,
+   "deg": 0,
+   "detail": "Cross-space: the rock_cluster at (155.5,35.3) blocks the shore entry. Push it to the wall."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "lantern_niche along the spine produced 0 objects (no wall to snap to). Place 2 ankle niches on the south wall at about (154.0,32.9) and (158.0,32.6) so the dark walk has two small pools."
+  },
+  {
+   "id": "lights[1]",
+   "action": "replace",
+   "dx": 1.5,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The two 1.6 m lantern_stone slabs at x 161.6 overlap the torii posts in the frame and are brighter than the sea. Swap them for lantern_floor at dim 0.5, or move them just past the threshold."
+  },
+  {
+   "id": "ceiling_profile (lead shell)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The 3-4.5 m rock overhang is not built. Views show the cavern vault and stalactites ~14 m up, so the 'short, low, dark walk' is not low. Add the overhang shell."
+  },
+  {
+   "id": "b3_wave:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Cross-space: the cold blue-white end must be the brightest thing; the beach proxy currently walls off the mouth (see the b3_wave review)."
+  }
+ ],
+ "scores": {
+  "composition": 3,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the sea mouth beyond the torii the brightest, coldest light (a b3_wave fix) and add the low overhang, so the torii frames a glowing opening at the end of a compressed dark passage.",
+ "plausibility": [
+  "The ceiling is not low: the overhang geometry is missing.",
+  "The torii (h 3.6) would need the 4.5 m flare at the wave end; this is fine once the overhang is built."
+ ]
+}

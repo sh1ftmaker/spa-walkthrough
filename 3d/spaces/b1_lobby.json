@@ -273,8 +273,8 @@
    -20.0
   ],
   [
-   101.5,
-   64.0,
+   100.9,
+   64.4,
    -20.0
   ]
  ],
@@ -288,8 +288,8 @@
      -20.0
     ],
     [
-     82.2,
-     73.9,
+     81.88,
+     76.34,
      -20.0
     ],
     [
@@ -318,48 +318,48 @@
    "id": "quiet_arc",
    "points": [
     [
-     81.08,
-     75.15,
+     81.77,
+     74.75,
      -20.0
     ],
     [
-     83.38,
-     77.89,
+     83.89,
+     77.28,
      -20.0
     ],
     [
-     86.48,
-     79.68,
+     86.75,
+     78.93,
      -20.0
     ],
     [
      90.0,
-     80.3,
+     79.5,
      -20.0
     ],
     [
-     93.52,
-     79.68,
+     93.25,
+     78.93,
      -20.0
     ],
     [
-     96.62,
-     77.89,
+     96.11,
+     77.28,
      -20.0
     ],
     [
-     98.92,
-     75.15,
+     98.23,
+     74.75,
      -20.0
     ],
     [
-     100.14,
-     71.79,
+     99.36,
+     71.65,
      -20.0
     ],
     [
-     100.14,
-     68.21,
+     99.36,
+     68.35,
      -20.0
     ]
    ],
@@ -378,18 +378,18 @@
    "r": 8.0,
    "h": 4.5
   },
-  "why": "The lobby is a ring around B1's only fixed vertical link. A carved basalt drum with bronze ribs and tall glass slots (the lit car and spiral visible inside), ringed at its base by ankle lights: it is what both corridor mouths frame, the warmest thing in the ring, and the landmark every B1 route returns to."
+  "why": "The lobby is a ring around B1's only fixed vertical link. The graybox lift car glows warm inside the open spiral well and the well has a balustrade; that lit car is what both corridor mouths frame and the landmark every B1 route returns to."
  },
  "anchored": [
   {
    "id": "b1_board",
    "asset": "sign_kanji",
    "at": [
-    79.52,
-    76.05,
+    78.78,
+    74.53,
     -20.0
    ],
-   "facing_deg": 120,
+   "facing_deg": 112,
    "dims": {
     "w": 0.9,
     "h": 2.4
@@ -401,8 +401,8 @@
    "id": "bench_n1",
    "asset": "bench_stone",
    "at": [
-    90.79,
-    81.27,
+    90.76,
+    80.87,
     -20.0
    ],
    "facing_deg": 184,
@@ -415,8 +415,8 @@
    "id": "bench_n2",
    "asset": "bench_stone",
    "at": [
-    85.22,
-    80.24,
+    85.39,
+    79.88,
     -20.0
    ],
    "facing_deg": 155,
@@ -426,18 +426,206 @@
    "why": "Second bench beside the rill, angled so the two are not a row."
   },
   {
+   "id": "lobby_pine",
+   "asset": "pine_bonsai",
+   "at": [
+    88.67,
+    80.82,
+    -20.0
+   ],
+   "facing_deg": 173,
+   "dims": {
+    "w": 1.2,
+    "d": 1.2,
+    "h": 1.6
+   },
+   "why": "Dark silhouette by the rill between the two benches."
+  },
+  {
    "id": "rill_spout",
    "asset": "chozubachi",
    "at": [
-    93.68,
-    80.68,
+    93.55,
+    80.31,
     -20.0
    ],
    "facing_deg": 199,
    "dims": {
-    "r": 0.6
+    "w": 1.0,
+    "d": 1.0,
+    "h": 0.7
    },
    "why": "Bamboo spout and basin where the lobby rill rises; the only water sound in the lobby. Kept west of the clipped NE wall."
+  },
+  {
+   "id": "drum_pools_1",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    84.74,
+    76.74,
+    -20.0
+   ],
+   "facing_deg": 322,
+   "why": "Low lamps on the floor at the well balustrade, in pairs either side of the stair landing gap (308) and the lift bridge (128), plus a pool on the south and north arcs; dark gaps between. The glowing lift car stays brightest."
+  },
+  {
+   "id": "drum_pools_2",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    97.68,
+    66.25,
+    -20.0
+   ],
+   "facing_deg": 116,
+   "why": "Low lamps on the floor at the well balustrade, in pairs either side of the stair landing gap (308) and the lift bridge (128), plus a pool on the south and north arcs; dark gaps between. The glowing lift car stays brightest."
+  },
+  {
+   "id": "drum_pools_3",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    95.5,
+    63.45,
+    -20.0
+   ],
+   "facing_deg": 140,
+   "why": "Low lamps on the floor at the well balustrade, in pairs either side of the stair landing gap (308) and the lift bridge (128), plus a pool on the south and north arcs; dark gaps between. The glowing lift car stays brightest."
+  },
+  {
+   "id": "drum_pools_4",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    86.39,
+    62.25,
+    -20.0
+   ],
+   "facing_deg": 205,
+   "why": "Low lamps on the floor at the well balustrade, in pairs either side of the stair landing gap (308) and the lift bridge (128), plus a pool on the south and north arcs; dark gaps between. The glowing lift car stays brightest."
+  },
+  {
+   "id": "drum_pools_5",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    85.6,
+    62.67,
+    -20.0
+   ],
+   "facing_deg": 211,
+   "why": "Low lamps on the floor at the well balustrade, in pairs either side of the stair landing gap (308) and the lift bridge (128), plus a pool on the south and north arcs; dark gaps between. The glowing lift car stays brightest."
+  },
+  {
+   "id": "drum_pools_6",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    93.61,
+    77.75,
+    -20.0
+   ],
+   "facing_deg": 25,
+   "why": "Low lamps on the floor at the well balustrade, in pairs either side of the stair landing gap (308) and the lift bridge (128), plus a pool on the south and north arcs; dark gaps between. The glowing lift car stays brightest."
+  },
+  {
+   "id": "drum_pools_7",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    94.4,
+    77.33,
+    -20.0
+   ],
+   "facing_deg": 31,
+   "why": "Low lamps on the floor at the well balustrade, in pairs either side of the stair landing gap (308) and the lift bridge (128), plus a pool on the south and north arcs; dark gaps between. The glowing lift car stays brightest."
+  },
+  {
+   "id": "outer_pools_0",
+   "asset": "lantern_niche",
+   "at": [
+    81.78,
+    79.15,
+    -19.75
+   ],
+   "facing_deg": 140.6,
+   "snap": "given",
+   "why": "Outer-wall pools: at the B1 board, at the south-arc bench, and at the SE mouth; long dark wall between."
+  },
+  {
+   "id": "outer_pools_1",
+   "asset": "lantern_niche",
+   "at": [
+    82.76,
+    79.96,
+    -19.75
+   ],
+   "facing_deg": 140.6,
+   "snap": "given",
+   "why": "Outer-wall pools: at the B1 board, at the south-arc bench, and at the SE mouth; long dark wall between."
+  },
+  {
+   "id": "outer_pools_2",
+   "asset": "lantern_niche",
+   "at": [
+    85.8,
+    58.43,
+    -19.75
+   ],
+   "facing_deg": 16.9,
+   "snap": "given",
+   "why": "Outer-wall pools: at the B1 board, at the south-arc bench, and at the SE mouth; long dark wall between."
+  },
+  {
+   "id": "outer_pools_3",
+   "asset": "lantern_niche",
+   "at": [
+    84.42,
+    59.05,
+    -19.75
+   ],
+   "facing_deg": 28.1,
+   "snap": "given",
+   "why": "Outer-wall pools: at the B1 board, at the south-arc bench, and at the SE mouth; long dark wall between."
+  },
+  {
+   "id": "outer_pools_4",
+   "asset": "lantern_niche",
+   "at": [
+    96.14,
+    59.35,
+    -19.75
+   ],
+   "facing_deg": 331.9,
+   "snap": "given",
+   "why": "Outer-wall pools: at the B1 board, at the south-arc bench, and at the SE mouth; long dark wall between."
+  },
+  {
+   "id": "outer_pools_5",
+   "asset": "lantern_niche",
+   "at": [
+    95.02,
+    58.75,
+    -19.75
+   ],
+   "facing_deg": 331.9,
+   "snap": "given",
+   "why": "Outer-wall pools: at the B1 board, at the south-arc bench, and at the SE mouth; long dark wall between."
+  },
+  {
+   "id": "bench_s",
+   "asset": "bench_stone",
+   "at": [
+    85.47,
+    59.32,
+    -20.0
+   ],
+   "facing_deg": 23,
+   "dims": {
+    "w": 2.2
+   },
+   "why": "A bench in the south-arc lantern pool, facing the lit car."
   }
  ],
  "water": [
@@ -486,6 +674,7 @@
     ]
    ],
    "width": 0.6,
+   "depth": 0.25,
    "layout_ref": "w_b1_corridors",
    "note": "Narrow rill along the outer wall of the quiet north half, from the basin (bearing 19) west to the corridor pool at the west mouth. Same -20.05 surface as the corridors."
   }
@@ -531,127 +720,47 @@
  "cameras": {
   "entry": {
    "pos": [
-    78.61,
-    72.21,
+    78.66,
+    71.19,
     -18.4
    ],
    "target": [
     90.0,
     70.0,
-    -17.2
+    -17.0
    ],
    "fov_v": 60
   },
   "reveal": {
    "pos": [
-    83.3,
-    74.6,
+    81.17,
+    74.69,
     -18.4
    ],
    "target": [
-    70.0,
-    73.9,
-    -18.8
+    72.0,
+    72.2,
+    -18.6
    ],
    "fov_v": 62
   },
   "concept": {
    "pos": [
-    100.6,
-    64.6,
+    100.0,
+    63.0,
     -18.4
    ],
    "target": [
-    86.5,
-    61.0,
-    -17.8
+    86.0,
+    61.5,
+    -17.6
    ],
    "fov_v": 55,
    "image": "lookbook/img/33-plan-b1-thermal.jpg",
-   "match": "The plan draws the lift as a round drum with a carved spiral, a timber ring and lanterns. At eye level: drum filling the right half, ring walk curving away left with lantern pools on the outer wall and dark gaps, wet black floor."
+   "match": "The round lift drum and carved spiral at the centre of a timber ring with lanterns: at eye level the lit car in the well on the right, the ring curving away left with pools of light and dark gaps."
   }
  },
- "lights": [
-  {
-   "asset": "lantern_niche",
-   "ring": [
-    90.0,
-    70.0
-   ],
-   "radius": 8.15,
-   "spacing": [
-    2.2,
-    2.8
-   ],
-   "snap": "wall",
-   "height": 0.25,
-   "face": "out",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Base ring under the drum: makes the hero the brightest thing in the room."
-  },
-  {
-   "asset": "lantern_floor",
-   "along": "spine",
-   "side": "out",
-   "offset": 1.7,
-   "spacing": [
-    5.5,
-    7.5
-   ],
-   "face": "path",
-   "avoid": [
-    "portals",
-    "water"
-   ],
-   "why": "Pools of light on the outer wall with dark gaps between, leading round to the corridor mouths."
-  },
-  {
-   "asset": "lantern_floor",
-   "at": [
-    [
-     81.54,
-     73.08,
-     -20.0
-    ],
-    [
-     83.11,
-     75.79,
-     -20.0
-    ],
-    [
-     97.95,
-     65.77,
-     -20.0
-    ],
-    [
-     96.02,
-     63.31,
-     -20.0
-    ]
-   ],
-   "face": "path",
-   "why": "Landing pairs flanking the Spiral Stair door (NW, 308) and the lift door (SE, 128)."
-  },
-  {
-   "asset": "lantern_hanging",
-   "at": [
-    [
-     82.59,
-     75.79,
-     -16.6
-    ],
-    [
-     97.41,
-     64.21,
-     -16.6
-    ]
-   ],
-   "snap": "ceiling",
-   "why": "One chochin over each door (stair NW, lift SE) marks it from across the ring."
-  }
- ],
+ "lights": [],
  "dressing": [
   {
    "asset": "boulder_rim",
@@ -668,19 +777,9 @@
     0.55
    ],
    "avoid": [
-    "nav"
+    "nav",
+    "anchored"
    ]
-  },
-  {
-   "asset": "pine_bonsai",
-   "at": [
-    [
-     87.05,
-     81.01,
-     -20.0
-    ]
-   ],
-   "why": "Dark silhouette by the rill between the two benches."
   },
   {
    "asset": "rock_cluster",
@@ -689,14 +788,18 @@
     0.2,
     0.9
    ],
-   "density": 0.03,
+   "density": 0.08,
+   "scale": [
+    0.4,
+    0.8
+   ],
    "avoid": [
     "nav",
     "portals",
     "water",
-    "hero"
+    "anchored"
    ],
-   "why": "Edge only."
+   "why": "Edge rocks on the outer wall, so each lantern pool has something to light."
   }
  ],
  "mood": {
@@ -706,10 +809,16 @@
  },
  "waivers": [
   {
+   "check": "hero_visible",
+   "where": "lift_core",
+   "reason": "The lift drum is structural (built by the graybox from layout.json), so it has no hero proxy to sample; it fills the view from every camera here."
+  },
+  {
    "check": "grid_centre",
    "where": "lift_core at (90,70)",
    "reason": "The lift is fixed at the E3 cell centre on every level (layout decision); everything else keeps off cell centres."
   }
  ],
+ "light_notes": "Drum base ring and the glass slots of lift_core carry the hero light (asset emission).",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

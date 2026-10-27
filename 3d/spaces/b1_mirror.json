@@ -304,50 +304,22 @@
   }
  ],
  "hero": {
-  "asset": "mirror_pool",
+  "asset": "glowworm_ceiling",
   "at": [
    112.0,
    92.0,
-   -20.05
+   -7.0
   ],
-  "facing_deg": 0,
+  "facing_deg": 90,
+  "snap": "ceiling",
   "dims": {
-   "r": 12.0,
-   "rim_w": 0.6
+   "w": 24.0,
+   "d": 24.0,
+   "h": 0.3
   },
-  "why": "The reason the room exists: a black, dead-still float pool that doubles the glowworm dome, so the whole lower half of every view is stars. Everything else (low rim lanterns, pavilions, the dark arches) is kept dim and at the edge to protect that reflection."
+  "why": "The starfield is the reason the room exists: a cyan glowworm dome over a dead-still black salt pool that doubles it, so floaters hang in stars. It is the brightest surface; the pool is its mirror (water built by the graybox from layout w_mirror), and everything warm is kept low and at the edge."
  },
  "anchored": [
-  {
-   "id": "glowworms",
-   "asset": "glowworm_ceiling",
-   "at": [
-    112.0,
-    92.0,
-    -7.0
-   ],
-   "dims": {
-    "r": 17.5,
-    "density": "high over the pool, thinning to the wall"
-   },
-   "why": "The light source the hero reflects; threads hang lowest (to -10) over the pool centre."
-  },
-  {
-   "id": "pavilion_nw",
-   "asset": "pavilion_engawa",
-   "at": [
-    100.89,
-    104.34,
-    -20.0
-   ],
-   "facing_deg": 138,
-   "dims": {
-    "w": 6.0,
-    "d": 3.6,
-    "floor": 0.45
-   },
-   "why": "Concept 15 left: a shoji pavilion close on the left when you look east across the pool; its engawa meets the rim walk."
-  },
   {
    "id": "pavilion_se",
    "asset": "pavilion_engawa",
@@ -369,12 +341,14 @@
    "asset": "pine_bonsai",
    "variant": "niwaki large",
    "at": [
-    124.48,
-    80.76,
+    126.09,
+    82.49,
     -20.0
    ],
    "facing_deg": 300,
    "dims": {
+    "w": 2.0,
+    "d": 2.0,
     "h": 3.2
    },
    "why": "The pale-lit tree beside the right pavilion in concept 15."
@@ -395,22 +369,6 @@
     "riser": 0.17
    },
    "why": "Entry into the float pool on the NW rim, near the corridor; railing both sides."
-  },
-  {
-   "id": "pool_steps_rail",
-   "asset": "railing",
-   "at": [
-    101.61,
-    98.0,
-    -20.0
-   ],
-   "facing_deg": 120,
-   "dims": {
-    "h": 1.0,
-    "len": 1.8,
-    "sides": 2
-   },
-   "why": "Handrails for the pool steps."
   },
   {
    "id": "east_arch",
@@ -455,6 +413,178 @@
     "l": 2.6
    },
    "why": "Second lounge, angled differently; away from the lobby touch-point."
+  },
+  {
+   "id": "pavilion_nw",
+   "asset": "pavilion_engawa",
+   "at": [
+    116.35,
+    108.23,
+    -20.0
+   ],
+   "facing_deg": 195,
+   "dims": {
+    "w": 6.0,
+    "d": 3.6,
+    "floor": 0.45
+   },
+   "why": "Moved to the north rim so it frames the left of the entry and concept views across the pool (concept 15); its engawa faces the rim walk."
+  },
+  {
+   "id": "shoji_glow_0",
+   "asset": "noren_glow",
+   "at": [
+    115.86,
+    106.39,
+    -19.2
+   ],
+   "why": "Warm shoji glow on both pavilion fronts."
+  },
+  {
+   "id": "shoji_glow_1",
+   "asset": "noren_glow",
+   "at": [
+    120.43,
+    79.96,
+    -19.2
+   ],
+   "why": "Warm shoji glow on both pavilion fronts."
+  },
+  {
+   "id": "rim_lamps_0",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    113.8,
+    104.77,
+    -20.0
+   ],
+   "facing_deg": 188,
+   "why": "0.35 m rim lanterns in tight pairs only at the two pavilions, the pool steps and the lounges; long dark rim between so the stars dominate."
+  },
+  {
+   "id": "rim_lamps_1",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    116.83,
+    103.96,
+    -20.0
+   ],
+   "facing_deg": 202,
+   "why": "0.35 m rim lanterns in tight pairs only at the two pavilions, the pool steps and the lounges; long dark rim between so the stars dominate."
+  },
+  {
+   "id": "rim_lamps_2",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    120.63,
+    82.41,
+    -20.0
+   ],
+   "facing_deg": 318,
+   "why": "0.35 m rim lanterns in tight pairs only at the two pavilions, the pool steps and the lounges; long dark rim between so the stars dominate."
+  },
+  {
+   "id": "rim_lamps_3",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    118.06,
+    80.61,
+    -20.0
+   ],
+   "facing_deg": 332,
+   "why": "0.35 m rim lanterns in tight pairs only at the two pavilions, the pool steps and the lounges; long dark rim between so the stars dominate."
+  },
+  {
+   "id": "rim_lamps_4",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    99.73,
+    95.99,
+    -20.0
+   ],
+   "facing_deg": 108,
+   "why": "0.35 m rim lanterns in tight pairs only at the two pavilions, the pool steps and the lounges; long dark rim between so the stars dominate."
+  },
+  {
+   "id": "rim_lamps_5",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    100.41,
+    97.65,
+    -20.0
+   ],
+   "facing_deg": 116,
+   "why": "0.35 m rim lanterns in tight pairs only at the two pavilions, the pool steps and the lounges; long dark rim between so the stars dominate."
+  },
+  {
+   "id": "rim_lamps_6",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    107.59,
+    79.88,
+    -20.0
+   ],
+   "facing_deg": 20,
+   "why": "0.35 m rim lanterns in tight pairs only at the two pavilions, the pool steps and the lounges; long dark rim between so the stars dominate."
+  },
+  {
+   "id": "rim_lamps_7",
+   "asset": "lantern_niche",
+   "snap": "ground",
+   "at": [
+    102.12,
+    83.71,
+    -20.0
+   ],
+   "facing_deg": 50,
+   "why": "0.35 m rim lanterns in tight pairs only at the two pavilions, the pool steps and the lounges; long dark rim between so the stars dominate."
+  },
+  {
+   "id": "east_spill",
+   "asset": "falls_uplight",
+   "at": [
+    130.8,
+    91.4,
+    -19.9
+   ],
+   "why": "Cold spill from beyond the east arch so the exit reads across the water."
+  },
+  {
+   "id": "lounge_n",
+   "asset": "bench_stone",
+   "at": [
+    103.8,
+    106.2,
+    -20.0
+   ],
+   "facing_deg": 150,
+   "dims": {
+    "w": 2.4
+   },
+   "why": "Lounge on the NW deck, facing the pool."
+  },
+  {
+   "id": "deck_rock_e",
+   "asset": "rock_cluster",
+   "at": [
+    128.55,
+    97.38,
+    -20.0
+   ],
+   "facing_deg": 252,
+   "dims": {
+    "w": 1.8,
+    "d": 1.2,
+    "h": 1.0
+   },
+   "why": "Rock at the foot of the dome on the east deck."
   }
  ],
  "water": [
@@ -676,72 +806,7 @@
    "match": "Low across the black pool toward the east arch: NW pavilion close on the left, SE pavilion and pale niwaki on the right, a line of small lanterns along the far rim doubled in the water, glowworm dome reflected so the floaters hang in stars, a band of mist on the left rim."
   }
  },
- "lights": [
-  {
-   "asset": "lantern_floor",
-   "variant": "small andon",
-   "ring": [
-    112.0,
-    92.0
-   ],
-   "radius": 12.75,
-   "spacing": [
-    3.0,
-    4.0
-   ],
-   "intensity": "low",
-   "face": "out",
-   "skip_arcs_deg": [
-    [
-     262,
-     282
-    ],
-    [
-     80,
-     100
-    ],
-    [
-     215,
-     245
-    ]
-   ],
-   "avoid": [
-    "portals",
-    "nav"
-   ],
-   "why": "A low line of small lanterns along the rim (concept 15), dimmed so they read as a string of points doubled in the water; gaps opposite both arches keep the arch views dark, and the SW arc stays dark."
-  },
-  {
-   "asset": "pavilion_engawa",
-   "part": "shoji_glow",
-   "at": [
-    [
-     100.89,
-     104.34,
-     -20.0
-    ],
-    [
-     121.52,
-     78.4,
-     -20.0
-    ]
-   ],
-   "intensity": "low",
-   "why": "Warm shoji glow from both pavilions, the only large warm areas."
-  },
-  {
-   "asset": "glowworm_ceiling",
-   "part": "emission",
-   "at": [
-    [
-     112.0,
-     92.0,
-     -7.0
-    ]
-   ],
-   "why": "Teal points: the hero's light."
-  }
- ],
+ "lights": [],
  "dressing": [
   {
    "asset": "boulder_rim",
@@ -749,7 +814,11 @@
     112.0,
     92.0
    ],
-   "radius": 12.25,
+   "radius": [
+    12.15,
+    12.35
+   ],
+   "jitter_deg": 14,
    "spacing": [
     1.0,
     1.8
@@ -757,7 +826,7 @@
    "embed": 0.1,
    "scale": [
     0.35,
-    0.7
+    0.6
    ],
    "top_z": [
     -20.0,
@@ -765,7 +834,7 @@
    ],
    "avoid": [
     "nav",
-    "anchored:pool_steps"
+    "anchored"
    ],
    "why": "Low wet rock rim (concept 15 foreground)."
   },
@@ -785,28 +854,9 @@
     "nav",
     "portals",
     "water",
-    "anchored:pavilion_nw",
-    "anchored:pavilion_se"
+    "anchored"
    ],
    "why": "Rock at the dome's foot only; the deck middle stays open."
-  },
-  {
-   "asset": "lantern_floor",
-   "at": [
-    [
-     95.4,
-     93.9,
-     -20.0
-    ],
-    [
-     95.4,
-     90.1,
-     -20.0
-    ]
-   ],
-   "face": "path",
-   "intensity": "low",
-   "why": "Pair just inside the west arch so the threshold has a floor, very dim."
   }
  ],
  "mood": {
@@ -821,5 +871,7 @@
    "reason": "The hero is a reflective black surface; its brightness is the reflected glowworm field over a large area. Individual lantern points may out-measure it per pixel, so lanterns here are 'low' intensity and the bake should be judged on area luminance."
   }
  ],
+ "lighting_request": "glowworm_ceiling should render as cyan point emission (9000 K) and w_mirror as black mirror water; today only heroes glow and water is teal.",
+ "light_notes": "Pavilion shoji glow comes from pavilion_engawa's own light; glowworm_ceiling emission is the hero's light. Keep lanterns 'low'.",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

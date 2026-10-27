@@ -1,0 +1,80 @@
+{
+ "space": "b1_cor_west",
+ "round": 1,
+ "reviewer": "b1_west_r1",
+ "frames": {
+  "entry": {
+   "focal": "Four 1.05–1.3 m white blocks clustered at the end (steps_toro_e/w and the lights1 pair) against a blank dark end wall. The spill lip (hero) and the stair void are not legible: no glow, no falling view.",
+   "is_hero": false,
+   "next_visible": "The lantern cluster says 'go here', but not 'the floor falls away to Kawagiri'. The grotto door on the right shows only as a pale floating slab (entry_noren)."
+  },
+  "reveal": {
+   "focal": "steps_toro_e as a huge white block filling the left fifth (the camera is ~2 m from it). Beyond: a teal floor edge and black. The Mist Steps and Kawagiri glow are invisible.",
+   "is_hero": false,
+   "next_visible": "No: the descent is pitch black."
+  },
+  "concept": {
+   "focal": "The lantern cluster at the far end, plus a near dark box (bonsai_w / rim stone) on the right.",
+   "is_hero": false,
+   "next_visible": "The lantern cluster only."
+  },
+  "strip": {
+   "focal": "Frames 0–3: lanterns ahead, stones. Frames 4–5: floor lanterns. Frames 6–7: total darkness down the stair.",
+   "is_hero": false,
+   "next_visible": "Lost at frames 6–7."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The ankle-niche rule produced 0 placements, so there are no niches along this corridor at all. Fix the rule (offset 1.9 vs ~1.5–2 m half-width, or avoid 'anchored' eating every slot) so the staggered 4–5.5 m niches appear."
+  },
+  {
+   "id": "hero:spill_lip",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The hero has no light. Add the intended warm light under/behind the falling sheet at the lip (~49,78.6, z -20.3), plus a mist-sheet emissive, so the lip is the brightest thing straight ahead from the junction."
+  },
+  {
+   "id": "lights[1]",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The 1.05 m floor-lantern pair at the grotto door plus the two toro make a wall of four white blocks on the axis. Replace the pair with wall brackets at 1.8 m on the door posts (52±1.6, 82), and let the toro frame the lip."
+  },
+  {
+   "id": "dressing0:1",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "This boulder sits at z -20.9 (top about -20.6), entirely under water and sunk below the bed. Raise it to z -20.4 like the others, or better, to a top at about -19.9."
+  },
+  {
+   "id": "steps_toro_e",
+   "action": "move",
+   "dx": 0.6,
+   "dy": -0.4,
+   "deg": 0,
+   "detail": "It fills the left of the reveal frame. Move it by (+0.6,-0.4) toward the south kerb corner, so it frames the lip instead of blocking the view down the stair."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Light the spill lip and the Mist Steps below it (warm under-sheet light, landing lanterns, Kawagiri amber/magenta haze rising), so the corridor ends in a glowing drop instead of a lantern cluster in front of a dark wall.",
+ "plausibility": [
+  "dressing0:1 is sunk ~0.5 m below the other rim stones (z -20.9).",
+  "Mist Steps descent (owned by mist_steps / stair generator) is unlit: at eye level the stair cannot be read as stairs, so it may look like a void.",
+  "The entry_noren slab (2.8 x 0.9 at z -18.1) reads as a floating panel with no door frame visible under it."
+ ]
+}

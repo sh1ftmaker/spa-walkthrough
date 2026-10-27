@@ -74,6 +74,7 @@ function addPatch(poly, clip, z, zoneId, conn, kind, opts = {}) {
   return p;
 }
 const connEnds = new Map(); // conn id -> [{p:[x,y], z, edge:[[x,y],[x,y]]}]
+const stairLanterns = [];
 
 function buildHelix(c) {
   const C = c.center, hw = c.width / 2, r0 = c.r_walk - hw, r1 = c.r_walk + hw;
@@ -138,6 +139,14 @@ function buildHelix(c) {
   report[`doors_${c.id}`] = doors.map((d) => ({ space: d.space, deg: +((d.a * 180) / Math.PI).toFixed(1), z: d.z0, portal: d.portal }));
   z.pts.push([C[0] - r1, C[1] - r1], [C[0] + r1, C[1] + r1]);
   connEnds.set(c.id, [{ p: [pts[0][0], pts[0][1]], z: pts[0][2] }, { p: [pts[n][0], pts[n][1]], z: pts[n][2] }]);
+  // wall lanterns every 60 degrees (same angles on every turn, so the top-down bake dedupes them)
+  const step = Math.PI / 3;
+  for (let i = 1; i < pts.length; i++) {
+    const k0 = Math.floor(ang[i - 1] / step), k1 = Math.floor(ang[i] / step);
+    if (k0 === k1) continue;
+    const a = Math.max(k0, k1) * step;
+    stairLanterns.push({ zone: c._zone, p: [C[0] + (r1 - 0.12) * Math.cos(a), C[1] + (r1 - 0.12) * Math.sin(a)], z: pts[i][2] + 2.2, h: 2.2, I: 3.0, size: 0.24 });
+  }
 }
 
 // patch along a polyline interval [s0,s1] at height z
@@ -170,6 +179,10 @@ function buildPathStair(c) {
   for (const [a, b, zz, kind] of zs) polyPatch(pl, a, b, hw, zz, c._zone, c.id, kind);
   const zAt = (sv) => { for (const q of zs) if (sv >= q[0] - 1e-6 && sv <= q[1] + 1e-6) return q[2]; return zs[zs.length - 1][2]; };
   cornerFills(pl, hw, zAt, c._zone, c.id);
+  for (let sv = 6; sv < Ltot - 3; sv += 12) {
+    const q = G.polylineAt(pl, sv);
+    stairLanterns.push({ zone: c._zone, p: [q.p[0] - q.dir[1] * (hw + 0.25), q.p[1] + q.dir[0] * (hw + 0.25)], z: zAt(sv) + 1.0, h: 1.0, I: 1.6, size: 0.22 });
+  }
   const st = G.polylineAt(pl, 0), en = G.polylineAt(pl, Ltot);
   connEnds.set(c.id, [{ p: pl[0], z: c.z_top, dir: st.dir, hw }, { p: pl[pl.length - 1], z: zs[zs.length - 1][2], dir: en.dir, hw }]);
   zone(c._zone).pts.push(...pl);
@@ -441,7 +454,7 @@ function floorAt(pt, zz, tol) {
   for (const w of waters) if (w.walkOnSurface && Math.abs(w.z - zz) <= tol && G.pointInMulti(pt, w.poly)) return w;
   return null;
 }
-const lanterns = [];
+const lanterns = [...stairLanterns];
 for (const s of L.spaces) {
   const z = zone(s._zone);
   const r = s._ring, ccw = G.ringArea(r) > 0;
@@ -516,9 +529,10 @@ for (const s of L.spaces) {
     }
   }
   if (indoor) {
+    // ceiling pendant: hangs 0.8 m below the ceiling; intensity scaled with height so the floor gets ~1 unit
     const c = G.interiorPoint(r);
-    const hh = Math.min(H - 0.5, 4.5);
-    lanterns.push({ zone: s._zone, p: c, z: s.floor_z + hh, h: hh, I: 6 + 0.012 * (s.area_m2 ?? 200), size: 0.5, space: s.id });
+    const hh = Math.max(2.2, H - 0.8);
+    lanterns.push({ zone: s._zone, p: c, z: s.floor_z + hh, h: hh, I: 1.1 * hh * hh + 4 + 0.006 * (s.area_m2 ?? 200), size: 0.5, space: s.id });
   }
 }
 for (const lt of lanterns) {
@@ -568,8 +582,8 @@ for (const p of L.portals) {
 
 // ---------------- textures ----------------
 const TIERS = {
-  low: { albedo: 512, waterNormal: 256, lmTexel: 0.5, lmMax: 1024, lmEncoding: 'rgbm' },
-  high: { albedo: 1024, waterNormal: 512, lmTexel: 0.25, lmMax: 2048, lmEncoding: 'hdr' },
+  low: { albedo: 512, waterNormal: 256, lmTexel: 0.5, lmMax: 1024, lmEncoding: 'rgbm', albedoCodec: 'etc1s' },
+  high: { albedo: 1024, waterNormal: 512, lmTexel: 0.25, lmMax: 2048, lmEncoding: 'hdr', albedoCodec: 'uastc' },
 };
 const RGBM = { range: 16, gamma: 2 };
 const MATERIALS = {
@@ -580,15 +594,15 @@ const MATERIALS = {
   wood: { tex: 'wood', roughness: 0.55, color: [1, 1, 1] },
   pool_tile: { tex: 'pool_tile', roughness: 0.3, color: [1, 1, 1] },
   rail: { roughness: 0.45, metalness: 0.7, color: [0.32, 0.22, 0.14] },
-  lantern: { roughness: 0.6, color: [1.0, 0.85, 0.6], emissive: [1.0, 0.62, 0.3], emissiveIntensity: 6, lightmap: false },
+  lantern: { roughness: 0.6, color: [1.0, 0.85, 0.6], emissive: [1.0, 0.62, 0.3], emissiveIntensity: 4, lightmap: false },
 };
 const texCache = {};
 async function tierTextures(tier) {
   const cfg = TIERS[tier], out = {};
   for (const name of Object.keys(T.ALBEDO)) {
-    const key = `${name}@${cfg.albedo}`;
-    texCache[key] ??= writeAddressed(OUT, 'tex', 'ktx2', await T.encodeLDR(T.makeAlbedo(name, cfg.albedo), 'srgb'));
-    out[name] = { uri: texCache[key], colorSpace: 'srgb', width: cfg.albedo, height: cfg.albedo };
+    const key = `${name}@${cfg.albedo}@${cfg.albedoCodec}`;
+    texCache[key] ??= writeAddressed(OUT, 'tex', 'ktx2', await T.encodeLDR(T.makeAlbedo(name, cfg.albedo), 'srgb', { etc1s: cfg.albedoCodec === 'etc1s' }));
+    out[name] = { uri: texCache[key], colorSpace: 'srgb', width: cfg.albedo, height: cfg.albedo, codec: cfg.albedoCodec };
   }
   const wkey = `water_normal@${cfg.waterNormal}`;
   texCache[wkey] ??= writeAddressed(OUT, 'tex', 'ktx2', await T.encodeLDR(T.makeWaterNormal(cfg.waterNormal), 'normal'));
@@ -602,6 +616,8 @@ function zoneBounds(z) {
   return { minx: Math.floor(b.minx - 1), miny: Math.floor(b.miny - 1), maxx: Math.ceil(b.maxx + 1), maxy: Math.ceil(b.maxy + 1) };
 }
 function bakeZone(z, b, texel, maxRes) {
+  const seen = new Set();
+  z.uniqueLanterns = z.lanterns.filter((l) => { const k = `${l.p[0].toFixed(1)},${l.p[1].toFixed(1)}`; if (seen.has(k)) return false; seen.add(k); return true; });
   const pow2 = (v) => 2 ** Math.ceil(Math.log2(Math.max(4, v)));
   const W = Math.min(maxRes, pow2((b.maxx - b.minx) / texel)), H = Math.min(maxRes, pow2((b.maxy - b.miny) / texel));
   const sx = (b.maxx - b.minx) / W, sy = (b.maxy - b.miny) / H;
@@ -629,7 +645,7 @@ function bakeZone(z, b, texel, maxRes) {
     D[j * W + i] = v;
   }
   const E = new Float32Array(W * H * 3);
-  const warm = [1.0, 0.7, 0.42], teal = [0.18, 0.75, 0.7];
+  const warm = [1.0, 0.7, 0.42], teal = [0.05, 0.2, 0.18];
   for (let j = 0; j < H; j++) {
     const y = b.maxy - (j + 0.5) * sy;
     for (let i = 0; i < W; i++) {
@@ -637,7 +653,7 @@ function bakeZone(z, b, texel, maxRes) {
       const pt = [x, y];
       const outdoor = z.outdoorPolys.some((p) => G.pointInPolygon(pt, p));
       let r = outdoor ? 0.32 : 0.025, g = outdoor ? 0.34 : 0.022, bl = outdoor ? 0.42 : 0.02;
-      for (const lt of z.lanterns) {
+      for (const lt of z.uniqueLanterns) {
         const dx = x - lt.p[0], dy = y - lt.p[1], h = Math.max(1.2, lt.h), d2 = dx * dx + dy * dy + h * h;
         if (d2 > 1600) continue;
         const e = (lt.I * h) / (d2 * Math.sqrt(d2));
@@ -682,16 +698,38 @@ for (const z of zones.values()) {
 // ---------------- data files ----------------
 const isAttraction = (s) => /^\d\d\s/.test(s.name);
 const MAIN_KINDS = new Set(['hall', 'cave', 'deck', 'outdoor', 'tunnel']);
+// Viewpoint per space: the interior point nearest the centroid that is on dry floor (not over water, not on a
+// stair hole), at least 1.5 m from walls; heading toward the space centroid (or along the long axis).
+function viewpoint(s) {
+  const ring = s._ring, b = G.bbox(ring), c = G.centroid(ring);
+  const wet = waters.filter((w) => Math.abs(w.z - s.floor_z) < 3 && G.bboxOverlap(w.bb, b));
+  const floorSl = slabs.find((sl) => sl.kind === 'floor' && sl.top === s.floor_z && sl.spaces.includes(s));
+  let best = null, bd = Infinity;
+  const n = 40;
+  for (let i = 0; i <= n; i++) for (let j = 0; j <= n; j++) {
+    const p = [b.minx + (b.maxx - b.minx) * i / n, b.miny + (b.maxy - b.miny) * j / n];
+    if (!G.pointInRing(p, ring) || G.distToRing(p, ring) < 1.5) continue;
+    if (wet.some((w) => G.pointInMulti(p, w.poly))) continue;
+    if (floorSl && !G.pointInMulti(p, floorSl.mp)) continue;
+    const d = Math.hypot(p[0] - c[0], p[1] - c[1]);
+    if (d < bd) { bd = d; best = p; }
+  }
+  const p = best ?? G.interiorPoint(ring);
+  let heading;
+  if (Math.hypot(c[0] - p[0], c[1] - p[1]) > 2) heading = (Math.atan2(c[0] - p[0], c[1] - p[1]) * 180) / Math.PI;
+  else heading = (b.maxx - b.minx) >= (b.maxy - b.miny) ? 90 : 0;
+  return { p, heading: (heading + 360) % 360 };
+}
 const places = L.spaces.map((s) => {
-  const c = G.interiorPoint(s._ring);
-  const b = G.bbox(s._ring);
-  const yaw = (b.maxx - b.minx) >= (b.maxy - b.miny) ? 90 : 0; // look along the long axis (deg, 0 = north, 90 = east)
+  const vp = viewpoint(s);
+  const c = vp.p;
+  const yaw = +vp.heading.toFixed(1);
   return {
     id: s.id, name: s.name, level: s.level, zone: s._zone, kind: isAttraction(s) ? 'attraction' : 'place',
     number: isAttraction(s) ? Number(s.name.slice(0, 2)) : null,
     pos: [+c[0].toFixed(3), +c[1].toFixed(3), +(s.floor_z + 1.6).toFixed(3)],
     yaw_deg: yaw, pitch_deg: 0,
-    label: isAttraction(s) || MAIN_KINDS.has(s.kind) ? { text: isAttraction(s) ? s.name.slice(3) : s.name, pos: [+c[0].toFixed(3), +c[1].toFixed(3), +(s.floor_z + 2.6).toFixed(3)] } : null,
+    label: isAttraction(s) || MAIN_KINDS.has(s.kind) ? { text: isAttraction(s) ? s.name.slice(3) : s.name, pos: (() => { const q = G.interiorPoint(s._ring); return [+q[0].toFixed(3), +q[1].toFixed(3), +(s.floor_z + 2.6).toFixed(3)]; })() } : null,
     source: 'layout-centroid',
   };
 });

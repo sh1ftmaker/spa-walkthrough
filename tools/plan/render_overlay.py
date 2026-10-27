@@ -167,6 +167,8 @@ def rock_check():
                 continue
             if any(lo['id'] in c.get('places', []) and up['id'] in c.get('places', []) for c in L['connections']):
                 continue  # joined by a stair/shaft
+            if any({pp['a'], pp['b']} == {lo['id'], up['id']} for pp in L['portals']):
+                continue  # joined by an opening (balcony, shaft)
             a, b = Polygon(lo['footprint']), Polygon(up['footprint'])
             inter = a.intersection(b).area
             if inter < 2.0:

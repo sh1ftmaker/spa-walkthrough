@@ -1,0 +1,80 @@
+{
+ "space": "b1_outfall",
+ "round": 1,
+ "reviewer": "b1_east_r1",
+ "frames": {
+  "entry": {
+   "focal": "The vanishing point of a dark, even corridor of niche cubes; a faint pale patch on the water near the end. The lip is invisible.",
+   "is_hero": false,
+   "next_visible": "Glacier door on the right shows the brown back of the glacier's ice wall; the end of the spur is a dark wall."
+  },
+  "reveal": {
+   "focal": "A lantern_stone block 1 m in front of the camera and teal water planes. No shaft, no glowing sheet.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "concept": {
+   "focal": "Niche cubes and the pale patch at the end. It's a copy of the mist corridor with no climax.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "strip": {
+   "focal": "The strip covers only the 5 m dogleg from cor_north to the glacier door, so the viewing spur and lip aren't in it. Frames show the glacier's brown ice slab through the door and a few lanterns.",
+   "is_hero": false,
+   "next_visible": "Glacier room through the door (lanterns)."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b1_outfall:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "spill_lip sits at z -20.6 with h 0.4, so it is entirely below the floor and invisible, and it has no light. Seat its top flush with the water (-20.05) at x 191.6. Cut the floor and ceiling open over x 192-194 so the shaft void reads. Add the warm under-light from the spec (~300-500 W, 2400 K, at about z -21.5 inside the shaft, aimed up at the falling sheet) so a glowing edge is the only bright thing at the end."
+  },
+  {
+   "id": "b1_outfall:lip_toro",
+   "action": "move",
+   "dx": -2.5,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Toro is sunk 0.6 m (z -20.6), so set it to -20.0. It also sits 1.2 m in front of the reveal camera and fills the frame; moving it to x ~186.9 on the same kerb lets it frame the lip from the side."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Five niches at an even ~6 m spacing on two walls, ending at x 180, leave the last 10 m before the lip a dead black stretch with an unlit end. Keep the dark run-up, but it only works once the lip glows. Otherwise place 2 niches closer together at x 186-188 as a threshold."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "13 boulders in two ruler-straight rows at exactly y 98.45 / 101.55, all facing 0/180 and submerged (z -20.4). Seat them on the bed, randomise yaw, and cluster them at the lip (where the water accelerates) and at the cor_north mouth; leave the middle clean."
+  },
+  {
+   "id": "cameras.reveal",
+   "action": "move",
+   "dx": 1.0,
+   "dy": -0.2,
+   "deg": 0,
+   "detail": "Once the shaft is open, move the reveal to (189.6, 100.3, -18.4) aimed at (193, 100, -26) so it looks over the rail into the lit drop."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Make the lip exist: seat the spill_lip at water level, open the shaft, and light the falling sheet from below so the dark spur ends in one glowing edge.",
+ "plausibility": [
+  "Hero spill_lip and lip_toro are sunk 0.6 m below the floor.",
+  "There's no visible opening at the lip: water runs to a solid end wall, so it couldn't drain 22 m.",
+  "Rim boulders submerged."
+ ]
+}

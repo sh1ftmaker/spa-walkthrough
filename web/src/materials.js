@@ -154,7 +154,7 @@ export function makeStubEnvironment(renderer) {
   });
   scene.add(new THREE.Mesh(geo, mat));
   const pmrem = new THREE.PMREMGenerator(renderer);
-  const rt = pmrem.fromScene(scene, 0, 0.1, 100, { size: 128 });
+  const rt = pmrem.fromScene(scene, 0, 0.1, 100, { size: 256 }); // same size as real probes -> shared shader defines
   pmrem.dispose(); geo.dispose(); mat.dispose();
   return rt.texture;
 }

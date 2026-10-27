@@ -1,0 +1,79 @@
+{
+ "space": "b2_lava_link",
+ "round": 1,
+ "reviewer": "b2-r1-reviewer",
+ "frames": {
+  "entry": {
+   "focal": "The glowing doorway at the end of the passage (correct direction and good compression), with the lantern post lights1:0 silhouetted dead centre in it",
+   "is_hero": true,
+   "next_visible": "Yes: orange-peach glow at the far door."
+  },
+  "reveal": {
+   "focal": "A flat overexposed peach wall filling 90% of the frame",
+   "is_hero": false,
+   "next_visible": "Nothing readable: no tube, rings, shaft depth or stair."
+  },
+  "concept": {
+   "focal": "Entirely peach: blown out",
+   "is_hero": false,
+   "next_visible": "None."
+  },
+  "strip": {
+   "focal": "The light at the end grows frame by frame (good), and the post sits on axis in every frame. The last two frames are blown out.",
+   "is_hero": true,
+   "next_visible": "Yes, the glow, but it resolves into a flat wall instead of a slide."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights1:0",
+   "action": "move",
+   "dx": 0.9,
+   "dy": 0.8,
+   "deg": 0,
+   "detail": "The post at (147.4, 60.1) stands 1.5 m in front of the door on its axis and is silhouetted in every frame. Move it about 1.2 m off-axis beside the NE jamb (or remove; the orange is enough light)."
+  },
+  {
+   "id": "stair_door",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "hall_shell proxy carries default dims 4 x 4 x 3 instead of the 2.4 x 2.6 portal frame. The reveal (146, 60) and concept (146.9, 59.0) cameras sit inside its bounds. Use the portal_frame dims clear_w 2.4, clear_h 2.6, depth 0.6."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "fade_toward is not applied: six niches in mirrored pairs at a constant 3.3 m. Alternate sides and remove lights0:2 and lights0:5 (the pair 1-2 m from the door), so the last 4 m are dark before the orange."
+  },
+  {
+   "id": "b3_slide_foot:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The borrowed hero is a solid 10 x 10 x 48 m emissive box, so through the door it is a flat peach wall that overexposes. Proxy it as a 1.2 m-diameter spiral tube in a dark shaft with the lava glow behind a glass wall, at about 1/4 of the current emission (owner: b3_slide_foot/lava_stair)."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "rock_cluster edge_band produced no objects, and the 'tube' ceiling profile was built as a flat box section. Round the ceiling and add a few small rocks at the wall base [0.1, 0.5]."
+  }
+ ],
+ "scores": {
+  "composition": 3,
+  "density": 2,
+  "light_rhythm": 3
+ },
+ "top_change": "Replace the flat overexposed glow box beyond the door with a readable glass-tube proxy in a darker shaft, and move the post lantern off the door axis, so the reveal shows a slide instead of a peach wall.",
+ "plausibility": [
+  "The stair_door proxy volume (4 x 4 x 3) is bigger than the 3.5 m passage and contains the reveal and concept cameras.",
+  "The slide shaft is a solid emissive block; there is nowhere for a stair landing or the tube."
+ ]
+}

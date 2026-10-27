@@ -88,48 +88,17 @@
   ],
   "facing_deg": 190,
   "outside_ok": true,
-  "borrowed_from": "b2_river (j2_inflow)",
-  "why": "The river head: the B1 outfall drops out of a slot in the rock as a 10 m white-teal cascade. Every lantern on the walk leads to it, and its roar and spray end the walk. Placed by b2_river."
+  "borrowed_from": "b2_river",
+  "why": "The river head: the B1 outfall drops out of a slot in the rock as a 10 m white-teal cascade. Every lantern on the walk leads to it, and its roar and spray end the walk. Placed by b2_river.",
+  "borrowed_id": "j2_inflow"
  },
  "anchored": [
-  {
-   "id": "boardwalk_deck",
-   "asset": "boardwalk",
-   "at": [
-    168.0,
-    82.6,
-    -40.0
-   ],
-   "path": [
-    [
-     140,
-     76
-    ],
-    [
-     160,
-     81
-    ],
-    [
-     180,
-     85
-    ],
-    [
-     196,
-     87
-    ]
-   ],
-   "z": -40.0,
-   "dims": {
-    "w": 3.5
-   },
-   "why": "Plank deck on posts along the bank (29, 34)."
-  },
   {
    "id": "head_bench",
    "asset": "bench_stone",
    "at": [
-    193.5,
-    85.9,
+    194.4,
+    85.6,
     -40.0
    ],
    "facing_deg": 350,
@@ -144,7 +113,7 @@
    "id": "w_river",
    "kind": "flow",
    "ref": "b2_river",
-   "z": -42.14,
+   "z_ref": -42.14,
    "z_at_x140": -42.352,
    "z_at_x196": -42.023,
    "note": "Owned by b2_river; deck -40 is 2-2.4 m above the water."
@@ -186,22 +155,22 @@
   },
   "reveal": {
    "pos": [
-    190.0,
-    86.2,
+    186.5,
+    85.7,
     -38.4
    ],
    "target": [
     192.5,
     97.6,
-    -37.5
+    -37.0
    ],
    "fov_v": 62
   },
   "concept": {
    "image": "lookbook/img/29-river-section.jpg",
    "pos": [
-    150.0,
-    78.4,
+    153.0,
+    79.2,
     -38.4
    ],
    "target": [
@@ -216,18 +185,35 @@
  "lights": [
   {
    "asset": "lantern_post",
-   "along": "spine",
-   "side": "left",
-   "spacing": [
-    6,
-    8
+   "at": [
+    [
+     144.57,
+     78.33
+    ],
+    [
+     147.97,
+     79.18
+    ],
+    [
+     164.07,
+     82.99
+    ],
+    [
+     167.51,
+     83.67
+    ],
+    [
+     189.27,
+     87.32
+    ],
+    [
+     192.75,
+     87.75
+    ]
    ],
-   "offset": 1.4,
+   "height": 0.0,
    "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "River-side post lanterns, reflected in the water; they lead east to the cascade."
+   "why": "Three pools of two post lanterns (portal, mid-walk, head) on the river side, inboard of the rail; dark stretches between."
   },
   {
    "asset": "lantern_niche",
@@ -248,20 +234,28 @@
    "asset": "railing",
    "along": [
     [
-     140.3,
-     77.5
+     139.65,
+     77.41
     ],
     [
-     160.3,
-     82.5
+     159.65,
+     82.41
     ],
     [
-     180.2,
-     86.5
+     159.72,
+     82.42
     ],
     [
-     195.8,
-     88.4
+     179.72,
+     86.42
+    ],
+    [
+     179.82,
+     86.44
+    ],
+    [
+     195.82,
+     88.44
     ]
    ],
    "spacing": [
@@ -269,18 +263,19 @@
     1.5
    ],
    "face": "out",
-   "why": "River-side railing (north edge)."
+   "why": "River-side railing (north edge).",
+   "z": -40.0
   },
   {
    "asset": "railing",
    "along": [
     [
-     195.95,
-     85.45
+     195.9,
+     85.55
     ],
     [
-     195.8,
-     88.4
+     195.75,
+     88.3
     ]
    ],
    "spacing": [
@@ -288,22 +283,92 @@
     1.5
    ],
    "face": 90,
-   "why": "East end closes as an overlook facing the cascade."
+   "why": "East end closes as an overlook facing the cascade.",
+   "allow_on_nav": true,
+   "z": -40.0
   },
   {
    "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.0,
-    0.4
+   "scatter": "area",
+   "polygon": [
+    [
+     160.23,
+     80.08
+    ],
+    [
+     180.12,
+     84.06
+    ],
+    [
+     180.18,
+     84.06
+    ],
+    [
+     196.12,
+     86.06
+    ],
+    [
+     196.12,
+     86.06
+    ],
+    [
+     196.22,
+     85.26
+    ],
+    [
+     180.28,
+     83.27
+    ],
+    [
+     160.38,
+     79.29
+    ],
+    [
+     140.42,
+     74.3
+    ],
+    [
+     140.23,
+     75.08
+    ],
+    [
+     160.19,
+     80.07
+    ]
    ],
-   "density": 0.05,
-   "side": "south",
+   "density": 0.08,
+   "scale": [
+    0.4,
+    0.6
+   ],
    "avoid": [
     "nav",
     "portals"
    ],
-   "why": "Bank wall rocks only on the wall side; the walk is 3.5 m."
+   "why": "Low wet rock along the bank wall foot.",
+   "allow_overlap": [
+    "wall_trickle"
+   ]
+  },
+  {
+   "asset": "wall_trickle",
+   "at": [
+    [
+     153.99,
+     77.75
+    ],
+    [
+     172.48,
+     81.76
+    ],
+    [
+     185.16,
+     83.93
+    ]
+   ],
+   "facing_deg": 345,
+   "height": 0.0,
+   "why": "Three wet seeps on the bank wall at irregular intervals, glinting."
   }
  ],
  "mood": {

@@ -106,3 +106,4 @@ sake_counter,sake counter,see placements,,mid,proposed by space subagents,lightm
 zabuton_cushion,zabuton cushion,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.6x0.6x0.1 m
 stone_tub,stone tub,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 2.6x2x0.6 m
 kakehi_spout,kakehi spout,see placements,,mid,proposed by space subagents,lightmap,,,planned,lead,proxy 0.2x1.2x1.4 m
+deck_slatted,Sparse slatted hinoki deck,b2_kawagiri,06 08,close,boards ~12 cm with ~6 cm open gaps on stringers; river visible below,lightmap,hinoki_old,per-metre,planned,lead,owner request: see the river rushing under you; collision solid

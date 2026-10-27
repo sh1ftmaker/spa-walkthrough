@@ -24,6 +24,8 @@ LSP = {s['id']: s for s in L['spaces']}
 P = json.load(open(os.environ.get('KZ_RESOLVED') or os.path.join(ROOT, '3d', 'placements_resolved.json')))['placements']
 WALK = json.load(open(os.path.join(ROOT, '3d', 'checks', 'walk.json'))) if os.path.exists(os.path.join(ROOT, '3d', 'checks', 'walk.json')) else None
 ASSETS = json.load(open(os.path.join(ROOT, '3d', 'assets.json')))['assets']
+_PL = os.environ.get('KZ_PLACEMENTS') or os.path.join(ROOT, '3d', 'placements.json')
+ZERO_WARN = [w for w in json.load(open(_PL)).get('warnings', []) if w.startswith('ZERO ')] if os.path.exists(_PL) else []
 sys.path.insert(0, os.path.join(ROOT, 'tools', 'assembly'))
 from spaces_io import load_spaces
 SPACES = load_spaces(ROOT)
@@ -180,6 +182,20 @@ def check_space(sid):
 
     # hero visibility from the entry camera(s): fraction of hero sample points with a clear ray
     hero = next((p for p in mine if p.get('hero')), None)
+    bf = (sp.get('hero') or {}).get('borrowed_from')
+    if hero is None and bf:                      # borrowed hero: test against the owner's hero proxy
+        owner_id = bf.split(':')[0] if isinstance(bf, str) else None
+        anch = (sp.get('hero') or {}).get('borrowed_id') or (bf.split(':')[1] if isinstance(bf, str) and ':' in bf else None)
+        hero = next((p for p in P if anch and p['id'] == f'{owner_id}:{anch}'), None) or \
+            next((p for p in P if p['space'] == owner_id and p.get('hero')), None)
+    struct_obj = None
+    ha = ASSETS.get((sp.get('hero') or {}).get('asset'), {})
+    if hero is None and sp.get('hero') and (ha.get('structural') or ha.get('marker')):
+        struct_obj = bpy.data.objects.get(ha.get('stand_in') or sp['hero']['asset'])     # lift core, mirror water ...
+        if struct_obj is not None:
+            zf = sp.get('floor_z', 0)
+            cx_, cy_ = sp['hero']['at'][:2]
+            hero = dict(id=struct_obj.name, pos=[cx_, cy_, zf], facing_deg=0, scale=1.0, dims=dict(w=4.4, d=4.4, h=3.0))
     if hero and sp.get('cameras'):
         g = footprint(hero); z0, z1 = zr(hero)
         xs = [x for x, y in list(g.exterior.coords)[:4]]; ys = [y for x, y in list(g.exterior.coords)[:4]]
@@ -205,7 +221,7 @@ def check_space(sid):
         bad = [k for k, v in vis.items() if v < HERO_VIS]
         out['hero_visible'] = result(bad, waived=bool(waived(sp, 'hero_visible')), fraction=vis)
     else:
-        out['hero_visible'] = dict(status='warn', fails=0, warns=1, note='no hero proxy or no cameras')
+        out['hero_visible'] = dict(status='waived' if waived(sp, 'hero_visible') else 'warn', fails=0, warns=1, note='no hero proxy or no cameras')
 
     # empty areas: walkable 1 m samples > 4 m from any dressing or light, in a 6 x 6 m patch
     if fp is not None and sp.get('level') not in ('summit',) and fp.area > 40:
@@ -254,7 +270,7 @@ def check_space(sid):
             x, y = p['pos'][:2]
             if math.hypot((x % 20) - 10, (y % 20) - 10) < GRID_CENTRE_TOL and not rule.startswith(('hero', 'anchored')):
                 grid_hits.append(p['id'])
-        if len(ps) < 5 or rule.startswith(('hero', 'anchored')):
+        if len(ps) < 5 or rule.startswith(('hero', 'anchored')) or ps[0]['asset'] == 'railing':     # rails are continuous runs by construction
             continue
         nn = []
         for p in ps:
@@ -288,6 +304,8 @@ def check_space(sid):
     # snap problems
     sp_bad = [(p['id'], p['snap_status']) for p in mine if p['snap_status'] not in ('ok', 'structural', 'marker')]
     out['snap'] = result(sp_bad, bad=sp_bad[:10])
+    zero = [w for w in ZERO_WARN if f' {sid}:' in w or w.startswith(f'ZERO {sid}:')]
+    out['rules'] = result(zero, bad=zero[:10])
     unknown = [p['id'] for p in mine if p.get('unknown_asset')]
     out['unknown_assets'] = result([], warns=len(unknown), ids=unknown[:10])
     return out

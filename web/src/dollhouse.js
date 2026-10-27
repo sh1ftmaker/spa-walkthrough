@@ -67,11 +67,14 @@ export class Dollhouse {
       const floor = Math.min(...lp.map((p) => p.pos[2] - 1.6));
       box.expandByPoint(l2t([b[0], b[1], floor])); box.expandByPoint(l2t([b[2], b[3], floor + 6]));
     }
-    const floorY = Math.min(...lp.map((p) => p.pos[2] - 1.6));
+    const floorY = Math.max(...lp.map((p) => p.pos[2] - 1.6));
     this.clip.constant = floorY + 2.6; // cutaway: keep everything below floor + 2.6 m
     if (this.renderer) this.renderer.clippingPlanes = [this.clip];
     const c = box.getCenter(new THREE.Vector3()), s = box.getSize(new THREE.Vector3());
-    const R = Math.max(s.x, s.z) * 0.75 + 20;
+    const vHalf = THREE.MathUtils.degToRad(this.camera.fov / 2);
+    const hHalf = Math.atan(Math.tan(vHalf) * this.camera.aspect);
+    // fit the level's width horizontally and its (foreshortened) depth vertically
+    const R = Math.max((Math.max(s.x, s.z) * 0.5) / Math.tan(hHalf), (Math.min(s.x, s.z) * 0.45) / Math.tan(vHalf)) * 0.95 + 8;
     this.controls.target.copy(c);
     this.camera.position.set(c.x + R * 0.35, c.y + R * 0.9, c.z + R * 0.75);
     this.controls.minDistance = 10; this.controls.maxDistance = R * 2.5;
@@ -83,6 +86,7 @@ export class Dollhouse {
       b.addEventListener('click', (e) => { e.stopPropagation(); this.onPick(p.id); });
       return { p, el: b, pos: l2t([p.pos[0], p.pos[1], p.pos[2] - 1.0]) };
     });
+    this.pinOrder = null;
     this.pinsEl.replaceChildren(...this.pins.map((q) => q.el));
     this.onLevel(level, ids);
   }
@@ -91,11 +95,17 @@ export class Dollhouse {
     if (!this.active) return;
     this.controls.update();
     const W = innerWidth, H = innerHeight;
-    for (const q of this.pins) {
+    // attractions first, then others; skip a pin that would overlap one already placed
+    const placed = [];
+    for (const q of this.pinOrder ??= [...this.pins].sort((a, b) => (a.p.kind === 'attraction' ? 0 : 1) - (b.p.kind === 'attraction' ? 0 : 1))) {
       this._v.copy(q.pos).project(this.camera);
-      const vis = this._v.z < 1 && Math.abs(this._v.x) < 1 && Math.abs(this._v.y) < 1;
+      const x = (this._v.x * 0.5 + 0.5) * W, y = (-this._v.y * 0.5 + 0.5) * H;
+      q.w ??= q.el.offsetWidth || 120;
+      let vis = this._v.z < 1 && Math.abs(this._v.x) < 1 && Math.abs(this._v.y) < 1;
+      if (vis && placed.some((o) => Math.abs(o.x - x) < (o.w + q.w) / 2 + 4 && Math.abs(o.y - y) < 36)) vis = false;
+      if (vis) placed.push({ x, y, w: q.w });
       q.el.style.display = vis ? '' : 'none';
-      if (vis) q.el.style.transform = `translate(${((this._v.x * 0.5 + 0.5) * W).toFixed(1)}px, ${((-this._v.y * 0.5 + 0.5) * H).toFixed(1)}px) translate(-50%, -50%)`;
+      if (vis) q.el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -50%)`;
     }
   }
 }

@@ -1,0 +1,80 @@
+{
+ "space": "b1_grotto",
+ "round": 1,
+ "reviewer": "b1_west_r1",
+ "frames": {
+  "entry": {
+   "focal": "The three steam-room arches recede in a row on the left (right idea, like concept 16), but they are dark tan frames. The brightest things are the floor lanterns in front of them, a floating chochin, and a cool white wash on the far east wall from the renderer's fill light. An orange-glowing block beside arch_55 catches the eye.",
+   "is_hero": false,
+   "next_visible": "Not really: the north lane and exit arch are lost in the dim far end."
+  },
+  "reveal": {
+   "focal": "The arch row again from closer: the arch_45 frame foreground and the orange block mid. The 65 room (hero) at the end is not brighter or warmer than the others.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "concept": {
+   "focal": "Similar to the reveal: a row of arches with floor-lantern bollards. No pools, no steam, no temperature boards, no lava window in view.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "strip": {
+   "focal": "The walk goes north through the empty middle of the hall, away from the rooms: a cool-lit wall, a scatter of low benches and rocks, then the exit arch with corridor water.",
+   "is_hero": false,
+   "next_visible": "Only at frames 4–7 (exit arch); the steam rooms are never approached."
+  }
+ },
+ "fixes": [
+  {
+   "id": "spine",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The spine runs up the middle of the hall, 8–12 m from the steam rooms, and never passes their mouths. Re-route it from the entry (52,82) north along the arch fronts (x ≈ 51.5) to the 65 room (hero), then east along the north lane (y ≈ 104) to the exit arch, so the chain 45→55→65 is walked past in order."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The light_shaft markers inside the rooms produce no visible light, so the rooms are dark and the arches are just frames. Make them real warm emitters graded 45 < 55 < 65 (65 clearly the brightest thing in the hall) with steam volumes, and add the 45/55/65 boards over each arch as in concept 16."
+  },
+  {
+   "id": "lights[1]",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Six 1.05 m floor lanterns in one straight line at x 48.9 read as bollards in front of the arches and out-shine the rooms. Keep one low lantern per arch on its south post; remove the other three."
+  },
+  {
+   "id": "lights4:0",
+   "action": "move",
+   "dx": 9,
+   "dy": 7,
+   "deg": 0,
+   "detail": "The three-chochin cluster lights4:0-2 (58–59, 98–101) hangs in the empty middle of the hall, lighting nothing. Move the cluster by (+9,+7) to hang over the north-lane steam benches (dressing6 at 65–71,106), where people sit."
+  },
+  {
+   "id": "dressing[8]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The hall floor between x 52–75 and y 85–100 (~350 m²) is completely barren, while the pool rims carry ~34 tightly packed boulders. Add a cooling zone along the new spine: kakeyu basins, hinoki bucket stacks and low benches at the arch fronts, plus a pool edge or two (concept 16's water fills the floor). Or pull the east wall in."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Turn the three steam rooms into enclosed, steaming caves whose mouths glow warmer and brighter 45 to 55 to 65, and route the spine past them, so the hall reads as concept 16's receding chain of lit arches rather than an empty brown hall with bollards.",
+ "plausibility": [
+  "The steam 'rooms' are open pools with free-standing arches in a large hall: nothing encloses the steam, and the arches face east into the hall with no wall around them.",
+  "The lights3 chochin hang 3.4 m up over open pools with no ceiling or beam nearby: they float.",
+  "The cool white wash on the east wall and floor comes from the renderer's per-space fill light, not from the design. It makes the hall read cold."
+ ]
+}

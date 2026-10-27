@@ -1,0 +1,81 @@
+{
+ "space": "b1_glacier",
+ "round": 1,
+ "reviewer": "b1_east_r1",
+ "frames": {
+  "entry": {
+   "focal": "A huge, dim, oblique orange-brown slab (the ice wall proxy, unlit) filling the left half, and the teal pool; the hut on the right is a grey box with two lantern bars.",
+   "is_hero": true,
+   "next_visible": "The hut (warm lanterns) on the right; the return door is not visible."
+  },
+  "reveal": {
+   "focal": "The ice wall seen square across the pool. Its framing is the best in the group, but it's brown and unlit; the pool is the only lit surface.",
+   "is_hero": true,
+   "next_visible": "The return door at far left as a small dark opening with one lantern; the hut lanterns on the right."
+  },
+  "concept": {
+   "focal": "The teal pool and the grey hut with two lantern bars; the brown ice wall at upper left. The layout loosely matches concept 17 (ice left, hut right) but there's no blue and no black-vs-blue contrast.",
+   "is_hero": false,
+   "next_visible": "Hut."
+  },
+  "strip": {
+   "focal": "The strip only walks the 13 m from the east-corridor door to the return door along the west wall: mostly the dark back of the ice slab and dark walls. The pool is seen sideways at strip-6/7.",
+   "is_hero": false,
+   "next_visible": "Return door is reached, but no warm noren marks it (the noren is 8 m up)."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b1_glacier:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": -1.0,
+   "deg": 0,
+   "detail": "ice_formation has no light (no 'light' key), so the brightest-coldest hero is an unlit brown wall. Add a strong blue backlight (emissive translucent ice plus a ~3000-5000 W area light at ~10000 K behind or inside it) and icicle proxies hanging over the pool. Move it dy -1.0 so its base rises straight out of the pool's north rim as in concept 17 and the brief."
+  },
+  {
+   "id": "b1_glacier:return_noren",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Noren snapped to the cave ceiling at z -11.84, about 8 m in the air. Put it on the door head: z centre about -17.85 (bottom at about -18.3 under the 2.6 m door). Light it warm from behind so the way back to the steam reads from the hut."
+  },
+  {
+   "id": "dressing[0] (boulder ring)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "18 boulders evenly spaced round a perfect r 8 circle make a necklace. Group them: 5-7 big ones (scale [0.9,1.6], some half in the water) on the SW foreground arc (bearing ~200-260 from the pool centre) to frame the entry/concept view; a dense jumble at the ice foot; and an open arc toward the entry door (bearing ~250-290) so the view across is clear. Remove dressing0:9, 0:10 and 0:11, which sit between the pool and the ice."
+  },
+  {
+   "id": "b1_glacier:warm_hut",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The hut renders as a cold grey box; its 150 W area light doesn't show. Its pool-facing front needs warm emissive shoji and an open engawa edge so it is the one warm counterpoint (concept 17 right side)."
+  },
+  {
+   "id": "w_glacier (water footprint)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "A perfect r 8 circle reads as a fountain basin, not a cave plunge. Proposed for layout.json (the lead's file): make it irregular and run its north edge up to the ice (y ~93) with a rocky inlet under the drip line. This is a shared-file change for the lead to make."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Light the ice wall from behind in strong blue so it becomes the brightest thing on B1 and the room flips from 'dark brown wall' to 'glacier'.",
+ "plausibility": [
+  "Return noren floats at z -11.84 (8 m above the floor) instead of over the 2.6 m door.",
+  "hut_steps: 5 risers x 0.17 = 0.85 m down from the 0.45 m hut floor ends at about -20.4, inside a pool whose bed is -21.3. The steps stop 0.9 m above the bed; add 3-4 risers or a submerged landing.",
+  "Room is a flat-ceilinged box with a bright rectangular ceiling patch (likely a light leak), not a vault/cave.",
+  "The ice wall stands on dry floor about 1.2 m back from the pool, so the meltwater 'fall' line at y 92.6 drips onto rock and boulders rather than into the pool."
+ ]
+}

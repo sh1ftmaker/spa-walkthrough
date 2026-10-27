@@ -1,0 +1,81 @@
+{
+ "space": "b2_kawagiri",
+ "round": 1,
+ "reviewer": "b2-r1-reviewer",
+ "frames": {
+  "entry": {
+   "focal": "The vanishing point of the deck, closed by the sign gate (thin dark orange frame). The pod rows and posts converge on it.",
+   "is_hero": true,
+   "next_visible": "Yes, the gate end is clear, but the gate is unlit and small. The two big lantern posts in the foreground compete."
+  },
+  "reveal": {
+   "focal": "None. Symmetric pod corridor fading into the dark west end. The lift-drum pier bulges in at the left and an opaque white mist blob sits low left.",
+   "is_hero": false,
+   "next_visible": "Nothing at the west end (the overlook to the Thunder Curtain plume is dark)."
+  },
+  "concept": {
+   "focal": "A floating small_andon box (dressing10:3) in the middle of an empty pod. No table, no aqueduct, teal water visible where the pod floor should be.",
+   "is_hero": false,
+   "next_visible": "Dark north bank. Nothing of 08's composition (table, aqueduct spout, lit curtain) exists."
+  },
+  "strip": {
+   "focal": "Strong one-point perspective down the deck toward the gate in frames 1-5. Posts and eave lanterns are the brightest things. Frames 6-7 pass the gate into the dark and end on b2_core's noren row.",
+   "is_hero": true,
+   "next_visible": "The gate is always on axis. Through the east gangway the ramen counter's light is barely visible (dark)."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights[2]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The deck post lanterns land on pod centres (74.0/85.3/96.7/107.3 north, 75.0/85.9/96.4/107.2 south), right in front of the pod steps: the opposite of 'only at pod gaps'. Put them at gap midpoints: north x 69.35, 80.05, 90.75, 101.45, 112.15; south x 78.4, 90.0, 101.6. Remove lights2:4 (71.8, 77.9), which stands on the main gangway rail."
+  },
+  {
+   "id": "hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "kawagiri_sign_gate reads as a thin dark door frame. Give it a solid sign panel on the cross-beam with magenta/cyan emission (both faces) at least 2x the eave chochin, so the vista ends on the brightest thing."
+  },
+  {
+   "id": "dressing[6]",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "noren_short banners use the default banner h 4.0. At 2.2 m they rise as dark blades above the 3.2 m pod roofs (visible in entry/reveal). Use h 0.8 under the eave."
+  },
+  {
+   "id": "T4",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "chef_table variant is empty: add the table proxy, a pod floor (the camera sees river teal under it), and bring aqueduct_north into T4's back wall (move from (91, 94) to about (96.1, 90.8, table height)). Lower dressing10:3 (the andon) onto the table (dz -0.6) so it stops floating at eye level in the concept frame."
+  },
+  {
+   "id": "lights1:16",
+   "action": "remove",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "lights1:15/16 (77.6/79.2) and lights1:19/20 (100.8/102.4) form 1.6 m doubled clumps across the 1.2 m pod gaps. Remove lights1:16 and lights1:19 so each gap stays dark and pools alternate."
+  }
+ ],
+ "scores": {
+  "composition": 3,
+  "density": 3,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the 川霧 gate the brightest object (solid lit neon sign panel) and move the deck post lanterns from the pod fronts into the gaps, so pools and dark gaps alternate toward it.",
+ "plausibility": [
+  "None of the deck/gangway railings (dressing[0..5]) are visible in any frame, so the deck edges read as unprotected drops to the river.",
+  "The river/boat centreline (y 85) runs under the spine deck (y 82-86) for its whole length with only about 1.3-1.6 m between water (-42.5/-42.8) and deck underside (beams to about -40.9). If any boat goes downstream of the landing it cannot pass.",
+  "T4 (and probably all pods) has no visible floor: the concept camera sees river water under the table position.",
+  "Noren 4 m tall poke through the pod roofs (see dressing[6])."
+ ]
+}

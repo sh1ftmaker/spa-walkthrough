@@ -118,14 +118,15 @@
   "asset": "wall_trickle",
   "variant": "ceiling thread + basin",
   "at": [
-   140.0,
-   116.55,
+   140.1,
+   116.6,
    -20.0
   ],
   "facing_deg": 150,
   "dims": {
-   "w": 0.4,
-   "h": 3.0
+   "w": 0.6,
+   "d": 0.4,
+   "h": 2.6
   },
   "why": "Walking back from the glacier you face the elbow's outer wall for 30 m. Here the spring's north branch (which filled the cliff suites above) falls as one bright thread from a ceiling slot into a stone basin: a pause, the only falling water in a corridor, and it turns you west toward the steam."
  },
@@ -134,15 +135,18 @@
    "id": "trickle_basin",
    "asset": "chozubachi",
    "at": [
-    139.6,
-    116.1,
-    -20.0
+    139.95,
+    116.3,
+    -20.2
    ],
    "facing_deg": 150,
    "dims": {
-    "r": 0.55
+    "w": 0.9,
+    "d": 0.9,
+    "h": 0.6
    },
-   "why": "Catches the thread; overflows into the corridor pool."
+   "why": "Catches the thread; overflows into the corridor pool.",
+   "snap": "given"
   },
   {
    "id": "mirror_slot",
@@ -162,20 +166,222 @@
    "why": "Halfway along the 52 m straight: a knee-high glazed slot through 2 m of rock into the Mirror dome lets teal glowworm light leak onto the water. A second beat in a long corridor, seen only after the Mirror itself. Needs cutting in both shells."
   },
   {
+   "id": "bonsai_n1",
+   "asset": "pine_bonsai",
+   "at": [
+    99.0,
+    116.5,
+    -20.2
+   ],
+   "facing_deg": 180,
+   "dims": {
+    "w": 0.9,
+    "d": 0.9,
+    "h": 1.2
+   },
+   "why": "Silhouette on the north kerb in a dark gap of the straight.",
+   "snap": "given"
+  },
+  {
+   "id": "bonsai_n2",
+   "asset": "pine_bonsai",
+   "at": [
+    124.5,
+    113.5,
+    -20.2
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.9,
+    "d": 0.9,
+    "h": 1.2
+   },
+   "why": "Second, on the opposite kerb, 25 m on.",
+   "snap": "given"
+  },
+  {
    "id": "grotto_glow_noren",
    "asset": "banner",
    "variant": "noren",
    "at": [
     78.6,
     104.6,
-    -17.6
+    -17.8
    ],
    "facing_deg": 45,
    "dims": {
     "w": 2.8,
-    "h": 0.9
+    "d": 0.05,
+    "h": 0.8
    },
-   "why": "Corridor-side face of the grotto door."
+   "why": "Corridor face of the grotto door, at the door head."
+  },
+  {
+   "id": "grotto_glow",
+   "asset": "noren_glow",
+   "at": [
+    76.6,
+    103.0,
+    -20.0
+   ],
+   "outside_ok": true,
+   "why": "Warm steam glow behind the noren: the goal at the far west end.",
+   "snap": "given"
+  },
+  {
+   "id": "slot_leak",
+   "asset": "pool_uplight",
+   "at": [
+    112.0,
+    113.5,
+    -20.2
+   ],
+   "why": "Teal leak from the Mirror slot onto the water: the second beat of the straight.",
+   "snap": "given"
+  },
+  {
+   "id": "niches_diag_0",
+   "asset": "lantern_niche",
+   "at": [
+    160.43,
+    105.35,
+    -19.75
+   ],
+   "facing_deg": 210.0,
+   "snap": "given",
+   "why": "Diagonal pools; the thread at the elbow is brighter."
+  },
+  {
+   "id": "niches_diag_1",
+   "asset": "lantern_niche",
+   "at": [
+    160.89,
+    100.81,
+    -19.75
+   ],
+   "facing_deg": 30.0,
+   "snap": "given",
+   "why": "Diagonal pools; the thread at the elbow is brighter."
+  },
+  {
+   "id": "niches_diag_2",
+   "asset": "lantern_niche",
+   "at": [
+    151.05,
+    106.49,
+    -19.75
+   ],
+   "facing_deg": 30.0,
+   "snap": "given",
+   "why": "Diagonal pools; the thread at the elbow is brighter."
+  },
+  {
+   "id": "niches_diag_3",
+   "asset": "lantern_niche",
+   "at": [
+    145.82,
+    113.78,
+    -19.75
+   ],
+   "facing_deg": 210.0,
+   "snap": "given",
+   "why": "Diagonal pools; the thread at the elbow is brighter."
+  },
+  {
+   "id": "niches_straight_0",
+   "asset": "lantern_niche",
+   "at": [
+    131.5,
+    113.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "Long straight: pools at 9-15 m intervals with dark gaps, none within 6 m of the slot."
+  },
+  {
+   "id": "niches_straight_1",
+   "asset": "lantern_niche",
+   "at": [
+    130.2,
+    116.85,
+    -19.75
+   ],
+   "facing_deg": 180.0,
+   "snap": "given",
+   "why": "Long straight: pools at 9-15 m intervals with dark gaps, none within 6 m of the slot."
+  },
+  {
+   "id": "niches_straight_2",
+   "asset": "lantern_niche",
+   "at": [
+    121.0,
+    116.85,
+    -19.75
+   ],
+   "facing_deg": 180.0,
+   "snap": "given",
+   "why": "Long straight: pools at 9-15 m intervals with dark gaps, none within 6 m of the slot."
+  },
+  {
+   "id": "niches_straight_3",
+   "asset": "lantern_niche",
+   "at": [
+    104.0,
+    113.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "Long straight: pools at 9-15 m intervals with dark gaps, none within 6 m of the slot."
+  },
+  {
+   "id": "niches_straight_4",
+   "asset": "lantern_niche",
+   "at": [
+    102.6,
+    116.85,
+    -19.75
+   ],
+   "facing_deg": 180.0,
+   "snap": "given",
+   "why": "Long straight: pools at 9-15 m intervals with dark gaps, none within 6 m of the slot."
+  },
+  {
+   "id": "niches_straight_5",
+   "asset": "lantern_niche",
+   "at": [
+    92.0,
+    113.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "Long straight: pools at 9-15 m intervals with dark gaps, none within 6 m of the slot."
+  },
+  {
+   "id": "niches_end_0",
+   "asset": "lantern_niche",
+   "at": [
+    83.53,
+    112.83,
+    -19.75
+   ],
+   "facing_deg": 132.3,
+   "snap": "given",
+   "why": "Pool before the grotto door."
+  },
+  {
+   "id": "niches_end_1",
+   "asset": "lantern_niche",
+   "at": [
+    83.65,
+    107.46,
+    -19.75
+   ],
+   "facing_deg": 312.3,
+   "snap": "given",
+   "why": "Pool before the grotto door."
   }
  ],
  "water": [
@@ -184,7 +390,8 @@
    "kind": "still",
    "z": -20.05,
    "rim_z": -20.0,
-   "bed_z": -20.2,
+   "depth": 0.18,
+   "bed_z": -20.18,
    "path": [
     [
      165.5,
@@ -304,179 +511,126 @@
    "match": "Long straight in concept 05's mood: stones in teal water, knee-high mist, ankle niches doubled, the teal slot glowing low on the left, warm steam light at the far end."
   }
  },
- "lights": [
-  {
-   "asset": "lantern_niche",
-   "along": [
-    [
-     165.5,
-     100.2
-    ],
-    [
-     153.0,
-     107.5
-    ],
-    [
-     142.5,
-     113.6
-    ]
-   ],
-   "side": "both",
-   "stagger": true,
-   "spacing": [
-    4.5,
-    6.5
-   ],
-   "snap": "wall",
-   "height": 0.25,
-   "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Diagonal: niches stagger up to 3 m before the elbow; the hero thread is lit by its own downlight."
-  },
-  {
-   "asset": "lantern_niche",
-   "along": [
-    [
-     136.5,
-     115.0
-    ],
-    [
-     116.5,
-     115.0
-    ]
-   ],
-   "groups": {
-    "n": 2,
-    "inner": 1.4,
-    "gap": [
-     6.0,
-     8.0
-    ]
-   },
-   "side": "both",
-   "stagger": true,
-   "snap": "wall",
-   "height": 0.25,
-   "why": "Long straight: pairs of niches with 6-8 m dark gaps (pools and gaps), stopping 4.5 m short of the slot."
-  },
-  {
-   "asset": "lantern_niche",
-   "along": [
-    [
-     107.5,
-     115.0
-    ],
-    [
-     85.0,
-     112.3
-    ]
-   ],
-   "groups": {
-    "n": 2,
-    "inner": 1.4,
-    "gap": [
-     6.0,
-     8.0
-    ]
-   },
-   "side": "both",
-   "stagger": true,
-   "snap": "wall",
-   "height": 0.25,
-   "why": "Resumes after the slot to the grotto door."
-  },
-  {
-   "asset": "wall_trickle",
-   "part": "downlight",
-   "at": [
-    [
-     140.0,
-     116.3,
-     -17.1
-    ]
-   ],
-   "why": "Narrow warm beam on the thread: hero brightest."
-  },
-  {
-   "asset": "slot_window",
-   "part": "teal_spill",
-   "at": [
-    [
-     112.0,
-     113.2,
-     -19.6
-    ]
-   ],
-   "why": "Teal glowworm light from the Mirror (no fixture; comes from the dome)."
-  }
- ],
+ "lights": [],
  "dressing": [
   {
-   "asset": "stepping_stone",
-   "along": "spine",
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
-   ],
-   "jitter": 0.08,
-   "top_z": -20.0,
-   "scale": [
-    0.95,
-    1.15
-   ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
-   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
-  },
-  {
    "asset": "boulder_rim",
-   "along": "spine",
-   "side": "both",
-   "offset": 1.62,
-   "spacing": [
-    2.2,
-    4.0
+   "ring": [
+    141.6,
+    116.4
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
    ],
    "embed": 0.12,
-   "scale": [
-    0.35,
-    0.7
-   ],
+   "face": "out",
    "avoid": [
     "nav",
     "portals",
-    "anchored:mirror_slot"
+    "anchored",
+    0.3
    ],
-   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
+   "optional": true,
+   "why": "Rocks at the elbow basin.",
+   "z": -20.2
   },
   {
-   "asset": "pine_bonsai",
-   "at": [
-    [
-     99.0,
-     116.5,
-     -20.0
-    ],
-    [
-     124.5,
-     113.5,
-     -20.0
-    ]
+   "asset": "boulder_rim",
+   "ring": [
+    114.6,
+    113.5
    ],
-   "why": "Two silhouettes on alternate kerbs in the straight's dark gaps."
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 2,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Rocks by the slot.",
+   "z": -20.2
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    99.8,
+    116.4
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 2,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Rocks at the bonsai.",
+   "z": -20.2
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    125.6,
+    113.6
+   ],
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 2,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
+   ],
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
+   ],
+   "optional": true,
+   "why": "Rocks at the second bonsai.",
+   "z": -20.2
   }
+ ],
+ "allow_overlap": [
+  [
+   "wall_trickle",
+   "chozubachi"
+  ]
  ],
  "mood": {
   "key": "thread of falling water at the elbow",
@@ -484,5 +638,6 @@
   "mist": "Knee-high (0.4 m) layer over the whole pool, densest at the walls, thinning over the stones."
  },
  "waivers": [],
+ "light_notes": "Narrow warm downlight on the thread (wall_trickle emission); the slot's teal comes from the Mirror dome.",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

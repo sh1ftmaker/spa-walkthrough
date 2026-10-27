@@ -174,7 +174,7 @@ space('b1_junction_w', 'Koi junction', 'b1', circle(66, 74, 5.5), -20.0, -16.5, 
 space('b1_cor_west', 'Mist corridor west', 'b1', band([(62, 76), (56, 80), (47, 80.5)], 4.0), -20.0, -17.0, 'corridor')
 space('b1_mirror', '05 Obsidian Mirror Float Pool', 'b1', circle(112, 92, 19), -20.0, -6.5, 'cave',
       note='Dome with glowworm ceiling. Shaped around the lift core: pool centre moved to F2 (logged).')
-space('b1_grotto', '06 Fumarole Steam Grotto', 'b1', [[40, 82], [62, 82], [62, 96], [80, 96], [80, 108], [62, 112], [40, 108]], -20.0, -9.0, 'cave',
+space('b1_grotto', '06 Fumarole Steam Grotto', 'b1', [[40, 83.5], [62, 83.5], [62, 96], [80, 96], [80, 108], [62, 112], [40, 108]], -20.0, -9.0, 'cave',
       note='Rooms 45/55/65 C, hotter as you go deeper (NW).')
 space('b1_cor_north', 'Return corridor (glacier to steam)', 'b1', band([(78, 104), (88, 115), (140, 115), (166, 100)], 4.0), -20.0, -17.0, 'corridor')
 space('b1_cor_east', 'Mist corridor east', 'b1', band([(130, 90), (142, 86), (166, 84)], 4.0), -20.0, -17.0, 'corridor')
@@ -192,6 +192,8 @@ space('b2_kawagiri', 'Kawagiri restaurant', 'b2', [[round(x, 3), round(y, 3)] fo
 space('b2_core', 'Kawagiri core (lift, kitchen, ramen)', 'b2', rect(46, 56, 122, 74), -40.0, -28.0, 'hall')
 space('b2_boat', 'Boat landing', 'b2', rect(122, 64, 142, 80), -40.0, -30.0, 'deck')
 space('b2_boardwalk', 'Riverside boardwalk', 'b2', band([(140, 76), (160, 81), (180, 85), (196, 87)], 3.5), -40.0, -32.0, 'deck')
+space('b2_boardwalk_edge', 'Boardwalk river edge (open to the river)', 'b2', band([(140, 78.6), (160, 83.6), (180, 87.6), (196, 89.6)], 2.4), -44.6, -32.0, 'channel', walkable=False,
+      note='Opens the rock between the boardwalk and the river so you walk beside the water behind a railing (B2 agent review).')
 space('b2_lava_link', 'Passage to the Lava Stair', 'b2', band([(134, 66), (146, 60), (148.5, 58.5)], 3.5), -40.0, -37.0, 'corridor')
 space('b2_falls_head', 'Falls Stair head', 'b2', rect(40, 58, 47, 70), -40.0, -32.0, 'deck')
 
@@ -212,16 +214,18 @@ space('b3_geyser', '04 Geyser Plaza', 'b3', ellipse(114, 42, 18, 8.5), -67.0, -5
 space('b3_slide_foot', 'Slide splashdown / Lava Stair foot', 'b3', rect(140, 34, 162, 64), -67.0, -50.0, 'cave')
 space('b3_shore', 'Shore path', 'b3', band([(150, 37), (156, 34), (164, 34)], 4.0), -67.0, -62.5, 'path',
       note='Low compressed passage (4.5 m) before the beach reveal.')
-space('b3_wave', '10 Wave Grotto beach', 'b3', [[160, 16], [200, 14], [200, 62], [164, 64]], -68.0, -52.0, 'cave',
+space('b3_wave', '10 Wave Grotto beach', 'b3', [[160, 16], [200, 14], [200, 62], [164, 64]], -71.0, -52.0, 'cave', beach=dict(x_top=165.0, z_top=-68.0, x_water=175.0, z_water=-70.0, z_bed=-70.6, x_bed=178.0),
       note='Black sand beach slopes -67.5 to -70.6; sea mouth on the east edge.')
 space('b3_walk_north', 'North walk (lobby to rimstone)', 'b3', band([(78, 70), (70, 70), (66, 66)], 4.0), -67.0, -58.0, 'path')
 
+space('b3_falls_east', 'Falls shaft (east, open to B2)', 'b3', rect(38, 40, 46, 74.5), -59.5, -32.0, 'cave', walkable=False,
+      note='The east part of the falls shaft rises to -32 so the B2 falls-head balcony overlooks the curtain (B2 agent review).')
 space('b3_falls_gallery', 'Gallery behind the curtain', 'b3', rect(8, 76, 46, 80.5), -55.0, -52.0, 'corridor',
       note='Carved walkway behind Thunder Curtain at -55, under the river (bed -44.6, 7 m of rock above the gallery roof).')
 
 # ---- B4 (-100 m)
 space('b4_lobby', 'B4 lift lobby', 'b4', circle(*LIFT, 14), -100.0, -90.0, 'hall')
-space('b4_tunnel', 'Tunnel gallery', 'b4', band([(77, 64), (60, 58), (52, 46), (56, 34)], 5.0), -100.0, -96.5, 'corridor')
+space('b4_tunnel', 'Tunnel gallery', 'b4', band([(77, 64), (72.8, 62.5), (66.4, 60.3), (61.9, 58.3), (58.7, 55.8), (55.6, 51.7), (53.0, 47.6), (52.3, 44.0), (53.3, 40.0), (54.9, 36.7), (56, 34)], 5.0), -100.0, -96.5, 'corridor')
 space('b4_chamber', 'Magma viewing chamber', 'b4', [[40, 6], [122, 6], [122, 30], [48, 36], [40, 30]], -100.0, -92.0, 'hall',
       note='Hush zone. Thick glass wall along y 8 with lava beyond.')
 
@@ -284,7 +288,7 @@ def cliff_section(id, z0, z1, lane0, top_end=(140.0, 109.15)):
     legs = max(2, math.ceil(need / 16.0)); legs += legs % 2
     pts = [(140.0, 109.15)]
     for k in range(legs):
-        lane = 109.4 if (k + lane0) % 2 == 0 else 111.8
+        lane = 111.0 if (k + lane0) % 2 == 0 else 113.4      # both lanes north of the suite balconies (y <= 110)
         pts += [(140.0 if k % 2 == 0 else 124.0, lane), (124.0 if k % 2 == 0 else 140.0, lane)]
     pts.append(top_end)
     return path_stair(id, pts[::-1], z1, z0, 2.0, note='Cliff Stair section between suite tiers.')
@@ -318,15 +322,17 @@ P = [
     dict(id='p_b1_lobby_cor', a='b1_lobby', b='b1_cor_mirror', at=[78, 72], width=4.0, height=3.0),
     dict(id='p_b1_cor_mirror', a='b1_cor_mirror', b='b1_mirror', at=[93.5, 92], width=4.0, height=3.0),
     dict(id='p_b1_junction_west', a='b1_junction_w', b='b1_cor_west', at=[62, 76], width=4.0, height=3.0),
-    dict(id='p_b1_cor_grotto', a='b1_cor_west', b='b1_grotto', at=[52, 82], width=3.0, height=2.6),
+    dict(id='p_b1_junction_mirror', a='b1_junction_w', b='b1_cor_mirror', at=[70, 76], width=3.2, height=3.0, note='found by the sound research (overlap without a portal)'),
+    dict(id='p_b2_core_mist_steps', a='b2_core', b='mist_steps', at=[49, 62], width=4.0, height=3.0, z0=-40.0, note='Mist Steps foot in the Kawagiri core'),
+    dict(id='p_b1_cor_grotto', a='b1_cor_west', b='b1_grotto', at=[52, 82.75], width=3.0, height=2.6),
     dict(id='p_b1_cor_ms', a='b1_cor_west', b='mist_steps', at=[49, 79], width=4.0, height=3.0),
     dict(id='p_b1_grotto_north', a='b1_grotto', b='b1_cor_north', at=[78, 104], width=3.0, height=2.6),
     dict(id='p_b1_mirror_east', a='b1_mirror', b='b1_cor_east', at=[130.5, 90], width=4.0, height=3.0),
     dict(id='p_b1_east_glacier', a='b1_cor_east', b='b1_glacier', at=[165, 84], width=3.0, height=2.6),
     dict(id='p_b1_north_outfall', a='b1_cor_north', b='b1_outfall', at=[165.5, 100.2], width=3.0, height=2.6),
-    dict(id='p_b1_east_treat', a='b1_cor_east', b='b1_treatment', at=[146, 82], width=2.0, height=2.4),
+    dict(id='p_b1_east_treat', a='b1_cor_east', b='b1_treatment', at=[146, 81.83], width=2.6, height=2.4),
     dict(id='p_b1_lobby_south', a='b1_lobby', b='b1_cor_south', at=[101.5, 64], width=4.0, height=3.0),
-    dict(id='p_b1_south_treat', a='b1_cor_south', b='b1_treatment', at=[124, 56], width=2.0, height=2.4),
+    dict(id='p_b1_south_treat', a='b1_cor_south', b='b1_treatment', at=[124, 58.6], width=2.0, height=2.4),
     dict(id='p_b1_south_slide', a='b1_cor_south', b='b1_slide_top', at=[138, 54], width=4.0, height=3.0),
     dict(id='p_b1_glacier_outfall', a='b1_glacier', b='b1_outfall', at=[170, 97], width=3.0, height=2.6),
     dict(id='p_b2_core_kawagiri', a='b2_core', b='b2_kawagiri', at=[70, 74], width=6.0),
@@ -335,6 +341,7 @@ P = [
     dict(id='p_b2_boat_board', a='b2_boat', b='b2_boardwalk', at=[141, 76], width=3.5),
     dict(id='p_b2_boat_lava', a='b2_boat', b='b2_lava_link', at=[135, 65.5], width=3.5),
     dict(id='p_b2_core_falls', a='b2_core', b='b2_falls_head', at=[46.5, 64], width=4.0),
+    dict(id='p_b2_falls_balcony', a='b2_falls_head', b='b3_falls_east', at=[40, 64], width=12.0, depth=3.0, z0=-40.0, height=8.0, note='railed balcony onto the falls shaft'),
     dict(id='p_b3_falls_rim', a='b3_falls', b='b3_rimstone', at=[48, 66], width=4.0),
     dict(id='p_b3_lobby_walk', a='b3_lobby', b='b3_walk_north', at=[78, 70], width=4.0),
     dict(id='p_b3_walk_rim', a='b3_walk_north', b='b3_rimstone', at=[66, 66], width=4.0, z0=-61.5),
@@ -421,13 +428,15 @@ W = [
          note='One level surface, continuous with the open sea beyond the mouth.'),
 ]
 
+DECKS = [dict(id='falls_head_deck', footprint=rect(40, 63, 47, 70), z=-40.0, note='balcony deck over the falls shaft')]
+
 layout = dict(
     title='Kazan-yu metric layout', units='m',
     axes=dict(x='east from the west edge of column A', y='north from the south edge of row 6', z='elevation'),
     grid=dict(cols=COLS, rows=[1, 2, 3, 4, 5, 6], cell=CELL, size=[200, 120]),
     sea_level=SEA, step=dict(riser=RISER, tread=TREAD, landing_every=LANDING_EVERY, landing_len=LANDING_LEN),
     levels=LEVELS, lift=dict(at=list(LIFT), shaft_r=SHAFT_R), slide_shaft=dict(at=list(SLIDE), r=SLIDE_SHAFT_R),
-    spaces=S, connections=C, portals=P, water=W)
+    spaces=S, connections=C, portals=P, water=W, decks=DECKS)
 
 next(s for s in S if s['id'] == 'b2_river')['footprint'] = river_poly()
 # rimstone keeps only the terrace slope: clip out the north walk, lobby and lazy-river loop it overlapped

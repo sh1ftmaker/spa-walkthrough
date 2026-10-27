@@ -85,64 +85,56 @@
   ]
  ],
  "hero": {
-  "asset": "sign_kanji",
-  "variant": "summit_stele",
+  "asset": "lantern_stone",
+  "variant": "summit_toro",
   "at": [
-   63.0,
-   70.4,
+   64.0,
+   70.9,
    120.0
   ],
   "facing_deg": 250,
   "dims": {
-   "h": 2.8,
-   "w": 1.2,
-   "d": 0.7,
-   "text": "火山湯 頂 +120 m"
+   "w": 1.0,
+   "d": 1.0,
+   "h": 3.0
   },
-  "why": "A rough basalt stele with gilt characters marking the summit: the reward for the climb and the natural pause, lit by toro, with the caldera steam rising behind it as you face east."
+  "why": "A tall summit toro beside the carved summit stone: the reward for the climb and the natural pause, the brightest point on the path head, with the caldera steam rising behind it as you face east.",
+  "outside_reason": "Stands on the rock lip just beyond the walk band (the band is the deck; the lip is part of the same rim)."
  },
  "anchored": [
   {
    "id": "path_top_toro",
    "asset": "lantern_stone",
    "at": [
-    47.8,
-    76.4,
+    48.2,
+    77.4,
     120.0
    ],
    "facing_deg": 240,
    "dims": {
     "h": 2.4
    },
-   "why": "Marks the Terrace Path head; seen from the flights below as the last light."
+   "why": "Marks the Terrace Path head; seen from the flights below as the last light.",
+   "outside_ok": "Stands on the rock lip just beyond the walk band (the band is the deck; the lip is part of the same rim).",
+   "snap": "given"
   },
   {
-   "id": "stele_toro",
-   "asset": "lantern_stone",
+   "id": "summit_stele",
+   "asset": "sign_kanji",
    "at": [
-    65.2,
-    69.7,
-    120.0
-   ],
-   "facing_deg": 250,
-   "dims": {
-    "h": 1.8
-   },
-   "why": "Lights the stele face (hero brightest)."
-  },
-  {
-   "id": "rest_bench",
-   "asset": "bench_stone",
-   "at": [
-    55.5,
+    65.3,
     70.6,
     120.0
    ],
-   "facing_deg": 200,
+   "facing_deg": 250,
+   "snap": "given",
    "dims": {
-    "len": 2.4
+    "w": 0.9,
+    "d": 0.6,
+    "h": 2.6
    },
-   "why": "Rest after the climb, facing back down over the cascades."
+   "why": "Rough basalt stele, gilt 火山湯 頂 +120 m, lit by the summit toro.",
+   "outside_ok": "Stands on the rock lip just beyond the walk band (the band is the deck; the lip is part of the same rim)."
   }
  ],
  "water": [],
@@ -169,27 +161,27 @@
  "cameras": {
   "entry": {
    "pos": [
-    46.8,
-    75.8,
+    46.0,
+    75.6,
     121.6
    ],
    "target": [
-    75.0,
-    65.0,
-    121.5
+    64.0,
+    70.9,
+    121.6
    ],
    "fov_v": 58
   },
   "reveal": {
    "pos": [
-    58.0,
-    71.6,
+    56.0,
+    72.6,
     121.6
    ],
    "target": [
-    63.0,
-    70.4,
-    121.6
+    63.5,
+    69.9,
+    121.8
    ],
    "fov_v": 60
   },
@@ -212,19 +204,33 @@
  "lights": [
   {
    "asset": "lantern_post",
-   "along": "spine",
-   "side": "right",
-   "spacing": [
-    6.0,
-    8.0
-   ],
-   "offset": 1.4,
-   "face": "path",
+   "face": "hero",
    "avoid": [
     "portals",
-    "hero"
+    "hero",
+    "anchored"
    ],
-   "why": "On the drop (south) side rail."
+   "why": "On the drop (south) side rail.",
+   "at": [
+    [
+     49.09,
+     73.05,
+     120.25
+    ],
+    [
+     52.76,
+     71.47,
+     120.25
+    ],
+    [
+     72.59,
+     64.22,
+     120.25
+    ]
+   ],
+   "allow_overlap": [
+    "railing"
+   ]
   }
  ],
  "dressing": [
@@ -233,45 +239,68 @@
    "along": "spine",
    "side": "right",
    "offset": 1.6,
-   "height": 1.05,
    "avoid": [
     "portals"
    ],
-   "why": "South-west drop over the flank."
+   "why": "South-west drop over the flank.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "z": 120.25
   },
   {
    "asset": "rock_cluster",
-   "along": "spine",
-   "side": "left",
-   "spacing": [
-    3.0,
-    6.0
-   ],
-   "offset": 1.6,
    "embed": 0.2,
    "scale": [
     0.4,
-    0.9
+    0.7
    ],
    "avoid": [
     "hero",
-    2.0
-   ]
-  },
-  {
-   "asset": "pine_bonsai",
+    "anchored",
+    "portals"
+   ],
    "at": [
     [
-     50.5,
-     75.4,
-     120.0
+     62.6,
+     71.6,
+     119.85
+    ],
+    [
+     66.8,
+     70.4,
+     119.85
+    ],
+    [
+     47.4,
+     78.4,
+     119.8
+    ],
+    [
+     74.0,
+     67.2,
+     119.85
     ]
    ],
-   "scale": [
-    0.8,
-    1.1
+   "why": "Rock groups at the toro and stele and at both portals, on the crater-side lip.",
+   "outside_ok": "Stands on the rock lip just beyond the walk band (the band is the deck; the lip is part of the same rim)."
+  },
+  {
+   "asset": "boardwalk",
+   "along": "spine",
+   "spacing": [
+    2.0,
+    2.0
    ],
-   "why": "Windswept pine at the head."
+   "dims": {
+    "w": 3.4,
+    "d": 2.1,
+    "h": 0.3
+   },
+   "allow_on_nav": true,
+   "why": "Hinoki deck over the rock at the path head (the rim walk's boardwalk starts here); the toro, stele and posts stand on it."
   }
  ],
  "mood": {
@@ -279,5 +308,53 @@
   "palette": "amber toro, teal steam glow, cold cloud sea",
   "mist": "cloud drifting up the flank"
  },
- "waivers": []
+ "waivers": [
+  {
+   "check": "spacing",
+   "where": "boardwalk rule",
+   "reason": "The boardwalk is one continuous plank deck laid in 2 m pieces; regular spacing is the point, not a placement grid."
+  }
+ ],
+ "allow_overlap": [
+  [
+   "boardwalk",
+   "lantern_post"
+  ],
+  [
+   "lantern_post",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "lantern_stone"
+  ],
+  [
+   "lantern_stone",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "sign_kanji"
+  ],
+  [
+   "sign_kanji",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "rock_cluster"
+  ],
+  [
+   "rock_cluster",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "boardwalk"
+  ]
+ ]
 }

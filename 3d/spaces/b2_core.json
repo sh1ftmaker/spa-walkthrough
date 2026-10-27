@@ -113,8 +113,18 @@
    -40.0
   ],
   [
-   53.0,
-   62.5,
+   48.5,
+   62.0,
+   -40.0
+  ],
+  [
+   51.0,
+   60.3,
+   -40.0
+  ],
+  [
+   55.5,
+   60.3,
    -40.0
   ],
   [
@@ -301,16 +311,16 @@
    "asset": "kitchen_block",
    "at": [
     112.5,
-    59.3,
+    58.55,
     -40.0
    ],
    "facing_deg": 0,
    "dims": {
     "w": 17.0,
-    "d": 6.5,
+    "d": 5.0,
     "h": 4.0
    },
-   "why": "Open kitchen against the south rock wall directly behind the counter (07, 09): cooks face the diners."
+   "why": "Open kitchen against the south rock wall directly behind the counter (07, 09): cooks face the diners. Depth 5.0 (y 56.05-61.05) leaves a 2 m cook's aisle behind the counter for the chef at the pass."
   },
   {
    "id": "kitchen_vent",
@@ -332,8 +342,9 @@
    "at": [
     118.0,
     59.5,
-    -35.0
+    -36.0
    ],
+   "snap": "given",
    "facing_deg": 0,
    "dims": {
     "w": 3.0,
@@ -346,51 +357,52 @@
    "id": "neon_kazan",
    "asset": "neon_sign",
    "at": [
-    120.2,
-    62.8,
-    -40.0
+    119.7,
+    63.4,
+    -38.4
    ],
-   "facing_deg": 300,
-   "height": 3.0,
+   "facing_deg": 270,
    "dims": {
-    "w": 1.1,
-    "h": 2.6
+    "w": 0.9,
+    "d": 0.12,
+    "h": 2.4
    },
    "variant": "magenta_cyan_火山",
-   "why": "The one neon sign of the counter (09 right of centre) on the kitchen's NE post, turned toward the boat-landing door so arriving guests see it first."
+   "why": "The one neon sign of the counter (09), at the counter's east end facing straight down it, toward the reveal and concept views.",
+   "snap": "given"
   },
   {
    "id": "gate_sign",
    "asset": "sign_kanji",
    "at": [
     70.0,
-    73.6,
-    -40.0
+    73.4,
+    -36.6
    ],
    "facing_deg": 180,
-   "height": 4.0,
+   "snap": "given",
    "dims": {
     "w": 5.0,
     "h": 1.4
    },
    "variant": "川霧_gold",
-   "why": "Gold-leaf 川霧 board over the restaurant gate, facing the lift doors and the Mist Steps foot."
+   "why": "Gold-leaf 川霧 board standing on the gate lintel, facing the lift door and the Mist Steps foot."
   },
   {
-   "id": "gate_noren",
-   "asset": "banner",
+   "id": "gate_frame",
+   "asset": "portal_arch",
    "at": [
     70.0,
-    73.8,
+    73.4,
     -40.0
    ],
-   "facing_deg": 180,
+   "facing_deg": 0,
    "dims": {
-    "w": 4.0,
-    "h": 1.6
+    "w": 6.0,
+    "d": 1.2,
+    "h": 3.4
    },
-   "variant": "noren_indigo",
-   "why": "Indigo noren hung in the gate (3 m clear height): the compressed threshold before the deck."
+   "why": "Timber gate frame in the 6 m opening (4 m clear between posts, 3 m to the noren): the compressed threshold before the deck. Indigo noren hang from its lintel (cloth, walk-through)."
   },
   {
    "id": "passage_soffit",
@@ -426,6 +438,90 @@
    ],
    "z": -37.0,
    "why": "3 m timber soffit in the 6 m gap between the drum and the south wall: compress, then the counter opens up."
+  },
+  {
+   "id": "stools",
+   "asset": "bench_stone",
+   "at": [
+    [
+     104.8,
+     64.75,
+     -40.0
+    ],
+    [
+     105.83,
+     64.75,
+     -40.0
+    ],
+    [
+     106.86,
+     64.75,
+     -40.0
+    ],
+    [
+     107.89,
+     64.75,
+     -40.0
+    ],
+    [
+     108.92,
+     64.75,
+     -40.0
+    ],
+    [
+     109.95,
+     64.75,
+     -40.0
+    ],
+    [
+     110.98,
+     64.75,
+     -40.0
+    ],
+    [
+     112.01,
+     64.75,
+     -40.0
+    ],
+    [
+     113.04,
+     64.75,
+     -40.0
+    ],
+    [
+     114.07,
+     64.75,
+     -40.0
+    ],
+    [
+     115.1,
+     64.75,
+     -40.0
+    ],
+    [
+     116.13,
+     64.75,
+     -40.0
+    ],
+    [
+     117.16,
+     64.75,
+     -40.0
+    ],
+    [
+     118.19,
+     64.75,
+     -40.0
+    ]
+   ],
+   "snap": "given",
+   "dims": {
+    "w": 0.42,
+    "d": 0.42,
+    "h": 0.75
+   },
+   "variant": "bar_stool",
+   "why": "14 stools so the counter reads as a counter at eye height."
   }
  ],
  "water": [
@@ -519,28 +615,28 @@
   },
   "reveal": {
    "pos": [
-    99.5,
-    60.2,
+    100.0,
+    65.0,
     -38.4
    ],
    "target": [
-    111.5,
-    63.6,
-    -37.6
+    112.0,
+    63.8,
+    -38.9
    ],
    "fov_v": 60
   },
   "concept": {
    "image": "lookbook/img/09-neon-ramen-counter.jpg",
    "pos": [
-    103.3,
-    65.6,
+    101.8,
+    66.6,
     -38.4
    ],
    "target": [
     113.0,
-    61.8,
-    -37.0
+    62.8,
+    -37.4
    ],
    "fov_v": 55,
    "match": "From the west end of the stools looking along the counter: chef pulling noodles in steam behind the pass, red ラーメン chochin left, menu boards and black noren, the magenta/cyan 火山 neon at the far end, diners on stools receding, wet stone floor reflecting neon."
@@ -596,49 +692,67 @@
   },
   {
    "asset": "lantern_floor",
-   "along": "spine",
-   "side": "both",
-   "spacing": [
-    6,
-    8
-   ],
-   "offset": 1.8,
-   "face": "path",
-   "avoid": [
-    "portals",
-    "hero",
-    "anchored:passage_soffit",
-    "anchored:lift",
-    1.0
-   ]
-  },
-  {
-   "asset": "lantern_stone",
    "at": [
     [
-     56.0,
-     63.2
+     50.5,
+     66.8
     ],
     [
-     60.4,
-     63.2
+     57.0,
+     68.4
+    ],
+    [
+     66.6,
+     72.4
+    ],
+    [
+     73.4,
+     72.4
     ]
    ],
-   "why": "Pair at the Mist Steps foot (landing dressing)."
+   "why": "A short north-side row from the falls passage to the restaurant gate, ending in a pair at the gate; the plaza middle stays open."
   },
   {
    "asset": "lantern_stone",
    "at": [
     [
-     47.6,
-     61.6
+     55.6,
+     64.6
+    ],
+    [
+     60.8,
+     64.6
+    ]
+   ],
+   "why": "Pair flanking the Mist Steps foot (landing dressing), clear of the walk line."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     103.5,
+     72.6
+    ],
+    [
+     116.5,
+     72.6
+    ]
+   ],
+   "why": "Two floor lanterns on the river rail walk north of the counter, either side of the east gate."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     47.3,
+     60.0
     ],
     [
      47.6,
      66.4
     ]
    ],
-   "why": "Pair at the Falls Stair passage."
+   "why": "Pair at the Falls Stair passage, either side of the walk line."
   },
   {
    "asset": "lantern_hanging",
@@ -669,6 +783,22 @@
    ],
    "height": 2.9,
    "why": "Pair flanking the Spiral Stair door (landing dressing)."
+  },
+  {
+   "asset": "oculus_glow",
+   "at": [
+    [
+     108.0,
+     62.0,
+     -39.1
+    ],
+    [
+     115.5,
+     62.0,
+     -39.1
+    ]
+   ],
+   "why": "Kitchen fire glow in the cook's aisle, so the counter is lit from behind (09)."
   }
  ],
  "dressing": [
@@ -689,9 +819,14 @@
     1.8,
     2.2
    ],
-   "height": 2.9,
+   "height": 2.0,
    "face": 0,
-   "why": "Black crest noren over the kitchen pass (09)."
+   "why": "Black crest noren over the kitchen pass (09).",
+   "dims": {
+    "w": 1.0,
+    "d": 0.05,
+    "h": 0.9
+   }
   },
   {
    "asset": "railing",
@@ -773,13 +908,13 @@
    "asset": "bench_stone",
    "at": [
     [
-     51.0,
+     64.0,
      57.2,
      -40.0
     ],
     [
-     66.0,
-     57.0,
+     74.0,
+     57.2,
      -40.0
     ]
    ],
@@ -791,12 +926,12 @@
    "at": [
     [
      63.0,
-     72.4,
+     71.4,
      -40.0
     ],
     [
      77.0,
-     72.4,
+     71.4,
      -40.0
     ]
    ],
@@ -808,42 +943,68 @@
    "along": [
     [
      105.0,
-     62.4
+     63.15
     ],
     [
      118.0,
-     62.4
+     63.15
     ]
    ],
    "spacing": [
     1.4,
     1.8
    ],
-   "height": 2.2,
-   "snap": "wall",
-   "why": "Vertical menu boards on the kitchen pass (09)."
+   "height": 2.05,
+   "face": 0,
+   "dims": {
+    "w": 0.4,
+    "d": 0.05,
+    "h": 0.9
+   },
+   "why": "Vertical menu boards on the kitchen pass (09).",
+   "allow_overlap": [
+    "ramen_counter",
+    "banner"
+   ]
   },
   {
    "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.3,
-    1.5
+   "scatter": "area",
+   "polygon": [
+    [
+     46.3,
+     56.2
+    ],
+    [
+     62.0,
+     56.2
+    ],
+    [
+     62.0,
+     57.6
+    ],
+    [
+     46.3,
+     57.6
+    ]
    ],
-   "density": 0.05,
+   "density": 0.12,
    "avoid": [
     "nav",
-    "portals",
-    "hero",
-    "anchored:kitchen"
-   ]
+    "portals"
+   ],
+   "scale": [
+    0.5,
+    0.8
+   ],
+   "why": "Wet rock along the west plaza's south wall only (passage and kitchen side stay clean)."
   },
   {
    "asset": "sakura_small",
    "at": [
     [
-     121.0,
-     72.6,
+     120.6,
+     71.0,
      -40.0
     ]
    ],
@@ -858,6 +1019,24 @@
   "palette": "amber timber, red chochin, one magenta/cyan neon, white steam, black wet stone",
   "mist": "Steam from the kitchen vent and the Mist Steps sheet; no floor mist on the dry hall."
  },
+ "allow_overlap": [
+  [
+   "kitchen_block",
+   "fumarole_vent"
+  ],
+  [
+   "kitchen_block",
+   "header_tank"
+  ],
+  [
+   "ramen_counter",
+   "bench_stone"
+  ],
+  [
+   "ramen_counter",
+   "banner"
+  ]
+ ],
  "waivers": [
   {
    "check": "hero_visible",
@@ -868,6 +1047,11 @@
    "check": "grid_centre",
    "where": "lift at (90, 70)",
    "reason": "Main lift position fixed by the spec at E3 centre."
+  },
+  {
+   "check": "spacing",
+   "where": "dressing[0] counter noren, dressing[7] menu boards",
+   "reason": "A row of noren and menu boards along a kitchen pass is evenly spaced by design (09); the check flags them as a grid. All other rules pass."
   }
  ]
 }

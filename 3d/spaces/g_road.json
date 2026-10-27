@@ -74,33 +74,33 @@
  "hero": {
   "asset": "falls_sheet",
   "at": [
-   3.2,
-   61.6,
-   -0.5
+   8.2,
+   60.5,
+   -0.55
   ],
   "facing_deg": 180,
   "dims": {
    "w": 3.5,
-   "h": 14,
-   "lip_z": 13.5
+   "d": 1.0,
+   "h": 14.0
   },
-  "outside_ok": "The falls drop down the flank 1-2 m north of the road edge into a plunge pool; only the spray reaches the road.",
-  "why": "The south-branch cascade comes off the west flank right beside the road: a white, roaring, uplit sheet on the left that the road crosses on a slab bridge. It is the first water you meet and the brightest moving thing until the torii; it says 'the spring runs through everything' before you see a building."
+  "why": "The south-branch cascade comes off the west flank right beside the road: a white, roaring, uplit sheet on the left that the road crosses on a slab bridge. It is the first water you meet and the brightest moving thing until the torii; it says 'the spring runs through everything' before you see a building.",
+  "outside_reason": "The falls drop down the flank 1-2 m north of the road edge into a plunge pool; only the spray reaches the road."
  },
  "anchored": [
   {
    "id": "road_bridge",
    "asset": "bridge_slab",
    "at": [
-    4.5,
-    56.4,
-    0
+    9.3,
+    55.9,
+    -0.6
    ],
    "facing_deg": 98,
    "dims": {
-    "span": 4.0,
-    "w": 7.0,
-    "parapet_h": 0.9
+    "w": 7.4,
+    "d": 4.0,
+    "h": 0.6
    },
    "why": "Carries the road over the stream between the plunge pool (north) and the A4 falls (south). Low basalt parapets double as the road railing over the water."
   },
@@ -108,17 +108,18 @@
    "id": "road_marker",
    "asset": "sign_kanji",
    "at": [
-    1.2,
-    59.3,
+    1.6,
+    59.4,
     0
    ],
    "facing_deg": 278,
    "dims": {
-    "h": 2.4,
     "w": 0.6,
-    "material": "basalt stele, gilt 火山湯"
+    "d": 0.4,
+    "h": 2.4
    },
-   "why": "Carved stone marker at the grid edge: the brand appears once, quietly, before the gate (lookbook: materials first, logo second)."
+   "why": "Carved stone marker at the grid edge: the brand appears once, quietly, before the gate (lookbook: materials first, logo second).",
+   "snap": "ground"
   }
  ],
  "water": [
@@ -130,12 +131,12 @@
    "rim_z": -0.5,
    "path": [
     [
-     1.5,
-     60.6
+     6.6,
+     60.3
     ],
     [
-     5.0,
-     60.3
+     9.8,
+     60.0
     ]
    ],
    "width": 2.6,
@@ -150,20 +151,20 @@
    "rim_z": 0.0,
    "path": [
     [
-     3.5,
-     60.0
+     8.4,
+     59.3
     ],
     [
-     4.5,
-     56.4
+     9.3,
+     55.9
     ],
     [
-     5.5,
-     52.9
+     10.2,
+     52.4
     ]
    ],
    "width": 2.4,
-   "note": "Proposed: runs under road_bridge (0.6 m below the deck), then leaves the road south and drops off the A4 lip (12.4, 35.5, -0.65) into g_cascade pool P1 (-2.05). Channel between runs outside all footprints along the gate court west edge: (6.5, 48) -> (10.5, 40)."
+   "note": "Runs under road_bridge (0.6 m below the deck), then south along the gate court's west edge to the A4 lip (12.4, 35.5, -0.65)."
   }
  ],
  "sightlines": [
@@ -180,8 +181,8 @@
    "from": "road_bridge",
    "see": "Looking left: the falls and its steam column uplit teal; looking right: the cascade pools glowing below.",
    "target": [
-    3.2,
-    63.0,
+    8.2,
+    61.0,
     5.0
    ]
   },
@@ -198,27 +199,27 @@
  "cameras": {
   "entry": {
    "pos": [
-    0.8,
-    57.0,
+    0.9,
+    56.8,
     1.6
    ],
    "target": [
-    19.0,
-    55.0,
-    5.5
+    14.0,
+    57.0,
+    3.5
    ],
    "fov_v": 60
   },
   "reveal": {
    "pos": [
-    5.5,
-    56.2,
+    4.6,
+    56.6,
     1.6
    ],
    "target": [
-    3.2,
-    63.0,
-    5.5
+    8.2,
+    61.0,
+    5.0
    ],
    "fov_v": 62
   },
@@ -247,10 +248,30 @@
     3.2,
     4.2
    ],
-   "offset": 3.1,
+   "offset": 3.0,
    "face": "path",
    "avoid": [
-    "portals"
+    "portals",
+    {
+     "poly": [
+      [
+       5.8,
+       51.5
+      ],
+      [
+       11.6,
+       51.5
+      ],
+      [
+       11.6,
+       60.6
+      ],
+      [
+       5.8,
+       60.6
+      ]
+     ]
+    }
    ],
    "why": "Two converging rows (ground plan 31) are the eye-leading line to the torii; spacing tight because the road is short."
   },
@@ -258,9 +279,14 @@
    "asset": "falls_uplight",
    "at": [
     [
-     3.2,
-     60.4,
-     -0.45
+     8.2,
+     59.9,
+     -0.5
+    ],
+    [
+     7.2,
+     60.0,
+     -0.5
     ]
    ],
    "outside_ok": "In the plunge pool just north of the road edge.",
@@ -268,65 +294,6 @@
   }
  ],
  "dressing": [
-  {
-   "asset": "railing",
-   "along": [
-    [
-     0.6,
-     60.3
-    ],
-    [
-     2.4,
-     60.0
-    ]
-   ],
-   "height": 1.0,
-   "material": "basalt posts + timber rail",
-   "why": "Edge over the plunge pool before the bridge."
-  },
-  {
-   "asset": "railing",
-   "along": [
-    [
-     6.6,
-     59.4
-    ],
-    [
-     14.4,
-     58.3
-    ]
-   ],
-   "height": 1.0
-  },
-  {
-   "asset": "railing",
-   "along": [
-    [
-     -0.4,
-     53.7
-    ],
-    [
-     2.6,
-     53.2
-    ]
-   ],
-   "height": 1.0
-  },
-  {
-   "asset": "railing",
-   "along": [
-    [
-     6.6,
-     52.6
-    ],
-    [
-     13.4,
-     51.6
-    ]
-   ],
-   "height": 1.0,
-   "why": "South edge drops toward the cascade pools."
-  },
   {
    "asset": "rock_cluster",
    "scatter": "edge_band",
@@ -342,7 +309,8 @@
     "water"
    ],
    "snap": "ground",
-   "embed": 0.15
+   "embed": 0.15,
+   "optional": true
   },
   {
    "asset": "pine_bonsai",
@@ -357,7 +325,50 @@
     1.4,
     1.6
    ],
-   "why": "A single windswept pine where the road meets the gate court, dark against the lantern glow."
+   "why": "A single windswept pine where the road meets the gate court, dark against the lantern glow.",
+   "dims": {
+    "w": 2.0,
+    "d": 2.0,
+    "h": 4.0
+   }
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     2.8,
+     59.75
+    ],
+    [
+     6.0,
+     59.35
+    ]
+   ],
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "why": "North edge, west of the plunge pool."
+  },
+  {
+   "asset": "railing",
+   "along": [
+    [
+     2.8,
+     53.9
+    ],
+    [
+     7.0,
+     53.3
+    ]
+   ],
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "why": "South edge, west of the stream."
   }
  ],
  "mood": {

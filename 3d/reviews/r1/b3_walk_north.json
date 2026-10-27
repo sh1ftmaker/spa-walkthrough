@@ -1,0 +1,22 @@
+{"space": "b3_walk_north", "round": 1, "reviewer": "rev_b3_west_r1",
+ "frames": {
+  "entry": {"focal": "The stair rising into darkness; the hero rock_window is a dull brown box sticking out of the left wall at floor/knee height; small lanterns high up belong to other spaces (no roof).", "is_hero": false, "next_visible": "The stair itself reads as the way on, but there is no light at the top: no teal window, no steam."},
+  "reveal": {"focal": "Rimstone pools (flat teal rectangles) with standing lanterns: a reasonable reveal over the terraces.", "is_hero": false, "next_visible": "Yes: the terraces below, plus lantern dots across the vault."},
+  "concept": {"focal": "The rock_window proxy fills ~60% of the frame as an opaque brown block 1 m from the camera.", "is_hero": true, "next_visible": "No. The frame is blocked."},
+  "strip": {"focal": "Pitched up toward a stair under an open black sky with floating grey boxes (rimstone dressing2 rocks) over the right wall; frames 5-7 open onto the terraces.", "is_hero": false, "next_visible": "Only at the top. The compression-then-release does not work because there is no roof and no ankle light."}
+ },
+ "fixes": [
+  {"id": "lights[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "All 6 lantern_niche are at z -67.0 (lobby floor) while the stair climbs to -61.5, so every lantern except lights0:0's neighbourhood is buried 1.5-4 m inside the treads, which is why the walk has no ankle light. Snap to the local tread z + 0.3. Raise the count: spacing [2.5,3.5] on both sides should give ~10 over 15 m. Stagger left and right so lit and dark alternate."},
+  {"id": "anchored[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "All 11 railing segments (anchored0:0..10) are at z -67.0 and buried up to 4.5 m under the stair. They must follow the stair pitch (z = spine z along the run)."},
+  {"id": "b3_walk_north:hero", "action": "replace", "dx": 0, "dy": 0, "deg": 0, "detail": "rock_window renders as a solid 2.4x0.8x1.3 brown box at tread level (z -64.5 ignores the 0.9 m sill) that protrudes toward the walk. Replace it with a real aperture in the south wall (sill 0.9 m above the local tread, so z ~ -63.6) and a teal emissive panel/steam card behind it, as the brightest thing in the passage. Keep the y so the face is flush with the wall at y 68.0."},
+  {"id": "b3_rimstone:dressing2:7", "action": "remove", "dx": 0, "dy": 0, "deg": 0, "detail": "Rimstone's edge-band rocks (dressing2:0, 2:4, 2:5, 2:7, 2:8) sit in the rimstone footprint slivers that wrap this passage, at shelf heights (-61..-63). From inside the walk they float above the wall line (entry and strip, upper right). Exclude the wrap slivers from rimstone dressing[2] (see the rimstone review)."},
+  {"id": "ceiling_profile", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The roof (3 m over the treads) is not built, so the 'compression before the reveal' does not exist and vault lanterns from other spaces show overhead. The roof must be in the graybox (lead/shell)."}
+ ],
+ "scores": {"composition": 2, "density": 2, "light_rhythm": 1},
+ "top_change": "Snap the ankle lanterns and railings to the stair treads, build the 3 m roof, and make the rock_window a real lit teal opening, so the dim, low climb has one bright pull halfway up.",
+ "plausibility": [
+  "Niche lanterns and all railings are buried in the stair (z -67 on a stair that climbs to -61.5).",
+  "rock_window base sits on the tread with no sill, and it reads as a crate rather than an opening.",
+  "No roof: the passage is open to the vault even though it is specified as a roofed gallery.",
+  "The runnel (w_walk_runnel) is not visible in any frame; check that it is built and stepped alongside the treads."
+ ]}

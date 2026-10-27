@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mist corridor</title>
+<script type="importmap">{"imports":{"three":"../../../../web/node_modules/three/build/three.module.js","three/addons/":"../../../../web/node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+<script type="module">
+// Prototype (a): B1 "Kiri-no-Michi" mist corridor (b1_cor_mirror, concept 05). Ankle-deep 34 °C water,
+// stepping stones, lantern niches at ankle height, knee-high mist that you (WASD / touch) and a guest wade
+// through: both are moving obstacles in the worker's 2D Navier-Stokes sim, so the mist parts and leaves a wake.
+// Geometry and the obstacle mask come from 3d/layout.json + 3d/spaces/b1_cor_mirror.json (read only).
+import * as THREE from 'three';
+import { createApp, rockMaterial, emissiveMaterial, waterMaterial, lumpify, bakeVertexLight, makeGuest, mulberry, params } from '../common.js';
+import { MistZone, pointInPoly, distToPolyline } from '../mist.js';
+
+const [layout, space] = await Promise.all([fetch('../../../layout.json').then(r => r.json()), fetch('../../../spaces/b1_cor_mirror.json').then(r => r.json())]);
+// local frame: X = x - 80, Y = z + 20, Z = -(y - 92)
+const O = [80, 92, -20];
+const L = (x, y, z = O[2]) => [x - O[0], z - O[2], -(y - O[1])];
+const toLayout = (X, Z) => [X + O[0], O[1] - Z];
+const foot = layout.spaces.find(s => s.id === 'b1_cor_mirror').footprint;
+const waterInfo = space.water[0];
+const WY = waterInfo.z - O[2];                       // -0.05
+const spine = waterInfo.path.slice(2).map(([x, y]) => { const p = L(x, y); return [p[0], p[2]]; }); // from the north leg on
+spine.push([18.5, 0]);                                // continue through the arch into the Mirror's edge
+const ARCH_X = 13.4;
+
+// ------------------------------------------------------------------ lights (from the space file)
+const WARM = [1.0, 0.5, 0.2];
+const lights = [];
+// anchors by id prefix; tolerant of both {at: [x,y,z]} and {at: [[x,y,z], ...]} (the space file is being edited)
+const anchors = (prefix) => space.anchored.filter(a => a.id === prefix || a.id.startsWith(prefix + '_')).flatMap(a => Array.isArray(a.at[0]) ? a.at : [a.at]);
+const addL = (p, i, color = WARM, falloff = 1.4) => lights.push({ pos: p, i, color, falloff });
+for (const id of ['niches_n', 'niches_e']) for (const [x, y, z] of anchors(id)) addL(L(x, y, z), 0.8, WARM, 3.0);
+for (const c of anchors('corner_lantern')) addL(L(c[0], c[1], c[2] + 0.55), 1.0, WARM, 2.0);
+for (const [x, y, z] of anchors('shoji_glow')) addL(L(x, y, z), 0.45, [1.0, 0.66, 0.36], 0.9);
+const TEAL = { pos: [ARCH_X + 2.0, 1.0, 0], i: 1.4, color: [0.15, 0.85, 0.8], falloff: 0.5 };
+
+// ------------------------------------------------------------------ mist zone
+const RECT = [-15.6, -2.6, 15.6, 6.0];
+const inCorr = (X, Z) => { const [x, y] = toLayout(X, Z); return pointInPoly(x, y, foot) || (X > ARCH_X - 0.5 && Math.abs(Z) < 2.0); };
+const zone = new MistZone({
+  rect: RECT, y: WY, H0: 0.5, Hmax: 0.85, sigma: 5.0,
+  tiers: { low: { h: 0.25, hz: 20, iters: 12 }, high: { h: 0.125, hz: 30, iters: 16 } },
+  solid: (X, Z) => !inCorr(X, Z),
+  // water 34 °C; the wet kerbs and wall foot steam too (concept 05: the mist banks against the rock and the
+  // centre line, where guests walk, is thinnest)
+  temp: (X, Z) => { const d = distToPolyline(X, Z, spine); return d < 0.7 ? 33.2 : d < 1.5 ? 34.2 : 35.5; },
+  open: { xmax: true, ymax: true },
+  // gentle draft from the lobby side toward the Mirror dome (warm air leaves through the arch)
+  wind: (X, Z) => { let best = 1e9, dir = [1, 0]; for (let i = 0; i + 1 < spine.length; i++) { const d = distToPolyline(X, Z, [spine[i], spine[i + 1]]); if (d < best) { best = d; const dx = spine[i + 1][0] - spine[i][0], dz = spine[i + 1][1] - spine[i][1], l = Math.hypot(dx, dz); dir = [dx / l, dz / l]; } } return [dir[0] * 0.1, dir[1] * 0.1]; },
+  params: { wakeMix: 3.0, wakeVort: 0.45, srcScale: 0.26, decay: 0.05, dryDecay: 0.12, rise: 0.12, slump: 0.12, vort: 5, drag: 0.35, heatScale: 0.35, heatDecay: 0.5 },
+  prewarm: 10, look: { detail: 0.85, scale: 0.42, period: 1.6, haze: 0.02 },
+  amb: [0.016, 0.017, 0.018], glow: [0.002, 0.012, 0.011], haze: [0.006, 0.0055, 0.005],
+});
+
+const app = createApp({
+  title: 'B1 mist corridor · Kiri-no-Michi', zone,
+  cams: [
+    { pos: [-11.2, 1.45, 0.4], target: [4, 0.55, -0.1], fov: 58 },     // concept-05 view down the straight
+    { pos: [6.5, 1.5, 0.2], target: [-8, 0.2, 0.5], fov: 60 },         // looking back at the wake
+    { pos: [-1.2, 2.5, 1.6], target: [-3.5, 0.1, -0.6], fov: 55 },      // over the stones
+    { pos: [-13, 1.55, 5.5], target: [-12, 0.4, -1.0], fov: 60 },       // north leg into the corner
+    { pos: [1.4, 1.0, 1.45], target: [-4.5, 0.25, -0.4], fov: 55 },      // low, from the kerb: the guest wades past
+  ],
+  walk: { start: [-12.8, 0, 4.5], yaw: Math.PI * 0.03, pitch: -0.18, blocked: (X, Z) => !inCorr(X, Z) || distToPolyline(X, Z, spine) > 1.7, floorY: () => 0.0 },
+});
+const { scene } = app;
+
+// ------------------------------------------------------------------ geometry
+// corridor shell: barrel section swept along the spine (4 m wide, 2.4 m springing, 3.0 m crown), lumpy basalt
+const curve = new THREE.CatmullRomCurve3([[-12.6, 9], ...spine].map(([x, z]) => new THREE.Vector3(x, 0, z)), false, 'centripetal', 0.2);
+const NSEG = 360;
+const shellPts = [[-1.5, WY - 0.13], [-1.6, 0.0], [-2.0, 0.02], [-2.1, 1.2], [-2.0, 2.4]];
+for (let k = 1; k < 12; k++) { const a = Math.PI * (1 - k / 12); shellPts.push([2.0 * Math.cos(a), 2.4 + 0.6 * Math.sin(a)]); }
+shellPts.push([2.0, 2.4], [2.1, 1.2], [2.0, 0.02], [1.6, 0.0], [1.5, WY - 0.13]);
+const NP = shellPts.length;
+const pos = [], idx = [];
+for (let s = 0; s <= NSEG; s++) {
+  const t = s / NSEG; const p = curve.getPointAt(t); const tan = curve.getTangentAt(t); const nrm = new THREE.Vector3(-tan.z, 0, tan.x);
+  for (const [u, y] of shellPts) pos.push(p.x + nrm.x * u, y, p.z + nrm.z * u);
+}
+for (let s = 0; s < NSEG; s++) for (let k = 0; k < NP - 1; k++) { const a = s * NP + k, b = a + NP; idx.push(a, b, a + 1, a + 1, b, b + 1); }
+let shell = new THREE.BufferGeometry(); shell.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); shell.setIndex(idx);
+shell.setAttribute('uv', new THREE.Float32BufferAttribute(new Float32Array(pos.length / 3 * 2), 2));
+shell.computeVertexNormals();
+{ // winding check: the crown normal must point down into the corridor
+  const mid = Math.floor(NSEG / 2) * NP + Math.floor(NP / 2); if (shell.attributes.normal.getY(mid) > 0) { const ix = shell.index.array; for (let i = 0; i < ix.length; i += 3) { const t = ix[i + 1]; ix[i + 1] = ix[i + 2]; ix[i + 2] = t; } shell.computeVertexNormals(); console.warn('shell winding flipped'); } }
+shell = lumpify(shell, 0.16, 0.9, 7, 4);
+// keep the water edge and kerb tops flat-ish after the noise
+{ const pp = shell.attributes.position; for (let i = 0; i < pp.count; i++) { const y = pp.getY(i); if (y < 0.08) pp.setY(i, Math.min(y, 0.0) * 0.6 + (y > -0.03 ? 0.0 : 0) ); } shell.computeVertexNormals(); }
+const allLights = [...lights, TEAL];
+bakeVertexLight(shell, allLights.map(l => ({ ...l, i: l.i * 1.0 })), [0.006, 0.007, 0.008], (p) => 0.55 + 0.45 * Math.min(1, Math.max(0, (p.y + 0.3) / 1.5)));
+const rock = new THREE.Mesh(shell, rockMaterial(app, { tint: [0.07, 0.062, 0.058], wet: 0.9, scale: 0.8 }));
+scene.add(rock);
+
+// water: a ribbon 3 m wide along the spine at WY
+{ const wp = [], wi = []; for (let s = 0; s <= NSEG; s++) { const t = s / NSEG; const p = curve.getPointAt(t); const tan = curve.getTangentAt(t); const n = new THREE.Vector3(-tan.z, 0, tan.x);
+    wp.push(p.x - n.x * 1.62, WY, p.z - n.z * 1.62, p.x + n.x * 1.62, WY, p.z + n.z * 1.62); }
+  for (let s = 0; s < NSEG; s++) { const a = s * 2; wi.push(a, a + 1, a + 2, a + 1, a + 3, a + 2); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(wp, 3)); g.setIndex(wi);
+  scene.add(new THREE.Mesh(g, waterMaterial(app, { glow: [0.0, 0.03, 0.027] }))); }
+
+// stepping stones: staggered flat basalt pads along a meander of the spine, tops 6 cm above the water
+const stones = new THREE.Group(); const rnd = mulberry(4); const stoneGeo = [];
+for (let s = 0.02; s < 0.97; s += 0.0105) {
+  const t = s; const p = curve.getPointAt(t); const tan = curve.getTangentAt(t); const n = new THREE.Vector3(-tan.z, 0, tan.x);
+  if (p.x > ARCH_X + 2) break;
+  const off = 0.32 * Math.sin(t * 61) + (rnd() - 0.5) * 0.2;
+  const r = 0.26 + rnd() * 0.1;
+  let g = new THREE.CylinderGeometry(r, r * 1.08, 0.2, 12, 2); g = lumpify(g, 0.035, 5, Math.floor(rnd() * 100), 3);
+  g.scale(1 + rnd() * 0.3, 1, 0.85 + rnd() * 0.25); g.rotateY(rnd() * 6.28); g.translate(p.x + n.x * off, WY + 0.11 - 0.1, p.z + n.z * off);
+  stoneGeo.push(g);
+}
+{ const { mergeGeometries } = await import('three/addons/utils/BufferGeometryUtils.js'); const g = mergeGeometries(stoneGeo.map(g => { g.deleteAttribute('uv'); return g; }));
+  bakeVertexLight(g, allLights, [0.006, 0.007, 0.008]); stones.add(new THREE.Mesh(g, rockMaterial(app, { tint: [0.06, 0.055, 0.05], wet: 1.2, scale: 2.0 }))); scene.add(stones); }
+
+// lantern niches + lanterns (emissive boxes), shoji bays (warm glowing panels), arch with teal leak
+const lanternMat = emissiveMaterial(app, [1.0, 0.4, 0.12], 1.25);
+for (const l of lights.slice(0, 9)) { const m = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.28, 0.2), lanternMat); m.position.set(l.pos[0], l.pos[1], l.pos[2]); scene.add(m); }
+const shojiMat = emissiveMaterial(app, [1.0, 0.55, 0.24], 0.75);
+for (const id of ['shoji_bay_1', 'shoji_bay_2']) { const a = space.anchored.find(x => x.id === id); const p = L(a.at[0], a.at[1], a.at[2]);
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(a.dims.w, a.dims.h * 0.85), shojiMat); m.position.set(p[0], p[1] + 1.15, p[2] + 0.12); scene.add(m); }
+{ // arch: slab with an opening, then the teal glow beyond (stand-in for the glowworm dome)
+  const sh = new THREE.Shape(); sh.moveTo(-3, -0.4); sh.lineTo(3, -0.4); sh.lineTo(3, 3.6); sh.lineTo(-3, 3.6); sh.lineTo(-3, -0.4);
+  const hole = new THREE.Path(); hole.moveTo(-1.6, -0.4); hole.lineTo(1.6, -0.4); hole.lineTo(1.6, 1.9); hole.absarc(0, 1.9, 1.6, 0, Math.PI, false); hole.lineTo(-1.6, -0.4); sh.holes.push(hole);
+  let g = new THREE.ExtrudeGeometry(sh, { depth: 1.2, bevelEnabled: false, curveSegments: 16 }); g.rotateY(Math.PI / 2); g.translate(ARCH_X - 0.6, 0, 0);
+  g = lumpify(g, 0.08, 1.3, 11, 3); bakeVertexLight(g, allLights, [0.004, 0.005, 0.006]);
+  scene.add(new THREE.Mesh(g, rockMaterial(app, { tint: [0.05, 0.045, 0.042], wet: 0.6 })));
+  const back = new THREE.Mesh(new THREE.PlaneGeometry(8, 5), app.mistMaterial({ vertexShader: `varying vec3 vW; varying vec2 vUv; void main(){ vUv = uv; vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+    fragmentShader: `uniform sampler2D tNoise; uniform float uTime; varying vec3 vW; varying vec2 vUv; void main(){
+      float st = pow(texture(tNoise, vUv*vec2(3.0, 2.0)).b, 6.0)*3.0 + pow(texture(tNoise, vUv*vec2(6.1, 4.1) + 0.3).b, 9.0)*4.0;
+      vec3 col = vec3(0.01, 0.07, 0.07)*(0.6 + vUv.y) + vec3(0.2, 0.9, 0.85)*st*(0.6 + 0.4*sin(uTime*0.7 + vUv.x*20.0));
+      col = mistApply(col, vW); gl_FragColor = vec4(col, 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }` }));
+  back.rotateY(-Math.PI / 2); back.position.set(ARCH_X + 5.2, 1.5, 0); scene.add(back);
+}
+
+// ------------------------------------------------------------------ guest + movers
+const guest = makeGuest(app); scene.add(guest);
+const gPath = new THREE.CatmullRomCurve3([[-12.8, 6], [-13.1, 3], [-12.4, 0.6], [-10, 0.15], [ARCH_X - 1.0, -0.1]].map(([x, z]) => new THREE.Vector3(x, 0, z)));
+const gLen = gPath.getLength(); const G_SPEED = 0.8; let gPrev = null;
+const gT0 = parseFloat(params.get('g') ?? '-5'); // guest start time offset (s); negative = already partway
+const nearest = [];
+app.update = (t, dt) => {
+  // guest walks the line, waits 3 s beyond the arch, repeats
+  const cyc = gLen / G_SPEED + 3; const tt = ((t - gT0) % cyc + cyc) % cyc;
+  const u = Math.min(1, tt * G_SPEED / gLen); const p = gPath.getPointAt(u);
+  guest.position.set(p.x, WY + 0.02, p.z); guest.visible = u < 0.995;
+  const tg = gPath.getTangentAt(u); guest.rotation.y = Math.atan2(tg.x, tg.z);
+  guest.position.y += Math.abs(Math.sin(tt * 6.5)) * 0.02;
+  const gv = gPrev && dt > 0 ? [(p.x - gPrev.x) / dt, (p.z - gPrev.z) / dt] : [0, 0]; gPrev = p.clone();
+  const movers = [];
+  if (guest.visible && Math.hypot(gv[0], gv[1]) < 3) movers.push({ x: p.x, z: p.z, vx: gv[0], vz: gv[1], r: 0.3 });
+  if (app.state.walking) movers.push({ x: app.walker.pos.x, z: app.walker.pos.z, vx: app.walker.vel.x, vz: app.walker.vel.z, r: 0.3 });
+  zone.setMovers(movers);
+  // ?follow: camera trails the guest (concept 05 framing) so the wake between camera and guest is in view
+  if (params.has('follow') && !app.state.walking) {
+    const back = gPath.getPointAt(Math.max(0, u - 3.4 / gLen)); const ahead = gPath.getPointAt(Math.min(1, u + 4 / gLen));
+    app.camera.position.set(back.x, 1.75, back.z + 0.35); app.controls.target.set(ahead.x, 0.5, ahead.z); app.camera.lookAt(app.controls.target);
+  }
+  // mist lighting: the 5 lanterns nearest the camera + the teal leak
+  const c = app.camera.position; nearest.length = 0;
+  lights.forEach(l => nearest.push([Math.hypot(l.pos[0] - c.x, l.pos[2] - c.z) - (l.pos[0] > c.x ? 4 : 0), l]));
+  nearest.sort((a, b) => a[0] - b[0]);
+  zone.setLights([TEAL, ...nearest.slice(0, 5).map(n => n[1])]);   // Low uses the first 3
+};
+app.start();
+</script>
+</body>
+</html>

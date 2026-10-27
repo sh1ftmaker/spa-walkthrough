@@ -143,6 +143,9 @@ async function main() {
     return best;
   }
   function zoneForPoint(pL) {
+    const tp = l2t(pL);
+    const g = walker.probeGround(tp.x, tp.z, tp.y + 0.5, 6);
+    if (g) return g.zone;
     const s = spaceAt(pL);
     if (s) return s.zone;
     let best = null, bd = Infinity;

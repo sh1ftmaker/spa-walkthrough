@@ -1,0 +1,82 @@
+{
+ "space": "g_cascade",
+ "round": 1,
+ "reviewer": "ground_a_r1",
+ "frames": {
+  "entry": {
+   "focal": "Two near white lanterns and a huge dark slab (terrain or retaining wall) filling the right half. The falls (hero) are a tiny dull orange smudge far left of centre. Water shows only as a teal corner at the left edge.",
+   "is_hero": false,
+   "next_visible": "No: the stair down to the pools is not legible."
+  },
+  "reveal": {
+   "focal": "Grey sloping terrain wedges and two lanterns. No pools, no falls.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "concept": {
+   "focal": "A dark trench between walls with white lantern boxes on the rims above: the opposite of 01, where you look across open stepped teal pools to the falls. Not one pool is visible.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "strip": {
+   "focal": "Frames 0-4 show grey terrain wedges, and one frame catches a teal sliver between walls. Frames 5-7 are a slot canyon with lanterns on the walls.",
+   "is_hero": false,
+   "next_visible": "No: the walk reads as a trench, not a descent along terraced pools."
+  }
+ },
+ "fixes": [
+  {
+   "id": "deck_levels / terrain",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The ground stays a plateau at about -1.0, and the pools (-2.05 to -3.95) and decks are cut into it as pits and trenches. That is why the water is invisible at eye level and the strip is a canyon. The terrain must step DOWN with the pools: each pool's rim and its deck share one level, and each step is open to the south and the sea, so from the overlook at -1.0 you look down over all four pools in sequence (01). This is the single blocker for the space."
+  },
+  {
+   "id": "dressing[0..3] boulder_rim",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "66 boulders ring the pools at z -1.2 (plateau level) and 6 fail contact (dressing1:?, 2:1, 2:2, 3:3 etc. at mixed z). Snap each boulder to its own pool's rim_z, use spacing [1.5,4.0] with gaps at every spill lip, and keep the camera-side rims low so the water reads. Today they form a parapet that hides the pools."
+  },
+  {
+   "id": "g_cascade:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The falls are placed at z -1.0 with h 1.6 (spanning -1.0 to 0.6), but the water spec drops from -0.65 to -2.05, so the sheet sits above the pool it feeds. Place it from z -2.05 up to -0.65 or higher, make it 4-5 m wide with an emissive or uplit white face (falls_uplight is a non-emitting 'marker'), and add a steam volume. At 23-40 m it is currently invisible."
+  },
+  {
+   "id": "g_cascade:lights3:1",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The lantern post at (49.3,19.8) resolved at z -3.9 (deck_p4 below the overlook edge), while its pair lights3:0 is at -1.5. Snap it to the overlook at z -1.0 (dz +2.9). lights3:0 at -1.5 is also 0.5 m below the -1.0 overlook; check it."
+  },
+  {
+   "id": "lights[1] pool_uplight / lights[2] falls_uplight",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "All 'marker' lights; none emits anything visible. The pools need underwater teal emission (P1 brightest) so the water is the light source of the space, as in 01. Then thin lights[0] toro to one per pool lip (it is 8 now, two of them in the entry foreground)."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Rebuild the ground as open terraces that step down with each pool (rim and deck at the same level, open to the sea) so the overlook looks down across four glowing teal pools to the lit falls; at present the pools are pits you cannot see into.",
+ "plausibility": [
+  "The pools are sunk 1-3 m below a -1.0 plateau, with vertical walls instead of spilling lips. Water cannot visibly spill from one into the next.",
+  "The falls hero sits above the pool it is meant to pour into (z -1.0 to 0.6 versus a pool at -2.05).",
+  "6 boulders fail the contact check (mixed z between plateau and decks).",
+  "lights3:1 sits 2.9 m below the overlook it is meant to light.",
+  "Check that each stair (stair_p1-p4, return_stair) lands on its deck; at eye level the descent is not legible in any frame."
+ ]
+}

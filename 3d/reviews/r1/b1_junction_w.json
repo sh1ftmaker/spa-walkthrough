@@ -1,0 +1,79 @@
+{
+ "space": "b1_junction_w",
+ "round": 1,
+ "reviewer": "b1_west_r1",
+ "frames": {
+  "entry": {
+   "focal": "The toro (stone lantern) on the far rim and the cluster of floor lanterns down the west branch. The koi pond is not distinguishable: the whole floor is one teal surface, with the fill-light reflection as a pale disc in the foreground. pond_pine reads as a black monolith on the left.",
+   "is_hero": false,
+   "next_visible": "Yes: the west branch lanterns pull the eye strongly (they are the brightest thing)."
+  },
+  "reveal": {
+   "focal": "The toro and its reflection. Stepping stones, the teal floor, and a single niche cube on the wall.",
+   "is_hero": false,
+   "next_visible": "Partially: the branch opening at the right edge."
+  },
+  "concept": {
+   "focal": "The toro on the left and the west-branch lantern cluster centre-right. The mood match is weak: no mist, no bell frame on the right (bell out of shot).",
+   "is_hero": false,
+   "next_visible": "Yes: the west branch."
+  },
+  "strip": {
+   "focal": "The strip walks the north leg of the corridor, so it is mostly b1_cor_mirror: niche lanterns doubled, stones, then the corridor beyond.",
+   "is_hero": false,
+   "next_visible": "Yes, lanterns down the corridor."
+  }
+ },
+ "fixes": [
+  {
+   "id": "hero:koi_pond",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The pond is the same teal surface as the surrounding corridor pool, which covers the whole junction floor, so it has no presence. Give it its own warm-gold under-light (brighter than anything else here), darken the corridor water around it, and show a rim stone ring 0.1–0.15 m proud of the water."
+  },
+  {
+   "id": "bell",
+   "action": "move",
+   "dx": -4.15,
+   "dy": 1.0,
+   "deg": -30,
+   "detail": "The bell at (69.95,77.6) is outside every camera (behind or right of entry, concept and reveal). Move it by (-4.15,+1.0) to ~(65.8,78.6), between the west spur and the north leg (~2 m from each), and rotate it by -30 to face 195 (toward the pond). It then sits on the right of the concept frame as the brief intends."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The niche ring produced a single lantern (lights0:0): the curved wall is barren and dark. Relax avoid ['hero', 1.0] or the spacing so 4–5 niches appear, in a pair either side of the west mouth and the north mouth, with none behind the pond."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The rim boulders are at z -20.4 with scale 0.3–0.45: tops end at -20.2 to -20.1, under the -20.05 water, so the ring is invisible. Use top_z [-20.0,-19.85] as the intent says (raise ~0.25 m)."
+  },
+  {
+   "id": "toro",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Keep the position. Dim it (or use a warmer, lower-output stand-in) so it doesn't out-shine the pond, which it currently replaces as the focal point."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the koi pond a visibly separate, warm-lit well (with the rim stones above water) that is the brightest thing in the junction; today the toro and the west-branch lanterns win and the pond doesn't exist at eye level.",
+ "plausibility": [
+  "Rim stones are fully submerged (tops below the water line).",
+  "The whole junction floor renders as water, whereas the intent is a 3.2 m pool path plus the 4.6 m pond. If the dry floor between them is intended, it isn't shown."
+ ]
+}

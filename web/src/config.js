@@ -25,8 +25,8 @@ export const BLOOM = { strength: 0.16, radius: 0.35, threshold: 1.6 }; // linear
 export const FOG = {
   color: [0.018, 0.015, 0.013], // linear
   density: 0.012, // 1/m, base cave haze
-  mistColor: [0.30, 0.28, 0.26], // linear, steam lit by lanterns
-  mistDensity: 1.6, // 1/m at the water surface
-  mistHeight: 0.22, // m, e-folding height (dense in the first 0-0.5 m)
+  mistColor: [0.15, 0.14, 0.13], // linear, steam lit by lanterns
+  mistDensity: 0.55, // 1/m at the water surface
+  mistHeight: 0.3, // m, e-folding height (dense in the first 0-0.5 m)
   maxWaters: 8,
 };

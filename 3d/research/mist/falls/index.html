@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Falls mist</title>
+<script type="importmap">{"imports":{"three":"../../../../web/node_modules/three/build/three.module.js","three/addons/":"../../../../web/node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+<script type="module">
+// Prototype (c): the base of Thunder Curtain Falls (b3_falls, concept 19). 12 m of 39 °C water falls 17 m into
+// the plunge pool; the falling sheet drags air down with it, which spreads out over the water as a gust
+// (a divergence source + outward jets along the impact line in the sim), carrying spray mist that rolls
+// outward in eddies across the pool. The curtain here is a cheap stand-in; the water agent owns the real
+// falls, spume and spray particles (3d/research/water/river-falls). This page is only the low mist layer.
+import * as THREE from 'three';
+import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
+import { createApp, rockMaterial, emissiveMaterial, waterMaterial, lumpify, bakeVertexLight, mulberry, params } from '../common.js';
+import { MistZone } from '../mist.js';
+
+const layout = await fetch('../../../layout.json').then(r => r.json());
+// local frame: X = x - 27, Y = z + 60.05, Z = -(y - 58)
+const O = [27, 58, -60.05];
+const L = (x, y, z = O[2]) => [x - O[0], z - O[2], -(y - O[1])];
+const pool = layout.water.find(w => w.id === 'w_falls_pool');
+const fall = layout.water.find(w => w.id === 'w_thunder');
+const poolXZ = pool.footprint.map(([x, y]) => { const p = L(x, y); return [p[0], p[2]]; });
+const [pX0, pX1] = [Math.min(...poolXZ.map(p => p[0])), Math.max(...poolXZ.map(p => p[0]))];
+const [pZ0, pZ1] = [Math.min(...poolXZ.map(p => p[1])), Math.max(...poolXZ.map(p => p[1]))];
+const lipA = L(...fall.lip[0], fall.z_top), lipB = L(...fall.lip[1], fall.z_top);
+const LIP_Y = lipA[1], LIP_Z = lipA[2], X0 = Math.min(lipA[0], lipB[0]), X1 = Math.max(lipA[0], lipB[0]);
+const DROP = fall.z_top - fall.z_bottom;                      // 17 m
+const IMPACT_Z = LIP_Z + 1.6;                                 // launch ~0.9 m/s over a 17 m drop lands ~1.6 m out
+const THROAT = L(48, 66);                                     // p_b3_falls_rim: rock-cut throat east (x 46-50)
+const WY = 0;
+
+const WARM = [1.0, 0.52, 0.22];
+const lights = [
+  { pos: [(X0 + X1) / 2, 2.5, IMPACT_Z + 1.0], i: 6.0, color: [0.85, 0.9, 0.95], falloff: 0.12 },  // white water at the impact
+  { pos: [-1, -0.6, -2], i: 3.0, color: [0.12, 0.85, 0.75], falloff: 0.02 },                         // the pool's teal glow
+  { pos: [-11.5, 1.1, 13.0], i: 1.1, color: WARM, falloff: 1.0 },
+  { pos: [9.5, 1.1, 14.0], i: 1.1, color: WARM, falloff: 1.0 },
+  { pos: [-15.0, 1.1, -5.0], i: 1.1, color: WARM, falloff: 1.0 },
+  { pos: [16.5, 1.1, -3.0], i: 1.1, color: WARM, falloff: 1.0 },
+];
+
+const inShaft = (x, z) => (x > -18.6 && x < 18.6 && z > -17.6 && z < 17.6) || (x >= 18.6 && Math.abs(z - THROAT[2]) < 2.0);
+const jets = [];
+for (let x = X0 + 0.5; x <= X1 - 0.5; x += 1.0) jets.push({ x, z: IMPACT_Z, r: 1.7, vz: 3.2, vx: (x - (X0 + X1) / 2) * 0.12, dens: 1.1, heat: 1.6, div: 1.6 });
+const zone = new MistZone({
+  rect: [-19, -18, 19.6, 18], y: WY, H0: 0.5, Hmax: 4.5, sigma: 1.1,
+  tiers: { low: { h: 0.6, hz: 20, iters: 12 }, high: { h: 0.3, hz: 30, iters: 16 } },
+  solid: (x, z) => !inShaft(x, z),
+  temp: (x, z) => (x > pX0 && x < pX1 && z > pZ0 && z < pZ1) ? 39 : 0,
+  open: { xmax: true },
+  jets,
+  params: { srcScale: 0.04, decay: 0.12, dryDecay: 0.4, rise: 0.15, slump: 0.25, vort: 9, drag: 0.12, heatScale: 0.2, heatDecay: 0.28, vorticles: 16, vortR: [0.8, 2.4], vortV: 0.7, divBalance: true },
+  prewarm: 14, look: { detail: 0.85, scale: 0.22, period: 1.4, haze: 0.012 },
+  amb: [0.02, 0.026, 0.026], glow: [0.004, 0.04, 0.036], haze: [0.01, 0.014, 0.014],
+  lights,
+});
+
+const app = createApp({
+  title: 'Thunder Curtain Falls · base mist', zone,
+  cams: [
+    { pos: [-8.5, 2.3, 13.0], target: [1.8, 4.0, -15], fov: 62 },        // concept 19: from the south deck
+    { pos: [15.5, 1.7, 4.0], target: [-1.0, 1.2, -10.0], fov: 60 },       // east deck, mist rolling across
+    { pos: [0, 15, 16], target: [1, 0, -6], fov: 55 },                    // from the B2 balcony height
+    { pos: [-3.0, 0.8, 3.0], target: [2.0, 1.6, -12], fov: 64 },          // low, in the pool
+  ],
+});
+const { scene } = app;
+
+// ---- shaft: lumpy rock box (inside), decks, pool basin
+{
+  let g = new THREE.BoxGeometry(37.2, 23, 35.2, 40, 26, 40); g.translate(0, 10.5, 0);
+  g = lumpify(g, 0.9, 0.18, 13, 4);
+  const pp = g.attributes.position; for (let i = 0; i < pp.count; i++) if (pp.getY(i) < 0.3) pp.setY(i, Math.min(pp.getY(i), -0.4));
+  g.computeVertexNormals(); const nn = g.attributes.normal; for (let i = 0; i < nn.count; i++) nn.setXYZ(i, -nn.getX(i), -nn.getY(i), -nn.getZ(i));
+  bakeVertexLight(g, lights, [0.008, 0.009, 0.009]);
+  const m = new THREE.Mesh(g, rockMaterial(app, { tint: [0.06, 0.055, 0.05], wet: 1.0, scale: 0.4 })); m.material.side = THREE.BackSide; scene.add(m);
+}
+{ // decks: south and east, 0.55 m above the water, rough basalt slabs; boulders along the pool edge
+  const parts = [];
+  const deck = (x0, x1, z0, z1) => { let g = new THREE.BoxGeometry(x1 - x0, 1.2, z1 - z0, 24, 2, 12); g = lumpify(g, 0.12, 0.8, 21, 3); g.translate((x0 + x1) / 2, 0.55 - 0.6, (z0 + z1) / 2); parts.push(g); };
+  deck(-18.6, 18.6, pZ1 + 0.1, 17.6); deck(pX1 + 0.2, 18.6, -17.6, pZ1 + 0.2); deck(-18.6, pX0 - 0.1, -17.6, pZ1 + 0.2);
+  const rnd = mulberry(8);
+  for (let k = 0; k < 26; k++) { const side = k % 3; const r = 0.6 + rnd() * 1.2; let g = new THREE.IcosahedronGeometry(r, 2); g = lumpify(g, r * 0.25, 1.2 / r, k, 3);
+    const t = rnd(); const x = side === 0 ? pX0 + t * (pX1 - pX0) : (side === 1 ? pX0 + 0.3 : pX1 - 0.3), z = side === 0 ? pZ1 - 0.3 : pZ0 + 2 + t * (pZ1 - pZ0 - 2);
+    g.scale(1.2, 0.7, 1.0); g.translate(x, 0.05, z); parts.push(g); }
+  // rocks at the foot of the falls (concept 19)
+  for (let k = 0; k < 9; k++) { const r = 1.0 + rnd() * 1.4; let g = new THREE.IcosahedronGeometry(r, 2); g = lumpify(g, r * 0.3, 1 / r, 40 + k, 3); g.translate(X0 - 3 + rnd() * 2 + (k > 4 ? X1 - X0 + 4 : 0), 0.2, LIP_Z + 1 + rnd() * 2.5); parts.push(g); }
+  import('three/addons/utils/BufferGeometryUtils.js').then(({ mergeGeometries }) => {
+    let g = mergeGeometries(parts.map(p => { p.deleteAttribute('uv'); p.deleteAttribute('normal'); return p.index ? p.toNonIndexed() : p; }));
+    g = mergeVertices(g, 1e-3); g.computeVertexNormals(); bakeVertexLight(g, lights, [0.008, 0.009, 0.009]);
+    scene.add(new THREE.Mesh(g, rockMaterial(app, { tint: [0.055, 0.05, 0.046], wet: 1.1, scale: 0.9 })));
+  });
+}
+{ const g = new THREE.PlaneGeometry(pX1 - pX0, pZ1 - pZ0, 1, 1); g.rotateX(-Math.PI / 2); g.translate((pX0 + pX1) / 2, WY, (pZ0 + pZ1) / 2);
+  scene.add(new THREE.Mesh(g, waterMaterial(app, { glow: [0.0, 0.075, 0.068], rough: 2.2 }))); }
+// stand-in curtain: ballistic card, texture V = time of flight so the streaks accelerate like the water
+{
+  const g = new THREE.PlaneGeometry(X1 - X0, DROP, 24, 40); const pp = g.attributes.position;
+  for (let i = 0; i < pp.count; i++) { const x = pp.getX(i) + (X0 + X1) / 2, y = pp.getY(i) + DROP / 2; const drop = LIP_Y - y; const tf = Math.sqrt(Math.max(0, 2 * drop / 9.81));
+    pp.setXYZ(i, x, y, LIP_Z + 0.9 * tf + 0.15 * Math.sin(x * 0.9)); }
+  g.computeVertexNormals();
+  const m = app.mistMaterial({
+    uniforms: { uLipY: { value: LIP_Y } }, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+    vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+    fragmentShader: `uniform sampler2D tNoise; uniform float uTime; uniform float uLipY; varying vec3 vW;
+      void main(){
+        float drop = max(uLipY - vW.y, 0.0); float tf = sqrt(2.0*drop/9.81);
+        float s1 = texture(tNoise, vec2(vW.x*0.35, (tf - uTime)*0.55)).g, s2 = texture(tNoise, vec2(vW.x*0.9 + 0.3, (tf - uTime)*1.1)).a;
+        float s3 = texture(tNoise, vec2(vW.x*2.3 + 0.7, (tf - uTime)*2.4)).g;
+        float strands = smoothstep(0.42, 0.8, s1*0.55 + s2*0.35 + s3*0.3 + tf*0.1);
+        float a = clamp(strands*(0.12 + 0.22*tf) + 0.04, 0.0, 0.75);
+        vec3 col = vec3(0.8, 0.88, 0.9)*(0.7 + 0.9*strands) + vec3(1.0, 0.6, 0.3)*0.25*(1.0 - strands);
+        vec4 c = mistApplyPM(vec4(col*a, a), vW);
+        gl_FragColor = c;
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+      }`,
+  });
+  scene.add(new THREE.Mesh(g, m));
+}
+const lanternMat = emissiveMaterial(app, [1.0, 0.42, 0.13], 1.3);
+for (const l of lights.slice(2)) { const m = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.5, 0.32), lanternMat); m.position.set(...l.pos); scene.add(m); }
+
+// unsteady spray: puffs along the impact line every ~0.35 s (seeded from the time, so clips are repeatable)
+let nextPuff = 0; const pr = mulberry(77);
+app.update = (t) => {
+  if (t >= nextPuff) {
+    nextPuff = t + 0.25 + pr() * 0.3;
+    const x = X0 + 0.5 + pr() * (X1 - X0 - 1);
+    zone.event({ x, z: IMPACT_Z + pr() * 1.5, r: 1.3 + pr(), dur: 1.6, dens: 2.2, heat: 2, div: 2.5, vz: 2.5 + pr() * 2, vx: (pr() - 0.5) * 2 });
+  }
+};
+app.start();
+</script>
+</body>
+</html>

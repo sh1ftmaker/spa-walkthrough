@@ -21,9 +21,9 @@
     "name": "Material library",
     "role": "library.blend, ~26 materials, KTX2 textures, previews",
     "model": "opus",
-    "status": "done",
-    "last": "26 materials, previews, sheet. KTX2 encode blocked: running the downloaded KTX-Software binary needs owner approval",
-    "updated": "2026-10-26T22:50:37Z"
+    "status": "running",
+    "last": "Round-1 rework: rebuilding the library on the Codex texture plates (seamless, height/normal/ORM derived) + rig fixes; then KTX2 encode",
+    "updated": "2026-10-27T00:47:06Z"
   },
   {
     "id": "webapp",
@@ -33,9 +33,9 @@
     "name": "Web runtime",
     "role": "Vite + three.js runtime, asset contract, walk mode, tiers, fog/water/mirror",
     "model": "opus",
-    "status": "running",
-    "last": "Started: scaffold + stand-in scene from layout.json",
-    "updated": "2026-10-26T22:17:42Z"
+    "status": "done",
+    "last": "Runtime done on the stand-in: walk/BVH, tiers, fog+mist, water, planar mirror, dollhouse, places, HUD; Low worst 74 draws/110k tris/43 MB; interactive 4.6 s (9 Mbit, 4x CPU)",
+    "updated": "2026-10-26T23:23:43Z"
   },
   {
     "id": "lead",
@@ -46,8 +46,8 @@
     "role": "Layout, assembly, bake pipeline, reviews",
     "model": "opus",
     "status": "running",
-    "last": "Metric layout.json drafted; rendering overlays",
-    "updated": "2026-10-26T22:17:42Z"
+    "last": "Graybox review loop (round 2 next), pipeline fixes, coordinating research + asset list",
+    "updated": "2026-10-27T00:47:06Z"
   },
   {
     "id": "spaces-gs",
@@ -57,9 +57,9 @@
     "name": "Space files: Ground + Summit",
     "role": "Intent/rules space files (hero, sightlines, cameras, lights, dressing)",
     "model": "opus",
-    "status": "running",
-    "last": "Fix round: iterating rules until placement checks pass (isolated runs)",
-    "updated": "2026-10-26T22:59:09Z"
+    "status": "done",
+    "last": "Round-1 fixes applied: all 16 spaces pass; expected scores up from ~1-2 to ~3 (s_spring ~4)",
+    "updated": "2026-10-27T00:29:41Z"
   },
   {
     "id": "spaces-b1",
@@ -70,8 +70,8 @@
     "role": "Intent/rules space files (hero, sightlines, cameras, lights, dressing)",
     "model": "opus",
     "status": "running",
-    "last": "Fix round: iterating rules until placement checks pass (isolated runs)",
-    "updated": "2026-10-26T22:59:09Z"
+    "last": "Applying graybox review round 1 as rule changes",
+    "updated": "2026-10-26T23:32:13Z"
   },
   {
     "id": "spaces-b2b4",
@@ -81,9 +81,9 @@
     "name": "Space files: B2 + B4",
     "role": "Intent/rules space files (hero, sightlines, cameras, lights, dressing)",
     "model": "opus",
-    "status": "running",
-    "last": "Fix round: iterating rules until placement checks pass (isolated runs)",
-    "updated": "2026-10-26T22:59:09Z"
+    "status": "done",
+    "last": "Round-1 fixes applied: 10/10 pass; slatted Kawagiri deck + down camera",
+    "updated": "2026-10-27T00:47:06Z"
   },
   {
     "id": "spaces-b3",
@@ -94,8 +94,8 @@
     "role": "Intent/rules space files (hero, sightlines, cameras, lights, dressing)",
     "model": "opus",
     "status": "running",
-    "last": "Fix round: iterating rules until placement checks pass (isolated runs)",
-    "updated": "2026-10-26T22:59:09Z"
+    "last": "Applying graybox review round 1 as rule changes",
+    "updated": "2026-10-26T23:32:13Z"
   },
   {
     "id": "water-research",
@@ -105,9 +105,9 @@
     "name": "Water research",
     "role": "Cheap + beautiful animated water: white water, falls, waves, bubbling pools; prototypes",
     "model": "opus",
-    "status": "running",
-    "last": "Started: surveying techniques (flow maps, VAT, Gerstner/FFT, SWE, SPH, particles) + building 3 prototypes",
-    "updated": "2026-10-26T22:57:40Z"
+    "status": "done",
+    "last": "Round 2: GPU sheet sim falls, advected foam, curling breakers (partial), laminar refractive curtain, lit droplet spray; WebGPU fluid experiment",
+    "updated": "2026-10-27T00:34:08Z"
   },
   {
     "id": "sound-research",
@@ -117,8 +117,154 @@
     "name": "Sound & ambience research",
     "role": "Water/wind/chime/lava soundscape design, Web Audio architecture, procedural vs CC0, playable demo",
     "model": "opus",
+    "status": "done",
+    "last": "Round 3: CC0 anchors (Thunder Curtain, B2 river, sea cave) layered under procedural beds; surf irregular; peaks <= -1.5 dBTP",
+    "updated": "2026-10-27T00:39:43Z"
+  },
+  {
+    "id": "review-mat-r1",
+    "outputs": [
+      "3d/reviews/materials/r1.json"
+    ],
+    "name": "Material review r1",
+    "role": "Independent review of all 26 materials vs concept art (likeness, richness, tiling, phone fitness)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 scored 29 entries (mostly 1-3/5); root cause: detail only in normals; priorities set",
+    "updated": "2026-10-26T23:12:31Z"
+  },
+  {
+    "id": "review-gb-r1-ground_a",
+    "outputs": [
+      "3d/reviews/r1/"
+    ],
+    "name": "Graybox review r1: ground_a",
+    "role": "Independent eye-level review vs concept art (rubric, scores, fixes)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 reviewed; most spaces 1-3/5; key cross-cutting issue: heroes not brightest, lanterns too bright, rails missing",
+    "updated": "2026-10-26T23:30:35Z"
+  },
+  {
+    "id": "review-gb-r1-ground_b",
+    "outputs": [
+      "3d/reviews/r1/"
+    ],
+    "name": "Graybox review r1: ground_b",
+    "role": "Independent eye-level review vs concept art (rubric, scores, fixes)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 reviewed; most spaces 1-3/5; key cross-cutting issue: heroes not brightest, lanterns too bright, rails missing",
+    "updated": "2026-10-26T23:30:35Z"
+  },
+  {
+    "id": "review-gb-r1-summit",
+    "outputs": [
+      "3d/reviews/r1/"
+    ],
+    "name": "Graybox review r1: summit",
+    "role": "Independent eye-level review vs concept art (rubric, scores, fixes)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 reviewed; most spaces 1-3/5; key cross-cutting issue: heroes not brightest, lanterns too bright, rails missing",
+    "updated": "2026-10-26T23:30:35Z"
+  },
+  {
+    "id": "review-gb-r1-b1_west",
+    "outputs": [
+      "3d/reviews/r1/"
+    ],
+    "name": "Graybox review r1: b1_west",
+    "role": "Independent eye-level review vs concept art (rubric, scores, fixes)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 reviewed",
+    "updated": "2026-10-26T23:31:08Z"
+  },
+  {
+    "id": "review-gb-r1-b1_east",
+    "outputs": [
+      "3d/reviews/r1/"
+    ],
+    "name": "Graybox review r1: b1_east",
+    "role": "Independent eye-level review vs concept art (rubric, scores, fixes)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 reviewed; most spaces 1-3/5; key cross-cutting issue: heroes not brightest, lanterns too bright, rails missing",
+    "updated": "2026-10-26T23:30:35Z"
+  },
+  {
+    "id": "review-gb-r1-b2",
+    "outputs": [
+      "3d/reviews/r1/"
+    ],
+    "name": "Graybox review r1: b2",
+    "role": "Independent eye-level review vs concept art (rubric, scores, fixes)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 reviewed",
+    "updated": "2026-10-27T00:47:06Z"
+  },
+  {
+    "id": "review-gb-r1-b3_west",
+    "outputs": [
+      "3d/reviews/r1/"
+    ],
+    "name": "Graybox review r1: b3_west",
+    "role": "Independent eye-level review vs concept art (rubric, scores, fixes)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 reviewed",
+    "updated": "2026-10-26T23:31:08Z"
+  },
+  {
+    "id": "review-gb-r1-b3_east_b4",
+    "outputs": [
+      "3d/reviews/r1/"
+    ],
+    "name": "Graybox review r1: b3_east_b4",
+    "role": "Independent eye-level review vs concept art (rubric, scores, fixes)",
+    "model": "opus",
+    "status": "done",
+    "last": "Round 1 reviewed; most spaces 1-3/5; key cross-cutting issue: heroes not brightest, lanterns too bright, rails missing",
+    "updated": "2026-10-26T23:30:35Z"
+  },
+  {
+    "id": "mist-research",
+    "outputs": [
+      "3d/research/mist/"
+    ],
+    "name": "Mist simulation",
+    "role": "Cheap 2D stable-fluids (Navier-Stokes) low mist in a Web Worker, coupled to the fog shader; walk-through wake",
+    "model": "opus",
     "status": "running",
-    "last": "Started: researching + building a walk-through sound demo",
-    "updated": "2026-10-26T22:59:09Z"
+    "last": "Started: research + worker solver + 3 prototypes (mist corridor, steam pool, falls base)",
+    "updated": "2026-10-26T23:54:20Z"
+  },
+  {
+    "id": "shader-research",
+    "outputs": [
+      "3d/research/shaders/"
+    ],
+    "name": "Material shaders / anti-tiling",
+    "role": "Hex/stochastic tiling, macro+detail, triplanar, procedural shaders for most materials; demo + per-material recommendation",
+    "model": "opus",
+    "status": "running",
+    "last": "Started: research (Heitz-Neyret, Mikkelsen hex-tiling, iq) + shader kit + comparison demo",
+    "updated": "2026-10-27T00:36:57Z"
+  },
+  {
+    "id": "asset-list",
+    "outputs": [
+      "3d/asset_list.csv",
+      "3d/asset_list.xlsx",
+      "3d/asset_list_notes.md"
+    ],
+    "name": "Master asset list",
+    "role": "100-200 parametric assets from each location reference (spreadsheet incl. animation), concept-sheet grouping",
+    "model": "opus",
+    "status": "running",
+    "last": "Started: reading concept art, Codex sheets, space files, placements",
+    "updated": "2026-10-27T00:45:44Z"
   }
 ]

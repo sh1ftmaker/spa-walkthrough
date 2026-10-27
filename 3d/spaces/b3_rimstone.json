@@ -461,11 +461,15 @@
   "asset": "rimstone_terrace",
   "at": [
    64,
-   45,
-   -63.5
+   46,
+   -63.45
   ],
-  "facing_deg": 141,
+  "facing_deg": 0,
   "dims": {
+   "w": 3.0,
+   "d": 3.0,
+   "h": 1.0,
+   "proxy_note": "proxy = one mid-slope tray (the field is the generator); flow axis NW->SE given by axis",
    "tiers": 13,
    "field": [
     [
@@ -520,9 +524,8 @@
    "id": "overlook_pavilion",
    "asset": "pavilion_engawa",
    "at": [
-    73,
-    61.5,
-    -61.5
+    82,
+    55
    ],
    "facing_deg": 225,
    "dims": {
@@ -530,17 +533,7 @@
     "d": 4.5,
     "h": 4.0
    },
-   "why": "Concept 18's timber pavilion with railings at the terrace edge: a rest/tea pavilion on the NE shelf looking SW over the tiers, beside the walk_north landing."
-  },
-  {
-   "id": "stair_railings",
-   "asset": "railing",
-   "along": "stair:rimstone_stair",
-   "side": "both",
-   "dims": {
-    "h": 1.0
-   },
-   "why": "Both sides of all 4 runs and 3 landings; gaps at each landing give step-in access to the adjacent tier."
+   "why": "Concept 18's timber pavilion with railings at the terrace edge: a rest/tea pavilion on the east ledge above the lower stair, looking SW over the tiers (kept out of the reveal view from walk_north)."
   },
   {
    "id": "tier_steps",
@@ -575,22 +568,420 @@
    "why": "Short step-ins from each stair landing down into the neighbouring tier: you choose your temperature at the landing."
   },
   {
-   "id": "shelf_railing",
+   "id": "stair_rail_e",
    "asset": "railing",
-   "along": [
+   "snap": "given",
+   "at": [
     [
-     60.5,
-     63.0
+     51.46,
+     64.19,
+     -59.49
     ],
     [
-     65.5,
-     64.6
+     52.93,
+     63.89,
+     -59.49
+    ],
+    [
+     54.4,
+     63.6,
+     -60.002
+    ],
+    [
+     55.87,
+     63.3,
+     -60.854
+    ],
+    [
+     57.34,
+     63.01,
+     -61.706
+    ],
+    [
+     58.18,
+     62.49,
+     -61.877
+    ],
+    [
+     59.38,
+     61.59,
+     -61.877
+    ],
+    [
+     60.58,
+     60.69,
+     -61.877
+    ],
+    [
+     61.78,
+     59.79,
+     -61.877
+    ],
+    [
+     62.98,
+     58.89,
+     -61.877
+    ],
+    [
+     64.18,
+     57.99,
+     -61.877
+    ],
+    [
+     65.31,
+     57.14,
+     -61.877
+    ],
+    [
+     66.32,
+     56.12,
+     -62.218
+    ],
+    [
+     67.38,
+     55.06,
+     -63.071
+    ],
+    [
+     68.44,
+     54.0,
+     -63.84
+    ],
+    [
+     69.5,
+     52.94,
+     -63.84
+    ],
+    [
+     70.56,
+     51.88,
+     -63.84
+    ],
+    [
+     71.62,
+     50.82,
+     -64.264
+    ],
+    [
+     72.68,
+     49.76,
+     -64.264
+    ],
+    [
+     73.44,
+     48.8,
+     -64.264
+    ],
+    [
+     74.21,
+     47.51,
+     -64.264
+    ],
+    [
+     74.98,
+     46.23,
+     -64.264
+    ],
+    [
+     75.75,
+     44.94,
+     -64.44
+    ],
+    [
+     76.52,
+     43.66,
+     -65.34
+    ],
+    [
+     77.3,
+     42.37,
+     -65.34
+    ],
+    [
+     78.07,
+     41.08,
+     -65.84
+    ],
+    [
+     78.84,
+     39.8,
+     -65.84
+    ],
+    [
+     79.5,
+     38.55,
+     -65.84
+    ],
+    [
+     80.17,
+     37.2,
+     -66.34
+    ],
+    [
+     80.84,
+     35.86,
+     -66.34
+    ],
+    [
+     81.51,
+     34.52,
+     -66.34
+    ],
+    [
+     82.18,
+     33.18,
+     -66.651
     ]
+   ],
+   "facing_deg": [
+    191.3,
+    191.3,
+    191.3,
+    191.3,
+    191.3,
+    216.9,
+    216.9,
+    216.9,
+    216.9,
+    216.9,
+    216.9,
+    221.6,
+    225.0,
+    225.0,
+    225.0,
+    225.0,
+    225.0,
+    225.0,
+    225.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    243.4,
+    243.4,
+    243.4,
+    243.4,
+    243.4
    ],
    "dims": {
     "h": 1.0
    },
-   "why": "Edge of the NE shelf over the top tiers."
+   "why": "Outer side of the rimstone stair, on the treads."
+  },
+  {
+   "id": "stair_rail_w",
+   "asset": "railing",
+   "snap": "given",
+   "at": [
+    [
+     50.42,
+     66.64,
+     -59.49
+    ],
+    [
+     51.89,
+     66.34,
+     -59.49
+    ],
+    [
+     53.36,
+     66.05,
+     -59.49
+    ],
+    [
+     54.83,
+     65.75,
+     -60.002
+    ],
+    [
+     56.31,
+     65.46,
+     -60.854
+    ],
+    [
+     57.78,
+     65.17,
+     -61.706
+    ],
+    [
+     59.5,
+     64.25,
+     -61.84
+    ],
+    [
+     60.7,
+     63.35,
+     -61.877
+    ],
+    [
+     61.9,
+     62.45,
+     -61.877
+    ],
+    [
+     63.1,
+     61.55,
+     -61.877
+    ],
+    [
+     64.3,
+     60.65,
+     -61.877
+    ],
+    [
+     65.5,
+     59.75,
+     -61.877
+    ],
+    [
+     66.77,
+     58.79,
+     -61.877
+    ],
+    [
+     67.88,
+     57.68,
+     -62.218
+    ],
+    [
+     68.94,
+     56.62,
+     -63.071
+    ],
+    [
+     70.0,
+     55.56,
+     -63.84
+    ],
+    [
+     71.06,
+     54.5,
+     -63.84
+    ],
+    [
+     72.12,
+     53.44,
+     -63.84
+    ],
+    [
+     73.18,
+     52.38,
+     -64.264
+    ],
+    [
+     74.24,
+     51.32,
+     -64.264
+    ],
+    [
+     75.32,
+     49.93,
+     -63.94
+    ],
+    [
+     76.09,
+     48.65,
+     -64.264
+    ],
+    [
+     76.87,
+     47.36,
+     -64.264
+    ],
+    [
+     77.64,
+     46.07,
+     -64.605
+    ],
+    [
+     78.41,
+     44.79,
+     -65.34
+    ],
+    [
+     79.18,
+     43.5,
+     -65.34
+    ],
+    [
+     79.95,
+     42.22,
+     -65.84
+    ],
+    [
+     80.73,
+     40.93,
+     -65.84
+    ],
+    [
+     81.47,
+     39.53,
+     -65.84
+    ],
+    [
+     82.14,
+     38.19,
+     -66.34
+    ],
+    [
+     82.81,
+     36.85,
+     -66.34
+    ],
+    [
+     83.48,
+     35.5,
+     -65.94
+    ],
+    [
+     84.15,
+     34.16,
+     -66.651
+    ]
+   ],
+   "facing_deg": [
+    191.3,
+    191.3,
+    191.3,
+    191.3,
+    191.3,
+    191.3,
+    216.9,
+    216.9,
+    216.9,
+    216.9,
+    216.9,
+    216.9,
+    221.6,
+    225.0,
+    225.0,
+    225.0,
+    225.0,
+    225.0,
+    225.0,
+    225.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    239.0,
+    243.4,
+    243.4,
+    243.4,
+    243.4,
+    243.4
+   ],
+   "dims": {
+    "h": 1.0
+   },
+   "why": "Terrace side of the rimstone stair, with gaps at the step-ins."
   }
  ],
  "water": [
@@ -742,7 +1133,7 @@
    "pos": [
     51,
     65.6,
-    -58.78
+    -57.9
    ],
    "target": [
     70,
@@ -755,7 +1146,7 @@
    "pos": [
     58,
     64,
-    -59.75
+    -60.25
    ],
    "target": [
     70,
@@ -766,14 +1157,14 @@
   },
   "concept": {
    "pos": [
-    77,
-    45,
-    -63.41
+    66,
+    58,
+    -60.29
    ],
    "target": [
-    56,
-    60,
-    -60.5
+    62,
+    36,
+    -66
    ],
    "fov_v": 55,
    "image": "lookbook/img/18-rimstone-terraces.jpg",
@@ -783,26 +1174,218 @@
  "lights": [
   {
    "asset": "pool_uplight",
-   "scatter": "area",
-   "area": "water:w_rimstone",
-   "density": 0.012,
-   "min_dist": 3.0,
-   "why": "Each tier glows teal from below: the hero outshines everything."
+   "at": [
+    [
+     55.54,
+     51.96,
+     -63.1
+    ],
+    [
+     54.39,
+     36.41,
+     -64.6
+    ],
+    [
+     69.97,
+     43.61,
+     -65.1
+    ],
+    [
+     64.69,
+     44.83,
+     -64.6
+    ],
+    [
+     57.38,
+     56.24,
+     -63.1
+    ],
+    [
+     62.61,
+     31.87,
+     -65.6
+    ],
+    [
+     62.56,
+     50.47,
+     -63.2
+    ],
+    [
+     55.98,
+     30.19,
+     -65.1
+    ],
+    [
+     54.0,
+     58.71,
+     -62.6
+    ],
+    [
+     66.21,
+     51.84,
+     -64.1
+    ],
+    [
+     58.16,
+     36.29,
+     -64.2
+    ],
+    [
+     52.33,
+     39.67,
+     -64.1
+    ],
+    [
+     59.47,
+     42.4,
+     -63.7
+    ],
+    [
+     76.96,
+     33.96,
+     -66.6
+    ],
+    [
+     60.4,
+     28.45,
+     -65.6
+    ],
+    [
+     73.4,
+     39.62,
+     -65.6
+    ],
+    [
+     68.48,
+     37.82,
+     -65.6
+    ],
+    [
+     54.98,
+     45.71,
+     -63.6
+    ],
+    [
+     62.08,
+     55.46,
+     -62.7
+    ],
+    [
+     79.44,
+     30.14,
+     -67.1
+    ],
+    [
+     52.47,
+     32.77,
+     -64.6
+    ],
+    [
+     63.03,
+     40.27,
+     -64.2
+    ],
+    [
+     69.12,
+     28.77,
+     -65.7
+    ],
+    [
+     71.74,
+     34.82,
+     -66.1
+    ],
+    [
+     66.56,
+     31.88,
+     -66.1
+    ],
+    [
+     73.9,
+     31.39,
+     -66.6
+    ],
+    [
+     69.29,
+     48.97,
+     -64.6
+    ],
+    [
+     65.13,
+     35.52,
+     -65.6
+    ],
+    [
+     58.63,
+     48.19,
+     -63.6
+    ],
+    [
+     52.81,
+     48.74,
+     -63.1
+    ]
+   ],
+   "why": "Uplights on each tray floor (graybox heights): the terraces glow teal and are the brightest field."
   },
   {
    "asset": "lantern_floor",
-   "along": "water:w_rimstone",
-   "snap": "water_edge",
-   "spacing": [
-    6,
-    9
+   "at": [
+    [
+     55.15,
+     60.21
+    ],
+    [
+     52.53,
+     58.05
+    ],
+    [
+     60.67,
+     55.97
+    ],
+    [
+     58.04,
+     53.81
+    ],
+    [
+     65.66,
+     51.3
+    ],
+    [
+     63.03,
+     49.14
+    ],
+    [
+     70.38,
+     46.41
+    ],
+    [
+     67.75,
+     44.25
+    ],
+    [
+     73.94,
+     40.57
+    ],
+    [
+     71.32,
+     38.41
+    ],
+    [
+     76.97,
+     34.28
+    ],
+    [
+     74.34,
+     32.12
+    ]
    ],
+   "height": 0,
    "scale": [
     0.6,
-    0.8
+    0.75
    ],
-   "rule": "rims of every other tier only",
-   "why": "Lantern dots on the rims (concept 18), alternating lit and dark tiers so the slope reads as rhythm, not a carpet."
+   "why": "Lanterns on the rims of every other tier, at the stair side (18): a rhythm down the slope, dark tiers between."
   },
   {
    "asset": "lantern_post",
@@ -810,70 +1393,107 @@
    "side": "right",
    "spacing": [
     5,
-    7
+    8
    ],
    "offset": 1.5,
    "face": "path",
+   "height": 0,
    "avoid": [
-    "portals"
+    "portals",
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      51,
+      65.6
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      58,
+      64
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      66,
+      58
+     ],
+     "r": 2.6
+    }
    ],
-   "why": "Row down the outer (NE) side of the stair leading toward the tube mouth."
+   "why": "Outer side of the stair leading down to the tube mouth."
   },
   {
    "asset": "lantern_stone",
    "at": [
     [
-     50.5,
-     63.5,
-     -59.6
+     85.8,
+     34.4
     ],
     [
      85.8,
-     34.4,
-     -67.0
-    ],
-    [
-     85.8,
-     29.6,
-     -67.0
+     29.6
     ]
    ],
-   "why": "Mark the throat and both sides of the tube mouth."
+   "height": 0,
+   "why": "Both sides of the tube mouth: the next space's door glows."
   },
   {
    "asset": "lantern_hanging",
    "at": [
     [
-     73,
-     61.5,
-     -58.0
+     82,
+     55,
+     -61.45
     ]
    ],
-   "cluster": true,
-   "why": "Pavilion eaves cluster, warm counterpoint on the NE shelf."
+   "why": "Pavilion eaves."
   }
  ],
  "dressing": [
-  {
-   "asset": "boulder_rim",
-   "along": "water:w_rimstone",
-   "side": "out",
-   "spacing": [
-    1.5,
-    3.0
-   ],
-   "offset": 0.3,
-   "embed": 0.3,
-   "scale": [
-    0.6,
-    1.4
-   ],
-   "rule": "outer field boundary only",
-   "avoid": [
-    "nav",
-    "stair"
-   ]
-  },
   {
    "asset": "pine_bonsai",
    "at": [
@@ -894,7 +1514,8 @@
     ]
    ],
    "embed": 0.2,
-   "why": "Single pines on rock islands between tiers (concept 18)."
+   "why": "Single pines on rock islands between tiers (concept 18).",
+   "height": 0
   },
   {
    "asset": "rock_cluster",
@@ -907,7 +1528,77 @@
    "avoid": [
     "nav",
     "portals",
-    "water"
+    "water",
+    "stairs",
+    {
+     "poly": [
+      [
+       60,
+       62
+      ],
+      [
+       87,
+       62
+      ],
+      [
+       87,
+       75
+      ],
+      [
+       60,
+       75
+      ]
+     ]
+    },
+    {
+     "near": [
+      82,
+      55
+     ],
+     "r": 4.5
+    },
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    }
    ]
   },
   {
@@ -919,7 +1610,51 @@
     6
    ],
    "density": 0.01,
-   "why": "Only near the west and south walls; the middle of the vault stays clear (b3_cavern)."
+   "why": "Only near the west and south walls; the middle of the vault stays clear (b3_cavern).",
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    }
+   ]
   }
  ],
  "mood": {
@@ -928,5 +1663,15 @@
   "mist": "steam rising off every tier, thickest at the top (40 °C)"
  },
  "waivers": [],
- "layout_issues": []
+ "layout_issues": [],
+ "allow_overlap": [
+  [
+   "railing",
+   "railing"
+  ]
+ ],
+ "allow_overlap_why": "Rail pieces meet at the stair bends.",
+ "lead_requests": [
+  "graybox: shape the rimstone trays as scalloped bowls with a visible spill lip (now flat parallel lanes)."
+ ]
 }

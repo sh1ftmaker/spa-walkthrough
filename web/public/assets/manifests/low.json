@@ -2,7 +2,7 @@
  "contract": 1,
  "tier": "low",
  "source": "standin",
- "generated": "2026-10-26T22:46:51.349Z",
+ "generated": "2026-10-26T23:18:31.482Z",
  "layout_sha": null,
  "coords": {
   "gltf": "three Y-up (X=x, Y=z, Z=-y)",
@@ -18,40 +18,46 @@
  },
  "textures": {
   "stone_floor": {
-   "uri": "tex/192705f106e0d6b2.ktx2",
+   "uri": "tex/8b471427b7e576b2.ktx2",
    "colorSpace": "srgb",
    "width": 512,
-   "height": 512
+   "height": 512,
+   "codec": "etc1s"
   },
   "basalt": {
-   "uri": "tex/2ea5c0b61eddf3f8.ktx2",
+   "uri": "tex/ca743493832f7eea.ktx2",
    "colorSpace": "srgb",
    "width": 512,
-   "height": 512
+   "height": 512,
+   "codec": "etc1s"
   },
   "rock_ceiling": {
-   "uri": "tex/07a800d94b3e739a.ktx2",
+   "uri": "tex/bfa7632dfe3c9979.ktx2",
    "colorSpace": "srgb",
    "width": 512,
-   "height": 512
+   "height": 512,
+   "codec": "etc1s"
   },
   "wood": {
-   "uri": "tex/78a55f201bd5ab6e.ktx2",
+   "uri": "tex/527d59eee991e440.ktx2",
    "colorSpace": "srgb",
    "width": 512,
-   "height": 512
+   "height": 512,
+   "codec": "etc1s"
   },
   "pool_tile": {
-   "uri": "tex/4e027c2a3217647d.ktx2",
+   "uri": "tex/29a5fd4718d5f208.ktx2",
    "colorSpace": "srgb",
    "width": 512,
-   "height": 512
+   "height": 512,
+   "codec": "etc1s"
   },
   "plaster": {
-   "uri": "tex/430612da0ea76847.ktx2",
+   "uri": "tex/c35b0b188bdc9dd4.ktx2",
    "colorSpace": "srgb",
    "width": 512,
-   "height": 512
+   "height": 512,
+   "codec": "etc1s"
   },
   "water_normal": {
    "uri": "tex/5f0ce0dcfc2c9205.ktx2",
@@ -174,7 +180,7 @@
     0.62,
     0.3
    ],
-   "emissiveIntensity": 6,
+   "emissiveIntensity": 4,
    "lightmap": false
   },
   "water": {
@@ -216,9 +222,9 @@
    ],
    "parts": [
     {
-     "uri": "parts/8337395d1c6c5a41.glb",
-     "bytes": 137072,
-     "tris": 4308
+     "uri": "parts/0bc6f9dc75ce3098.glb",
+     "bytes": 137996,
+     "tris": 4344
     }
    ],
    "walk": {
@@ -229,7 +235,7 @@
    "lightmaps": [
     {
      "id": "lm_ground",
-     "uri": "tex/f9987738bbcf382e.ktx2",
+     "uri": "tex/413668ca767669cf.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -468,20 +474,20 @@
    ],
    "parts": [
     {
-     "uri": "parts/ff80e021deb11f44.glb",
-     "bytes": 170296,
-     "tris": 5872
+     "uri": "parts/6449c77a52719e9c.glb",
+     "bytes": 171108,
+     "tris": 5900
     }
    ],
    "walk": {
-    "uri": "parts/5718f92ae9342e17.glb",
-    "bytes": 15372,
-    "tris": 4172
+    "uri": "parts/c376c73b7dd140be.glb",
+    "bytes": 15428,
+    "tris": 4200
    },
    "lightmaps": [
     {
      "id": "lm_b1",
-     "uri": "tex/800e12d510376b84.ktx2",
+     "uri": "tex/7ee4cd39df8f54c6.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -601,13 +607,13 @@
      "id": "probe_b1_grotto",
      "space": "b1_grotto",
      "center": [
-      56.87,
-      98.06,
+      57.1,
+      98.67,
       -18.4
      ],
      "box_min": [
       40,
-      82,
+      83.5,
       -20.3
      ],
      "box_max": [
@@ -798,20 +804,20 @@
    ],
    "parts": [
     {
-     "uri": "parts/1b58a9d2b2d04497.glb",
-     "bytes": 350560,
-     "tris": 12182
+     "uri": "parts/92540053339b69bf.glb",
+     "bytes": 350748,
+     "tris": 12194
     }
    ],
    "walk": {
-    "uri": "parts/27e86ad3b5169ab6.glb",
-    "bytes": 35388,
-    "tris": 10284
+    "uri": "parts/854489ebea0dd272.glb",
+    "bytes": 35312,
+    "tris": 10272
    },
    "lightmaps": [
     {
      "id": "lm_b2",
-     "uri": "tex/8038e7e5ca674588.ktx2",
+     "uri": "tex/a849e1def682bc59.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -996,6 +1002,7 @@
     "b3_shore",
     "b3_wave",
     "b3_walk_north",
+    "b3_falls_east",
     "b3_falls_gallery"
    ],
    "bounds": [
@@ -1006,20 +1013,20 @@
    ],
    "parts": [
     {
-     "uri": "parts/b23c0699daad8bb5.glb",
-     "bytes": 547016,
-     "tris": 18969
+     "uri": "parts/fb3b6c7ad809c06f.glb",
+     "bytes": 550228,
+     "tris": 19041
     }
    ],
    "walk": {
-    "uri": "parts/e014cec37bbb1e1d.glb",
-    "bytes": 55628,
-    "tris": 16206
+    "uri": "parts/08cc7c7c903ee1b8.glb",
+    "bytes": 55072,
+    "tris": 16101
    },
    "lightmaps": [
     {
      "id": "lm_b3",
-     "uri": "tex/7a419e633abc2369.ktx2",
+     "uri": "tex/4a472230d3cdbb8b.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -1204,12 +1211,12 @@
      "center": [
       180.97,
       38.58,
-      -66.4
+      -69.4
      ],
      "box_min": [
       160,
       14,
-      -68.3
+      -71.3
      ],
      "box_max": [
       200,
@@ -1236,6 +1243,27 @@
       78,
       72,
       -58
+     ],
+     "cubemap": null,
+     "intensity": 0.6
+    },
+    {
+     "id": "probe_b3_falls_east",
+     "space": "b3_falls_east",
+     "center": [
+      42,
+      57.25,
+      -57.9
+     ],
+     "box_min": [
+      38,
+      40,
+      -59.8
+     ],
+     "box_max": [
+      46,
+      74.5,
+      -32
      ],
      "cubemap": null,
      "intensity": 0.6
@@ -1289,8 +1317,8 @@
    ],
    "parts": [
     {
-     "uri": "parts/21e63851a487ce3f.glb",
-     "bytes": 52512,
+     "uri": "parts/6a986843adadeb2f.glb",
+     "bytes": 52524,
      "tris": 1472
     }
    ],
@@ -1302,7 +1330,7 @@
    "lightmaps": [
     {
      "id": "lm_b4",
-     "uri": "tex/2568746b2c75d246.ktx2",
+     "uri": "tex/050244fa90675baf.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -1402,20 +1430,20 @@
    ],
    "parts": [
     {
-     "uri": "parts/18a29348c17075e6.glb",
-     "bytes": 54904,
-     "tris": 1454
+     "uri": "parts/04333f57064982ae.glb",
+     "bytes": 56224,
+     "tris": 1514
     }
    ],
    "walk": {
-    "uri": "parts/87da3474c2437149.glb",
-    "bytes": 6472,
-    "tris": 1378
+    "uri": "parts/df3d39ad8b93901e.glb",
+    "bytes": 6620,
+    "tris": 1438
    },
    "lightmaps": [
     {
      "id": "lm_summit",
-     "uri": "tex/f40382371349da89.ktx2",
+     "uri": "tex/ecc5211554059292.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -1430,8 +1458,8 @@
      "id": "probe_s_pool",
      "space": "s_pool",
      "center": [
-      111.25,
-      82.56,
+      110.76,
+      83.69,
       121.6
      ],
      "box_min": [
@@ -1441,7 +1469,7 @@
      ],
      "box_max": [
       142,
-      104,
+      107.236,
       128
      ],
      "cubemap": null,
@@ -1451,8 +1479,8 @@
      "id": "probe_s_spring",
      "space": "s_spring",
      "center": [
-      68,
-      96,
+      65.82,
+      96.21,
       123.1
      ],
      "box_min": [
@@ -1461,7 +1489,7 @@
       121.2
      ],
      "box_max": [
-      80,
+      77,
       106,
       129.5
      ],
@@ -1564,9 +1592,9 @@
    ],
    "parts": [
     {
-     "uri": "parts/1eadccd5a07a834b.glb",
-     "bytes": 492268,
-     "tris": 16404
+     "uri": "parts/a202325311962ee7.glb",
+     "bytes": 498832,
+     "tris": 16620
     }
    ],
    "walk": {
@@ -1577,7 +1605,7 @@
    "lightmaps": [
     {
      "id": "lm_cliff",
-     "uri": "tex/6f8231d1d5c4149b.ktx2",
+     "uri": "tex/0188f4263e4ed93c.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -1863,9 +1891,9 @@
    ],
    "parts": [
     {
-     "uri": "parts/3db068fbc6a6517c.glb",
-     "bytes": 414428,
-     "tris": 10996
+     "uri": "parts/477650f2cab0f48a.glb",
+     "bytes": 427920,
+     "tris": 11488
     }
    ],
    "walk": {
@@ -1876,7 +1904,7 @@
    "lightmaps": [
     {
      "id": "lm_c_spiral_stair",
-     "uri": "tex/1b38364c96aa3aa2.ktx2",
+     "uri": "tex/d49822220dd0c0c7.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -1907,9 +1935,9 @@
    ],
    "parts": [
     {
-     "uri": "parts/4e21d1c6748b838c.glb",
-     "bytes": 231100,
-     "tris": 5980
+     "uri": "parts/1c8c20197e2e245d.glb",
+     "bytes": 237304,
+     "tris": 6160
     }
    ],
    "walk": {
@@ -1920,7 +1948,7 @@
    "lightmaps": [
     {
      "id": "lm_c_lava_stair",
-     "uri": "tex/db3cb57544e2032e.ktx2",
+     "uri": "tex/5d16f7569b1f5cb1.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -1950,9 +1978,9 @@
    ],
    "parts": [
     {
-     "uri": "parts/c4a474cb51acda4a.glb",
-     "bytes": 907032,
-     "tris": 29248
+     "uri": "parts/c31aa74ceddc6ca3.glb",
+     "bytes": 916384,
+     "tris": 29560
     }
    ],
    "walk": {
@@ -1963,7 +1991,7 @@
    "lightmaps": [
     {
      "id": "lm_c_terrace_path",
-     "uri": "tex/a73477dfc470b11b.ktx2",
+     "uri": "tex/6998197012aa2513.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -1987,32 +2015,32 @@
    "spaces": [],
    "bounds": [
     121,
-    107,
+    105,
     143,
     114
    ],
    "parts": [
     {
-     "uri": "parts/b276be8689c023f3.glb",
-     "bytes": 525468,
-     "tris": 17248
+     "uri": "parts/fc0d0730756f3786.glb",
+     "bytes": 525500,
+     "tris": 17332
     }
    ],
    "walk": {
-    "uri": "parts/5721c0f833abdd29.glb",
-    "bytes": 60832,
-    "tris": 17248
+    "uri": "parts/5a7e73e7ad6484af.glb",
+    "bytes": 60512,
+    "tris": 17152
    },
    "lightmaps": [
     {
      "id": "lm_c_cliff_stair_4",
-     "uri": "tex/46e508c92e5f9c5b.ktx2",
+     "uri": "tex/d1d08810112b0cc2.ktx2",
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
      "intensity": 3.141592653589793,
      "width": 64,
-     "height": 16,
+     "height": 32,
      "uv": 1
     }
    ],
@@ -2136,7 +2164,7 @@
     14,
     46,
     39.5,
-    77
+    75.8
    ],
    "planar": false,
    "mist": 0.35,
@@ -2233,7 +2261,7 @@
   }
  ],
  "places": "data/places.json",
- "spaces": "data/aad313e7be7dd2c2.json",
+ "spaces": "data/228894b9a7d4c937.json",
  "budget": {
   "drawCalls": 150,
   "triangles": 500000,

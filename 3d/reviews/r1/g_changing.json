@@ -1,0 +1,79 @@
+{
+ "space": "g_changing",
+ "round": 1,
+ "reviewer": "ground_a_r1",
+ "frames": {
+  "entry": {
+   "focal": "The yukata wall at the end of the axis is an unlit dull brown band; the brightest things are the pendant cubes floating overhead and a floor lantern blocking the bottom-left. The hall is a huge dark void with no compressed corridor visible.",
+   "is_hero": false,
+   "next_visible": "Not really: the exit passage is hidden at right, and the noren on the booths are unlit."
+  },
+  "reveal": {
+   "focal": "The same: floating pendant cubes in a 40 m dark room, with the brown hero slab and robe counter small and dim at the far end.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "concept": {
+   "focal": "Empty grey floor and floating pendants; the hero is a brown strip. Plan 31's warm hinoki rows of booths and lit lockers are absent at eye level.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "strip": {
+   "focal": "Pendant cubes for frames 0-3, then dim walls. Frames 6-7 go into the exit passage, which ends in black.",
+   "is_hero": false,
+   "next_visible": "No: the end of the exit passage shows no sky or east terrace lantern."
+  }
+ },
+ "fixes": [
+  {
+   "id": "g_changing:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The yukata_shelves need an emissive backlit washi/linen face (warm cream) that is the brightest surface in the hall. Today the 14 by 3.4 m slab renders dark brown, so the on-axis reveal fails."
+  },
+  {
+   "id": "lights[2] / lights[3] noren_glow",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "22 'marker' lights emit nothing, so both booth rows are invisible. Give each noren a soft emissive panel at 1.0-2.0 m height. Use spacing [2,2] for the rhythm, but alternate brightness, or light every other one, to get pools and gaps."
+  },
+  {
+   "id": "shell_partitions entry_corridor_n/_s",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The 4 m by 2.8 m entry corridor (x 100-108) does not appear in entry or reveal; the camera sees the full 40 m hall at once. Build the partitions and the low ceiling (shell, lead) so the hall and hero are a reveal."
+  },
+  {
+   "id": "open floor x 110-130, y 56-70",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "About 20 by 14 m of bare floor reads as a gym, not a hushed hinoki hall. Add one mid-ground layer, for example a low hinoki screen line or a long bench island on the axis at about x 122, y 58-66, plus a few towel baskets at the booths (dressing[2] produced 1). Then the pendant row lights[1] has something to hang over."
+  },
+  {
+   "id": "lights[5] (exit)",
+   "action": "move",
+   "dx": 8.5,
+   "dy": -2.2,
+   "deg": 0,
+   "detail": "The single andon at the passage mouth (133.5,72.2) leaves the passage end black. Move it, or add a second one, at the far end, about (142,70), on the east terrace side, so you see where to go; g_east should also show sky or a lantern through the passage."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Make the yukata wall glow (emissive backlit cubbies, brightest in the hall) and build the low entry corridor so it is revealed on axis.",
+ "plausibility": [
+  "A 40 by 38 m changing hall with a 6 m ceiling is far beyond a spa changing room. Consider splitting it (men's and women's halls, per the 'Changing halls' plural in plan 31) or filling with booth rows.",
+  "The hanging pendants at z 3.6-4.0 under a 6 m ceiling float with no visible cord (fine as graybox, but they read as floating cubes at eye level)."
+ ]
+}

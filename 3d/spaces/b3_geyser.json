@@ -293,33 +293,111 @@
   }
  ],
  "hero": {
-  "asset": "geyser_vent",
+  "asset": "geyser_plume",
   "at": [
    114,
-   42,
-   -67.55
+   42
   ],
   "facing_deg": 0,
   "dims": {
-   "vents": 7,
-   "main_plume_h": 14,
-   "minor_plume_h": [
-    4,
-    8
-   ],
-   "mound_r": 2.2,
-   "seat_ring": "rim of w_geyser"
+   "w": 3.0,
+   "d": 3.0,
+   "h": 14.0
   },
-  "why": "A teal plume lit from below rising 14 m into the vault, timed so crowds gather: it is the tallest, brightest moving thing in the cavern and is visible from every entrance."
+  "why": "A 14 m teal plume lit from below, timed so crowds gather: the tallest, brightest moving thing in the cavern, visible from every entrance (14)."
  },
  "anchored": [
   {
    "id": "seat_ring",
    "asset": "bench_stone",
-   "ring": "water:w_geyser",
-   "count": 14,
-   "snap": "water_edge",
-   "face": "hero",
+   "at": [
+    [
+     115.91,
+     46.48,
+     -67
+    ],
+    [
+     119.36,
+     45.6,
+     -67
+    ],
+    [
+     121.75,
+     44.0,
+     -67
+    ],
+    [
+     122.6,
+     42.0,
+     -67
+    ],
+    [
+     121.75,
+     40.01,
+     -67
+    ],
+    [
+     119.36,
+     38.4,
+     -67
+    ],
+    [
+     115.92,
+     37.52,
+     -67
+    ],
+    [
+     112.09,
+     37.51,
+     -67
+    ],
+    [
+     108.64,
+     38.4,
+     -67
+    ],
+    [
+     106.25,
+     40.0,
+     -67
+    ],
+    [
+     105.4,
+     42.0,
+     -67
+    ],
+    [
+     106.25,
+     43.99,
+     -67
+    ],
+    [
+     108.63,
+     45.59,
+     -67
+    ],
+    [
+     112.08,
+     46.48,
+     -67
+    ]
+   ],
+   "facing_deg": [
+    203.1,
+    236.1,
+    255.5,
+    270.0,
+    284.4,
+    303.9,
+    336.8,
+    23.0,
+    56.1,
+    75.5,
+    90.0,
+    104.4,
+    123.8,
+    156.8
+   ],
    "dims": {
     "w": 1.6,
     "h": 0.9,
@@ -337,19 +415,101 @@
    ],
    "facing_deg": 90,
    "dims": {
-    "w": 4.0,
-    "d": 4.5,
+    "w": 6.0,
+    "d": 4.0,
     "h": 3.6
    },
    "why": "Small open tea pavilion on the island's broad west end facing the plume (concept 14 side buildings)."
   },
   {
-   "id": "pool_rim_steps",
+   "id": "vent_mound",
+   "asset": "geyser_vent",
+   "at": [
+    [
+     114,
+     42
+    ]
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 4.4,
+    "d": 4.4,
+    "h": 0.6
+   },
+   "why": "Low cracked mound the plume rises from."
+  },
+  {
+   "id": "minor_jets",
+   "asset": "geyser_plume",
+   "at": [
+    [
+     120.38,
+     42.52
+    ],
+    [
+     120.38,
+     41.48
+    ],
+    [
+     107.62,
+     41.48
+    ],
+    [
+     107.62,
+     42.52
+    ]
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 0.7,
+    "d": 0.7,
+    "h": 6.0
+   },
+   "why": "Smaller jets firing in sequence round the main plume (14)."
+  },
+  {
+   "id": "mound_rocks",
    "asset": "boulder_rim",
-   "ring": "water:w_geyser",
-   "embed": 0.3,
-   "rule": "between seats",
-   "why": "Deck -67, rim -67.5: half-metre stepped rim between seats."
+   "at": [
+    [
+     118.1,
+     43.66
+    ],
+    [
+     118.98,
+     42.25
+    ],
+    [
+     118.1,
+     40.34
+    ],
+    [
+     109.9,
+     40.34
+    ],
+    [
+     109.0,
+     42.0
+    ],
+    [
+     109.9,
+     43.66
+    ]
+   ],
+   "facing_deg": [
+    10,
+    40,
+    70,
+    100,
+    130,
+    160
+   ],
+   "dims": {
+    "w": 1.2,
+    "d": 1.0,
+    "h": 0.7
+   },
+   "why": "Wet boulders round the mound."
   }
  ],
  "water": [
@@ -538,9 +698,9 @@
    "from": "east_tip",
    "see": "East across the channel through the tube's east mouth: the orange lava wall and glass slide - the next space's light.",
    "target": [
-    161.6,
-    51,
-    -60
+    156.5,
+    65.5,
+    -61
    ]
   },
   {
@@ -563,9 +723,9 @@
    "target": [
     114,
     42,
-    -60
+    -61.0
    ],
-   "fov_v": 62
+   "fov_v": 64
   },
   "reveal": {
    "pos": [
@@ -576,7 +736,7 @@
    "target": [
     114.5,
     42,
-    -58
+    -60.0
    ],
    "fov_v": 66
   },
@@ -589,9 +749,9 @@
    "target": [
     114,
     46,
-    -59
+    -61.0
    ],
-   "fov_v": 60,
+   "fov_v": 62,
    "image": "lookbook/img/14-geyser-plaza.jpg",
    "match": "Low behind the carved seat blocks: bathers in the teal pool, multiple jets with the big central plume, wet tiled deck with lanterns, dark vault with stalactites and a glowworm 'starfield' above."
   }
@@ -599,82 +759,183 @@
  "lights": [
   {
    "asset": "pool_uplight",
-   "ring": [
-    114,
-    42
+   "at": [
+    [
+     114,
+     42,
+     -67.5
+    ],
+    [
+     120.38,
+     42.52,
+     -67.5
+    ],
+    [
+     120.38,
+     41.48,
+     -67.5
+    ],
+    [
+     107.62,
+     41.48,
+     -67.5
+    ],
+    [
+     107.62,
+     42.52,
+     -67.5
+    ],
+    [
+     114.0,
+     45.2,
+     -67.5
+    ],
+    [
+     117.6,
+     44.45,
+     -67.5
+    ],
+    [
+     117.6,
+     39.55,
+     -67.5
+    ],
+    [
+     114.0,
+     38.8,
+     -67.5
+    ],
+    [
+     110.4,
+     39.55,
+     -67.5
+    ],
+    [
+     110.4,
+     44.45,
+     -67.5
+    ]
    ],
-   "radius": [
-    1.5,
-    4.0
-   ],
-   "count": 7,
-   "z": -68.0,
-   "why": "One under each vent; the main plume is the brightest thing in the cavern."
+   "why": "One uplight under each vent, the rest round the pool: the water glows teal."
   },
   {
-   "asset": "lantern_niche",
-   "ring": "water:w_geyser",
-   "rule": "one under each seat block",
-   "snap": "ground",
-   "why": "Warm strip under seats (concept 14)."
+   "asset": "noren_glow",
+   "at": [
+    [
+     119.83,
+     46.18,
+     -66.95
+    ],
+    [
+     122.42,
+     44.32,
+     -66.95
+    ],
+    [
+     123.35,
+     42.0,
+     -66.95
+    ],
+    [
+     122.43,
+     39.68,
+     -66.95
+    ],
+    [
+     119.83,
+     37.82,
+     -66.95
+    ],
+    [
+     111.92,
+     36.78,
+     -66.95
+    ],
+    [
+     108.17,
+     37.82,
+     -66.95
+    ],
+    [
+     105.58,
+     39.68,
+     -66.95
+    ],
+    [
+     104.65,
+     42.0,
+     -66.95
+    ],
+    [
+     105.57,
+     44.32,
+     -66.95
+    ],
+    [
+     108.16,
+     46.18,
+     -66.95
+    ],
+    [
+     111.91,
+     47.21,
+     -66.95
+    ]
+   ],
+   "why": "Warm low glow behind each seat block (14), not free-standing slabs."
   },
   {
    "asset": "lantern_floor",
-   "ring": [
-    114,
-    42
-   ],
-   "radius_ellipse": [
-    16.6,
-    7.4
-   ],
-   "spacing": [
-    5,
-    7
+   "at": [
+    [
+     122.68,
+     47.36,
+     -67
+    ],
+    [
+     122.68,
+     36.64,
+     -67
+    ],
+    [
+     105.32,
+     36.64,
+     -67
+    ],
+    [
+     105.32,
+     47.36,
+     -67
+    ],
+    [
+     101.5,
+     46.6,
+     -67
+    ],
+    [
+     101.5,
+     37.4,
+     -67
+    ]
    ],
    "face": "hero",
-   "avoid": [
-    "portals",
-    "nav"
-   ],
-   "why": "Pools of light on the outer deck edge, dark gaps, all facing in."
+   "why": "Pools of light on the outer deck between the walks, dark gaps, all facing in."
   }
  ],
  "dressing": [
   {
-   "asset": "boulder_rim",
-   "ring": [
-    114,
-    42
-   ],
-   "radius": [
-    1.2,
-    2.6
-   ],
-   "count": 8,
-   "embed": 0.5,
-   "scale": [
-    0.8,
-    1.6
-   ],
-   "snap": "water",
-   "why": "Vent mound rocks (part of hero)."
-  },
-  {
    "asset": "pine_bonsai",
    "at": [
     [
-     98.6,
-     39.0,
-     -67
+     130.5,
+     44.2
     ],
     [
-     129.2,
-     44.0,
-     -67
+     130.0,
+     40.0
     ]
    ],
-   "why": "Silhouettes at the island ends against the plume glow."
+   "why": "Silhouettes at the island's east end against the plume glow."
   },
   {
    "asset": "rock_cluster",
@@ -687,7 +948,49 @@
    "avoid": [
     "nav",
     "portals",
-    "hero"
+    "hero",
+    {
+     "near": [
+      100,
+      42
+     ],
+     "r": 4.8
+    },
+    {
+     "near": [
+      101.5,
+      46.6
+     ],
+     "r": 1.6
+    },
+    {
+     "near": [
+      101.5,
+      37.4
+     ],
+     "r": 1.6
+    },
+    {
+     "near": [
+      130.5,
+      44.2
+     ],
+     "r": 2.2
+    },
+    {
+     "near": [
+      130.0,
+      40.0
+     ],
+     "r": 2.2
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    }
    ]
   }
  ],
@@ -696,5 +999,16 @@
   "palette": "teal-white jets, warm under-seat strips, black wet tile, glowworm dots above",
   "mist": "steam bursts with each eruption, drifting over the river"
  },
- "waivers": []
+ "waivers": [],
+ "allow_overlap": [
+  [
+   "geyser_plume",
+   "geyser_vent"
+  ],
+  [
+   "geyser_vent",
+   "geyser_plume"
+  ]
+ ],
+ "allow_overlap_why": "The plume rises out of its vent mound."
 }

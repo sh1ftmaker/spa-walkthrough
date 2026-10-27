@@ -90,8 +90,16 @@ export class World {
       this.probes.push({
         id: p.id, space: p.space, zone: z.def.id, intensity: p.intensity ?? 1,
         center: l2t(p.center), min: new THREE.Vector3(Math.min(a.x, b.x), Math.min(a.y, b.y), Math.min(a.z, b.z)), max: new THREE.Vector3(Math.max(a.x, b.x), Math.max(a.y, b.y), Math.max(a.z, b.z)),
-        tex: this.env, // stub until real cubemaps ship (p.cubemap)
+        tex: this.env, // stub until the real cubemap (p.cubemap) has loaded
       });
+      if (p.cubemap) {
+        const probe = this.probes[this.probes.length - 1];
+        this.assets.texture(p.cubemap).then((cube) => {
+          this.pmrem ??= new THREE.PMREMGenerator(this.renderer);
+          probe.tex = this.pmrem.fromCubemap(cube).texture; // roughness-prefiltered (GGX) at load time
+          cube.dispose();
+        }).catch((e) => console.error(`[kz] probe ${p.id}: ${e.message}`));
+      }
     }
     // compile now so the first visible frame does not hitch
     this.renderer.compile(g, new THREE.PerspectiveCamera());
@@ -154,6 +162,12 @@ export class World {
       KZ.kzProbeBlend.value = B ? (ua + ub > 0 ? ua / (ua + ub) : 0) : 0;
       KZ.kzProbeIntensity.value = A.intensity;
       this.probeA = A.id; this.probeB = B?.id ?? null;
+      if (A.tex !== this.envA) {
+        // swap the primary probe on every library material (same PMREM size -> no recompile)
+        this.envA = A.tex;
+        for (const m of this.lib.cache.values()) if (m.envMap) m.envMap = A.tex;
+        for (const w of this.waterObjs) w.userData.uniforms.envMap.value = A.tex;
+      }
     }
   }
 }

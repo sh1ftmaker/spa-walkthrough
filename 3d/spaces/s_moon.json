@@ -52,27 +52,22 @@
    120.5
   ],
   [
-   149.0,
-   93.5,
+   150.5,
+   92.0,
    120.5
   ],
   [
-   151.5,
+   153.0,
    91.0,
    120.5
   ],
   [
-   155.0,
+   157.0,
    91.0,
    120.5
   ],
   [
-   158.6,
-   91.0,
-   120.5
-  ],
-  [
-   162.5,
+   161.5,
    91.0,
    120.5
   ]
@@ -80,7 +75,7 @@
  "hero": {
   "asset": "moon_pavilion",
   "at": [
-   155.0,
+   157.0,
    91.0,
    120.5
   ],
@@ -88,54 +83,56 @@
   "dims": {
    "w": 7.0,
    "d": 7.0,
-   "eave_h": 4.2,
-   "ridge_h": 6.5
+   "h": 6.5
   },
-  "why": "A hip-roofed open pavilion facing east over the sea (30, 32): the frame for the moon, lit from inside by paper lanterns, visible from the caldera pool across the water."
+  "why": "An open hip-roofed pavilion at the east rail (30, 32): four posts and a roof framing the moon over the sea at eye height, lit from inside by paper lanterns, so it is the brightest warm thing on the deck and visible from the caldera."
  },
  "anchored": [
   {
    "id": "sake_counter",
    "asset": "sake_counter",
    "at": [
-    155.0,
-    88.4,
+    151.0,
+    86.8,
     120.5
    ],
-   "facing_deg": 0,
+   "facing_deg": 90,
    "dims": {
     "w": 3.0,
     "d": 0.6,
     "h": 0.9
    },
-   "why": "Warm sake served from a spring-heated kettle (lookbook)."
+   "why": "Warm sake served from a spring-heated kettle on the approach side, west of the pavilion: a second, smaller lit focal point."
   },
   {
    "id": "moon_tree",
    "asset": "sakura_small",
    "at": [
-    161.5,
-    99.0,
+    145.5,
+    83.5,
     120.5
    ],
    "facing_deg": 0,
    "dims": {
+    "w": 3.0,
+    "d": 2.6,
     "h": 4.5
    },
-   "why": "Blossom tree in the north-east corner (plan 30)."
+   "why": "Blossom tree on the south-west corner, framing the pavilion from the approach (plan 30 tree, moved off the moon axis)."
   },
   {
    "id": "east_bench_1",
    "asset": "bench_stone",
    "at": [
-    162.6,
-    85.0,
+    162.9,
+    83.0,
     120.5
    ],
    "facing_deg": 90,
    "dims": {
-    "len": 2.4,
-    "material": "hinoki"
+    "w": 2.4,
+    "d": 0.6,
+    "h": 0.45
    },
    "why": "Moon-viewing seats on the east rail."
   },
@@ -143,29 +140,64 @@
    "id": "east_bench_2",
    "asset": "bench_stone",
    "at": [
-    162.6,
-    97.0,
+    162.9,
+    99.0,
     120.5
    ],
    "facing_deg": 90,
    "dims": {
-    "len": 2.4,
-    "material": "hinoki"
+    "w": 2.4,
+    "d": 0.6,
+    "h": 0.45
    }
   },
   {
    "id": "steps_toro",
    "asset": "lantern_stone",
    "at": [
-    149.8,
-    100.8,
+    150.8,
+    100.2,
     120.5
    ],
    "facing_deg": 0,
    "dims": {
     "h": 2.0
    },
-   "why": "Marks the head of moon_steps."
+   "why": "Marks the head of moon_steps.",
+   "snap": "given"
+  },
+  {
+   "id": "moon",
+   "asset": "moon_sky",
+   "at": [
+    205.0,
+    91.0,
+    128.0
+   ],
+   "facing_deg": 270,
+   "dims": {
+    "w": 60,
+    "d": 1,
+    "h": 40
+   },
+   "outside_ok": "Sky backdrop 40 m east over the sea.",
+   "why": "Moon and night sky framed through the pavilion."
+  },
+  {
+   "id": "sake_lamp",
+   "asset": "lantern_floor",
+   "at": [
+    151.0,
+    84.9,
+    120.5
+   ],
+   "facing_deg": 90,
+   "dims": {
+    "w": 0.45,
+    "d": 0.45,
+    "h": 1.05
+   },
+   "why": "Andon beside the sake counter."
   }
  ],
  "water": [],
@@ -192,43 +224,43 @@
  "cameras": {
   "entry": {
    "pos": [
-    147.6,
-    100.8,
+    149.2,
+    97.6,
     122.1
    ],
    "target": [
-    157.0,
-    90.0,
-    123.5
+    160.0,
+    91.0,
+    123.0
    ],
    "fov_v": 58
   },
   "reveal": {
    "pos": [
-    153.0,
-    85.0,
+    151.4,
+    91.0,
     122.1
    ],
    "target": [
-    175.0,
-    95.0,
-    130.0
+    190.0,
+    91.0,
+    124.5
    ],
-   "fov_v": 62
+   "fov_v": 60
   },
   "concept": {
    "image": "lookbook/img/32-suites-cliff.jpg",
    "pos": [
-    162.5,
-    82.0,
+    160.0,
+    83.2,
     122.1
    ],
    "target": [
-    153.0,
+    155.0,
     93.0,
     124.0
    ],
-   "fov_v": 55,
+   "fov_v": 58,
    "match": "32's top: pavilion silhouette with lit interior, lantern-lined rail, moon above, cliff dropping away."
   }
  },
@@ -236,39 +268,54 @@
   {
    "asset": "lantern_hanging",
    "ring": [
-    155.0,
+    157.0,
     91.0
    ],
-   "radius": 3.6,
+   "radius": 2.9,
    "count": 6,
-   "height": 3.8,
-   "snap": "eave",
+   "height": 2.5,
    "why": "Under the pavilion eaves: the brightest warm point (hero)."
   },
   {
    "asset": "lantern_post",
-   "along": [
+   "face": 270,
+   "avoid": [
+    "portals",
+    "anchored"
+   ],
+   "at": [
     [
-     163.6,
-     80.5
+     162.6,
+     81.0,
+     120.5
     ],
     [
-     163.6,
-     101.5
+     162.6,
+     84.6,
+     120.5
     ],
     [
-     142.5,
-     101.5
+     162.6,
+     97.4,
+     120.5
+    ],
+    [
+     162.6,
+     101.0,
+     120.5
+    ],
+    [
+     146.2,
+     101.0,
+     120.5
+    ],
+    [
+     149.2,
+     101.0,
+     120.5
     ]
    ],
-   "spacing": [
-    5.0,
-    7.0
-   ],
-   "face": "path",
-   "avoid": [
-    "portals"
-   ]
+   "why": "Posts in pairs at the bench ends and the steps; dark rail between so the pavilion wins."
   }
  ],
  "dressing": [
@@ -292,34 +339,52 @@
      101.7
     ]
    ],
-   "height": 1.05,
    "avoid": [
-    "portals"
-   ]
-  },
-  {
-   "asset": "floor_paving",
-   "at": [
-    [
-     153.0,
-     91.0,
-     120.5
-    ]
+    "portals",
+    {
+     "near": [
+      147.6,
+      101.5
+     ],
+     "r": 3.6
+    }
    ],
    "dims": {
-    "area": "footprint",
-    "material": "hinoki deck"
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
    }
   },
   {
    "asset": "zabuton_cushion",
    "ring": [
-    155.0,
+    157.0,
     91.0
    ],
-   "radius": 2.2,
+   "radius": [
+    1.6,
+    2.1
+   ],
    "count": 8,
-   "why": "Floor cushions in the pavilion."
+   "why": "Floor cushions in the pavilion.",
+   "jitter_deg": 14
+  },
+  {
+   "asset": "boardwalk",
+   "at": [
+    [
+     153.0,
+     91.0,
+     120.25
+    ]
+   ],
+   "dims": {
+    "w": 21.6,
+    "d": 21.6,
+    "h": 0.25
+   },
+   "allow_on_nav": true,
+   "why": "Hinoki deck over the whole footprint (top 120.5)."
   }
  ],
  "mood": {
@@ -327,5 +392,95 @@
   "palette": "silver moonlight, warm pavilion glow, pink blossom",
   "mist": "cloud sea far below"
  },
- "waivers": []
+ "waivers": [],
+ "allow_overlap": [
+  [
+   "moon_pavilion",
+   "sake_counter"
+  ],
+  [
+   "sake_counter",
+   "moon_pavilion"
+  ],
+  [
+   "moon_pavilion",
+   "zabuton_cushion"
+  ],
+  [
+   "zabuton_cushion",
+   "moon_pavilion"
+  ],
+  [
+   "moon_pavilion",
+   "lantern_hanging"
+  ],
+  [
+   "lantern_hanging",
+   "moon_pavilion"
+  ],
+  [
+   "boardwalk",
+   "railing"
+  ],
+  [
+   "railing",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "lantern_stone"
+  ],
+  [
+   "lantern_stone",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "lantern_post"
+  ],
+  [
+   "lantern_post",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "bench_stone"
+  ],
+  [
+   "bench_stone",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "sakura_small"
+  ],
+  [
+   "sakura_small",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "sake_counter"
+  ],
+  [
+   "sake_counter",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "lantern_floor"
+  ],
+  [
+   "lantern_floor",
+   "boardwalk"
+  ],
+  [
+   "boardwalk",
+   "moon_pavilion"
+  ],
+  [
+   "moon_pavilion",
+   "boardwalk"
+  ]
+ ]
 }

@@ -1,0 +1,81 @@
+{
+ "space": "b2_falls_head",
+ "round": 1,
+ "reviewer": "b2-r1-reviewer",
+ "frames": {
+  "entry": {
+   "focal": "Two lantern posts (lights0:0, lights0:1) standing mid-deck",
+   "is_hero": false,
+   "next_visible": "Nothing: black void beyond the deck edge, no lip, spray or stair."
+  },
+  "reveal": {
+   "focal": "Grey deck slab; almost black frame with faint teal/orange shapes far below (b3)",
+   "is_hero": false,
+   "next_visible": "Only a hint of the B3 pool far below. The stair is not visible."
+  },
+  "concept": {
+   "focal": "lights0:0 lantern face 0.6 m from the lens filling the left third",
+   "is_hero": false,
+   "next_visible": "Faint B3 outlines below."
+  },
+  "strip": {
+   "focal": "All 8 frames are the same two posts (the spine is only 5 m).",
+   "is_hero": false,
+   "next_visible": "No."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights0:1",
+   "action": "move",
+   "dx": 0,
+   "dy": 1.3,
+   "deg": 0,
+   "detail": "Stands on the spine (<0.2 m from the walk line at 44.7, 66.4). Move it toward the north rail."
+  },
+  {
+   "id": "lights0:0",
+   "action": "move",
+   "dx": -0.9,
+   "dy": 1.2,
+   "deg": 0,
+   "detail": "At (42.2, 65.4) it is inside the stair's rail lines (41.7-44.3) on the top tread, and 0.6 m from the concept camera. Move it outside the west rail to flank the stair head."
+  },
+  {
+   "id": "lights[2]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Flight posts at x 44.0 stand inside the stair (rails at 41.7/44.3), narrowing it to 2.1 m. Use x 44.6 (on the wall side of the east rail)."
+  },
+  {
+   "id": "dressing[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Stair rails dressing[1]/[2] are all at z -40.0 along y 58-66, while the stair descends (lights2:1 is at -41.88), so they float up to about 2 m above the treads. Snap them to the stair pitch. The stair itself is not visible in any frame: build it or check it is in the render."
+  },
+  {
+   "id": "thunder_lip",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The hero is invisible from this deck (it stands up from the bed, see b2_river). Hang it from -43 to -60, add the spray_card as a lit white plume rising past the rail, and re-aim the entry camera over the north rail at the lip (target about (30, 76, -42)) with the posts out of frame."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Make the Thunder Curtain lip visible and lit from this deck (sheet hanging from the lip, white spray plume rising past the rail), and move the two posts off the walk and the stair head so they frame it instead of blocking it.",
+ "plausibility": [
+  "Flight railings float above a descending stair (all at -40.0).",
+  "Lantern posts stand on the stair's top tread and inside its width.",
+  "No overlook railing is visible at the open shaft edge in entry/reveal (dressing[0] placed but not seen).",
+  "The stair (falls_stair_1) is not visible at all."
+ ]
+}

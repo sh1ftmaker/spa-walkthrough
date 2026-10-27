@@ -171,11 +171,13 @@ def shaft_prisms(level, tmpc):
         out.append(prism('well', circle(lx, ly, L['lift']['shaft_r'] - 0.01), -100.5, 0.6, tmpc))
     sx, sy = L['slide_shaft']['at']
     if level == 'b1':
-        out.append(prism('slideshaft', circle(sx, sy, L['slide_shaft']['r']), -67.5, -12.0, tmpc))
+        out.append(prism('slideshaft', circle(sx, sy, L['slide_shaft']['r']), -67.0, -12.0, tmpc))   # bottom at the B3 floor; the splash basin is cut separately
     if level == 'b1':                                  # Mist Steps hall (B1 -> B2)
         c = next(c for c in L['connections'] if c['id'] == 'mist_steps')
         xs = [p[0] for p in c['box']]; ys = [p[1] for p in c['box']]
-        out.append(prism('mist_steps_hall', [(min(xs) - 0.5, min(ys)), (max(xs) + 0.5, min(ys)), (max(xs) + 0.5, max(ys) + 1), (min(xs) - 0.5, max(ys) + 1)], -40.6, -14.0, tmpc))
+        # stair hall stays below the B1 floors; only flight 1's head opens up through B1 (B1 agent review)
+        out.append(prism('mist_steps_hall', [(min(xs) - 0.5, min(ys)), (max(xs) + 0.5, min(ys)), (max(xs) + 0.5, max(ys)), (min(xs) - 0.5, max(ys))], -40.0, -21.2, tmpc))   # flush with the B2 floor
+        out.append(prism('mist_steps_well', [(min(xs) - 0.5, 61.5), (51.5, 61.5), (51.5, 79.0), (min(xs) - 0.5, 79.0)], -21.3, -14.0, tmpc))
     if level == 'ground':                              # culvert slot only (no walk)
         pass
     return out
@@ -191,6 +193,104 @@ def basin_prisms(level, tmpc):
         if SP.get(sid, {}).get('level') == level and enclosed(SP[sid]):
             out.append(prism(f'basin_{sid}_{wid}', poly, rim - depth, rim + 0.01, tmpc))
     return out
+
+
+def _profiles(levels):
+    """profiled spaces: (space, polygon, z_ceiling, min_z, max_z, type, inscribed radius)"""
+    from shapely.geometry import Polygon as _PG
+    out = []
+    for sid, j in SPACEFILES.items():
+        lsp = SP.get(sid)
+        if not lsp or lsp['level'] not in levels or not lsp.get('footprint') or lsp.get('ceiling_z') is None:
+            continue
+        cp = j.get('ceiling_profile') or {}
+        t = cp.get('type')
+        if t not in ('dome', 'vault', 'tube', 'cave') or cp.get('min_z') is None or cp.get('max_z') is None:
+            continue
+        lo, hi = float(cp['min_z']), float(lsp['ceiling_z'])
+        if lo >= hi - 0.05:
+            continue
+        poly = _PG(lsp['footprint'])
+        r0, r1 = 0.0, max(1.0, (poly.area ** 0.5))          # inscribed radius by bisection
+        for _ in range(18):
+            m = (r0 + r1) / 2
+            r0, r1 = (m, r1) if not poly.buffer(-m).is_empty else (r0, m)
+        out.append((sid, poly, hi, lo, hi, t, max(r0, 0.5)))
+    return out
+
+
+def shape_ceilings(bm, levels):
+    """Subdivide ceilings and shape them to each space's declared profile (dome / vault / tube / cave):
+    springing at min_z along the walls, rising to the layout ceiling at the crown."""
+    from shapely.geometry import Point as _PT
+    prof = _profiles(levels)
+    if not prof:
+        return
+    bufs = {pr[0]: pr[1].buffer(0.05) for pr in prof}
+    def owner(v):
+        co = v.co if hasattr(v, 'co') else v
+        for pr in prof:
+            sid, poly, zc, lo, hi, t, R = pr
+            if abs(co.z - zc) < 0.03 and bufs[sid].contains(_PT(co.x, co.y)):
+                return pr
+        return None
+    # refine ceiling faces to ~1.5 m edges so the curve reads
+    for _ in range(6):
+        top = [f for f in bm.faces if f.normal.z > 0.9 and owner(f.calc_center_median()) is not None]
+        long_e = list({e for f in top for e in f.edges if e.calc_length() > 1.6})
+        if not long_e:
+            break
+        bmesh.ops.subdivide_edges(bm, edges=long_e, cuts=1, use_grid_fill=False)
+        bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 3])
+    import math as _m
+    moved = 0
+    for v in bm.verts:
+        pr = owner(v)
+        if pr is None:
+            continue
+        sid, poly, zc, lo, hi, t, R = pr
+        d = poly.exterior.distance(_PT(v.co.x, v.co.y))
+        u = min(1.0, d / R)
+        k = 1 - (1 - u) ** 2 if t in ('dome', 'vault', 'cave') else _m.sin(u * _m.pi / 2)
+        z = lo + (hi - lo) * k
+        if t == 'cave':
+            n = _m.sin(v.co.x * 0.37 + 1.3) * _m.cos(v.co.y * 0.29 - 0.7) + 0.5 * _m.sin(v.co.x * 0.91 + v.co.y * 0.73)
+            z = min(hi, max(lo - 0.2, z + 0.12 * (hi - lo) * n * u))
+        v.co.z = z; moved += 1
+    # glowworm roofs: ceiling faces of spaces that place a glowworm_ceiling get the speckled cyan material (slot 1)
+    gw = []
+    for sid, j in SPACEFILES.items():
+        if '"glowworm_ceiling"' in json.dumps(j):
+            if SP.get(sid, {}).get('footprint'):
+                from shapely.geometry import Polygon as _PG
+                gw.append(_PG(SP[sid]['footprint']).buffer(0.1))
+    ng = 0
+    for f in bm.faces:
+        c = f.calc_center_median()
+        if f.normal.z > 0.3 and any(g.contains(_PT(c.x, c.y)) for g in gw) and owner(c) is None:
+            f.material_index = 1; ng += 1
+        elif f.normal.z > 0.3 and any(g.contains(_PT(c.x, c.y)) for g in gw):
+            f.material_index = 1; ng += 1
+    print('CEILINGS shaped', len(prof), 'spaces,', moved, 'vertices; glowworm faces', ng)
+
+
+def glowworm_material():
+    if 'gb_glowworm' in bpy.data.materials:
+        return bpy.data.materials['gb_glowworm']
+    m = bpy.data.materials.new('gb_glowworm'); m.use_nodes = True
+    nt = m.node_tree; b = nt.nodes['Principled BSDF']
+    b.inputs['Base Color'].default_value = (0.03, 0.035, 0.04, 1); b.inputs['Roughness'].default_value = 0.6
+    vor = nt.nodes.new('ShaderNodeTexVoronoi'); vor.inputs['Scale'].default_value = 4.0
+    tc = nt.nodes.new('ShaderNodeTexCoord')
+    nt.links.new(tc.outputs['Object'], vor.inputs['Vector'])
+    ramp = nt.nodes.new('ShaderNodeValToRGB'); ramp.color_ramp.elements[0].position = 0.06; ramp.color_ramp.elements[0].color = (1, 1, 1, 1)
+    ramp.color_ramp.elements[1].position = 0.075; ramp.color_ramp.elements[1].color = (0, 0, 0, 1)
+    nt.links.new(vor.outputs['Distance'], ramp.inputs['Fac'])
+    b.inputs['Emission Color'].default_value = (0.25, 0.9, 1.0, 1)
+    nt.links.new(ramp.outputs['Color'], b.inputs['Emission Strength'])
+    mul = nt.nodes.new('ShaderNodeMath'); mul.operation = 'MULTIPLY'; mul.inputs[1].default_value = 25.0
+    nt.links.new(ramp.outputs['Color'], mul.inputs[0]); nt.links.new(mul.outputs[0], b.inputs['Emission Strength'])
+    return m
 
 
 def build_shell(levels, c, tmpc, material):
@@ -222,12 +322,13 @@ def build_shell(levels, c, tmpc, material):
     bm = bmesh.new(); bm.from_mesh(base.data)
     # n-gons with holes (floors around the stair wells) break solidify and fan triangulation: ear-clip them now
     bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4], quad_method='BEAUTY', ngon_method='EAR_CLIP')
+    shape_ceilings(bm, levels)
     bmesh.ops.reverse_faces(bm, faces=bm.faces)
     if 'b3' in levels:
         cap = [f for f in bm.faces if all(v.co.x > 215.5 for v in f.verts)]
         bmesh.ops.delete(bm, geom=cap, context='FACES')
-    bm.to_mesh(base.data); bm.free()
-    base.data.materials.clear(); base.data.materials.append(material)
+    base.data.materials.clear(); base.data.materials.append(material); base.data.materials.append(glowworm_material())
+    bm.to_mesh(base.data); bm.free()      # slots exist before writing, so glowworm face indices survive
     sol = base.modifiers.new('thick', 'SOLIDIFY'); sol.thickness = 0.6; sol.offset = -1.0  # grows outward (normals point in)
     return base
 
@@ -390,7 +491,8 @@ def dist_to_poly(X, Y, poly):
     return d
 
 
-PLATEAU = [(46, 64), (82, 62), (150, 60), (166, 80), (190, 86), (190, 106), (140, 106), (120, 112), (100, 117), (46, 117)]
+# ground drops beyond the infinity lip (x 96-136)
+PLATEAU = [(46, 64), (82, 62), (96, 62), (96, 66.0), (136, 66.0), (140, 62), (150, 60), (166, 80), (190, 86), (190, 106), (140, 106), (120, 112), (100, 117), (46, 117)]
 ISLAND = [(-120, 4), (60, 2), (150, 4), (200, 6), (214, 12), (214, 64), (200, 70), (199, 119.5), (100, 119.5), (-120, 119.5)]
 
 
@@ -405,7 +507,7 @@ def build_terrain(c, material, res=1.0):
     d = dist_to_poly(X, Y, PLATEAU); inside = poly_mask(X, Y, PLATEAU)
     for s in L['spaces']:                       # the plateau holds every summit space with a 3 m margin
         if s['level'] == 'summit' and s['footprint']:
-            ds = dist_to_poly(X, Y, s['footprint']) - 3.0
+            ds = dist_to_poly(X, Y, s['footprint']) - (0.3 if s['id'] == 's_pool' else 3.0)   # no margin past the infinity lip
             ins = poly_mask(X, Y, s['footprint'])
             inside |= ins | (ds < 0)
             d = np.minimum(d, np.maximum(ds, 0))
@@ -447,14 +549,35 @@ def build_terrain(c, material, res=1.0):
     for s in L['spaces']:
         if s['level'] == 'ground' and s['footprint']:
             m = poly_mask(X, Y, s['footprint']) | (dist_to_poly(X, Y, s['footprint']) < 0.8)
-            if s['id'] in ('g_arrival', 'g_changing'):
+            if s['id'] in ('g_arrival', 'g_changing', 'g_cascade'):
                 continue
             Z = np.where(m, s['floor_z'] - (0.02 if s['kind'] == 'outdoor' else 0), Z)
-    # summit: plateau features
+    # summit: plateau features, flat across the full path width (+0.6 m margin so edge items don't sink)
     for s in L['spaces']:
         if s['level'] == 'summit' and s['footprint']:
-            m = poly_mask(X, Y, s['footprint'])
+            m = poly_mask(X, Y, s['footprint']) | (dist_to_poly(X, Y, s['footprint']) < 1.2)
             Z = np.where(m, s['floor_z'], Z)
+    # enclosed ground halls are carved into the mountain: rock above them is at least 1 m over the ceiling
+    for s in L['spaces']:
+        if s['level'] == 'ground' and s['id'] in ('g_arrival', 'g_changing'):
+            m = poly_mask(X, Y, s['footprint'])
+            Z = np.where(m, np.maximum(Z, s['ceiling_z'] + 1.0), Z)
+    # stepped outdoor decks declared in space files (e.g. the lower Cascade Terrace pools): inside the space the
+    # ground takes the level of the NEAREST deck or pool rim, so the whole slope steps down with the pools
+    for sid, j in SPACEFILES.items():
+        levels_ = [(dk['area'], dk['z']) for dk in (j.get('deck_levels') or []) if isinstance(dk.get('area'), list) and len(dk['area']) >= 3]
+        if not levels_:
+            continue
+        levels_ += [(w['footprint'], w.get('rim_z', w.get('z', 0) + 0.05)) for w in j.get('water', []) if isinstance(w.get('footprint'), list) and len(w['footprint']) >= 3 and w.get('z') is not None]
+        inside = poly_mask(X, Y, SP[sid]['footprint']) | (dist_to_poly(X, Y, SP[sid]['footprint']) < 0.8)
+        best_d = np.full(X.shape, np.inf); best_z = np.zeros(X.shape)
+        for area, zz in levels_:
+            dd = np.where(poly_mask(X, Y, area), 0.0, dist_to_poly(X, Y, area))
+            better = dd < best_d
+            best_d = np.where(better, dd, best_d); best_z = np.where(better, zz, best_z)
+        Z = np.where(inside, best_z, Z)
+    # small lookout bump-out on the sea-cliff path (cape lantern)
+    Z = np.where(poly_mask(X, Y, [(193.1, 77.0), (195.1, 77.0), (195.1, 79.0), (193.1, 79.0)]), 0.0, Z)
     for sid, wid, kind, poly, z, rim, depth in space_water():
         if SP.get(sid) and not enclosed(SP[sid]):
             Z = np.where(poly_mask(X, Y, poly), rim - depth, Z)
@@ -493,7 +616,7 @@ def main():
     m_terr = mat('gb_terrain', (0.13, 0.13, 0.13, 1), 0.95)
     m_still = mat('gb_water', (0.05, 0.42, 0.42, 1), 0.05)
     m_flow = mat('gb_water_flow', (0.15, 0.60, 0.58, 1), 0.1)
-    m_sea = mat('gb_sea', (0.03, 0.12, 0.20, 1), 0.08)
+    m_sea = mat('gb_sea', (0.05, 0.22, 0.32, 1), 0.04)
     m_core = mat('gb_core', (0.6, 0.45, 0.2, 1), 0.4)
     m_lava = mat('gb_lava', (1.0, 0.3, 0.05, 1), 0.6, emit=(1.0, 0.35, 0.05, 6.0))
     root = coll('graybox')
@@ -509,7 +632,7 @@ def main():
             ymax = max(v.co.y for v in bm.verts)
             bmesh.ops.delete(bm, geom=[f for f in bm.faces if all(abs(v.co.y - ymax) < 1e-4 for v in f.verts)], context='FACES')
             bm.to_mesh(o.data); bm.free()
-            o.modifiers.new('t', 'SOLIDIFY').thickness = 0.3
+            _sol = o.modifiers.new('t', 'SOLIDIFY'); _sol.thickness = 0.3; _sol.offset = 1.0   # outward: interior stays floor..ceiling
             prism(s['id'] + '_balcony', s['balcony'], s['floor_z'] - 0.3, s['floor_z'], cs, m_stair)
     st = coll('stairs', root)
     for c in L['connections']:
@@ -527,6 +650,10 @@ def main():
         obj_from_bm(c['id'], bm, st, m_stair)
     # floors under portals between different floor heights are handled by stairs; lift core + slide tube stand-ins
     sh = coll('shafts', root)
+    bm = bmesh.new()      # structural decks (balconies over voids)
+    for dk in L.get('decks', []):
+        prism_bm(bm, dk['footprint'], dk['z'] - 0.3, dk['z'])
+    obj_from_bm('decks', bm, sh, m_stair)
     bm = bmesh.new()      # lift bridges over the spiral well, opposite each stair landing
     for p in L['portals']:
         if p.get('bridge'):
@@ -535,14 +662,29 @@ def main():
             box_bm(bm, ((x0 + x1) / 2, (y0 + y1) / 2, p['z0'] - 0.25), (ln, p['width'], 0.5), ang)
     obj_from_bm('lift_bridges', bm, sh, m_stair)
     lx, ly = L['lift']['at']
-    prism('lift_core', circle(lx, ly, 2.2, 32), -100.0, 9.0, sh, m_core)
+    m_car = mat('gb_lift_glow', (0.6, 0.42, 0.22, 1), 0.4, emit=(1.0, 0.62, 0.3, 0.35))
+    prism('lift_core', circle(lx, ly, 2.2, 32), -100.0, 9.0, sh, m_car)
+    # balustrade round the spiral well on every level, open at the stair landing and the lift bridge
+    m_rail = mat('gb_rail', (0.12, 0.10, 0.09, 1), 0.6)
+    bm = bmesh.new()
+    for p in L['portals']:
+        if p['b'] == 'spiral_stair' and 'bearing' in p:
+            z = p['z0']
+            gaps = [p['bearing']] + [q['bearing'] for q in L['portals'] if q.get('z0') == z and q['b'] == 'main_lift' and 'bearing' in q]
+            for k in range(72):
+                brg = k * 5.0
+                if any(min(abs(brg - g), 360 - abs(brg - g)) < 14 for g in gaps):
+                    continue
+                a = math.radians(90 - brg)
+                box_bm(bm, (lx + 8.1 * math.cos(a), ly + 8.1 * math.sin(a), z + 0.525), (0.1, 0.72, 1.05), a)
+    obj_from_bm('well_balustrade', bm, sh, m_rail)
     sx, sy = L['slide_shaft']['at']
     sl = next(c for c in L['connections'] if c['id'] == 'glass_slide')
     bm = bmesh.new()
     n = 160
     for k in range(n):
         t0, t1 = k / n, (k + 1) / n
-        a0, a1 = -t0 * 2.6 * 2 * math.pi, -t1 * 2.6 * 2 * math.pi
+        a0, a1 = math.pi - t0 * 2.6 * 2 * math.pi, math.pi - t1 * 2.6 * 2 * math.pi     # starts west, at the launch gate (bearing 270)
         z0 = sl['z_top'] + (sl['z_bottom'] - sl['z_top']) * t0; z1 = sl['z_top'] + (sl['z_bottom'] - sl['z_top']) * t1
         box_bm(bm, (sx + sl['r'] * math.cos((a0 + a1) / 2), sy + sl['r'] * math.sin((a0 + a1) / 2), (z0 + z1) / 2), (1.4, 0.9 * sl['r'] * abs(a1 - a0) + 0.2, 1.2), (a0 + a1) / 2)
     obj_from_bm('slide_tube', bm, sh, m_core)
@@ -551,7 +693,8 @@ def main():
     # emissive stand-ins just inside the glass walls (the lava itself is beyond the glass)
     prism('lava_arrival', [(44, 79.3), (78, 79.3), (78, 79.5), (44, 79.5)], 0.6, 12.5, lv, m_lava)
     prism('lava_b4', [(42, 6.3), (120, 6.3), (120, 6.5), (42, 6.5)], -99.6, -92.5, lv, m_lava)
-    prism('lava_slide', circle(150, 50, 8.4, 32)[8:20] + circle(150, 50, 8.6, 32)[8:20][::-1], -67.0, -20.0, lv, m_lava)
+    m_lava_dim = mat('gb_lava_dim', (0.6, 0.18, 0.04, 1), 0.6, emit=(1.0, 0.35, 0.05, 0.8))
+    prism('lava_slide', circle(150, 50, 8.4, 32)[8:20] + circle(150, 50, 8.6, 32)[8:20][::-1], -67.0, -20.0, lv, m_lava_dim)
     # rimstone terraces (stand-in for the rimstone_terrace generator): stepped trays NW -> SE
     from shapely.geometry import Polygon as _PG, box as _box
     from shapely import affinity as _aff
@@ -584,6 +727,29 @@ def main():
                     prism_bm(bm, [tuple(c) for c in list(lg.exterior.coords)[:-1]], z - 0.35, z + 0.05)
     obj_from_bm('rimstone_trays', bm, rc, m_stair)
     obj_from_bm('w_rimstone_pools', bmw, rc, m_still)
+    # Wave Grotto beach: slopes from the steps (-68) to the waterline (-70), sea bed -70.6 beyond
+    bch = SP['b3_wave'].get('beach')
+    if bch:
+        from shapely.geometry import Polygon as _PG2
+        poly = _PG2(SP['b3_wave']['footprint']).union(_PG2([(196, 16), (216, 14), (216, 62), (196, 62)]))
+        minx, miny, maxx, maxy = poly.bounds
+        def bz(x):
+            if x <= bch['x_top']:
+                return bch['z_top']
+            if x <= bch['x_water']:
+                return bch['z_top'] + (bch['z_water'] - bch['z_top']) * (x - bch['x_top']) / (bch['x_water'] - bch['x_top'])
+            if x <= bch['x_bed']:
+                return bch['z_water'] + (bch['z_bed'] - bch['z_water']) * (x - bch['x_water']) / (bch['x_bed'] - bch['x_water'])
+            return bch['z_bed']
+        bm = bmesh.new(); res = 1.0
+        xs = [minx + i * res for i in range(int((maxx - minx) / res) + 2)]; ys = [miny + j * res for j in range(int((maxy - miny) / res) + 2)]
+        V = [[bm.verts.new((x, y, bz(x))) for x in xs] for y in ys]
+        from shapely.geometry import Point as _PT
+        for j in range(len(ys) - 1):
+            for i in range(len(xs) - 1):
+                if poly.contains(_PT(xs[i] + res / 2, ys[j] + res / 2)):
+                    bm.faces.new((V[j][i], V[j][i + 1], V[j + 1][i + 1], V[j + 1][i]))
+        obj_from_bm('beach', bm, coll('beach', root), mat('gb_sand', (0.07, 0.07, 0.075, 1), 0.6))
     ss = coll('stepping_stones', root)
     bm = bmesh.new()
     for s in L['spaces']:
@@ -596,6 +762,15 @@ def main():
     obj_from_bm('stepping_stones', bm, ss, m_stair)
     wc = coll('water', root)
     water_surfaces(wc, m_still, m_flow, m_sea)
+    # low mist stand-in: a faint translucent sheet 0.35 m over every water surface (the web uses height fog)
+    m_mist = mat('gb_mist', (0.85, 0.88, 0.9, 1), 1.0, alpha=0.18)
+    m_mist.surface_render_method = 'BLENDED' if hasattr(m_mist, 'surface_render_method') else m_mist.blend_method
+    mc = coll('mist', root)
+    for o in list(wc.objects):
+        if o.name.startswith(('w_sea_open', 'w_thunder')):
+            continue
+        mo = o.copy(); mo.data = o.data.copy(); mo.name = 'mist_' + o.name; mc.objects.link(mo)
+        mo.location.z += 0.35; mo.data.materials.clear(); mo.data.materials.append(m_mist)
     tc = coll('terrain', root)
     build_terrain(tc, m_terr)
     bpy.data.collections.remove(tmpc)

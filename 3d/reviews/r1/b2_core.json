@@ -1,0 +1,81 @@
+{
+ "space": "b2_core",
+ "round": 1,
+ "reviewer": "b2-r1-reviewer",
+ "frames": {
+  "entry": {
+   "focal": "Lift drum with the spiral stair wrapped round it (the only vertical, centre-left), plus a field of 1 m white floor lanterns in the foreground",
+   "is_hero": false,
+   "next_visible": "Yes, but only the dim line of passage niches (lights[2]) running east. The restaurant gate glow is just outside the left edge, and the counter is hidden as intended (waived)."
+  },
+  "reveal": {
+   "focal": "The row of hanging lantern boxes (lights[1]) and the flat kitchen face. The counter (hero) is an unlit orange wedge on the right edge.",
+   "is_hero": false,
+   "next_visible": "Weak: a dark slab at the far end (neon_kazan, unlit and edge-on) and a faint lantern by the boat door. The east gate to the deck reads only as dark."
+  },
+  "concept": {
+   "focal": "Hanging lantern boxes over the counter. The counter is a plain brown bar under a blank kitchen wall.",
+   "is_hero": false,
+   "next_visible": "No neon, steam or chef, and no glimpse of the river/curtains (09's right half). The left half is dark void."
+  },
+  "strip": {
+   "focal": "Frames 0-2: big floor lanterns in the walking line plus the lift drum. Frames 3-4: the passage niche row (good compression). Frames 5-6: pods and gate through the north edge pull left while the counter passes as a dark box at the right edge. Frame 7: dark corridor.",
+   "is_hero": false,
+   "next_visible": "Yes: the niche row leads east and the Kawagiri pods show through the north rail, but the counter never becomes the destination."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights[3]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The floor-lantern rule (both sides, 6-8 m, offset 1.8) scatters about ten 1.05 m white posts across the open west plaza, and lights3:4/3:5 fill the foreground of entry and strip 0-2. Use side=north (gate side) only, spacing [5,10], offset 2.5, and drop lights3:4, 3:5 and 3:8. The plaza middle stays open and the remaining row leads to the gate."
+  },
+  {
+   "id": "neon_kazan",
+   "action": "move",
+   "dx": -2.2,
+   "dy": 1.6,
+   "deg": -30,
+   "detail": "Move to the counter's east end (about 119.7, 63.4) and rotate from facing 300 to 270, so it faces straight down the counter toward the reveal/concept cameras. Give it graybox emission brighter than the chochin (it is currently an unlit dark slab)."
+  },
+  {
+   "id": "kitchen",
+   "action": "replace",
+   "dx": 0,
+   "dy": -0.75,
+   "deg": 0,
+   "detail": "Kitchen front (y 62.55) to counter back (y 63.1) is only 0.55 m, so no cook can stand at the pass. Cut the depth from 6.5 to 5.0 (recentre y 58.55) to leave a 2 m cook's aisle, and give the pass an emissive 'fire' strip so the counter reads lit from behind."
+  },
+  {
+   "id": "hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "ramen_counter needs hero emission (under-glow and lit top) and stool proxies (14) so it reads as a counter at eye height. It is currently darker than every lantern."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Noren banners use the default banner dims h 4.0. Hung at 2.9 m they pierce the hinoki roof (-35) or hang to 0.9 m above the floor. Use noren dims w 1.0, h 0.9 (bottom at about 2.0 m)."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the ramen counter the light source of the hall (emissive counter, kitchen fire, and the 火山 neon moved to the counter end facing down it, all brighter than the chochin), and cut the plaza floor lanterns to one north-side row so the eye is pulled east.",
+ "plausibility": [
+  "0.55 m between the kitchen block front and the counter back: no room for the chef pulling noodles (09).",
+  "Noren (dressing[0]) at 4.0 m height pierce the -35 hinoki roof or hang to knee height.",
+  "lights3:0, lights3:4, lights4:0, lights6:0 and lights6:1 sit at z -40.6, 0.6 m below the hall floor (-40). Verify that a sunken Mist Steps landing exists there; if not, they are sunk.",
+  "The 15 m counter has no stools in the graybox, so at eye height it reads as a bench."
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "space": "b4_lobby",
+ "round": 1,
+ "reviewer": "rev_b3_east_b4_r1",
+ "frames": {
+  "entry": {
+   "focal": "The pair of lantern_floor slabs at the tunnel mouth, and the dark mouth itself. Good wayfinding.",
+   "is_hero": false,
+   "next_visible": "Yes, the tunnel mouth is clear, but there is no orange tint inside: it reads cold grey."
+  },
+  "reveal": {
+   "focal": "The lift core: a ~4 m dull olive cylinder with the spiral stair wrapped round it, unlit and darker than the wall lanterns.",
+   "is_hero": true,
+   "next_visible": "n/a (looking back at the lift)"
+  },
+  "concept": {
+   "focal": "The core column and spiral stair. The lanterns at the wall foot are tiny.",
+   "is_hero": true,
+   "next_visible": "The tunnel mouth glints faintly at the right."
+  },
+  "strip": {
+   "focal": "An even ring of wall lanterns curving left to the tunnel. Frame 7 looks down a cold blue-grey tunnel.",
+   "is_hero": false,
+   "next_visible": "Yes, the tunnel is visible from frame 5 on."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b4_lobby:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "lift_core reads as a ~4 m unlit olive column, not the r 8 drum with a lit glass-and-bronze car. Build the drum at r 8 with an emissive car and door surround at the lift portal (83.53,74.7). It should be the brightest object in the room."
+  },
+  {
+   "id": "lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Ring of 16 niches at spacing 4.0 matches plan 36 but is perfectly even. Use [3.5,6] and cluster a pair each side of the two door portals and the tunnel mouth. Leave darker arcs on the NE."
+  },
+  {
+   "id": "b4_lobby:gauge",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The gauge is a dark slab invisible at the mouth. Add a small warm spot or glowing dial so the reveal sightline's 'brass gauge glinting' reads."
+  },
+  {
+   "id": "b4_tunnel:lights[0] (cross-space)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "There is no orange tint visible in the tunnel mouth from the lobby. Put one warm, slightly orange lantern pool ~6 m inside the tunnel on the axis of the lobby entry view."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the lift drum and car the bright, round centre of the room (r 8, emissive car) so the radial room has its focal point.",
+ "plausibility": [
+  "The lift core proxy is much smaller than the r 8 drum in the spec, which leaves a large empty floor between it and the radial boards.",
+  "The benches (dressing[0]) are not visible in any frame. That is acceptable, but check that they are not lost in the wall-foot shadow."
+ ]
+}

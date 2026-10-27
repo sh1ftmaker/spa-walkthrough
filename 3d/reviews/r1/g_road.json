@@ -1,0 +1,81 @@
+{
+ "space": "g_road",
+ "round": 1,
+ "reviewer": "ground_a_r1",
+ "frames": {
+  "entry": {
+   "focal": "The lit genkan porch 36 m away, framed by the dark torii, with a near pair of white post lanterns. The torii itself is unlit, and the falls (hero) are off-frame; only an orange-brown sliver shows at the far left edge.",
+   "is_hero": false,
+   "next_visible": "Yes: the porch and its two lanterns read clearly through the torii."
+  },
+  "reveal": {
+   "focal": "Nothing. The frame is filled by an unlit dark-brown slab (the falls sheet, 5 m away) against black rock. Both the 16:9 and the 9:16 frames are effectively black.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "concept": {
+   "focal": "The porch glow at the end of a slot between two tall rock walls, plus lantern posts. Plan 31 shows a road on a ledge, open to the south, lined with continuous lantern railings; this reads as a canyon.",
+   "is_hero": false,
+   "next_visible": "Yes: porch and torii."
+  },
+  "strip": {
+   "focal": "The porch glow throughout, with lanterns converging on it. The falls never appear, there is no visible stream or bridge, and the south side never opens.",
+   "is_hero": false,
+   "next_visible": "Yes: the torii and porch ahead in every frame, which is the space's one success."
+  }
+ },
+ "fixes": [
+  {
+   "id": "g_road:hero",
+   "action": "move",
+   "dx": 5.0,
+   "dy": 0.0,
+   "deg": 0,
+   "detail": "At (3.2,60.9) the falls are 58 deg left of the entry axis, outside the frame. Shift the whole falls group east about 5 m (hero, lights[1] falls_uplight, w_road_plunge, w_road_stream, road_bridge) so the falls sit about 7 m ahead-left (about 28 deg) of the entry camera while the torii stays dead ahead. Also give the falls sheet an emissive white-teal material: it renders as an unlit brown slab."
+  },
+  {
+   "id": "lights[1] falls_uplight",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Its snap_status is 'marker' and it emits nothing visible. It needs a real light (teal-white, brighter than any lantern) or an emissive spray volume, so that the hero is the brightest thing per the brief."
+  },
+  {
+   "id": "lights[0] lantern_post",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Only 2 posts were produced for a 13 m road: the avoid poly x 1.8-7.2 removes half the run and the portals remove the rest. Shrink the avoid poly to the bridge deck only (about x 3-6) and emit both rows, spacing [3.2,4.2], from x 0.5 to 12, so the 'two converging rows' of plan 31 exist."
+  },
+  {
+   "id": "g_road:road_marker",
+   "action": "move",
+   "dx": 0.0,
+   "dy": -1.2,
+   "deg": 0,
+   "detail": "It resolved at z -0.4, sunk into the plunge-pool band (pool spans y 59.3-61.9). Move it to (1.2,58.1) and snap to the road at z 0."
+  },
+  {
+   "id": "dressing[0..3] railing",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The 7.8 m runs dressing[1] and dressing[3] each produced one 1.5 m segment, and dressing[0] and dressing[2] produced nothing. Railings must be continuous along their 'along' polylines, and none is visible in any frame. The rock_cluster scatter also produced zero objects."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 1,
+  "light_rhythm": 2
+ },
+ "top_change": "Make the falls exist at eye level: move the falls group about 5 m east into the entry frame and make the falls the brightest, uplit, white-teal thing on the road.",
+ "plausibility": [
+  "Tall rock walls close both sides of the road. The brief and plan 31 have a north flank and a south side that drops to the cascade pools and the sea, so the south rock wall should go (shell/terrain, lead).",
+  "road_marker is sunk 0.4 m (z -0.4).",
+  "The stream is supposed to cross under the bridge, but no gap, parapet or water is visible from the road.",
+  "The hero_visible check reports 0.94 at entry although the hero is effectively off-frame and unlit, so the check is not measuring what the eye sees."
+ ]
+}

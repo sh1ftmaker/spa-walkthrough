@@ -1,0 +1,80 @@
+{
+ "space": "g_terrace",
+ "round": 1,
+ "reviewer": "ground_a_r1",
+ "frames": {
+  "entry": {
+   "focal": "The near stone lanterns. The cable station (hero) is a small brown box in the mid-distance, unlit except by two tiny lantern cubes. No cabin and no cable line rise to the summit.",
+   "is_hero": false,
+   "next_visible": "Some: the lantern row recedes east. The hall facade on the left is a black wall, and the banners are invisible."
+  },
+  "reveal": {
+   "focal": "Dark cliff face against the sky. The camera points up at z 30, where nothing exists yet; the hero is only an orange corner at the bottom right.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "concept": {
+   "focal": "A group of white lantern boxes in the foreground (lights3, lights4) over a dark slab. The pools below show as a single teal sliver; the stepped teal terraces of 01 are not visible.",
+   "is_hero": false,
+   "next_visible": "Barely: the overlook stair down is not legible."
+  },
+  "strip": {
+   "focal": "Frames 0-3 the cable station box (one hanging lantern floats over the walk in frame 3). Frames 4-7 are two even parallel lines of lanterns receding into darkness for 60 m.",
+   "is_hero": false,
+   "next_visible": "The far east lookout is never marked by anything brighter than the rows."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights[2] lantern_hanging (ring)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The ring radius of 4.2 m exceeds the 5 by 6 m station's half-size, so the 4 'eave' lanterns float about 1.2 m outside the roof at z 3.2. Strip-3 shows one hanging in mid-air over the spine. Use radius 2.6-3.0 with snap 'eave'."
+  },
+  {
+   "id": "g_terrace:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The station is a plain unlit brown box. The intent is a glazed, lit station plus a lit cabin and a cable line climbing to (96,60,120). Add the cabin and a cable proxy (emissive line or cabin about 10-20 m up the cable), and make the station glazing the brightest thing on the terrace. Without them the reveal camera has nothing to see."
+  },
+  {
+   "id": "lights[0] / lights[1] (east of x 90)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "12 toro at y 35.6, spacing [8,11], plus 13 posts at y 24.5, spacing [7,9], form two even parallel pickets for 60 m with nothing between them. Use spacing [5,16] with clusters of 2-3 at the cable station and the east lookout, leave dark gaps of 15 m or more, and end the walk with the bench lit brighter."
+  },
+  {
+   "id": "dressing[3] pine_bonsai",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Produced zero pines: the avoid buffer of 6.0 plus the nav band leaves no room. Lower the buffer to 2.0 and place 3-4 windswept pines on the cliff edge at x about 100, 118 and 140 to break the barren east run. Only 2 rock clusters exist on 120 m of edge."
+  },
+  {
+   "id": "g_terrace:lights3:1",
+   "action": "remove",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The post at (42.5,25) and the toro lights4:1 (44,31) stand right in front of the concept and overlook camera and block the view down to the pools. Keep the rail posts at the overlook ends (31.2 and 49.3) only."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Build and light the cable cabin and its cable so that a vertical line of light climbs the cliff from the station: without it the terrace has no focal point at all.",
+ "plausibility": [
+  "Hanging lanterns float about 1.2 m off the cable station.",
+  "Cliff-edge railings are 1.5 m segments with 3-5 m gaps (dressing[0], [1], [5], [6]) and resolve at z 1.1, and no railing is visible in any frame. Check the origin convention and make them continuous.",
+  "The reveal camera targets z 30 where no geometry exists."
+ ]
+}

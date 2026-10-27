@@ -153,6 +153,16 @@
    "height": 3.0
   },
   {
+   "id": "p_b1_junction_mirror",
+   "to": "b1_cor_mirror",
+   "at": [
+    70,
+    76
+   ],
+   "width": 3.2,
+   "height": 3.0
+  },
+  {
    "id": "pi_mirror_junction_e",
    "to": "b1_cor_mirror",
    "at": [
@@ -189,8 +199,8 @@
    -20.0
   ],
   [
-   67.4,
-   79.4,
+   67.5,
+   79.1,
    -20.0
   ]
  ],
@@ -222,43 +232,32 @@
   "at": [
    64.0,
    72.0,
-   -20.05
+   -20.08
   ],
   "facing_deg": 45,
   "dims": {
-   "r": 2.3,
-   "depth": 0.85
+   "w": 3.6,
+   "d": 3.6,
+   "h": 0.05
   },
-  "why": "Lookbook: at junctions the corridor widens into ponds with koi. The pond sits in the quiet SW quarter, off the through-route, lit from below so the black and gold fish glow under the mist; it is the brightest, slowest thing here and it marks the fork."
+  "why": "Lookbook: at junctions the corridor widens into ponds with koi. The pond sits in the quiet SW quarter, off the through-route, lit from below so the black and gold fish glow under the mist; it is the brightest, slowest thing here and it marks the fork.",
+  "snap": "given"
  },
  "anchored": [
-  {
-   "id": "bell",
-   "asset": "junction_bell",
-   "at": [
-    69.95,
-    77.6,
-    -20.0
-   ],
-   "facing_deg": 225,
-   "dims": {
-    "h": 1.9
-   },
-   "why": "Lookbook: a small bell at each junction is the only sound allowed after 22:00. On the NE kerb where the route turns north, facing the pond."
-  },
   {
    "id": "toro",
    "asset": "lantern_stone",
    "at": [
     61.45,
     72.85,
-    -20.0
+    -20.2
    ],
    "facing_deg": 75,
    "dims": {
     "h": 1.4
    },
-   "why": "Stone lantern on the pond's west rim, doubled in the pond; seen from the lobby mouth."
+   "why": "Stone lantern on the pond's west rim, doubled in the pond; seen from the lobby mouth.",
+   "snap": "given"
   },
   {
    "id": "pond_pine",
@@ -266,13 +265,91 @@
    "at": [
     65.7,
     69.35,
-    -20.0
+    -20.2
    ],
    "facing_deg": 0,
    "dims": {
+    "w": 1.2,
+    "d": 1.2,
     "h": 1.8
    },
-   "why": "Leans over the pond's south rim; silhouette against the underwater glow."
+   "why": "Leans over the pond's south rim; silhouette against the underwater glow.",
+   "snap": "given"
+  },
+  {
+   "id": "bell",
+   "asset": "junction_bell",
+   "at": [
+    65.8,
+    78.6,
+    -20.2
+   ],
+   "facing_deg": 195,
+   "dims": {
+    "h": 1.9
+   },
+   "why": "Between the west branch and the north leg, facing the pond: on the right of the concept frame.",
+   "snap": "given"
+  },
+  {
+   "id": "mouth_niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    62.93,
+    78.37,
+    -19.75
+   ],
+   "facing_deg": 140.6,
+   "snap": "given",
+   "why": "Pairs flanking the north mouth and the east mouth, one by the west mouth; none behind the pond so it stays the brightest."
+  },
+  {
+   "id": "mouth_niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    64.61,
+    79.14,
+    -19.75
+   ],
+   "facing_deg": 163.1,
+   "snap": "given",
+   "why": "Pairs flanking the north mouth and the east mouth, one by the west mouth; none behind the pond so it stays the brightest."
+  },
+  {
+   "id": "mouth_niches_2",
+   "asset": "lantern_niche",
+   "at": [
+    70.37,
+    70.93,
+    -19.75
+   ],
+   "facing_deg": 309.4,
+   "snap": "given",
+   "why": "Pairs flanking the north mouth and the east mouth, one by the west mouth; none behind the pond so it stays the brightest."
+  },
+  {
+   "id": "mouth_niches_3",
+   "asset": "lantern_niche",
+   "at": [
+    68.66,
+    69.39,
+    -19.75
+   ],
+   "facing_deg": 331.9,
+   "snap": "given",
+   "why": "Pairs flanking the north mouth and the east mouth, one by the west mouth; none behind the pond so it stays the brightest."
+  },
+  {
+   "id": "mouth_niches_4",
+   "asset": "lantern_niche",
+   "at": [
+    60.67,
+    73.81,
+    -19.75
+   ],
+   "facing_deg": 84.4,
+   "snap": "given",
+   "why": "Pairs flanking the north mouth and the east mouth, one by the west mouth; none behind the pond so it stays the brightest."
   }
  ],
  "water": [
@@ -281,7 +358,8 @@
    "kind": "still",
    "z": -20.05,
    "rim_z": -20.0,
-   "bed_z": -20.2,
+   "depth": 0.18,
+   "bed_z": -20.18,
    "path": [
     [
      71.45,
@@ -306,6 +384,7 @@
    "z": -20.05,
    "rim_z": -20.0,
    "bed_z": -20.9,
+   "depth": 0.9,
    "footprint": [
     [
      64.0,
@@ -437,8 +516,8 @@
   },
   "reveal": {
    "pos": [
-    69.0,
-    77.4,
+    69.6,
+    76.6,
     -18.4
    ],
    "target": [
@@ -464,37 +543,7 @@
    "match": "Mood, not geometry: mist on water, stepping stones curving away left into the west branch, toro and pond glow lower left, bell frame on the right, warm steam-grotto light at the end."
   }
  },
- "lights": [
-  {
-   "asset": "koi_pond",
-   "part": "underwater_light",
-   "at": [
-    [
-     64.0,
-     72.0,
-     -20.85
-    ]
-   ],
-   "why": "Warm-teal uplight in the pond: the hero is the brightest thing."
-  },
-  {
-   "asset": "lantern_niche",
-   "along": "wall",
-   "spacing": [
-    3.2,
-    4.6
-   ],
-   "snap": "wall",
-   "height": 0.25,
-   "face": "in",
-   "avoid": [
-    "portals",
-    "hero",
-    1.0
-   ],
-   "why": "A sparse ring of ankle lights on the curved wall; none behind the pond so it stays the brightest."
-  }
- ],
+ "lights": [],
  "dressing": [
   {
    "asset": "boulder_rim",
@@ -502,103 +551,23 @@
     64.0,
     72.0
    ],
-   "radius": 2.45,
-   "spacing": [
-    0.7,
-    1.1
+   "radius": [
+    2.45,
+    2.7
    ],
-   "embed": 0.15,
+   "jitter_deg": 14,
+   "count": 8,
+   "embed": 0.12,
    "scale": [
-    0.35,
-    0.6
-   ],
-   "top_z": [
-    -20.0,
-    -19.85
+    0.45,
+    0.7
    ],
    "avoid": [
-    "nav"
-   ]
-  },
-  {
-   "asset": "stepping_stone",
-   "along": [
-    [
-     71.45,
-     73.6
-    ],
-    [
-     69.2,
-     75.3
-    ],
-    [
-     67.4,
-     79.4
-    ]
+    "nav",
+    "anchored"
    ],
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
-   ],
-   "jitter": 0.08,
-   "top_z": -20.0,
-   "scale": [
-    0.95,
-    1.15
-   ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
-   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
-  },
-  {
-   "asset": "stepping_stone",
-   "along": [
-    [
-     69.2,
-     75.3
-    ],
-    [
-     65.4,
-     76.6
-    ],
-    [
-     62.0,
-     76.0
-    ]
-   ],
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
-   ],
-   "jitter": 0.08,
-   "top_z": -20.0,
-   "scale": [
-    0.95,
-    1.15
-   ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
-   "why": "Branch path west, curving north of the pond (keeps 1 m off its rim)."
+   "why": "Rim stones that break the surface (rocks in water now sit proud), marking the pond as a separate well.",
+   "z": -20.2
   },
   {
    "asset": "rock_cluster",
@@ -608,11 +577,18 @@
     0.5
    ],
    "density": 0.04,
+   "scale": [
+    0.3,
+    0.5
+   ],
    "avoid": [
     "nav",
     "portals",
-    "hero"
-   ]
+    "hero",
+    "anchored"
+   ],
+   "optional": true,
+   "z": -20.2
   }
  ],
  "mood": {
@@ -620,6 +596,20 @@
   "palette": "warm-teal pond light, black and gold koi, amber niches, bronze bell",
   "mist": "Knee-high (0.4 m) layer over the whole pool, densest at the walls, thinning over the stones. Slightly thicker over the pond."
  },
- "waivers": [],
+ "waivers": [
+  {
+   "check": "hero_visible",
+   "where": "koi_pond",
+   "reason": "The hero sits at the water line (pond glow at -20.05, lip top -19.85); the graybox mist sheet 0.35 m above the water is solid in the visibility raycast and hides it. Reported to the lead; remove this waiver once mist is excluded."
+  }
+ ],
+ "light_notes_extra": "Hero (koi_pond) now renders emissive with its own key light; toro (15 W) stays dimmer than the pond.",
+ "allow_overlap": [
+  [
+   "koi_pond",
+   "boulder_rim"
+  ]
+ ],
+ "light_notes": "koi_pond carries its own underwater light (assets.json light), the brightest point here.",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

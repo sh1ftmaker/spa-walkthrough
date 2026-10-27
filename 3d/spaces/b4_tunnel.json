@@ -74,13 +74,73 @@
    -100.0
   ],
   [
-   60,
-   58,
+   76.2,
+   63.72,
    -100.0
   ],
   [
-   52,
-   46,
+   74.34,
+   63.06,
+   -100.0
+  ],
+  [
+   71.42,
+   62.03,
+   -100.0
+  ],
+  [
+   67.44,
+   60.62,
+   -100.0
+  ],
+  [
+   63.61,
+   58.84,
+   -100.0
+  ],
+  [
+   60.34,
+   56.69,
+   -100.0
+  ],
+  [
+   57.64,
+   54.16,
+   -100.0
+  ],
+  [
+   55.5,
+   51.25,
+   -100.0
+  ],
+  [
+   54.06,
+   48.25,
+   -100.0
+  ],
+  [
+   53.38,
+   45.25,
+   -100.0
+  ],
+  [
+   53.44,
+   42.25,
+   -100.0
+  ],
+  [
+   54.25,
+   39.25,
+   -100.0
+  ],
+  [
+   55.06,
+   36.81,
+   -100.0
+  ],
+  [
+   55.62,
+   35.12,
    -100.0
   ],
   [
@@ -103,38 +163,6 @@
  },
  "anchored": [
   {
-   "id": "walkway",
-   "asset": "boardwalk",
-   "at": [
-    60.0,
-    58.0,
-    -100.0
-   ],
-   "path": [
-    [
-     77,
-     64
-    ],
-    [
-     60,
-     58
-    ],
-    [
-     52,
-     46
-    ],
-    [
-     56,
-     34
-    ]
-   ],
-   "z": -100.0,
-   "dims": {
-    "w": 3.2
-   },
-   "why": "Hinoki walkway down the middle with rock either side (36)."
-  },
-  {
    "id": "neck_frame",
    "asset": "hall_shell",
    "variant": "portal_frame",
@@ -155,11 +183,11 @@
    "id": "bend_bench",
    "asset": "bench_stone",
    "at": [
-    50.4,
-    47.4,
+    50.0,
+    46.4,
     -100.0
    ],
-   "facing_deg": 120,
+   "facing_deg": 162,
    "dims": {
     "w": 1.8
    },
@@ -199,8 +227,8 @@
  "cameras": {
   "entry": {
    "pos": [
-    75.6,
-    63.5,
+    76.7,
+    64.2,
     -98.4
    ],
    "target": [
@@ -212,8 +240,8 @@
   },
   "reveal": {
    "pos": [
-    52.6,
-    45.0,
+    52.0,
+    44.0,
     -98.4
    ],
    "target": [
@@ -226,13 +254,13 @@
   "concept": {
    "image": "lookbook/img/36-plan-b4-magma.jpg",
    "pos": [
-    60.5,
-    57.6,
+    68.5,
+    61.4,
     -98.4
    ],
    "target": [
+    55.0,
     52.0,
-    46.0,
     -98.6
    ],
    "fov_v": 60,
@@ -242,54 +270,79 @@
  "lights": [
   {
    "asset": "lantern_niche",
-   "along": [
+   "at": [
     [
-     77,
-     64
+     76.34,
+     61.38
     ],
     [
-     60,
-     58
+     71.07,
+     64.29
     ],
     [
-     52,
-     46
+     69.26,
+     58.88
+    ],
+    [
+     62.08,
+     61.12
+    ],
+    [
+     61.07,
+     55.54
+    ],
+    [
+     54.57,
+     53.91
     ]
    ],
-   "side": "both",
-   "spacing": [
-    4,
-    5
-   ],
-   "offset": 2.1,
    "height": 0.4,
-   "snap": "wall",
    "face": "path",
-   "fade_toward": "p_b4_tunnel_chamber",
-   "why": "Wall lanterns in pools along the first two legs, getting dimmer toward the bend."
+   "why": "Staggered wall niches on the first leg and the first bend (no mirrored pairs), with gaps lengthening toward the bend."
   },
   {
    "asset": "lantern_niche",
-   "along": [
+   "at": [
     [
-     52,
-     46
+     54.7,
+     45.97
     ],
     [
-     56,
-     34
+     51.88,
+     39.23
     ]
    ],
-   "side": "both",
-   "spacing": [
-    8,
-    9
-   ],
-   "offset": 2.1,
    "height": 0.25,
-   "snap": "wall",
-   "dim": 0.4,
-   "why": "Only two or three dim niches on the last leg, so the chamber glow leads."
+   "face": "path",
+   "why": "Two low niches on the last leg only; the chamber glow leads."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     70.81,
+     63.51
+    ]
+   ],
+   "why": "One warm pool about 6 m in, on the axis of the lobby's lift-door view (review b4_lobby)."
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     74.0,
+     61.99
+    ],
+    [
+     65.37,
+     60.65
+    ],
+    [
+     59.33,
+     54.51
+    ]
+   ],
+   "why": "Three hanging lantern pools on the first leg and first bend, staggered; the niches alone left the tunnel black (r1 render)."
   }
  ],
  "dressing": [
@@ -297,16 +350,22 @@
    "asset": "rock_cluster",
    "scatter": "edge_band",
    "band": [
-    0.0,
-    0.8
+    0.05,
+    0.5
    ],
-   "density": 0.06,
+   "density": 0.14,
+   "scale": [
+    0.4,
+    0.6
+   ],
    "avoid": [
     "nav",
-    "portals",
-    "anchored:walkway"
+    "portals"
    ],
-   "why": "Rough basalt either side of the walkway."
+   "allow_overlap": [
+    "lantern_niche"
+   ],
+   "why": "Low rough basalt along the wall base; wall niches are cut into it. The floor is a hinoki walkway (floor finish, not a proxy)."
   }
  ],
  "mood": {
@@ -319,6 +378,12 @@
    "check": "footprint",
    "where": "hero",
    "reason": "Borrowed view of the chamber's glass wall."
+  },
+  {
+   "check": "hero_visible",
+   "where": "entry camera",
+   "reason": "The glass wall (b4_chamber:hero) is round two bends from the lobby end; the entry camera sees the first bend and the warm pool, and the reveal at the second bend frames the glow. Visibility from the entry is 0 by design."
   }
- ]
+ ],
+ "spine_note": "Spine smoothed (Chaikin x3) inside the 5 m band; walls stay as the layout band until the lead fillets it (see report)."
 }

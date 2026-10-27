@@ -104,47 +104,35 @@
   "asset": "lantern_stone",
   "variant": "misaki_toro",
   "at": [
-   194.6,
-   78.4,
+   192.9,
+   79.0,
    0
   ],
   "facing_deg": 225,
   "dims": {
+   "w": 1.1,
+   "d": 1.1,
    "h": 3.4
   },
-  "outside_ok": "Stands on a rock knob just beyond the railing at the path's outer corner, so the 3 m path stays clear.",
-  "why": "A tall cape lantern on the NE shoulder: visible from the east terrace as the single warm point against the sea, it is where the path turns north, so it pulls you along the whole first leg."
+  "why": "A tall cape lantern on a bump-out at the outer corner of the NE shoulder, standing against the sea: visible from the east terrace as the single warm point, it is where the path turns north, so it pulls you along the whole first leg."
  },
  "anchored": [
   {
    "id": "overhang",
    "asset": "rock_overhang",
    "at": [
-    194.0,
-    100.0,
+    193.0,
+    97.0,
     2.8
    ],
    "facing_deg": 90,
    "dims": {
-    "len": 10.0,
-    "depth": 2.4,
-    "clear_h": 2.8
+    "w": 10.0,
+    "d": 2.4,
+    "h": 1.2
    },
-   "why": "Cliff overhang above the inland half of the north leg (y 95-105): compression before the north ledge."
-  },
-  {
-   "id": "shoulder_bench",
-   "asset": "bench_stone",
-   "at": [
-    191.0,
-    81.4,
-    0
-   ],
-   "facing_deg": 135,
-   "dims": {
-    "len": 1.8
-   },
-   "why": "Pause at the turn, facing the sea stacks."
+   "why": "Cliff overhang above the inland half of the north leg (y 95-105): compression before the north ledge.",
+   "snap": "given"
   }
  ],
  "water": [],
@@ -193,31 +181,31 @@
   },
   "reveal": {
    "pos": [
-    192.2,
-    82.0,
+    192.0,
+    91.6,
     1.6
    ],
    "target": [
     190.0,
     108.0,
-    25.0
+    10.0
    ],
    "fov_v": 65
   },
   "concept": {
    "image": "lookbook/img/32-suites-cliff.jpg",
    "pos": [
-    193.6,
-    104.0,
+    193.9,
+    109.6,
     1.6
    ],
    "target": [
-    172.0,
+    170.0,
     106.0,
-    32.0
+    14.0
    ],
    "fov_v": 62,
-   "match": "32's front elevation seen from its east end at eye height: stacked lit suites, white trickles between them, lantern-lined balconies, sea stacks in mist to the right."
+   "match": "32's front elevation seen from its east end at eye height: stacked lit suites, trickles between, sea stacks to the right."
   }
  },
  "lights": [
@@ -251,27 +239,18 @@
    "asset": "railing",
    "along": "spine",
    "side": "right",
-   "offset": 1.35,
-   "height": 1.05,
+   "offset": 1.4,
    "avoid": [
     "portals"
    ],
-   "why": "Sea side all the way."
-  },
-  {
-   "asset": "rock_cluster",
-   "along": "spine",
-   "side": "left",
-   "spacing": [
-    3.0,
-    6.0
-   ],
-   "offset": 1.4,
-   "embed": 0.2,
-   "scale": [
-    0.5,
-    1.0
-   ]
+   "why": "Sea side all the way.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   },
+   "allow_on_nav": true,
+   "z": 0.0
   }
  ],
  "mood": {
@@ -280,11 +259,6 @@
   "mist": "sea spray drifting up the cliff"
  },
  "waivers": [
-  {
-   "check": "hero_inside_footprint",
-   "where": "hero misaki_toro",
-   "reason": "Path is 3 m wide; the lantern stands on a rock knob outside the rail."
-  },
   {
    "check": "no_empty_areas",
    "where": "first leg",

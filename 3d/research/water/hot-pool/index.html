@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Geyser hot pool</title>
+<script type="importmap">{"imports":{"three":"../../../../web/node_modules/three/build/three.module.js","three/addons/":"../../../../web/node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+<script type="module">
+// Prototype (c): bubbling hot pool with a timed geyser, fumarole steam, and a still obsidian mirror pool.
+// Pool surface = 2D height-field ripple sim (Wallace / Mueller style) on a small half-float texture, driven by
+// bubble bursts, geyser rain and taps (click/touch the water). Bubbles, jet, steam = instanced GPU particles.
+// Mirror = planar reflection at half res (High tier) vs. the baked probe (Low tier). See ../README.md.
+import * as THREE from 'three';
+import { Reflector } from 'three/addons/objects/Reflector.js';
+import { createApp, GLSL_COMMON, GLSL_FRAG, BILLBOARD_GLSL, bakeVertexLight, lumpify, makeNoise3, mulberry, instancedQuads, bakeProbe } from '../common/kit.js';
+
+const app = createApp({
+  title: 'Geyser plaza hot pool + obsidian mirror',
+  fog: { color: 0x2c4246, v: [0.0, 0.07, 0.5, 0.004] },
+  cams: [
+    { pos: [-11, 2.3, 11], target: [0.5, 3.0, -0.5], fov: 60 },
+    { pos: [6.0, 1.7, 5.8], target: [3.0, -0.1, 1.2], fov: 55 },
+    { pos: [21.5, 1.15, -2.0], target: [2.0, 3.2, -0.5], fov: 55 },
+    { pos: [-16, 9, 16], target: [3, 0, -1], fov: 55 },
+  ],
+});
+const { scene, shared, renderer, camera } = app;
+const nz = makeNoise3(5); const rnd = mulberry(99);
+
+// ------------------------------------------------------------------ layout
+const POOL_R = r => 0; // placeholder
+const poolRadius = th => 8 + 0.8 * Math.sin(3 * th + 1) + 0.45 * Math.sin(5 * th + 2.3);
+const POOL_GLSL = /* glsl */`float poolRadius(float th){ return 8.0 + 0.8*sin(3.0*th+1.0) + 0.45*sin(5.0*th+2.3); }
+float poolSdf(vec2 xz){ return length(xz) - poolRadius(atan(xz.y, xz.x)); }`;
+const poolSdf = (x, z) => Math.hypot(x, z) - poolRadius(Math.atan2(z, x));
+const VENTS = [[0, 0, 1.0], [3.2, 1.6, 0.8], [-3.6, 2.6, 0.6], [2.4, -3.8, 0.7], [-2.6, -3.2, 0.9], [5.4, -1.2, 0.5]]; // x, z, vigour (0 = geyser)
+const MIRROR = { x0: 11, x1: 20, z0: -7, z1: 3, y: 0.32 };
+const SIM = { size: 20, x0: -10, z0: -10 };
+
+// ------------------------------------------------------------------ baked lights
+const WARM = new THREE.Color(1.0, 0.55, 0.22), TEAL = new THREE.Color(0.12, 0.95, 0.85);
+const lanterns = [];
+for (let i = 0; i < 9; i++) { const th = i / 9 * Math.PI * 2 + 0.3; const r = poolRadius(th) + 1.6; lanterns.push([Math.cos(th) * r, 0.9, Math.sin(th) * r]); }
+lanterns.push([MIRROR.x0 - 0.8, 0.9, MIRROR.z1 + 0.8], [MIRROR.x1 + 0.8, 0.9, MIRROR.z1 + 0.8], [MIRROR.x1 + 0.8, 0.9, MIRROR.z0 - 0.8]);
+const uplights = [[0, -0.9, 0], [4, -0.9, 3], [-4, -0.9, 3], [3, -0.9, -4], [-4, -0.9, -3], [6, -0.9, -1]];
+const LIGHTS = [
+  ...lanterns.map(p => ({ pos: new THREE.Vector3(...p), color: WARM, intensity: 6 })),
+  ...uplights.map(p => ({ pos: new THREE.Vector3(...p), color: TEAL, intensity: 5, wrap: 0.6 })),
+  { pos: new THREE.Vector3(0, 6, 0), color: new THREE.Color(0.3, 0.8, 0.8), intensity: 30, wrap: 0.3 },
+];
+
+// ------------------------------------------------------------------ terrain: pool bed, rim, deck, mirror basin, cave walls
+function groundY(x, z) {
+  const d = poolSdf(x, z);
+  let y;
+  if (d < 0) y = 0.1 - 1.5 * Math.min(1, Math.pow(-d / 2.2, 0.8)) + 0.06 * nz(x * 0.8, 0, z * 0.8, 2);   // bowl, 1.4 m deep
+  else if (d < 0.9) y = 0.1 + 0.32 * Math.min(1, d / 0.25) + 0.06 * nz(x * 2, 1, z * 2, 2);          // rim stones
+  else y = 0.28 + 0.04 * nz(x * 0.5, 2, z * 0.5, 2);                                         // deck
+  // geyser mound
+  const r0 = Math.hypot(x, z); y = Math.max(y, 0.35 - r0 * 0.55 + 0.12 * nz(x * 2, 4, z * 2, 2));
+  // mirror basin: flat black floor 0.6 m below its surface, crisp edge
+  if (x > MIRROR.x0 && x < MIRROR.x1 && z > MIRROR.z0 && z < MIRROR.z1) y = MIRROR.y - 0.6;
+  // cave walls
+  const R = Math.hypot(x - 3, z * 1.2);
+  y += 16 * Math.max(0, Math.min(1, (R - 21) / 5)) + 2.0 * Math.max(0, Math.min(1, (R - 21) / 5)) * nz(x * 0.2, 3, z * 0.2, 4);
+  return y;
+}
+function buildGround(low) {
+  const n = low ? 110 : 220;
+  const g = new THREE.PlaneGeometry(56, 52, n, n); g.rotateX(-Math.PI / 2); g.translate(3, 0, 0);
+  const pos = g.attributes.position; const lv = new Float32Array(pos.count);
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i), z = pos.getZ(i); pos.setY(i, groundY(x, z));
+    lv[i] = poolSdf(x, z) < 0.2 ? 0 : ((x > MIRROR.x0 - 0.1 && x < MIRROR.x1 + 0.1 && z > MIRROR.z0 - 0.1 && z < MIRROR.z1 + 0.1) ? MIRROR.y : -99);
+  }
+  g.setAttribute('aLevel', new THREE.BufferAttribute(lv, 1));
+  bakeVertexLight(g, LIGHTS, new THREE.Color(0.012, 0.016, 0.02));
+  return g;
+}
+const simUniforms = { tSim: { value: null }, uSimRect: { value: new THREE.Vector4(SIM.x0, SIM.z0, 1 / SIM.size, 1 / SIM.size) } };
+const groundMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, ...simUniforms, uTint: { value: new THREE.Color(0x232425) } },
+  vertexShader: /* glsl */`attribute vec3 color; attribute float aLevel; varying vec3 vCol; varying vec3 vW; varying vec3 vN; varying float vLevel;
+    void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; vCol = color; vN = normal; vLevel = aLevel; gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: GLSL_COMMON + /* glsl */`
+    uniform vec3 uTint; uniform sampler2D tSim; uniform vec4 uSimRect;
+    varying vec3 vCol; varying vec3 vW; varying vec3 vN; varying float vLevel;
+    void main(){
+      vec3 an = abs(normalize(vN));
+      vec2 uv = an.y > 0.6 ? vW.xz : (an.x > an.z ? vW.zy : vW.xy);
+      vec4 n = texture(tNoise, uv*0.18); float grain = texture(tNoise, uv*1.1).a;
+      vec3 alb = uTint*(0.5 + 1.0*n.r)*(0.75 + 0.5*grain);
+      // dressed-stone deck: faint joints
+      vec2 tile = abs(fract(vW.xz*0.7) - 0.5);
+      if (an.y > 0.9 && vW.y > 0.2 && vW.y < 0.5) alb *= 0.75 + 0.25*smoothstep(0.47, 0.44, max(tile.x, tile.y));
+      vec3 col = alb*vCol;
+      float d = vLevel - vW.y;
+      float wet = smoothstep(0.35, 0.0, -d)*step(-50.0, vLevel);
+      col *= mix(1.0, 0.6, wet);
+      if (d > 0.0){
+        vec3 rd = normalize(vW - cameraPosition);
+        float path = d/max(abs(rd.y), 0.22) + d;
+        vec3 T = exp(-vec3(0.5, 0.075, 0.11)*path);
+        // ripples from the sim bend the caustics
+        vec2 suv = (vW.xz - uSimRect.xy)*uSimRect.zw;
+        vec2 g = vec2(texture(tSim, suv + vec2(0.006,0)).r - texture(tSim, suv - vec2(0.006,0)).r, texture(tSim, suv + vec2(0,0.006)).r - texture(tSim, suv - vec2(0,0.006)).r);
+        vec2 cuv = vW.xz*0.38 + g*4.0;
+        float b1 = texture(tNoise, cuv + uTime*vec2(0.021,0.013)).b, b2 = texture(tNoise, cuv*1.37 + 0.4 - uTime*vec2(0.012,0.024)).b;
+        float caust = pow(clamp(1.0 - (b1+b2)*0.9, 0.0, 1.0), 3.0)*3.5;
+        col = vec3(dot(col, vec3(0.3,0.6,0.1)))*vec3(0.5,1.0,0.95);
+        col = col*0.8 + col*caust*exp(-d*0.4);
+        bool mirror = vLevel > 0.1;
+        vec3 sc = mirror ? vec3(0.0) : vec3(0.008, 0.14, 0.13)*(0.3 + 1.6*min(dot(vCol, vec3(0.2,0.6,0.2)), 1.6));
+        col = mirror ? col*0.05 : col*T + sc*(1.0 - exp(-0.35*path));
+      }
+      gl_FragColor = vec4(applyFog(col, vW), 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+});
+const ground = new THREE.Mesh(buildGround(app.state.low), groundMat); scene.add(ground);
+// ceiling
+const ceilGeo = new THREE.PlaneGeometry(60, 56, 40, 40); ceilGeo.rotateX(Math.PI / 2);
+{ const p = ceilGeo.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i), z = p.getZ(i); p.setXYZ(i, x + 3, 17 + 3.5 * nz(x * 0.09, 9, z * 0.09, 4), z); } }
+bakeVertexLight(ceilGeo, LIGHTS, new THREE.Color(0.006, 0.008, 0.01));
+ceilGeo.setAttribute('aLevel', new THREE.BufferAttribute(new Float32Array(ceilGeo.attributes.position.count).fill(-99), 1));
+const ceiling = new THREE.Mesh(ceilGeo, groundMat); scene.add(ceiling);
+const lanternMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(0.22, 0.34, 0.22), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.4, 1.0, 0.32) }), lanterns.length);
+lanterns.forEach((p, i) => lanternMesh.setMatrixAt(i, new THREE.Matrix4().makeTranslation(...p))); scene.add(lanternMesh);
+
+// ------------------------------------------------------------------ height-field ripple sim (ping-pong, fixed 60 Hz steps)
+const MAX_DROPS = 24;
+const simMat = new THREE.RawShaderMaterial({
+  glslVersion: THREE.GLSL3,
+  uniforms: { tPrev: { value: null }, uTexel: { value: new THREE.Vector2() }, uDrops: { value: Array.from({ length: MAX_DROPS }, () => new THREE.Vector4()) }, uN: { value: 0 }, uSize: { value: SIM.size }, uK: { value: 0.12 }, uDamp: { value: 0.988 } },
+  vertexShader: `precision highp float; in vec3 position; out vec2 vUv; void main(){ vUv = position.xy*0.5+0.5; gl_Position = vec4(position.xy,0.,1.); }`,
+  fragmentShader: /* glsl */`precision highp float;
+    in vec2 vUv; out vec4 o; uniform sampler2D tPrev; uniform vec2 uTexel; uniform vec4 uDrops[${MAX_DROPS}]; uniform int uN; uniform float uSize; uniform float uK; uniform float uDamp;
+    ${POOL_GLSL}
+    void main(){
+      vec4 s = texture(tPrev, vUv);
+      float avg = 0.25*(texture(tPrev, vUv+vec2(uTexel.x,0)).r + texture(tPrev, vUv-vec2(uTexel.x,0)).r + texture(tPrev, vUv+vec2(0,uTexel.y)).r + texture(tPrev, vUv-vec2(0,uTexel.y)).r);
+      float v = (s.g + (avg - s.r)*uK*2.0)*uDamp;
+      float h = s.r + v;
+      vec2 xz = (vUv - 0.5)*uSize;
+      for (int i=0;i<${MAX_DROPS};i++){ if (i>=uN) break; vec4 d = uDrops[i]; float r = length(xz - d.xy); if (r < d.z){ h += d.w*0.5*(cos(3.14159*r/d.z)+1.0); } }
+      float inside = step(poolSdf(xz), -0.05);
+      h *= inside; v *= inside;
+      h *= 0.9995;                                   // slow drift back to rest
+      o = vec4(h, v, 0.0, 1.0);
+    }`,
+  depthTest: false, depthWrite: false,
+});
+let simRes = 0, simRT = [], simQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), simMat), simCam = new THREE.Camera();
+function makeSim(res) {
+  simRT.forEach(r => r.dispose()); simRes = res;
+  simRT = [0, 1].map(() => new THREE.WebGLRenderTarget(res, res, { type: THREE.HalfFloatType, format: THREE.RGBAFormat, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, depthBuffer: false, wrapS: THREE.ClampToEdgeWrapping, wrapT: THREE.ClampToEdgeWrapping }));
+  simMat.uniforms.uTexel.value.set(1 / res, 1 / res);
+  // ripple speed is per step in cells: keep it the same in metres when the resolution changes
+  simMat.uniforms.uK.value = 0.12 * (res / 128) * (res / 128);
+  simUniforms.tSim.value = simRT[0].texture;
+}
+let simAcc = 0; const pending = [];
+function stepSim() {
+  const drops = pending.splice(0, MAX_DROPS); simMat.uniforms.uN.value = drops.length;
+  drops.forEach((d, i) => simMat.uniforms.uDrops.value[i].set(...d));
+  simMat.uniforms.tPrev.value = simRT[0].texture;
+  renderer.setRenderTarget(simRT[1]); renderer.render(simQuad, simCam);
+  simRT.reverse(); simUniforms.tSim.value = simRT[0].texture;
+}
+
+// ------------------------------------------------------------------ water surface
+const ventU = { uVents: { value: VENTS.map(v => new THREE.Vector4(v[0], v[1], v[2], 0)) }, uErupt: { value: 0 } };
+const WATER_VS = /* glsl */`
+uniform sampler2D tSim; uniform vec4 uSimRect; varying vec3 vW; varying vec2 vSuv;
+void main(){
+  vec3 p = (modelMatrix*vec4(position,1.0)).xyz;
+  vSuv = (p.xz - uSimRect.xy)*uSimRect.zw;
+  p.y += textureLod(tSim, vSuv, 0.0).r;
+  vW = p;
+  gl_Position = projectionMatrix*viewMatrix*vec4(p,1.0);
+}`;
+const WATER_FS = GLSL_COMMON + GLSL_FRAG + POOL_GLSL + /* glsl */`
+uniform sampler2D tSim; uniform vec4 uSimRect; uniform sampler2D tNormal; uniform samplerCube tEnv; uniform vec4 uVents[6]; uniform float uErupt; uniform vec4 uGl[6];
+varying vec3 vW; varying vec2 vSuv;
+void main(){
+  float e = 1.0/${'${SIMRES}'}.0;
+  float hl = texture(tSim, vSuv - vec2(e,0)).r, hr = texture(tSim, vSuv + vec2(e,0)).r;
+  float hd = texture(tSim, vSuv - vec2(0,e)).r, hu = texture(tSim, vSuv + vec2(0,e)).r;
+  float cell = 20.0*e;
+  float hc = texture(tSim, vSuv).r;
+  float lap = (hl + hr + hd + hu - 4.0*hc)/(cell*cell);
+  vec3 N = normalize(vec3((hl-hr)/(2.0*cell)*2.5, 1.0, (hd-hu)/(2.0*cell)*2.5));
+  vec3 nd = texture(tNormal, vW.xz*0.25 + vec2(uTime*0.01, uTime*0.013)).xyz*2.0-1.0;
+  // boiling: froth and chop concentrated over the vents
+  float boil = 0.0;
+  for (int i=0;i<6;i++){ vec2 d = vW.xz - uVents[i].xy; float k = (i==0 ? 0.35 + 1.2*uErupt : 1.0)*uVents[i].z; boil += k*exp(-dot(d,d)/(0.9 + 1.5*k)); }
+  vec3 nb = texture(tNormal, vW.xz*0.9 + vec2(sin(uTime*7.0), cos(uTime*6.0))*0.07).xyz*2.0-1.0;
+  N = normalize(N + vec3(nd.x, 0.0, nd.y)*0.06 + vec3(nb.x, 0.0, nb.y)*0.35*min(boil, 1.5));
+  vec3 V = normalize(cameraPosition - vW);
+  float F = 0.02 + 0.98*pow(1.0 - max(dot(N,V),0.0), 5.0);
+  vec3 refl = textureLod(tEnv, reflect(-V, N), 1.0).rgb;
+  vec3 spec = vec3(0.0);
+  for (int i=0;i<6;i++){ vec3 L = uGl[i].xyz - vW; float d2 = dot(L,L); L *= inversesqrt(d2); spec += vec3(1.0,0.6,0.3)*pow(max(dot(N, normalize(L+V)),0.0), 600.0)*30.0/(1.0+d2*0.05); }
+  // froth: two counter-moving cell layers whose product pops like bursting bubbles
+  float c1 = texture(tNoise, vW.xz*0.8 + vec2(uTime*0.11, -uTime*0.07)).g;
+  float c2 = texture(tNoise, vW.xz*1.3 - vec2(uTime*0.09, uTime*0.12)).g;
+  float bub = smoothstep(0.22, 0.08, c1)*smoothstep(0.3, 0.1, c2) + smoothstep(0.12, 0.04, c1)*0.6;
+  float patchN = texture(tNoise, vW.xz*0.2 + uTime*0.01).r;
+  float froth = clamp(boil*0.75, 0.0, 1.0);
+  float foam = clamp(bub*froth*1.4 + smoothstep(0.55, 0.95, froth*(0.6 + patchN)), 0.0, 1.0)*0.9;
+  vec3 foamCol = vec3(0.6, 0.8, 0.8)*0.6;
+  // ripple crests focus the underwater light: a cheap stand-in for refraction/caustics on the surface
+  vec3 col = refl*F + spec + vec3(0.05, 0.45, 0.42)*clamp(-lap*0.12, 0.0, 1.0);
+  float a = F;
+  if (uSceneOn > 0.5){
+    // High: look into the pool through the rippled surface (bed already absorption-tinted), Wallace-style
+    vec2 off = N.xz*0.06*clamp(sceneGap(vW), 0.0, 1.5);
+    if (sceneDepthAt(off) < viewDepth(vW)) off = vec2(0.0);
+    col += sceneColor(off)*(1.0 - F); a = 1.0;
+  }
+  vec4 outc = vec4(col*(1.0-foam) + foamCol*foam, a*(1.0-foam) + foam);
+  outc *= smoothstep(0.0, 0.25, -poolSdf(vW.xz) + 0.25);
+  gl_FragColor = applyFogPM(outc, vW);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+const glints = lanterns.slice(0, 6).map(p => new THREE.Vector4(...p, 1));
+function makeWaterMat(res, low) {
+  return new THREE.ShaderMaterial({
+    uniforms: { ...shared, ...simUniforms, ...ventU, tNormal: { value: app.tex.normal }, tEnv: { value: envTex }, uGl: { value: glints } },
+    vertexShader: WATER_VS, fragmentShader: WATER_FS.replace('${SIMRES}', String(res)), transparent: true, depthWrite: false,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor, defines: low ? { LOW: 1 } : {},
+  });
+}
+let envTex = null;
+const waterGeoHi = new THREE.PlaneGeometry(SIM.size, SIM.size, 128, 128).rotateX(-Math.PI / 2);
+const waterGeoLo = new THREE.PlaneGeometry(SIM.size, SIM.size, 64, 64).rotateX(-Math.PI / 2);
+const water = new THREE.Mesh(waterGeoHi, null); water.renderOrder = 2; scene.add(water);
+
+// ------------------------------------------------------------------ obsidian mirror: planar reflection (High) / probe (Low)
+const MIRROR_FS = GLSL_COMMON + /* glsl */`
+uniform sampler2D tDiffuse; uniform sampler2D tNormal; varying vec4 vUv; varying vec3 vW;
+void main(){
+  vec2 nd = (texture(tNormal, vW.xz*0.12 + uTime*0.004).xy*2.0-1.0)*0.004;      // barely moving
+  vec4 r = texture2DProj(tDiffuse, vec4(vUv.xy + nd*vUv.w, vUv.zw));
+  vec3 V = normalize(cameraPosition - vW);
+  float F = 0.04 + 0.96*pow(1.0 - max(V.y, 0.0), 5.0);
+  vec3 col = r.rgb*mix(0.55, 1.0, F);
+  gl_FragColor = vec4(applyFog(col, vW), 1.0);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+const mirrorGeo = new THREE.PlaneGeometry(MIRROR.x1 - MIRROR.x0, MIRROR.z1 - MIRROR.z0);
+const mirror = new Reflector(mirrorGeo, {
+  textureWidth: 512, textureHeight: 512, clipBias: 0.003,
+  shader: {
+    name: 'ObsidianMirror',
+    uniforms: { color: { value: null }, tDiffuse: { value: null }, textureMatrix: { value: null } },
+    vertexShader: `uniform mat4 textureMatrix; varying vec4 vUv; varying vec3 vW; void main(){ vUv = textureMatrix*vec4(position,1.0); vec4 w = modelMatrix*vec4(position,1.0); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+    fragmentShader: MIRROR_FS,
+  },
+});
+mirror.rotateX(-Math.PI / 2); mirror.position.set((MIRROR.x0 + MIRROR.x1) / 2, MIRROR.y, (MIRROR.z0 + MIRROR.z1) / 2); scene.add(mirror);
+for (const k of ['uTime', 'uFogColor', 'uFog', 'uFogGrad', 'tNoise']) mirror.material.uniforms[k] = shared[k];
+mirror.material.uniforms.tNormal = { value: app.tex.normal };
+const mirrorRT = mirror.getRenderTarget();
+mirror.getReflectionCamera(camera).layers.set(0);   // the reflection camera is a clone of the main camera: keep layer 1 (droplets) out
+const mirrorLowMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, tEnv: { value: null } },
+  vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.0); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: GLSL_COMMON + `uniform samplerCube tEnv; varying vec3 vW; void main(){ vec3 V = normalize(cameraPosition - vW); float F = 0.04 + 0.96*pow(1.0 - max(V.y,0.0), 5.0);
+    vec3 col = textureLod(tEnv, reflect(-V, vec3(0,1,0)), 0.0).rgb*mix(0.55, 1.0, F); gl_FragColor = vec4(applyFog(col, vW), 1.0);
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+  }`,
+});
+const mirrorLow = new THREE.Mesh(mirrorGeo, mirrorLowMat); mirrorLow.rotation.x = -Math.PI / 2; mirrorLow.position.copy(mirror.position); scene.add(mirrorLow);
+
+// ------------------------------------------------------------------ particles
+const P_HEAD = GLSL_COMMON + BILLBOARD_GLSL;
+// rising bubbles under the surface (drawn before the water so the surface Fresnel sits on top)
+const bubbleMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, ...ventU },
+  vertexShader: P_HEAD + /* glsl */`attribute float aSeed; uniform vec4 uVents[6]; uniform float uErupt; varying vec2 vUv; varying float vA; varying vec3 vW;
+    void main(){
+      vec3 r = hash31(aSeed*1.31 + 0.7);
+      int vi = int(floor(r.x*5.999)); vec4 ve = uVents[vi];
+      float speed = mix(0.35, 0.8, r.y); float depth = 1.25; float life = depth/speed;
+      float tt = uTime + r.z*life; float age = mod(tt, life); float cyc = floor(tt/life);
+      vec3 r2 = hash31(aSeed*3.7 + cyc*11.3);
+      float on = step(r2.z, ve.z*(vi==0 ? 0.4 + uErupt : 1.0));
+      vec2 off = (r2.xy - 0.5)*(0.5 + 0.9*ve.z);
+      float y = -depth + age*speed;
+      vec3 p = vec3(ve.x + off.x + sin(age*9.0 + aSeed)*0.03, y, ve.y + off.y + cos(age*8.0 + aSeed)*0.03);
+      float size = mix(0.015, 0.06, r2.x)*(0.6 + 0.6*age/life);
+      vA = on*smoothstep(0.0, 0.2, age/life)*smoothstep(0.0, -0.05, y);
+      vec3 wp = p + billboard(position.xy, size);
+      vUv = uv; vW = wp; gl_Position = projectionMatrix*viewMatrix*vec4(wp,1.0);
+    }`,
+  fragmentShader: P_HEAD + /* glsl */`varying vec2 vUv; varying float vA; varying vec3 vW;
+    void main(){ vec2 q = vUv*2.0-1.0; float r = dot(q,q); if (r > 1.0) discard;
+      float rim = smoothstep(0.55, 1.0, r)*0.9 + smoothstep(0.25, 0.0, dot(q-vec2(-0.35,0.35), q-vec2(-0.35,0.35)))*1.5;
+      float a = (0.25 + rim)*vA*(1.0 - smoothstep(0.9, 1.0, r));
+      vec3 col = vec3(0.7, 0.95, 0.95)*0.9;
+      gl_FragColor = vec4(col*a, a);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+  transparent: true, depthWrite: false, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+const bubbles = new THREE.Mesh(instancedQuads(900), bubbleMat); bubbles.frustumCulled = false; bubbles.renderOrder = 1; scene.add(bubbles);
+
+// geyser jet: streak droplets, emission gated by the eruption envelope at spawn time
+const GEYSER_ENV = /* glsl */`
+uniform float uCycle;
+float eruptAt(float t){ float c = mod(t, uCycle); return smoothstep(3.0, 3.6, c)*(1.0 - smoothstep(7.5, 10.5, c))*(0.8 + 0.2*sin(c*13.0)*sin(c*7.3)); }`;
+const jetMat = new THREE.ShaderMaterial({
+  uniforms: { ...shared, uCycle: { value: 16 }, uPix: { value: 0.001 } },
+  vertexShader: P_HEAD + GEYSER_ENV + /* glsl */`attribute float aSeed; uniform float uPix; varying vec2 vUv; varying float vA; varying vec3 vW; varying vec3 vCol;
+    void main(){
+      vec3 r = hash31(aSeed*1.91 + 0.3); float life = 3.4;
+      float tt = uTime + r.x*life; float age = mod(tt, life); float cyc = floor(tt/life);
+      vec3 r2 = hash31(aSeed*5.3 + cyc*17.1), r3 = hash31(aSeed*2.3 + cyc*7.9 + 3.0);
+      float E = eruptAt(uTime - age);
+      float on = step(r2.z, E);
+      float ang = r2.x*6.2832, spread = mix(0.015, 0.2, r2.y*r2.y);
+      float sp = mix(10.0, 17.5, r3.x)*mix(0.7, 1.0, E);
+      vec3 v0 = vec3(cos(ang)*sin(spread), cos(spread), sin(ang)*sin(spread))*sp;
+      vec3 p0 = vec3(cos(ang), 0.0, sin(ang))*0.22*r3.y + vec3(0.0, 0.3, 0.0);
+      float k = mix(0.25, 0.9, r3.z);                                   // small drops feel more drag: a mist sheath
+      vec3 p = p0 + v0*(1.0 - exp(-k*age))/k; p.y -= 4.9*age*age;
+      vec3 vel = v0*exp(-k*age) - vec3(0.0, 9.81*age, 0.0);
+      float alive = on*step(-0.05, p.y);
+      float dist = distance(p, cameraPosition);
+      float wPhys = mix(0.006, 0.025, r3.z*r3.z), w = max(wPhys, dist*uPix*1.3);
+      vec3 V = normalize(cameraPosition - p);
+      vCol = litScatter(p, V, 0.55, 0.2)*vec3(0.8, 0.98, 0.96);
+      vA = alive*smoothstep(0.0, 0.05, age)*(1.0 - age/life)*mix(0.3, 1.0, wPhys/w);
+      vec3 wp = p + streak(position.xy, p, vel, w, w + length(vel)/45.0)*alive;
+      vUv = uv; vW = wp; gl_Position = projectionMatrix*viewMatrix*vec4(wp, 1.0);
+    }`,
+  fragmentShader: GLSL_COMMON + GLSL_FRAG + /* glsl */`varying vec2 vUv; varying float vA; varying vec3 vW; varying vec3 vCol;
+    void main(){ float x = vUv.x*2.0 - 1.0, y = vUv.y*2.0 - 1.0; float a = (1.0 - x*x)*(1.0 - y*y*y*y)*vA*softFade(vW, 0.2);
+      gl_FragColor = applyFogPM(vec4(vCol*a, a*0.5), vW);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+    }`,
+  transparent: true, depthWrite: false, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+});
+const jet = new THREE.Mesh(instancedQuads(16000), jetMat); jet.frustumCulled = false; jet.renderOrder = 5; scene.add(jet);
+// droplets are left out of the planar reflection (layer 1 is only enabled on the main camera): cheaper, and they
+// rendered as dark specks in the half-float mirror target
+// (layers are assigned below: droplets on the fx layer only, column/steam also in the mirror)
+
+// geyser column core: open cylinders whose texture streams upward; height follows the envelope
+const COLUMN_FS = GLSL_COMMON + GLSL_FRAG + /* glsl */`uniform float uH; uniform float uLayer; varying vec2 vUv; varying vec3 vW;
+  void main(){
+    float s = vUv.y*uH;                                   // metres up the column; texture rides up with the water
+    float n1 = texture(tNoise3, vec3(vUv.x*2.0 + uLayer, s*0.09 - uTime*0.9, uTime*0.05)).r;
+    float n2 = texture(tNoise3, vec3(vUv.x*5.0 + uLayer*2.0, s*0.21 - uTime*1.7, 0.4 + uTime*0.07)).b;
+    float n = n1*0.65 + n2*0.5;
+    float top = 1.0 - smoothstep(0.5, 1.0, vUv.y);
+    float a = smoothstep(0.32 + 0.3*vUv.y, 0.62 + 0.2*vUv.y, n)*top*mix(0.75, 0.35, uLayer);
+    a *= smoothstep(0.0, 0.03, vUv.y)*softFade(vW, 0.4);
+    vec3 V = normalize(cameraPosition - vW);
+    vec3 lit = litScatter(vW, V, 0.4, 0.5);
+    vec3 col = mix(vec3(0.25, 0.8, 0.75), vec3(0.85, 1.0, 1.0), smoothstep(0.5, 0.85, n))*lit*1.1;
+    gl_FragColor = applyFogPM(vec4(col*a, a), vW);
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+  }`;
+const columns = [0, 1].map(layer => {
+  const g = new THREE.CylinderGeometry(1, 1, 1, 20, 24, true); g.translate(0, 0.5, 0);
+  const m = new THREE.ShaderMaterial({
+    uniforms: { ...shared, uH: { value: 0 }, uLayer: { value: layer }, uW: { value: layer ? 1.1 : 0.55 } },
+    vertexShader: /* glsl */`uniform float uH; uniform float uW; uniform float uTime; uniform sampler2D tNoise; varying vec2 vUv; varying vec3 vW;
+      // (uses the shared noise)
+      void main(){ float y = position.y*uH; float w = uW*(1.0 + position.y*1.6);
+        float wob = textureLod(tNoise, vec2(uv.x*2.0, y*0.1 - uTime*0.5), 0.0).r - 0.5;
+        vec3 p = vec3(position.x*w*(1.0+wob*0.5), y, position.z*w*(1.0+wob*0.5));
+        vUv = uv; vW = (modelMatrix*vec4(p,1.0)).xyz; gl_Position = projectionMatrix*viewMatrix*vec4(vW,1.0); }`,
+    fragmentShader: COLUMN_FS, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+  });
+  const mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false; mesh.renderOrder = 4 + layer * 0.1; scene.add(mesh); return mesh;
+});
+
+// steam: pool wisps, geyser plume, fumarole jet (one draw each)
+const STEAM_VS = P_HEAD + GEYSER_ENV + POOL_GLSL + /* glsl */`
+attribute float aSeed; uniform vec4 uP; uniform float uKind; // life, size0, size1, rise
+varying float vA; varying vec2 vUv; varying vec3 vW; varying float vSeed; varying vec3 vCol; varying float vAge;
+void main(){
+  float life = uP.x; vec3 r = hash31(aSeed*2.17 + 0.3 + uKind);
+  float tt = uTime + r.x*life; float age = mod(tt, life)/life; float cyc = floor(tt/life);
+  vec3 r2 = hash31(aSeed*5.71 + cyc*9.1 + uKind*3.0), r3 = hash31(aSeed*1.91 + cyc*3.3 + 1.0);
+  vec3 p; float gate = 1.0;
+  float e = 1.0 - pow(1.0 - age, 1.8);
+  if (uKind < 0.5) {          // wisps lifting off the hot pool
+    float th = r2.x*6.2832; float rr = sqrt(r2.y)*poolRadius(th)*0.92;
+    p = vec3(cos(th)*rr, 0.05, sin(th)*rr) + vec3((r3.x-0.5)*1.5 + e*1.2, uP.w*e*(0.6 + 0.6*r3.y), (r3.z-0.5)*1.5 + e*0.4);
+  } else if (uKind < 1.5) {   // geyser plume: born along the column while it erupts
+    float E = eruptAt(uTime - age*life);
+    gate = step(r2.z, E*1.2);
+    p = vec3((r2.x-0.5)*1.2, r2.y*12.0*E, (r3.x-0.5)*1.2) + vec3((r3.y-0.5)*3.0 + e*2.5, uP.w*e, (r3.z-0.5)*3.0);
+  } else {                    // fumarole: a steady hissing jet from a rock crack
+    p = vec3(-9.5, 0.6, -7.0) + vec3((r3.x-0.5)*0.4*e + e*1.0, uP.w*e*(0.8 + 0.4*r3.y), (r3.z-0.5)*0.4*e + e*0.6);
+  }
+  float size = mix(uP.y, uP.z, e)*(0.7 + 0.6*r2.z);
+  vA = gate*smoothstep(0.0, 0.15, age)*(1.0 - age)*(1.0 - age);
+  vCol = litScatter(p, normalize(cameraPosition - p), 0.35, 0.6); vAge = age;
+  float rot = r.y*6.28 + age*(r.z-0.5)*2.0; vec2 c = mat2(cos(rot),-sin(rot),sin(rot),cos(rot))*position.xy;
+  vec3 wp = p + billboard(c, size);
+  vUv = uv; vW = wp; vSeed = aSeed;
+  gl_Position = projectionMatrix*viewMatrix*vec4(wp,1.0);
+}`;
+const STEAM_FS = GLSL_COMMON + GLSL_FRAG + /* glsl */`
+uniform vec4 uTint; varying float vA; varying vec2 vUv; varying vec3 vW; varying float vSeed; varying vec3 vCol; varying float vAge;
+void main(){
+  vec2 q = vUv*2.0 - 1.0; float rr = dot(q, q);
+  float n = texture(tNoise3, vec3(vUv*vec2(0.4, 0.25) + vSeed*0.0137, vAge*0.4 + uTime*0.012)).r;
+  float n2 = texture(tNoise3, vec3(vUv*vec2(1.2, 0.7) + vSeed*0.031, vAge*0.7 + 0.5)).b;
+  float shape = smoothstep(1.0, 0.0, rr + (0.5 - n)*1.0)*smoothstep(0.05, 0.55, n2 + 0.2);
+  float a = shape*vA*uTint.a*softFade(vW, 0.8)*smoothstep(1.0, 4.0, distance(vW, cameraPosition));
+  a *= smoothstep(-0.1, 0.4, vW.y);
+  vec3 col = uTint.rgb*vCol*(0.8 + 0.4*n);
+  gl_FragColor = applyFogPM(vec4(col*a, a), vW);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+}`;
+function steam(count, P, tint, kind, order) {
+  const m = new THREE.ShaderMaterial({
+    uniforms: { ...shared, uP: { value: new THREE.Vector4(...P) }, uTint: { value: new THREE.Vector4(...tint) }, uKind: { value: kind }, tPuff: { value: app.tex.puff }, uCycle: jetMat.uniforms.uCycle },
+    vertexShader: STEAM_VS, fragmentShader: STEAM_FS, transparent: true, depthWrite: false,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+  });
+  const mesh = new THREE.Mesh(instancedQuads(count), m); mesh.frustumCulled = false; mesh.renderOrder = order; scene.add(mesh); return mesh;
+}
+const wisps = steam(260, [7.0, 0.8, 3.0, 3.2], [0.9, 1.0, 1.0, 0.05], 0, 6);
+const plume = steam(220, [5.0, 1.5, 5.0, 6.0], [0.9, 1.0, 1.0, 0.08], 1, 6);
+const fumarole = steam(90, [3.5, 0.4, 2.4, 5.0], [0.9, 1.0, 1.0, 0.09], 2, 6);
+
+// ------------------------------------------------------------------ probe + tier switching
+envTex = bakeProbe(renderer, scene, new THREE.Vector3(0, 1.2, 5), 128, [water, bubbles, jet, ...columns, wisps, plume, fumarole, mirror, mirrorLow]);
+mirrorLowMat.uniforms.tEnv.value = envTex;
+app.extraTexBytes += 128 * 128 * 6 * 8 * 4 / 3;
+let lastLow = null;
+function setLow(low) {
+  lastLow = low;
+  makeSim(low ? 64 : 128);
+  app.extraTexBytes = 128 * 128 * 6 * 8 * 4 / 3 + simRes * simRes * 8 * 2 + (low ? 0 : 512 * 512 * 4);
+  ground.geometry.dispose(); ground.geometry = buildGround(low);
+  water.geometry = low ? waterGeoLo : waterGeoHi;
+  water.material?.dispose(); water.material = makeWaterMat(simRes, low);
+  mirror.visible = !low; mirrorLow.visible = low;
+  bubbles.geometry.instanceCount = low ? 300 : 900; jet.geometry.instanceCount = low ? 4000 : 16000;
+  wisps.geometry.instanceCount = low ? 60 : 260; plume.geometry.instanceCount = low ? 60 : 220; fumarole.geometry.instanceCount = low ? 24 : 90;
+  wisps.material.uniforms.uTint.value.w = low ? 0.09 : 0.05; plume.material.uniforms.uTint.value.w = low ? 0.16 : 0.08; fumarole.material.uniforms.uTint.value.w = low ? 0.16 : 0.09;
+  columns[1].visible = !low;
+}
+setLow(app.state.low);
+const TEAL_L = new THREE.Color(0.55, 0.95, 0.9);   // particles scatter all wavelengths: a paler teal than the bake
+app.setLights([
+  { pos: new THREE.Vector3(0, -0.2, 0), color: TEAL_L, i: 6.0, falloff: 0.06 },          // the light in the geyser throat
+  { pos: new THREE.Vector3(4, -0.6, 3), color: TEAL_L, i: 1.5, falloff: 0.2 }, { pos: new THREE.Vector3(-4, -0.6, 3), color: TEAL_L, i: 1.5, falloff: 0.2 },
+  { pos: new THREE.Vector3(3, -0.6, -4), color: TEAL_L, i: 1.5, falloff: 0.2 }, { pos: new THREE.Vector3(-4, -0.6, -3), color: TEAL_L, i: 1.5, falloff: 0.2 },
+  ...lanterns.slice(0, 3).map(p => ({ pos: new THREE.Vector3(...p), color: WARM, i: 1.6, falloff: 0.35 })),
+], new THREE.Color(0.02, 0.05, 0.05));
+app.sceneTexture = true;
+app.fx(water, bubbles, jet);
+app.fxReflected(...columns, wisps, plume, fumarole);
+mirror.getReflectionCamera(camera).layers.set(0); mirror.getReflectionCamera(camera).layers.enable(2);
+app.groups = { rock: [ground, ceiling, lanternMesh], water: [water, bubbles], geyser: [jet, ...columns], plume: [plume], steam: [wisps, fumarole], mirror: [mirror, mirrorLow] };
+
+// eruption envelope on the CPU too (drives the sim and the column height)
+const eruptAt = t => { const c = ((t % 16) + 16) % 16; const ss = (a, b, x) => { const u = Math.max(0, Math.min(1, (x - a) / (b - a))); return u * u * (3 - 2 * u); }; return ss(3, 3.6, c) * (1 - ss(7.5, 10.5, c)) * (0.8 + 0.2 * Math.sin(c * 13) * Math.sin(c * 7.3)); };
+const preSurge = t => { const c = ((t % 16) + 16) % 16; return c > 0.5 && c < 3.2 ? Math.sin((c - 0.5) / 2.7 * Math.PI) : 0; };
+let lastT = 0;
+app.update = (t, dt) => {
+  if (lastLow !== app.state.low) setLow(app.state.low);
+  jetMat.uniforms.uPix.value = 2 * Math.tan(camera.fov * Math.PI / 360) / Math.max(1, renderer.domElement.height);
+  const E = eruptAt(t);
+  ventU.uErupt.value = Math.max(E, preSurge(t) * 0.6);
+  columns.forEach((c, i) => c.material.uniforms.uH.value = E * (i ? 9 : 13));
+  // bubble bursts (Poisson per vent), geyser surge, rain-back
+  const step = dt;
+  VENTS.forEach(([x, z, k], i) => {
+    const rate = i === 0 ? 2 + 10 * ventU.uErupt.value : 7 * k;
+    if (rnd() < rate * step) pending.push([x + (rnd() - 0.5) * 1.2 * k, z + (rnd() - 0.5) * 1.2 * k, 0.25 + rnd() * 0.25, (rnd() < 0.5 ? -1 : 1) * 0.035 * (0.5 + rnd())]);
+  });
+  if (preSurge(t) > 0) pending.push([0, 0, 1.4, 0.004 * preSurge(t)]);
+  if (E > 0.05) {
+    pending.push([0, 0, 0.9, 0.02 * E]);
+    for (let i = 0; i < 4; i++) { const a = rnd() * 6.283, r = 1.2 + rnd() * 4.0; pending.push([Math.cos(a) * r, Math.sin(a) * r, 0.25, -0.02 * E * rnd()]); }
+  }
+  lastT = t;
+};
+app.preRender = () => {
+  simAcc += app.state.paused ? 0 : 1 / 60;
+  let n = 0; while (simAcc >= 1 / 60 && n < 3) { stepSim(); simAcc -= 1 / 60; n++; }
+  if (n === 0) stepSim.idle = true;
+  renderer.setRenderTarget(null);
+};
+// taps on the water make splashes
+const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), hit = new THREE.Vector3();
+renderer.domElement.addEventListener('pointerdown', e => {
+  ndc.set(e.clientX / innerWidth * 2 - 1, -e.clientY / innerHeight * 2 + 1); ray.setFromCamera(ndc, camera);
+  if (ray.ray.intersectPlane(plane, hit) && poolSdf(hit.x, hit.z) < 0) pending.push([hit.x, hit.z, 0.5, -0.08]);
+});
+// warm the sim so screenshots start with live ripples
+for (let i = 0; i < 240; i++) { app.update(app.state.t - 4 + i / 60, 1 / 60); stepSim(); }
+app.start();
+</script>
+</body>
+</html>

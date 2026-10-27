@@ -1,0 +1,80 @@
+{
+ "space": "b1_slide_top",
+ "round": 1,
+ "reviewer": "b1_east_r1",
+ "frames": {
+  "entry": {
+   "focal": "A large opaque brown block filling the shaft (the slide-tube bounding proxy, top ~1 m above floor) with the launch gate on top of it, plus the glowing white rim band (shaft_rail) in the foreground.",
+   "is_hero": false,
+   "next_visible": "Lava Stair steps visible lower-left; the shaft/down-view is not, because the shaft is plugged."
+  },
+  "reveal": {
+   "focal": "Nothing. The camera at the bridge end is inside or just above the gate/tube proxy and sees brown and grey planes at close range. Unusable.",
+   "is_hero": false,
+   "next_visible": "No."
+  },
+  "concept": {
+   "focal": "A lantern_post (white 1.7 m glowing bar) in the centre foreground and the white rim band; the brown block behind.",
+   "is_hero": false,
+   "next_visible": "Stair head lanterns faintly; no lava, no tube."
+  },
+  "strip": {
+   "focal": "The gate on its brown plinth, growing; the hanging lantern cubes float at the top of frame; the strip ends inside the gate.",
+   "is_hero": false,
+   "next_visible": "Only the gate itself."
+  }
+ },
+ "fixes": [
+  {
+   "id": "hero slide_tube (glass_slide generator)",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The tube is rendered as a solid ~10 m box whose top sits at the tube mouth (-19.0), so the shaft is closed and the bridge runs into a 1 m wall. Replace it with an open helix proxy (1.1 m tube rings/segments, glass-tinted, a little emissive orange from the lava side) and leave the r 9 shaft void open to B2 so the rail and bridge look down."
+  },
+  {
+   "id": "b1_slide_top:lava_glass",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The 20x7.5 m lava wall on the south side does not glow (the room has no orange at all). Same failure as the cor_south slot: make it emissive and check that the 4000 W area light faces +Y (north) into the room. Continue it down the shaft's south half as the spec proposes."
+  },
+  {
+   "id": "anchored[0] (shaft_rail)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The rail ring renders as a bright emissive peach band, the brightest thing in every frame. Make it non-emissive dark bronze; it should be a silhouette against the lava."
+  },
+  {
+   "id": "lights[2] (lantern_post)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Whole 1.7 m posts glow like fluorescent tubes. Only a 0.3 m lantern head should emit, at <= 10 W. Drop lights2:0 (147.13,41.15), which stands right in front of the lava glass, and keep 3-4 posts on the north/east arc only."
+  },
+  {
+   "id": "lights[0] (lantern_hanging)",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Three 0.45x0.7 glowing cubes float 2.8 m up under an 8 m dome with nothing holding them. Hang them on cords from a gantry or the dome, or mount them on the bridge rail posts at 1.2 m. Also move cameras.reveal to (141.4, 50.6, -18.4) aimed at (150, 46, -30) so it looks down the shaft past the gate instead of into it."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 2,
+  "light_rhythm": 1
+ },
+ "top_change": "Open the shaft: replace the solid slide-tube bounding box with an open helix in a void, and make the lava glass glow so the room has its orange hero group.",
+ "plausibility": [
+  "Slide tube proxy is a solid block 1 m proud of the floor filling the shaft. The launch bridge (top -20.0) would butt into it; there is no void to look down.",
+  "Hanging lanterns float in mid-air under an 8 m dome.",
+  "Gallery corners (SW around queue_bench, SE, E) are empty dark floor: the edge_band rock rule at density 0.04 produced one rock_cluster, which is barren rather than restrained."
+ ]
+}

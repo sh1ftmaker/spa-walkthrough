@@ -29,10 +29,10 @@ button.on { border-color: var(--kz-accent); color: var(--kz-accent); }
   display: flex; gap: 8px; align-items: flex-start; justify-content: space-between; pointer-events: none; }
 .kz-top > * { pointer-events: auto; }
 .kz-where { background: var(--kz-panel); border: 1px solid var(--kz-line); border-radius: 12px; padding: 6px 10px; min-height: 44px;
-  display: flex; flex-direction: column; justify-content: center; max-width: 46vw; overflow: hidden; }
+  display: flex; flex-direction: column; justify-content: center; flex: 0 1 auto; min-width: 0; overflow: hidden; }
 #kz-where-level { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--kz-dim); }
 #kz-where-space { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.kz-buttons { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.kz-buttons { display: flex; gap: 6px; flex-wrap: nowrap; justify-content: flex-end; flex: 0 0 auto; }
 #kz-levels { position: absolute; left: calc(12px + var(--safe-l)); right: calc(12px + var(--safe-r)); bottom: calc(14px + var(--safe-b));
   display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
 #kz-levels button { flex: 0 0 auto; }
@@ -92,3 +92,8 @@ button.on { border-color: var(--kz-accent); color: var(--kz-accent); }
   font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; -webkit-user-select: text; user-select: text; }
 #kz-error b { color: #fff; font-family: system-ui, sans-serif; font-size: 14px; }
 [hidden] { display: none !important; }
+@media (max-width: 480px) {
+  button { padding: 0 11px; font-size: 14px; }
+  .kz-top { gap: 6px; left: calc(8px + var(--safe-l)); right: calc(8px + var(--safe-r)); }
+  #kz-where-space { font-size: 13px; }
+}

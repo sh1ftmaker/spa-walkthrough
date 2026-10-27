@@ -1,0 +1,80 @@
+{
+ "space": "b2_boardwalk",
+ "round": 1,
+ "reviewer": "b2-r1-reviewer",
+ "frames": {
+  "entry": {
+   "focal": "The vanishing point of a long dark corridor. Lantern posts and their reflections on the left water lead into it.",
+   "is_hero": false,
+   "next_visible": "A small white lantern cluster at the far end. No cascade glow."
+  },
+  "reveal": {
+   "focal": "Lantern post lights0:6, 1.4 m in front of the camera, filling the centre of the frame",
+   "is_hero": false,
+   "next_visible": "Nothing; the cascade is blocked (and its sheet is mis-placed, see b2_river)."
+  },
+  "concept": {
+   "focal": "Tunnel vanishing point with posts. Water on the left only for the first stretch.",
+   "is_hero": false,
+   "next_visible": "Lantern line, but no white water ahead."
+  },
+  "strip": {
+   "focal": "Frames 0-2: walk beside the river (works). Frames 3-6: walls on BOTH sides, the river is hidden and it becomes a featureless corridor. A slab (boardwalk_deck proxy) lies on the walk in frames 1-3. Frame 7: water reappears at the overlook.",
+   "is_hero": false,
+   "next_visible": "The post line leads east, but there is no destination glow."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights0:6",
+   "action": "move",
+   "dx": -4.0,
+   "dy": -0.6,
+   "deg": 0,
+   "detail": "Blocks the reveal camera's view of the cascade from 1.4 m away. Move it back down the walk (or remove)."
+  },
+  {
+   "id": "lights0:0",
+   "action": "move",
+   "dx": 0,
+   "dy": -0.4,
+   "deg": 0,
+   "detail": "lights0:0 and lights0:1 are 0.1 m outside the rail line, so they snapped to the riverbed (z -44.6) and are invisible. Move inboard (dy -0.4) and snap to the deck (-40.0)."
+  },
+  {
+   "id": "boardwalk_deck",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Proxy is a single 3.5 x 2 x 0.3 box sitting ON the walk at (168, 82.6), a 30 cm trip step mid-path. Replace with a path-following deck whose top is flush at -40 (or remove)."
+  },
+  {
+   "id": "rule:north_wall",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "From x about 158 to 190 a wall separates the walk from the river (strip 3-6), so the reflections, the lantern line on the water and the cascade are all hidden. Open the north side to railing only for the whole length (shared shell/layout: lead to decide)."
+  },
+  {
+   "id": "dressing[2]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "rock_cluster edge_band (band 0-0.4) produced no objects, so the wall side is a bare plane for 56 m. Widen the band to [0.0, 0.8] with density 0.08, and add 2-3 wet seeps/ferns at irregular [8,15] m intervals. Also let mist drift over the rail."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 1,
+  "light_rhythm": 2
+ },
+ "top_change": "Open the north side of the walk to the river from x about 158 to the head so the lantern line, reflections and the white cascade are visible all the way, and pull lights0:6 out of the reveal.",
+ "plausibility": [
+  "Lantern posts lights0:0 and 0:1 sit on the riverbed, 4.6 m below the deck.",
+  "boardwalk_deck proxy is a loose 30 cm slab on the walking surface.",
+  "No river-side railing is visible in any frame even though dressing[0] places it."
+ ]
+}

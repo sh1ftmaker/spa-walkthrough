@@ -142,14 +142,15 @@
  "hero": {
   "asset": "boat",
   "at": [
-   128.0,
+   127.6,
    79.0,
    -42.411
   ],
   "facing_deg": 270,
   "dims": {
-   "l": 7.0,
-   "w": 1.8
+   "w": 1.8,
+   "d": 7.0,
+   "h": 1.0
   },
   "why": "The flat-bottomed boat is how the lookbook says you arrive at Kawagiri (20:00). Moored bow-downstream at the pontoon with its lantern on a pole lit, it is the brightest warm point on the dark water and the thing the ladder-stair leads you down to; framed through the core door against the river."
  },
@@ -163,6 +164,7 @@
     -41.0
    ],
    "facing_deg": 0,
+   "snap": "given",
    "from": [
     130.0,
     73.4,
@@ -188,8 +190,9 @@
    "at": [
     132.0,
     77.3,
-    -42.0
+    -42.3
    ],
+   "snap": "given",
    "dims": {
     "w": 16.0,
     "d": 1.4,
@@ -220,16 +223,32 @@
    "id": "boat_2",
    "asset": "boat",
    "at": [
-    136.0,
-    79.0,
+    136.7,
+    79.15,
     -42.411
    ],
-   "facing_deg": 265,
+   "facing_deg": 270,
    "dims": {
     "l": 7.0,
     "w": 1.8
    },
-   "why": "Second boat, unlit, slightly askew: the landing is in use."
+   "why": "Second boat, unlit, moored astern of the first: the landing is in use."
+  },
+  {
+   "id": "boat_lantern",
+   "asset": "lantern_post",
+   "at": [
+    125.4,
+    79.0,
+    -42.161
+   ],
+   "snap": "given",
+   "dims": {
+    "w": 0.3,
+    "d": 0.3,
+    "h": 2.5
+   },
+   "why": "Lantern on a pole at the boat's stern: the brightest warm point on the dark water (top change)."
   }
  ],
  "water": [
@@ -237,8 +256,7 @@
    "id": "w_river",
    "kind": "flow",
    "ref": "b2_river",
-   "z": -42.411,
-   "rim_z": null,
+   "z_ref": -42.411,
    "note": "Owned by b2_river; surface at x 130. Pontoon top -42.0."
   }
  ],
@@ -283,35 +301,36 @@
  "cameras": {
   "entry": {
    "pos": [
-    123.0,
-    68.5,
+    129.3,
+    70.8,
     -38.4
    ],
    "target": [
-    128.5,
-    78.5,
+    127.6,
+    79.0,
     -41.6
    ],
    "fov_v": 60
   },
   "reveal": {
    "pos": [
-    130.0,
-    73.0,
-    -38.4
+    131.4,
+    77.2,
+    -40.4
    ],
+   "floor_z": -42.0,
    "target": [
-    128.0,
-    79.0,
-    -41.8
+    124.0,
+    79.5,
+    -41.5
    ],
    "fov_v": 60
   },
   "concept": {
    "image": "lookbook/img/06-kawagiri-restaurant.jpg",
    "pos": [
-    139.0,
-    77.4,
+    135.0,
+    77.0,
     -40.4
    ],
    "floor_z": -42.0,
@@ -332,52 +351,66 @@
   },
   {
    "asset": "lantern_post",
-   "along": [
+   "face": 0,
+   "height": -2.0,
+   "allow_overlap": [
+    "boardwalk"
+   ],
+   "why": "Low post lanterns on the pontoon: one at each end and one at the ladder foot, the middle kept dark so the boat lantern leads.",
+   "at": [
     [
-     124.5,
-     77.8
+     124.4,
+     76.8
     ],
     [
-     139.5,
-     77.8
+     128.4,
+     76.8
+    ],
+    [
+     139.6,
+     76.8
     ]
-   ],
-   "spacing": [
-    3.5,
-    4.5
-   ],
-   "offset": 0.0,
-   "face": "water",
-   "why": "Low post lanterns on the pontoon edge: doubled in the water."
+   ]
   },
   {
    "asset": "lantern_floor",
    "along": "spine",
-   "side": "right",
+   "side": "left",
    "spacing": [
-    6,
-    8
+    7,
+    9
    ],
-   "offset": 1.6,
+   "offset": 2.2,
    "face": "path",
    "avoid": [
     "portals"
-   ]
+   ],
+   "why": "Floor lanterns on the river side at the deck edge, framing the view down to the boat and water."
   },
   {
    "asset": "lantern_hanging",
    "at": [
     [
-     129.0,
-     73.8
+     127.9,
+     73.9
     ],
     [
-     131.0,
-     73.8
+     131.9,
+     73.9
     ]
    ],
    "height": 2.6,
    "why": "Pair over the top of the ladder-stair."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     128.7,
+     65.4
+    ]
+   ],
+   "why": "One stone lantern between the waiting benches: a pool in the otherwise dark landing hall."
   }
  ],
  "dressing": [
@@ -389,7 +422,7 @@
      74.4
     ],
     [
-     128.8,
+     127.6,
      74.4
     ]
    ],
@@ -423,36 +456,52 @@
    "asset": "mooring_post",
    "at": [
     [
-     125.0,
-     78.0,
+     125.6,
+     77.7,
      -42.0
     ],
     [
-     132.0,
-     78.0,
-     -42.0
-    ],
-    [
-     139.0,
-     78.0,
+     138.6,
+     77.7,
      -42.0
     ]
+   ],
+   "allow_overlap": [
+    "boardwalk"
    ],
    "why": "Bollards with rope where the boats tie up."
   },
   {
    "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.3,
-    1.8
+   "scatter": "area",
+   "polygon": [
+    [
+     122.4,
+     64.3
+    ],
+    [
+     141.6,
+     64.3
+    ],
+    [
+     141.6,
+     65.8
+    ],
+    [
+     122.4,
+     65.8
+    ]
    ],
-   "density": 0.06,
+   "density": 0.1,
    "avoid": [
     "nav",
     "portals"
    ],
-   "why": "South wall rock."
+   "scale": [
+    0.5,
+    0.8
+   ],
+   "why": "Wet rock along the south wall only."
   },
   {
    "asset": "boulder_rim",
@@ -494,7 +543,30 @@
     ]
    ],
    "facing_deg": 90,
-   "why": "Noren at the core door: the restaurant begins here."
+   "why": "Noren at the core door: the restaurant begins here.",
+   "dims": {
+    "w": 1.0,
+    "d": 0.05,
+    "h": 0.9
+   },
+   "height": 2.3
+  },
+  {
+   "asset": "bench_stone",
+   "at": [
+    [
+     126.8,
+     65.2,
+     -40.0
+    ],
+    [
+     130.6,
+     65.2,
+     -40.0
+    ]
+   ],
+   "facing_deg": 0,
+   "why": "Waiting benches against the south wall, facing the water."
   }
  ],
  "mood": {
@@ -502,5 +574,11 @@
   "palette": "amber lanterns only (no neon placed here; the Kawagiri neon is seen at a distance), teal water, black rock",
   "mist": "Low mist on the river, thinning at the pontoon."
  },
- "waivers": []
+ "waivers": [],
+ "allow_overlap": [
+  [
+   "boat",
+   "lantern_post"
+  ]
+ ]
 }

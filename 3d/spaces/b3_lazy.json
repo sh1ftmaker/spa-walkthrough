@@ -358,16 +358,18 @@
  "hero": {
   "asset": "lava_tube",
   "at": [
-   100,
-   30.6,
-   -63.3
+   99.01,
+   30.53,
+   -63.6
   ],
-  "facing_deg": 60,
+  "facing_deg": 114.6,
   "dims": {
+   "w": 8.4,
+   "d": 4.2,
+   "h": 0.6,
+   "proxy_note": "one roof segment of the tube; the rest are anchored tube_roof",
    "channel_w": 6.0,
-   "towpath_w": 2.0,
-   "vault_h": 4.0,
-   "loop_m": 120
+   "towpath_w": 2.0
   },
   "why": "The tube itself is the attraction (concept 12): a ribbed basalt vault with amber lava cracks and glowworms receding round the SW curve. From the rimstone mouth the curve vanishes in light, the brightest and deepest view in the space. (Lookbook's 600 m = 5 laps of this 120 m loop.)"
  },
@@ -405,31 +407,6 @@
    "why": "Second island crossing; frames the vanishing tube from the west (concept 12's distant bridge)."
   },
   {
-   "id": "entry_steps",
-   "asset": "stair",
-   "at": [
-    [
-     101.2,
-     56.4,
-     -67.0
-    ],
-    [
-     126.5,
-     25.7,
-     -67.0
-    ]
-   ],
-   "facing_deg": [
-    200,
-    0
-   ],
-   "dims": {
-    "w": 2.0,
-    "steps": 4
-   },
-   "why": "Two step-ins into the channel from the outer towpath (near the lobby and on the south arc)."
-  },
-  {
    "id": "float_rings",
    "asset": "float_ring",
    "along": "water:w_lazy",
@@ -439,6 +416,267 @@
    ],
    "moving": true,
    "why": "Woven rings drifting with the current (probe-lit, not baked)."
+  },
+  {
+   "id": "bridge_rails",
+   "asset": "railing",
+   "snap": "given",
+   "at": [
+    [
+     112.55,
+     52.5,
+     -66.167
+    ],
+    [
+     115.45,
+     52.5,
+     -66.167
+    ],
+    [
+     112.55,
+     54.0,
+     -65.667
+    ],
+    [
+     115.45,
+     54.0,
+     -65.667
+    ],
+    [
+     112.55,
+     55.5,
+     -65.5
+    ],
+    [
+     115.45,
+     55.5,
+     -65.5
+    ],
+    [
+     112.55,
+     57.0,
+     -65.667
+    ],
+    [
+     115.45,
+     57.0,
+     -65.667
+    ],
+    [
+     112.55,
+     27.0,
+     -65.667
+    ],
+    [
+     115.45,
+     27.0,
+     -65.667
+    ],
+    [
+     112.55,
+     28.5,
+     -65.5
+    ],
+    [
+     115.45,
+     28.5,
+     -65.5
+    ],
+    [
+     112.55,
+     30.0,
+     -65.667
+    ],
+    [
+     115.45,
+     30.0,
+     -65.667
+    ],
+    [
+     112.55,
+     31.5,
+     -66.167
+    ],
+    [
+     115.45,
+     31.5,
+     -66.167
+    ]
+   ],
+   "facing_deg": [
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0
+   ],
+   "dims": {
+    "h": 1.0
+   },
+   "why": "Rails on both bridges, following the arch."
+  },
+  {
+   "id": "tube_roof",
+   "asset": "lava_tube",
+   "at": [
+    [
+     138.27,
+     43.98,
+     -63.6
+    ],
+    [
+     136.6,
+     47.59,
+     -63.6
+    ],
+    [
+     133.86,
+     50.49,
+     -63.6
+    ],
+    [
+     130.54,
+     52.7,
+     -63.6
+    ],
+    [
+     126.89,
+     54.33,
+     -63.6
+    ],
+    [
+     103.27,
+     55.04,
+     -63.6
+    ],
+    [
+     99.51,
+     53.69,
+     -63.6
+    ],
+    [
+     95.98,
+     51.82,
+     -63.6
+    ],
+    [
+     92.86,
+     49.33,
+     -63.6
+    ],
+    [
+     90.51,
+     46.11,
+     -63.6
+    ],
+    [
+     89.5,
+     42.27,
+     -63.6
+    ],
+    [
+     90.28,
+     38.38,
+     -63.6
+    ],
+    [
+     92.48,
+     35.07,
+     -63.6
+    ],
+    [
+     95.52,
+     32.48,
+     -63.6
+    ],
+    [
+     102.75,
+     29.12,
+     -63.6
+    ],
+    [
+     106.63,
+     28.17,
+     -63.6
+    ],
+    [
+     118.58,
+     27.76,
+     -63.6
+    ],
+    [
+     122.53,
+     28.41,
+     -63.6
+    ],
+    [
+     126.38,
+     29.49,
+     -63.6
+    ],
+    [
+     130.06,
+     31.05,
+     -63.6
+    ],
+    [
+     133.44,
+     33.17,
+     -63.6
+    ],
+    [
+     136.28,
+     35.97,
+     -63.6
+    ],
+    [
+     138.13,
+     39.49,
+     -63.6
+    ]
+   ],
+   "facing_deg": [
+    346.9,
+    324.8,
+    309.3,
+    298.4,
+    290.1,
+    253.9,
+    246.5,
+    237.2,
+    224.7,
+    206.5,
+    181.8,
+    156.5,
+    137.4,
+    124.2,
+    107.0,
+    100.6,
+    83.6,
+    77.6,
+    70.9,
+    62.8,
+    52.4,
+    37.7,
+    16.5
+   ],
+   "dims": {
+    "w": 8.4,
+    "d": 4.2,
+    "h": 0.6
+   },
+   "why": "The continuous low tube vault (roof -63) over channel and towpath on the W, S and E arcs; open on the north arc and over the bridges."
   }
  ],
  "water": [
@@ -665,23 +903,23 @@
    "from": "p_b3_lazy_slide",
    "see": "Looking out of the tube's east mouth: the lava wall's orange behind the glass slide.",
    "target": [
-    161.6,
-    51,
-    -60
+    156.5,
+    65.5,
+    -61
    ]
   }
  ],
  "cameras": {
   "entry": {
    "pos": [
-    98.4,
-    57.0,
+    90.6,
+    32.4,
     -65.4
    ],
    "target": [
-    114,
-    57.5,
-    -65
+    101,
+    30.6,
+    -65.5
    ],
    "fov_v": 60
   },
@@ -717,68 +955,750 @@
  "lights": [
   {
    "asset": "lantern_float",
-   "along": "water:w_lazy",
-   "side": "both",
+   "along": [
+    [
+     137.5,
+     42.0
+    ],
+    [
+     137.211,
+     44.112
+    ],
+    [
+     136.35,
+     46.172
+    ],
+    [
+     134.939,
+     48.129
+    ],
+    [
+     133.012,
+     49.935
+    ],
+    [
+     130.617,
+     51.546
+    ],
+    [
+     127.813,
+     52.922
+    ],
+    [
+     124.669,
+     54.029
+    ]
+   ],
+   "side": "left",
    "spacing": [
-    3,
-    6
+    4,
+    9
    ],
    "offset": 2.4,
-   "jitter": 0.4,
-   "moored": true,
-   "why": "Moored floating washi lanterns along both channel edges (concept 12); centre of the channel stays dark for the rings."
+   "jitter": 0.3,
+   "z": -67.45,
+   "why": "Moored floating lanterns in pools along one edge at a time, with 10-15 m dark gaps between.",
+   "avoid": [
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90.6,
+      32.4
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      114,
+      57.5
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      126.5,
+      26.8
+     ],
+     "r": 2.6
+    }
+   ]
   },
   {
-   "asset": "lantern_niche",
-   "along": "spine",
-   "side": "wall",
+   "asset": "lantern_float",
+   "along": [
+    [
+     110.324,
+     55.334
+    ],
+    [
+     106.738,
+     54.839
+    ],
+    [
+     103.331,
+     54.029
+    ],
+    [
+     100.187,
+     52.922
+    ],
+    [
+     97.383,
+     51.546
+    ],
+    [
+     94.988,
+     49.935
+    ],
+    [
+     93.061,
+     48.129
+    ]
+   ],
+   "side": "right",
    "spacing": [
-    5,
-    8
+    4,
+    9
    ],
-   "snap": "wall",
+   "offset": 2.4,
+   "jitter": 0.3,
+   "z": -67.45,
+   "why": "Moored floating lanterns in pools along one edge at a time, with 10-15 m dark gaps between.",
    "avoid": [
-    "portals"
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90.6,
+      32.4
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      114,
+      57.5
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      126.5,
+      26.8
+     ],
+     "r": 2.6
+    }
+   ]
+  },
+  {
+   "asset": "lantern_float",
+   "along": [
+    [
+     90.789,
+     39.888
+    ],
+    [
+     91.65,
+     37.828
+    ],
+    [
+     93.061,
+     35.871
+    ],
+    [
+     94.988,
+     34.065
+    ],
+    [
+     97.383,
+     32.454
+    ],
+    [
+     100.187,
+     31.078
+    ],
+    [
+     103.331,
+     29.971
+    ]
    ],
-   "why": "Sparse warm pools on the outer wall; dark gaps let the amber cracks lead."
+   "side": "left",
+   "spacing": [
+    4,
+    9
+   ],
+   "offset": 2.4,
+   "jitter": 0.3,
+   "z": -67.45,
+   "why": "Moored floating lanterns in pools along one edge at a time, with 10-15 m dark gaps between.",
+   "avoid": [
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90.6,
+      32.4
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      114,
+      57.5
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      126.5,
+      26.8
+     ],
+     "r": 2.6
+    }
+   ]
+  },
+  {
+   "asset": "lantern_float",
+   "along": [
+    [
+     117.676,
+     28.666
+    ],
+    [
+     121.262,
+     29.161
+    ],
+    [
+     124.669,
+     29.971
+    ],
+    [
+     127.813,
+     31.078
+    ],
+    [
+     130.617,
+     32.454
+    ],
+    [
+     133.012,
+     34.065
+    ],
+    [
+     134.939,
+     35.871
+    ]
+   ],
+   "side": "right",
+   "spacing": [
+    4,
+    9
+   ],
+   "offset": 2.4,
+   "jitter": 0.3,
+   "z": -67.45,
+   "why": "Moored floating lanterns in pools along one edge at a time, with 10-15 m dark gaps between.",
+   "avoid": [
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90.6,
+      32.4
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      114,
+      57.5
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      126.5,
+      26.8
+     ],
+     "r": 2.6
+    }
+   ]
+  },
+  {
+   "asset": "pool_uplight",
+   "along": [
+    [
+     137.5,
+     42.0
+    ],
+    [
+     137.211,
+     44.112
+    ],
+    [
+     136.35,
+     46.172
+    ],
+    [
+     134.939,
+     48.129
+    ],
+    [
+     133.012,
+     49.935
+    ],
+    [
+     130.617,
+     51.546
+    ],
+    [
+     127.813,
+     52.922
+    ],
+    [
+     124.669,
+     54.029
+    ],
+    [
+     121.262,
+     54.839
+    ],
+    [
+     117.676,
+     55.334
+    ],
+    [
+     114.0,
+     55.5
+    ],
+    [
+     110.324,
+     55.334
+    ],
+    [
+     106.738,
+     54.839
+    ],
+    [
+     103.331,
+     54.029
+    ],
+    [
+     100.187,
+     52.922
+    ],
+    [
+     97.383,
+     51.546
+    ],
+    [
+     94.988,
+     49.935
+    ],
+    [
+     93.061,
+     48.129
+    ],
+    [
+     91.65,
+     46.172
+    ],
+    [
+     90.789,
+     44.112
+    ],
+    [
+     90.5,
+     42.0
+    ],
+    [
+     90.789,
+     39.888
+    ],
+    [
+     91.65,
+     37.828
+    ],
+    [
+     93.061,
+     35.871
+    ],
+    [
+     94.988,
+     34.065
+    ],
+    [
+     97.383,
+     32.454
+    ],
+    [
+     100.187,
+     31.078
+    ],
+    [
+     103.331,
+     29.971
+    ],
+    [
+     106.738,
+     29.161
+    ],
+    [
+     110.324,
+     28.666
+    ],
+    [
+     114.0,
+     28.5
+    ],
+    [
+     117.676,
+     28.666
+    ],
+    [
+     121.262,
+     29.161
+    ],
+    [
+     124.669,
+     29.971
+    ],
+    [
+     127.813,
+     31.078
+    ],
+    [
+     130.617,
+     32.454
+    ],
+    [
+     133.012,
+     34.065
+    ],
+    [
+     134.939,
+     35.871
+    ],
+    [
+     136.35,
+     37.828
+    ],
+    [
+     137.211,
+     39.888
+    ]
+   ],
+   "spacing": [
+    6,
+    10
+   ],
+   "z": -68.35,
+   "why": "Teal underwater light along the channel centre (12).",
+   "avoid": [
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90.6,
+      32.4
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      114,
+      57.5
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      126.5,
+      26.8
+     ],
+     "r": 2.6
+    }
+   ]
+  },
+  {
+   "asset": "lantern_hanging",
+   "at": [
+    [
+     140.14,
+     43.11,
+     -64.6
+    ],
+    [
+     136.81,
+     49.97,
+     -64.6
+    ],
+    [
+     130.73,
+     54.47,
+     -64.6
+    ],
+    [
+     87.98,
+     40.08,
+     -64.6
+    ],
+    [
+     97.97,
+     29.19,
+     -64.6
+    ],
+    [
+     105.07,
+     26.77,
+     -64.6
+    ],
+    [
+     119.96,
+     26.23,
+     -64.6
+    ]
+   ],
+   "why": "Lanterns hung from the tube roof over the channel edge, in runs with dark gaps."
   },
   {
    "asset": "lantern_post",
    "at": [
     [
-     112.3,
-     59.6,
+     111.6,
+     60.25,
      -67
     ],
     [
-     115.7,
-     59.6,
+     116.4,
+     60.25,
      -67
     ],
     [
-     112.3,
-     24.4,
+     111.6,
+     23.85,
      -67
     ],
     [
-     115.7,
-     24.4,
+     116.4,
+     23.85,
      -67
     ]
    ],
-   "why": "Mark both bridge feet on the towpath."
+   "why": "Mark both bridge feet at the towpath wall."
   },
   {
    "asset": "lantern_stone",
    "at": [
     [
-     139.6,
-     39.7,
+     141.6,
+     38.8,
      -67
     ],
     [
-     139.6,
-     44.3,
+     141.6,
+     45.2,
      -67
     ]
    ],
@@ -787,46 +1707,66 @@
  ],
  "dressing": [
   {
-   "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.0,
-    0.6
-   ],
-   "density": 0.05,
-   "avoid": [
-    "nav",
-    "portals",
-    "water"
-   ],
-   "why": "Only at the outer wall foot; towpath is 2 m."
-  },
-  {
    "asset": "boulder_rim",
    "along": "water:w_lazy",
    "side": "in",
    "spacing": [
-    1.5,
-    3.0
+    3,
+    7
    ],
-   "offset": 3.3,
-   "embed": 0.3,
+   "offset": 3.6,
    "scale": [
-    0.7,
-    1.4
+    0.6,
+    1.2
    ],
    "avoid": [
-    "portals"
+    "portals",
+    "hero",
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    }
    ],
-   "why": "Wet black boulders on the island side of the channel (inner bank)."
-  },
-  {
-   "asset": "railing",
-   "along": "bridge_n bridge_s",
-   "side": "both",
-   "dims": {
-    "h": 1.0
-   }
+   "why": "Wet black boulders on the island side of the channel (inner bank).",
+   "cluster": true
   }
  ],
  "mood": {
@@ -834,12 +1774,60 @@
   "palette": "teal water, amber cracks, cold glowworm dots, washi lanterns",
   "mist": "low warm mist over the whole channel"
  },
- "waivers": [
-  {
-   "check": "no_empty_areas",
-   "where": "channel centre",
-   "reason": "Water: kept dark for floaters; lanterns line both edges."
-  }
+ "waivers": [],
+ "layout_issues": [],
+ "allow_overlap": [
+  [
+   "lava_tube",
+   "lava_tube"
+  ],
+  [
+   "bridge_arched",
+   "railing"
+  ],
+  [
+   "railing",
+   "bridge_arched"
+  ],
+  [
+   "railing",
+   "railing"
+  ],
+  [
+   "lava_tube",
+   "float_ring"
+  ],
+  [
+   "float_ring",
+   "lava_tube"
+  ],
+  [
+   "lava_tube",
+   "lantern_float"
+  ],
+  [
+   "lantern_float",
+   "lava_tube"
+  ],
+  [
+   "bridge_arched",
+   "float_ring"
+  ],
+  [
+   "float_ring",
+   "bridge_arched"
+  ],
+  [
+   "bridge_arched",
+   "lantern_float"
+  ],
+  [
+   "lantern_float",
+   "bridge_arched"
+  ]
  ],
- "layout_issues": []
+ "lead_requests": [
+  "entry_steps are structural stair proxies (0.2 m) and do not reach the channel bed at -68.4; build them as 4 real steps."
+ ],
+ "allow_overlap_why": "Float rings and moored lanterns drift inside the tube and under the bridges by design."
 }

@@ -1,0 +1,2099 @@
+{
+ "when": "2026-10-27T00:36:38.741Z",
+ "renders": [
+  {
+   "name": "p1_arrival",
+   "wallMs": 1824.9000000059605,
+   "updateMs": 109.40000012516975,
+   "stats": {
+    "space": "g_arrival",
+    "room": "g_arrival",
+    "reverb": "stone_hall",
+    "realVoices": 17,
+    "audible": 47,
+    "emitters": 91,
+    "beds": 2,
+    "oneshotsActive": 2,
+    "oneshotsTotal": 7,
+    "convolvers": 1,
+    "updMs": 0.187,
+    "byId": {
+     "bowls": {
+      "fired": 0,
+      "quiet": 16,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 17,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 10,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 5,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "east_furin": {
+      "fired": 2,
+      "quiet": 2,
+      "busy": 0,
+      "t": [
+       6.52,
+       6.94
+      ],
+      "db": -48
+     },
+     "lava_blorps": {
+      "fired": 3,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       6.88,
+       12.26,
+       21.73
+      ],
+      "db": -13.6
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -35.1
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       24.46
+      ],
+      "db": -49.1
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p2_mist_corridor",
+   "wallMs": 1804.6000000089407,
+   "updateMs": 95.19999983906746,
+   "stats": {
+    "space": "b1_cor_mirror",
+    "room": "b1_junction_w",
+    "reverb": "corridor",
+    "realVoices": 18,
+    "audible": 50,
+    "emitters": 91,
+    "beds": 2,
+    "oneshotsActive": 1,
+    "oneshotsTotal": 6,
+    "convolvers": 1,
+    "updMs": 0.147,
+    "byId": {
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 7,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "bowls": {
+      "fired": 0,
+      "quiet": 21,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 15,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 10,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "mirror_drips": {
+      "fired": 1,
+      "quiet": 1,
+      "busy": 0,
+      "t": [
+       19.68
+      ],
+      "db": -41.6
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 5,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 2,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       3.93,
+       17.22
+      ],
+      "db": -31
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       9.2
+      ],
+      "db": -8.9
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -37.3
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "koi": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       21.04
+      ],
+      "db": -38.1
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p3_obsidian_mirror",
+   "wallMs": 2152.3999999910593,
+   "updateMs": 116.40000003576279,
+   "stats": {
+    "space": "b1_mirror",
+    "room": "b1_mirror",
+    "reverb": "dome",
+    "realVoices": 19,
+    "audible": 41,
+    "emitters": 91,
+    "beds": 2,
+    "oneshotsActive": 3,
+    "oneshotsTotal": 8,
+    "convolvers": 1,
+    "updMs": 0.176,
+    "byId": {
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 6,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 7,
+      "busy": 0
+     },
+     "bowls": {
+      "fired": 0,
+      "quiet": 19,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 14,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 10,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "mirror_drips": {
+      "fired": 4,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       2.6,
+       11.02,
+       19.52,
+       19.68
+      ],
+      "db": -32
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 2,
+      "quiet": 1,
+      "busy": 0,
+      "t": [
+       3.93,
+       25.02
+      ],
+      "db": -38.7
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -39.3
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       24.46
+      ],
+      "db": -34
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p4_kawagiri",
+   "wallMs": 1885,
+   "updateMs": 107.30000007152557,
+   "stats": {
+    "space": "b2_kawagiri",
+    "room": "b2_river",
+    "reverb": "river_hall",
+    "realVoices": 16,
+    "audible": 63,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 1,
+    "oneshotsTotal": 32,
+    "convolvers": 1,
+    "updMs": 0.108,
+    "byId": {
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "bowls": {
+      "fired": 19,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       0.92,
+       1.89,
+       3.77,
+       5.68,
+       6.68,
+       7.69,
+       9.48,
+       11.17,
+       12.24,
+       12.98,
+       14.35,
+       14.96,
+       16.56,
+       17.72,
+       18.99,
+       20.11,
+       20.99,
+       22.99,
+       24.39
+      ],
+      "db": -41.2
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 11,
+      "quiet": 4,
+      "busy": 0,
+      "t": [
+       1.07,
+       3.55,
+       13.7,
+       14.84,
+       15.66,
+       17.03,
+       17.95,
+       19.54,
+       21.19,
+       22.01,
+       23.56
+      ],
+      "db": -38.3
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 9,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 1,
+      "quiet": 2,
+      "busy": 0,
+      "t": [
+       11.24
+      ],
+      "db": -40.8
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -35.5
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p5_thunder_curtain",
+   "wallMs": 1849.0999999940395,
+   "updateMs": 64.80000005662441,
+   "stats": {
+    "space": "b3_falls_east",
+    "room": "b3_falls",
+    "reverb": "falls_shaft",
+    "realVoices": 18,
+    "audible": 67,
+    "emitters": 91,
+    "beds": 0,
+    "oneshotsActive": 2,
+    "oneshotsTotal": 9,
+    "convolvers": 1,
+    "updMs": 0.121,
+    "byId": {
+     "bowls": {
+      "fired": 5,
+      "quiet": 15,
+      "busy": 0,
+      "t": [
+       0.92,
+       2.26,
+       3.57,
+       5.31,
+       6.82
+      ],
+      "db": -41.8
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 14,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 8,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 2,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       1.48,
+       16.46
+      ],
+      "db": -37.1
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 5,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -10.7
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       24.46
+      ],
+      "db": -47.6
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p6_wave_grotto",
+   "wallMs": 1853.6000000089407,
+   "updateMs": 92.70000000298023,
+   "stats": {
+    "space": "b3_wave",
+    "room": "b3_wave",
+    "reverb": "sea_cave",
+    "realVoices": 17,
+    "audible": 33,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 1,
+    "oneshotsTotal": 7,
+    "convolvers": 1,
+    "updMs": 0.12,
+    "byId": {
+     "bowls": {
+      "fired": 0,
+      "quiet": 21,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 14,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 10,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 2,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       1.48,
+       16.05
+      ],
+      "db": -39.3
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "pavilion_furin": {
+      "fired": 4,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       6.04,
+       10.38,
+       12.53,
+       12.83
+      ],
+      "db": -29.4
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -16.4
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p7_geyser",
+   "wallMs": 2021.6000000089407,
+   "updateMs": 69.50000020861626,
+   "stats": {
+    "space": "b3_geyser",
+    "room": "b3_cavern",
+    "reverb": "cavern",
+    "realVoices": 17,
+    "audible": 50,
+    "emitters": 91,
+    "beds": 0,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 10,
+    "convolvers": 1,
+    "updMs": 0.127,
+    "byId": {
+     "bowls": {
+      "fired": 0,
+      "quiet": 20,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 17,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 9,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 2,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       1.48,
+       12.09
+      ],
+      "db": -17
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       3.02
+      ],
+      "db": 5.4
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "pavilion_furin": {
+      "fired": 7,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       5.94,
+       10.28,
+       11,
+       11.89,
+       11.98,
+       12.33,
+       12.59
+      ],
+      "db": -48.4
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p8_magma_heartbeat",
+   "wallMs": 1970.1000000089407,
+   "updateMs": 120.30000005662441,
+   "stats": {
+    "space": "b4_chamber",
+    "room": "b4_chamber",
+    "reverb": "magma_hall",
+    "realVoices": 18,
+    "audible": 29,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 2,
+    "oneshotsTotal": 5,
+    "convolvers": 1,
+    "updMs": 0.138,
+    "byId": {
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 5,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "bowls": {
+      "fired": 0,
+      "quiet": 22,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 17,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 9,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 4,
+      "quiet": 1,
+      "busy": 0,
+      "t": [
+       6.65,
+       14.44,
+       17.44,
+       23.88
+      ],
+      "db": -19.5
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -37.9
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p11_summit_infinity",
+   "wallMs": 969.7999999970198,
+   "updateMs": 18.00000001490116,
+   "stats": {
+    "space": "s_pool",
+    "room": "s_rim",
+    "reverb": "outdoor",
+    "realVoices": 10,
+    "audible": 10,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 1,
+    "oneshotsTotal": 2,
+    "convolvers": 1,
+    "updMs": 0.03,
+    "byId": {
+     "bowls": {
+      "fired": 0,
+      "quiet": 20,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 15,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 10,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 6,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 5,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       6.92
+      ],
+      "db": -42
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -47.3
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p12_cavern_to_falls",
+   "wallMs": 2922.7999999970198,
+   "updateMs": 161.59999985992908,
+   "stats": {
+    "space": "b3_falls",
+    "room": "b3_falls",
+    "reverb": "falls_shaft",
+    "realVoices": 20,
+    "audible": 67,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 3,
+    "oneshotsTotal": 6,
+    "convolvers": 1,
+    "updMs": 0.165,
+    "byId": {
+     "bowls": {
+      "fired": 1,
+      "quiet": 22,
+      "busy": 0,
+      "t": [
+       29.23
+      ],
+      "db": -41.7
+     },
+     "counter_bowls": {
+      "fired": 0,
+      "quiet": 15,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 10,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 3,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       1.48,
+       16.05,
+       27.54
+      ],
+      "db": -35.3
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 7,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 5,
+      "busy": 0
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -8.4
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       24.46
+      ],
+      "db": -47.6
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p9_quiet_hours",
+   "wallMs": 1627.7000000029802,
+   "updateMs": 71.69999994337559,
+   "stats": {
+    "space": "b1_cor_mirror",
+    "room": "b1_junction_w",
+    "reverb": "corridor",
+    "realVoices": 16,
+    "audible": 45,
+    "emitters": 91,
+    "beds": 2,
+    "oneshotsActive": 1,
+    "oneshotsTotal": 7,
+    "convolvers": 1,
+    "updMs": 0.124,
+    "byId": {
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 5,
+      "busy": 0
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 6,
+      "busy": 0
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 8,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "mirror_drips": {
+      "fired": 1,
+      "quiet": 1,
+      "busy": 0,
+      "t": [
+       20.31
+      ],
+      "db": -41.3
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 3,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       3.93,
+       13.59,
+       22.91
+      ],
+      "db": -30.4
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       9.2
+      ],
+      "db": -8.9
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -37.3
+     },
+     "koi": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       21.04
+      ],
+      "db": -36.8
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  },
+  {
+   "name": "p10_kawagiri_speaker",
+   "wallMs": 1912.5,
+   "updateMs": 106.69999994337559,
+   "stats": {
+    "space": "b2_kawagiri",
+    "room": "b2_river",
+    "reverb": "river_hall",
+    "realVoices": 16,
+    "audible": 63,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 1,
+    "oneshotsTotal": 32,
+    "convolvers": 1,
+    "updMs": 0.144,
+    "byId": {
+     "pavilion_furin": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "moon_furin": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "bowls": {
+      "fired": 19,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       0.92,
+       1.89,
+       3.77,
+       5.68,
+       6.68,
+       7.69,
+       9.48,
+       11.17,
+       12.24,
+       12.98,
+       14.35,
+       14.96,
+       16.56,
+       17.72,
+       18.99,
+       20.11,
+       20.99,
+       22.99,
+       24.39
+      ],
+      "db": -41.2
+     },
+     "east_furin": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "counter_bowls": {
+      "fired": 11,
+      "quiet": 4,
+      "busy": 0,
+      "t": [
+       1.07,
+       3.55,
+       13.7,
+       14.84,
+       15.66,
+       17.03,
+       17.95,
+       19.54,
+       21.19,
+       22.01,
+       23.56
+      ],
+      "db": -38.3
+     },
+     "ice_drips": {
+      "fired": 0,
+      "quiet": 9,
+      "busy": 0
+     },
+     "vents_small": {
+      "fired": 1,
+      "quiet": 2,
+      "busy": 0,
+      "t": [
+       11.24
+      ],
+      "db": -40.8
+     },
+     "mirror_drips": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "magma_blorps": {
+      "fired": 0,
+      "quiet": 4,
+      "busy": 0
+     },
+     "east_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "cor_drips": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "lava_blorps": {
+      "fired": 0,
+      "quiet": 3,
+      "busy": 0
+     },
+     "south_drips": {
+      "fired": 0,
+      "quiet": 2,
+      "busy": 0
+     },
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       18.75
+      ],
+      "db": -35.5
+     },
+     "koi": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     },
+     "junction_bell": {
+      "fired": 0,
+      "quiet": 1,
+      "busy": 0
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "clipOver1": 0
+  }
+ ],
+ "bench": [
+  {
+   "name": "p4_kawagiri",
+   "secs": 10,
+   "wallMs": 541.8999999910593,
+   "loadPct": 5.418999999910593,
+   "stats": {
+    "space": "b2_kawagiri",
+    "room": "b2_river",
+    "reverb": "river_hall",
+    "realVoices": 16,
+    "audible": 67,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 1.85,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "river_anchor:2",
+    "river:-1",
+    "deck_anchor:-3.4",
+    "river_under_deck:-7.3",
+    "thunder_curtain:-11.3",
+    "thunder_lip:-12.5",
+    "diners:-13",
+    "thunder_anchor:-14.2",
+    "terraces:-18.2",
+    "river_head:-21.7",
+    "mist_steps_sheet:-23.8",
+    "plunge:-27",
+    "pod_curtains_2:-27.1",
+    "pod_curtains_3:-28.8",
+    "pod_curtains_8:-31.3",
+    "pod_curtains_9:-31.3"
+   ],
+   "extra": {},
+   "runsMs": [
+    540,
+    542,
+    544
+   ]
+  },
+  {
+   "name": "p4_kawagiri",
+   "secs": 10,
+   "wallMs": 597.4000000059605,
+   "loadPct": 5.974000000059605,
+   "stats": {
+    "space": "b2_kawagiri",
+    "room": "b2_river",
+    "reverb": "river_hall",
+    "realVoices": 16,
+    "audible": 67,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 2.03,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "river_anchor:2",
+    "river:-1",
+    "deck_anchor:-3.4",
+    "river_under_deck:-7.3",
+    "thunder_curtain:-11.3",
+    "thunder_lip:-12.5",
+    "diners:-13",
+    "thunder_anchor:-14.2",
+    "terraces:-18.2",
+    "river_head:-21.7",
+    "mist_steps_sheet:-23.8",
+    "plunge:-27",
+    "pod_curtains_2:-27.1",
+    "pod_curtains_3:-28.8",
+    "pod_curtains_8:-31.3",
+    "pod_curtains_9:-31.3"
+   ],
+   "extra": {
+    "panning": "HRTF"
+   },
+   "runsMs": [
+    595,
+    597,
+    721
+   ]
+  },
+  {
+   "name": "p4_kawagiri",
+   "secs": 10,
+   "wallMs": 362.20000000298023,
+   "loadPct": 3.6220000000298023,
+   "stats": {
+    "space": "b2_kawagiri",
+    "room": "b2_river",
+    "realVoices": 16,
+    "audible": 67,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 0,
+    "updMs": 0.17,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "river_anchor:2",
+    "river:-1",
+    "deck_anchor:-3.4",
+    "river_under_deck:-7.3",
+    "thunder_curtain:-11.3",
+    "thunder_lip:-12.5",
+    "diners:-13",
+    "thunder_anchor:-14.2",
+    "terraces:-18.2",
+    "river_head:-21.7",
+    "mist_steps_sheet:-23.8",
+    "plunge:-27",
+    "pod_curtains_2:-27.1",
+    "pod_curtains_3:-28.8",
+    "pod_curtains_8:-31.3",
+    "pod_curtains_9:-31.3"
+   ],
+   "extra": {
+    "reverb": false
+   },
+   "runsMs": [
+    360,
+    362,
+    364
+   ]
+  },
+  {
+   "name": "p6_wave_grotto",
+   "secs": 10,
+   "wallMs": 559.6999999880791,
+   "loadPct": 5.59699999988079,
+   "stats": {
+    "space": "b3_wave",
+    "room": "b3_wave",
+    "reverb": "sea_cave",
+    "realVoices": 16,
+    "audible": 34,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 2.2,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "surf_anchor:3",
+    "surf:0",
+    "mouth_wind:-9.7",
+    "sea:-14",
+    "beach_stream:-19.3",
+    "thunder_curtain:-23.7",
+    "terraces:-24",
+    "thunder_anchor:-27.8",
+    "shore_runnel:-27.8",
+    "thunder_lip:-29",
+    "lava_wall:-31",
+    "lazy_river:-31.1",
+    "splash_out:-34.9",
+    "river:-38.2",
+    "plunge:-39.5",
+    "river_anchor:-44.6"
+   ],
+   "extra": {},
+   "runsMs": [
+    549,
+    560,
+    562
+   ]
+  },
+  {
+   "name": "p6_wave_grotto",
+   "secs": 10,
+   "wallMs": 630.5,
+   "loadPct": 6.305,
+   "stats": {
+    "space": "b3_wave",
+    "room": "b3_wave",
+    "reverb": "sea_cave",
+    "realVoices": 16,
+    "audible": 34,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 2.15,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "surf_anchor:3",
+    "surf:0",
+    "mouth_wind:-9.7",
+    "sea:-14",
+    "beach_stream:-19.3",
+    "thunder_curtain:-23.7",
+    "terraces:-24",
+    "thunder_anchor:-27.8",
+    "shore_runnel:-27.8",
+    "thunder_lip:-29",
+    "lava_wall:-31",
+    "lazy_river:-31.1",
+    "splash_out:-34.9",
+    "river:-38.2",
+    "plunge:-39.5",
+    "river_anchor:-44.6"
+   ],
+   "extra": {
+    "panning": "HRTF"
+   },
+   "runsMs": [
+    607,
+    631,
+    725
+   ]
+  },
+  {
+   "name": "p5_thunder_curtain",
+   "secs": 10,
+   "wallMs": 630,
+   "loadPct": 6.3,
+   "stats": {
+    "space": "b3_falls_gallery",
+    "room": "b3_falls",
+    "reverb": "falls_shaft",
+    "realVoices": 16,
+    "audible": 67,
+    "emitters": 91,
+    "beds": 0,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 2.15,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "thunder_anchor:6",
+    "thunder_curtain:5",
+    "plunge:-5.5",
+    "thunder_lip:-10.2",
+    "curtain_spray:-11.1",
+    "terraces:-11.4",
+    "river:-12.5",
+    "river_anchor:-16.5",
+    "mist_steps_sheet:-25.1",
+    "river_under_deck:-25.2",
+    "deck_anchor:-25.5",
+    "river_head:-27.5",
+    "surf:-28.2",
+    "diners:-28.6",
+    "mouth_wind:-29.4",
+    "lazy_river:-30.7"
+   ],
+   "extra": {},
+   "runsMs": [
+    612,
+    630,
+    651
+   ]
+  },
+  {
+   "name": "p2_mist_corridor",
+   "secs": 10,
+   "wallMs": 499.8999999910593,
+   "loadPct": 4.998999999910593,
+   "stats": {
+    "space": "b1_cor_mirror",
+    "room": "b1_junction_w",
+    "reverb": "corridor",
+    "realVoices": 16,
+    "audible": 50,
+    "emitters": 91,
+    "beds": 2,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 1.05,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "mist_steps_fall:-19.7",
+    "spill_lip:-21.3",
+    "thunder_curtain:-24.1",
+    "thunder_lip:-26.3",
+    "river:-26.3",
+    "thunder_anchor:-27.1",
+    "terraces:-30.9",
+    "lava_window:-31.9",
+    "river_anchor:-32",
+    "mist_steps_sheet:-32.8",
+    "surf_below:-35.8",
+    "grotto_lava:-38",
+    "plunge:-39.9",
+    "vents_2:-39.9",
+    "slide_lava:-40.1",
+    "hall_stream:-40.6"
+   ],
+   "extra": {},
+   "runsMs": [
+    500,
+    500,
+    510
+   ]
+  },
+  {
+   "name": "p3_obsidian_mirror",
+   "secs": 10,
+   "wallMs": 654.4000000059605,
+   "loadPct": 6.544000000059605,
+   "stats": {
+    "space": "b1_mirror",
+    "room": "b1_mirror",
+    "reverb": "dome",
+    "realVoices": 16,
+    "audible": 42,
+    "emitters": 91,
+    "beds": 2,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 2.77,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "mist_steps_fall:-30.3",
+    "thunder_curtain:-30.4",
+    "spill_lip:-30.8",
+    "thunder_lip:-32.6",
+    "thunder_anchor:-33.9",
+    "river:-34.9",
+    "terraces:-36.7",
+    "lava_window:-38.1",
+    "outfall_shaft:-40.2",
+    "mist_steps_sheet:-40.5",
+    "surf_below:-40.5",
+    "outfall_run:-41.5",
+    "river_anchor:-44",
+    "slide_lava:-46.2",
+    "a4_falls:-46.2",
+    "plunge:-46.6"
+   ],
+   "extra": {},
+   "runsMs": [
+    654,
+    654,
+    659
+   ]
+  },
+  {
+   "name": "p8_magma_heartbeat",
+   "secs": 10,
+   "wallMs": 576.5,
+   "loadPct": 5.765,
+   "stats": {
+    "space": "b4_chamber",
+    "room": "b4_chamber",
+    "reverb": "magma_hall",
+    "realVoices": 16,
+    "audible": 29,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 2.21,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "magma_glass:-7.6",
+    "thunder_curtain:-30.7",
+    "thunder_anchor:-35.7",
+    "river:-39.8",
+    "surf_below:-41.4",
+    "thunder_lip:-41.9",
+    "lava_window:-44.1",
+    "terraces:-46.6",
+    "a4_falls:-47.8",
+    "river_anchor:-48",
+    "lazy_river:-49.1",
+    "river_head:-49.3",
+    "hall_stream:-50.2",
+    "pool_spills:-52.1",
+    "road_falls:-52.4",
+    "mist_steps_sheet:-53"
+   ],
+   "extra": {},
+   "runsMs": [
+    570,
+    577,
+    595
+   ]
+  },
+  {
+   "name": "p7_geyser",
+   "secs": 10,
+   "wallMs": 645.8000000119209,
+   "loadPct": 6.458000000119209,
+   "stats": {
+    "space": "b3_geyser",
+    "room": "b3_cavern",
+    "reverb": "cavern",
+    "realVoices": 16,
+    "audible": 50,
+    "emitters": 91,
+    "beds": 0,
+    "oneshotsActive": 1,
+    "oneshotsTotal": 1,
+    "convolvers": 1,
+    "updMs": 2.82,
+    "byId": {
+     "geyser_big": {
+      "fired": 1,
+      "quiet": 0,
+      "busy": 0,
+      "t": [
+       0.02
+      ],
+      "db": 5.2
+     }
+    },
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "terraces:-7.5",
+    "thunder_curtain:-11.8",
+    "thunder_anchor:-14.8",
+    "river:-17.7",
+    "thunder_lip:-17.8",
+    "lazy_river:-21.6",
+    "geyser_pool:-22.2",
+    "surf:-22.6",
+    "river_anchor:-24.4",
+    "mouth_wind:-24.5",
+    "lava_wall:-25.6",
+    "plunge:-25.7",
+    "surf_anchor:-26.1",
+    "river_under_deck:-31.6",
+    "walk_feed:-32",
+    "deck_anchor:-33.2"
+   ],
+   "extra": {
+    "fire": "geyser_big"
+   },
+   "runsMs": [
+    640,
+    646,
+    669
+   ]
+  },
+  {
+   "name": "p4_kawagiri",
+   "secs": 10,
+   "wallMs": 711.8000000119209,
+   "loadPct": 7.11800000011921,
+   "stats": {
+    "space": "b2_kawagiri",
+    "room": "b2_river",
+    "reverb": "river_hall",
+    "realVoices": 24,
+    "audible": 67,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 2,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "river_anchor:2",
+    "river:-1",
+    "deck_anchor:-3.4",
+    "river_under_deck:-7.3",
+    "thunder_curtain:-11.3",
+    "thunder_lip:-12.5",
+    "diners:-13",
+    "thunder_anchor:-14.2",
+    "terraces:-18.2",
+    "river_head:-21.7",
+    "mist_steps_sheet:-23.8",
+    "plunge:-27",
+    "pod_curtains_2:-27.1",
+    "pod_curtains_3:-28.8",
+    "pod_curtains_8:-31.3",
+    "pod_curtains_9:-31.3",
+    "hull_lap:-31.6",
+    "spill_lip:-31.9",
+    "counter:-32.1",
+    "mist_steps_fall:-32.2",
+    "wok:-33.8",
+    "lava_window:-36",
+    "pod_curtains_7:-36.4",
+    "pod_curtains_10:-36.4"
+   ],
+   "extra": {
+    "maxVoices": 24
+   },
+   "runsMs": [
+    707,
+    712,
+    731
+   ]
+  },
+  {
+   "name": "p4_kawagiri",
+   "secs": 10,
+   "wallMs": 793.2999999970198,
+   "loadPct": 7.932999999970197,
+   "stats": {
+    "space": "b2_kawagiri",
+    "room": "b2_river",
+    "reverb": "river_hall",
+    "realVoices": 24,
+    "audible": 67,
+    "emitters": 91,
+    "beds": 1,
+    "oneshotsActive": 0,
+    "oneshotsTotal": 0,
+    "convolvers": 1,
+    "updMs": 2.1,
+    "state": "closed",
+    "sr": 48000
+   },
+   "voices": [
+    "river_anchor:2",
+    "river:-1",
+    "deck_anchor:-3.4",
+    "river_under_deck:-7.3",
+    "thunder_curtain:-11.3",
+    "thunder_lip:-12.5",
+    "diners:-13",
+    "thunder_anchor:-14.2",
+    "terraces:-18.2",
+    "river_head:-21.7",
+    "mist_steps_sheet:-23.8",
+    "plunge:-27",
+    "pod_curtains_2:-27.1",
+    "pod_curtains_3:-28.8",
+    "pod_curtains_8:-31.3",
+    "pod_curtains_9:-31.3",
+    "hull_lap:-31.6",
+    "spill_lip:-31.9",
+    "counter:-32.1",
+    "mist_steps_fall:-32.2",
+    "wok:-33.8",
+    "lava_window:-36",
+    "pod_curtains_7:-36.4",
+    "pod_curtains_10:-36.4"
+   ],
+   "extra": {
+    "maxVoices": 24,
+    "panning": "HRTF"
+   },
+   "runsMs": [
+    793,
+    793,
+    888
+   ]
+  }
+ ],
+ "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+ "bake": {
+  "ms": 5758.79999999702,
+  "MB": 54.41152,
+  "per": {
+   "river": 342.40000000596046,
+   "falls": 367.70000000298023,
+   "river2": 309.29999999701977,
+   "falls2": 347.20000000298023,
+   "falls_mid": 292.40000000596046,
+   "inflow": 281.5,
+   "sheet": 237.90000000596046,
+   "curtain": 236.59999999403954,
+   "cascade": 332.40000000596046,
+   "stream": 328.5,
+   "spray": 87.6000000089407,
+   "rumble": 54.29999999701977,
+   "surf": 1058.7000000029802,
+   "boil": 57.5,
+   "rill": 23.5,
+   "basin": 29.5,
+   "lapping": 23.799999997019768,
+   "wind": 67.70000000298023,
+   "steam": 20.799999997019768,
+   "lava": 9.700000002980232,
+   "sizzle": 12.700000002980232,
+   "murmur": 304.6000000089407,
+   "heartbeat": 15.799999997019768,
+   "roomtone": 2.5,
+   "drip": 1.5999999940395355,
+   "plop": 3.300000011920929,
+   "bell": 53.900000005960464,
+   "furin": 46.400000005960464,
+   "clink": 19.799999997019768,
+   "blorp": 7.600000008940697,
+   "geyser_big": 331.20000000298023,
+   "geyser_small": 213.29999999701977
+  }
+ }
+}

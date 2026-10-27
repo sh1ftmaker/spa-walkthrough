@@ -1,0 +1,82 @@
+{
+ "space": "b2_river",
+ "round": 1,
+ "reviewer": "b2-r1-reviewer",
+ "frames": {
+  "entry": {
+   "focal": "The far vanishing point (lift drum and Kawagiri gate) at the end of a straight canal lined with mirrored stone-lantern pairs",
+   "is_hero": false,
+   "next_visible": "Yes: Kawagiri's frame and lights downstream. The hero cascade is only a dark brown slab on the extreme right edge, unlit and facing away from the camera's interest."
+  },
+  "reveal": {
+   "focal": "An opaque white mist blob on the water, and the Kawagiri deck underside crossing the frame at eye height like a low bridge",
+   "is_hero": false,
+   "next_visible": "Pods above, but the boat appears to sail into a 1.5 m-high tunnel under the deck."
+  },
+  "concept": {
+   "focal": "Nothing: dark water, one pier column, three wall lanterns",
+   "is_hero": false,
+   "next_visible": "The Thunder Curtain lip and its spray are invisible; the river just ends in darkness."
+  },
+  "strip": {
+   "focal": "Frames 0-2: canal with lanterns, Kawagiri ahead (good). Frames 3-5: under the deck (grey ceiling at eye height). Frames 6-7: dark, ending on a black wall (the thunder_lip proxy standing UP from the bed).",
+   "is_hero": false,
+   "next_visible": "Good upstream, gone downstream: no white water or plume at the lip."
+  }
+ },
+ "fixes": [
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "All 149 boulder_rim (and dressing[1] boulders, dressing[2] midstream rock_clusters) are snapped to the bed (z -44.8/-44.85). Their tops are near -43.9, 1-2 m under the surface (-42.0 to -43.0), so the banks render as bare smooth walls and there is no white water. Snap to the local water surface minus embed*h so about 60% shows above water."
+  },
+  {
+   "id": "thunder_lip",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The lip sheet stands on the bed and rises 17 m (-44.6 to -27.6), making a black wall across the river's end (strip 7, concept). It must hang down from the lip: top -43.0, bottom -60.0."
+  },
+  {
+   "id": "hero",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "j2_inflow sheet base is at bed -44.6 (top -34.6, 2.6 m short of the slot, bottom 2.6 m under water). Set z_top -32 / bottom -42 (dz +2.6), give it white-teal emission with the inflow_uplight, and re-aim the entry camera about 40 deg right (target about (182, 97, -37)) so the cascade is in frame. north_trickle has the same z error (dz +2.6)."
+  },
+  {
+   "id": "dressing[3]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Mist cards use a fixed z -42.6, below the surface upstream of x about 95 (surface -42.0 to -42.6), so they are sunk at the head where mist should be densest. The ones that show render as opaque white balls. Use z = local surface, a flat translucent card, and density higher at the head, under the deck and at the lip."
+  },
+  {
+   "id": "lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Stone lanterns come in near-mirrored pairs across the head reach (1:7/1:10, 1:6/1:11, 1:5/1:12, 1:4/1:13), so the river reads as a regular canal. Stagger the sides (no two within 4 m of x on opposite banks), spacing [7,15], and cluster 2-3 at the cascade foot."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 1,
+  "light_rhythm": 2
+ },
+ "top_change": "Seat the river's content on the water surface: hang both falls sheets from their lips (inflow -32 to -42, Thunder lip -43 to -60, both lit white) and raise boulders, rocks and mist from the bed, so the banks, white water and the two cascades actually show.",
+ "plausibility": [
+  "thunder_lip and j2_inflow/north_trickle falls sheets stand upward from the riverbed instead of hanging from their lips.",
+  "All rim boulders and midstream rocks are fully submerged.",
+  "Mist cards upstream are below the water surface.",
+  "The boat route/centreline passes under the Kawagiri spine deck with about 1.5 m clearance. Either end the boat route at the landing (x 124) or treat the downstream strip as water-only.",
+  "The hero_visible check scored 1.0 at entry although the hero is only a dark sliver at the frame edge, so the check is not reliable here."
+ ]
+}

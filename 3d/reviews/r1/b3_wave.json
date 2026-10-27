@@ -1,0 +1,81 @@
+{
+ "space": "b3_wave",
+ "round": 1,
+ "reviewer": "rev_b3_east_b4_r1",
+ "frames": {
+  "entry": {
+   "focal": "A glowing white hemisphere at the waterline (an uplight poking through the sand), then an orange 20x6 m board standing across the sea mouth, flanked by grey sea-stack boxes.",
+   "is_hero": false,
+   "next_visible": "The mouth is visible, but a dull orange wall blocks it. There is no moonlit sea or sky."
+  },
+  "reveal": {
+   "focal": "The same white dome and orange board. Flat slabs (surf rocks) float on the dark-blue water.",
+   "is_hero": false,
+   "next_visible": "No, there is nothing beyond the mouth."
+  },
+  "concept": {
+   "focal": "The white dome in the foreground. The stalactite cubes and the dark pavilion box at the left. The loungers and lanterns are missing because they are buried.",
+   "is_hero": false,
+   "next_visible": "No. The upper beach, pavilion glow and mouth are all dark."
+  },
+  "strip": {
+   "focal": "A dark sand slope with a few tiny lantern dots, ending face-to-face with the blank wall of the beach pavilion box (frame 7).",
+   "is_hero": false,
+   "next_visible": "No. The spine dead-ends into the pavilion wall and the sea is behind you."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b3_wave:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The beach proxy is a 20x1x6 m opaque orange board standing in the sea mouth at x 198.8, walling off the sea. Remove it and make the mouth an emissive cold sky/sea plane beyond x 200, so moon_sky is the brightest object in the space."
+  },
+  {
+   "id": "dressing[0] + lights[0] + lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Lounger row dressing0:* and lantern_floor lights0/lights1 were snapped to floor_z -71.0 instead of the beach surface (about -68.5 to -69.4 at x 165-168; dressing1 loungers at the same x sit at -69.4). They are buried 1.5-2 m, which is why the concept view has no loungers or lanterns. Snap them to the terrain."
+  },
+  {
+   "id": "lights[3]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "pool_uplight scatter z -71.0 is below the sea bed (-70.6). At x<176 it pokes out of the beach slope as glowing white domes (lights3:5 at 171.1,30.2; 3:6 at 173.9,20.6; 3:11 at 174.9,40.1; 3:20 at 172.8,47.8). Clip the area to x>=177 and set z = bed - 0.05."
+  },
+  {
+   "id": "b3_wave:beach_pavilion",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The pavilion sits at z -68.9 vs the intended -67.5, and the spine ends square into its blank side wall. Raise it 1.4 m. End the spine on its deck facing south-east to the mouth, with a lit lantern_hanging cluster at the eave so it is the warm pool at the end of the walk."
+  },
+  {
+   "id": "dressing[3]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "33 stalactite_cluster boxes are spread evenly through the edge band and read as a uniform grid of hanging cubes. Put ~70% of them within 10 m of the mouth arch (x>188) so the fringe frames the sky (concept 20)."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 1,
+  "light_rhythm": 1
+ },
+ "top_change": "Remove the opaque beach board from the sea mouth and make the moonlit opening the brightest, coldest light in B3; then un-bury the loungers and lanterns so the warm beach edge exists.",
+ "plausibility": [
+  "The loungers dressing0:* and lanterns lights0:*/lights1:* are at z -71.0 on a beach whose surface at x~166 is ~-68.5 to -69.4, so they are buried.",
+  "The pool_uplights at -71.0 are below the -70.6 sea bed and break the surface of the beach slope near the waterline.",
+  "rock_cluster dressing2:* (h 1.2 at -70.85) sit 0.35 m proud of the water and read as floating flat slabs; this is acceptable as surf rocks, but scale them up to 1.4-1.8.",
+  "The beach_pavilion is 1.4 m lower than specified, and pavilion_steps (h 0.2) cannot reach a raised deck."
+ ]
+}

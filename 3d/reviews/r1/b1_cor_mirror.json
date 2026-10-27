@@ -1,0 +1,79 @@
+{
+ "space": "b1_cor_mirror",
+ "round": 1,
+ "reviewer": "b1_west_r1",
+ "frames": {
+  "entry": {
+   "focal": "The portal arch (hero) dead centre at the end of the straight, framed by converging walls and a meandering stone path. Strong one-point composition.",
+   "is_hero": true,
+   "next_visible": "Yes: lit Mirror water and lanterns visible through the arch."
+  },
+  "reveal": {
+   "focal": "The arch, filling the centre. But the pool beyond is lit teal, there are two bright floor lanterns just inside the arch, and the fill-light reflection makes a white disc on the water.",
+   "is_hero": true,
+   "next_visible": "Yes, but it reads as a lit room, not 'a dark arch leaking teal starlight'."
+  },
+  "concept": {
+   "focal": "The arch at the end, stones leading to it, ankle niches doubled in the water. Closest to concept 05 of all my spaces.",
+   "is_hero": true,
+   "next_visible": "Yes."
+  },
+  "strip": {
+   "focal": "The first leg leads toward the lobby lantern cluster, then the corner, then the arch for the whole last straight. Good progression.",
+   "is_hero": true,
+   "next_visible": "Always: the arch from strip 4 on."
+  }
+ },
+ "fixes": [
+  {
+   "id": "shoji_bay_1",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Both shoji bays are dark 2.4 m slabs. In concept 05 the backlit washi wall is the main warm light source on the left. Make the bays emissive warm (backlit washi) panels; the same applies to shoji_bay_2."
+  },
+  {
+   "id": "hero:portal_arch",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The corridor end is wider than the arch, so the Mirror leaks through slots either side of it (reveal view). Close the end wall to the arch, or widen the arch to the full corridor width, so the arch is the only opening."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "17 boulder_rim in two straight parallel rows (y 90.5 / 93.5) at even spacing, set at z -20.4: most tops are within ±5 cm of the -20.05 water, so they read as flat tiles. Cluster them in 3–4 groups at the lanterns/bonsai, with tops 0.1–0.25 m proud of the water, and leave the rest of the kerb bare."
+  },
+  {
+   "id": "lights1:0",
+   "action": "move",
+   "dx": 0,
+   "dy": -0.6,
+   "deg": 0,
+   "detail": "This floor lantern and lights1:1 stand in the corridor pool at the lobby mouth (seen as bollards in the water in the lobby reveal). Move them onto the kerbs: lights1:0 by (0,-0.6), lights1:1 by (0,+0.6), or replace them with niches."
+  },
+  {
+   "id": "b1_mirror:dressing2",
+   "action": "remove",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Transition note: the two floor lanterns just inside the Mirror's west arch (b1_mirror:dressing2:0/1) light up the end of this corridor as a bright gate. That contradicts 'dark arch leaking teal starlight'. Remove them (see the b1_mirror review)."
+  }
+ ],
+ "scores": {
+  "composition": 4,
+  "density": 3,
+  "light_rhythm": 3
+ },
+ "top_change": "Keep the end of the corridor dark: remove the lanterns inside the Mirror arch, close the side gaps beside it, and let only cool starlight show through, while the backlit shoji bays carry the warm light along the left wall.",
+ "plausibility": [
+  "Rim boulders sit at or below the water line (z -20.4 base, tops -20.15 to -19.92 against water at -20.05).",
+  "Gaps either side of the hero arch: the corridor walls stop short of the arch posts."
+ ]
+}

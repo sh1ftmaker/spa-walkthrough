@@ -1,5 +1,5 @@
 {
- "note": "Proxy = final bounding box in metres (w across X, d along forward +Y, h up), pivot at base centre. Generators must hit these dims. Unknown assets fall back to a 1 m cube and are flagged by checks. structural=true: built by the graybox/structure generators from layout.json, so no proxy box is placed. marker=true: shader/light marker, no proxy box (lights still emitted). frame=true: walk-through frame (portal arches, porches), exempt from the clearance check where the spine passes through it. deck=true: walkable deck proxy (slab at the top, open below). cluster_ok: may touch/interpenetrate other cluster_ok assets (rocks). host: lights and small props may sit inside it.",
+ "note": "Proxy = final bounding box in metres (w across X, d along forward +Y, h up), pivot at base centre. Generators must hit these dims. Unknown assets fall back to a 1 m cube and are flagged by checks. structural=true: built by the graybox/structure generators from layout.json, so no proxy box is placed. marker=true: shader/light marker, no proxy box (lights still emitted). frame=true: walk-through frame (portal arches, porches), exempt from the clearance check where the spine passes through it. deck=true: walkable deck proxy (slab at the top, open below). cluster_ok: may touch/interpenetrate other cluster_ok assets (rocks). host: lights and small props may sit inside it. hero_glow: when this asset is a hero its graybox proxy glows (light-like heroes); other heroes get clay + a key light. gb_emit: graybox glow colour/strength for light-like assets. stand_in: graybox object that stands for a marker hero (visibility check). slatted: deck rendered as boards with open gaps (Kawagiri, owner request).",
  "assets": {
   "torii_basalt": {
    "w": 9.0,
@@ -7,7 +7,8 @@
    "h": 8.5,
    "snap": "ground",
    "light": null,
-   "frame": true
+   "frame": true,
+   "hero_glow": true
   },
   "lava_window": {
    "w": 34,
@@ -18,7 +19,14 @@
     "kind": "area",
     "watts": 4000,
     "color_k": 1600
-   }
+   },
+   "hero_glow": true,
+   "gb_emit": [
+    1.0,
+    0.22,
+    0.02,
+    2.2
+   ]
   },
   "lantern_hanging": {
    "w": 0.45,
@@ -30,7 +38,8 @@
     "watts": 25,
     "color_k": 2200
    },
-   "hang": true
+   "hang": true,
+   "hero_glow": true
   },
   "lantern_floor": {
    "w": 0.45,
@@ -41,7 +50,8 @@
     "kind": "point",
     "watts": 30,
     "color_k": 2400
-   }
+   },
+   "hero_glow": true
   },
   "lantern_niche": {
    "w": 0.3,
@@ -50,7 +60,7 @@
    "snap": "wall",
    "light": {
     "kind": "point",
-    "watts": 10,
+    "watts": 25,
     "color_k": 2300
    }
   },
@@ -63,7 +73,8 @@
     "kind": "point",
     "watts": 15,
     "color_k": 2300
-   }
+   },
+   "hero_glow": true
   },
   "lantern_post": {
    "w": 0.3,
@@ -74,7 +85,8 @@
     "kind": "point",
     "watts": 20,
     "color_k": 2400
-   }
+   },
+   "hero_glow": true
   },
   "slipper_cubbies": {
    "w": 14,
@@ -110,8 +122,7 @@
    "d": 0.1,
    "h": 1.0,
    "snap": "ground",
-   "light": null,
-   "structural": true
+   "light": null
   },
   "pine_bonsai": {
    "w": 2.6,
@@ -186,7 +197,8 @@
     "watts": 150,
     "color_k": 2600
    },
-   "host": true
+   "host": true,
+   "hero_glow": true
   },
   "glowworm_ceiling": {
    "w": 30,
@@ -198,14 +210,24 @@
     "watts": 60,
     "color_k": 9000
    },
-   "host": true
+   "host": true,
+   "hero_glow": true,
+   "gb_emit": [
+    0.25,
+    0.85,
+    1.0,
+    0.8
+   ],
+   "marker": true
   },
   "mirror_pool": {
    "w": 24,
    "d": 24,
    "h": 0.4,
    "snap": "ground",
-   "light": null
+   "light": null,
+   "marker": true,
+   "stand_in": "w_mirror"
   },
   "steam_bench": {
    "w": 2.0,
@@ -238,14 +260,26 @@
    "d": 4,
    "h": 8,
    "snap": "ground",
-   "light": null
+   "light": {
+    "kind": "point",
+    "watts": 400,
+    "color_k": 12000
+   },
+   "hero_glow": true,
+   "gb_emit": [
+    0.35,
+    0.6,
+    1.0,
+    1.2
+   ]
   },
   "slide_tube": {
    "w": 10,
    "d": 10,
    "h": 48,
    "snap": "ground",
-   "light": null
+   "light": null,
+   "marker": true
   },
   "kawagiri_pod": {
    "w": 6.0,
@@ -257,7 +291,8 @@
     "watts": 60,
     "color_k": 2300
    },
-   "host": true
+   "host": true,
+   "frame": true
   },
   "beam_pier": {
    "w": 0.5,
@@ -290,7 +325,8 @@
     "watts": 300,
     "color_k": 2700
    },
-   "host": true
+   "host": true,
+   "hero_glow": true
   },
   "kitchen_block": {
    "w": 12,
@@ -314,7 +350,14 @@
     "watts": 20,
     "color_k": 0,
     "color": "magenta"
-   }
+   },
+   "hero_glow": true,
+   "gb_emit": [
+    1.0,
+    0.15,
+    0.7,
+    3.0
+   ]
   },
   "boat": {
    "w": 1.8,
@@ -325,7 +368,8 @@
     "kind": "point",
     "watts": 20,
     "color_k": 2200
-   }
+   },
+   "hero_glow": true
   },
   "boardwalk": {
    "w": 3.0,
@@ -340,7 +384,18 @@
    "d": 2,
    "h": 17,
    "snap": "ground",
-   "light": null
+   "light": {
+    "kind": "point",
+    "watts": 1500,
+    "color_k": 6500
+   },
+   "hero_glow": true,
+   "gb_emit": [
+    0.85,
+    0.95,
+    1.0,
+    1.5
+   ]
   },
   "rimstone_terrace": {
    "w": 8,
@@ -368,7 +423,11 @@
    "d": 4,
    "h": 1.0,
    "snap": "ground",
-   "light": null
+   "light": {
+    "kind": "point",
+    "watts": 600,
+    "color_k": 7500
+   }
   },
   "splash_pool": {
    "w": 10,
@@ -400,7 +459,14 @@
     "kind": "area",
     "watts": 6000,
     "color_k": 1500
-   }
+   },
+   "hero_glow": true,
+   "gb_emit": [
+    1.0,
+    0.22,
+    0.02,
+    2.0
+   ]
   },
   "bench_stone": {
    "w": 2.4,
@@ -421,7 +487,8 @@
    "d": 2.5,
    "h": 3.5,
    "snap": "ground",
-   "light": null
+   "light": null,
+   "frame": true
   },
   "moon_pavilion": {
    "w": 10,
@@ -433,7 +500,9 @@
     "watts": 200,
     "color_k": 2600
    },
-   "host": true
+   "host": true,
+   "hero_glow": true,
+   "frame": true
   },
   "cascade_pool": {
    "w": 8,
@@ -609,14 +678,23 @@
    "d": 0.6,
    "h": 2.5,
    "snap": "wall",
-   "light": null
+   "light": {
+    "kind": "point",
+    "watts": 40,
+    "color_k": 6500
+   }
   },
   "spill_lip": {
    "w": 4.0,
    "d": 1.0,
    "h": 0.4,
    "snap": "ground",
-   "light": null
+   "light": {
+    "kind": "point",
+    "watts": 350,
+    "color_k": 2400
+   },
+   "hero_glow": true
   },
   "steam_room_arch": {
    "w": 6.0,
@@ -682,7 +760,8 @@
     "kind": "area",
     "watts": 60,
     "color_k": 2600
-   }
+   },
+   "hero_glow": true
   },
   "slot_window": {
    "w": 3.0,
@@ -701,19 +780,21 @@
     "watts": 20,
     "color_k": 6000
    },
-   "host": true
+   "host": true,
+   "hero_glow": true
   },
   "tsuboniwa": {
    "w": 6,
    "d": 5,
-   "h": 3,
+   "h": 0.6,
    "snap": "ground",
    "light": {
     "kind": "point",
     "watts": 40,
     "color_k": 2600
    },
-   "host": true
+   "host": true,
+   "hero_glow": true
   },
   "obsidian_monolith": {
    "w": 1.4,
@@ -735,7 +816,8 @@
    "h": 2.8,
    "snap": "ground",
    "light": null,
-   "frame": true
+   "frame": true,
+   "hero_glow": true
   },
   "header_tank": {
    "w": 2.4,
@@ -755,7 +837,14 @@
     "color_k": 0,
     "color": "magenta"
    },
-   "frame": true
+   "frame": true,
+   "hero_glow": true,
+   "gb_emit": [
+    1.0,
+    0.15,
+    0.7,
+    3.0
+   ]
   },
   "torii_small": {
    "w": 3.4,
@@ -763,7 +852,8 @@
    "h": 3.6,
    "snap": "ground",
    "light": null,
-   "frame": true
+   "frame": true,
+   "hero_glow": true
   },
   "rock_window": {
    "w": 2.5,
@@ -826,7 +916,8 @@
     "kind": "area",
     "watts": 80,
     "color_k": 2700
-   }
+   },
+   "hero_glow": true
   },
   "locker_bank": {
    "w": 6,
@@ -913,6 +1004,37 @@
    "h": 1.4,
    "snap": "ground",
    "light": null
+  },
+  "geyser_plume": {
+   "w": 3.0,
+   "d": 3.0,
+   "h": 14.0,
+   "snap": "ground",
+   "light": {
+    "kind": "point",
+    "watts": 2500,
+    "color_k": 8000
+   },
+   "hero_glow": true,
+   "gb_emit": [
+    0.5,
+    0.95,
+    1.0,
+    2.5
+   ]
+  },
+  "deck_slatted": {
+   "w": 3.0,
+   "d": 2.0,
+   "h": 0.12,
+   "snap": "given",
+   "light": null,
+   "deck": true,
+   "slatted": {
+    "board": 0.12,
+    "gap": 0.06
+   },
+   "note": "Sparse hinoki deck: boards across the walking direction with open gaps so the river shows below. Walk collision stays solid."
   }
  }
 }

@@ -1,0 +1,80 @@
+{
+ "space": "b3_geyser",
+ "round": 1,
+ "reviewer": "rev_b3_east_b4_r1",
+ "frames": {
+  "entry": {
+   "focal": "A squat 4x4x1 m orange box (the vent) in the centre, ringed by grey boulder and seat boxes. The upper 60% of the frame is black vault.",
+   "is_hero": true,
+   "next_visible": "Weakly. Right of frame, the b3_lazy hero box (orange) sits across the channel; nothing signals the south bridge or the slide cave."
+  },
+  "reveal": {
+   "focal": "The overexposed slide-shaft cylinder at the left, which is far brighter than the vent box in the centre.",
+   "is_hero": false,
+   "next_visible": "Yes, too strongly: the slide shaft pulls the eye east, away from the hero."
+  },
+  "concept": {
+   "focal": "The vent box fills the bottom third as a flat brown slab. The upper frame is empty black, with the spiral stair and lantern row at the left.",
+   "is_hero": true,
+   "next_visible": "Only the B3 lobby spiral stair at the left. There is no plume to look up at."
+  },
+  "strip": {
+   "focal": "Lantern slabs and grey boxes scattered at even density round the loop. In frame 3 a 3 m grey block (pine_bonsai) fills the left half.",
+   "is_hero": false,
+   "next_visible": "Partly. The amber dotted line of the far stair is visible in frames 5 and 6."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b3_geyser:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Replace the opaque 4x4x1 box with a low mound (r 2.2, h 0.6-1.0) plus an emissive teal plume proxy column (r ~1.0, h 14) and 6 minor columns (r 0.3-0.5, h 4-8). The space has no vertical focal point and no brightest object; concept 14 is all plume."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "pool_uplight ring radius [1.5,4.0] puts most of the 7 uplights inside the 2 m half-width hero box, so the pool never glows. Put one under each vent on the mound and the rest at radius [2.6,5.0]."
+  },
+  {
+   "id": "lights[1]",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "lantern_niche is a wall asset; snapped to the open deck it becomes 12 free-standing 1 m white slabs that are the brightest objects on the island. Replace them with low light strips under or behind each seat block (concept 14), or with lantern_floor at dim 0.5."
+  },
+  {
+   "id": "b3_geyser:dressing1:0",
+   "action": "move",
+   "dx": 2.0,
+   "dy": 1.0,
+   "deg": 0,
+   "detail": "pine_bonsai (2.6x2.6x3.2) at (129.2,44.0) reads as a 3 m wall beside the east loop of the spine (strip-3). Move it toward the island tip, behind the walk."
+  },
+  {
+   "id": "b3_lazy:hero",
+   "action": "remove",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Cross-space: the floor-snapped lava_tube box across the channel is visible from the island (entry right, strip-5) as an unexplained orange block. See the b3_lazy review."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 3,
+  "light_rhythm": 1
+ },
+ "top_change": "Give the vent a 14 m emissive teal plume proxy and uplights that are not buried inside the hero box, so the brightest, tallest thing in the cavern is actually the geyser.",
+ "plausibility": [
+  "Most of the pool uplights sit inside the 4x4 m hero proxy.",
+  "The pool water is indistinguishable from the deck at eye level, so the seat ring appears to surround dry floor.",
+  "From this island, the slide-shaft cylinder 36 m away is brighter than the vent."
+ ]
+}

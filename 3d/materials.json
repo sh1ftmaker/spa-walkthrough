@@ -1,6 +1,6 @@
 {
- "version": 1,
- "generated": "2026-10-26T22:47:55Z",
+ "version": 2,
+ "generated": "2026-10-27T00:41:22Z",
  "generator": "tools/matlib/build_library.py (Blender 5.2.2 LTS)",
  "library_blend": "materials/library.blend",
  "settings": [
@@ -12,7 +12,7 @@
   "normal_strength",
   "emissive_level"
  ],
- "colour_management": "AgX (Blender) / AgXToneMapping (three.js); albedo textures sRGB, data linear",
+ "colour_management": "AgX (Blender) / AgXToneMapping (three.js); albedo/emissive textures sRGB, data linear",
  "ktx2": {
   "tool": "KTX-Software ktx create",
   "version": "4.4.2",
@@ -20,25 +20,36 @@
   "note": "run tools/matlib/encode_ktx2.py"
  },
  "kz_core": {
-  "uv_convention": "UV0 in metres (1 UV unit = 1 m). Texture coordinate = uv / scale. Textures are authored with v = 1 on the first image row (glTF/Blender convention).",
+  "uv_convention": "UV0 in metres (1 UV unit = 1 m) unless uv_mode is \"object\" (lanterns: 0..1 per lantern). Texture coordinate = (u / scale, v / (scale / aspect)). On walls v points up (drip streaks run along v). Textures have v = 1 on the first image row (glTF/Blender convention).",
   "normal_convention": "Tangent space, OpenGL / glTF (+Y = +v). normal_height.rg = XY*0.5+0.5, z = sqrt(1 - x^2 - y^2); normalScale = normal_strength.",
+  "channels": {
+   "base": "RGB albedo (sRGB); A = mask: foam (water/ice/glass), thinness (paper), coverage (decals)",
+   "orm": "R occlusion incl. baked cavity, G roughness, B metalness, A height (linear). Mip chain is supplied with Toksvig roughness (specular anti-aliasing).",
+   "normal_height": "R,G normal XY, B height, A wet-film mask (where water collects) (linear)",
+   "emissive": "emission colour (sRGB), multiply by emissive.map_scale",
+   "macro": "shared materials/tex/kz_macro.ktx2, linear, 8 m repeat in UV metres: R brightness, G hue (>0.5 cooler), B wetness/roughness, A vertical stain streaks"
+  },
   "formulas": [
-   "h = height (orm.a or normal_height.b), ao = orm.r",
-   "wear_m = saturate((h + 1.2*wear - 1) * 4)",
-   "wet_m  = saturate(wetness * (1.5 - h))",
-   "albedo = base.rgb * tint * ao",
-   "albedo = mix(albedo, worn_color * tint, wear_m)",
-   "albedo *= 1 - porosity * 0.55 * wet_m",
-   "albedo = mix(albedo, foam_color, foam)            // foam = base.a for transparent materials",
-   "rough  = mix(orm.g, worn_rough, wear_m) + roughness_offset",
-   "rough  = mix(rough, 0.04, wet_m); rough = clamp(mix(rough, 0.45, foam), 0, 1)",
-   "metal  = mix(orm.b, worn_metal, wear_m)",
-   "transmission = transmission * (1 - foam)",
-   "emissive = emissive_map_or_white * emissive_color * tint, intensity = emit_strength * emissive_level",
-   "attenuationColor = absorb_color * tint (three.js: attenuationColor/attenuationDistance given per material)",
-   "In three.js the AO term is applied as aoMap (orm.r) on the baked lightMap, not multiplied into albedo."
+   "h = orm.a; ao = orm.r; film_mask = normal_height.a; mask = base.a",
+   "M = macro(uv / 8) ; m = macro_amount ; streak = M.a * m",
+   "foam = saturate(mask * foam_from_mask + frost_up * smoothstep(0.6, 0.9, world_normal.y))",
+   "thin = mix(1, mask, thin_from_mask)",
+   "wear_m = saturate((h + 1.2*wear - 1) * 4) * worn_max",
+   "film = saturate(film_mask*1.2 + (0.5 - h)*0.8 + (M.b - 0.5)*0.6*m + streak*0.5)",
+   "albedo = base.rgb * tint * ao * (1 + (M.r - 0.5)*0.4*m) * (1 - 0.25*streak) * vec3(1 - 0.2*hue, 1, 1 + 0.24*hue), hue = (M.g - 0.5)*m",
+   "albedo = mix(albedo, worn_color * tint * (0.7 + 0.6*h), wear_m)",
+   "albedo *= 1 - porosity * 0.55 * wetness * (0.6 + 0.4*film)",
+   "albedo = mix(albedo, foam_color, foam)",
+   "rough = mix(orm.g, worn_rough, wear_m) + roughness_offset - (M.b - 0.5)*0.2*m",
+   "rough = mix(rough, min(rough, mix(0.32, 0.04, film)), saturate(1.4*wetness))",
+   "rough = clamp(mix(rough, 0.45, foam), 0.02, 1)",
+   "metal = mix(orm.b, worn_metal, wear_m)",
+   "alpha = mix(1, alpha_min + (1 - alpha_min) * mask, alpha_from_mask)",
+   "emissive = (emissive_map * map_scale + emit_color) * tint * emit_strength * emissive_level * (1 + (M.r - 0.5)*1.2*emit_macro)",
+   "emissive = mix(emissive, white(max(emissive)), 0.85 * emit_core * (1 - fresnel_facing)^2)   // neon white core",
+   "three.js: apply ao as aoMap on the lightMap (not multiplied into albedo); wetness/wear/tint are uniforms."
   ],
-  "note": "All lighting is baked irradiance (AGENT_PROMPT_3D 7.1); these textures carry albedo/ORM/detail only. View transform AgX in Blender and AgXToneMapping in three.js (7.5)."
+  "note": "All lighting is baked irradiance (AGENT_PROMPT_3D 7.1); textures carry albedo/ORM/detail only. AgX in Blender and AgXToneMapping in three.js (7.5). Water, ice and glass do not use transmission on the phone (see each material three.note)."
  },
  "categories": [
   {
@@ -55,12 +66,12 @@
      ]
     },
     {
-     "image": "lookbook/img/22-brand-board.jpg",
+     "image": "refs/gen/mat-basalt-wet.png",
      "box_fraction_ltrb": [
+      0.2,
       0.0,
-      0.25,
-      0.23,
-      0.68
+      1.0,
+      0.9
      ]
     }
    ]
@@ -79,11 +90,11 @@
      ]
     },
     {
-     "image": "lookbook/img/21-private-suite.jpg",
+     "image": "refs/gen/mat-hinoki-washi.png",
      "box_fraction_ltrb": [
+      0.3,
       0.0,
-      0.5,
-      0.5,
+      1.0,
       1.0
      ]
     }
@@ -101,6 +112,15 @@
       0.7,
       0.62
      ]
+    },
+    {
+     "image": "refs/gen/mat-lava-glass.png",
+     "box_fraction_ltrb": [
+      0.0,
+      0.0,
+      0.6,
+      1.0
+     ]
     }
    ]
   },
@@ -113,6 +133,15 @@
      "box_fraction_ltrb": [
       0.3,
       0.45,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "image": "refs/gen/mat-water-teal.png",
+     "box_fraction_ltrb": [
+      0.0,
+      0.0,
       1.0,
       1.0
      ]
@@ -144,6 +173,627 @@
    ]
   }
  ],
+ "texture_sets": [
+  {
+   "set": "basalt_dry",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/basalt_dry_base.ktx2",
+    "orm": "materials/tex/basalt_dry_orm.ktx2",
+    "nh": "materials/tex/basalt_dry_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "basalt_wet",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/basalt_wet_base.ktx2",
+    "orm": "materials/tex/basalt_wet_orm.ktx2",
+    "nh": "materials/tex/basalt_wet_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "obsidian",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/obsidian_base.ktx2",
+    "orm": "materials/tex/obsidian_orm.ktx2",
+    "nh": "materials/tex/obsidian_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "rimstone",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/rimstone_base.ktx2",
+    "orm": "materials/tex/rimstone_orm.ktx2",
+    "nh": "materials/tex/rimstone_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "rimstone_side",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/rimstone_side_base.ktx2",
+    "orm": "materials/tex/rimstone_side_orm.ktx2",
+    "nh": "materials/tex/rimstone_side_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "black_sand",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/black_sand_base.ktx2",
+    "orm": "materials/tex/black_sand_orm.ktx2",
+    "nh": "materials/tex/black_sand_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "ash_clay",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/ash_clay_base.ktx2",
+    "orm": "materials/tex/ash_clay_orm.ktx2",
+    "nh": "materials/tex/ash_clay_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "paving",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/paving_base.ktx2",
+    "orm": "materials/tex/paving_orm.ktx2",
+    "nh": "materials/tex/paving_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "cave_rock",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/cave_rock_base.ktx2",
+    "orm": "materials/tex/cave_rock_orm.ktx2",
+    "nh": "materials/tex/cave_rock_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "stepping_stone",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/stepping_stone_base.ktx2",
+    "orm": "materials/tex/stepping_stone_orm.ktx2",
+    "nh": "materials/tex/stepping_stone_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "sinter",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/sinter_base.ktx2",
+    "orm": "materials/tex/sinter_orm.ktx2",
+    "nh": "materials/tex/sinter_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "hinoki",
+   "size": [
+    512,
+    2048
+   ],
+   "files": {
+    "base": "materials/tex/hinoki_base.ktx2",
+    "orm": "materials/tex/hinoki_orm.ktx2",
+    "nh": "materials/tex/hinoki_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 12,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "lacquer_dark",
+   "size": [
+    512,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/lacquer_dark_base.ktx2",
+    "orm": "materials/tex/lacquer_dark_orm.ktx2",
+    "nh": "materials/tex/lacquer_dark_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "bamboo",
+   "size": [
+    512,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/bamboo_base.ktx2",
+    "orm": "materials/tex/bamboo_orm.ktx2",
+    "nh": "materials/tex/bamboo_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "tatami",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/tatami_base.ktx2",
+    "orm": "materials/tex/tatami_orm.ktx2",
+    "nh": "materials/tex/tatami_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "washi",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/washi_base.ktx2",
+    "orm": "materials/tex/washi_orm.ktx2",
+    "nh": "materials/tex/washi_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "washi_backlit",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/washi_backlit_base.ktx2",
+    "orm": "materials/tex/washi_backlit_orm.ktx2",
+    "nh": "materials/tex/washi_backlit_nh.ktx2",
+    "emis": "materials/tex/washi_backlit_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "noren",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/noren_base.ktx2",
+    "orm": "materials/tex/noren_orm.ktx2",
+    "nh": "materials/tex/noren_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "rope",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/rope_base.ktx2",
+    "orm": "materials/tex/rope_orm.ktx2",
+    "nh": "materials/tex/rope_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "iron",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/iron_base.ktx2",
+    "orm": "materials/tex/iron_orm.ktx2",
+    "nh": "materials/tex/iron_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "bronze",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/bronze_base.ktx2",
+    "orm": "materials/tex/bronze_orm.ktx2",
+    "nh": "materials/tex/bronze_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "glacier_ice",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/glacier_ice_base.ktx2",
+    "orm": "materials/tex/glacier_ice_orm.ktx2",
+    "nh": "materials/tex/glacier_ice_nh.ktx2",
+    "emis": "materials/tex/glacier_ice_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "lava_glass",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/lava_glass_base.ktx2",
+    "orm": "materials/tex/lava_glass_orm.ktx2",
+    "nh": "materials/tex/lava_glass_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "water_still",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/water_still_base.ktx2",
+    "orm": "materials/tex/water_still_orm.ktx2",
+    "nh": "materials/tex/water_still_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "water_river",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/water_river_base.ktx2",
+    "orm": "materials/tex/water_river_orm.ktx2",
+    "nh": "materials/tex/water_river_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "water_sea",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/water_sea_base.ktx2",
+    "orm": "materials/tex/water_sea_orm.ktx2",
+    "nh": "materials/tex/water_sea_nh.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "waterfall",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/waterfall_base.ktx2",
+    "orm": "materials/tex/waterfall_orm.ktx2",
+    "nh": "materials/tex/waterfall_nh.ktx2",
+    "emis": "materials/tex/waterfall_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "caustics_decal",
+   "size": [
+    256,
+    256
+   ],
+   "files": {
+    "base": "materials/tex/caustics_decal_base.ktx2",
+    "orm": "materials/tex/caustics_decal_orm.ktx2",
+    "nh": "materials/tex/caustics_decal_nh.ktx2",
+    "emis": "materials/tex/caustics_decal_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 9,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "lava",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/lava_base.ktx2",
+    "orm": "materials/tex/lava_orm.ktx2",
+    "nh": "materials/tex/lava_nh.ktx2",
+    "emis": "materials/tex/lava_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "lava_flow",
+   "size": [
+    1024,
+    1024
+   ],
+   "files": {
+    "base": "materials/tex/lava_flow_base.ktx2",
+    "orm": "materials/tex/lava_flow_orm.ktx2",
+    "nh": "materials/tex/lava_flow_nh.ktx2",
+    "emis": "materials/tex/lava_flow_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": true,
+   "orm_mips": 11,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "neon_tube",
+   "size": [
+    256,
+    256
+   ],
+   "files": {
+    "base": "materials/tex/neon_tube_base.ktx2",
+    "orm": "materials/tex/neon_tube_orm.ktx2",
+    "nh": "materials/tex/neon_tube_nh.ktx2",
+    "emis": "materials/tex/neon_tube_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 9,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "lantern_paper",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/lantern_paper_base.ktx2",
+    "orm": "materials/tex/lantern_paper_orm.ktx2",
+    "nh": "materials/tex/lantern_paper_nh.ktx2",
+    "emis": "materials/tex/lantern_paper_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "lantern_andon",
+   "size": [
+    512,
+    512
+   ],
+   "files": {
+    "base": "materials/tex/lantern_andon_base.ktx2",
+    "orm": "materials/tex/lantern_andon_orm.ktx2",
+    "nh": "materials/tex/lantern_andon_nh.ktx2",
+    "emis": "materials/tex/lantern_andon_emis.ktx2"
+   },
+   "srgb_base": true,
+   "close_up": false,
+   "orm_mips": 10,
+   "ktx2": {
+    "encoded": false
+   }
+  },
+  {
+   "set": "kz_macro",
+   "size": [
+    256,
+    256
+   ],
+   "files": {
+    "base": "materials/tex/kz_macro_base.ktx2"
+   },
+   "srgb_base": false,
+   "close_up": false,
+   "orm_mips": null,
+   "ktx2": {
+    "encoded": false
+   }
+  }
+ ],
  "materials": [
   {
    "id": "basalt_dry",
@@ -153,8 +803,9 @@
     "material": "basalt_dry",
     "group": "KZM_basalt_dry",
     "node": "KZ",
-    "mode": "procedural (live KZP_basalt_dry pattern)"
+    "generator": "plate stone#1 (refs/gen/sheet-tex-stone.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -164,16 +815,27 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 2.0,
+    "scale": 2.9867,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 2.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 2.9867,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
    "textures": {
     "base": "materials/tex/basalt_dry_base.ktx2",
     "orm": "materials/tex/basalt_dry_orm.ktx2",
     "normal_height": "materials/tex/basalt_dry_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 1.0,
+    "repeat_m": 8.0
    },
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/basalt_dry_base.png",
@@ -186,142 +848,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
    "height_depth_m": 0.1,
-   "constants": {
-    "Specular": 0.5,
-    "IOR": 1.5,
-    "Transmission": 0.0,
-    "ThinWall": 0.0,
-    "Coat": 0.0,
-    "CoatRough": 0.05,
-    "Sheen": 0.0,
-    "Translucency": 0.0,
-    "Porosity": 0.8,
-    "WornColor": [
-     0.07,
-     0.066,
-     0.062
-    ],
-    "WornRough": 0.45,
-    "WornMetal": 0.0,
-    "FoamColor": [
-     0.8,
-     0.85,
-     0.85
-    ],
-    "EmitStrength": 1.0,
-    "Absorb": [
-     1.0,
-     1.0,
-     1.0
-    ],
-    "AbsorbDensity": 0.0,
-    "Scatter": [
-     1.0,
-     1.0,
-     1.0
-    ],
-    "ScatterDensity": 0.0
-   },
-   "emissive": null,
-   "transmission": false,
-   "transparent": false,
-   "thin_wall": false,
-   "volume": null,
-   "variants": {},
-   "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_basalt_dry, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
-    "shared_with": null
-   },
-   "concept": [
-    "22-brand-board.jpg (BASALT swatch)",
-    "04-arrival-gate.jpg",
-    "19-thunder-curtain.jpg"
-   ],
-   "three": {
-    "class": "MeshStandardMaterial",
-    "roughness": 1.0,
-    "metalness": 1.0,
-    "roughnessMap": "orm.g",
-    "metalnessMap": "orm.b",
-    "aoMap": "orm.r",
-    "aoMapIntensity": 1.0,
-    "normalMap": "normal_height (XY)",
-    "normalScale": 1.0,
-    "envMapIntensity": 0.6,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.5
-   },
-   "ktx2": {
-    "encoded": false
-   },
-   "stats": {
-    "mean_albedo_linear": [
-     0.0315,
-     0.0301,
-     0.0287
-    ],
-    "mean_roughness": 0.84,
-    "height_min_max": [
-     0.189,
-     0.769
-    ],
-    "normal_mean_slope_deg": 12.38
-   }
-  },
-  {
-   "id": "basalt_wet",
-   "name": "Wet basalt",
-   "category": "stone",
-   "blender": {
-    "material": "basalt_wet",
-    "group": "KZM_basalt_wet",
-    "node": "KZ",
-    "mode": "procedural (live KZP_basalt_wet pattern)"
-   },
-   "params": {
-    "tint": [
-     1.0,
-     1.0,
-     1.0
-    ],
-    "wetness": 0.9,
-    "wear": 0.0,
-    "roughness_offset": 0.0,
-    "scale": 1.5,
-    "normal_strength": 1.0,
-    "emissive_level": 0.0
-   },
-   "tiling_m_per_repeat": 1.5,
-   "texture_size": 1024,
-   "textures": {
-    "base": "materials/tex/basalt_wet_base.ktx2",
-    "orm": "materials/tex/basalt_wet_orm.ktx2",
-    "normal_height": "materials/tex/basalt_wet_nh.ktx2"
-   },
-   "texture_sources_png": {
-    "base": ".scratch/matlib/tex/basalt_wet_base.png",
-    "orm": ".scratch/matlib/tex/basalt_wet_orm.png",
-    "normal_height": ".scratch/matlib/tex/basalt_wet_nh.png"
-   },
-   "srgb": {
-    "base": true,
-    "orm": false,
-    "normal_height": false,
-    "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.06,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
@@ -334,17 +861,32 @@
     "Porosity": 0.6,
     "WornColor": [
      0.05,
-     0.046,
-     0.043
+     0.052,
+     0.056
     ],
-    "WornRough": 0.3,
+    "WornRough": 0.45,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 1.0,
     "Absorb": [
      1.0,
      1.0,
@@ -359,14 +901,173 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_basalt_wet, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate stone#1 (refs/gen/sheet-tex-stone.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
+    "shared_with": null
+   },
+   "concept": [
+    "22-brand-board.jpg (BASALT swatch)",
+    "04-arrival-gate.jpg",
+    "19-thunder-curtain.jpg"
+   ],
+   "reference": "refs/gen/mat-basalt-wet.png",
+   "three": {
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
+    "roughness": 1.0,
+    "metalness": 1.0,
+    "roughnessMap": "orm.g",
+    "metalnessMap": "orm.b",
+    "aoMap": "orm.r",
+    "aoMapIntensity": 1.0,
+    "normalMap": "normal_height (XY)",
+    "normalScale": 1.0,
+    "envMapIntensity": 0.6,
+    "repeat": [
+     0.33482,
+     0.33482
+    ]
+   },
+   "stats": {
+    "size": [
+     1024,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 22.5,
+    "roughness_std_255": 12.9,
+    "ao_mean_255": 190.3,
+    "mean_albedo_linear": [
+     0.0251,
+     0.0238,
+     0.023
+    ],
+    "mean_roughness": 0.771,
+    "normal_mean_slope_deg": 47.22,
+    "height_min_max": [
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "id": "basalt_wet",
+   "name": "Wet basalt",
+   "category": "stone",
+   "blender": {
+    "material": "basalt_wet",
+    "group": "KZM_basalt_wet",
+    "node": "KZ",
+    "generator": "plate stone#0 (refs/gen/sheet-tex-stone.png)"
+   },
+   "uv_mode": "metric",
+   "params": {
+    "tint": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "wetness": 0.85,
+    "wear": 0.0,
+    "roughness_offset": 0.0,
+    "scale": 3.4133,
+    "normal_strength": 1.0,
+    "emissive_level": 0.0
+   },
+   "tiling_m_per_repeat": 3.4133,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
+   "textures": {
+    "base": "materials/tex/basalt_wet_base.ktx2",
+    "orm": "materials/tex/basalt_wet_orm.ktx2",
+    "normal_height": "materials/tex/basalt_wet_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 1.0,
+    "repeat_m": 8.0
+   },
+   "texture_sources_png": {
+    "base": ".scratch/matlib/tex/basalt_wet_base.png",
+    "orm": ".scratch/matlib/tex/basalt_wet_orm.png",
+    "normal_height": ".scratch/matlib/tex/basalt_wet_nh.png"
+   },
+   "srgb": {
+    "base": true,
+    "orm": false,
+    "normal_height": false,
+    "emissive": true
+   },
+   "height_depth_m": 0.1,
+   "constants": {
+    "Specular": 0.5,
+    "IOR": 1.5,
+    "Transmission": 0.0,
+    "ThinWall": 0.0,
+    "Coat": 0.0,
+    "CoatRough": 0.05,
+    "Sheen": 0.0,
+    "Translucency": 0.0,
+    "Porosity": 0.6,
+    "WornColor": [
+     0.05,
+     0.052,
+     0.056
+    ],
+    "WornRough": 0.45,
+    "WornMetal": 0.0,
+    "WornMax": 1.0,
+    "FoamColor": [
+     0.8,
+     0.85,
+     0.85
+    ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 1.0,
+    "Absorb": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "AbsorbDensity": 0.0,
+    "Scatter": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "ScatterDensity": 0.0
+   },
+   "emissive": null,
+   "transparent": false,
+   "volume": null,
+   "water": null,
+   "variants": {},
+   "texture_source": {
+    "origin": "self-made Codex-painted plate plate stone#0 (refs/gen/sheet-tex-stone.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
@@ -374,8 +1075,10 @@
     "05-mist-corridor.jpg",
     "17-glacier-plunge.jpg"
    ],
+   "reference": "refs/gen/mat-basalt-wet.png",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -385,24 +1088,32 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.0,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.66667
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     0.29297,
+     0.29297
+    ],
+    "note": "Same texture set as basalt_dry; only wetness differs, so wet/dry can blend on one mesh (drive wetness per vertex). Clamp wet roughness >= 0.12 beyond mip 2 (the ORM mips already carry Toksvig roughness)."
    },
    "stats": {
-    "mean_albedo_linear": [
-     0.0252,
-     0.0223,
-     0.0199
+    "size": [
+     1024,
+     1024
     ],
-    "mean_roughness": 0.51,
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 24.7,
+    "roughness_std_255": 19.2,
+    "ao_mean_255": 192.8,
+    "mean_albedo_linear": [
+     0.0232,
+     0.0217,
+     0.0215
+    ],
+    "mean_roughness": 0.333,
+    "normal_mean_slope_deg": 51.36,
     "height_min_max": [
      0.0,
      1.0
-    ],
-    "normal_mean_slope_deg": 15.54
+    ]
    }
   },
   {
@@ -413,8 +1124,9 @@
     "material": "obsidian",
     "group": "KZM_obsidian",
     "node": "KZ",
-    "mode": "procedural (live KZP_obsidian pattern)"
+    "generator": "plate stone#3 (refs/gen/sheet-tex-stone.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -424,17 +1136,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 1.0,
+    "scale": 2.1333,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 1.0,
-   "texture_size": 1024,
+   "tiling_m_per_repeat": 2.1333,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
    "textures": {
     "base": "materials/tex/obsidian_base.ktx2",
     "orm": "materials/tex/obsidian_orm.ktx2",
     "normal_height": "materials/tex/obsidian_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/obsidian_base.png",
     "orm": ".scratch/matlib/tex/obsidian_orm.png",
@@ -446,12 +1165,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.035,
+   "height_depth_m": 0.06,
    "constants": {
     "Specular": 0.55,
     "IOR": 1.49,
@@ -469,12 +1183,27 @@
     ],
     "WornRough": 0.25,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -489,14 +1218,13 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_obsidian, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate stone#3 (refs/gen/sheet-tex-stone.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
@@ -504,8 +1232,10 @@
     "17-glacier-plunge.jpg (obsidian monolith)",
     "15-obsidian-mirror.jpg"
    ],
+   "reference": "refs/gen/mat-obsidian.png",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -514,25 +1244,33 @@
     "aoMapIntensity": 1.0,
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
-    "envMapIntensity": 1.3,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 1.0
-   },
-   "ktx2": {
-    "encoded": false
+    "envMapIntensity": 1.0,
+    "repeat": [
+     0.46876,
+     0.46876
+    ],
+    "note": "Defined by what it reflects: needs the room reflection probe (lantern and glowworm dots) at envMapIntensity ~1.0."
    },
    "stats": {
-    "mean_albedo_linear": [
-     0.0112,
-     0.0107,
-     0.0114
+    "size": [
+     1024,
+     1024
     ],
-    "mean_roughness": 0.029,
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 6.5,
+    "roughness_std_255": 5.5,
+    "ao_mean_255": 222.2,
+    "mean_albedo_linear": [
+     0.0119,
+     0.012,
+     0.0127
+    ],
+    "mean_roughness": 0.04,
+    "normal_mean_slope_deg": 29.42,
     "height_min_max": [
      0.0,
-     0.651
-    ],
-    "normal_mean_slope_deg": 7.25
+     1.0
+    ]
    }
   },
   {
@@ -543,28 +1281,40 @@
     "material": "rimstone",
     "group": "KZM_rimstone",
     "node": "KZ",
-    "mode": "procedural (live KZP_rimstone pattern)"
+    "generator": "plate stone#4 (refs/gen/sheet-tex-stone.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
      1.0,
      1.0
     ],
-    "wetness": 0.45,
+    "wetness": 0.5,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 1.5,
+    "scale": 1.7067,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 1.5,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 1.7067,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
    "textures": {
     "base": "materials/tex/rimstone_base.ktx2",
     "orm": "materials/tex/rimstone_orm.ktx2",
     "normal_height": "materials/tex/rimstone_nh.ktx2"
    },
+   "textures_side": {
+    "base": "materials/tex/rimstone_side_base.ktx2",
+    "orm": "materials/tex/rimstone_side_orm.ktx2",
+    "normal_height": "materials/tex/rimstone_side_nh.ktx2"
+   },
+   "side_blend": "w_top = smoothstep(0.5, 0.8, world_normal.y)",
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/rimstone_base.png",
     "orm": ".scratch/matlib/tex/rimstone_orm.png",
@@ -576,12 +1326,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.03,
+   "height_depth_m": 0.02,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
@@ -593,18 +1338,33 @@
     "Translucency": 0.0,
     "Porosity": 0.5,
     "WornColor": [
-     0.78,
-     0.75,
-     0.66
+     0.82,
+     0.8,
+     0.74
     ],
     "WornRough": 0.3,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -619,21 +1379,22 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_rimstone, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate stone#4 (refs/gen/sheet-tex-stone.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "18-rimstone-terraces.jpg"
    ],
+   "reference": "refs/gen/mat-rimstone.png",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -643,24 +1404,32 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.8,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.66667
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     0.58593,
+     0.58593
+    ],
+    "note": "Two texture sets: textures (tops, micro-gours) and textures_side (flowstone drapery), blended by world normal: w_top = smoothstep(0.5, 0.8, n.y)."
    },
    "stats": {
+    "size": [
+     1024,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 32.9,
+    "roughness_std_255": 23.1,
+    "ao_mean_255": 230.7,
     "mean_albedo_linear": [
-     0.6008,
-     0.5469,
-     0.4404
+     0.7529,
+     0.5712,
+     0.4177
     ],
-    "mean_roughness": 0.495,
+    "mean_roughness": 0.426,
+    "normal_mean_slope_deg": 24.98,
     "height_min_max": [
-     0.276,
-     0.664
-    ],
-    "normal_mean_slope_deg": 5.37
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -671,27 +1440,39 @@
     "material": "black_sand",
     "group": "KZM_black_sand",
     "node": "KZ",
-    "mode": "procedural (live KZP_black_sand pattern)"
+    "generator": "plate stone#5 (refs/gen/sheet-tex-stone.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
      1.0,
      1.0
     ],
-    "wetness": 0.0,
+    "wetness": 0.15,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 1.0,
+    "scale": 1.4933,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 1.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 1.4933,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
    "textures": {
     "base": "materials/tex/black_sand_base.ktx2",
     "orm": "materials/tex/black_sand_orm.ktx2",
     "normal_height": "materials/tex/black_sand_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 1.0,
+    "repeat_m": 8.0
    },
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/black_sand_base.png",
@@ -704,12 +1485,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.012,
+   "height_depth_m": 0.03,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
@@ -721,18 +1497,33 @@
     "Translucency": 0.0,
     "Porosity": 1.0,
     "WornColor": [
-     0.03,
-     0.028,
-     0.026
+     0.02,
+     0.019,
+     0.018
     ],
     "WornRough": 0.8,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 1.0,
     "Absorb": [
      1.0,
      1.0,
@@ -747,21 +1538,22 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_black_sand, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate stone#5 (refs/gen/sheet-tex-stone.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "20-wave-grotto.jpg"
    ],
+   "reference": "refs/gen/mat-black-sand.png",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -771,36 +1563,45 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.5,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 1.0
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     0.66966,
+     0.66966
+    ],
+    "note": "Drive wetness from a shoreline vertex-colour mask (wet sand -> rough 0.05-0.1)."
    },
    "stats": {
+    "size": [
+     1024,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 18.1,
+    "roughness_std_255": 22.0,
+    "ao_mean_255": 204.6,
     "mean_albedo_linear": [
-     0.0349,
-     0.0323,
-     0.0289
+     0.0148,
+     0.0139,
+     0.0131
     ],
-    "mean_roughness": 0.819,
+    "mean_roughness": 0.704,
+    "normal_mean_slope_deg": 45.27,
     "height_min_max": [
-     0.128,
-     0.826
-    ],
-    "normal_mean_slope_deg": 18.88
+     0.0,
+     1.0
+    ]
    }
   },
   {
    "id": "ash_clay",
-   "name": "Ash clay",
+   "name": "Ash clay (tsuchikabe plaster)",
    "category": "stone",
    "blender": {
     "material": "ash_clay",
     "group": "KZM_ash_clay",
     "node": "KZ",
-    "mode": "procedural (live KZP_ash_clay pattern)"
+    "generator": "plate rock#3 (refs/gen/sheet-tex-rock.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -810,16 +1611,27 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 2.0,
+    "scale": 1.92,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 2.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 1.92,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/ash_clay_base.ktx2",
     "orm": "materials/tex/ash_clay_orm.ktx2",
     "normal_height": "materials/tex/ash_clay_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 0.6,
+    "repeat_m": 8.0
    },
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/ash_clay_base.png",
@@ -832,12 +1644,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.012,
+   "height_depth_m": 0.01,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
@@ -849,18 +1656,33 @@
     "Translucency": 0.0,
     "Porosity": 1.0,
     "WornColor": [
-     0.24,
-     0.225,
-     0.21
+     0.2,
+     0.19,
+     0.18
     ],
     "WornRough": 0.7,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.6,
     "Absorb": [
      1.0,
      1.0,
@@ -875,22 +1697,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_ash_clay, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate rock#3 (refs/gen/sheet-tex-rock.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
-    "22-brand-board.jpg (tea cup / ash-glaze tones)",
-    "16-steam-grotto.jpg"
+    "16-steam-grotto.jpg",
+    "22-brand-board.jpg"
    ],
+   "reference": null,
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -900,55 +1723,75 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.4,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.5
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     0.52083,
+     0.52083
+    ],
+    "note": "Interior clay/plaster walls. Not for ash-glaze tea ware (use a prop texture)."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 21.0,
+    "roughness_std_255": 10.4,
+    "ao_mean_255": 245.4,
     "mean_albedo_linear": [
-     0.1138,
-     0.108,
-     0.1013
+     0.1841,
+     0.1435,
+     0.1143
     ],
-    "mean_roughness": 0.91,
+    "mean_roughness": 0.876,
+    "normal_mean_slope_deg": 7.7,
     "height_min_max": [
-     0.26,
-     0.734
-    ],
-    "normal_mean_slope_deg": 2.49
+     0.0,
+     1.0
+    ]
    }
   },
   {
    "id": "paving",
-   "name": "Worn paving",
+   "name": "Worn paving (basalt flagstones)",
    "category": "stone",
    "blender": {
     "material": "paving",
     "group": "KZM_paving",
     "node": "KZ",
-    "mode": "procedural (live KZP_paving pattern)"
+    "generator": "plate stone#2 (refs/gen/sheet-tex-stone.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
      1.0,
      1.0
     ],
-    "wetness": 0.35,
-    "wear": 0.3,
+    "wetness": 0.5,
+    "wear": 0.15,
     "roughness_offset": 0.0,
-    "scale": 2.0,
+    "scale": 5.12,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 2.0,
-   "texture_size": 1024,
+   "tiling_m_per_repeat": 5.12,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
    "textures": {
     "base": "materials/tex/paving_base.ktx2",
     "orm": "materials/tex/paving_orm.ktx2",
     "normal_height": "materials/tex/paving_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 0.7,
+    "repeat_m": 8.0
    },
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/paving_base.png",
@@ -961,10 +1804,484 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
+   "height_depth_m": 0.02,
+   "constants": {
+    "Specular": 0.5,
+    "IOR": 1.5,
+    "Transmission": 0.0,
+    "ThinWall": 0.0,
+    "Coat": 0.0,
+    "CoatRough": 0.05,
+    "Sheen": 0.0,
+    "Translucency": 0.0,
+    "Porosity": 0.5,
+    "WornColor": [
+     0.06,
+     0.06,
+     0.062
+    ],
+    "WornRough": 0.12,
+    "WornMetal": 0.0,
+    "WornMax": 1.0,
+    "FoamColor": [
+     0.8,
+     0.85,
+     0.85
+    ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.7,
+    "Absorb": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "AbsorbDensity": 0.0,
+    "Scatter": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "ScatterDensity": 0.0
+   },
+   "emissive": null,
+   "transparent": false,
+   "volume": null,
+   "water": null,
+   "variants": {},
+   "texture_source": {
+    "origin": "self-made Codex-painted plate plate stone#2 (refs/gen/sheet-tex-stone.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
+    "shared_with": null
+   },
+   "concept": [
+    "16-steam-grotto.jpg (wet flagstones)",
+    "04-arrival-gate.jpg (lobby floor)"
+   ],
+   "reference": "refs/gen/mat-obsidian.png (floor)",
+   "three": {
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
+    "roughness": 1.0,
+    "metalness": 1.0,
+    "roughnessMap": "orm.g",
+    "metalnessMap": "orm.b",
+    "aoMap": "orm.r",
+    "aoMapIntensity": 1.0,
+    "normalMap": "normal_height (XY)",
+    "normalScale": 1.0,
+    "envMapIntensity": 1.0,
+    "repeat": [
+     0.19531,
+     0.19531
+    ],
+    "note": "Walking-path polish: raise wear / lower roughness_offset along paths via vertex colour."
+   },
+   "stats": {
+    "size": [
+     1024,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 27.4,
+    "roughness_std_255": 11.9,
+    "ao_mean_255": 225.7,
+    "mean_albedo_linear": [
+     0.0405,
+     0.0398,
+     0.0403
+    ],
+    "mean_roughness": 0.149,
+    "normal_mean_slope_deg": 17.32,
+    "height_min_max": [
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "id": "cave_rock",
+   "name": "Cave rock (ceiling, wet)",
+   "category": "stone",
+   "blender": {
+    "material": "cave_rock",
+    "group": "KZM_cave_rock",
+    "node": "KZ",
+    "generator": "plate rock#0 (refs/gen/sheet-tex-rock.png)"
+   },
+   "uv_mode": "metric",
+   "params": {
+    "tint": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "wetness": 0.5,
+    "wear": 0.0,
+    "roughness_offset": 0.0,
+    "scale": 4.2667,
+    "normal_strength": 1.0,
+    "emissive_level": 0.0
+   },
+   "tiling_m_per_repeat": 4.2667,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
+   "textures": {
+    "base": "materials/tex/cave_rock_base.ktx2",
+    "orm": "materials/tex/cave_rock_orm.ktx2",
+    "normal_height": "materials/tex/cave_rock_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 1.0,
+    "repeat_m": 8.0
+   },
+   "texture_sources_png": {
+    "base": ".scratch/matlib/tex/cave_rock_base.png",
+    "orm": ".scratch/matlib/tex/cave_rock_orm.png",
+    "normal_height": ".scratch/matlib/tex/cave_rock_nh.png"
+   },
+   "srgb": {
+    "base": true,
+    "orm": false,
+    "normal_height": false,
+    "emissive": true
+   },
+   "height_depth_m": 0.15,
+   "constants": {
+    "Specular": 0.5,
+    "IOR": 1.5,
+    "Transmission": 0.0,
+    "ThinWall": 0.0,
+    "Coat": 0.0,
+    "CoatRough": 0.05,
+    "Sheen": 0.0,
+    "Translucency": 0.0,
+    "Porosity": 0.6,
+    "WornColor": [
+     0.05,
+     0.048,
+     0.045
+    ],
+    "WornRough": 0.4,
+    "WornMetal": 0.0,
+    "WornMax": 1.0,
+    "FoamColor": [
+     0.8,
+     0.85,
+     0.85
+    ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 1.0,
+    "Absorb": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "AbsorbDensity": 0.0,
+    "Scatter": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "ScatterDensity": 0.0
+   },
+   "emissive": null,
+   "transparent": false,
+   "volume": null,
+   "water": null,
+   "variants": {},
+   "texture_source": {
+    "origin": "self-made Codex-painted plate plate rock#0 (refs/gen/sheet-tex-rock.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
+    "shared_with": null
+   },
+   "concept": [
+    "15-obsidian-mirror.jpg (ceiling)",
+    "12-lava-tube-lazy-river.jpg",
+    "16-steam-grotto.jpg"
+   ],
+   "reference": "refs/gen/sheet-tex-rock.png (plate 1)",
+   "three": {
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
+    "roughness": 1.0,
+    "metalness": 1.0,
+    "roughnessMap": "orm.g",
+    "metalnessMap": "orm.b",
+    "aoMap": "orm.r",
+    "aoMapIntensity": 1.0,
+    "normalMap": "normal_height (XY)",
+    "normalScale": 1.0,
+    "envMapIntensity": 0.8,
+    "repeat": [
+     0.23437,
+     0.23437
+    ]
+   },
+   "stats": {
+    "size": [
+     1024,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 23.5,
+    "roughness_std_255": 14.5,
+    "ao_mean_255": 184.5,
+    "mean_albedo_linear": [
+     0.0214,
+     0.0196,
+     0.0197
+    ],
+    "mean_roughness": 0.325,
+    "normal_mean_slope_deg": 51.96,
+    "height_min_max": [
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "id": "stepping_stone",
+   "name": "Wet stepping stone (top)",
+   "category": "stone",
+   "blender": {
+    "material": "stepping_stone",
+    "group": "KZM_stepping_stone",
+    "node": "KZ",
+    "generator": "plate rock#1 (refs/gen/sheet-tex-rock.png)"
+   },
+   "uv_mode": "metric",
+   "params": {
+    "tint": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "wetness": 0.8,
+    "wear": 0.2,
+    "roughness_offset": 0.0,
+    "scale": 1.92,
+    "normal_strength": 1.0,
+    "emissive_level": 0.0
+   },
+   "tiling_m_per_repeat": 1.92,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
+   "textures": {
+    "base": "materials/tex/stepping_stone_base.ktx2",
+    "orm": "materials/tex/stepping_stone_orm.ktx2",
+    "normal_height": "materials/tex/stepping_stone_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 0.5,
+    "repeat_m": 8.0
+   },
+   "texture_sources_png": {
+    "base": ".scratch/matlib/tex/stepping_stone_base.png",
+    "orm": ".scratch/matlib/tex/stepping_stone_orm.png",
+    "normal_height": ".scratch/matlib/tex/stepping_stone_nh.png"
+   },
+   "srgb": {
+    "base": true,
+    "orm": false,
+    "normal_height": false,
+    "emissive": true
+   },
+   "height_depth_m": 0.04,
+   "constants": {
+    "Specular": 0.5,
+    "IOR": 1.5,
+    "Transmission": 0.0,
+    "ThinWall": 0.0,
+    "Coat": 0.0,
+    "CoatRough": 0.05,
+    "Sheen": 0.0,
+    "Translucency": 0.0,
+    "Porosity": 0.4,
+    "WornColor": [
+     0.05,
+     0.05,
+     0.05
+    ],
+    "WornRough": 0.15,
+    "WornMetal": 0.0,
+    "WornMax": 1.0,
+    "FoamColor": [
+     0.8,
+     0.85,
+     0.85
+    ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.5,
+    "Absorb": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "AbsorbDensity": 0.0,
+    "Scatter": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "ScatterDensity": 0.0
+   },
+   "emissive": null,
+   "transparent": false,
+   "volume": null,
+   "water": null,
+   "variants": {},
+   "texture_source": {
+    "origin": "self-made Codex-painted plate plate rock#1 (refs/gen/sheet-tex-rock.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
+    "shared_with": null
+   },
+   "concept": [
+    "05-mist-corridor.jpg (stepping stones)"
+   ],
+   "reference": "refs/gen/sheet-tex-rock.png (plate 2)",
+   "three": {
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
+    "roughness": 1.0,
+    "metalness": 1.0,
+    "roughnessMap": "orm.g",
+    "metalnessMap": "orm.b",
+    "aoMap": "orm.r",
+    "aoMapIntensity": 1.0,
+    "normalMap": "normal_height (XY)",
+    "normalScale": 1.0,
+    "envMapIntensity": 1.0,
+    "repeat": [
+     0.52083,
+     0.52083
+    ],
+    "note": "Mist-corridor stepping stones; waterline ring via vertex colour."
+   },
+   "stats": {
+    "size": [
+     1024,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 22.8,
+    "roughness_std_255": 8.4,
+    "ao_mean_255": 221.5,
+    "mean_albedo_linear": [
+     0.0214,
+     0.0258,
+     0.0275
+    ],
+    "mean_roughness": 0.188,
+    "normal_mean_slope_deg": 25.75,
+    "height_min_max": [
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "id": "sinter",
+   "name": "Sinter crust (hot-spring mineral)",
+   "category": "stone",
+   "blender": {
+    "material": "sinter",
+    "group": "KZM_sinter",
+    "node": "KZ",
+    "generator": "plate rock#2 (refs/gen/sheet-tex-rock.png)"
+   },
+   "uv_mode": "metric",
+   "params": {
+    "tint": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "wetness": 0.4,
+    "wear": 0.0,
+    "roughness_offset": 0.0,
+    "scale": 0.8533,
+    "normal_strength": 1.0,
+    "emissive_level": 0.0
+   },
+   "tiling_m_per_repeat": 0.8533,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
+   "textures": {
+    "base": "materials/tex/sinter_base.ktx2",
+    "orm": "materials/tex/sinter_orm.ktx2",
+    "normal_height": "materials/tex/sinter_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 0.5,
+    "repeat_m": 8.0
+   },
+   "texture_sources_png": {
+    "base": ".scratch/matlib/tex/sinter_base.png",
+    "orm": ".scratch/matlib/tex/sinter_orm.png",
+    "normal_height": ".scratch/matlib/tex/sinter_nh.png"
+   },
+   "srgb": {
+    "base": true,
+    "orm": false,
+    "normal_height": false,
+    "emissive": true
    },
    "height_depth_m": 0.02,
    "constants": {
@@ -976,20 +2293,35 @@
     "CoatRough": 0.05,
     "Sheen": 0.0,
     "Translucency": 0.0,
-    "Porosity": 0.7,
+    "Porosity": 0.5,
     "WornColor": [
-     0.085,
-     0.08,
-     0.075
+     0.8,
+     0.75,
+     0.65
     ],
-    "WornRough": 0.28,
+    "WornRough": 0.3,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.5,
     "Absorb": [
      1.0,
      1.0,
@@ -1004,22 +2336,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_paving, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate rock#2 (refs/gen/sheet-tex-rock.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
-    "16-steam-grotto.jpg (wet flagstones)",
-    "04-arrival-gate.jpg (lobby floor)"
+    "14-geyser-plaza.jpg",
+    "18-rimstone-terraces.jpg"
    ],
+   "reference": "refs/gen/sheet-tex-rock.png (plate 3)",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -1028,25 +2361,33 @@
     "aoMapIntensity": 1.0,
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
-    "envMapIntensity": 0.9,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.5
-   },
-   "ktx2": {
-    "encoded": false
+    "envMapIntensity": 0.7,
+    "repeat": [
+     1.17192,
+     1.17192
+    ],
+    "note": "Orange/white mineral crust around vents and geysers."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 40.7,
+    "roughness_std_255": 18.2,
+    "ao_mean_255": 227.2,
     "mean_albedo_linear": [
-     0.0572,
-     0.0524,
-     0.0473
+     0.5877,
+     0.2966,
+     0.1761
     ],
-    "mean_roughness": 0.569,
+    "mean_roughness": 0.482,
+    "normal_mean_slope_deg": 22.82,
     "height_min_max": [
-     0.08,
-     0.884
-    ],
-    "normal_mean_slope_deg": 4.7
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -1057,8 +2398,9 @@
     "material": "hinoki",
     "group": "KZM_hinoki",
     "node": "KZ",
-    "mode": "image (baked tiling textures, packed)"
+    "generator": "plate wood#0 (refs/gen/sheet-tex-wood.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -1066,19 +2408,26 @@
      1.0
     ],
     "wetness": 0.0,
-    "wear": 0.15,
+    "wear": 0.1,
     "roughness_offset": 0.0,
-    "scale": 0.5,
+    "scale": 0.72,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 0.5,
-   "texture_size": 1024,
+   "tiling_m_per_repeat": 0.72,
+   "aspect": 0.25,
+   "texture_size": [
+    512,
+    2048
+   ],
    "textures": {
     "base": "materials/tex/hinoki_base.ktx2",
     "orm": "materials/tex/hinoki_orm.ktx2",
     "normal_height": "materials/tex/hinoki_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/hinoki_base.png",
     "orm": ".scratch/matlib/tex/hinoki_orm.png",
@@ -1090,12 +2439,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.0012,
+   "height_depth_m": 0.0015,
    "constants": {
     "Specular": 0.45,
     "IOR": 1.5,
@@ -1103,22 +2447,37 @@
     "ThinWall": 0.0,
     "Coat": 0.0,
     "CoatRough": 0.05,
-    "Sheen": 0.0,
+    "Sheen": 0.15,
     "Translucency": 0.0,
     "Porosity": 0.8,
     "WornColor": [
-     0.36,
      0.3,
-     0.22
+     0.26,
+     0.2
     ],
     "WornRough": 0.55,
     "WornMetal": 0.0,
+    "WornMax": 0.6,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -1133,14 +2492,30 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
-   "variants": {},
+   "water": null,
+   "variants": {
+    "dark_timber": {
+     "tint": [
+      0.3,
+      0.27,
+      0.25
+     ],
+     "roughness_offset": 0.1
+    },
+    "handled": {
+     "tint": [
+      0.8,
+      0.72,
+      0.65
+     ],
+     "roughness_offset": -0.15
+    }
+   },
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_hinoki, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate wood#0 (refs/gen/sheet-tex-wood.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
@@ -1148,8 +2523,10 @@
     "04-arrival-gate.jpg (shoe lockers)",
     "16-steam-grotto.jpg (bucket, sign post)"
    ],
+   "reference": "refs/gen/mat-hinoki-washi.png",
    "three": {
-    "class": "MeshStandardMaterial",
+    "class": "MeshPhysicalMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -1159,24 +2536,32 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.5,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 2.0
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     1.38889,
+     0.34722
+    ],
+    "note": "Texture is 2 m along the grain (u) x 0.25 m across (v). Randomise u offset, flip and tint +-10 % per board on the asset side. Variants: dark_timber (stained structural timber), handled (hand-polished rails, darker, glossier)."
    },
    "stats": {
+    "size": [
+     512,
+     2048
+    ],
+    "orm_mip_levels": 12,
+    "albedo_std_srgb255": 37.9,
+    "roughness_std_255": 9.4,
+    "ao_mean_255": 253.1,
     "mean_albedo_linear": [
-     0.329,
-     0.208,
-     0.1022
+     0.3778,
+     0.2105,
+     0.1253
     ],
-    "mean_roughness": 0.628,
+    "mean_roughness": 0.579,
+    "normal_mean_slope_deg": 2.64,
     "height_min_max": [
-     0.376,
-     0.862
-    ],
-    "normal_mean_slope_deg": 3.56
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -1187,8 +2572,9 @@
     "material": "lacquer_dark",
     "group": "KZM_lacquer_dark",
     "node": "KZ",
-    "mode": "image (baked tiling textures, packed)"
+    "generator": "plate wood#1 (refs/gen/sheet-tex-wood.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -1198,17 +2584,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 1.0,
+    "scale": 0.6,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 1.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 0.6,
+   "aspect": 0.5,
+   "texture_size": [
+    512,
+    1024
+   ],
    "textures": {
     "base": "materials/tex/lacquer_dark_base.ktx2",
     "orm": "materials/tex/lacquer_dark_orm.ktx2",
     "normal_height": "materials/tex/lacquer_dark_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/lacquer_dark_base.png",
     "orm": ".scratch/matlib/tex/lacquer_dark_orm.png",
@@ -1220,35 +2613,45 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.0006,
+   "height_depth_m": 0.0005,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
     "Transmission": 0.0,
     "ThinWall": 0.0,
     "Coat": 1.0,
-    "CoatRough": 0.04,
+    "CoatRough": 0.05,
     "Sheen": 0.0,
     "Translucency": 0.0,
     "Porosity": 0.0,
     "WornColor": [
-     0.2,
-     0.035,
-     0.02
+     0.19,
+     0.013,
+     0.007
     ],
     "WornRough": 0.3,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -1263,22 +2666,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_lacquer, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate wood#1 (refs/gen/sheet-tex-wood.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
-    "06-kawagiri-restaurant.jpg (dark deck timbers)",
-    "21-private-suite.jpg (dark frames, table)"
+    "21-private-suite.jpg (table, trays)",
+    "06-kawagiri-restaurant.jpg"
    ],
+   "reference": null,
    "three": {
     "class": "MeshPhysicalMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -1288,26 +2692,34 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.0,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 1.0,
+    "repeat": [
+     1.66667,
+     0.83333
+    ],
     "clearcoat": 1.0,
-    "clearcoatRoughness": 0.04
-   },
-   "ktx2": {
-    "encoded": false
+    "clearcoatRoughness": 0.05,
+    "note": "For furniture and trays. Structural dark timbers: hinoki variant dark_timber. Edge wear reveals red undercoat (negoro)."
    },
    "stats": {
+    "size": [
+     512,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 20.9,
+    "roughness_std_255": 8.8,
+    "ao_mean_255": 254.6,
     "mean_albedo_linear": [
-     0.022,
+     0.0618,
      0.0116,
      0.008
     ],
-    "mean_roughness": 0.109,
+    "mean_roughness": 0.193,
+    "normal_mean_slope_deg": 1.43,
     "height_min_max": [
-     0.517,
-     0.668
-    ],
-    "normal_mean_slope_deg": 0.29
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -1318,8 +2730,9 @@
     "material": "bamboo",
     "group": "KZM_bamboo",
     "node": "KZ",
-    "mode": "image (baked tiling textures, packed)"
+    "generator": "plate wood#2 (refs/gen/sheet-tex-wood.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -1329,17 +2742,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 0.5,
+    "scale": 0.6,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 0.5,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 0.6,
+   "aspect": 0.5,
+   "texture_size": [
+    512,
+    1024
+   ],
    "textures": {
     "base": "materials/tex/bamboo_base.ktx2",
     "orm": "materials/tex/bamboo_orm.ktx2",
     "normal_height": "materials/tex/bamboo_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/bamboo_base.png",
     "orm": ".scratch/matlib/tex/bamboo_orm.png",
@@ -1351,12 +2771,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.003,
+   "height_depth_m": 0.004,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
@@ -1364,7 +2779,7 @@
     "ThinWall": 0.0,
     "Coat": 0.0,
     "CoatRough": 0.05,
-    "Sheen": 0.0,
+    "Sheen": 0.3,
     "Translucency": 0.0,
     "Porosity": 0.3,
     "WornColor": [
@@ -1374,12 +2789,27 @@
     ],
     "WornRough": 0.3,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -1394,22 +2824,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_bamboo, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate wood#2 (refs/gen/sheet-tex-wood.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "04-arrival-gate.jpg (bamboo spout)",
     "22-brand-board.jpg"
    ],
+   "reference": null,
    "three": {
-    "class": "MeshStandardMaterial",
+    "class": "MeshPhysicalMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -1419,24 +2850,32 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.7,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 2.0
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     1.66667,
+     0.83333
+    ],
+    "note": "u = around the culm (0.25 m), v = along it (1.0 m). Randomise v offset per pole; tint per culm from green-yellow to straw."
    },
    "stats": {
+    "size": [
+     512,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 49.5,
+    "roughness_std_255": 8.9,
+    "ao_mean_255": 250.4,
     "mean_albedo_linear": [
-     0.4363,
-     0.3339,
-     0.1314
+     0.3453,
+     0.1972,
+     0.0745
     ],
-    "mean_roughness": 0.348,
+    "mean_roughness": 0.411,
+    "normal_mean_slope_deg": 5.15,
     "height_min_max": [
-     0.417,
-     0.812
-    ],
-    "normal_mean_slope_deg": 0.91
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -1447,8 +2886,9 @@
     "material": "tatami",
     "group": "KZM_tatami",
     "node": "KZ",
-    "mode": "image (baked tiling textures, packed)"
+    "generator": "plate wood#3 (refs/gen/sheet-tex-wood.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -1458,17 +2898,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 0.5,
+    "scale": 1.0752,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 0.5,
-   "texture_size": 1024,
+   "tiling_m_per_repeat": 1.0752,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
    "textures": {
     "base": "materials/tex/tatami_base.ktx2",
     "orm": "materials/tex/tatami_orm.ktx2",
     "normal_height": "materials/tex/tatami_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/tatami_base.png",
     "orm": ".scratch/matlib/tex/tatami_orm.png",
@@ -1480,12 +2927,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.0025,
+   "height_depth_m": 0.0007,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
@@ -1493,22 +2935,37 @@
     "ThinWall": 0.0,
     "Coat": 0.0,
     "CoatRough": 0.05,
-    "Sheen": 0.25,
+    "Sheen": 0.3,
     "Translucency": 0.0,
     "Porosity": 0.9,
     "WornColor": [
-     0.5,
-     0.43,
-     0.24
+     0.52,
+     0.44,
+     0.22
     ],
-    "WornRough": 0.45,
+    "WornRough": 0.4,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -1523,21 +2980,22 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_tatami, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate wood#3 (refs/gen/sheet-tex-wood.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "21-private-suite.jpg (tatami floor)"
    ],
+   "reference": "refs/gen/mat-hinoki-washi.png",
    "three": {
     "class": "MeshPhysicalMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -1547,25 +3005,33 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.4,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 2.0,
-    "sheen": 0.25
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     0.93006,
+     0.93006
+    ],
+    "sheen": 0.3,
+    "note": "Rush rows run along u. Per-mat tint and walking-line wear on the asset side; the heri border is geometry."
    },
    "stats": {
+    "size": [
+     1024,
+     1024
+    ],
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 26.9,
+    "roughness_std_255": 11.1,
+    "ao_mean_255": 253.2,
     "mean_albedo_linear": [
-     0.3458,
-     0.2898,
-     0.1225
+     0.4268,
+     0.282,
+     0.105
     ],
-    "mean_roughness": 0.604,
+    "mean_roughness": 0.58,
+    "normal_mean_slope_deg": 3.27,
     "height_min_max": [
-     0.167,
-     0.974
-    ],
-    "normal_mean_slope_deg": 30.47
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -1576,8 +3042,9 @@
     "material": "washi",
     "group": "KZM_washi",
     "node": "KZ",
-    "mode": "image (baked tiling textures, packed)"
+    "generator": "plate wood#4 (refs/gen/sheet-tex-wood.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -1587,17 +3054,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 0.5,
+    "scale": 0.5333,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 0.5,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 0.5333,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/washi_base.ktx2",
     "orm": "materials/tex/washi_orm.ktx2",
     "normal_height": "materials/tex/washi_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/washi_base.png",
     "orm": ".scratch/matlib/tex/washi_orm.png",
@@ -1608,11 +3082,6 @@
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.0008,
    "constants": {
@@ -1632,12 +3101,27 @@
     ],
     "WornRough": 0.9,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 1.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -1652,22 +3136,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_washi, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate wood#4 (refs/gen/sheet-tex-wood.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "05-mist-corridor.jpg (shoji panels)",
     "22-brand-board.jpg (menu card)"
    ],
+   "reference": "refs/gen/mat-hinoki-washi.png",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -1677,36 +3162,45 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.3,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 2.0
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     1.87512,
+     1.87512
+    ],
+    "note": "base.a = thinness. Faint yellowing at panel bottoms via vertex colour."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 10.8,
+    "roughness_std_255": 4.5,
+    "ao_mean_255": 254.3,
     "mean_albedo_linear": [
-     0.7359,
-     0.6863,
-     0.5663
+     0.7626,
+     0.5961,
+     0.4366
     ],
-    "mean_roughness": 0.824,
+    "mean_roughness": 0.869,
+    "normal_mean_slope_deg": 2.79,
     "height_min_max": [
-     0.226,
-     0.83
-    ],
-    "normal_mean_slope_deg": 3.3
+     0.0,
+     1.0
+    ]
    }
   },
   {
    "id": "washi_backlit",
-   "name": "Washi, back-lit (lantern shade)",
+   "name": "Washi, back-lit (shoji / lantern shade)",
    "category": "wood_paper_cloth",
    "blender": {
     "material": "washi_backlit",
     "group": "KZM_washi_backlit",
     "node": "KZ",
-    "mode": "image (baked tiling textures, packed)"
+    "generator": "plate wood#4 (refs/gen/sheet-tex-wood.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -1716,32 +3210,36 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 0.5,
+    "scale": 0.5333,
     "normal_strength": 1.0,
-    "emissive_level": 0.0
+    "emissive_level": 1.0
    },
-   "tiling_m_per_repeat": 0.5,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 0.5333,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
-    "base": "materials/tex/washi_base.ktx2",
-    "orm": "materials/tex/washi_orm.ktx2",
-    "normal_height": "materials/tex/washi_nh.ktx2"
+    "base": "materials/tex/washi_backlit_base.ktx2",
+    "orm": "materials/tex/washi_backlit_orm.ktx2",
+    "normal_height": "materials/tex/washi_backlit_nh.ktx2",
+    "emissive": "materials/tex/washi_backlit_emis.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
-    "base": ".scratch/matlib/tex/washi_base.png",
-    "orm": ".scratch/matlib/tex/washi_orm.png",
-    "normal_height": ".scratch/matlib/tex/washi_nh.png"
+    "base": ".scratch/matlib/tex/washi_backlit_base.png",
+    "orm": ".scratch/matlib/tex/washi_backlit_orm.png",
+    "normal_height": ".scratch/matlib/tex/washi_backlit_nh.png",
+    "emissive": ".scratch/matlib/tex/washi_backlit_emis.png"
    },
    "srgb": {
     "base": true,
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.0008,
    "constants": {
@@ -1752,7 +3250,7 @@
     "Coat": 0.0,
     "CoatRough": 0.05,
     "Sheen": 0.0,
-    "Translucency": 0.72,
+    "Translucency": 0.7,
     "Porosity": 1.0,
     "WornColor": [
      0.62,
@@ -1761,12 +3259,27 @@
     ],
     "WornRough": 0.9,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
-    "EmitStrength": 1.0,
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 1.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 0.8,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -1780,23 +3293,37 @@
     ],
     "ScatterDensity": 0.0
    },
-   "emissive": null,
-   "transmission": false,
+   "emissive": {
+    "map": "emissive",
+    "map_scale": 1.0,
+    "color_linear": [
+     1,
+     1,
+     1
+    ],
+    "strength": 0.8,
+    "emissive_level": 1.0,
+    "emit_core": 0.0,
+    "emit_macro": 0.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
+   },
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_washi, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
-    "shared_with": "washi"
+    "origin": "self-made Codex-painted plate plate wood#4 (refs/gen/sheet-tex-wood.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
+    "shared_with": null
    },
    "concept": [
-    "22-brand-board.jpg (paper lantern)",
-    "12-lava-tube-lazy-river.jpg (floating lanterns)"
+    "05-mist-corridor.jpg (lit shoji)",
+    "22-brand-board.jpg (paper lantern)"
    ],
+   "reference": "refs/gen/mat-hinoki-washi.png",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -1806,25 +3333,33 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.3,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 2.0,
-    "note": "Web: translucency is baked; at runtime use lantern_paper (emissive) for lit shades."
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     1.87512,
+     1.87512
+    ],
+    "note": "Emissive map = back-lit paper (bright where thin, fibre bundles darker). Per-panel falloff (centre bright, 40-60 % at frame edges, rib shadows) belongs in the lightmap / a per-panel emissive gradient, not this tile."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "emissive_map_scale": 1.0,
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 10.8,
+    "roughness_std_255": 4.5,
+    "ao_mean_255": 254.3,
     "mean_albedo_linear": [
-     0.7359,
-     0.6863,
-     0.5663
+     0.7626,
+     0.5961,
+     0.4366
     ],
-    "mean_roughness": 0.824,
+    "mean_roughness": 0.869,
+    "normal_mean_slope_deg": 2.79,
     "height_min_max": [
-     0.226,
-     0.83
-    ],
-    "normal_mean_slope_deg": 3.3
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -1835,8 +3370,9 @@
     "material": "noren",
     "group": "KZM_noren",
     "node": "KZ",
-    "mode": "image (baked tiling textures, packed)"
+    "generator": "plate cloth#0 (refs/gen/sheet-tex-cloth.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -1846,17 +3382,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 0.25,
+    "scale": 0.48,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 0.25,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 0.48,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/noren_base.ktx2",
     "orm": "materials/tex/noren_orm.ktx2",
     "normal_height": "materials/tex/noren_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/noren_base.png",
     "orm": ".scratch/matlib/tex/noren_orm.png",
@@ -1868,12 +3411,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.0012,
+   "height_depth_m": 0.0008,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
@@ -1881,22 +3419,37 @@
     "ThinWall": 0.0,
     "Coat": 0.0,
     "CoatRough": 0.05,
-    "Sheen": 0.15,
-    "Translucency": 0.08,
+    "Sheen": 0.45,
+    "Translucency": 0.06,
     "Porosity": 1.0,
     "WornColor": [
-     0.06,
-     0.08,
+     0.05,
+     0.07,
      0.13
     ],
     "WornRough": 0.9,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -1911,22 +3464,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_noren, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate cloth#0 (refs/gen/sheet-tex-cloth.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "09-neon-ramen-counter.jpg (noren curtains)",
     "22-brand-board.jpg (indigo robe)"
    ],
+   "reference": null,
    "three": {
     "class": "MeshPhysicalMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -1936,30 +3490,38 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.3,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 4.0,
-    "sheen": 0.15,
+    "repeat": [
+     2.08333,
+     2.08333
+    ],
+    "sheen": 0.45,
     "sheenColor": [
      0.25,
      0.3,
      0.45
-    ]
-   },
-   "ktx2": {
-    "encoded": false
+    ],
+    "note": "Fade the hem lighter and darken folds via vertex colour."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 23.3,
+    "roughness_std_255": 16.2,
+    "ao_mean_255": 253.1,
     "mean_albedo_linear": [
-     0.0147,
-     0.0234,
-     0.0581
+     0.0131,
+     0.031,
+     0.0695
     ],
-    "mean_roughness": 0.9,
+    "mean_roughness": 0.758,
+    "normal_mean_slope_deg": 6.04,
     "height_min_max": [
-     0.208,
-     0.857
-    ],
-    "normal_mean_slope_deg": 17.5
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -1970,8 +3532,9 @@
     "material": "rope",
     "group": "KZM_rope",
     "node": "KZ",
-    "mode": "image (baked tiling textures, packed)"
+    "generator": "plate cloth#1 (refs/gen/sheet-tex-cloth.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -1981,17 +3544,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 0.3,
+    "scale": 0.5333,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 0.3,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 0.5333,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/rope_base.ktx2",
     "orm": "materials/tex/rope_orm.ktx2",
     "normal_height": "materials/tex/rope_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/rope_base.png",
     "orm": ".scratch/matlib/tex/rope_orm.png",
@@ -2003,11 +3573,6 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
    "height_depth_m": 0.012,
    "constants": {
     "Specular": 0.5,
@@ -2016,7 +3581,7 @@
     "ThinWall": 0.0,
     "Coat": 0.0,
     "CoatRough": 0.05,
-    "Sheen": 0.2,
+    "Sheen": 0.25,
     "Translucency": 0.0,
     "Porosity": 1.0,
     "WornColor": [
@@ -2026,12 +3591,27 @@
     ],
     "WornRough": 0.85,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -2046,22 +3626,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_rope, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate cloth#1 (refs/gen/sheet-tex-cloth.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "22-brand-board.jpg (braided cord)",
     "04-arrival-gate.jpg (torii)"
    ],
+   "reference": null,
    "three": {
     "class": "MeshPhysicalMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -2071,36 +3652,45 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.3,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 3.33333
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     1.87512,
+     1.87512
+    ],
+    "note": "Best on twisted geometry with u along the rope."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 56.0,
+    "roughness_std_255": 15.5,
+    "ao_mean_255": 223.9,
     "mean_albedo_linear": [
-     0.3614,
-     0.2876,
-     0.1421
+     0.2993,
+     0.2044,
+     0.1352
     ],
-    "mean_roughness": 0.855,
+    "mean_roughness": 0.861,
+    "normal_mean_slope_deg": 27.42,
     "height_min_max": [
-     0.112,
-     0.877
-    ],
-    "normal_mean_slope_deg": 16.96
+     0.0,
+     1.0
+    ]
    }
   },
   {
    "id": "iron",
-   "name": "Iron (black patina)",
+   "name": "Iron (black oxide, rust)",
    "category": "metal_ice_glass",
    "blender": {
     "material": "iron",
     "group": "KZM_iron",
     "node": "KZ",
-    "mode": "procedural (live KZP_iron pattern)"
+    "generator": "plate cloth#3 (refs/gen/sheet-tex-cloth.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -2108,18 +3698,29 @@
      1.0
     ],
     "wetness": 0.0,
-    "wear": 0.15,
+    "wear": 0.2,
     "roughness_offset": 0.0,
-    "scale": 0.5,
+    "scale": 0.8533,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 0.5,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 0.8533,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/iron_base.ktx2",
     "orm": "materials/tex/iron_orm.ktx2",
     "normal_height": "materials/tex/iron_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 0.4,
+    "repeat_m": 8.0
    },
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/iron_base.png",
@@ -2131,11 +3732,6 @@
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.002,
    "constants": {
@@ -2149,18 +3745,33 @@
     "Translucency": 0.0,
     "Porosity": 0.3,
     "WornColor": [
-     0.4,
-     0.4,
-     0.41
+     0.42,
+     0.42,
+     0.43
     ],
-    "WornRough": 0.28,
+    "WornRough": 0.35,
     "WornMetal": 1.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.4,
     "Absorb": [
      1.0,
      1.0,
@@ -2175,22 +3786,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_iron, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate cloth#3 (refs/gen/sheet-tex-cloth.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "04-arrival-gate.jpg (lantern frames)",
     "17-glacier-plunge.jpg (handrail)"
    ],
+   "reference": null,
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -2200,36 +3812,45 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.0,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 2.0
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     1.17192,
+     1.17192
+    ],
+    "note": "Metal is binary: 0 in the texture, 1 only where wear exposes bare iron."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 27.7,
+    "roughness_std_255": 26.0,
+    "ao_mean_255": 252.1,
     "mean_albedo_linear": [
-     0.0425,
-     0.0393,
-     0.0368
+     0.1255,
+     0.057,
+     0.0355
     ],
-    "mean_roughness": 0.581,
+    "mean_roughness": 0.808,
+    "normal_mean_slope_deg": 3.21,
     "height_min_max": [
-     0.279,
-     0.797
-    ],
-    "normal_mean_slope_deg": 1.64
+     0.0,
+     1.0
+    ]
    }
   },
   {
    "id": "bronze",
-   "name": "Bronze",
+   "name": "Bronze (patina, verdigris)",
    "category": "metal_ice_glass",
    "blender": {
     "material": "bronze",
     "group": "KZM_bronze",
     "node": "KZ",
-    "mode": "procedural (live KZP_bronze pattern)"
+    "generator": "plate cloth#2 (refs/gen/sheet-tex-cloth.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -2237,18 +3858,29 @@
      1.0
     ],
     "wetness": 0.0,
-    "wear": 0.25,
+    "wear": 0.2,
     "roughness_offset": 0.0,
-    "scale": 0.5,
+    "scale": 0.8533,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 0.5,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 0.8533,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/bronze_base.ktx2",
     "orm": "materials/tex/bronze_orm.ktx2",
     "normal_height": "materials/tex/bronze_nh.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 0.5,
+    "repeat_m": 8.0
    },
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/bronze_base.png",
@@ -2260,11 +3892,6 @@
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.0015,
    "constants": {
@@ -2279,17 +3906,32 @@
     "Porosity": 0.2,
     "WornColor": [
      0.8,
-     0.52,
-     0.27
+     0.55,
+     0.3
     ],
-    "WornRough": 0.2,
+    "WornRough": 0.22,
     "WornMetal": 1.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.5,
     "Absorb": [
      1.0,
      1.0,
@@ -2304,22 +3946,23 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_bronze, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate cloth#2 (refs/gen/sheet-tex-cloth.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "04-arrival-gate.jpg (bronze spout, fittings)",
     "22-brand-board.jpg (bucket hoops)"
    ],
+   "reference": null,
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -2329,24 +3972,31 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.0,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 2.0
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     1.17192,
+     1.17192
+    ]
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 37.2,
+    "roughness_std_255": 36.8,
+    "ao_mean_255": 252.4,
     "mean_albedo_linear": [
-     0.1368,
-     0.0965,
-     0.0482
+     0.2459,
+     0.1938,
+     0.1213
     ],
-    "mean_roughness": 0.421,
+    "mean_roughness": 0.451,
+    "normal_mean_slope_deg": 2.77,
     "height_min_max": [
-     0.425,
-     0.731
-    ],
-    "normal_mean_slope_deg": 0.63
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -2357,8 +4007,9 @@
     "material": "glacier_ice",
     "group": "KZM_glacier_ice",
     "node": "KZ",
-    "mode": "procedural (live KZP_glacier_ice pattern)"
+    "generator": "plate rock#5 (refs/gen/sheet-tex-rock.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -2368,21 +4019,30 @@
     "wetness": 0.3,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 2.0,
+    "scale": 1.28,
     "normal_strength": 1.0,
-    "emissive_level": 0.0
+    "emissive_level": 1.0
    },
-   "tiling_m_per_repeat": 2.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 1.28,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/glacier_ice_base.ktx2",
     "orm": "materials/tex/glacier_ice_orm.ktx2",
-    "normal_height": "materials/tex/glacier_ice_nh.ktx2"
+    "normal_height": "materials/tex/glacier_ice_nh.ktx2",
+    "emissive": "materials/tex/glacier_ice_emis.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/glacier_ice_base.png",
     "orm": ".scratch/matlib/tex/glacier_ice_orm.png",
-    "normal_height": ".scratch/matlib/tex/glacier_ice_nh.png"
+    "normal_height": ".scratch/matlib/tex/glacier_ice_nh.png",
+    "emissive": ".scratch/matlib/tex/glacier_ice_emis.png"
    },
    "srgb": {
     "base": true,
@@ -2390,16 +4050,11 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB); A = foam/aeration coverage",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.04,
+   "height_depth_m": 0.05,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.31,
-    "Transmission": 1.0,
+    "Transmission": 0.8,
     "ThinWall": 0.0,
     "Coat": 0.0,
     "CoatRough": 0.05,
@@ -2413,12 +4068,27 @@
     ],
     "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
-     0.86,
-     0.94,
+     0.88,
+     0.95,
      1.0
     ],
-    "EmitStrength": 1.0,
+    "FoamFromMask": 0.6,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.7,
+    "EmitStrength": 0.6,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      0.25,
      0.72,
@@ -2432,10 +4102,21 @@
     ],
     "ScatterDensity": 3.0
    },
-   "emissive": null,
-   "transmission": true,
+   "emissive": {
+    "map": "emissive",
+    "map_scale": 1.2001,
+    "color_linear": [
+     1,
+     1,
+     1
+    ],
+    "strength": 0.6,
+    "emissive_level": 1.0,
+    "emit_core": 0.0,
+    "emit_macro": 0.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
+   },
    "transparent": true,
-   "thin_wall": false,
    "volume": {
     "absorb_color": [
      0.25,
@@ -2449,19 +4130,22 @@
      1.0
     ],
     "scatter_density_per_m": 3.0,
-    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m)"
+    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m); Blender bakes/previews only"
    },
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_glacier_ice, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate rock#5 (refs/gen/sheet-tex-rock.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "17-glacier-plunge.jpg (ice cave, icicles)"
    ],
+   "reference": "refs/gen/mat-glacier-ice.png",
    "three": {
-    "class": "MeshPhysicalMaterial",
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -2471,36 +4155,35 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.0,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.5,
-    "transparent": true,
-    "transmission_from_foam": "transmission * (1 - base.a)",
-    "transmission": 1.0,
-    "ior": 1.31,
-    "thickness": 0.5,
-    "attenuationColor": [
-     0.55,
-     0.86,
-     0.97
+    "repeat": [
+     0.78125,
+     0.78125
     ],
-    "attenuationDistance": 0.45
-   },
-   "ktx2": {
-    "encoded": false
+    "transmission": 0.0,
+    "transparent": false,
+    "note": "Phone: opaque; base = deep blue (thick) to cyan-white (thin); emissive map = fake internal glow x 0.5-1.5 plus a fresnel rim; frost = base.a + world-up mask."
    },
    "stats": {
-    "mean_albedo_linear": [
-     0.8081,
-     0.9347,
-     0.9831
+    "size": [
+     512,
+     512
     ],
-    "mean_roughness": 0.091,
+    "emissive_map_scale": 1.2001,
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 54.4,
+    "roughness_std_255": 14.2,
+    "ao_mean_255": 208.9,
+    "mean_albedo_linear": [
+     0.1019,
+     0.3341,
+     0.5219
+    ],
+    "mean_roughness": 0.12,
+    "normal_mean_slope_deg": 37.07,
     "height_min_max": [
      0.0,
-     0.853
-    ],
-    "normal_mean_slope_deg": 6.38,
-    "mean_foam": 0.017
+     1.0
+    ]
    }
   },
   {
@@ -2511,8 +4194,9 @@
     "material": "lava_glass",
     "group": "KZM_lava_glass",
     "node": "KZ",
-    "mode": "procedural (live KZP_lava_glass pattern)"
+    "generator": "KZP_lava_glass (pat_lava_glass)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -2522,17 +4206,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 1.0,
+    "scale": 2.0,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 1.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 2.0,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/lava_glass_base.ktx2",
     "orm": "materials/tex/lava_glass_orm.ktx2",
     "normal_height": "materials/tex/lava_glass_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/lava_glass_base.png",
     "orm": ".scratch/matlib/tex/lava_glass_orm.png",
@@ -2543,11 +4234,6 @@
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB); A = foam/aeration coverage",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.004,
    "constants": {
@@ -2567,16 +4253,31 @@
     ],
     "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
-     0.9,
-     0.9,
-     0.9
+     0.75,
+     0.74,
+     0.72
     ],
+    "FoamFromMask": 0.12,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
-     0.8,
-     0.7,
-     0.55
+     0.72,
+     0.74,
+     0.62
     ],
     "AbsorbDensity": 3.0,
     "Scatter": [
@@ -2587,14 +4288,12 @@
     "ScatterDensity": 0.0
    },
    "emissive": null,
-   "transmission": true,
    "transparent": true,
-   "thin_wall": false,
    "volume": {
     "absorb_color": [
-     0.8,
-     0.7,
-     0.55
+     0.72,
+     0.74,
+     0.62
     ],
     "absorb_density_per_m": 3.0,
     "scatter_color": [
@@ -2603,20 +4302,23 @@
      1.0
     ],
     "scatter_density_per_m": 0.0,
-    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m)"
+    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m); Blender bakes/previews only"
    },
+   "water": null,
    "variants": {},
    "texture_source": {
     "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_lava_glass, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "13-magma-glass-slide.jpg (glass wall, glass tube)",
     "04-arrival-gate.jpg (lava window)"
    ],
+   "reference": "refs/gen/mat-lava-glass.png",
    "three": {
-    "class": "MeshPhysicalMaterial",
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -2626,36 +4328,35 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.2,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 1.0,
-    "transparent": true,
-    "transmission_from_foam": "transmission * (1 - base.a)",
-    "transmission": 1.0,
-    "ior": 1.5,
-    "thickness": 0.15,
-    "attenuationColor": [
-     0.8,
-     0.7,
-     0.55
+    "repeat": [
+     0.5,
+     0.5
     ],
-    "attenuationDistance": 0.33
-   },
-   "ktx2": {
-    "encoded": false
+    "transmission": 0.0,
+    "transparent": true,
+    "opacity": 0.14,
+    "note": "Phone: alpha-blended pane, opacity 0.1-0.2 (+ base.a haze), env reflection + fresnel, warm amber fresnel tint at grazing angles; add a 30-60 cm condensation band at the bottom via vertex colour (raise opacity/roughness)."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 0.0,
+    "roughness_std_255": 12.9,
+    "ao_mean_255": 255.0,
     "mean_albedo_linear": [
-     0.9814,
-     0.969,
-     0.9522
+     0.97,
+     0.96,
+     0.93
     ],
-    "mean_roughness": 0.009,
+    "mean_roughness": 0.03,
+    "normal_mean_slope_deg": 0.06,
     "height_min_max": [
-     0.254,
-     0.564
-    ],
-    "normal_mean_slope_deg": 0.14,
-    "mean_foam": 0.0
+     0.262,
+     0.56
+    ]
    }
   },
   {
@@ -2666,8 +4367,9 @@
     "material": "water_still",
     "group": "KZM_water_still",
     "node": "KZ",
-    "mode": "procedural (live KZP_water_still pattern)"
+    "generator": "KZP_water_still (pat_water_still)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -2682,12 +4384,19 @@
     "emissive_level": 0.0
    },
    "tiling_m_per_repeat": 4.0,
-   "texture_size": 512,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/water_still_base.ktx2",
     "orm": "materials/tex/water_still_orm.ktx2",
     "normal_height": "materials/tex/water_still_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/water_still_base.png",
     "orm": ".scratch/matlib/tex/water_still_orm.png",
@@ -2698,11 +4407,6 @@
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB); A = foam/aeration coverage",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.004,
    "constants": {
@@ -2722,57 +4426,114 @@
     ],
     "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
-     0.8,
-     0.85,
+     0.86,
+     0.9,
+     0.9
+    ],
+    "FoamFromMask": 1.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
+    "Absorb": [
+     0.03,
+     0.67,
+     0.6
+    ],
+    "AbsorbDensity": 3.0,
+    "Scatter": [
+     0.2,
+     0.9,
      0.85
     ],
-    "EmitStrength": 1.0,
-    "Absorb": [
-     0.02,
-     0.74,
-     0.86
-    ],
-    "AbsorbDensity": 2.0,
-    "Scatter": [
-     0.45,
-     0.9,
-     1.0
-    ],
-    "ScatterDensity": 0.02
+    "ScatterDensity": 0.25
    },
    "emissive": null,
-   "transmission": true,
    "transparent": true,
-   "thin_wall": false,
    "volume": {
     "absorb_color": [
-     0.02,
-     0.74,
-     0.86
+     0.03,
+     0.67,
+     0.6
     ],
-    "absorb_density_per_m": 2.0,
+    "absorb_density_per_m": 3.0,
     "scatter_color": [
-     0.45,
+     0.2,
      0.9,
-     1.0
+     0.85
     ],
-    "scatter_density_per_m": 0.02,
-    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m)"
+    "scatter_density_per_m": 0.25,
+    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m); Blender bakes/previews only"
    },
-   "variants": {},
+   "water": {
+    "depth_colors_srgb": {
+     "0.1": [
+      150,
+      215,
+      205
+     ],
+     "0.5": [
+      0,
+      170,
+      170
+     ],
+     "2.0": [
+      4,
+      30,
+      45
+     ]
+    },
+    "underglow_srgb": [
+     0,
+     200,
+     190
+    ],
+    "underglow_strength": [
+     0.2,
+     0.6
+    ],
+    "normal_layers_m": [
+     0.7,
+     3.0
+    ],
+    "caustics": "caustics_decal"
+   },
+   "variants": {
+    "mirror": {
+     "tint": [
+      0.3,
+      0.36,
+      0.42
+     ],
+     "roughness_offset": -0.005
+    }
+   },
    "texture_source": {
     "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_water_still, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
-    "15-obsidian-mirror.jpg",
     "05-mist-corridor.jpg",
+    "15-obsidian-mirror.jpg (variant mirror)",
     "17-glacier-plunge.jpg"
    ],
+   "reference": "refs/gen/mat-water-teal.png",
    "three": {
-    "class": "MeshPhysicalMaterial",
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -2782,36 +4543,34 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.0,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.25,
-    "transparent": true,
-    "transmission_from_foam": "transmission * (1 - base.a)",
-    "transmission": 1.0,
-    "ior": 1.333,
-    "thickness": 1.0,
-    "attenuationColor": [
-     0.02,
-     0.74,
-     0.86
+    "repeat": [
+     0.25,
+     0.25
     ],
-    "attenuationDistance": 0.5
-   },
-   "ktx2": {
-    "encoded": false
+    "transmission": 0.0,
+    "transparent": true,
+    "note": "Phone: no transmission. Depth-fade colour (water.depth_colors_srgb) from scene depth or a per-vertex depth attribute, under-glow emissive masked by depth/lightmap, the normal texture sampled twice (0.7 m and 3 m, different scroll directions), caustics_decal on the floor. Variant mirror (Obsidian Mirror): emissive 0, roughness 0.01, planar reflection."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 0.0,
+    "roughness_std_255": 0.0,
+    "ao_mean_255": 255.0,
     "mean_albedo_linear": [
-     0.9522,
-     0.969,
-     0.969
+     0.95,
+     0.97,
+     0.97
     ],
-    "mean_roughness": 0.015,
+    "mean_roughness": 0.012,
+    "normal_mean_slope_deg": 0.22,
     "height_min_max": [
-     0.293,
-     0.736
-    ],
-    "normal_mean_slope_deg": 0.21,
-    "mean_foam": 0.0
+     0.282,
+     0.729
+    ]
    }
   },
   {
@@ -2822,8 +4581,9 @@
     "material": "water_river",
     "group": "KZM_water_river",
     "node": "KZ",
-    "mode": "procedural (live KZP_water_river pattern)"
+    "generator": "plate cloth#4 (refs/gen/sheet-tex-cloth.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -2833,17 +4593,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 3.0,
+    "scale": 2.1333,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 3.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 2.1333,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/water_river_base.ktx2",
     "orm": "materials/tex/water_river_orm.ktx2",
     "normal_height": "materials/tex/water_river_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/water_river_base.png",
     "orm": ".scratch/matlib/tex/water_river_orm.png",
@@ -2854,11 +4621,6 @@
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB); A = foam/aeration coverage",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.03,
    "constants": {
@@ -2878,56 +4640,104 @@
     ],
     "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
-     0.8,
-     0.85,
-     0.85
-    ],
-    "EmitStrength": 1.0,
-    "Absorb": [
-     0.0,
-     0.74,
-     0.88
-    ],
-    "AbsorbDensity": 1.8,
-    "Scatter": [
-     0.4,
+     0.86,
      0.9,
-     1.0
+     0.9
     ],
-    "ScatterDensity": 0.25
+    "FoamFromMask": 1.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
+    "Absorb": [
+     0.02,
+     0.72,
+     0.7
+    ],
+    "AbsorbDensity": 2.6,
+    "Scatter": [
+     0.25,
+     0.95,
+     0.95
+    ],
+    "ScatterDensity": 0.6
    },
    "emissive": null,
-   "transmission": true,
    "transparent": true,
-   "thin_wall": false,
    "volume": {
     "absorb_color": [
-     0.0,
-     0.74,
-     0.88
+     0.02,
+     0.72,
+     0.7
     ],
-    "absorb_density_per_m": 1.8,
+    "absorb_density_per_m": 2.6,
     "scatter_color": [
-     0.4,
-     0.9,
+     0.25,
+     0.95,
+     0.95
+    ],
+    "scatter_density_per_m": 0.6,
+    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m); Blender bakes/previews only"
+   },
+   "water": {
+    "depth_colors_srgb": {
+     "0.1": [
+      120,
+      225,
+      215
+     ],
+     "0.5": [
+      0,
+      190,
+      185
+     ],
+     "2.0": [
+      0,
+      60,
+      75
+     ]
+    },
+    "underglow_srgb": [
+     0,
+     210,
+     200
+    ],
+    "underglow_strength": [
+     0.5,
      1.0
     ],
-    "scatter_density_per_m": 0.25,
-    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m)"
+    "normal_layers_m": [
+     0.7,
+     3.0
+    ],
+    "foam": "base.a x vertex-colour flow/obstacle mask"
    },
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_water_river, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate cloth#4 (refs/gen/sheet-tex-cloth.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "12-lava-tube-lazy-river.jpg",
     "06-kawagiri-restaurant.jpg"
    ],
+   "reference": "refs/gen/mat-water-teal.png",
    "three": {
-    "class": "MeshPhysicalMaterial",
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -2937,36 +4747,34 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.0,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.33333,
-    "transparent": true,
-    "transmission_from_foam": "transmission * (1 - base.a)",
-    "transmission": 1.0,
-    "ior": 1.333,
-    "thickness": 1.0,
-    "attenuationColor": [
-     0.0,
-     0.74,
-     0.88
+    "repeat": [
+     0.46876,
+     0.46876
     ],
-    "attenuationDistance": 0.55
-   },
-   "ktx2": {
-    "encoded": false
+    "transmission": 0.0,
+    "transparent": true,
+    "note": "Flow-map two-phase scroll of the normal texture (see water-research agent)."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 0.0,
+    "roughness_std_255": 30.6,
+    "ao_mean_255": 255.0,
     "mean_albedo_linear": [
-     0.9216,
-     0.9571,
-     0.9571
+     0.9,
+     0.95,
+     0.95
     ],
-    "mean_roughness": 0.032,
+    "mean_roughness": 0.061,
+    "normal_mean_slope_deg": 16.08,
     "height_min_max": [
-     0.332,
-     0.664
-    ],
-    "normal_mean_slope_deg": 1.66,
-    "mean_foam": 0.003
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -2977,8 +4785,9 @@
     "material": "water_sea",
     "group": "KZM_water_sea",
     "node": "KZ",
-    "mode": "procedural (live KZP_water_sea pattern)"
+    "generator": "plate cloth#5 (refs/gen/sheet-tex-cloth.png)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -2988,17 +4797,24 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 6.0,
+    "scale": 2.6667,
     "normal_strength": 1.0,
     "emissive_level": 0.0
    },
-   "tiling_m_per_repeat": 6.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 2.6667,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/water_sea_base.ktx2",
     "orm": "materials/tex/water_sea_orm.ktx2",
     "normal_height": "materials/tex/water_sea_nh.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/water_sea_base.png",
     "orm": ".scratch/matlib/tex/water_sea_orm.png",
@@ -3010,12 +4826,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB); A = foam/aeration coverage",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.18,
+   "height_depth_m": 0.03,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.333,
@@ -3033,55 +4844,100 @@
     ],
     "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
-     0.8,
-     0.85,
-     0.85
+     0.86,
+     0.9,
+     0.9
     ],
+    "FoamFromMask": 1.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
     "EmitStrength": 1.0,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      0.0,
-     0.66,
-     0.76
+     0.62,
+     0.72
     ],
     "AbsorbDensity": 2.5,
     "Scatter": [
-     0.5,
+     0.3,
      0.85,
      0.9
     ],
-    "ScatterDensity": 0.15
+    "ScatterDensity": 0.2
    },
    "emissive": null,
-   "transmission": true,
    "transparent": true,
-   "thin_wall": false,
    "volume": {
     "absorb_color": [
      0.0,
-     0.66,
-     0.76
+     0.62,
+     0.72
     ],
     "absorb_density_per_m": 2.5,
     "scatter_color": [
-     0.5,
+     0.3,
      0.85,
      0.9
     ],
-    "scatter_density_per_m": 0.15,
-    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m)"
+    "scatter_density_per_m": 0.2,
+    "blender": "transmittance = exp(-(1 - absorb_color) * density * distance_m); Blender bakes/previews only"
+   },
+   "water": {
+    "depth_colors_srgb": {
+     "0.1": [
+      130,
+      210,
+      205
+     ],
+     "0.5": [
+      0,
+      150,
+      160
+     ],
+     "2.0": [
+      2,
+      25,
+      45
+     ]
+    },
+    "crest_srgb": [
+     60,
+     220,
+     210
+    ],
+    "trough_srgb": [
+     0,
+     70,
+     80
+    ],
+    "foam": "base.a (top 12 % of height) + shoreline mask"
    },
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_water_sea, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate cloth#5 (refs/gen/sheet-tex-cloth.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "20-wave-grotto.jpg"
    ],
+   "reference": null,
    "three": {
-    "class": "MeshPhysicalMaterial",
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -3091,36 +4947,34 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 1.0,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.16667,
-    "transparent": true,
-    "transmission_from_foam": "transmission * (1 - base.a)",
-    "transmission": 1.0,
-    "ior": 1.333,
-    "thickness": 1.5,
-    "attenuationColor": [
-     0.0,
-     0.66,
-     0.76
+    "repeat": [
+     0.375,
+     0.375
     ],
-    "attenuationDistance": 0.4
-   },
-   "ktx2": {
-    "encoded": false
+    "transmission": 0.0,
+    "transparent": true,
+    "note": "Swell is vertex animation; this texture is chop + lacy crest foam. Height-driven crest/trough colour lerp."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 0.0,
+    "roughness_std_255": 41.0,
+    "ao_mean_255": 255.0,
     "mean_albedo_linear": [
-     0.9216,
-     0.9571,
-     0.969
+     0.9,
+     0.95,
+     0.95
     ],
-    "mean_roughness": 0.043,
+    "mean_roughness": 0.114,
+    "normal_mean_slope_deg": 19.81,
     "height_min_max": [
-     0.118,
-     0.872
-    ],
-    "normal_mean_slope_deg": 11.37,
-    "mean_foam": 0.026
+     0.0,
+     1.0
+    ]
    }
   },
   {
@@ -3131,8 +4985,9 @@
     "material": "waterfall",
     "group": "KZM_waterfall",
     "node": "KZ",
-    "mode": "procedural (live KZP_waterfall pattern)"
+    "generator": "KZP_waterfall (pat_waterfall)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -3144,30 +4999,34 @@
     "roughness_offset": 0.0,
     "scale": 2.0,
     "normal_strength": 1.0,
-    "emissive_level": 0.0
+    "emissive_level": 1.0
    },
    "tiling_m_per_repeat": 2.0,
-   "texture_size": 512,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/waterfall_base.ktx2",
     "orm": "materials/tex/waterfall_orm.ktx2",
-    "normal_height": "materials/tex/waterfall_nh.ktx2"
+    "normal_height": "materials/tex/waterfall_nh.ktx2",
+    "emissive": "materials/tex/waterfall_emis.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/waterfall_base.png",
     "orm": ".scratch/matlib/tex/waterfall_orm.png",
-    "normal_height": ".scratch/matlib/tex/waterfall_nh.png"
+    "normal_height": ".scratch/matlib/tex/waterfall_nh.png",
+    "emissive": ".scratch/matlib/tex/waterfall_emis.png"
    },
    "srgb": {
     "base": true,
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB); A = foam/aeration coverage",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.02,
    "constants": {
@@ -3187,12 +5046,27 @@
     ],
     "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
-     0.8,
-     0.85,
-     0.85
+     0.86,
+     0.9,
+     0.9
     ],
-    "EmitStrength": 1.0,
+    "FoamFromMask": 1.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 1.0,
+    "AlphaMin": 0.25,
+    "FrostUp": 0.0,
+    "EmitStrength": 0.25,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      0.3,
      0.85,
@@ -3206,23 +5080,38 @@
     ],
     "ScatterDensity": 0.0
    },
-   "emissive": null,
-   "transmission": true,
+   "emissive": {
+    "map": "emissive",
+    "map_scale": 0.95,
+    "color_linear": [
+     1,
+     1,
+     1
+    ],
+    "strength": 0.25,
+    "emissive_level": 1.0,
+    "emit_core": 0.0,
+    "emit_macro": 0.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
+   },
    "transparent": true,
-   "thin_wall": true,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
     "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_waterfall, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "19-thunder-curtain.jpg",
+    "18-rimstone-terraces.jpg",
     "06-kawagiri-restaurant.jpg (water curtains)"
    ],
+   "reference": null,
    "three": {
-    "class": "MeshPhysicalMaterial",
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -3232,41 +5121,51 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.8,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.5,
+    "repeat": [
+     0.5,
+     0.5
+    ],
+    "transmission": 0.0,
     "transparent": true,
-    "transmission_from_foam": "transmission * (1 - base.a)",
-    "opacityFromBaseAlpha": "0.3 + 0.7*a",
-    "depthWrite": false
-   },
-   "ktx2": {
-    "encoded": false
+    "side": "DoubleSide",
+    "depthWrite": false,
+    "opacityFromBaseAlpha": "0.25 + 0.75*a",
+    "note": "Scroll v at two speeds/scales (e.g. 1.5 and 2.3 m/s); spray/mist card at the base; emissive = foam x 0.25 so it reads bright in a dark cave."
    },
    "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "emissive_map_scale": 0.95,
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 0.0,
+    "roughness_std_255": 0.0,
+    "ao_mean_255": 255.0,
     "mean_albedo_linear": [
-     0.8594,
-     0.9073,
-     0.9216
+     0.9,
+     0.95,
+     0.95
     ],
-    "mean_roughness": 0.188,
+    "mean_roughness": 0.05,
+    "normal_mean_slope_deg": 3.43,
     "height_min_max": [
-     0.269,
-     0.742
-    ],
-    "normal_mean_slope_deg": 3.63,
-    "mean_foam": 0.459
+     0.279,
+     0.718
+    ]
    }
   },
   {
-   "id": "lava",
-   "name": "Lava (molten, crusted)",
-   "category": "light",
+   "id": "caustics_decal",
+   "name": "Caustics decal",
+   "category": "water",
    "blender": {
-    "material": "lava",
-    "group": "KZM_lava",
+    "material": "caustics_decal",
+    "group": "KZM_caustics_decal",
     "node": "KZ",
-    "mode": "procedural (live KZP_lava pattern)"
+    "generator": "KZP_caustics_decal (pat_caustics)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
@@ -3276,23 +5175,30 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 2.0,
+    "scale": 1.0,
     "normal_strength": 1.0,
     "emissive_level": 1.0
    },
-   "tiling_m_per_repeat": 2.0,
-   "texture_size": 512,
+   "tiling_m_per_repeat": 1.0,
+   "aspect": 1.0,
+   "texture_size": [
+    256,
+    256
+   ],
    "textures": {
-    "base": "materials/tex/lava_base.ktx2",
-    "orm": "materials/tex/lava_orm.ktx2",
-    "normal_height": "materials/tex/lava_nh.ktx2",
-    "emissive": "materials/tex/lava_emis.ktx2"
+    "base": "materials/tex/caustics_decal_base.ktx2",
+    "orm": "materials/tex/caustics_decal_orm.ktx2",
+    "normal_height": "materials/tex/caustics_decal_nh.ktx2",
+    "emissive": "materials/tex/caustics_decal_emis.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
-    "base": ".scratch/matlib/tex/lava_base.png",
-    "orm": ".scratch/matlib/tex/lava_orm.png",
-    "normal_height": ".scratch/matlib/tex/lava_nh.png",
-    "emissive": ".scratch/matlib/tex/lava_emis.png"
+    "base": ".scratch/matlib/tex/caustics_decal_base.png",
+    "orm": ".scratch/matlib/tex/caustics_decal_orm.png",
+    "normal_height": ".scratch/matlib/tex/caustics_decal_nh.png",
+    "emissive": ".scratch/matlib/tex/caustics_decal_emis.png"
    },
    "srgb": {
     "base": true,
@@ -3300,14 +5206,9 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.05,
+   "height_depth_m": 0.001,
    "constants": {
-    "Specular": 0.5,
+    "Specular": 0.0,
     "IOR": 1.5,
     "Transmission": 0.0,
     "ThinWall": 0.0,
@@ -3317,18 +5218,33 @@
     "Translucency": 0.0,
     "Porosity": 0.0,
     "WornColor": [
-     0.05,
-     0.04,
-     0.035
+     0.5,
+     0.5,
+     0.5
     ],
-    "WornRough": 0.8,
+    "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
-    "EmitStrength": 1.3,
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 1.0,
+    "AlphaMin": 0.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 0.6,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -3343,32 +5259,215 @@
     "ScatterDensity": 0.0
    },
    "emissive": {
+    "map": "emissive",
+    "map_scale": 1.0,
     "color_linear": [
      1,
      1,
      1
     ],
-    "map": "emissive",
-    "strength": 1.3,
+    "strength": 0.6,
     "emissive_level": 1.0,
-    "note": "Blender Emission Strength (W/m^2-ish); in three.js scale so the AgX result matches the Cycles preview; keep bloom subtle (7.5)."
+    "emit_core": 0.0,
+    "emit_macro": 0.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
    },
-   "transmission": false,
-   "transparent": false,
-   "thin_wall": false,
+   "transparent": true,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_lava, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_caustics, rendered to a seamless tile by tools/matlib/build_library.py",
+    "licence": "self-made for this project (owner-approved); no third-party images",
+    "shared_with": null
+   },
+   "concept": [
+    "17-glacier-plunge.jpg (pool floor)",
+    "05-mist-corridor.jpg"
+   ],
+   "reference": null,
+   "three": {
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
+    "roughness": 1.0,
+    "metalness": 1.0,
+    "roughnessMap": "orm.g",
+    "metalnessMap": "orm.b",
+    "aoMap": "orm.r",
+    "aoMapIntensity": 1.0,
+    "normalMap": "normal_height (XY)",
+    "normalScale": 1.0,
+    "envMapIntensity": 0.0,
+    "repeat": [
+     1.0,
+     1.0
+    ],
+    "transparent": true,
+    "blending": "Additive",
+    "depthWrite": false,
+    "note": "Projected / floor decal under water: two layers scrolling in different directions, multiplied by depth fade; teal tint x 0.3-1.0."
+   },
+   "stats": {
+    "size": [
+     256,
+     256
+    ],
+    "emissive_map_scale": 1.0,
+    "orm_mip_levels": 9,
+    "albedo_std_srgb255": 0.0,
+    "roughness_std_255": 0.0,
+    "ao_mean_255": 255.0,
+    "mean_albedo_linear": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "mean_roughness": 1.0,
+    "normal_mean_slope_deg": 0.32,
+    "height_min_max": [
+     0.4,
+     0.6
+    ]
+   }
+  },
+  {
+   "id": "lava",
+   "name": "Lava (crust field)",
+   "category": "light",
+   "blender": {
+    "material": "lava",
+    "group": "KZM_lava",
+    "node": "KZ",
+    "generator": "plate rock#4 (refs/gen/sheet-tex-rock.png)"
+   },
+   "uv_mode": "metric",
+   "params": {
+    "tint": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "wetness": 0.0,
+    "wear": 0.0,
+    "roughness_offset": 0.0,
+    "scale": 4.2667,
+    "normal_strength": 1.0,
+    "emissive_level": 1.0
+   },
+   "tiling_m_per_repeat": 4.2667,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
+   "textures": {
+    "base": "materials/tex/lava_base.ktx2",
+    "orm": "materials/tex/lava_orm.ktx2",
+    "normal_height": "materials/tex/lava_nh.ktx2",
+    "emissive": "materials/tex/lava_emis.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 0.5,
+    "repeat_m": 8.0
+   },
+   "texture_sources_png": {
+    "base": ".scratch/matlib/tex/lava_base.png",
+    "orm": ".scratch/matlib/tex/lava_orm.png",
+    "normal_height": ".scratch/matlib/tex/lava_nh.png",
+    "emissive": ".scratch/matlib/tex/lava_emis.png"
+   },
+   "srgb": {
+    "base": true,
+    "orm": false,
+    "normal_height": false,
+    "emissive": true
+   },
+   "height_depth_m": 0.06,
+   "constants": {
+    "Specular": 0.5,
+    "IOR": 1.5,
+    "Transmission": 0.0,
+    "ThinWall": 0.0,
+    "Coat": 0.0,
+    "CoatRough": 0.05,
+    "Sheen": 0.0,
+    "Translucency": 0.0,
+    "Porosity": 0.0,
+    "WornColor": [
+     0.02,
+     0.018,
+     0.017
+    ],
+    "WornRough": 0.6,
+    "WornMetal": 0.0,
+    "WornMax": 1.0,
+    "FoamColor": [
+     0.8,
+     0.85,
+     0.85
+    ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.2,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 1.0,
+    "MacroAmount": 0.5,
+    "Absorb": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "AbsorbDensity": 0.0,
+    "Scatter": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "ScatterDensity": 0.0
+   },
+   "emissive": {
+    "map": "emissive",
+    "map_scale": 1.4317,
+    "color_linear": [
+     1,
+     1,
+     1
+    ],
+    "strength": 1.2,
+    "emissive_level": 1.0,
+    "emit_core": 0.0,
+    "emit_macro": 1.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
+   },
+   "transparent": false,
+   "volume": null,
+   "water": null,
+   "variants": {},
+   "texture_source": {
+    "origin": "self-made Codex-painted plate plate rock#4 (refs/gen/sheet-tex-rock.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "13-magma-glass-slide.jpg (lava behind glass)",
     "04-arrival-gate.jpg (lava falls)"
    ],
+   "reference": "refs/gen/mat-lava-glass.png",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -3378,25 +5477,209 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.4,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 0.5
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     0.23437,
+     0.23437
+    ],
+    "note": "Scroll the emissive 2-5 cm/s and multiply by the macro texture (R) animated slowly (0.7-1.2 pulse) so it never reads as a static repeat."
    },
    "stats": {
-    "emissive_max": 1.0,
+    "size": [
+     1024,
+     1024
+    ],
+    "emissive_map_scale": 1.4317,
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 19.7,
+    "roughness_std_255": 26.2,
+    "ao_mean_255": 214.8,
     "mean_albedo_linear": [
-     0.1168,
-     0.0413,
-     0.0219
+     0.0285,
+     0.008,
+     0.0034
     ],
-    "mean_roughness": 0.735,
+    "mean_roughness": 0.463,
+    "normal_mean_slope_deg": 31.1,
     "height_min_max": [
-     0.243,
-     0.912
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "id": "lava_flow",
+   "name": "Lava (molten flow)",
+   "category": "light",
+   "blender": {
+    "material": "lava_flow",
+    "group": "KZM_lava_flow",
+    "node": "KZ",
+    "generator": "KZP_lava_flow (pat_lava_flow)"
+   },
+   "uv_mode": "metric",
+   "params": {
+    "tint": [
+     1.0,
+     1.0,
+     1.0
     ],
-    "normal_mean_slope_deg": 16.94
+    "wetness": 0.0,
+    "wear": 0.0,
+    "roughness_offset": 0.0,
+    "scale": 3.0,
+    "normal_strength": 1.0,
+    "emissive_level": 1.0
+   },
+   "tiling_m_per_repeat": 3.0,
+   "aspect": 1.0,
+   "texture_size": [
+    1024,
+    1024
+   ],
+   "textures": {
+    "base": "materials/tex/lava_flow_base.ktx2",
+    "orm": "materials/tex/lava_flow_orm.ktx2",
+    "normal_height": "materials/tex/lava_flow_nh.ktx2",
+    "emissive": "materials/tex/lava_flow_emis.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": {
+    "texture": "materials/tex/kz_macro_base.ktx2",
+    "amount": 0.5,
+    "repeat_m": 8.0
+   },
+   "texture_sources_png": {
+    "base": ".scratch/matlib/tex/lava_flow_base.png",
+    "orm": ".scratch/matlib/tex/lava_flow_orm.png",
+    "normal_height": ".scratch/matlib/tex/lava_flow_nh.png",
+    "emissive": ".scratch/matlib/tex/lava_flow_emis.png"
+   },
+   "srgb": {
+    "base": true,
+    "orm": false,
+    "normal_height": false,
+    "emissive": true
+   },
+   "height_depth_m": 0.06,
+   "constants": {
+    "Specular": 0.5,
+    "IOR": 1.5,
+    "Transmission": 0.0,
+    "ThinWall": 0.0,
+    "Coat": 0.0,
+    "CoatRough": 0.05,
+    "Sheen": 0.0,
+    "Translucency": 0.0,
+    "Porosity": 0.0,
+    "WornColor": [
+     0.02,
+     0.018,
+     0.017
+    ],
+    "WornRough": 0.6,
+    "WornMetal": 0.0,
+    "WornMax": 1.0,
+    "FoamColor": [
+     0.8,
+     0.85,
+     0.85
+    ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 0.8,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 1.0,
+    "MacroAmount": 0.5,
+    "Absorb": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "AbsorbDensity": 0.0,
+    "Scatter": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "ScatterDensity": 0.0
+   },
+   "emissive": {
+    "map": "emissive",
+    "map_scale": 1.06,
+    "color_linear": [
+     1,
+     1,
+     1
+    ],
+    "strength": 0.8,
+    "emissive_level": 1.0,
+    "emit_core": 0.0,
+    "emit_macro": 1.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
+   },
+   "transparent": false,
+   "volume": null,
+   "water": null,
+   "variants": {},
+   "texture_source": {
+    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_lava_flow, rendered to a seamless tile by tools/matlib/build_library.py",
+    "licence": "self-made for this project (owner-approved); no third-party images",
+    "shared_with": null
+   },
+   "concept": [
+    "13-magma-glass-slide.jpg (lava falls)",
+    "04-arrival-gate.jpg (lava window)"
+   ],
+   "reference": "refs/gen/mat-lava-glass.png",
+   "three": {
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
+    "roughness": 1.0,
+    "metalness": 1.0,
+    "roughnessMap": "orm.g",
+    "metalnessMap": "orm.b",
+    "aoMap": "orm.r",
+    "aoMapIntensity": 1.0,
+    "normalMap": "normal_height (XY)",
+    "normalScale": 1.0,
+    "envMapIntensity": 0.4,
+    "repeat": [
+     0.33333,
+     0.33333
+    ],
+    "note": "Mostly molten with dark crust islands, for the lava window and falls. Flow-scroll along v."
+   },
+   "stats": {
+    "size": [
+     1024,
+     1024
+    ],
+    "emissive_map_scale": 1.06,
+    "orm_mip_levels": 11,
+    "albedo_std_srgb255": 20.2,
+    "roughness_std_255": 13.7,
+    "ao_mean_255": 248.4,
+    "mean_albedo_linear": [
+     0.171,
+     0.0368,
+     0.01
+    ],
+    "mean_roughness": 0.46,
+    "normal_mean_slope_deg": 9.62,
+    "height_min_max": [
+     0.27,
+     0.971
+    ]
    }
   },
   {
@@ -3407,13 +5690,14 @@
     "material": "neon_tube",
     "group": "KZM_neon_tube",
     "node": "KZ",
-    "mode": "procedural (live KZP_neon_tube pattern)"
+    "generator": "KZP_neon_tube (pat_neon)"
    },
+   "uv_mode": "metric",
    "params": {
     "tint": [
      1.0,
-     0.0137,
-     0.2747
+     0.007,
+     0.2918
     ],
     "wetness": 0.0,
     "wear": 0.0,
@@ -3423,27 +5707,31 @@
     "emissive_level": 1.0
    },
    "tiling_m_per_repeat": 0.2,
-   "texture_size": 512,
+   "aspect": 1.0,
+   "texture_size": [
+    256,
+    256
+   ],
    "textures": {
     "base": "materials/tex/neon_tube_base.ktx2",
     "orm": "materials/tex/neon_tube_orm.ktx2",
-    "normal_height": "materials/tex/neon_tube_nh.ktx2"
+    "normal_height": "materials/tex/neon_tube_nh.ktx2",
+    "emissive": "materials/tex/neon_tube_emis.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/neon_tube_base.png",
     "orm": ".scratch/matlib/tex/neon_tube_orm.png",
-    "normal_height": ".scratch/matlib/tex/neon_tube_nh.png"
+    "normal_height": ".scratch/matlib/tex/neon_tube_nh.png",
+    "emissive": ".scratch/matlib/tex/neon_tube_emis.png"
    },
    "srgb": {
     "base": true,
     "orm": false,
     "normal_height": false,
     "emissive": true
-   },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
    },
    "height_depth_m": 0.0005,
    "constants": {
@@ -3463,12 +5751,27 @@
     ],
     "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
-    "EmitStrength": 1.1,
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.4,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 1.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -3483,40 +5786,44 @@
     "ScatterDensity": 0.0
    },
    "emissive": {
+    "map": "emissive",
+    "map_scale": 0.985,
     "color_linear": [
-     1.0,
-     0.0137,
-     0.2747
+     1,
+     1,
+     1
     ],
-    "map": "base",
-    "strength": 1.1,
+    "strength": 1.4,
     "emissive_level": 1.0,
-    "note": "Blender Emission Strength (W/m^2-ish); in three.js scale so the AgX result matches the Cycles preview; keep bloom subtle (7.5)."
+    "emit_core": 1.0,
+    "emit_macro": 0.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
    },
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {
     "cyan": {
      "tint": [
-      0.009134058702220787,
-      0.8069522576692516,
+      0.0,
+      0.4793201831008268,
       1.0
      ]
     }
    },
    "texture_source": {
     "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_neon, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
     "09-neon-ramen-counter.jpg (magenta/cyan neon)",
     "06-kawagiri-restaurant.jpg"
    ],
+   "reference": null,
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -3526,38 +5833,46 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.5,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 5.0,
-    "note": "Kawagiri only. tint = emissive colour; cyan variant tint #18e8ff."
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     5.0,
+     5.0
+    ],
+    "note": "Kawagiri only. emissive = mix(tint, white-pink, (1 - fresnel)^2) for a white-hot core and saturated edges, thin glass highlight (rough 0.05), bloom, plus a coloured light card on the wall behind. Cyan variant (#00b8ff) is bluer than the onsen teal on purpose."
    },
    "stats": {
-    "emissive_max": 0.9800669550895691,
-    "mean_albedo_linear": [
-     0.1196,
-     0.1196,
-     0.1196
+    "size": [
+     256,
+     256
     ],
-    "mean_roughness": 0.06,
+    "emissive_map_scale": 0.985,
+    "orm_mip_levels": 9,
+    "albedo_std_srgb255": 0.0,
+    "roughness_std_255": 0.0,
+    "ao_mean_255": 255.0,
+    "mean_albedo_linear": [
+     0.06,
+     0.06,
+     0.06
+    ],
+    "mean_roughness": 0.05,
+    "normal_mean_slope_deg": 0.06,
     "height_min_max": [
      0.45,
      0.55
-    ],
-    "normal_mean_slope_deg": 0.07
+    ]
    }
   },
   {
    "id": "lantern_paper",
-   "name": "Lantern paper (emissive)",
+   "name": "Lantern paper, round chochin (emissive)",
    "category": "light",
    "blender": {
     "material": "lantern_paper",
     "group": "KZM_lantern_paper",
     "node": "KZ",
-    "mode": "procedural (live KZP_lantern_paper pattern)"
+    "generator": "plate wood#5 (refs/gen/sheet-tex-wood.png)"
    },
+   "uv_mode": "object",
    "params": {
     "tint": [
      1.0,
@@ -3567,21 +5882,30 @@
     "wetness": 0.0,
     "wear": 0.0,
     "roughness_offset": 0.0,
-    "scale": 0.5,
+    "scale": 1.0,
     "normal_strength": 1.0,
     "emissive_level": 1.0
    },
-   "tiling_m_per_repeat": 0.5,
-   "texture_size": 512,
+   "tiling_m_per_repeat": null,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
    "textures": {
     "base": "materials/tex/lantern_paper_base.ktx2",
     "orm": "materials/tex/lantern_paper_orm.ktx2",
-    "normal_height": "materials/tex/lantern_paper_nh.ktx2"
+    "normal_height": "materials/tex/lantern_paper_nh.ktx2",
+    "emissive": "materials/tex/lantern_paper_emis.ktx2"
    },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
    "texture_sources_png": {
     "base": ".scratch/matlib/tex/lantern_paper_base.png",
     "orm": ".scratch/matlib/tex/lantern_paper_orm.png",
-    "normal_height": ".scratch/matlib/tex/lantern_paper_nh.png"
+    "normal_height": ".scratch/matlib/tex/lantern_paper_nh.png",
+    "emissive": ".scratch/matlib/tex/lantern_paper_emis.png"
    },
    "srgb": {
     "base": true,
@@ -3589,12 +5913,7 @@
     "normal_height": false,
     "emissive": true
    },
-   "channels": {
-    "base": "RGB albedo (sRGB)",
-    "orm": "R occlusion, G roughness, B metalness, A height (linear)",
-    "normal_height": "R,G normal XY (OpenGL +Y), B height, A 1 (linear)"
-   },
-   "height_depth_m": 0.0008,
+   "height_depth_m": 0.002,
    "constants": {
     "Specular": 0.5,
     "IOR": 1.5,
@@ -3612,12 +5931,27 @@
     ],
     "WornRough": 0.5,
     "WornMetal": 0.0,
+    "WornMax": 1.0,
     "FoamColor": [
      0.8,
      0.85,
      0.85
     ],
-    "EmitStrength": 1.0,
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.4,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
     "Absorb": [
      1.0,
      1.0,
@@ -3632,24 +5966,26 @@
     "ScatterDensity": 0.0
    },
    "emissive": {
+    "map": "emissive",
+    "map_scale": 1.0556,
     "color_linear": [
-     1.0,
-     0.2693,
-     0.011
+     1,
+     1,
+     1
     ],
-    "map": "base",
-    "strength": 1.0,
+    "strength": 1.4,
     "emissive_level": 1.0,
-    "note": "Blender Emission Strength (W/m^2-ish); in three.js scale so the AgX result matches the Cycles preview; keep bloom subtle (7.5)."
+    "emit_core": 0.0,
+    "emit_macro": 0.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
    },
-   "transmission": false,
    "transparent": false,
-   "thin_wall": false,
    "volume": null,
+   "water": null,
    "variants": {},
    "texture_source": {
-    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_lantern_paper, rendered to a seamless tile by tools/matlib/build_library.py",
-    "licence": "CC0-1.0 (generated for this project; no third-party images)",
+    "origin": "self-made Codex-painted plate plate wood#5 (refs/gen/sheet-tex-wood.png), cut, de-lit and made seamless by periodic image quilting in tools/matlib/plates.py; height/roughness/masks derived from it (recipe library_defs.PLATES)",
+    "licence": "self-made for this project (owner-approved); no third-party images",
     "shared_with": null
    },
    "concept": [
@@ -3657,8 +5993,10 @@
     "05-mist-corridor.jpg",
     "12-lava-tube-lazy-river.jpg"
    ],
+   "reference": "refs/gen/mat-hinoki-washi.png",
    "three": {
     "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
     "roughness": 1.0,
     "metalness": 1.0,
     "roughnessMap": "orm.g",
@@ -3668,25 +6006,205 @@
     "normalMap": "normal_height (XY)",
     "normalScale": 1.0,
     "envMapIntensity": 0.2,
-    "map": "base (sRGB)",
-    "repeat_per_metre": 2.0
-   },
-   "ktx2": {
-    "encoded": false
+    "repeat": [
+     1.0,
+     1.0
+    ],
+    "note": "Object UVs: u around the lantern 0..1, v bottom->top 0..1 (scale stays 1). Keep emissive moderate and let bloom do the glow."
    },
    "stats": {
-    "emissive_max": 0.9468728303909302,
+    "size": [
+     512,
+     512
+    ],
+    "emissive_map_scale": 1.0556,
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 43.4,
+    "roughness_std_255": 6.3,
+    "ao_mean_255": 252.6,
     "mean_albedo_linear": [
-     0.7359,
-     0.6863,
-     0.5663
+     0.785,
+     0.5667,
+     0.2515
     ],
-    "mean_roughness": 0.86,
+    "mean_roughness": 0.865,
+    "normal_mean_slope_deg": 6.07,
     "height_min_max": [
-     0.226,
-     0.83
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "id": "lantern_andon",
+   "name": "Lantern paper, square andon (emissive)",
+   "category": "light",
+   "blender": {
+    "material": "lantern_andon",
+    "group": "KZM_lantern_andon",
+    "node": "KZ",
+    "generator": "KZP_lantern_andon (pat_lantern_andon)"
+   },
+   "uv_mode": "object",
+   "params": {
+    "tint": [
+     1.0,
+     1.0,
+     1.0
     ],
-    "normal_mean_slope_deg": 3.3
+    "wetness": 0.0,
+    "wear": 0.0,
+    "roughness_offset": 0.0,
+    "scale": 1.0,
+    "normal_strength": 1.0,
+    "emissive_level": 1.0
+   },
+   "tiling_m_per_repeat": null,
+   "aspect": 1.0,
+   "texture_size": [
+    512,
+    512
+   ],
+   "textures": {
+    "base": "materials/tex/lantern_andon_base.ktx2",
+    "orm": "materials/tex/lantern_andon_orm.ktx2",
+    "normal_height": "materials/tex/lantern_andon_nh.ktx2",
+    "emissive": "materials/tex/lantern_andon_emis.ktx2"
+   },
+   "textures_side": null,
+   "side_blend": null,
+   "macro": null,
+   "texture_sources_png": {
+    "base": ".scratch/matlib/tex/lantern_andon_base.png",
+    "orm": ".scratch/matlib/tex/lantern_andon_orm.png",
+    "normal_height": ".scratch/matlib/tex/lantern_andon_nh.png",
+    "emissive": ".scratch/matlib/tex/lantern_andon_emis.png"
+   },
+   "srgb": {
+    "base": true,
+    "orm": false,
+    "normal_height": false,
+    "emissive": true
+   },
+   "height_depth_m": 0.002,
+   "constants": {
+    "Specular": 0.5,
+    "IOR": 1.5,
+    "Transmission": 0.0,
+    "ThinWall": 0.0,
+    "Coat": 0.0,
+    "CoatRough": 0.05,
+    "Sheen": 0.0,
+    "Translucency": 0.0,
+    "Porosity": 1.0,
+    "WornColor": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "WornRough": 0.5,
+    "WornMetal": 0.0,
+    "WornMax": 1.0,
+    "FoamColor": [
+     0.8,
+     0.85,
+     0.85
+    ],
+    "FoamFromMask": 0.0,
+    "ThinFromMask": 0.0,
+    "AlphaFromMask": 0.0,
+    "AlphaMin": 1.0,
+    "FrostUp": 0.0,
+    "EmitStrength": 1.4,
+    "EmitColor": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "EmitMapScale": 1.0,
+    "EmitCore": 0.0,
+    "EmitMacro": 0.0,
+    "MacroAmount": 0.0,
+    "Absorb": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "AbsorbDensity": 0.0,
+    "Scatter": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "ScatterDensity": 0.0
+   },
+   "emissive": {
+    "map": "emissive",
+    "map_scale": 1.0084,
+    "color_linear": [
+     1,
+     1,
+     1
+    ],
+    "strength": 1.4,
+    "emissive_level": 1.0,
+    "emit_core": 0.0,
+    "emit_macro": 0.0,
+    "note": "Blender Emission Strength; keep emissives moderate (AgX desaturates bright values) and let a subtle bloom carry the glow (7.5)."
+   },
+   "transparent": false,
+   "volume": null,
+   "water": null,
+   "variants": {},
+   "texture_source": {
+    "origin": "self-made procedural texture, tools/matlib/library_defs.py:pat_lantern_andon, rendered to a seamless tile by tools/matlib/build_library.py",
+    "licence": "self-made for this project (owner-approved); no third-party images",
+    "shared_with": null
+   },
+   "concept": [
+    "05-mist-corridor.jpg (andon)",
+    "12-lava-tube-lazy-river.jpg (floating lanterns)"
+   ],
+   "reference": null,
+   "three": {
+    "class": "MeshStandardMaterial",
+    "map": "base (sRGB)",
+    "roughness": 1.0,
+    "metalness": 1.0,
+    "roughnessMap": "orm.g",
+    "metalnessMap": "orm.b",
+    "aoMap": "orm.r",
+    "aoMapIntensity": 1.0,
+    "normalMap": "normal_height (XY)",
+    "normalScale": 1.0,
+    "envMapIntensity": 0.2,
+    "repeat": [
+     1.0,
+     1.0
+    ],
+    "note": "Object UVs: each paper face mapped 0..1 (frame shadow at the border)."
+   },
+   "stats": {
+    "size": [
+     512,
+     512
+    ],
+    "emissive_map_scale": 1.0084,
+    "orm_mip_levels": 10,
+    "albedo_std_srgb255": 55.3,
+    "roughness_std_255": 35.6,
+    "ao_mean_255": 254.5,
+    "mean_albedo_linear": [
+     0.6108,
+     0.5476,
+     0.4181
+    ],
+    "mean_roughness": 0.721,
+    "normal_mean_slope_deg": 1.2,
+    "height_min_max": [
+     0.03,
+     0.955
+    ]
    }
   }
  ]

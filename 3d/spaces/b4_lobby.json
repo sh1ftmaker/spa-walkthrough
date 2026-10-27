@@ -369,8 +369,8 @@
  "cameras": {
   "entry": {
    "pos": [
-    82.0,
-    76.5,
+    80.7,
+    76.76,
     -98.4
    ],
    "target": [
@@ -417,21 +417,44 @@
   },
   {
    "asset": "lantern_niche",
-   "ring": [
-    90.0,
-    70.0
-   ],
-   "radius": 13.6,
-   "spacing": 4.0,
    "height": 0.4,
    "snap": "wall",
    "face": "hero",
-   "avoid": [
-    "portals",
-    "anchored:gauge",
-    1.0
-   ],
-   "why": "Ring of low wall lanterns (36): even pools around the room, dark between."
+   "why": "Wall niches clustered in pairs at the lift door, the spiral door and the tunnel mouth, two singles between; the NE arc stays dark.",
+   "at": [
+    [
+     77.39,
+     75.09
+    ],
+    [
+     81.26,
+     80.42
+    ],
+    [
+     102.61,
+     64.91
+    ],
+    [
+     98.74,
+     59.58
+    ],
+    [
+     80.22,
+     60.55
+    ],
+    [
+     76.47,
+     68.58
+    ],
+    [
+     90.0,
+     56.4
+    ],
+    [
+     87.17,
+     83.3
+    ]
+   ]
   },
   {
    "asset": "lantern_floor",
@@ -451,8 +474,12 @@
    "asset": "lantern_hanging",
    "at": [
     [
-     81.8,
-     77.0
+     80.98,
+     73.28
+    ],
+    [
+     84.09,
+     77.56
     ]
    ],
    "height": 2.8,
@@ -468,6 +495,17 @@
    ],
    "height": 2.8,
    "why": "At the spiral foot door (landing dressing)."
+  },
+  {
+   "asset": "noren_glow",
+   "at": [
+    [
+     81.2,
+     61.2,
+     -98.7
+    ]
+   ],
+   "why": "Small warm spot on the brass gauge dial so it glints from the spiral door."
   }
  ],
  "dressing": [
@@ -489,20 +527,6 @@
    ],
    "face": "hero",
    "why": "Three benches on the north-east side, clear of both door routes, for people waiting for the lift."
-  },
-  {
-   "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.0,
-    0.6
-   ],
-   "density": 0.03,
-   "avoid": [
-    "nav",
-    "portals"
-   ],
-   "why": "Basalt only at the wall base."
   }
  ],
  "mood": {
@@ -515,6 +539,16 @@
    "check": "grid_centre",
    "where": "lift_core (hero) and radial_floor at (90, 70)",
    "reason": "Main lift fixed at E3 centre by the spec; the radial floor is centred on it."
+  },
+  {
+   "check": "empty_areas",
+   "where": "(89, 75) and (89, 65)",
+   "reason": "Both patches are inside the lift drum (r 8): the spiral stair's last turn and the lift bridge, which are walk nodes but not lobby floor; the room ring outside the drum is covered."
+  },
+  {
+   "check": "hero_visible",
+   "where": "entry camera",
+   "reason": "The hero is the lift drum, which the graybox builds as structure (lift_core is a structural asset), so there is no hero proxy to sample. The entry camera stands on the lift bridge, at the drum."
   }
  ]
 }

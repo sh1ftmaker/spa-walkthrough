@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WebGPU geyser fluid</title>
+<script type="importmap">{"imports":{"three":"../../../../web/node_modules/three/build/three.webgpu.js","three/webgpu":"../../../../web/node_modules/three/build/three.webgpu.js","three/tsl":"../../../../web/node_modules/three/build/three.tsl.js","three/addons/":"../../../../web/node_modules/three/examples/jsm/"}}</script>
+<style>
+html,body{margin:0;height:100%;background:#05080a;overflow:hidden;font:12px/1.35 ui-monospace,Menlo,monospace;color:#d8eeee}
+canvas{display:block;width:100vw;height:100vh;touch-action:none}
+#hud{position:fixed;left:8px;top:8px;background:rgba(4,10,12,.62);padding:7px 9px;border-radius:8px;max-width:min(92vw,380px)}
+#hud b{color:#7fe6dc} #hud button{font:inherit;background:#123236;color:#d8eeee;border:1px solid #2f6a6c;border-radius:5px;padding:4px 8px;margin-top:5px}
+body.clean #hud{display:none}
+</style>
+</head>
+<body>
+<div id="hud"><b>WebGPU High tier: MLS-MPM geyser pool</b><div id="stats">…</div><div id="note"></div><button id="bN">particles: 32k</button></div>
+<script type="module">
+// WebGPU-only experiment for the High tier: a real particle fluid (MLS-MPM, 64^3 grid) fills a 6 m basin; on a timer a
+// jet force in the vent throws a column of water that falls back and splashes. Simulation adapted from the three.js
+// r186 example webgpu_compute_particles_fluid (MIT), which follows matsuoka-601/WebGPU-Ocean. Rendering here is lit
+// instanced droplets coloured by speed (white = aerated/fast, teal = calm, glowing from the vent light); a screen-space
+// fluid surface pass (Green 2010) is the next step and is described in ../README.md.
+import * as THREE from 'three/webgpu';
+import { Fn, If, Return, instancedArray, instanceIndex, uniform, attribute, float, clamp, struct, atomicStore, int, ivec3, array, vec3, atomicAdd, Loop, atomicLoad, max, pow, mat3, vec4, step, smoothstep, mix, length, positionWorld, cameraPosition, normalWorld, dot, normalize } from 'three/tsl';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
+
+const params = new URLSearchParams(location.search);
+if (params.has('clean')) document.body.classList.add('clean');
+const $ = id => document.getElementById(id);
+if (!navigator.gpu) { $('note').textContent = 'WebGPU is not available in this browser: this tier falls back to the WebGL2 hot-pool page.'; throw new Error('no WebGPU'); }
+
+const maxParticles = 8192 * 8;
+let count = parseInt(params.get('n') ?? String(8192 * 8), 10);
+const G = 64, WG = 64, FIX = 1e7, SIZE = 6.0;      // grid cells per side, workgroup, fixed point, basin size in metres
+const gridSize = new THREE.Vector3(G, G, G);
+
+const renderer = new THREE.WebGPURenderer({ antialias: true, requiredLimits: { maxStorageBuffersInVertexStage: 1 } });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.AgXToneMapping; renderer.toneMappingExposure = 1.0;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x040708);
+scene.fog = new THREE.FogExp2(0x0a1416, 0.035);
+const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.05, 200);
+camera.position.set(-5.5, 2.6, 6.5);
+const controls = new OrbitControls(camera, renderer.domElement); controls.target.set(0, 1.6, 0); controls.update();
+
+// lights: teal from the vent and the pool floor, warm lanterns around the rim
+scene.add(new THREE.HemisphereLight(0x204446, 0x061012, 0.6));
+const vent = new THREE.PointLight(0x40f0dc, 60, 12, 1.6); vent.position.set(0, 0.15, 0); scene.add(vent);
+for (const [x, z] of [[-3.6, 3.6], [3.6, 3.6], [3.6, -3.6], [-3.6, -3.6]]) { const l = new THREE.PointLight(0xff9a50, 12, 9, 1.8); l.position.set(x, 0.9, z); scene.add(l); const m = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.3, 0.2), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.4, 1.0, 0.32) })); m.position.copy(l.position); scene.add(m); }
+// basin: dark basalt floor and rim (the fluid lives in [-3,3]^2 x [0,6] metres)
+const stone = new THREE.MeshStandardMaterial({ color: 0x1c1d1f, roughness: 0.75 });
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40).rotateX(-Math.PI / 2), stone); floor.position.y = -0.02; scene.add(floor);
+for (const [w, d, x, z] of [[6.6, 0.3, 0, 3.15], [6.6, 0.3, 0, -3.15], [0.3, 6.6, 3.15, 0], [0.3, 6.6, -3.15, 0]]) { const b = new THREE.Mesh(new THREE.BoxGeometry(w, 0.9, d), stone); b.position.set(x, 0.45, z); scene.add(b); }
+const glowFloor = new THREE.Mesh(new THREE.CircleGeometry(2.6, 48).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.02, 0.18, 0.17) })); glowFloor.position.y = 0.0; scene.add(glowFloor);
+
+// ------------------------------------------------------------------ MLS-MPM buffers and kernels
+const particleStruct = struct({ position: { type: 'vec3' }, velocity: { type: 'vec3' }, C: { type: 'mat3' } });
+const STRIDE = 20; const init = new Float32Array(maxParticles * STRIDE);
+for (let i = 0; i < maxParticles; i++) { init[i * STRIDE] = Math.random() * 0.8 + 0.1; init[i * STRIDE + 1] = Math.random() * 0.2 + 0.03; init[i * STRIDE + 2] = Math.random() * 0.8 + 0.1; }
+const particles = instancedArray(init, particleStruct);
+const cellCount = G * G * G;
+const cells = instancedArray(cellCount, struct({ x: { type: 'int', atomic: true }, y: { type: 'int', atomic: true }, z: { type: 'int', atomic: true }, mass: { type: 'int', atomic: true } }));
+const cellsF = instancedArray(cellCount, 'vec4');
+const uGrid = uniform(gridSize), uCount = uniform(count, 'uint'), uStiff = uniform(50), uRest = uniform(1.5), uVisc = uniform(0.1), uDt = uniform(1 / 60);
+const uGrav = uniform(new THREE.Vector3(0, -(9.81 * 9.81), 0));
+const uJet = uniform(0);                         // eruption strength 0..1
+const enc = f => int(f.mul(FIX)), dec = i => float(i).div(FIX);
+const weightsOf = gp => { const d = gp.fract().sub(0.5).toConst(); return array([float(0.5).mul(float(0.5).sub(d)).mul(float(0.5).sub(d)), float(0.75).sub(d.mul(d)), float(0.5).mul(float(0.5).add(d)).mul(float(0.5).add(d))]).toConst(); };
+const ptr = c => c.x.mul(int(G * G)).add(c.y.mul(int(G))).add(c.z);
+const loop3 = fn => Loop({ start: 0, end: 3, type: 'int', name: 'gx', condition: '<' }, ({ gx }) => Loop({ start: 0, end: 3, type: 'int', name: 'gy', condition: '<' }, ({ gy }) => Loop({ start: 0, end: 3, type: 'int', name: 'gz', condition: '<' }, ({ gz }) => fn(gx, gy, gz))));
+
+const clearGrid = Fn(() => { const c = cells.element(instanceIndex); atomicStore(c.get('x'), 0); atomicStore(c.get('y'), 0); atomicStore(c.get('z'), 0); atomicStore(c.get('mass'), 0); })().compute(cellCount);
+const p2g1 = Fn(() => {
+  const p = particles.element(instanceIndex);
+  const pos = p.get('position').toConst(), vel = p.get('velocity').toConst(), C = p.get('C').toConst();
+  const gp = pos.mul(uGrid).toVar(); const ci = ivec3(gp).sub(1).toConst(); const w = weightsOf(gp);
+  loop3((gx, gy, gz) => {
+    const wt = w.element(gx).x.mul(w.element(gy).y).mul(w.element(gz).z);
+    const cx = ci.add(ivec3(gx, gy, gz)).toConst(); const dist = vec3(cx).add(0.5).sub(gp).toConst();
+    const vc = wt.mul(vel.add(C.mul(dist))).toConst(); const cell = cells.element(ptr(cx));
+    atomicAdd(cell.get('x'), enc(vc.x)); atomicAdd(cell.get('y'), enc(vc.y)); atomicAdd(cell.get('z'), enc(vc.z)); atomicAdd(cell.get('mass'), enc(wt));
+  });
+})().compute(maxParticles, [WG, 1, 1]);
+const p2g2 = Fn(() => {
+  const p = particles.element(instanceIndex);
+  const gp = p.get('position').mul(uGrid).toVar(); const ci = ivec3(gp).sub(1).toConst(); const w = weightsOf(gp);
+  const density = float(0).toVar();
+  loop3((gx, gy, gz) => { const wt = w.element(gx).x.mul(w.element(gy).y).mul(w.element(gz).z); const cx = ci.add(ivec3(gx, gy, gz)).toConst(); density.addAssign(dec(atomicLoad(cells.element(ptr(cx)).get('mass'))).mul(wt)); });
+  const volume = float(1).div(density);
+  const pressure = max(0.0, pow(density.div(uRest), 5.0).sub(1).mul(uStiff)).toConst();
+  const stress = mat3(pressure.negate(), 0, 0, 0, pressure.negate(), 0, 0, 0, pressure.negate()).toVar();
+  const C = p.get('C').toConst(); stress.addAssign(C.add(C.transpose()).mul(uVisc));
+  const term = volume.mul(-4).mul(stress).mul(uDt);
+  loop3((gx, gy, gz) => {
+    const wt = w.element(gx).x.mul(w.element(gy).y).mul(w.element(gz).z); const cx = ci.add(ivec3(gx, gy, gz)).toConst();
+    const m = term.mul(wt).mul(vec3(cx).add(0.5).sub(gp)).toConst(); const cell = cells.element(ptr(cx));
+    atomicAdd(cell.get('x'), enc(m.x)); atomicAdd(cell.get('y'), enc(m.y)); atomicAdd(cell.get('z'), enc(m.z));
+  });
+})().compute(maxParticles, [WG, 1, 1]);
+const updateGrid = Fn(() => {
+  const cell = cells.element(instanceIndex); const mass = dec(atomicLoad(cell.get('mass'))).toConst();
+  If(mass.lessThanEqual(0), () => { Return(); });
+  const v = vec3(dec(atomicLoad(cell.get('x'))), dec(atomicLoad(cell.get('y'))), dec(atomicLoad(cell.get('z')))).div(mass).toVar();
+  const x = int(instanceIndex).div(int(G * G)), y = int(instanceIndex).div(int(G)).mod(int(G)), z = int(instanceIndex).mod(int(G));
+  If(x.lessThan(int(1)).or(x.greaterThan(int(G - 2))), () => { v.x.assign(0); });
+  If(y.lessThan(int(1)).or(y.greaterThan(int(G - 2))), () => { v.y.assign(0); });
+  If(z.lessThan(int(1)).or(z.greaterThan(int(G - 2))), () => { v.z.assign(0); });
+  cellsF.element(instanceIndex).assign(vec4(v, mass));
+})().compute(cellCount);
+const g2p = Fn(() => {
+  const p = particles.element(instanceIndex);
+  const pos = p.get('position').toVar(); const gp = pos.mul(uGrid).toVar(); const ci = ivec3(gp).sub(1).toConst(); const w = weightsOf(gp);
+  const vel = vec3(0).toVar(); const B = mat3(0).toVar();
+  loop3((gx, gy, gz) => {
+    const wt = w.element(gx).x.mul(w.element(gy).y).mul(w.element(gz).z); const cx = ci.add(ivec3(gx, gy, gz)).toConst();
+    const dist = vec3(cx).add(0.5).sub(gp).toConst(); const wv = cellsF.element(ptr(cx)).xyz.mul(wt).toConst();
+    B.addAssign(mat3(wv.mul(dist.x), wv.mul(dist.y), wv.mul(dist.z))); vel.addAssign(wv);
+  });
+  p.get('C').assign(B.mul(4));
+  vel.addAssign(uGrav.mul(uDt));
+  // the geyser: an upward jet force inside the vent while it erupts (grid units / s^2)
+  const r = length(pos.xz.sub(0.5));
+  const inVent = smoothstep(0.075, 0.035, r).mul(smoothstep(0.22, 0.05, pos.y));
+  vel.y.addAssign(uJet.mul(inVent).mul(float(9.81 * 9.81 * 7.0)).mul(uDt));
+  vel.divAssign(uGrid);
+  pos.addAssign(vel.mul(uDt));
+  pos.assign(clamp(pos, vec3(1).div(uGrid), vec3(G - 1).div(uGrid)));
+  // keep particles off the walls (soft box)
+  const next = pos.add(vel.mul(uDt).mul(2.0)).toConst();
+  const lo = vec3(3).div(uGrid), hi = vec3(G - 3).div(uGrid);
+  vel.addAssign(lo.sub(next).max(0.0)); vel.addAssign(hi.sub(next).min(0.0));
+  vel.mulAssign(uGrid);
+  p.get('position').assign(pos); p.get('velocity').assign(vel);
+})().compute(maxParticles, [WG, 1, 1]);
+
+// ------------------------------------------------------------------ rendering: lit droplets coloured by speed
+const geo = BufferGeometryUtils.mergeVertices(new THREE.IcosahedronGeometry(0.0098 * SIZE, 1).deleteAttribute('uv'));
+const mat = new THREE.MeshStandardNodeMaterial({ roughness: 0.08, metalness: 0.0 });
+const speedNode = Fn(() => length(particles.element(instanceIndex).get('velocity')).div(float(G)))();
+mat.positionNode = Fn(() => { const p = particles.element(instanceIndex).get('position'); return attribute('position').add(p.sub(vec3(0.5, 0.0, 0.5)).mul(SIZE)); })();
+mat.colorNode = Fn(() => mix(vec3(0.02, 0.32, 0.30), vec3(0.78, 0.92, 0.92), smoothstep(0.6, 3.5, speedNode.mul(SIZE))))();
+mat.emissiveNode = Fn(() => {
+  const y = positionWorld.y;
+  const glow = smoothstep(2.8, 0.0, y).mul(0.25).add(smoothstep(0.6, 3.5, speedNode.mul(SIZE)).mul(0.35));
+  const V = normalize(cameraPosition.sub(positionWorld)); const rim = float(1).sub(dot(normalWorld, V).abs()).pow(3.0);
+  return vec3(0.05, 0.55, 0.5).mul(glow).add(vec3(0.3, 0.6, 0.6).mul(rim).mul(0.25));
+})();
+const mesh = new THREE.InstancedMesh(geo, mat, maxParticles); mesh.count = count; mesh.frustumCulled = false; scene.add(mesh);
+
+const setCount = n => { count = n; mesh.count = n; uCount.value = n; for (const k of [p2g1, p2g2, g2p]) k.count = n; $('bN').textContent = `particles: ${Math.round(n / 1024)}k`; };
+$('bN').onclick = () => setCount(count >= 65536 ? 16384 : count * 2);   // 16k / 32k / 64k
+setCount(count);
+await renderer.init();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.12;   // dim studio env: glassy reflections on the droplets
+await renderer.compileComputeAsync([clearGrid, p2g1, p2g2, updateGrid, g2p]);
+
+// ------------------------------------------------------------------ loop: fixed 60 Hz steps, eruption timer
+let acc = 0; const CYCLE = 12; let t = parseFloat(params.get('t') ?? '0'); let last = performance.now(); const ft = [];
+const ss = (a, b, x) => { const u = Math.max(0, Math.min(1, (x - a) / (b - a))); return u * u * (3 - 2 * u); };
+const erupt = tt => { const c = ((tt % CYCLE) + CYCLE) % CYCLE; return ss(2.0, 2.4, c) * (1 - ss(5.5, 7.0, c)); };
+function step1() { uJet.value = erupt(t); renderer.compute(clearGrid); renderer.compute(p2g1); renderer.compute(p2g2); renderer.compute(updateGrid); renderer.compute(g2p); t += 1 / 60; }
+for (let i = 0; i < 90; i++) step1();     // settle the pool
+window.__ready = true;
+renderer.setAnimationLoop(() => {
+  const now = performance.now(); const dt = Math.min((now - last) / 1000, 0.1); last = now; ft.push(dt * 1000); if (ft.length > 60) ft.shift();
+  if (!params.has('freeze')) { acc += dt; let n = 0; while (acc >= 1 / 60 && n < 3) { step1(); acc -= 1 / 60; n++; } if (n === 3) acc = 0; }   // real-time: fixed 60 Hz steps
+  controls.update(); renderer.render(scene, camera);
+  vent.intensity = 40 + 60 * erupt(t);
+  if (ft.length % 20 === 0) { const avg = ft.reduce((a, b) => a + b, 0) / ft.length; $('stats').textContent = `${(1000 / avg).toFixed(0)} fps  ${avg.toFixed(2)} ms   t=${t.toFixed(1)}s  erupt ${erupt(t).toFixed(2)}`; }
+});
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+</script>
+</body>
+</html>

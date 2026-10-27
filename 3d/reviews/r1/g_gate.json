@@ -1,0 +1,81 @@
+{
+ "space": "g_gate",
+ "round": 1,
+ "reviewer": "ground_a_r1",
+ "frames": {
+  "entry": {
+   "focal": "The small lit porch box with a few floor lanterns. The torii (hero) is two unlit brown posts at the frame edges, with the kasagi above the frame because the camera is only 5 m from the posts.",
+   "is_hero": false,
+   "next_visible": "Yes: the porch, although it is a dim grey box with lantern cubes poking out of its roof corners."
+  },
+  "reveal": {
+   "focal": "The underside of the kasagi against the sky: an abstract brown diagonal. Nothing to read, and no next step.",
+   "is_hero": true,
+   "next_visible": "No."
+  },
+  "concept": {
+   "focal": "The same as entry: the porch at the end of a dark empty court, between torii posts cropped to slivers. 04's massive lit torii, lantern clusters and banners on a lit facade are absent; the facade is a flat black wall and the banners are invisible.",
+   "is_hero": false,
+   "next_visible": "Yes: the porch."
+  },
+  "strip": {
+   "focal": "The porch the whole way. Frames 5-6 are a dark featureless box tunnel, and frame 7 at the hall threshold is a solid brown wall: no reveal of the hall or lava glow.",
+   "is_hero": false,
+   "next_visible": "Porch only. The terrace branch and the Terrace Path foot are never glimpsed."
+  }
+ },
+ "fixes": [
+  {
+   "id": "lights[1] / lights[2] lantern_hanging",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "These are placed along y 57.2 and 52.8, exactly the porch side-wall planes, at z 2.5-2.9 against a 3.2 m porch, so they sit inside the walls and poke out of the roof corners. Re-place them as one cluster hanging in front of the porch mouth (x 33.4-34.4, y 52.6-57.4, heights [2.0,3.0]) so the cluster is the warm patch you see through the torii."
+  },
+  {
+   "id": "g_gate:torii_toro_n",
+   "action": "move",
+   "dx": -2.5,
+   "dy": -0.4,
+   "deg": 0,
+   "detail": "At y 60.2/49.8 the lanterns sit outboard of and behind the posts as seen from the road, so the torii stays black. Put them in front of the posts (west side, about x 16.5) so they light the post faces seen on approach. Do the same for torii_toro_s (dx -2.5, dy +0.4). The torii also needs uplights at the post feet; it is currently the darkest object in the court."
+  },
+  {
+   "id": "dressing[3] boulder_rim",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "11 boulders in two parallel lines 0.6 m apart at x 12.2 and 12.8 read as a wall of identical blocks. Use one side only, spacing [1.0,3.5], scale [0.6,1.6], and gather them in 2-3 groups at the falls side and the parapet corner."
+  },
+  {
+   "id": "cameras.entry / cameras.reveal",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The entry camera at x 13.8 is 5 m from a 9 m by 11 m torii, so it shows posts only. Move it back to the road, about (6,56,1.6), so the full torii frames the porch. The reveal camera looks up into the kasagi. Put it inside the court at about (27,55) looking west back through the torii to the road lanterns and falls (the 'frames the road and falls from the hall' intent), or east at the porch."
+  },
+  {
+   "id": "dressing[0] railing",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Four 1.5 m segments with 4-5 m gaps on the south parapet over a 2-4 m drop. Make it continuous. lights[3] parapet posts should sit on it."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Light the torii (toro in front of the posts plus uplights) and pull the entry camera back onto the road so the whole lit torii frames a porch with a real lantern cluster.",
+ "plausibility": [
+  "The hanging lanterns intersect the porch side walls and roof.",
+  "At the end of the porch (strip-7, x 40) the view is a solid brown wall. Verify that p_gate_hall is actually cut through the arrival hall's west wall (lead/shell).",
+  "The south parapet railing is gapped over a drop.",
+  "The court is about 26 by 28 m of bare dark paving. The pines (court_pine_n, court_pine_s) never appear at eye level, and the banners at z 5.5 on the black facade are invisible."
+ ]
+}

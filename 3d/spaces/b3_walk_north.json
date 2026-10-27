@@ -105,12 +105,13 @@
   "asset": "rock_window",
   "at": [
    71.8,
-   68.0,
-   -64.5
+   68.55,
+   -63.603
   ],
   "facing_deg": 0,
   "dims": {
    "w": 2.4,
+   "d": 0.3,
    "h": 1.3,
    "sill": 0.9
   },
@@ -120,28 +121,231 @@
   {
    "id": "handrails",
    "asset": "railing",
-   "along": "spine",
-   "side": "both",
-   "offset": 1.5,
+   "snap": "given",
+   "at": [
+    [
+     77.25,
+     68.55,
+     -66.698
+    ],
+    [
+     77.25,
+     71.45,
+     -66.698
+    ],
+    [
+     75.75,
+     68.55,
+     -66.094
+    ],
+    [
+     75.75,
+     71.45,
+     -66.094
+    ],
+    [
+     74.25,
+     68.55,
+     -65.49
+    ],
+    [
+     74.25,
+     71.45,
+     -65.49
+    ],
+    [
+     72.75,
+     71.45,
+     -64.886
+    ],
+    [
+     71.25,
+     71.45,
+     -64.282
+    ],
+    [
+     68.86,
+     70.91,
+     -63.677
+    ],
+    [
+     69.79,
+     67.74,
+     -63.073
+    ],
+    [
+     67.74,
+     69.79,
+     -63.073
+    ],
+    [
+     68.73,
+     66.68,
+     -62.469
+    ],
+    [
+     66.68,
+     68.73,
+     -62.469
+    ],
+    [
+     67.67,
+     65.62,
+     -61.865
+    ],
+    [
+     65.62,
+     67.67,
+     -61.865
+    ]
+   ],
+   "facing_deg": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    318.5,
+    315.0,
+    315.0,
+    315.0,
+    315.0,
+    315.0,
+    315.0
+   ],
    "dims": {
     "h": 0.95
    },
-   "why": "Handrails on both flights."
+   "why": "Handrails on both sides, on the treads."
   },
   {
-   "id": "top_sign",
-   "asset": "sign_kanji",
+   "id": "roof_0",
+   "asset": "timber_passage",
    "at": [
-    67.4,
-    68.2,
-    -62.3
+    [
+     77.0,
+     70.0,
+     -67.0
+    ]
    ],
-   "facing_deg": 135,
+   "facing_deg": 270.0,
    "dims": {
-    "h": 2.0
+    "w": 4.4,
+    "d": 2.0,
+    "h": 4.01
    },
-   "text": "棚田 40-33 °C",
-   "why": "Temperature board as you step out onto the shelf."
+   "why": "Roofed timber gallery (3 m over the treads), built from passage frames since the shell has none: the compression before the reveal."
+  },
+  {
+   "id": "roof_1",
+   "asset": "timber_passage",
+   "at": [
+    [
+     75.0,
+     70.0,
+     -66.195
+    ]
+   ],
+   "facing_deg": 270.0,
+   "dims": {
+    "w": 4.4,
+    "d": 2.0,
+    "h": 4.01
+   },
+   "why": "Roofed timber gallery (3 m over the treads), built from passage frames since the shell has none: the compression before the reveal."
+  },
+  {
+   "id": "roof_2",
+   "asset": "timber_passage",
+   "at": [
+    [
+     73.0,
+     70.0,
+     -65.389
+    ]
+   ],
+   "facing_deg": 270.0,
+   "dims": {
+    "w": 4.4,
+    "d": 2.0,
+    "h": 4.01
+   },
+   "why": "Roofed timber gallery (3 m over the treads), built from passage frames since the shell has none: the compression before the reveal."
+  },
+  {
+   "id": "roof_3",
+   "asset": "timber_passage",
+   "at": [
+    [
+     71.0,
+     70.0,
+     -64.584
+    ]
+   ],
+   "facing_deg": 270.0,
+   "dims": {
+    "w": 4.4,
+    "d": 2.0,
+    "h": 4.01
+   },
+   "why": "Roofed timber gallery (3 m over the treads), built from passage frames since the shell has none: the compression before the reveal."
+  },
+  {
+   "id": "roof_4",
+   "asset": "timber_passage",
+   "at": [
+    [
+     69.29,
+     69.29,
+     -63.778
+    ]
+   ],
+   "facing_deg": 225.0,
+   "dims": {
+    "w": 4.4,
+    "d": 2.0,
+    "h": 4.01
+   },
+   "why": "Roofed timber gallery (3 m over the treads), built from passage frames since the shell has none: the compression before the reveal."
+  },
+  {
+   "id": "roof_5",
+   "asset": "timber_passage",
+   "at": [
+    [
+     67.88,
+     67.88,
+     -62.973
+    ]
+   ],
+   "facing_deg": 225.0,
+   "dims": {
+    "w": 4.4,
+    "d": 2.0,
+    "h": 4.01
+   },
+   "why": "Roofed timber gallery (3 m over the treads), built from passage frames since the shell has none: the compression before the reveal."
+  },
+  {
+   "id": "roof_6",
+   "asset": "timber_passage",
+   "at": [
+    [
+     66.69,
+     66.69,
+     -62.167
+    ]
+   ],
+   "facing_deg": 225.0,
+   "dims": {
+    "w": 4.4,
+    "d": 1.36,
+    "h": 3.75
+   },
+   "why": "Roofed timber gallery (3 m over the treads), built from passage frames since the shell has none: the compression before the reveal."
   }
  ],
  "water": [
@@ -233,47 +437,62 @@
  },
  "lights": [
   {
-   "asset": "lantern_niche",
-   "along": "spine",
-   "side": "both",
-   "spacing": [
-    2.5,
-    3.5
-   ],
-   "offset": 1.9,
-   "snap": "wall",
-   "face": "path",
-   "why": "Low light only, dark between, so the window and the shelf beyond read as bright."
-  }
- ],
- "dressing": [
-  {
-   "asset": "rock_cluster",
+   "asset": "lantern_floor",
    "at": [
     [
-     70.4,
-     71.6,
-     -63.94
+     74.4,
+     68.7,
+     -65.55
+    ],
+    [
+     67.95,
+     69.79,
+     -63.134
     ]
    ],
    "scale": [
-    0.4,
-    0.6
+    0.5,
+    0.55
    ],
-   "why": "One small wet rock at the landing corner where the runnel turns."
+   "why": "Small ankle lanterns on the treads, alternating sides: lit and dark in turn."
+  },
+  {
+   "asset": "falls_uplight",
+   "at": [
+    [
+     71.8,
+     67.0,
+     -63.503
+    ]
+   ],
+   "outside_ok": true,
+   "why": "Cold teal light behind the window: the brightest thing in the climb."
   }
  ],
+ "dressing": [],
  "mood": {
   "key": "dim climb toward a teal window",
   "palette": "amber ankle light, dark timber roof, teal from outside",
   "mist": "steam drifts in from the top end"
  },
- "waivers": [
-  {
-   "check": "no_empty_areas",
-   "where": "whole space",
-   "reason": "4 m passage; lights along both walls cover it."
-  }
+ "waivers": [],
+ "layout_issues": [],
+ "allow_overlap": [
+  [
+   "timber_passage",
+   "timber_passage"
+  ],
+  [
+   "timber_passage",
+   "rock_window"
+  ],
+  [
+   "rock_window",
+   "timber_passage"
+  ]
  ],
- "layout_issues": []
+ "allow_overlap_why": "Passage frames meet at the turn; the window is cut through the passage's south wall.",
+ "lead_requests": [
+  "graybox: the w_walk_runnel (stepped 0.3 m slot along the north wall) is not built."
+ ]
 }

@@ -1,0 +1,21 @@
+{"space": "b3_falls_gallery", "round": 1, "reviewer": "rev_b3_west_r1",
+ "frames": {
+  "entry": {"focal": "The warm lantern band on the back wall receding down the corridor, a good leading line. lantern_stone lights1:0 blows out the right 20% only ~1.5 m from the lens. The curtain shows as a brown panel mid-right.", "is_hero": false, "next_visible": "Yes: the end-of-corridor lantern and the band lead you east."},
+  "reveal": {"focal": "The curtain's back face fills the left 70% as an opaque brown plane, with the pool deck uplight markers and stair 2 beyond on the right.", "is_hero": true, "next_visible": "Stair 2 and a deck lantern at right."},
+  "concept": {"focal": "The corridor with the curtain on the left as a flat brown wall and the lantern band on the right; the exit lantern at the end.", "is_hero": true, "next_visible": "Yes: the exit lantern at the end of the gallery."},
+  "strip": {"focal": "Consistent: the lantern band plus the curtain panel on the right, a clear one-way corridor. The final frame (east turn into stair 2) is black.", "is_hero": true, "next_visible": "Yes until the last frame; the stair-2 throat at the east end is unlit."}
+ },
+ "fixes": [
+  {"id": "b3_falls_gallery:lights1:0", "action": "move", "dx": 0, "dy": 2.7, "deg": 0, "detail": "The lantern_stone at (12.2,77.0) stands in the entry camera's right foreground and on the curtain side of the walkway. Move it to (12.2,79.7) against the back wall: it still marks the stair mouth but does not block or glare."},
+  {"id": "anchored[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "gallery_railing produced no placements: the curtain side (y 77.2) has no rail over a ~4.5 m drop to the pool (-55 to -60). Place it, with gaps only at the pier lines."},
+  {"id": "lights[0]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "16 hanging lanterns at an even ~2.1 m over the whole 31 m. Densify behind the sheet (x 21-37, spacing [1.4,1.8]) and thin the ends (x<20 and x>38, spacing [3.5,5]), so the backlit curtain section is the brightest and the approaches are darker."},
+  {"id": "curtain_arcade", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The south side renders open along the whole length (the shaft is visible over a low parapet at x 11-20). Per the intent only x 21-37 is an arcade with basalt piers about every 4 m; elsewhere it should be rock. The piers matter for layering the view of the curtain (shell/lead)."},
+  {"id": "lights[1]", "action": "rule", "dx": 0, "dy": 0, "deg": 0, "detail": "The east end is black where the spine turns into falls_stair_2 (strip frame 7). Add a lantern at the throat (41.5,76.6,-55.8) so the exit reads; lights1:1 at (44.6,79.7) sits past the turn and does not light the stair head."}
+ ],
+ "scores": {"composition": 3, "density": 3, "light_rhythm": 3},
+ "top_change": "Close the south side to rock except a pier-framed arcade behind the sheet, and concentrate the lantern band there, so the curtain becomes a lit window you walk toward rather than a brown panel beside an open balcony.",
+ "plausibility": [
+  "No railing on the curtain side of a walkway ~4.5 m above the pool.",
+  "Open south side for the whole length conflicts with the 'rock elsewhere' intent and with the falls stair passing outside.",
+  "The curtain is 4 m from the walkway (sheet at y 74.6, rail at 77.2). That is fine for spray, but in the graybox it reads as an opaque wall, so make it translucent/emissive to judge the composition."
+ ]}

@@ -196,6 +196,70 @@
     "w": 4.5
    },
    "why": "Long low bench facing the glass, centred on a bay; benches alternate with empty bays so the floor stays open."
+  },
+  {
+   "id": "mullions",
+   "asset": "beam_pier",
+   "at": [
+    [
+     47.5,
+     8.6,
+     -100.0
+    ],
+    [
+     55.0,
+     8.6,
+     -100.0
+    ],
+    [
+     62.5,
+     8.6,
+     -100.0
+    ],
+    [
+     70.0,
+     8.6,
+     -100.0
+    ],
+    [
+     77.5,
+     8.6,
+     -100.0
+    ],
+    [
+     85.0,
+     8.6,
+     -100.0
+    ],
+    [
+     92.5,
+     8.6,
+     -100.0
+    ],
+    [
+     100.0,
+     8.6,
+     -100.0
+    ],
+    [
+     107.5,
+     8.6,
+     -100.0
+    ],
+    [
+     115.0,
+     8.6,
+     -100.0
+    ]
+   ],
+   "snap": "given",
+   "dims": {
+    "w": 0.35,
+    "d": 0.35,
+    "h": 7.6
+   },
+   "variant": "bronze_mullion",
+   "why": "Dark bronze mullions between the 7.5 m bays, standing just in front of the glowing glass, so the wall reads bay by bay (review r1)."
   }
  ],
  "water": [],
@@ -269,46 +333,162 @@
    "note": "Lava light is the key light; everything else is a dim accent."
   },
   {
-   "asset": "lantern_post",
-   "along": [
+   "asset": "lantern_niche",
+   "at": [
     [
-     42.0,
+     47.5,
      9.9
     ],
     [
-     120.0,
+     62.5,
+     9.9
+    ],
+    [
+     77.5,
+     9.9
+    ],
+    [
+     92.5,
+     9.9
+    ],
+    [
+     107.5,
      9.9
     ]
    ],
-   "spacing": [
-    7,
-    8
-   ],
-   "offset": 0.0,
-   "dim": 0.3,
-   "face": "hero",
-   "why": "Tiny low lanterns on the glass rail posts (36), dim enough to stay well below the lava."
+   "height": 0.0,
+   "face": 180,
+   "dims": {
+    "w": 0.3,
+    "d": 0.25,
+    "h": 0.6
+   },
+   "why": "Small 0.6 m rail-post lamps on every other mullion only, far below the lava."
   },
   {
    "asset": "lantern_floor",
-   "along": [
-    [
-     50.0,
-     33.0
-    ],
-    [
-     120.0,
-     28.3
-    ]
-   ],
-   "spacing": [
-    14,
-    16
-   ],
-   "offset": 0.0,
    "dim": 0.5,
    "face": "hero",
-   "why": "Pools behind alternate benches at the north wall; dark gaps between."
+   "why": "Low pools along the north wall; dark gaps between.",
+   "at": [
+    [
+     66,
+     31.74
+    ],
+    [
+     78,
+     30.77
+    ],
+    [
+     92,
+     29.63
+    ],
+    [
+     104,
+     28.66
+    ],
+    [
+     118,
+     27.52
+    ]
+   ]
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     44.5,
+     22.6
+    ],
+    [
+     53.5,
+     15.5
+    ],
+    [
+     63.5,
+     22.6
+    ],
+    [
+     75.0,
+     22.6
+    ],
+    [
+     90.0,
+     22.6
+    ],
+    [
+     105.0,
+     22.6
+    ],
+    [
+     119.0,
+     22.6
+    ]
+   ],
+   "dim": 0.4,
+   "face": 180,
+   "why": "Very dim floor lanterns between the benches, so each bench sits between two small pools facing the glass."
+  },
+  {
+   "asset": "oculus_glow",
+   "at": [
+    [
+     43.75,
+     8.9,
+     -97.5
+    ],
+    [
+     51.25,
+     8.9,
+     -95.5
+    ],
+    [
+     58.75,
+     8.9,
+     -98.8
+    ],
+    [
+     66.25,
+     8.9,
+     -96.5
+    ],
+    [
+     73.75,
+     8.9,
+     -94.5
+    ],
+    [
+     81.25,
+     8.9,
+     -98.0
+    ],
+    [
+     88.75,
+     8.9,
+     -96.0
+    ],
+    [
+     96.25,
+     8.9,
+     -98.5
+    ],
+    [
+     103.75,
+     8.9,
+     -95.0
+    ],
+    [
+     111.25,
+     8.9,
+     -97.0
+    ],
+    [
+     118.75,
+     8.9,
+     -97.8
+    ]
+   ],
+   "why": "One lava-orange emitter behind each 7.5 m bay at a different height, so the wall lights the hall bay by bay with varied intensity (review top change)."
   }
  ],
  "dressing": [
@@ -333,18 +513,33 @@
   },
   {
    "asset": "rock_cluster",
-   "scatter": "edge_band",
-   "band": [
-    0.0,
-    1.5
+   "scatter": "area",
+   "polygon": [
+    [
+     48.5,
+     33.0
+    ],
+    [
+     121.5,
+     27.2
+    ],
+    [
+     121.5,
+     29.8
+    ],
+    [
+     48.2,
+     35.6
+    ]
    ],
-   "density": 0.04,
+   "density": 0.08,
    "avoid": [
     "nav",
-    "portals",
-    "hero"
+    "portals"
    ],
-   "keep_north_of_y": 24.0,
+   "allow_overlap": [
+    "lantern_floor"
+   ],
    "why": "Rock only at the north wall and ends; nothing between the benches and the glass."
   },
   {
@@ -363,6 +558,27 @@
    ],
    "hidden": true,
    "why": "Low-frequency 'heartbeat' (lookbook): audio emitters hidden in the north wall at both ends."
+  },
+  {
+   "asset": "rock_cluster",
+   "at": [
+    [
+     113.5,
+     28.0,
+     -100.0
+    ],
+    [
+     117.0,
+     27.4,
+     -100.0
+    ],
+    [
+     120.3,
+     26.2,
+     -100.0
+    ]
+   ],
+   "why": "A few rocks at the far east end with the floor pool at (118, 22.6)."
   }
  ],
  "mood": {
@@ -375,6 +591,17 @@
    "check": "spacing",
    "where": "bench_1..bench_5",
    "reason": "Benches sit on a 15 m rhythm (every other glass bay) on purpose; the bays are regular."
+  },
+  {
+   "check": "empty_areas",
+   "where": "walk band y 14-18 and (57, 30)",
+   "reason": "The strip between the glass rail and the benches is the hush-zone walk, deliberately clear and lit by the glass bays; (57, 30) is the tunnel mouth approach."
   }
+ ],
+ "allow_overlap": [
+  [
+   "magma_glass_wall",
+   "railing"
+  ]
  ]
 }

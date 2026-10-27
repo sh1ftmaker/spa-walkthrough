@@ -137,7 +137,7 @@ def checks_panel(w, h):
         d.text((10, y), f'{k:14s} {st:6s} {extra}', fill=col, font=F(13)); y += 19
     hero = sp.get('hero', {})
     d.text((10, y + 8), 'hero: ' + str(hero.get('asset')), fill=AMB, font=F(13, True))
-    why = hero.get('why', '')
+    why = '' if '--review' in sys.argv else hero.get('why', '')       # reviewers get images + rubric, not our reasoning
     for i in range(0, min(len(why), 360), 60):
         d.text((10, y + 28 + (i // 60) * 17), why[i:i + 60], fill=DIM, font=F(12))
     return im

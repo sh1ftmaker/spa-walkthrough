@@ -206,8 +206,8 @@
    "id": "basin_tree",
    "asset": "sakura_small",
    "at": [
-    76.5,
-    50,
+    76.3,
+    45.3,
     0
    ],
    "facing_deg": 0,
@@ -235,7 +235,7 @@
   {
    "id": "w_hall_stream",
    "kind": "flow",
-   "z": -0.35,
+   "z": -0.15,
    "rim_z": 0.0,
    "path": [
     [
@@ -321,13 +321,13 @@
   },
   "reveal": {
    "pos": [
-    58,
-    59.5,
+    57.0,
+    58.6,
     1.6
    ],
    "target": [
-    61,
-    79,
+    61.0,
+    79.0,
     5.5
    ],
    "fov_v": 62
@@ -372,32 +372,6 @@
    "snap": "ceiling",
    "cluster": true,
    "why": "Warm cluster over the slipper wall, as in 04."
-  },
-  {
-   "asset": "lantern_floor",
-   "along": "spine",
-   "side": "both",
-   "spacing": [
-    5,
-    7
-   ],
-   "offset": 1.9,
-   "face": "path",
-   "avoid": [
-    "portals",
-    "water"
-   ]
-  },
-  {
-   "asset": "lantern_stone",
-   "along": "water:w_hall_stream",
-   "side": "right",
-   "spacing": [
-    7,
-    10
-   ],
-   "offset": 1.6,
-   "face": "water"
   },
   {
    "asset": "lantern_floor",
@@ -454,6 +428,132 @@
     2.8
    ],
    "why": "Low cluster marking the changing-hall doorway (3.2 m high) on the east wall."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     81.0,
+     46.5,
+     0
+    ],
+    [
+     86.5,
+     49.5,
+     0
+    ]
+   ],
+   "face": 0,
+   "why": "Pool of light in the south-east bay between the stream and the changing-hall door."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     45.0,
+     56.0
+    ],
+    [
+     50.0,
+     57.0
+    ],
+    [
+     60.0,
+     60.0
+    ],
+    [
+     62.5,
+     60.8
+    ]
+   ],
+   "side": "right",
+   "spacing": [
+    5.0,
+    9.0
+   ],
+   "offset": 1.9,
+   "face": "path",
+   "why": "West half: on the south side of the walk, away from the stream."
+  },
+  {
+   "asset": "lantern_floor",
+   "along": [
+    [
+     70.0,
+     62.0
+    ],
+    [
+     72.0,
+     62.0
+    ],
+    [
+     82.0,
+     58.0
+    ],
+    [
+     88.0,
+     58.0
+    ]
+   ],
+   "side": "left",
+   "spacing": [
+    5.0,
+    9.0
+   ],
+   "offset": 1.9,
+   "face": "path",
+   "why": "East half: on the north side, away from the stream, leading to the lift."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     61.6,
+     64.4,
+     0
+    ],
+    [
+     70.4,
+     64.8,
+     0
+    ],
+    [
+     70.4,
+     59.2,
+     0
+    ]
+   ],
+   "face": "hero",
+   "why": "Toro on the bridge abutments (not in the reveal frame)."
+  },
+  {
+   "asset": "lantern_floor",
+   "at": [
+    [
+     54.0,
+     48.6,
+     0
+    ],
+    [
+     62.0,
+     48.6,
+     0
+    ]
+   ],
+   "face": 0,
+   "why": "A pair at the reception counter ends."
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     73.0,
+     75.6,
+     0
+    ]
+   ],
+   "face": 0,
+   "why": "Low toro at the east end of the window bay."
   }
  ],
  "dressing": [
@@ -462,32 +562,67 @@
    "along": "water:w_hall_stream",
    "side": "both",
    "spacing": [
-    1.6,
-    3.0
+    0.8,
+    4.5
    ],
    "offset": 1.4,
    "embed": 0.2,
    "scale": [
-    0.6,
-    1.3
+    0.5,
+    1.4
    ],
    "avoid": [
     "anchored",
     "nav",
-    "portals"
+    "portals",
+    {
+     "near": [
+      70.6,
+      47.2
+     ],
+     "r": 1.6
+    },
+    {
+     "near": [
+      70.0,
+      50.0
+     ],
+     "r": 0.8
+    },
+    {
+     "near": [
+      70.4,
+      59.2
+     ],
+     "r": 1.4
+    },
+    {
+     "near": [
+      70.4,
+      64.8
+     ],
+     "r": 1.4
+    },
+    {
+     "near": [
+      61.6,
+      64.4
+     ],
+     "r": 1.4
+    }
    ]
   },
   {
    "asset": "pine_bonsai",
    "at": [
     [
-     50,
-     74,
+     42.6,
+     74.0,
      0
     ],
     [
-     79,
-     74,
+     80.5,
+     76.0,
      0
     ]
    ],
@@ -495,22 +630,41 @@
   },
   {
    "asset": "banner",
-   "along": [
+   "height": 9,
+   "at": [
     [
-     44,
-     79
+     40.4,
+     49.5,
+     1.4
     ],
     [
-     78,
-     79
+     40.4,
+     60.5,
+     1.4
+    ],
+    [
+     70.0,
+     42.4,
+     3.0
+    ],
+    [
+     82.0,
+     42.4,
+     3.0
+    ],
+    [
+     94.0,
+     42.4,
+     3.0
     ]
    ],
-   "spacing": [
-    8,
-    8
-   ],
-   "height": 9,
-   "snap": "ceiling"
+   "dims": {
+    "w": 1.0,
+    "d": 0.05,
+    "h": 4.0
+   },
+   "face": 90,
+   "why": "Banners either side of the west door (04) and on the south timber bays; none across the lava window."
   },
   {
    "asset": "rock_cluster",
@@ -523,23 +677,9 @@
    "avoid": [
     "nav",
     "portals",
-    "hero"
+    "hero",
+    "anchored"
    ]
-  },
-  {
-   "asset": "railing",
-   "ring": [
-    90.0,
-    70.0
-   ],
-   "radius": 8.3,
-   "arc_deg": [
-    200,
-    340
-   ],
-   "skip": "p_g_arrival_spiral_stair",
-   "height": 1.0,
-   "why": "Bronze rail round the lift core's south face either side of the doorway (landing of spiral_stair and main_lift)."
   },
   {
    "asset": "sign_kanji",
@@ -552,6 +692,38 @@
    ],
    "face": 180,
    "why": "Level board beside the lift door: 地上 Ground · B1-B4."
+  },
+  {
+   "asset": "bench_stone",
+   "at": [
+    [
+     84.5,
+     44.2,
+     0
+    ]
+   ],
+   "facing_deg": 0,
+   "dims": {
+    "w": 2.4,
+    "d": 0.6,
+    "h": 0.45
+   },
+   "why": "Seat against the south facade east of the stream; fills the empty bay at (83, 49)."
+  },
+  {
+   "asset": "rock_cluster",
+   "at": [
+    [
+     78.0,
+     69.0,
+     0
+    ]
+   ],
+   "scale": [
+    0.8,
+    1.1
+   ],
+   "why": "Rock group between the window bay and the lift."
   }
  ],
  "mood": {
@@ -640,5 +812,15 @@
    ],
    "note": "Passes east of the reception counter (x 54.5-61.5) and 7 m west of the stream."
   }
+ ],
+ "allow_overlap": [
+  [
+   "bridge_arched",
+   "boulder_rim"
+  ],
+  [
+   "boulder_rim",
+   "bridge_arched"
+  ]
  ]
 }

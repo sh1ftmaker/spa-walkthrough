@@ -1,0 +1,80 @@
+{
+ "space": "b3_slide_foot",
+ "round": 1,
+ "reviewer": "rev_b3_east_b4_r1",
+ "frames": {
+  "entry": {
+   "focal": "A solid 10x10x48 m dark-orange box (the slide_tube proxy) 5 m away, covering ~65% of the frame. A blown-out cylinder edge sits at the far left and the Lava Stair treads cut across the bottom left.",
+   "is_hero": true,
+   "next_visible": "Barely. A lantern slab sits bottom right, but the pool, the lava wall and the shore exit are all hidden."
+  },
+  "reveal": {
+   "focal": "The same box face, plus the overexposed shaft cylinder at the left.",
+   "is_hero": true,
+   "next_visible": "No. You cannot see the splash pool, the lava wall or the cold light of the shore."
+  },
+  "concept": {
+   "focal": "Box face and stair underside. Two white lantern slabs at the bottom.",
+   "is_hero": true,
+   "next_visible": "No. Nothing like concept 13's pool, tube and lava composition is visible."
+  },
+  "strip": {
+   "focal": "Facing south toward the shore: the small torii and the cold blue backdrop at the end of the passage. A white lantern_stone slab sits in the path in the lower left of every frame.",
+   "is_hero": false,
+   "next_visible": "Yes, the torii reads clearly. This is the best thing in the space."
+  }
+ },
+ "fixes": [
+  {
+   "id": "b3_slide_foot:hero",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Replace the solid 10x10x48 box with an open helix proxy: a tube r ~0.7 on helix radius 3.6, 1.2 visible turns, ending at the outlet (151,47) above the pool, with see-through gaps. The box currently hides the lava_wall and the splash_pool from every camera."
+  },
+  {
+   "id": "b3_slide_foot:lights3:2",
+   "action": "move",
+   "dx": 1.5,
+   "dy": 1.8,
+   "deg": 0,
+   "detail": "lantern_stone at (152.4,37.2) stands 1.6 m from the shore portal on the spine and fills strip frames 1-7. Move it off the line."
+  },
+  {
+   "id": "b3_slide_foot:dressing1:1",
+   "action": "move",
+   "dx": 0,
+   "dy": -2.5,
+   "deg": 0,
+   "detail": "rock_cluster at (155.5,35.3) sits across the b3_shore spine (153.5,35.2)->(156.5,34.0) as a 2.4 m block in the shore entry view. Push it to the south wall foot, or remove it."
+  },
+  {
+   "id": "slide_shaft shell (lead/layout)",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The r 9 shaft surface around (150,50) renders as a huge overexposed emissive cylinder that is the brightest object in b3_lazy, b3_geyser and here. Make it dark rock with openings (or glass) lit only by lava_wall spill."
+  },
+  {
+   "id": "anchored:lava_wall",
+   "action": "move",
+   "dx": -3.0,
+   "dy": 1.2,
+   "deg": 0,
+   "detail": "Once the hero is see-through, check that the lava_window shows between the helix turns from the concept camera. If not, slide it west along the NE wall so it sits behind the tube from (143.6,38.8)."
+  }
+ ],
+ "scores": {
+  "composition": 1,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Replace the opaque 10x10x48 hero block with an open glass helix so the pool, tube and lava-wall stack of concept 13 can be seen.",
+ "plausibility": [
+  "The hero proxy is a solid 10x10 m column that overlaps the splash pool (centre 154,45) and the Lava Stair's walking radius (r_walk 7.2), so the stair would run through it.",
+  "The slide-shaft surface is over-emissive.",
+  "The rock_cluster and lantern_stone sit on the walking line to b3_shore."
+ ]
+}

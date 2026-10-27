@@ -1,0 +1,80 @@
+{
+ "space": "b1_cor_north",
+ "round": 1,
+ "reviewer": "b1_west_r1",
+ "frames": {
+  "entry": {
+   "focal": "A long one-point perspective of niche lanterns doubled in the water, leading to the elbow. The hero thread is not distinguishable at the elbow.",
+   "is_hero": false,
+   "next_visible": "The lantern line leads on to the elbow."
+  },
+  "reveal": {
+   "focal": "Near niche lanterns (bottom-left and right). The hero wall_trickle is a dim brown vertical slab at the elbow with the basin as a dark box: unlit, darker than the niches.",
+   "is_hero": false,
+   "next_visible": "The niches running west beyond the elbow."
+  },
+  "concept": {
+   "focal": "Vanishing-point lantern lines (right side evenly spaced). No teal slot glow on the left, no warm steam light at the far end, which is black.",
+   "is_hero": false,
+   "next_visible": "No: the far end (grotto) is dark at 50 m."
+  },
+  "strip": {
+   "focal": "Good lantern rhythm on the diagonal (0–2). It thins to near-black on the long straight (4–6). The grotto hall appears only at frame 7.",
+   "is_hero": false,
+   "next_visible": "Only at the very end."
+  }
+ },
+ "fixes": [
+  {
+   "id": "hero:wall_trickle",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Give the thread its own narrow warm downlight plus an emissive water thread from a ceiling slot (as light_notes intends), so it is the brightest thing for the whole 30 m approach. Today it is unlit."
+  },
+  {
+   "id": "mirror_slot",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The knee-high slot window is not visible at all: no teal leaks onto the water halfway. Make the glazing emissive teal (or a teal area light on the water at 112,114), so the long straight gets its second beat."
+  },
+  {
+   "id": "lights[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Groups are not honoured on the north side: 5 niches at an even ~4.1 m (135.5…117.5), versus 3 on the south side. Regenerate with groups {n:2, inner:1.4, gap:[6,8]} on both sides."
+  },
+  {
+   "id": "grotto_glow_noren",
+   "action": "move",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Placed at z -10.5 (9.5 m above the floor, inside the rock) while the intent says z -17.6. Lower it by 7.1 m, and give it a warm backlight so the far west end of the straight glows ('steam glow from the grotto at the far end')."
+  },
+  {
+   "id": "dressing[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "53 boulder_rim in two continuous kerb rows at 2.2–4 m spacing, tops within ±10 cm of the water (flat tiles). Cluster them in 4–6 groups at the elbow, the slot and the bonsai, with tops 0.1–0.25 m proud, and leave long plain stretches."
+  }
+ ],
+ "scores": {
+  "composition": 3,
+  "density": 2,
+  "light_rhythm": 3
+ },
+ "top_change": "Light the three beats this corridor is built on (a bright thread at the elbow, the teal slot halfway, a warm glow at the grotto end), so the 50 m straight has goals instead of a fading line of identical niches.",
+ "plausibility": [
+  "grotto_glow_noren at z -10.5 floats ~6 m above the 3 m corridor ceiling (intent z -17.6).",
+  "Rim boulders flush with or under the water line.",
+  "The mirror_slot needs cutting through both the corridor and the dome shells (intent note). From the corridor it currently shows nothing, so check that the cut exists."
+ ]
+}

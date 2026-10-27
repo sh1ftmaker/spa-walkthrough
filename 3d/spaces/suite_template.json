@@ -174,7 +174,7 @@
  ],
  "spine_local": [
   [
-   0,
+   0.6,
    15.15,
    0
   ],
@@ -190,22 +190,22 @@
   ],
   [
    1.5,
-   10.0,
+   10.6,
    0
   ],
   [
-   5.0,
-   8.0,
+   4.5,
+   10.8,
    0
   ],
   [
    9.0,
-   10.5,
+   10.9,
    0
   ],
   [
-   12.5,
-   11.0,
+   11.6,
+   10.7,
    0
   ]
  ],
@@ -214,16 +214,16 @@
   "at": [
    14.0,
    9.8,
-   0
+   -0.35
   ],
   "facing_deg": 0,
   "dims": {
    "w": 3.4,
    "d": 3.2,
-   "rim_h": 0.0,
-   "depth": 0.65
+   "h": 0.6
   },
-  "why": "A natural basalt tub at the cliff edge under the rock overhang, a bamboo spout pouring in the trickle from the suite above (21, 32 plan): the reason for the suite, seen from the futon through the open shoji."
+  "why": "A natural basalt tub sunk flush in the floor at the cliff edge under the rock overhang, glowing teal, the trickle from the suite above pouring in from a bamboo spout (21, 32 plan): framed through the open shoji from the futon.",
+  "note": "Stone kerb 0.25 m proud of the floor (water 0.2 m above floor would read as flush from eye height); fully flush hides the glow."
  },
  "anchored": [
   {
@@ -232,13 +232,14 @@
    "part": "futon",
    "at": [
     6.5,
-    5.5,
+    8.0,
     0
    ],
    "facing_deg": 0,
    "dims": {
     "w": 2.2,
-    "l": 2.4
+    "d": 2.4,
+    "h": 0.3
    },
    "why": "Low futon facing the shoji and the view."
   },
@@ -247,14 +248,15 @@
    "asset": "suite_module",
    "part": "tea_table",
    "at": [
-    9.0,
-    8.5,
+    9.4,
+    8.4,
     0
    ],
    "facing_deg": 0,
    "dims": {
     "w": 1.2,
-    "d": 0.8
+    "d": 0.8,
+    "h": 0.4
    },
    "why": "Between bed and veranda (32 plan)."
   },
@@ -264,35 +266,16 @@
    "part": "tokonoma",
    "at": [
     7.5,
-    1.4,
+    3.2,
     0
    ],
    "facing_deg": 0,
    "dims": {
-    "w": 2.4
+    "w": 2.4,
+    "d": 0.8,
+    "h": 2.4
    },
    "why": "Scroll and ikebana on the back wall (21)."
-  },
-  {
-   "id": "shoji_front",
-   "asset": "suite_module",
-   "part": "shoji",
-   "at": [
-    7.5,
-    11.8,
-    0
-   ],
-   "facing_deg": 0,
-   "dims": {
-    "w": 9.0,
-    "h": 2.4,
-    "panels": 6,
-    "open": [
-     2,
-     5
-    ]
-   },
-   "why": "Sliding washi screens; two bays open in the cameras."
   },
   {
    "id": "kakehi",
@@ -300,25 +283,32 @@
    "at": [
     15.7,
     10.6,
-    1.2
+    1.0
    ],
    "facing_deg": 270,
    "dims": {
-    "len": 1.4
+    "w": 0.2,
+    "d": 1.2,
+    "h": 0.2
    },
-   "why": "Bamboo spout from the east gully (x local 16-18, the 2 m gap between suites) into the tub."
+   "why": "Bamboo spout from the east gully (x local 16-18, the 2 m gap between suites) into the tub.",
+   "snap": "given"
   },
   {
    "id": "tub_bucket",
    "asset": "steam_bench",
    "variant": "bucket_only",
    "at": [
-    12.5,
-    8.0,
+    12.0,
+    7.7,
     0
    ],
    "facing_deg": 0,
-   "dims": {},
+   "dims": {
+    "w": 0.5,
+    "d": 0.5,
+    "h": 0.5
+   },
    "why": "Hinoki bucket and towel at the tub (21)."
   },
   {
@@ -331,10 +321,79 @@
    ],
    "facing_deg": 0,
    "dims": {
-    "len": 2.0,
-    "material": "hinoki"
+    "w": 2.0,
+    "d": 0.5,
+    "h": 0.45
    },
    "why": "Veranda seating (32 plan)."
+  },
+  {
+   "id": "shoji_w",
+   "asset": "shoji_wall_bay",
+   "at": [
+    4.5,
+    11.8,
+    0.0
+   ],
+   "facing_deg": 180,
+   "snap": "given",
+   "dims": {
+    "w": 3.0,
+    "d": 0.12,
+    "h": 2.4
+   },
+   "why": "Closed washi bay west of the opening, lit from inside."
+  },
+  {
+   "id": "shoji_e",
+   "asset": "shoji_wall_bay",
+   "at": [
+    11.25,
+    11.8,
+    0.0
+   ],
+   "facing_deg": 180,
+   "snap": "given",
+   "dims": {
+    "w": 1.5,
+    "d": 0.12,
+    "h": 2.4
+   },
+   "why": "Closed bay east of the opening, beside the tub niche."
+  },
+  {
+   "id": "fusuma_s",
+   "asset": "shoji_wall_bay",
+   "at": [
+    7.5,
+    3.8,
+    0.0
+   ],
+   "facing_deg": 0,
+   "snap": "given",
+   "dims": {
+    "w": 9.0,
+    "d": 0.12,
+    "h": 2.4
+   },
+   "why": "Back screen line: the tatami room is 9 x 8 m, the south strip is the quiet tokonoma and storage side."
+  },
+  {
+   "id": "genkan_screen",
+   "asset": "shoji_wall_bay",
+   "at": [
+    3.0,
+    7.5,
+    0.0
+   ],
+   "facing_deg": 90,
+   "snap": "given",
+   "dims": {
+    "w": 3.0,
+    "d": 0.12,
+    "h": 2.4
+   },
+   "why": "Screen between genkan and room (door gap at y 9-12)."
   }
  ],
  "water": [
@@ -407,43 +466,43 @@
   "entry": {
    "pos": [
     1.5,
-    10.5,
+    10.8,
     1.6
    ],
    "target": [
     14.0,
-    9.8,
-    0.6
+    10.0,
+    0.0
    ],
    "fov_v": 60
   },
   "reveal": {
    "pos": [
-    7.5,
-    7.0,
+    10.8,
+    5.0,
     1.6
    ],
    "target": [
-    14.2,
-    10.2,
-    0.5
+    14.4,
+    11.6,
+    0.3
    ],
-   "fov_v": 60
+   "fov_v": 62
   },
   "concept": {
    "image": "lookbook/img/21-private-suite.jpg",
    "pos": [
-    4.5,
-    3.5,
+    5.0,
+    5.4,
     1.6
    ],
    "target": [
-    14.5,
-    11.5,
+    12.5,
+    13.0,
     0.6
    ],
-   "fov_v": 55,
-   "match": "21: from inside the tatami room, futon on the left, open shoji frame, the stone tub under the rock overhang with the spout pouring in, steam, night view beyond."
+   "fov_v": 58,
+   "match": "21: from inside the tatami room, futon on the left, open shoji bays, the glowing tub under the overhang with the spout pouring in, night sea beyond the rail."
   }
  },
  "lights": [
@@ -451,22 +510,22 @@
    "asset": "lantern_floor",
    "at": [
     [
-     3.6,
-     2.0,
+     4.8,
+     8.6,
      0
     ],
     [
-     11.4,
-     2.0,
+     8.2,
+     8.6,
      0
     ],
     [
-     3.6,
-     11.0,
+     9.0,
+     2.8,
      0
     ]
    ],
-   "why": "Andon in the room corners (21)."
+   "why": "Two andon at the futon head, one at the tokonoma: a warm pool by the bed, darker elsewhere."
   },
   {
    "asset": "lantern_niche",
@@ -483,99 +542,92 @@
    "asset": "pool_uplight",
    "at": [
     [
-     14.0,
-     9.8,
-     -0.5
+     13.4,
+     9.4,
+     0.1
+    ],
+    [
+     14.6,
+     10.2,
+     0.1
     ]
    ],
    "why": "Tub glows teal: the brightest thing in the suite."
   },
   {
    "asset": "lantern_post",
-   "along": "balcony:north_edge",
-   "offset": 0.1,
-   "spacing": [
-    5.0,
-    6.0
+   "face": 180,
+   "why": "Posts are the balcony rail's own posts (the 1.7 m walk band leaves no room inboard).",
+   "at": [
+    [
+     4.0,
+     15.85,
+     0
+    ],
+    [
+     8.5,
+     15.85,
+     0
+    ],
+    [
+     13.0,
+     15.85,
+     0
+    ]
    ],
-   "face": "path",
-   "why": "Balcony walk posts on the rail (32 elevation)."
+   "allow_overlap": [
+    "railing"
+   ]
   }
  ],
  "dressing": [
   {
    "asset": "railing",
    "along": "balcony:north_edge",
-   "offset": 0.1,
-   "height": 1.05,
-   "why": "Cliff edge."
-  },
-  {
-   "asset": "railing",
-   "along": "balcony:east_end",
-   "only": "column c",
-   "height": 1.05,
-   "why": "Dead end above the c gully."
+   "offset": 0.0,
+   "why": "Cliff edge.",
+   "side": "left",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   }
   },
   {
    "asset": "railing",
    "along": [
     [
-     0,
+     2.1,
      14.25
     ],
     [
-     16,
+     16.0,
      14.25
     ]
    ],
-   "height": 0.9,
    "material": "hinoki fence + sudare",
-   "skip": "suite_gate",
-   "why": "Privacy between walk and veranda."
+   "why": "Privacy fence between walk and veranda; the gate gap is x local 0-2.1.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   }
   },
   {
    "asset": "pine_bonsai",
    "at": [
     [
-     0.6,
-     13.6,
+     3.2,
+     13.3,
      0
     ]
    ],
-   "scale": [
-    0.5,
-    0.7
-   ],
-   "why": "Potted pine at the gate."
-  },
-  {
-   "asset": "rock_cluster",
-   "scatter": "area",
-   "area": [
-    [
-     12,
-     7.5
-    ],
-    [
-     16,
-     7.5
-    ],
-    [
-     16,
-     12
-    ],
-    [
-     12,
-     12
-    ]
-   ],
-   "density": 0.1,
-   "avoid": [
-    "water",
-    "nav"
-   ],
-   "why": "Wet rock round the tub niche."
+   "dims": {
+    "w": 0.6,
+    "d": 0.6,
+    "h": 1.0
+   },
+   "why": "Potted pine inside the gate, off the walk."
   }
  ],
  "mood": {
@@ -583,5 +635,11 @@
   "palette": "tatami gold, washi cream, warm andon, teal tub, black wet rock",
   "mist": "steam off the tub"
  },
- "waivers": []
+ "waivers": [
+  {
+   "check": "spacing",
+   "where": "balcony rail",
+   "reason": "The continuous safety rail along the balcony edge (y 109.85) passes the 20 m cell centres at (150/170/190, 110); a rail cannot step round a grid point."
+  }
+ ]
 }

@@ -63,37 +63,31 @@
    -20.0
   ],
   [
-   170.0,
-   99.4,
+   178.0,
+   100.0,
    -20.0
   ],
   [
-   170.0,
-   97.0,
+   188.0,
+   100.0,
    -20.0
   ]
  ],
  "spurs": [
   {
-   "id": "to_lip",
+   "id": "to_glacier",
    "points": [
     [
-     168.0,
-     100.1,
+     170.0,
+     100.05,
      -20.0
     ],
     [
-     178.0,
-     100.0,
-     -20.0
-    ],
-    [
-     189.6,
-     100.0,
+     170.0,
+     97.0,
      -20.0
     ]
-   ],
-   "note": "Dead-end viewing spur to the rail at the lip."
+   ]
   }
  ],
  "hero": {
@@ -102,47 +96,109 @@
   "at": [
    191.6,
    100.0,
-   -20.0
+   -20.45
   ],
+  "snap": "given",
   "facing_deg": 90,
   "dims": {
    "w": 3.0,
-   "drop": 22.0
+   "d": 0.6,
+   "h": 0.6
   },
-  "why": "Where B1's water leaves: the pool slides over a polished lip into blackness, lit from below so the sheet glows; the sound carries down the corridor. It is the only bright thing at the end of a dark spur."
+  "why": "Where B1's water leaves: the pool slides over a polished lip into the J2 shaft, lit from below so the sheet glows; the only bright thing at the end of a dark spur."
  },
  "anchored": [
   {
    "id": "lip_rail",
    "asset": "railing",
-   "along": [
-    [
-     190.4,
-     98.6
-    ],
-    [
-     190.4,
-     101.4
-    ]
+   "at": [
+    190.9,
+    100.0,
+    -20.2
    ],
+   "facing_deg": 90,
    "dims": {
+    "w": 2.8,
     "h": 1.05
    },
-   "why": "Stops walkers 1 m short of the lip."
+   "why": "Stops walkers 0.7 m short of the lip.",
+   "snap": "given"
   },
   {
    "id": "lip_toro",
    "asset": "lantern_stone",
    "at": [
-    189.4,
-    101.45,
-    -20.0
+    185.6,
+    101.5,
+    -20.2
    ],
    "facing_deg": 270,
    "dims": {
+    "w": 0.6,
+    "d": 0.6,
     "h": 1.2
    },
-   "why": "One low toro on the kerb by the rail."
+   "why": "Low toro on the north kerb, framing the lip from the side.",
+   "snap": "given"
+  },
+  {
+   "id": "shaft_glow",
+   "asset": "oculus_glow",
+   "at": [
+    192.8,
+    100.0,
+    -20.2
+   ],
+   "why": "Warm under-light in the shaft aimed at the falling sheet.",
+   "snap": "given"
+  },
+  {
+   "id": "threshold_niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    185.0,
+    98.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "Two niches as a threshold 6 m before the lip; the run-up before them stays dark."
+  },
+  {
+   "id": "threshold_niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    185.0,
+    101.85,
+    -19.75
+   ],
+   "facing_deg": 180.0,
+   "snap": "given",
+   "why": "Two niches as a threshold 6 m before the lip; the run-up before them stays dark."
+  },
+  {
+   "id": "mouth_niches_0",
+   "asset": "lantern_niche",
+   "at": [
+    172.8,
+    98.15,
+    -19.75
+   ],
+   "facing_deg": 0.0,
+   "snap": "given",
+   "why": "Pool at the cor_north mouth / glacier door."
+  },
+  {
+   "id": "mouth_niches_1",
+   "asset": "lantern_niche",
+   "at": [
+    173.2,
+    101.85,
+    -19.75
+   ],
+   "facing_deg": 180.0,
+   "snap": "given",
+   "why": "Pool at the cor_north mouth / glacier door."
   }
  ],
  "water": [
@@ -203,27 +259,27 @@
  "cameras": {
   "entry": {
    "pos": [
-    167.0,
-    100.2,
+    167.2,
+    100.3,
     -18.4
    ],
    "target": [
     191.6,
     100.0,
-    -19.2
+    -19.6
    ],
    "fov_v": 60
   },
   "reveal": {
    "pos": [
-    188.6,
-    100.5,
+    188.3,
+    100.4,
     -18.4
    ],
    "target": [
-    192.6,
-    99.8,
-    -23.0
+    193.6,
+    100.0,
+    -21.0
    ],
    "fov_v": 62
   },
@@ -243,151 +299,63 @@
    "match": "Mood of the water-journey diagram at B1: water leaving the level through a lit opening; corridor stones and mist in the foreground, a glowing sheet falling into darkness at the end."
   }
  },
- "lights": [
-  {
-   "asset": "spill_lip",
-   "part": "under_sheet_light",
-   "at": [
-    [
-     191.9,
-     100.0,
-     -21.0
-    ]
-   ],
-   "why": "Hero brightest."
-  },
-  {
-   "asset": "lantern_niche",
-   "along": [
-    [
-     166.0,
-     100.0
-    ],
-    [
-     185.0,
-     100.0
-    ]
-   ],
-   "side": "both",
-   "stagger": true,
-   "spacing": [
-    5.0,
-    7.0
-   ],
-   "snap": "wall",
-   "height": 0.25,
-   "face": "path",
-   "avoid": [
-    "portals"
-   ],
-   "why": "Few niches, stopping 6 m short of the lip."
-  }
- ],
+ "lights": [],
  "dressing": [
   {
-   "asset": "stepping_stone",
-   "along": [
-    [
-     165.5,
-     100.2
-    ],
-    [
-     168.0,
-     100.1
-    ],
-    [
-     189.6,
-     100.0
-    ]
+   "asset": "boulder_rim",
+   "ring": [
+    189.0,
+    98.6
    ],
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
+   "radius": [
+    0.25,
+    0.9
    ],
-   "jitter": 0.08,
-   "top_z": -20.0,
+   "count": 3,
+   "jitter_deg": 25,
    "scale": [
-    0.95,
-    1.15
+    0.6,
+    1.1
    ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
+   "embed": 0.12,
+   "face": "out",
+   "avoid": [
+    "nav",
+    "portals",
+    "anchored",
+    0.3
    ],
-   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
-  },
-  {
-   "asset": "stepping_stone",
-   "along": [
-    [
-     170.0,
-     99.4
-    ],
-    [
-     170.0,
-     97.0
-    ]
-   ],
-   "side": "both",
-   "offset": 0.36,
-   "spacing": [
-    0.72,
-    0.86
-   ],
-   "jitter": 0.08,
-   "top_z": -20.0,
-   "scale": [
-    0.95,
-    1.15
-   ],
-   "variants": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
-   "why": "The walk itself: two staggered rows of polished pads (tops at -20.00, water 5 cm lower) make a 1.5 m path; this is the nav line."
+   "optional": true,
+   "why": "Rocks where the water accelerates to the lip.",
+   "z": -20.2
   },
   {
    "asset": "boulder_rim",
-   "along": [
-    [
-     166.0,
-     100.0
-    ],
-    [
-     189.0,
-     100.0
-    ]
+   "ring": [
+    167.5,
+    98.5
    ],
-   "side": "both",
-   "offset": 1.62,
-   "spacing": [
-    2.2,
-    4.0
+   "radius": [
+    0.25,
+    0.9
+   ],
+   "count": 3,
+   "jitter_deg": 25,
+   "scale": [
+    0.6,
+    1.1
    ],
    "embed": 0.12,
-   "scale": [
-    0.35,
-    0.7
-   ],
+   "face": "out",
    "avoid": [
     "nav",
-    "portals"
+    "portals",
+    "anchored",
+    0.3
    ],
-   "why": "Low wet rocks where the pool meets the kerb: detail at the edges, middle kept open."
+   "optional": true,
+   "why": "Rocks at the cor_north mouth.",
+   "z": -20.2
   }
  ],
  "mood": {
@@ -395,6 +363,14 @@
   "palette": "cold teal water, black basalt, one warm under-light",
   "mist": "Low mist dragged east and lifted by the shaft updraft at the lip."
  },
- "waivers": [],
+ "waivers": [
+  {
+   "check": "hero_visible",
+   "where": "spill_lip",
+   "reason": "The hero sits at the water line (pond glow at -20.05, lip top -19.85); the graybox mist sheet 0.35 m above the water is solid in the visibility raycast and hides it. Reported to the lead; remove this waiver once mist is excluded."
+  }
+ ],
+ "graybox_request": "Open the J2 shaft at the lip: void prism x 191.8-194.0, y 98.0-102.0, z -42.0 to -14.0 (and extend b1_outfall's footprint to x 194, already done).",
+ "light_notes": "Warm under-light behind the falling sheet at the lip (spill_lip emission).",
  "conventions": "anchored/hero 'at' = object centre on its floor; facing_deg = bearing of the asset's front (+Y). Extra keys beyond SCHEMA.md: spurs, segments, implied portals, bed_z/top_z, stagger/groups on lights, footprint on still water."
 }

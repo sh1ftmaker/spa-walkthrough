@@ -1,0 +1,80 @@
+{
+ "space": "b1_lobby",
+ "round": 1,
+ "reviewer": "b1_west_r1",
+ "frames": {
+  "entry": {
+   "focal": "Two 1.05 m floor lanterns (lights2:0/1, the stair-door pair) 3 m in front of the camera, then the spiral stair helix. The 'drum' is a ~4.4 m brown column (graybox builds lift_core at r 2.2, build_graybox.py:554), unlit; the ring of tiny niche cubes around it reads as runway lights.",
+   "is_hero": false,
+   "next_visible": "Weak: a dark opening with two pin lights behind the column (south-east mouth). No warm drum to orient by."
+  },
+  "reveal": {
+   "focal": "The mirror-corridor mouth: teal water, stepping stones and two floor lanterns standing in the pool. Good wayfinding read.",
+   "is_hero": false,
+   "next_visible": "Yes: the lit corridor bends away left. The koi junction's glow 12 m beyond is not readable. The b1_board sign is a blank 2.4 m slab on the right."
+  },
+  "concept": {
+   "focal": "The underside of the spiral stair sweeping overhead plus a near floor lantern. The ring walk curves left to a dotted row of lights. The lift column at the right edge is a dark brown slab, not the warmest thing.",
+   "is_hero": false,
+   "next_visible": "The ring curving away left gives a sense of continuation, but no corridor mouth or coloured glow."
+  },
+  "strip": {
+   "focal": "Floor lanterns along the south arc and the even ring of niche cubes on the inner kerb. The outer wall on the right is blank and dark for the whole walk.",
+   "is_hero": false,
+   "next_visible": "Frames 5–7: the south-east corridor mouth with teal water appears, so the exit reads at the end. Before that, nothing pulls."
+  }
+ },
+ "fixes": [
+  {
+   "id": "hero:lift_core",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The graybox stand-in is an r 2.2 m column. The space intends an r 8 m bronze/glass drum (h 4.5) with emissive slots and a lit car. Build the r 8 drum wall, or, if r<8 is the open spiral well, a 1.1 m bronze/glass balustrade with an emissive band, so the hero has mass and is the brightest object in the ring."
+  },
+  {
+   "id": "lights[0]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The niche ring at 2.2–2.8 m spacing reads as an evenly dotted runway line. Use groups {n:3, inner:0.9, gap:[3,4.5]} centred under the drum's glass slots, so pools alternate with dark gaps."
+  },
+  {
+   "id": "lights[2]",
+   "action": "replace",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "Landing pairs: 1.05 m lantern_floor blocks sit 3 m from the entry camera and are the brightest things in every frame. Replace with low lantern_niche on the drum face either side of each door (keep the chochin lights[3] as door markers), or at least move lights2:0 by (+0.7,+1.0) and lights2:1 by (+1.1,+0.8) so they flank the stair door symmetrically on its tangent."
+  },
+  {
+   "id": "dressing[1]",
+   "action": "rule",
+   "dx": 0,
+   "dy": 0,
+   "deg": 0,
+   "detail": "The rock_cluster edge_band rule produced 0 objects, so the whole south through-arc of the outer wall is bare. Raise density (0.03 -> 0.08) on the outer wall between lights1 lanterns only, so each lantern pool has a rock or bench to light."
+  },
+  {
+   "id": "lights3:1",
+   "action": "move",
+   "dx": -0.7,
+   "dy": 0.5,
+   "deg": 0,
+   "detail": "The chochin over the lift door hangs 1.4 m out from a drum face that doesn't exist in the graybox, so it floats in mid-room (strip 3–5). Re-place it once the drum wall exists, or snap it to the drum face (move ~(-0.7,+0.5))."
+  }
+ ],
+ "scores": {
+  "composition": 2,
+  "density": 2,
+  "light_rhythm": 2
+ },
+ "top_change": "Build the hero as a real r 8 m lit bronze/glass drum (or lit well balustrade) and make it the brightest thing in the ring: today the eye goes to white floor lanterns and the stair underside.",
+ "plausibility": [
+  "lift_core is built at r 2.2 m while the space footprint, ring vault and lights0 ring all assume an r 8 m drum. The inner 8 m reads as an open zone with only a knee-high kerb at r 8. If it is the spiral well, that is an unguarded drop.",
+  "Spiral stair flights sweep out over the ring at the drum edge (concept view): the underside comes down to roughly 2 m near the kerb. Check headroom where it overhangs the walk.",
+  "lights3 chochin float with no visible fixing (no ceiling nearby, no drum wall)."
+ ]
+}

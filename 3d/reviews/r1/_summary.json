@@ -1,0 +1,260 @@
+{
+ "round": 1,
+ "spaces": {
+  "g_cascade": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b4_chamber": {
+   "composition": 3,
+   "density": 3,
+   "light_rhythm": 2
+  },
+  "b1_outfall": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b1_cor_mirror": {
+   "composition": 4,
+   "density": 3,
+   "light_rhythm": 3
+  },
+  "g_north_ledge": {
+   "composition": 2,
+   "density": 3,
+   "light_rhythm": 2
+  },
+  "suite_1a": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b1_junction_w": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "g_terrace": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b2_boat": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "s_moon": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "s_spring": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b1_cor_east": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b1_mirror": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b2_boardwalk": {
+   "composition": 2,
+   "density": 1,
+   "light_rhythm": 2
+  },
+  "g_east": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b2_lava_link": {
+   "composition": 3,
+   "density": 2,
+   "light_rhythm": 3
+  },
+  "b2_core": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b3_wave": {
+   "composition": 1,
+   "density": 1,
+   "light_rhythm": 1
+  },
+  "g_gate": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b3_lobby": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "g_east_path": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b1_grotto": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b3_lazy": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b2_falls_head": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b3_slide_foot": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "s_pool": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b3_geyser": {
+   "composition": 2,
+   "density": 3,
+   "light_rhythm": 1
+  },
+  "g_arrival": {
+   "composition": 3,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "suite_4c": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b1_lobby": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b3_shore": {
+   "composition": 3,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b1_cor_west": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b1_glacier": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "s_rim": {
+   "composition": 2,
+   "density": 1,
+   "light_rhythm": 2
+  },
+  "b3_rimstone": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b4_lobby": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b2_river": {
+   "composition": 2,
+   "density": 1,
+   "light_rhythm": 2
+  },
+  "b1_cor_north": {
+   "composition": 3,
+   "density": 2,
+   "light_rhythm": 3
+  },
+  "b3_walk_north": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b1_slide_top": {
+   "composition": 1,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "g_road": {
+   "composition": 2,
+   "density": 1,
+   "light_rhythm": 2
+  },
+  "g_changing": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b1_cor_south": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b4_tunnel": {
+   "composition": 3,
+   "density": 2,
+   "light_rhythm": 3
+  },
+  "b3_cavern": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b1_treatment": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "s_rim_west": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 2
+  },
+  "b3_falls": {
+   "composition": 2,
+   "density": 2,
+   "light_rhythm": 1
+  },
+  "b2_kawagiri": {
+   "composition": 3,
+   "density": 3,
+   "light_rhythm": 2
+  },
+  "b3_falls_gallery": {
+   "composition": 3,
+   "density": 3,
+   "light_rhythm": 3
+  }
+ },
+ "mean": {
+  "composition": 1.98,
+  "density": 2.02,
+  "light_rhythm": 1.78
+ }
+}

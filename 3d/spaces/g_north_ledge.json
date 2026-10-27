@@ -57,8 +57,13 @@
    0
   ],
   [
+   194.0,
+   111.6,
+   0
+  ],
+  [
    190.0,
-   112.0,
+   112.6,
    0
   ],
   [
@@ -96,72 +101,24 @@
   "asset": "falls_sheet",
   "at": [
    173.0,
-   108.6,
-   0
+   109.6,
+   -0.35
   ],
   "facing_deg": 0,
   "dims": {
-   "w": 1.2,
-   "h": 10.0,
-   "lip_z": 10.0
+   "w": 1.4,
+   "d": 0.6,
+   "h": 10.35
   },
   "why": "The centre trickle (I column) after its last tub drops 10 m into a lit basin right beside the walk, framed by the stacked suites above: the end of the north water branch and the vertical line that leads the eye up the whole cliff."
  },
  "anchored": [
   {
-   "id": "basin_a",
-   "asset": "cascade_pool",
-   "at": [
-    155.0,
-    109.6,
-    0
-   ],
-   "facing_deg": 0,
-   "dims": {
-    "w": 2.6,
-    "d": 1.8,
-    "rim_h": 0.3
-   },
-   "why": "Stone basin catching the A-column trickle; overflow sinks into a slot at the cliff toe (inside to the river head)."
-  },
-  {
-   "id": "basin_b",
-   "asset": "cascade_pool",
-   "at": [
-    173.0,
-    109.6,
-    0
-   ],
-   "facing_deg": 0,
-   "dims": {
-    "w": 2.6,
-    "d": 1.8,
-    "rim_h": 0.3
-   },
-   "why": "Stone basin catching the B-column trickle; overflow sinks into a slot at the cliff toe (inside to the river head)."
-  },
-  {
-   "id": "basin_c",
-   "asset": "cascade_pool",
-   "at": [
-    191.0,
-    109.6,
-    0
-   ],
-   "facing_deg": 0,
-   "dims": {
-    "w": 2.6,
-    "d": 1.8,
-    "rim_h": 0.3
-   },
-   "why": "Stone basin catching the C-column trickle; overflow sinks into a slot at the cliff toe (inside to the river head)."
-  },
-  {
    "id": "stair_foot_toro_e",
    "asset": "lantern_stone",
    "at": [
-    142.2,
-    108.6,
+    146.0,
+    109.2,
     0
    ],
    "facing_deg": 270,
@@ -174,16 +131,18 @@
    "id": "stair_sign",
    "asset": "sign_kanji",
    "at": [
-    144.0,
-    108.4,
+    148.0,
+    109.6,
     0
    ],
    "facing_deg": 0,
    "dims": {
-    "h": 2.0,
-    "text": "Cliff Stair · suites +10 +26 +43 +60 · moon deck +120"
+    "w": 0.9,
+    "d": 0.4,
+    "h": 2.0
    },
-   "why": "Wayfinding at the foot."
+   "why": "Wayfinding at the foot.",
+   "snap": "ground"
   },
   {
    "id": "under_stair_garden",
@@ -195,24 +154,9 @@
    ],
    "facing_deg": 0,
    "dims": {
-    "area": [
-     [
-      123,
-      113.2
-     ],
-     [
-      138,
-      113.2
-     ],
-     [
-      138,
-      118
-     ],
-     [
-      123,
-      118
-     ]
-    ]
+    "w": 4.0,
+    "d": 3.0,
+    "h": 1.0
    },
    "why": "North of the stacked Cliff Stair lanes (x 124-140, y 108.4-112.8): a dry rock garden, not a walk; the space under the flights is enclosed."
   }
@@ -309,61 +253,46 @@
   "entry": {
    "pos": [
     193.0,
-    110.0,
+    111.4,
     1.6
    ],
    "target": [
     172.0,
-    106.0,
-    18.0
+    108.0,
+    6.0
    ],
    "fov_v": 62
   },
   "reveal": {
    "pos": [
-    183.0,
-    115.5,
+    180.0,
+    118.0,
     1.6
    ],
    "target": [
-    176.0,
+    174.0,
     106.0,
-    30.0
+    22.0
    ],
    "fov_v": 70
   },
   "concept": {
    "image": "lookbook/img/32-suites-cliff.jpg",
    "pos": [
-    170.0,
-    118.4,
+    164.0,
+    118.0,
     1.6
    ],
    "target": [
     160.0,
     106.0,
-    32.0
+    28.0
    ],
    "fov_v": 70,
    "match": "32 front elevation at eye height from the sea rail: four tiers of lit shoji fronts, trickles between, the Cliff Stair zigzag on the left with its post lanterns, ground ledge rail in the foreground."
   }
  },
  "lights": [
-  {
-   "asset": "lantern_stone",
-   "along": "spine",
-   "side": "right",
-   "spacing": [
-    8.0,
-    10.0
-   ],
-   "offset": 2.4,
-   "face": "path",
-   "avoid": [
-    "portals",
-    "water"
-   ]
-  },
   {
    "asset": "pool_uplight",
    "at": [
@@ -373,8 +302,18 @@
      -0.5
     ],
     [
+     172.6,
+     109.4,
+     -0.5
+    ],
+    [
      173.0,
-     109.6,
+     109.8,
+     -0.5
+    ],
+    [
+     173.4,
+     109.4,
      -0.5
     ],
     [
@@ -383,7 +322,7 @@
      -0.5
     ]
    ],
-   "why": "Each basin uplights its falls; centre one strongest (hero)."
+   "why": "One uplight per basin; three at the centre basin so the hero falls is the brightest."
   },
   {
    "asset": "lantern_post",
@@ -398,10 +337,61 @@
     ]
    ],
    "spacing": [
-    9.0,
-    12.0
+    12.0,
+    18.0
    ],
-   "face": "path"
+   "face": "path",
+   "avoid": [
+    {
+     "near": [
+      162.0,
+      117.2
+     ],
+     "r": 3.0
+    },
+    {
+     "near": [
+      186.0,
+      117.0
+     ],
+     "r": 3.0
+    }
+   ],
+   "allow_overlap": [
+    "railing"
+   ]
+  },
+  {
+   "asset": "lantern_stone",
+   "at": [
+    [
+     151.8,
+     110.4,
+     0
+    ],
+    [
+     158.2,
+     110.4,
+     0
+    ],
+    [
+     169.4,
+     110.6,
+     0
+    ],
+    [
+     176.2,
+     110.4,
+     0
+    ],
+    [
+     187.8,
+     110.4,
+     0
+    ]
+   ],
+   "face": 0,
+   "why": "Toro pairs flanking each basin (the east basin's pair is closed by the path portal); dark gaps between."
   }
  ],
  "dressing": [
@@ -417,35 +407,61 @@
      118.7
     ]
    ],
-   "height": 1.05,
-   "why": "Sea cliff edge."
-  },
-  {
-   "asset": "boulder_rim",
-   "ring": "anchored:basin_*",
-   "radius": 1.6,
-   "count": 5,
-   "embed": 0.2,
-   "scale": [
-    0.5,
-    1.0
-   ]
+   "why": "Sea cliff edge.",
+   "dims": {
+    "w": 1.5,
+    "d": 0.1,
+    "h": 1.05
+   }
   },
   {
    "asset": "rock_cluster",
    "scatter": "edge_band",
    "band": [
-    0.2,
-    1.4
+    1.6,
+    3.0
    ],
    "density": 0.05,
-   "side": "south",
    "avoid": [
     "nav",
     "portals",
     "water",
     "hero",
-    2.5
+    2.5,
+    {
+     "poly": [
+      [
+       121.0,
+       108.3
+      ],
+      [
+       142.5,
+       108.3
+      ],
+      [
+       142.5,
+       113.2
+      ],
+      [
+       121.0,
+       113.2
+      ]
+     ]
+    },
+    {
+     "near": [
+      186.0,
+      117.0
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      162.0,
+      117.2
+     ],
+     "r": 2.6
+    }
    ]
   },
   {
@@ -467,6 +483,90 @@
     1.2
    ],
    "why": "Windswept pines on the sea rail, silhouettes against the surf glow."
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    155.0,
+    109.6
+   ],
+   "radius": 2.0,
+   "count": 5,
+   "jitter_deg": 12,
+   "embed": 0.2,
+   "scale": [
+    0.5,
+    0.9
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    {
+     "near": [
+      155.0,
+      108.0
+     ],
+     "r": 1.0
+    }
+   ],
+   "why": "Stone ring round the trickle basin.",
+   "z": -0.22
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    173.0,
+    109.6
+   ],
+   "radius": 2.0,
+   "count": 5,
+   "jitter_deg": 12,
+   "embed": 0.2,
+   "scale": [
+    0.5,
+    0.9
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    {
+     "near": [
+      173.0,
+      108.0
+     ],
+     "r": 1.0
+    }
+   ],
+   "why": "Stone ring round the trickle basin.",
+   "z": -0.22
+  },
+  {
+   "asset": "boulder_rim",
+   "ring": [
+    191.0,
+    109.6
+   ],
+   "radius": 2.0,
+   "count": 5,
+   "jitter_deg": 12,
+   "embed": 0.2,
+   "scale": [
+    0.5,
+    0.9
+   ],
+   "avoid": [
+    "nav",
+    "portals",
+    {
+     "near": [
+      191.0,
+      108.0
+     ],
+     "r": 1.0
+    }
+   ],
+   "why": "Stone ring round the trickle basin.",
+   "z": -0.22
   }
  ],
  "mood": {

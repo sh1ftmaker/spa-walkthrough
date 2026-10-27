@@ -221,6 +221,7 @@
  "hero": {
   "asset": "geyser_vent",
   "ref": "b3_geyser.hero",
+  "borrowed_from": "b3_geyser",
   "at": [
    114,
    42,
@@ -288,9 +289,9 @@
    ],
    "see": "b3_slide_foot",
    "target": [
-    161.6,
-    51,
-    -60
+    156.5,
+    65.5,
+    -61
    ],
    "light": "orange lava wall"
   },
@@ -310,37 +311,8 @@
    "light": "moon-blue sea mouth"
   }
  ],
- "anchored": [
-  {
-   "id": "core_column",
-   "asset": "lift_core",
-   "at": [
-    90,
-    70,
-    -67
-   ],
-   "facing_deg": 235.5,
-   "dims": {
-    "r": 8,
-    "top_z": -50
-   },
-   "why": "The lift/stair drum as a basalt column from floor to vault: the vault's fixed landmark."
-  },
-  {
-   "id": "slide_shaft_mouth",
-   "asset": "cave_shell",
-   "at": [
-    150,
-    50,
-    -50
-   ],
-   "dims": {
-    "r": 9,
-    "rule": "roof opening"
-   },
-   "why": "Orange glow falls through it from the slide above; a second beacon at the east end."
-  }
- ],
+ "anchored": [],
+ "anchored_note": "The core drum (b3_lobby hero) and the slide shaft (b3_slide_foot hero) rise through this vault; they are placed by their own spaces, not here.",
  "water": [],
  "water_note": "No water of its own; all surfaces live in the sub-space files (w_rimstone, w_lazy, w_geyser, w_splash).",
  "sightlines": [
@@ -384,6 +356,19 @@
  "cameras": {
   "entry": {
    "pos": [
+    64.6,
+    64.6,
+    -60.75
+   ],
+   "target": [
+    110,
+    43,
+    -61
+   ],
+   "fov_v": 66
+  },
+  "reveal": {
+   "pos": [
     50.5,
     66,
     -58.0
@@ -394,19 +379,6 @@
     -58
    ],
    "fov_v": 60
-  },
-  "reveal": {
-   "pos": [
-    66.8,
-    66.6,
-    -59.9
-   ],
-   "target": [
-    104,
-    44,
-    -58
-   ],
-   "fov_v": 72
   },
   "concept": {
    "pos": [
@@ -429,80 +401,852 @@
    "asset": "glowworm_ceiling",
    "snap": "ceiling",
    "scatter": "area",
-   "area": "roof",
-   "density_falloff": {
-    "center": [
-     114,
-     42
+   "area": [
+    [
+     96,
+     30
     ],
-    "peak": 1.0,
-    "edge": 0.15
-   },
+    [
+     132,
+     30
+    ],
+    [
+     132,
+     54
+    ],
+    [
+     96,
+     54
+    ]
+   ],
+   "density": 0.004,
+   "min_dist": 9,
+   "why": "Densest teal starfield over the plume (concept 14).",
    "avoid": [
     {
-     "ring": [
-      150,
-      50
+     "near": [
+      50,
+      30
      ],
-     "r": 12
+     "r": 0.9
     },
     {
-     "ring": [
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
       90,
       70
      ],
-     "r": 9
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
     }
-   ],
-   "why": "Teal starfield, densest above the plume (concept 14), thin over the lava end so orange and teal don't fight."
+   ]
   },
   {
    "asset": "lava_crack_seam",
    "snap": "ceiling",
    "along": [
     [
-     [
-      62,
-      30
-     ],
-     [
-      100,
-      38
-     ]
+     62,
+     30
     ],
     [
-     [
-      60,
-      74
-     ],
-     [
-      102,
-      50
-     ]
-    ],
-    [
-     [
-      120,
-      76
-     ],
-     [
-      118,
-      54
-     ]
-    ],
-    [
-     [
-      156,
-      20
-     ],
-     [
-      128,
-      36
-     ]
+     100,
+     38
     ]
    ],
-   "rule": "4 seams radiating toward the crown, faint amber, stop 10 m short of it",
-   "why": "Amber cracks in the roof lead the eye inward to the plume; continuous with the tube's cracks below."
+   "spacing": [
+    7,
+    9
+   ],
+   "face": "path",
+   "why": "Faint amber roof seam radiating toward the crown over the plume, continuous with the tube's cracks below.",
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    }
+   ]
+  },
+  {
+   "asset": "lava_crack_seam",
+   "snap": "ceiling",
+   "along": [
+    [
+     60,
+     74
+    ],
+    [
+     102,
+     50
+    ]
+   ],
+   "spacing": [
+    7,
+    9
+   ],
+   "face": "path",
+   "why": "Faint amber roof seam radiating toward the crown over the plume, continuous with the tube's cracks below.",
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    }
+   ]
+  },
+  {
+   "asset": "lava_crack_seam",
+   "snap": "ceiling",
+   "along": [
+    [
+     120,
+     76
+    ],
+    [
+     118,
+     54
+    ]
+   ],
+   "spacing": [
+    7,
+    9
+   ],
+   "face": "path",
+   "why": "Faint amber roof seam radiating toward the crown over the plume, continuous with the tube's cracks below.",
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    }
+   ]
+  },
+  {
+   "asset": "lava_crack_seam",
+   "snap": "ceiling",
+   "along": [
+    [
+     156,
+     20
+    ],
+    [
+     128,
+     36
+    ]
+   ],
+   "spacing": [
+    7,
+    9
+   ],
+   "face": "path",
+   "why": "Faint amber roof seam radiating toward the crown over the plume, continuous with the tube's cracks below.",
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    }
+   ]
   },
   {
    "asset": "lantern_hanging",
@@ -530,20 +1274,192 @@
     [
      96,
      41
+    ],
+    [
+     103.5,
+     42
     ]
    ],
    "spacing": [
     3,
-    5
+    7
    ],
-   "drop_z": [
-    -57.5,
-    -55.5
+   "height": [
+    6.5,
+    9.0
    ],
-   "snap": "ceiling",
-   "rope": true,
-   "rule": "groups of 3-5 with 6-8 m dark gaps",
-   "why": "Long-cord lantern clusters over the rimstone stair, a dotted line from the falls throat toward the plume."
+   "cluster": true,
+   "why": "Long-cord lantern chain from the falls throat down the terraces toward the plume, ending 10 m short of it (the gap makes the plume read).",
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      64.6,
+      64.6
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      50.5,
+      66
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      114,
+      28.5
+     ],
+     "r": 2.6
+    }
+   ]
   },
   {
    "asset": "lantern_hanging",
@@ -553,26 +1469,194 @@
      62
     ],
     [
-     124,
-     63
+     106,
+     60
     ],
     [
-     140,
-     56
+     109,
+     54.5
     ]
    ],
    "spacing": [
-    4,
+    3,
     6
    ],
-   "drop_z": [
-    -58,
-    -56
+   "height": [
+    5.5,
+    8.0
    ],
-   "snap": "ceiling",
-   "rope": true,
-   "rule": "groups with dark gaps",
-   "why": "Arc over the north towpath leading from the lobby side to the slide cave."
+   "cluster": true,
+   "why": "Short chain from the lobby side toward the north bridge and the plume.",
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      64.6,
+      64.6
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      50.5,
+      66
+     ],
+     "r": 2.6
+    },
+    {
+     "near": [
+      114,
+      28.5
+     ],
+     "r": 2.6
+    }
+   ]
   }
  ],
  "dressing": [
@@ -587,39 +1671,991 @@
    "density": 0.012,
    "avoid": [
     {
-     "ring": [
+     "near": [
       114,
       42
      ],
      "r": 14
     },
     {
-     "ring": [
+     "near": [
       150,
       50
      ],
      "r": 10
+    },
+    {
+     "poly": [
+      [
+       60.7,
+       62.87
+      ],
+      [
+       69.2,
+       56.6
+      ],
+      [
+       77.24,
+       48.59
+      ],
+      [
+       86.55,
+       43.0
+      ],
+      [
+       96.77,
+       42.85
+      ],
+      [
+       97.91,
+       41.58
+      ],
+      [
+       97.66,
+       39.89
+      ],
+      [
+       96.2,
+       39.01
+      ],
+      [
+       85.13,
+       39.2
+      ],
+      [
+       74.77,
+       45.42
+      ],
+      [
+       66.69,
+       53.49
+      ],
+      [
+       59.03,
+       59.23
+      ],
+      [
+       50.78,
+       62.41
+      ],
+      [
+       50.03,
+       64.32
+      ],
+      [
+       50.83,
+       65.62
+      ],
+      [
+       52.32,
+       65.97
+      ]
+     ]
+    },
+    {
+     "poly": [
+      [
+       123.92,
+       65.0
+      ],
+      [
+       140.98,
+       57.74
+      ],
+      [
+       141.92,
+       56.54
+      ],
+      [
+       141.74,
+       55.02
+      ],
+      [
+       140.73,
+       54.14
+      ],
+      [
+       139.38,
+       54.1
+      ],
+      [
+       123.62,
+       60.98
+      ],
+      [
+       99.89,
+       60.0
+      ],
+      [
+       98.65,
+       60.53
+      ],
+      [
+       98.02,
+       61.72
+      ],
+      [
+       98.4,
+       63.2
+      ],
+      [
+       99.72,
+       63.98
+      ]
+     ]
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 10.0
+    },
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
     }
    ],
    "why": "Fringe the vault edges (concept 14); keep the crown over the plume clean."
   },
   {
-   "asset": "mist_layer",
-   "rule": "volumetric below -64 over all water, thickest over rimstone top and the geyser pool",
-   "why": "Low white mist on every water surface (art direction)."
+   "asset": "rock_cluster",
+   "scatter": "area",
+   "area": [
+    [
+     87.0,
+     25.9
+    ],
+    [
+     87.0,
+     34.26
+    ],
+    [
+     90.22,
+     30.44
+    ],
+    [
+     93.24,
+     28.12
+    ],
+    [
+     100.69,
+     24.59
+    ],
+    [
+     109.39,
+     22.74
+    ],
+    [
+     118.51,
+     22.73
+    ],
+    [
+     123.07,
+     23.44
+    ],
+    [
+     131.12,
+     26.1
+    ],
+    [
+     137.66,
+     30.33
+    ],
+    [
+     140.19,
+     33.0
+    ],
+    [
+     151.29,
+     33.0
+    ],
+    [
+     155.34,
+     31.02
+    ],
+    [
+     160.75,
+     31.0
+    ],
+    [
+     159.5,
+     12.51
+    ],
+    [
+     46.5,
+     14.49
+    ],
+    [
+     46.5,
+     24.0
+    ],
+    [
+     51.0,
+     24.0
+    ],
+    [
+     51.0,
+     25.12
+    ],
+    [
+     86.2,
+     25.02
+    ]
+   ],
+   "density": 0.015,
+   "scale": [
+    0.8,
+    1.8
+   ],
+   "why": "Undressed vault floor between the sub-spaces is a rock field (not a walk), so it reads as cave, not empty floor.",
+   "height": 0,
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    }
+   ]
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "area",
+   "area": [
+    [
+     139.53,
+     64.88
+    ],
+    [
+     139.0,
+     64.0
+    ],
+    [
+     139.0,
+     52.27
+    ],
+    [
+     134.64,
+     55.96
+    ],
+    [
+     127.31,
+     59.41
+    ],
+    [
+     122.96,
+     60.58
+    ],
+    [
+     113.95,
+     61.5
+    ],
+    [
+     105.04,
+     60.58
+    ],
+    [
+     96.88,
+     57.9
+    ],
+    [
+     90.34,
+     53.67
+    ],
+    [
+     87.0,
+     49.74
+    ],
+    [
+     87.0,
+     56.87
+    ],
+    [
+     90.0,
+     56.5
+    ],
+    [
+     92.63,
+     56.76
+    ],
+    [
+     97.5,
+     58.78
+    ],
+    [
+     101.22,
+     62.5
+    ],
+    [
+     103.24,
+     67.37
+    ],
+    [
+     103.24,
+     72.63
+    ],
+    [
+     101.27,
+     77.42
+    ],
+    [
+     97.58,
+     81.17
+    ],
+    [
+     94.58,
+     82.65
+    ],
+    [
+     119.89,
+     81.5
+    ],
+    [
+     160.24,
+     65.0
+    ]
+   ],
+   "density": 0.03,
+   "scale": [
+    0.8,
+    1.8
+   ],
+   "why": "Undressed vault floor between the sub-spaces is a rock field (not a walk), so it reads as cave, not empty floor.",
+   "height": 0,
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    }
+   ]
+  },
+  {
+   "asset": "rock_cluster",
+   "scatter": "area",
+   "area": [
+    [
+     60,
+     74.6
+    ],
+    [
+     75.5,
+     74.6
+    ],
+    [
+     75.5,
+     83.3
+    ],
+    [
+     60,
+     81.6
+    ]
+   ],
+   "density": 0.03,
+   "height": 0,
+   "scale": [
+    0.6,
+    1.2
+   ],
+   "why": "North vault floor behind the walk: a rock field, heights from the local floor.",
+   "avoid": [
+    {
+     "near": [
+      50,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      50,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      70,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      90,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      110,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      130,
+      70
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      10
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      30
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      50
+     ],
+     "r": 0.9
+    },
+    {
+     "near": [
+      150,
+      70
+     ],
+     "r": 0.9
+    }
+   ]
   }
  ],
+ "mist_note": "mist_layer is a shader: volumetric below -64 over all water, thickest over the rimstone top and the geyser pool.",
  "mood": {
   "key": "the whole water park under one black vault",
   "palette": "teal water and plume, amber cracks and lanterns, glowworm dots, orange at the east end, moon-blue beyond",
   "mist": "low over everything, steam columns at falls and geyser"
  },
- "waivers": [
-  {
-   "check": "hero_visibility",
-   "where": "from p_b3_lobby_lift / p_b3_lobby_spiral_stair",
-   "reason": "The lobby ring hall is deliberately enclosed; its reveal happens at the top of walk_north / the tube."
-  }
+ "waivers": [],
+ "layout_issues": [],
+ "lead_requests": [
+  "glowworm_ceiling and lava_crack_seam are emissive markers that render nothing: the vault has no starfield or seams."
  ],
- "layout_issues": []
+ "allow_overlap": [
+  [
+   "glowworm_ceiling",
+   "stalactite_cluster"
+  ],
+  [
+   "stalactite_cluster",
+   "glowworm_ceiling"
+  ]
+ ],
+ "allow_overlap_why": "Glowworms hang on the stalactites (concept 12/14)."
 }
