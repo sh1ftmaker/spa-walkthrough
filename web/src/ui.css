@@ -73,6 +73,8 @@ button.on { border-color: var(--kz-accent); color: var(--kz-accent); }
 .kz-item .n.dot { background: rgba(255, 255, 255, 0.06); color: var(--kz-dim); }
 .kz-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px; }
 .kz-note { margin: 8px; color: var(--kz-dim); font-size: 13px; }
+.kz-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--kz-accent);
+  color: var(--kz-accent); text-decoration: none; background: var(--kz-panel); }
 
 /* hud */
 #kz-hud { position: fixed; z-index: 30; left: calc(8px + var(--safe-l)); top: calc(64px + var(--safe-t)); padding: 6px 8px; border-radius: 8px;

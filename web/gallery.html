@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0b0a">
+<title>Kazan-yu model gallery</title>
+<link rel="stylesheet" href="./src/gallery/gallery.css">
+</head>
+<body class="g-body">
+<header class="g-head">
+  <a class="g-brand" href="./index.html" title="Back to the walkthrough"><span class="g-kanji">火山湯</span><span class="g-title">Kazan-yu <b>models</b></span></a>
+  <nav class="g-tabs" role="tablist">
+    <button type="button" role="tab" data-tab="models" class="on">Models</button>
+    <button type="button" role="tab" data-tab="materials">Materials</button>
+    <button type="button" role="tab" data-tab="places">Places</button>
+  </nav>
+  <a class="g-walk" href="./index.html">Walkthrough &rarr;</a>
+</header>
+
+<main id="g-main">
+  <section id="tab-models" class="g-tab">
+    <div class="g-tools">
+      <input id="g-search" type="search" placeholder="Search models, features, materials" autocomplete="off" spellcheck="false" aria-label="Search">
+      <select id="g-sort" aria-label="Sort">
+        <option value="name">Name</option>
+        <option value="category">Category</option>
+        <option value="tris">Triangles (most)</option>
+        <option value="tris-asc">Triangles (fewest)</option>
+        <option value="priority">Priority</option>
+      </select>
+    </div>
+    <div id="g-chips" class="g-chips"></div>
+    <div id="g-count" class="g-count"></div>
+    <div id="g-grid" class="g-grid"></div>
+  </section>
+  <section id="tab-materials" class="g-tab" hidden>
+    <div class="g-tools">
+      <input id="g-msearch" type="search" placeholder="Search materials" autocomplete="off" spellcheck="false" aria-label="Search materials">
+    </div>
+    <div id="g-mchips" class="g-chips"></div>
+    <div id="g-mgrid" class="g-mgrid"></div>
+  </section>
+  <section id="tab-places" class="g-tab" hidden>
+    <p class="g-lead">The three vertical-slice places, baked in Blender and walkable in the walkthrough.</p>
+    <div id="g-pgrid" class="g-pgrid"></div>
+  </section>
+</main>
+
+<div id="g-viewer" class="g-viewer" hidden>
+  <div class="g-vstage">
+    <canvas id="g-canvas"></canvas>
+    <div class="g-vtop">
+      <button id="g-close" type="button" aria-label="Back to the grid">&larr;</button>
+      <div class="g-vname"><span id="g-vcat"></span><span id="g-vtitle"></span></div>
+      <button id="g-prev" type="button" aria-label="Previous model">&lsaquo;</button>
+      <button id="g-next" type="button" aria-label="Next model">&rsaquo;</button>
+    </div>
+    <div id="g-stats" class="g-stats"></div>
+    <div id="g-vload" class="g-vload" hidden>Loading</div>
+    <div id="g-verr" class="g-verr" hidden></div>
+  </div>
+  <div class="g-vpanel">
+    <div class="g-controls">
+      <div class="g-seg" id="g-lod" aria-label="LOD"></div>
+      <div class="g-seg" id="g-seed" aria-label="Seed"></div>
+      <div class="g-seg g-toggles" id="g-toggles"></div>
+      <div class="g-seg" id="g-env" aria-label="Lighting"></div>
+      <div class="g-clipbox" id="g-clipbox" hidden><label for="g-clip">Clip</label><select id="g-clip"></select></div>
+    </div>
+    <div id="g-info" class="g-info"></div>
+  </div>
+</div>
+
+<div id="g-lightbox" class="g-lightbox" hidden><img id="g-lbimg" alt=""><div id="g-lbcap"></div><button id="g-lbclose" type="button" aria-label="Close">&times;</button></div>
+<div id="g-error" class="g-error" hidden></div>
+<script type="module" src="./src/gallery/main.js"></script>
+</body>
+</html>

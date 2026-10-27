@@ -233,7 +233,12 @@ async function main() {
     const g2 = document.createElement('div'); g2.className = 'kz-group'; g2.textContent = 'View';
     const note = document.createElement('div'); note.className = 'kz-note';
     note.textContent = `Now: ${runtimeTier}${runtimeTier !== tier ? ` (assets ${tier})` : ''} · ${tierInfo.reason}${probeMs ? ` · ${probeMs.toFixed(1)} ms/frame` : ''}\n${gpu}`;
-    d.append(g, row, g2, lab, note);
+    // the model gallery (gallery.html, same site): every generator model, the material library, the slice places
+    const g3 = document.createElement('div'); g3.className = 'kz-group'; g3.textContent = 'Explore';
+    const ex = document.createElement('div'); ex.className = 'kz-row';
+    const ga = document.createElement('a'); ga.className = 'kz-link'; ga.href = './gallery.html'; ga.textContent = 'Models & materials gallery';
+    ex.appendChild(ga);
+    d.append(g3, ex, g, row, g2, lab, note);
     return d;
   }
   function setMode(m) {

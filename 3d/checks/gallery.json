@@ -1,0 +1,9436 @@
+{
+ "generated": "2026-10-27T19:15:37.967Z",
+ "url": "vite preview of web/dist (gallery.html), port 4180",
+ "browser": "Chromium over CDP 9313 (GPU, tools/gpu_chrome.sh)",
+ "gpu": "ANGLE (NVIDIA, Vulkan 1.4.351 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+ "models": 132,
+ "models_ok": 132,
+ "variants": 792,
+ "figure_clip_runs": 26,
+ "failures": 0,
+ "lod0_load_ms": {
+  "median": 35,
+  "p90": 106,
+  "max": 246
+ },
+ "startup_console": [],
+ "seconds": 75.679,
+ "results": [
+  {
+   "id": "aqueduct",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 218,
+     "tris": 874,
+     "rendered_tris": 874,
+     "draws": 8,
+     "bytes": 38016
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 33,
+     "tris": 342,
+     "rendered_tris": 342,
+     "draws": 5,
+     "bytes": 17844
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 82,
+     "rendered_tris": 82,
+     "draws": 5,
+     "bytes": 11032
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 22,
+     "rendered_tris": 22,
+     "draws": 3,
+     "bytes": 6224
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 20,
+     "tris": 690,
+     "rendered_tris": 690,
+     "draws": 7,
+     "bytes": 28384
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 740,
+     "rendered_tris": 740,
+     "draws": 7,
+     "bytes": 29596
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 218,
+   "lod0_tris": 874,
+   "lod0_draws": 8
+  },
+  {
+   "id": "arcade_pier",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 51,
+     "tris": 1146,
+     "rendered_tris": 1146,
+     "draws": 3,
+     "bytes": 18536
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 462,
+     "rendered_tris": 462,
+     "draws": 3,
+     "bytes": 12660
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 128,
+     "rendered_tris": 128,
+     "draws": 3,
+     "bytes": 8128
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 28,
+     "rendered_tris": 28,
+     "draws": 2,
+     "bytes": 4568
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 20,
+     "tris": 1146,
+     "rendered_tris": 1146,
+     "draws": 3,
+     "bytes": 24980
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 1146,
+     "rendered_tris": 1146,
+     "draws": 3,
+     "bytes": 19636
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 51,
+   "lod0_tris": 1146,
+   "lod0_draws": 3
+  },
+  {
+   "id": "banner_hanging",
+   "category": "textile",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 328,
+     "rendered_tris": 328,
+     "draws": 4,
+     "bytes": 13964
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 118,
+     "rendered_tris": 118,
+     "draws": 4,
+     "bytes": 9760
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 26,
+     "rendered_tris": 26,
+     "draws": 4,
+     "bytes": 7944
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 9,
+     "rendered_tris": 9,
+     "draws": 4,
+     "bytes": 7140
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 304,
+     "rendered_tris": 304,
+     "draws": 4,
+     "bytes": 13220
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 306,
+     "rendered_tris": 306,
+     "draws": 4,
+     "bytes": 13236
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 328,
+   "lod0_draws": 4
+  },
+  {
+   "id": "beach_terrain",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 85,
+     "tris": 27793,
+     "rendered_tris": 28685,
+     "draws": 8,
+     "bytes": 242532
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 10122,
+     "rendered_tris": 10478,
+     "draws": 8,
+     "bytes": 110268
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 2837,
+     "rendered_tris": 2981,
+     "draws": 8,
+     "bytes": 44904
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 532,
+     "rendered_tris": 588,
+     "draws": 8,
+     "bytes": 21128
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 27854,
+     "rendered_tris": 28660,
+     "draws": 8,
+     "bytes": 241200
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 33,
+     "tris": 27925,
+     "rendered_tris": 28695,
+     "draws": 8,
+     "bytes": 246828
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 85,
+   "lod0_tris": 27793,
+   "lod0_draws": 8
+  },
+  {
+   "id": "bench",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 420,
+     "rendered_tris": 420,
+     "draws": 1,
+     "bytes": 13196
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 132,
+     "rendered_tris": 132,
+     "draws": 1,
+     "bytes": 5336
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 108,
+     "rendered_tris": 108,
+     "draws": 1,
+     "bytes": 4820
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 28,
+     "rendered_tris": 28,
+     "draws": 1,
+     "bytes": 2868
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 420,
+     "rendered_tris": 420,
+     "draws": 1,
+     "bytes": 13184
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 19,
+     "tris": 420,
+     "rendered_tris": 420,
+     "draws": 1,
+     "bytes": 13192
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 19,
+   "lod0_tris": 420,
+   "lod0_draws": 1
+  },
+  {
+   "id": "board_small_hanging",
+   "category": "signage",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 591,
+     "rendered_tris": 591,
+     "draws": 5,
+     "bytes": 22900
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 335,
+     "rendered_tris": 335,
+     "draws": 5,
+     "bytes": 16020
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 20,
+     "tris": 20,
+     "rendered_tris": 20,
+     "draws": 4,
+     "bytes": 7780
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 10,
+     "rendered_tris": 10,
+     "draws": 1,
+     "bytes": 2536
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 454,
+     "rendered_tris": 454,
+     "draws": 5,
+     "bytes": 20504
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 448,
+     "rendered_tris": 448,
+     "draws": 4,
+     "bytes": 16888
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 591,
+   "lod0_draws": 5
+  },
+  {
+   "id": "boardwalk",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 296,
+     "rendered_tris": 296,
+     "draws": 3,
+     "bytes": 12432
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 164,
+     "rendered_tris": 164,
+     "draws": 3,
+     "bytes": 9560
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 62,
+     "rendered_tris": 62,
+     "draws": 3,
+     "bytes": 7048
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 14,
+     "rendered_tris": 14,
+     "draws": 2,
+     "bytes": 4340
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 488,
+     "rendered_tris": 488,
+     "draws": 3,
+     "bytes": 19052
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 267,
+     "rendered_tris": 267,
+     "draws": 4,
+     "bytes": 13824
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 19,
+   "lod0_tris": 296,
+   "lod0_draws": 3
+  },
+  {
+   "id": "boat",
+   "category": "vehicle",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 4950,
+     "rendered_tris": 4950,
+     "draws": 8,
+     "bytes": 95972
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1802,
+     "rendered_tris": 1802,
+     "draws": 8,
+     "bytes": 45904
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 600,
+     "rendered_tris": 600,
+     "draws": 7,
+     "bytes": 24268
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 80,
+     "rendered_tris": 80,
+     "draws": 3,
+     "bytes": 7540
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 5166,
+     "rendered_tris": 5166,
+     "draws": 8,
+     "bytes": 101276
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 5278,
+     "rendered_tris": 5278,
+     "draws": 8,
+     "bytes": 103868
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 36,
+   "lod0_tris": 4950,
+   "lod0_draws": 8
+  },
+  {
+   "id": "bonsai_potted",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 68,
+     "tris": 2420,
+     "rendered_tris": 2420,
+     "draws": 8,
+     "bytes": 71096
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 965,
+     "rendered_tris": 965,
+     "draws": 8,
+     "bytes": 37120
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 286,
+     "rendered_tris": 286,
+     "draws": 8,
+     "bytes": 21672
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 20,
+     "tris": 71,
+     "rendered_tris": 71,
+     "draws": 4,
+     "bytes": 9676
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 18,
+     "tris": 2420,
+     "rendered_tris": 2420,
+     "draws": 7,
+     "bytes": 81028
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 19,
+     "tris": 2418,
+     "rendered_tris": 2418,
+     "draws": 5,
+     "bytes": 68788
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 68,
+   "lod0_tris": 2420,
+   "lod0_draws": 8
+  },
+  {
+   "id": "boulder_rim",
+   "category": "rock",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 1471,
+     "rendered_tris": 1471,
+     "draws": 3,
+     "bytes": 29008
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 828,
+     "rendered_tris": 828,
+     "draws": 3,
+     "bytes": 19300
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 92,
+     "rendered_tris": 92,
+     "draws": 3,
+     "bytes": 8248
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 22,
+     "rendered_tris": 22,
+     "draws": 3,
+     "bytes": 6904
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 20,
+     "tris": 1466,
+     "rendered_tris": 1466,
+     "draws": 3,
+     "bytes": 29292
+    },
+    {
+     "lod": 0,
+     "seed": 4,
+     "ok": true,
+     "ms": 18,
+     "tris": 2314,
+     "rendered_tris": 2314,
+     "draws": 3,
+     "bytes": 44908
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 18,
+   "lod0_tris": 1471,
+   "lod0_draws": 3
+  },
+  {
+   "id": "bridge_arched",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 4316,
+     "rendered_tris": 4316,
+     "draws": 7,
+     "bytes": 115064
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 1508,
+     "rendered_tris": 1508,
+     "draws": 6,
+     "bytes": 47500
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 452,
+     "rendered_tris": 452,
+     "draws": 5,
+     "bytes": 19104
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 112,
+     "rendered_tris": 112,
+     "draws": 3,
+     "bytes": 8076
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 18,
+     "tris": 4336,
+     "rendered_tris": 4336,
+     "draws": 7,
+     "bytes": 118496
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 5172,
+     "rendered_tris": 5172,
+     "draws": 7,
+     "bytes": 134776
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 4316,
+   "lod0_draws": 7
+  },
+  {
+   "id": "bridge_slab",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 51,
+     "tris": 890,
+     "rendered_tris": 890,
+     "draws": 3,
+     "bytes": 24792
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 336,
+     "rendered_tris": 336,
+     "draws": 3,
+     "bytes": 14668
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 120,
+     "rendered_tris": 120,
+     "draws": 3,
+     "bytes": 8468
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 60,
+     "rendered_tris": 60,
+     "draws": 2,
+     "bytes": 5424
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 1114,
+     "rendered_tris": 1114,
+     "draws": 3,
+     "bytes": 31888
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 1376,
+     "rendered_tris": 1376,
+     "draws": 3,
+     "bytes": 35268
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 51,
+   "lod0_tris": 890,
+   "lod0_draws": 3
+  },
+  {
+   "id": "cable_cabin",
+   "category": "vehicle",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 4910,
+     "rendered_tris": 5678,
+     "draws": 9,
+     "bytes": 102860
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 1922,
+     "rendered_tris": 2114,
+     "draws": 9,
+     "bytes": 52772
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 20,
+     "tris": 606,
+     "rendered_tris": 638,
+     "draws": 6,
+     "bytes": 22196
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 108,
+     "rendered_tris": 108,
+     "draws": 3,
+     "bytes": 8484
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 5168,
+     "rendered_tris": 5936,
+     "draws": 9,
+     "bytes": 106416
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 4822,
+     "rendered_tris": 5590,
+     "draws": 9,
+     "bytes": 98868
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 4910,
+   "lod0_draws": 9
+  },
+  {
+   "id": "cable_line",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 1604,
+     "rendered_tris": 1604,
+     "draws": 5,
+     "bytes": 49292
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 540,
+     "rendered_tris": 540,
+     "draws": 4,
+     "bytes": 22272
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 164,
+     "rendered_tris": 164,
+     "draws": 3,
+     "bytes": 10256
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 42,
+     "rendered_tris": 42,
+     "draws": 3,
+     "bytes": 6712
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 18,
+     "tris": 1548,
+     "rendered_tris": 1548,
+     "draws": 5,
+     "bytes": 48780
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 19,
+     "tris": 1152,
+     "rendered_tris": 1152,
+     "draws": 5,
+     "bytes": 37200
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 18,
+   "lod0_tris": 1604,
+   "lod0_draws": 5
+  },
+  {
+   "id": "cable_station",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 10064,
+     "rendered_tris": 10112,
+     "draws": 14,
+     "bytes": 257272
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 3832,
+     "rendered_tris": 3880,
+     "draws": 14,
+     "bytes": 105692
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 1428,
+     "rendered_tris": 1476,
+     "draws": 13,
+     "bytes": 53328
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 130,
+     "rendered_tris": 130,
+     "draws": 7,
+     "bytes": 15564
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 10184,
+     "rendered_tris": 10256,
+     "draws": 14,
+     "bytes": 250320
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 19,
+     "tris": 10248,
+     "rendered_tris": 10272,
+     "draws": 14,
+     "bytes": 262304
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 10064,
+   "lod0_draws": 14
+  },
+  {
+   "id": "caldera_rim",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 10900,
+     "rendered_tris": 11620,
+     "draws": 8,
+     "bytes": 144152
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 4923,
+     "rendered_tris": 5287,
+     "draws": 8,
+     "bytes": 84468
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 1410,
+     "rendered_tris": 1496,
+     "draws": 8,
+     "bytes": 35928
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 179,
+     "rendered_tris": 179,
+     "draws": 5,
+     "bytes": 13024
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 10612,
+     "rendered_tris": 11278,
+     "draws": 8,
+     "bytes": 136772
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 19,
+     "tris": 11188,
+     "rendered_tris": 11854,
+     "draws": 8,
+     "bytes": 150836
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 10900,
+   "lod0_draws": 8
+  },
+  {
+   "id": "cascade_pool",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 51,
+     "tris": 5220,
+     "rendered_tris": 5220,
+     "draws": 4,
+     "bytes": 70116
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 1824,
+     "rendered_tris": 1824,
+     "draws": 4,
+     "bytes": 33348
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 396,
+     "rendered_tris": 396,
+     "draws": 4,
+     "bytes": 14148
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 98,
+     "rendered_tris": 98,
+     "draws": 4,
+     "bytes": 9812
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 18,
+     "tris": 5220,
+     "rendered_tris": 5220,
+     "draws": 5,
+     "bytes": 73236
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 5220,
+     "rendered_tris": 5220,
+     "draws": 4,
+     "bytes": 69792
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 51,
+   "lod0_tris": 5220,
+   "lod0_draws": 4
+  },
+  {
+   "id": "cascade_terrace_upper",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 1656,
+     "rendered_tris": 1656,
+     "draws": 4,
+     "bytes": 30000
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 676,
+     "rendered_tris": 676,
+     "draws": 4,
+     "bytes": 18388
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 180,
+     "rendered_tris": 180,
+     "draws": 4,
+     "bytes": 11500
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 40,
+     "rendered_tris": 40,
+     "draws": 3,
+     "bytes": 6916
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 1656,
+     "rendered_tris": 1656,
+     "draws": 4,
+     "bytes": 31628
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 1656,
+     "rendered_tris": 1656,
+     "draws": 4,
+     "bytes": 30180
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 18,
+   "lod0_tris": 1656,
+   "lod0_draws": 4
+  },
+  {
+   "id": "chair_dining",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 940,
+     "rendered_tris": 940,
+     "draws": 3,
+     "bytes": 29872
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 332,
+     "rendered_tris": 332,
+     "draws": 3,
+     "bytes": 13764
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 120,
+     "rendered_tris": 120,
+     "draws": 3,
+     "bytes": 8444
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 36,
+     "rendered_tris": 36,
+     "draws": 3,
+     "bytes": 6336
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 1200,
+     "rendered_tris": 1200,
+     "draws": 3,
+     "bytes": 36832
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 19,
+     "tris": 940,
+     "rendered_tris": 940,
+     "draws": 3,
+     "bytes": 30108
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 19,
+   "lod0_tris": 940,
+   "lod0_draws": 3
+  },
+  {
+   "id": "changing_booth_row",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 5942,
+     "rendered_tris": 5942,
+     "draws": 7,
+     "bytes": 143452
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 1166,
+     "rendered_tris": 1166,
+     "draws": 7,
+     "bytes": 36200
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 316,
+     "rendered_tris": 316,
+     "draws": 7,
+     "bytes": 17788
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 19,
+     "tris": 58,
+     "rendered_tris": 58,
+     "draws": 5,
+     "bytes": 9656
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 19,
+     "tris": 3982,
+     "rendered_tris": 3982,
+     "draws": 7,
+     "bytes": 102684
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 18,
+     "tris": 3056,
+     "rendered_tris": 3056,
+     "draws": 7,
+     "bytes": 81668
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 18,
+   "lod0_tris": 5942,
+   "lod0_draws": 7
+  },
+  {
+   "id": "chochin",
+   "category": "lighting",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 68,
+     "tris": 4227,
+     "rendered_tris": 4227,
+     "draws": 5,
+     "bytes": 75528
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 321,
+     "rendered_tris": 321,
+     "draws": 5,
+     "bytes": 14856
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 104,
+     "rendered_tris": 104,
+     "draws": 4,
+     "bytes": 10056
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 48,
+     "rendered_tris": 48,
+     "draws": 4,
+     "bytes": 8404
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 3907,
+     "rendered_tris": 3907,
+     "draws": 5,
+     "bytes": 69484
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 3710,
+     "rendered_tris": 3710,
+     "draws": 6,
+     "bytes": 71256
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 68,
+   "lod0_tris": 4227,
+   "lod0_draws": 5
+  },
+  {
+   "id": "chozubachi",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3050,
+     "rendered_tris": 3438,
+     "draws": 11,
+     "bytes": 85608
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1264,
+     "rendered_tris": 1398,
+     "draws": 11,
+     "bytes": 48772
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 354,
+     "rendered_tris": 389,
+     "draws": 9,
+     "bytes": 22612
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 86,
+     "rendered_tris": 90,
+     "draws": 5,
+     "bytes": 10064
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 2983,
+     "rendered_tris": 3431,
+     "draws": 11,
+     "bytes": 88404
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 2881,
+     "rendered_tris": 3269,
+     "draws": 10,
+     "bytes": 82560
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 3050,
+   "lod0_draws": 11
+  },
+  {
+   "id": "cliff_lodge_b3",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 8476,
+     "rendered_tris": 8476,
+     "draws": 9,
+     "bytes": 191896
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 3000,
+     "rendered_tris": 3000,
+     "draws": 8,
+     "bytes": 79516
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 246,
+     "rendered_tris": 246,
+     "draws": 7,
+     "bytes": 17868
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 204,
+     "rendered_tris": 204,
+     "draws": 7,
+     "bytes": 16752
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 8546,
+     "rendered_tris": 8546,
+     "draws": 10,
+     "bytes": 191764
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 6098,
+     "rendered_tris": 6098,
+     "draws": 9,
+     "bytes": 144488
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 8476,
+   "lod0_draws": 9
+  },
+  {
+   "id": "conifer_tall",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 2900,
+     "rendered_tris": 2900,
+     "draws": 3,
+     "bytes": 80380
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1154,
+     "rendered_tris": 1154,
+     "draws": 3,
+     "bytes": 35124
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 338,
+     "rendered_tris": 338,
+     "draws": 3,
+     "bytes": 13948
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 75,
+     "rendered_tris": 75,
+     "draws": 2,
+     "bytes": 6500
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 2904,
+     "rendered_tris": 2904,
+     "draws": 3,
+     "bytes": 81308
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 2904,
+     "rendered_tris": 2904,
+     "draws": 3,
+     "bytes": 79824
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 2900,
+   "lod0_draws": 3
+  },
+  {
+   "id": "culvert_grate",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 952,
+     "rendered_tris": 952,
+     "draws": 3,
+     "bytes": 28944
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 480,
+     "rendered_tris": 480,
+     "draws": 3,
+     "bytes": 15828
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 140,
+     "rendered_tris": 140,
+     "draws": 3,
+     "bytes": 8100
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 34,
+     "rendered_tris": 34,
+     "draws": 3,
+     "bytes": 6304
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 1146,
+     "rendered_tris": 1146,
+     "draws": 3,
+     "bytes": 33536
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 858,
+     "rendered_tris": 858,
+     "draws": 3,
+     "bytes": 27252
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 952,
+   "lod0_draws": 3
+  },
+  {
+   "id": "deck_slatted",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 492,
+     "rendered_tris": 492,
+     "draws": 3,
+     "bytes": 15344
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 148,
+     "rendered_tris": 148,
+     "draws": 3,
+     "bytes": 8740
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 54,
+     "rendered_tris": 54,
+     "draws": 2,
+     "bytes": 4972
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 18,
+     "rendered_tris": 18,
+     "draws": 2,
+     "bytes": 4272
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 480,
+     "rendered_tris": 480,
+     "draws": 4,
+     "bytes": 18268
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 520,
+     "rendered_tris": 520,
+     "draws": 3,
+     "bytes": 17056
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 492,
+   "lod0_draws": 3
+  },
+  {
+   "id": "egg_basket",
+   "category": "props",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 818,
+     "rendered_tris": 818,
+     "draws": 3,
+     "bytes": 19244
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 308,
+     "rendered_tris": 308,
+     "draws": 3,
+     "bytes": 11940
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 96,
+     "rendered_tris": 96,
+     "draws": 3,
+     "bytes": 7912
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 32,
+     "rendered_tris": 32,
+     "draws": 2,
+     "bytes": 4804
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 818,
+     "rendered_tris": 818,
+     "draws": 3,
+     "bytes": 19000
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 806,
+     "rendered_tris": 806,
+     "draws": 3,
+     "bytes": 18592
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 818,
+   "lod0_draws": 3
+  },
+  {
+   "id": "egg_baskets",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 2509,
+     "rendered_tris": 2509,
+     "draws": 6,
+     "bytes": 67180
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1034,
+     "rendered_tris": 1034,
+     "draws": 6,
+     "bytes": 35188
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 268,
+     "rendered_tris": 268,
+     "draws": 5,
+     "bytes": 15680
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 100,
+     "rendered_tris": 100,
+     "draws": 3,
+     "bytes": 8120
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 2117,
+     "rendered_tris": 2117,
+     "draws": 6,
+     "bytes": 59108
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 3410,
+     "rendered_tris": 3410,
+     "draws": 6,
+     "bytes": 88340
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 36,
+   "lod0_tris": 2509,
+   "lod0_draws": 6
+  },
+  {
+   "id": "facade_timber",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 68,
+     "tris": 8076,
+     "rendered_tris": 8076,
+     "draws": 10,
+     "bytes": 209088
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3090,
+     "rendered_tris": 3090,
+     "draws": 9,
+     "bytes": 83452
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 938,
+     "rendered_tris": 938,
+     "draws": 7,
+     "bytes": 32824
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 64,
+     "rendered_tris": 64,
+     "draws": 6,
+     "bytes": 12200
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 7644,
+     "rendered_tris": 7652,
+     "draws": 11,
+     "bytes": 197868
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 8058,
+     "rendered_tris": 8058,
+     "draws": 8,
+     "bytes": 189396
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 68,
+   "lod0_tris": 8076,
+   "lod0_draws": 10
+  },
+  {
+   "id": "falls_lip_rock",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 3509,
+     "rendered_tris": 3509,
+     "draws": 3,
+     "bytes": 52360
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1384,
+     "rendered_tris": 1384,
+     "draws": 3,
+     "bytes": 29048
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 370,
+     "rendered_tris": 370,
+     "draws": 3,
+     "bytes": 13904
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 98,
+     "rendered_tris": 98,
+     "draws": 3,
+     "bytes": 8304
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 3551,
+     "rendered_tris": 3551,
+     "draws": 3,
+     "bytes": 52464
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 3576,
+     "rendered_tris": 3576,
+     "draws": 3,
+     "bytes": 53568
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 3509,
+   "lod0_draws": 3
+  },
+  {
+   "id": "float_ring",
+   "category": "vehicle",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 592,
+     "rendered_tris": 592,
+     "draws": 2,
+     "bytes": 14344
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 248,
+     "rendered_tris": 248,
+     "draws": 2,
+     "bytes": 8912
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 84,
+     "rendered_tris": 84,
+     "draws": 2,
+     "bytes": 6296
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 30,
+     "rendered_tris": 30,
+     "draws": 1,
+     "bytes": 3020
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 400,
+     "rendered_tris": 400,
+     "draws": 1,
+     "bytes": 9232
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 560,
+     "rendered_tris": 560,
+     "draws": 2,
+     "bytes": 15932
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 592,
+   "lod0_draws": 2
+  },
+  {
+   "id": "fumarole_vent",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 998,
+     "rendered_tris": 998,
+     "draws": 4,
+     "bytes": 26208
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 350,
+     "rendered_tris": 350,
+     "draws": 4,
+     "bytes": 15712
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 110,
+     "rendered_tris": 110,
+     "draws": 4,
+     "bytes": 10164
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 30,
+     "rendered_tris": 30,
+     "draws": 2,
+     "bytes": 4956
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 37,
+     "tris": 1266,
+     "rendered_tris": 1266,
+     "draws": 4,
+     "bytes": 31892
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1392,
+     "rendered_tris": 1392,
+     "draws": 4,
+     "bytes": 32164
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 998,
+   "lod0_draws": 4
+  },
+  {
+   "id": "futon_bed",
+   "category": "textile",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1968,
+     "rendered_tris": 1968,
+     "draws": 3,
+     "bytes": 31872
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 824,
+     "rendered_tris": 824,
+     "draws": 3,
+     "bytes": 19324
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 252,
+     "rendered_tris": 252,
+     "draws": 3,
+     "bytes": 10820
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 48,
+     "rendered_tris": 48,
+     "draws": 3,
+     "bytes": 6156
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 2272,
+     "rendered_tris": 2272,
+     "draws": 2,
+     "bytes": 35172
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1772,
+     "rendered_tris": 1772,
+     "draws": 2,
+     "bytes": 27164
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1968,
+   "lod0_draws": 3
+  },
+  {
+   "id": "geothermal_gauge",
+   "category": "props",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 51,
+     "tris": 2770,
+     "rendered_tris": 2794,
+     "draws": 7,
+     "bytes": 66472
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1086,
+     "rendered_tris": 1102,
+     "draws": 7,
+     "bytes": 37128
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 318,
+     "rendered_tris": 318,
+     "draws": 5,
+     "bytes": 17288
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 62,
+     "rendered_tris": 62,
+     "draws": 4,
+     "bytes": 8940
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 2920,
+     "rendered_tris": 2944,
+     "draws": 7,
+     "bytes": 69840
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 2988,
+     "rendered_tris": 3012,
+     "draws": 7,
+     "bytes": 71252
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 51,
+   "lod0_tris": 2770,
+   "lod0_draws": 7
+  },
+  {
+   "id": "geyser_vent",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 4341,
+     "rendered_tris": 4341,
+     "draws": 4,
+     "bytes": 69552
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1695,
+     "rendered_tris": 1695,
+     "draws": 4,
+     "bytes": 37968
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 406,
+     "rendered_tris": 406,
+     "draws": 4,
+     "bytes": 16628
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 83,
+     "rendered_tris": 83,
+     "draws": 4,
+     "bytes": 9572
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 4490,
+     "rendered_tris": 4490,
+     "draws": 4,
+     "bytes": 78384
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 5602,
+     "rendered_tris": 5602,
+     "draws": 4,
+     "bytes": 91536
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 4341,
+   "lod0_draws": 4
+  },
+  {
+   "id": "glass_oculus",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 4120,
+     "rendered_tris": 4600,
+     "draws": 6,
+     "bytes": 87036
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1280,
+     "rendered_tris": 1472,
+     "draws": 6,
+     "bytes": 36088
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 434,
+     "rendered_tris": 530,
+     "draws": 5,
+     "bytes": 15416
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 70,
+     "rendered_tris": 78,
+     "draws": 3,
+     "bytes": 5632
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 4292,
+     "rendered_tris": 4772,
+     "draws": 6,
+     "bytes": 92148
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 4220,
+     "rendered_tris": 4700,
+     "draws": 6,
+     "bytes": 89700
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 4120,
+   "lod0_draws": 6
+  },
+  {
+   "id": "glowworm_ceiling",
+   "category": "fx",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1800,
+     "rendered_tris": 1800,
+     "draws": 3,
+     "points": 34844,
+     "lines": 8035,
+     "bytes": 461632
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 512,
+     "rendered_tris": 512,
+     "draws": 3,
+     "points": 14450,
+     "lines": 1046,
+     "bytes": 158192
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 128,
+     "rendered_tris": 128,
+     "draws": 3,
+     "points": 4873,
+     "lines": 48,
+     "bytes": 51384
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 32,
+     "rendered_tris": 32,
+     "draws": 2,
+     "points": 1340,
+     "bytes": 16300
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1800,
+     "rendered_tris": 1800,
+     "draws": 3,
+     "points": 31624,
+     "lines": 5702,
+     "bytes": 398296
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1800,
+     "rendered_tris": 1800,
+     "draws": 3,
+     "points": 45750,
+     "lines": 15209,
+     "bytes": 658180
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 1800,
+   "lod0_draws": 3
+  },
+  {
+   "id": "groundcover",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 556,
+     "rendered_tris": 556,
+     "draws": 6,
+     "bytes": 27692
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 234,
+     "rendered_tris": 234,
+     "draws": 6,
+     "bytes": 18288
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 64,
+     "rendered_tris": 64,
+     "draws": 5,
+     "bytes": 11500
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 18,
+     "rendered_tris": 18,
+     "draws": 3,
+     "bytes": 6448
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 321,
+     "rendered_tris": 321,
+     "draws": 3,
+     "bytes": 14160
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 433,
+     "rendered_tris": 433,
+     "draws": 3,
+     "bytes": 19848
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 556,
+   "lod0_draws": 6
+  },
+  {
+   "id": "guest_figure",
+   "category": "people",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 26,
+     "tris": 2334,
+     "rendered_tris": 2334,
+     "draws": 7,
+     "bytes": 94024
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 32,
+     "tris": 1254,
+     "rendered_tris": 1254,
+     "draws": 6,
+     "bytes": 60624
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 430,
+     "rendered_tris": 430,
+     "draws": 6,
+     "bytes": 38920
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 195,
+     "rendered_tris": 195,
+     "draws": 5,
+     "bytes": 28508
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 2046,
+     "rendered_tris": 2046,
+     "draws": 5,
+     "bytes": 73952
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 2250,
+     "rendered_tris": 2250,
+     "draws": 6,
+     "bytes": 87784
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 26,
+   "lod0_tris": 2334,
+   "lod0_draws": 7,
+   "clips": [
+    {
+     "clip": "float_back",
+     "ok": true,
+     "ms": 18,
+     "motion": 0.1538
+    },
+    {
+     "clip": "float_ring",
+     "ok": true,
+     "ms": 30,
+     "motion": 0.2377
+    },
+    {
+     "clip": "idle_lookup",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.1236
+    },
+    {
+     "clip": "idle_shift",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.3833
+    },
+    {
+     "clip": "idle_talk",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.2366
+    },
+    {
+     "clip": "sit_bench",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.0627
+    },
+    {
+     "clip": "sit_lounger",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.0838
+    },
+    {
+     "clip": "sit_seiza",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.037
+    },
+    {
+     "clip": "sit_stool_eat",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.1155
+    },
+    {
+     "clip": "soak_free",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.5903
+    },
+    {
+     "clip": "soak_rim",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.1706
+    },
+    {
+     "clip": "walk",
+     "ok": true,
+     "ms": 31,
+     "motion": 2.1252
+    },
+    {
+     "clip": "walk_slow",
+     "ok": true,
+     "ms": 31,
+     "motion": 1.1003
+    }
+   ]
+  },
+  {
+   "id": "header_tank",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 31,
+     "tris": 5015,
+     "rendered_tris": 5015,
+     "draws": 8,
+     "bytes": 108424
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1778,
+     "rendered_tris": 1778,
+     "draws": 8,
+     "bytes": 49208
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 630,
+     "rendered_tris": 630,
+     "draws": 8,
+     "bytes": 28656
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 106,
+     "rendered_tris": 106,
+     "draws": 4,
+     "bytes": 10548
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 4680,
+     "rendered_tris": 4680,
+     "draws": 8,
+     "bytes": 97572
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 4884,
+     "rendered_tris": 4884,
+     "draws": 8,
+     "bytes": 106108
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 31,
+   "lod0_tris": 5015,
+   "lod0_draws": 8
+  },
+  {
+   "id": "ice_formation",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 4682,
+     "rendered_tris": 4682,
+     "draws": 5,
+     "bytes": 82888
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1400,
+     "rendered_tris": 1400,
+     "draws": 5,
+     "bytes": 40356
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 538,
+     "rendered_tris": 538,
+     "draws": 5,
+     "bytes": 25680
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 146,
+     "rendered_tris": 146,
+     "draws": 4,
+     "bytes": 13888
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 6096,
+     "rendered_tris": 6096,
+     "draws": 5,
+     "bytes": 104084
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1870,
+     "rendered_tris": 1870,
+     "draws": 5,
+     "bytes": 40704
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 4682,
+   "lod0_draws": 5
+  },
+  {
+   "id": "icicle_cluster",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1990,
+     "rendered_tris": 1990,
+     "draws": 2,
+     "bytes": 36648
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 732,
+     "rendered_tris": 732,
+     "draws": 2,
+     "bytes": 20888
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 150,
+     "rendered_tris": 150,
+     "draws": 2,
+     "bytes": 10340
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 48,
+     "rendered_tris": 48,
+     "draws": 2,
+     "bytes": 6160
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1980,
+     "rendered_tris": 1980,
+     "draws": 2,
+     "bytes": 36764
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1586,
+     "rendered_tris": 1586,
+     "draws": 2,
+     "bytes": 26248
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1990,
+   "lod0_draws": 2
+  },
+  {
+   "id": "junction_bell",
+   "category": "props",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 2614,
+     "rendered_tris": 2614,
+     "draws": 6,
+     "bytes": 75232
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1054,
+     "rendered_tris": 1054,
+     "draws": 6,
+     "bytes": 36588
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 210,
+     "rendered_tris": 210,
+     "draws": 6,
+     "bytes": 15608
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 59,
+     "rendered_tris": 59,
+     "draws": 2,
+     "bytes": 5740
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 2310,
+     "rendered_tris": 2310,
+     "draws": 7,
+     "bytes": 68096
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 2502,
+     "rendered_tris": 2502,
+     "draws": 6,
+     "bytes": 72124
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 2614,
+   "lod0_draws": 6
+  },
+  {
+   "id": "kakehi_spout",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 566,
+     "rendered_tris": 566,
+     "draws": 6,
+     "bytes": 26476
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 243,
+     "rendered_tris": 243,
+     "draws": 5,
+     "bytes": 15768
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 78,
+     "rendered_tris": 78,
+     "draws": 3,
+     "bytes": 8000
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 26,
+     "rendered_tris": 26,
+     "draws": 2,
+     "bytes": 4824
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 505,
+     "rendered_tris": 505,
+     "draws": 6,
+     "bytes": 26148
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 335,
+     "rendered_tris": 335,
+     "draws": 6,
+     "bytes": 21280
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 566,
+   "lod0_draws": 6
+  },
+  {
+   "id": "kawagiri_pod",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 11432,
+     "rendered_tris": 11432,
+     "draws": 14,
+     "bytes": 278464
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 4743,
+     "rendered_tris": 4743,
+     "draws": 12,
+     "bytes": 136412
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1412,
+     "rendered_tris": 1412,
+     "draws": 11,
+     "bytes": 51232
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 250,
+     "rendered_tris": 250,
+     "draws": 5,
+     "bytes": 14980
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 12756,
+     "rendered_tris": 12756,
+     "draws": 14,
+     "bytes": 302680
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 11424,
+     "rendered_tris": 11424,
+     "draws": 14,
+     "bytes": 278356
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 11432,
+   "lod0_draws": 14
+  },
+  {
+   "id": "kawagiri_sign_gate",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 13009,
+     "rendered_tris": 13009,
+     "draws": 13,
+     "bytes": 313088
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 5379,
+     "rendered_tris": 5379,
+     "draws": 13,
+     "bytes": 176968
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1363,
+     "rendered_tris": 1363,
+     "draws": 13,
+     "bytes": 58184
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 236,
+     "rendered_tris": 236,
+     "draws": 10,
+     "bytes": 22608
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 13922,
+     "rendered_tris": 13922,
+     "draws": 13,
+     "bytes": 316404
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 12826,
+     "rendered_tris": 12826,
+     "draws": 12,
+     "bytes": 312384
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 13009,
+   "lod0_draws": 13
+  },
+  {
+   "id": "kitchen_block",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 7620,
+     "rendered_tris": 7620,
+     "draws": 13,
+     "bytes": 168472
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3879,
+     "rendered_tris": 3879,
+     "draws": 13,
+     "bytes": 105328
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1226,
+     "rendered_tris": 1226,
+     "draws": 13,
+     "bytes": 49360
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 120,
+     "rendered_tris": 120,
+     "draws": 7,
+     "bytes": 13136
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 6500,
+     "rendered_tris": 6500,
+     "draws": 13,
+     "bytes": 149360
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 8386,
+     "rendered_tris": 8386,
+     "draws": 13,
+     "bytes": 187256
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 7620,
+   "lod0_draws": 13
+  },
+  {
+   "id": "koi_fish",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 770,
+     "rendered_tris": 770,
+     "draws": 5,
+     "bytes": 20564
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 286,
+     "rendered_tris": 286,
+     "draws": 4,
+     "bytes": 12300
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 70,
+     "rendered_tris": 70,
+     "draws": 4,
+     "bytes": 9152
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 25,
+     "rendered_tris": 25,
+     "draws": 3,
+     "bytes": 6552
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 770,
+     "rendered_tris": 770,
+     "draws": 4,
+     "bytes": 18744
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 770,
+     "rendered_tris": 770,
+     "draws": 4,
+     "bytes": 18632
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 770,
+   "lod0_draws": 5
+  },
+  {
+   "id": "koi_pond",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 51,
+     "tris": 2486,
+     "rendered_tris": 2568,
+     "draws": 7,
+     "bytes": 55888
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 983,
+     "rendered_tris": 1021,
+     "draws": 7,
+     "bytes": 33180
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 236,
+     "rendered_tris": 254,
+     "draws": 6,
+     "bytes": 13320
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 68,
+     "rendered_tris": 68,
+     "draws": 3,
+     "bytes": 7584
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 2264,
+     "rendered_tris": 2346,
+     "draws": 7,
+     "bytes": 50796
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 2996,
+     "rendered_tris": 3078,
+     "draws": 7,
+     "bytes": 62552
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 51,
+   "lod0_tris": 2486,
+   "lod0_draws": 7
+  },
+  {
+   "id": "lantern_float",
+   "category": "lighting",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 232,
+     "rendered_tris": 232,
+     "draws": 3,
+     "bytes": 9844
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 104,
+     "rendered_tris": 104,
+     "draws": 3,
+     "bytes": 7496
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 30,
+     "rendered_tris": 30,
+     "draws": 3,
+     "bytes": 6476
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 18,
+     "rendered_tris": 18,
+     "draws": 2,
+     "bytes": 4392
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 302,
+     "rendered_tris": 302,
+     "draws": 3,
+     "bytes": 11976
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 196,
+     "rendered_tris": 196,
+     "draws": 4,
+     "bytes": 11468
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 232,
+   "lod0_draws": 3
+  },
+  {
+   "id": "lantern_floor",
+   "category": "lighting",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 686,
+     "rendered_tris": 686,
+     "draws": 4,
+     "bytes": 25780
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 228,
+     "rendered_tris": 228,
+     "draws": 3,
+     "bytes": 10416
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 120,
+     "rendered_tris": 120,
+     "draws": 3,
+     "bytes": 8408
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 50,
+     "rendered_tris": 50,
+     "draws": 3,
+     "bytes": 6784
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 894,
+     "rendered_tris": 894,
+     "draws": 4,
+     "bytes": 29688
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 620,
+     "rendered_tris": 620,
+     "draws": 4,
+     "bytes": 23844
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 686,
+   "lod0_draws": 4
+  },
+  {
+   "id": "lantern_niche",
+   "category": "lighting",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 376,
+     "rendered_tris": 376,
+     "draws": 5,
+     "bytes": 17204
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 148,
+     "rendered_tris": 148,
+     "draws": 5,
+     "bytes": 12716
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 64,
+     "rendered_tris": 64,
+     "draws": 4,
+     "bytes": 9200
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 28,
+     "rendered_tris": 28,
+     "draws": 3,
+     "bytes": 6704
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 432,
+     "rendered_tris": 432,
+     "draws": 5,
+     "bytes": 18296
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 376,
+     "rendered_tris": 376,
+     "draws": 5,
+     "bytes": 17196
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 376,
+   "lod0_draws": 5
+  },
+  {
+   "id": "lantern_post",
+   "category": "lighting",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 504,
+     "rendered_tris": 504,
+     "draws": 4,
+     "bytes": 19228
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 260,
+     "rendered_tris": 260,
+     "draws": 4,
+     "bytes": 12588
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 86,
+     "rendered_tris": 86,
+     "draws": 4,
+     "bytes": 8864
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 40,
+     "rendered_tris": 40,
+     "draws": 4,
+     "bytes": 7820
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 554,
+     "rendered_tris": 554,
+     "draws": 4,
+     "bytes": 20188
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 520,
+     "rendered_tris": 520,
+     "draws": 4,
+     "bytes": 16296
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 504,
+   "lod0_draws": 4
+  },
+  {
+   "id": "lantern_stone",
+   "category": "lighting",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2162,
+     "rendered_tris": 2162,
+     "draws": 3,
+     "bytes": 44760
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 754,
+     "rendered_tris": 754,
+     "draws": 3,
+     "bytes": 21496
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 282,
+     "rendered_tris": 282,
+     "draws": 2,
+     "bytes": 10744
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 104,
+     "rendered_tris": 104,
+     "draws": 2,
+     "bytes": 6700
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1928,
+     "rendered_tris": 1928,
+     "draws": 3,
+     "bytes": 39192
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 2080,
+     "rendered_tris": 2080,
+     "draws": 3,
+     "bytes": 45488
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 2162,
+   "lod0_draws": 3
+  },
+  {
+   "id": "lava_backdrop",
+   "category": "fx",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 68,
+     "tris": 7879,
+     "rendered_tris": 7879,
+     "draws": 6,
+     "bytes": 206484
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2848,
+     "rendered_tris": 2848,
+     "draws": 6,
+     "bytes": 97620
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 663,
+     "rendered_tris": 663,
+     "draws": 5,
+     "bytes": 32676
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 182,
+     "rendered_tris": 182,
+     "draws": 5,
+     "bytes": 17720
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 7922,
+     "rendered_tris": 7922,
+     "draws": 6,
+     "bytes": 206264
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 5801,
+     "rendered_tris": 5801,
+     "draws": 5,
+     "bytes": 153548
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 68,
+   "lod0_tris": 7879,
+   "lod0_draws": 6
+  },
+  {
+   "id": "lava_crack",
+   "category": "fx",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1219,
+     "rendered_tris": 1219,
+     "draws": 3,
+     "bytes": 30624
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 181,
+     "rendered_tris": 181,
+     "draws": 2,
+     "bytes": 7636
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 18,
+     "tris": 181,
+     "rendered_tris": 181,
+     "draws": 2,
+     "bytes": 7636
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 44,
+     "rendered_tris": 44,
+     "draws": 2,
+     "bytes": 4368
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1367,
+     "rendered_tris": 1367,
+     "draws": 3,
+     "bytes": 33028
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 947,
+     "rendered_tris": 947,
+     "draws": 3,
+     "bytes": 29308
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1219,
+   "lod0_draws": 3
+  },
+  {
+   "id": "lava_tube",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 6025,
+     "rendered_tris": 6025,
+     "draws": 6,
+     "bytes": 112084
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3060,
+     "rendered_tris": 3060,
+     "draws": 6,
+     "bytes": 68164
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 863,
+     "rendered_tris": 863,
+     "draws": 4,
+     "bytes": 25672
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 160,
+     "rendered_tris": 160,
+     "draws": 4,
+     "bytes": 11080
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 5833,
+     "rendered_tris": 5833,
+     "draws": 6,
+     "bytes": 109244
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 5559,
+     "rendered_tris": 5559,
+     "draws": 6,
+     "bytes": 112184
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 6025,
+   "lod0_draws": 6
+  },
+  {
+   "id": "lava_window",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 6752,
+     "rendered_tris": 7456,
+     "draws": 5,
+     "bytes": 176048
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2628,
+     "rendered_tris": 3332,
+     "draws": 5,
+     "bytes": 68708
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 624,
+     "rendered_tris": 636,
+     "draws": 5,
+     "bytes": 21552
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 74,
+     "rendered_tris": 76,
+     "draws": 4,
+     "bytes": 7268
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 6244,
+     "rendered_tris": 6640,
+     "draws": 5,
+     "bytes": 166128
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 7576,
+     "rendered_tris": 8368,
+     "draws": 5,
+     "bytes": 195088
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 6752,
+   "lod0_draws": 5
+  },
+  {
+   "id": "lift_car",
+   "category": "vehicle",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 5488,
+     "rendered_tris": 5852,
+     "draws": 8,
+     "bytes": 128596
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2139,
+     "rendered_tris": 2295,
+     "draws": 8,
+     "bytes": 58604
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 638,
+     "rendered_tris": 638,
+     "draws": 6,
+     "bytes": 24040
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 124,
+     "rendered_tris": 124,
+     "draws": 4,
+     "bytes": 9688
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 6360,
+     "rendered_tris": 6780,
+     "draws": 8,
+     "bytes": 145204
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 5940,
+     "rendered_tris": 6276,
+     "draws": 8,
+     "bytes": 134612
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 5488,
+   "lod0_draws": 8
+  },
+  {
+   "id": "lift_drum",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 20362,
+     "rendered_tris": 20686,
+     "draws": 12,
+     "bytes": 486092
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 6546,
+     "rendered_tris": 6870,
+     "draws": 12,
+     "bytes": 166692
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2117,
+     "rendered_tris": 2117,
+     "draws": 8,
+     "bytes": 60468
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 282,
+     "rendered_tris": 282,
+     "draws": 6,
+     "bytes": 17176
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 19024,
+     "rendered_tris": 19348,
+     "draws": 11,
+     "bytes": 442068
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 22904,
+     "rendered_tris": 23324,
+     "draws": 12,
+     "bytes": 542500
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 20362,
+   "lod0_draws": 12
+  },
+  {
+   "id": "locker_bank",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3084,
+     "rendered_tris": 3084,
+     "draws": 8,
+     "bytes": 74788
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1260,
+     "rendered_tris": 1260,
+     "draws": 8,
+     "bytes": 41168
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 176,
+     "rendered_tris": 176,
+     "draws": 6,
+     "bytes": 13868
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 46,
+     "rendered_tris": 46,
+     "draws": 5,
+     "bytes": 9308
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 3082,
+     "rendered_tris": 3082,
+     "draws": 8,
+     "bytes": 75376
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1696,
+     "rendered_tris": 1696,
+     "draws": 8,
+     "bytes": 43968
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 3084,
+   "lod0_draws": 8
+  },
+  {
+   "id": "lounger",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1076,
+     "rendered_tris": 1076,
+     "draws": 2,
+     "bytes": 22728
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 388,
+     "rendered_tris": 388,
+     "draws": 2,
+     "bytes": 13436
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 112,
+     "rendered_tris": 112,
+     "draws": 2,
+     "bytes": 7224
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 32,
+     "rendered_tris": 32,
+     "draws": 2,
+     "bytes": 4784
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1288,
+     "rendered_tris": 1288,
+     "draws": 2,
+     "bytes": 27800
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 980,
+     "rendered_tris": 980,
+     "draws": 2,
+     "bytes": 21244
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1076,
+   "lod0_draws": 2
+  },
+  {
+   "id": "magma_glass_wall",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 7824,
+     "rendered_tris": 8792,
+     "draws": 4,
+     "bytes": 179452
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2040,
+     "rendered_tris": 2304,
+     "draws": 4,
+     "bytes": 47956
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 880,
+     "rendered_tris": 1144,
+     "draws": 4,
+     "bytes": 27092
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 190,
+     "rendered_tris": 212,
+     "draws": 3,
+     "bytes": 8936
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 7824,
+     "rendered_tris": 8792,
+     "draws": 4,
+     "bytes": 180080
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 5704,
+     "rendered_tris": 6188,
+     "draws": 4,
+     "bytes": 125388
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 7824,
+   "lod0_draws": 4
+  },
+  {
+   "id": "massage_spout",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 3716,
+     "rendered_tris": 3716,
+     "draws": 4,
+     "bytes": 54304
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1308,
+     "rendered_tris": 1308,
+     "draws": 4,
+     "bytes": 29228
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 388,
+     "rendered_tris": 388,
+     "draws": 4,
+     "bytes": 15152
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 76,
+     "rendered_tris": 76,
+     "draws": 4,
+     "bytes": 9228
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 3756,
+     "rendered_tris": 3756,
+     "draws": 4,
+     "bytes": 55600
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 3738,
+     "rendered_tris": 3738,
+     "draws": 4,
+     "bytes": 55436
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 3716,
+   "lod0_draws": 4
+  },
+  {
+   "id": "menu_tags",
+   "category": "signage",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 302,
+     "rendered_tris": 302,
+     "draws": 4,
+     "bytes": 12036
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 148,
+     "rendered_tris": 148,
+     "draws": 4,
+     "bytes": 9028
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 15,
+     "rendered_tris": 15,
+     "draws": 4,
+     "bytes": 7532
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 6,
+     "rendered_tris": 6,
+     "draws": 2,
+     "bytes": 4132
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 310,
+     "rendered_tris": 310,
+     "draws": 3,
+     "bytes": 10112
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 442,
+     "rendered_tris": 442,
+     "draws": 4,
+     "bytes": 13772
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 302,
+   "lod0_draws": 4
+  },
+  {
+   "id": "mirror_pool",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 5242,
+     "rendered_tris": 5242,
+     "draws": 5,
+     "bytes": 111812
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 33,
+     "tris": 2286,
+     "rendered_tris": 2286,
+     "draws": 5,
+     "bytes": 68884
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 490,
+     "rendered_tris": 490,
+     "draws": 4,
+     "bytes": 16468
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 80,
+     "rendered_tris": 80,
+     "draws": 4,
+     "bytes": 9360
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 5188,
+     "rendered_tris": 5188,
+     "draws": 5,
+     "bytes": 109924
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 4864,
+     "rendered_tris": 4864,
+     "draws": 5,
+     "bytes": 102276
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 5242,
+   "lod0_draws": 5
+  },
+  {
+   "id": "momiji_small",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 7729,
+     "rendered_tris": 7729,
+     "draws": 3,
+     "bytes": 171484
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3073,
+     "rendered_tris": 3073,
+     "draws": 3,
+     "bytes": 78016
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 870,
+     "rendered_tris": 870,
+     "draws": 3,
+     "bytes": 25732
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 206,
+     "rendered_tris": 206,
+     "draws": 2,
+     "bytes": 8120
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 7731,
+     "rendered_tris": 7731,
+     "draws": 3,
+     "bytes": 170544
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 7300,
+     "rendered_tris": 7300,
+     "draws": 3,
+     "bytes": 162208
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 7729,
+   "lod0_draws": 3
+  },
+  {
+   "id": "moon_pavilion",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 11966,
+     "rendered_tris": 11966,
+     "draws": 8,
+     "bytes": 285024
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 4714,
+     "rendered_tris": 4714,
+     "draws": 8,
+     "bytes": 121068
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1578,
+     "rendered_tris": 1578,
+     "draws": 8,
+     "bytes": 49284
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 188,
+     "rendered_tris": 188,
+     "draws": 8,
+     "bytes": 18880
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 12070,
+     "rendered_tris": 12070,
+     "draws": 8,
+     "bytes": 286872
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 12494,
+     "rendered_tris": 12494,
+     "draws": 8,
+     "bytes": 297032
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 11966,
+   "lod0_draws": 8
+  },
+  {
+   "id": "moon_sky",
+   "category": "fx",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1996,
+     "rendered_tris": 1996,
+     "draws": 13,
+     "points": 1458,
+     "bytes": 59060
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 820,
+     "rendered_tris": 820,
+     "draws": 13,
+     "points": 735,
+     "bytes": 39628
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 255,
+     "rendered_tris": 255,
+     "draws": 11,
+     "points": 220,
+     "bytes": 22404
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 72,
+     "rendered_tris": 72,
+     "draws": 6,
+     "bytes": 11116
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1996,
+     "rendered_tris": 1996,
+     "draws": 13,
+     "points": 1517,
+     "bytes": 59792
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 1996,
+     "rendered_tris": 1996,
+     "draws": 13,
+     "points": 1466,
+     "bytes": 59632
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1996,
+   "lod0_draws": 13
+  },
+  {
+   "id": "mooring_post",
+   "category": "props",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 454,
+     "rendered_tris": 454,
+     "draws": 3,
+     "bytes": 16320
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 198,
+     "rendered_tris": 198,
+     "draws": 3,
+     "bytes": 11280
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 54,
+     "rendered_tris": 54,
+     "draws": 3,
+     "bytes": 7428
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 20,
+     "rendered_tris": 20,
+     "draws": 2,
+     "bytes": 4516
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 322,
+     "rendered_tris": 322,
+     "draws": 3,
+     "bytes": 14312
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 442,
+     "rendered_tris": 442,
+     "draws": 3,
+     "bytes": 15880
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 454,
+   "lod0_draws": 3
+  },
+  {
+   "id": "neon_sign",
+   "category": "signage",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 676,
+     "rendered_tris": 676,
+     "draws": 3,
+     "bytes": 20520
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 276,
+     "rendered_tris": 276,
+     "draws": 3,
+     "bytes": 13184
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 62,
+     "rendered_tris": 62,
+     "draws": 3,
+     "bytes": 6864
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 10,
+     "rendered_tris": 10,
+     "draws": 2,
+     "bytes": 4216
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 1736,
+     "rendered_tris": 1736,
+     "draws": 2,
+     "bytes": 42980
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1272,
+     "rendered_tris": 1272,
+     "draws": 2,
+     "bytes": 31504
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 676,
+   "lod0_draws": 3
+  },
+  {
+   "id": "noren",
+   "category": "textile",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 642,
+     "rendered_tris": 642,
+     "draws": 5,
+     "bytes": 24764
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 206,
+     "rendered_tris": 206,
+     "draws": 5,
+     "bytes": 13756
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 36,
+     "rendered_tris": 36,
+     "draws": 4,
+     "bytes": 8316
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 7,
+     "rendered_tris": 7,
+     "draws": 3,
+     "bytes": 5876
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 439,
+     "rendered_tris": 439,
+     "draws": 4,
+     "bytes": 15964
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 646,
+     "rendered_tris": 646,
+     "draws": 5,
+     "bytes": 25060
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 642,
+   "lod0_draws": 5
+  },
+  {
+   "id": "obsidian_monolith",
+   "category": "rock",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1378,
+     "rendered_tris": 1378,
+     "draws": 1,
+     "bytes": 29048
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 622,
+     "rendered_tris": 622,
+     "draws": 1,
+     "bytes": 16208
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 196,
+     "rendered_tris": 196,
+     "draws": 1,
+     "bytes": 7328
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 31,
+     "rendered_tris": 31,
+     "draws": 1,
+     "bytes": 3468
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1351,
+     "rendered_tris": 1351,
+     "draws": 1,
+     "bytes": 22924
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 1352,
+     "rendered_tris": 1352,
+     "draws": 1,
+     "bytes": 25632
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1378,
+   "lod0_draws": 1
+  },
+  {
+   "id": "oke_bucket",
+   "category": "props",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1392,
+     "rendered_tris": 1392,
+     "draws": 4,
+     "bytes": 27496
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 466,
+     "rendered_tris": 466,
+     "draws": 4,
+     "bytes": 17156
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 120,
+     "rendered_tris": 120,
+     "draws": 2,
+     "bytes": 7276
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 38,
+     "rendered_tris": 38,
+     "draws": 2,
+     "bytes": 5188
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 1392,
+     "rendered_tris": 1392,
+     "draws": 4,
+     "bytes": 27788
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1572,
+     "rendered_tris": 1572,
+     "draws": 4,
+     "bytes": 29928
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1392,
+   "lod0_draws": 4
+  },
+  {
+   "id": "parapet_stone",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 198,
+     "rendered_tris": 198,
+     "draws": 2,
+     "bytes": 9272
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 96,
+     "rendered_tris": 96,
+     "draws": 2,
+     "bytes": 6320
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 36,
+     "rendered_tris": 36,
+     "draws": 2,
+     "bytes": 4680
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 12,
+     "rendered_tris": 12,
+     "draws": 1,
+     "bytes": 2620
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 364,
+     "rendered_tris": 364,
+     "draws": 2,
+     "bytes": 14136
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 304,
+     "rendered_tris": 304,
+     "draws": 2,
+     "bytes": 12084
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 198,
+   "lod0_draws": 2
+  },
+  {
+   "id": "pavilion_engawa",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 51,
+     "tris": 14198,
+     "rendered_tris": 14198,
+     "draws": 14,
+     "bytes": 362980
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 5570,
+     "rendered_tris": 5570,
+     "draws": 12,
+     "bytes": 161444
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 33,
+     "tris": 1658,
+     "rendered_tris": 1658,
+     "draws": 10,
+     "bytes": 55712
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 274,
+     "rendered_tris": 274,
+     "draws": 5,
+     "bytes": 15476
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 11794,
+     "rendered_tris": 11794,
+     "draws": 12,
+     "bytes": 282800
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 12530,
+     "rendered_tris": 12530,
+     "draws": 14,
+     "bytes": 320280
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 51,
+   "lod0_tris": 14198,
+   "lod0_draws": 14
+  },
+  {
+   "id": "pier_trestle",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1060,
+     "rendered_tris": 1060,
+     "draws": 6,
+     "bytes": 40816
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 294,
+     "rendered_tris": 294,
+     "draws": 6,
+     "bytes": 18788
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 128,
+     "rendered_tris": 128,
+     "draws": 6,
+     "bytes": 14208
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 48,
+     "rendered_tris": 48,
+     "draws": 3,
+     "bytes": 6744
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 1139,
+     "rendered_tris": 1139,
+     "draws": 6,
+     "bytes": 43188
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 899,
+     "rendered_tris": 899,
+     "draws": 6,
+     "bytes": 35400
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1060,
+   "lod0_draws": 6
+  },
+  {
+   "id": "pine_niwaki",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 5814,
+     "rendered_tris": 5814,
+     "draws": 3,
+     "bytes": 135280
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2320,
+     "rendered_tris": 2320,
+     "draws": 3,
+     "bytes": 59692
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 670,
+     "rendered_tris": 670,
+     "draws": 3,
+     "bytes": 22664
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 118,
+     "rendered_tris": 118,
+     "draws": 2,
+     "bytes": 6400
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 5812,
+     "rendered_tris": 5812,
+     "draws": 3,
+     "bytes": 137188
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 5818,
+     "rendered_tris": 5818,
+     "draws": 3,
+     "bytes": 139392
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 5814,
+   "lod0_draws": 3
+  },
+  {
+   "id": "plunge_basin",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 2000,
+     "rendered_tris": 2024,
+     "draws": 7,
+     "bytes": 45776
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 707,
+     "rendered_tris": 723,
+     "draws": 7,
+     "bytes": 27772
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 290,
+     "rendered_tris": 300,
+     "draws": 7,
+     "bytes": 19524
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 62,
+     "rendered_tris": 68,
+     "draws": 5,
+     "bytes": 9164
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 1923,
+     "rendered_tris": 1947,
+     "draws": 6,
+     "bytes": 43848
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 1986,
+     "rendered_tris": 2010,
+     "draws": 7,
+     "bytes": 46096
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 2000,
+   "lod0_draws": 7
+  },
+  {
+   "id": "pool_shell",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 33,
+     "tris": 1338,
+     "rendered_tris": 1413,
+     "draws": 5,
+     "bytes": 28396
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 400,
+     "rendered_tris": 428,
+     "draws": 5,
+     "bytes": 15420
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 33,
+     "tris": 146,
+     "rendered_tris": 159,
+     "draws": 5,
+     "bytes": 9928
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 54,
+     "rendered_tris": 54,
+     "draws": 3,
+     "bytes": 6784
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1542,
+     "rendered_tris": 1605,
+     "draws": 6,
+     "bytes": 38192
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 2042,
+     "rendered_tris": 2127,
+     "draws": 7,
+     "bytes": 44164
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 33,
+   "lod0_tris": 1338,
+   "lod0_draws": 5
+  },
+  {
+   "id": "portal_arch",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3454,
+     "rendered_tris": 3454,
+     "draws": 8,
+     "bytes": 75428
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1184,
+     "rendered_tris": 1184,
+     "draws": 7,
+     "bytes": 37996
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 354,
+     "rendered_tris": 354,
+     "draws": 5,
+     "bytes": 19184
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 114,
+     "rendered_tris": 114,
+     "draws": 4,
+     "bytes": 10048
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1176,
+     "rendered_tris": 1176,
+     "draws": 6,
+     "bytes": 33432
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 220,
+     "tris": 2928,
+     "rendered_tris": 2928,
+     "draws": 4,
+     "bytes": 73968
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 3454,
+   "lod0_draws": 8
+  },
+  {
+   "id": "railing",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 48,
+     "tris": 438,
+     "rendered_tris": 438,
+     "draws": 3,
+     "bytes": 16648
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 53,
+     "tris": 190,
+     "rendered_tris": 190,
+     "draws": 3,
+     "bytes": 11228
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 68,
+     "rendered_tris": 68,
+     "draws": 2,
+     "bytes": 5584
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 102,
+     "tris": 24,
+     "rendered_tris": 24,
+     "draws": 2,
+     "bytes": 4572
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 108,
+     "tris": 124,
+     "rendered_tris": 124,
+     "draws": 3,
+     "bytes": 8240
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 109,
+     "tris": 248,
+     "rendered_tris": 248,
+     "draws": 2,
+     "bytes": 10172
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 48,
+   "lod0_tris": 438,
+   "lod0_draws": 3
+  },
+  {
+   "id": "ramen_counter",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 15128,
+     "rendered_tris": 15128,
+     "draws": 14,
+     "bytes": 311816
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 142,
+     "tris": 5257,
+     "rendered_tris": 5257,
+     "draws": 14,
+     "bytes": 136996
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 176,
+     "tris": 1600,
+     "rendered_tris": 1600,
+     "draws": 13,
+     "bytes": 61044
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 188,
+     "rendered_tris": 188,
+     "draws": 10,
+     "bytes": 19780
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 108,
+     "tris": 16374,
+     "rendered_tris": 16374,
+     "draws": 14,
+     "bytes": 336528
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 304,
+     "tris": 15506,
+     "rendered_tris": 15506,
+     "draws": 13,
+     "bytes": 324896
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 107,
+   "lod0_tris": 15128,
+   "lod0_draws": 14
+  },
+  {
+   "id": "reception_counter",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 117,
+     "tris": 2868,
+     "rendered_tris": 2868,
+     "draws": 11,
+     "bytes": 80672
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 1096,
+     "rendered_tris": 1096,
+     "draws": 6,
+     "bytes": 34284
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 173,
+     "tris": 300,
+     "rendered_tris": 300,
+     "draws": 5,
+     "bytes": 16072
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 56,
+     "tris": 62,
+     "rendered_tris": 62,
+     "draws": 3,
+     "bytes": 7128
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 109,
+     "tris": 2503,
+     "rendered_tris": 2503,
+     "draws": 12,
+     "bytes": 75300
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 106,
+     "tris": 2100,
+     "rendered_tris": 2100,
+     "draws": 11,
+     "bytes": 64352
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 117,
+   "lod0_tris": 2868,
+   "lod0_draws": 11
+  },
+  {
+   "id": "rimstone_terrace",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 5438,
+     "rendered_tris": 6734,
+     "draws": 4,
+     "bytes": 91204
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 104,
+     "tris": 2170,
+     "rendered_tris": 2720,
+     "draws": 4,
+     "bytes": 41504
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 177,
+     "tris": 540,
+     "rendered_tris": 666,
+     "draws": 4,
+     "bytes": 16592
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 247,
+     "tris": 88,
+     "rendered_tris": 96,
+     "draws": 4,
+     "bytes": 8148
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 240,
+     "tris": 5234,
+     "rendered_tris": 6326,
+     "draws": 4,
+     "bytes": 90896
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 109,
+     "tris": 5148,
+     "rendered_tris": 6192,
+     "draws": 4,
+     "bytes": 89536
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 106,
+   "lod0_tris": 5438,
+   "lod0_draws": 4
+  },
+  {
+   "id": "river_channel",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 2325,
+     "rendered_tris": 2589,
+     "draws": 5,
+     "bytes": 49664
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 665,
+     "rendered_tris": 721,
+     "draws": 5,
+     "bytes": 26176
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 133,
+     "rendered_tris": 133,
+     "draws": 3,
+     "bytes": 9924
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 24,
+     "rendered_tris": 24,
+     "draws": 2,
+     "bytes": 4672
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 105,
+     "tris": 2356,
+     "rendered_tris": 2644,
+     "draws": 5,
+     "bytes": 45768
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 106,
+     "tris": 2177,
+     "rendered_tris": 2425,
+     "draws": 5,
+     "bytes": 41836
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 106,
+   "lod0_tris": 2325,
+   "lod0_draws": 5
+  },
+  {
+   "id": "rock_cluster",
+   "category": "rock",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 2208,
+     "rendered_tris": 2208,
+     "draws": 2,
+     "bytes": 47228
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 105,
+     "tris": 907,
+     "rendered_tris": 907,
+     "draws": 2,
+     "bytes": 25060
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 169,
+     "rendered_tris": 169,
+     "draws": 2,
+     "bytes": 10080
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 105,
+     "tris": 48,
+     "rendered_tris": 48,
+     "draws": 2,
+     "bytes": 6424
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 106,
+     "tris": 1685,
+     "rendered_tris": 1685,
+     "draws": 2,
+     "bytes": 38804
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 106,
+     "tris": 2295,
+     "rendered_tris": 2295,
+     "draws": 3,
+     "bytes": 52380
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 106,
+   "lod0_tris": 2208,
+   "lod0_draws": 2
+  },
+  {
+   "id": "rock_opening_glazed",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 105,
+     "tris": 1092,
+     "rendered_tris": 1104,
+     "draws": 5,
+     "bytes": 23268
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 524,
+     "rendered_tris": 536,
+     "draws": 5,
+     "bytes": 16120
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 175,
+     "tris": 124,
+     "rendered_tris": 136,
+     "draws": 5,
+     "bytes": 9600
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 242,
+     "tris": 34,
+     "rendered_tris": 36,
+     "draws": 5,
+     "bytes": 7976
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 244,
+     "tris": 1116,
+     "rendered_tris": 1128,
+     "draws": 6,
+     "bytes": 28300
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 241,
+     "tris": 1092,
+     "rendered_tris": 1104,
+     "draws": 5,
+     "bytes": 23308
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 105,
+   "lod0_tris": 1092,
+   "lod0_draws": 5
+  },
+  {
+   "id": "rock_overhang",
+   "category": "rock",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 246,
+     "tris": 2050,
+     "rendered_tris": 2050,
+     "draws": 4,
+     "bytes": 40496
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 242,
+     "tris": 908,
+     "rendered_tris": 908,
+     "draws": 4,
+     "bytes": 24224
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 177,
+     "tris": 156,
+     "rendered_tris": 156,
+     "draws": 4,
+     "bytes": 12252
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 80,
+     "rendered_tris": 80,
+     "draws": 4,
+     "bytes": 9448
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 107,
+     "tris": 1078,
+     "rendered_tris": 1078,
+     "draws": 4,
+     "bytes": 29512
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 108,
+     "tris": 1280,
+     "rendered_tris": 1280,
+     "draws": 4,
+     "bytes": 33272
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 246,
+   "lod0_tris": 2050,
+   "lod0_draws": 4
+  },
+  {
+   "id": "roof_tiled",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 4008,
+     "rendered_tris": 4008,
+     "draws": 3,
+     "bytes": 100700
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 1600,
+     "rendered_tris": 1600,
+     "draws": 3,
+     "bytes": 40748
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 108,
+     "tris": 492,
+     "rendered_tris": 492,
+     "draws": 3,
+     "bytes": 16968
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 105,
+     "tris": 30,
+     "rendered_tris": 30,
+     "draws": 2,
+     "bytes": 4736
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 106,
+     "tris": 4104,
+     "rendered_tris": 4104,
+     "draws": 2,
+     "bytes": 97244
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 107,
+     "tris": 3618,
+     "rendered_tris": 3618,
+     "draws": 3,
+     "bytes": 86096
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 106,
+   "lod0_tris": 4008,
+   "lod0_draws": 3
+  },
+  {
+   "id": "sake_counter",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 2878,
+     "rendered_tris": 2878,
+     "draws": 8,
+     "bytes": 67968
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 106,
+     "tris": 1246,
+     "rendered_tris": 1246,
+     "draws": 8,
+     "bytes": 41516
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 245,
+     "tris": 260,
+     "rendered_tris": 260,
+     "draws": 7,
+     "bytes": 18376
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 108,
+     "tris": 49,
+     "rendered_tris": 49,
+     "draws": 3,
+     "bytes": 7220
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 107,
+     "tris": 2658,
+     "rendered_tris": 2658,
+     "draws": 8,
+     "bytes": 64456
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 108,
+     "tris": 2272,
+     "rendered_tris": 2272,
+     "draws": 7,
+     "bytes": 55872
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 107,
+   "lod0_tris": 2878,
+   "lod0_draws": 8
+  },
+  {
+   "id": "sakura_small",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 7725,
+     "rendered_tris": 7725,
+     "draws": 2,
+     "bytes": 261696
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 3018,
+     "rendered_tris": 3018,
+     "draws": 2,
+     "bytes": 114916
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 244,
+     "tris": 598,
+     "rendered_tris": 598,
+     "draws": 2,
+     "bytes": 24988
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 242,
+     "tris": 147,
+     "rendered_tris": 147,
+     "draws": 2,
+     "bytes": 8968
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 243,
+     "tris": 7718,
+     "rendered_tris": 7718,
+     "draws": 2,
+     "bytes": 261568
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 242,
+     "tris": 7756,
+     "rendered_tris": 7756,
+     "draws": 2,
+     "bytes": 255932
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 107,
+   "lod0_tris": 7725,
+   "lod0_draws": 2
+  },
+  {
+   "id": "sea_stack",
+   "category": "rock",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 242,
+     "tris": 3979,
+     "rendered_tris": 3979,
+     "draws": 3,
+     "bytes": 84384
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 244,
+     "tris": 867,
+     "rendered_tris": 867,
+     "draws": 3,
+     "bytes": 32744
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 175,
+     "tris": 300,
+     "rendered_tris": 300,
+     "draws": 3,
+     "bytes": 18344
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 108,
+     "tris": 41,
+     "rendered_tris": 41,
+     "draws": 2,
+     "bytes": 5752
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 106,
+     "tris": 3733,
+     "rendered_tris": 3733,
+     "draws": 3,
+     "bytes": 80232
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 176,
+     "tris": 4063,
+     "rendered_tris": 4063,
+     "draws": 3,
+     "bytes": 85832
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 242,
+   "lod0_tris": 3979,
+   "lod0_draws": 3
+  },
+  {
+   "id": "seat_block_carved",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 175,
+     "tris": 1334,
+     "rendered_tris": 1334,
+     "draws": 3,
+     "bytes": 27188
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 245,
+     "tris": 516,
+     "rendered_tris": 516,
+     "draws": 3,
+     "bytes": 17044
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 242,
+     "tris": 98,
+     "rendered_tris": 98,
+     "draws": 3,
+     "bytes": 7624
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 242,
+     "tris": 14,
+     "rendered_tris": 14,
+     "draws": 3,
+     "bytes": 6052
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 244,
+     "tris": 1938,
+     "rendered_tris": 1938,
+     "draws": 3,
+     "bytes": 42176
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 242,
+     "tris": 1392,
+     "rendered_tris": 1392,
+     "draws": 3,
+     "bytes": 28560
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 175,
+   "lod0_tris": 1334,
+   "lod0_draws": 3
+  },
+  {
+   "id": "shoji_panel",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 244,
+     "tris": 234,
+     "rendered_tris": 234,
+     "draws": 2,
+     "bytes": 10160
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 244,
+     "tris": 106,
+     "rendered_tris": 106,
+     "draws": 2,
+     "bytes": 6464
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 243,
+     "tris": 38,
+     "rendered_tris": 38,
+     "draws": 2,
+     "bytes": 4704
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 10,
+     "rendered_tris": 10,
+     "draws": 2,
+     "bytes": 4212
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 106,
+     "tris": 204,
+     "rendered_tris": 204,
+     "draws": 3,
+     "bytes": 11176
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 106,
+     "tris": 340,
+     "rendered_tris": 340,
+     "draws": 1,
+     "bytes": 11188
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 244,
+   "lod0_tris": 234,
+   "lod0_draws": 2
+  },
+  {
+   "id": "shoji_wall_bay",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 166,
+     "tris": 2898,
+     "rendered_tris": 2898,
+     "draws": 12,
+     "bytes": 104304
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 312,
+     "tris": 1178,
+     "rendered_tris": 1178,
+     "draws": 12,
+     "bytes": 59328
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 115,
+     "tris": 310,
+     "rendered_tris": 310,
+     "draws": 9,
+     "bytes": 24412
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 110,
+     "tris": 64,
+     "rendered_tris": 64,
+     "draws": 3,
+     "bytes": 7464
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 105,
+     "tris": 2846,
+     "rendered_tris": 2846,
+     "draws": 12,
+     "bytes": 101688
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 106,
+     "tris": 2768,
+     "rendered_tris": 2768,
+     "draws": 12,
+     "bytes": 95680
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 166,
+   "lod0_tris": 2898,
+   "lod0_draws": 12
+  },
+  {
+   "id": "shrub_clump",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 780,
+     "rendered_tris": 780,
+     "draws": 5,
+     "bytes": 32384
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 107,
+     "tris": 310,
+     "rendered_tris": 310,
+     "draws": 4,
+     "bytes": 16272
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 175,
+     "tris": 96,
+     "rendered_tris": 96,
+     "draws": 3,
+     "bytes": 9032
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 243,
+     "tris": 32,
+     "rendered_tris": 32,
+     "draws": 2,
+     "bytes": 5072
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 243,
+     "tris": 778,
+     "rendered_tris": 778,
+     "draws": 4,
+     "bytes": 30728
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 175,
+     "tris": 782,
+     "rendered_tris": 782,
+     "draws": 5,
+     "bytes": 32580
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 107,
+   "lod0_tris": 780,
+   "lod0_draws": 5
+  },
+  {
+   "id": "sign_tower_lit",
+   "category": "signage",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 246,
+     "tris": 1461,
+     "rendered_tris": 1461,
+     "draws": 10,
+     "bytes": 46244
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 243,
+     "tris": 323,
+     "rendered_tris": 323,
+     "draws": 7,
+     "bytes": 17096
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 245,
+     "tris": 139,
+     "rendered_tris": 139,
+     "draws": 6,
+     "bytes": 12824
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 123,
+     "tris": 36,
+     "rendered_tris": 36,
+     "draws": 4,
+     "bytes": 8208
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 1295,
+     "rendered_tris": 1295,
+     "draws": 10,
+     "bytes": 42420
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 886,
+     "rendered_tris": 886,
+     "draws": 10,
+     "bytes": 35052
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 246,
+   "lod0_tris": 1461,
+   "lod0_draws": 10
+  },
+  {
+   "id": "signboard_kanji",
+   "category": "signage",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 67,
+     "tris": 356,
+     "rendered_tris": 356,
+     "draws": 4,
+     "bytes": 13452
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 163,
+     "rendered_tris": 163,
+     "draws": 4,
+     "bytes": 10040
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 44,
+     "rendered_tris": 44,
+     "draws": 3,
+     "bytes": 6576
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 10,
+     "rendered_tris": 10,
+     "draws": 3,
+     "bytes": 5932
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 359,
+     "rendered_tris": 359,
+     "draws": 3,
+     "bytes": 12044
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 288,
+     "rendered_tris": 288,
+     "draws": 4,
+     "bytes": 12184
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 67,
+   "lod0_tris": 356,
+   "lod0_draws": 4
+  },
+  {
+   "id": "slat_screen",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 376,
+     "rendered_tris": 376,
+     "draws": 2,
+     "bytes": 12996
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 204,
+     "rendered_tris": 204,
+     "draws": 2,
+     "bytes": 9020
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 42,
+     "rendered_tris": 42,
+     "draws": 2,
+     "bytes": 5000
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 10,
+     "rendered_tris": 10,
+     "draws": 1,
+     "bytes": 2560
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 276,
+     "rendered_tris": 276,
+     "draws": 2,
+     "bytes": 10928
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 408,
+     "rendered_tris": 408,
+     "draws": 2,
+     "bytes": 13656
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 376,
+   "lod0_draws": 2
+  },
+  {
+   "id": "slide_launch_gate",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 4280,
+     "rendered_tris": 4280,
+     "draws": 3,
+     "bytes": 106588
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1480,
+     "rendered_tris": 1480,
+     "draws": 3,
+     "bytes": 38952
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 506,
+     "rendered_tris": 506,
+     "draws": 3,
+     "bytes": 17584
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 104,
+     "rendered_tris": 104,
+     "draws": 1,
+     "bytes": 4584
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 4168,
+     "rendered_tris": 4168,
+     "draws": 3,
+     "bytes": 107020
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 4084,
+     "rendered_tris": 4084,
+     "draws": 3,
+     "bytes": 100644
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 4280,
+   "lod0_draws": 3
+  },
+  {
+   "id": "slide_tube",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 20322,
+     "rendered_tris": 30252,
+     "draws": 6,
+     "bytes": 340036
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 7776,
+     "rendered_tris": 10296,
+     "draws": 6,
+     "bytes": 166108
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1896,
+     "rendered_tris": 2680,
+     "draws": 6,
+     "bytes": 56636
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 300,
+     "rendered_tris": 552,
+     "draws": 3,
+     "bytes": 12152
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 19858,
+     "rendered_tris": 27952,
+     "draws": 6,
+     "bytes": 341368
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 18120,
+     "rendered_tris": 27024,
+     "draws": 6,
+     "bytes": 306848
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 20322,
+   "lod0_draws": 6
+  },
+  {
+   "id": "slipper_cubbies",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 33,
+     "tris": 13998,
+     "rendered_tris": 13998,
+     "draws": 12,
+     "bytes": 419180
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3200,
+     "rendered_tris": 3200,
+     "draws": 10,
+     "bytes": 94720
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 900,
+     "rendered_tris": 900,
+     "draws": 9,
+     "bytes": 36912
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 80,
+     "rendered_tris": 80,
+     "draws": 6,
+     "bytes": 11716
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 3296,
+     "rendered_tris": 3296,
+     "draws": 12,
+     "bytes": 98956
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 13998,
+     "rendered_tris": 13998,
+     "draws": 12,
+     "bytes": 381676
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 33,
+   "lod0_tris": 13998,
+   "lod0_draws": 12
+  },
+  {
+   "id": "spill_lip",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 1124,
+     "rendered_tris": 1348,
+     "draws": 8,
+     "bytes": 30732
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 508,
+     "rendered_tris": 564,
+     "draws": 8,
+     "bytes": 22180
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 122,
+     "rendered_tris": 130,
+     "draws": 7,
+     "bytes": 13568
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 54,
+     "rendered_tris": 58,
+     "draws": 7,
+     "bytes": 11936
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1088,
+     "rendered_tris": 1312,
+     "draws": 8,
+     "bytes": 30364
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 1124,
+     "rendered_tris": 1348,
+     "draws": 8,
+     "bytes": 30656
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 36,
+   "lod0_tris": 1124,
+   "lod0_draws": 8
+  },
+  {
+   "id": "spiral_stair",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 9042,
+     "rendered_tris": 9042,
+     "draws": 9,
+     "bytes": 231916
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3776,
+     "rendered_tris": 3776,
+     "draws": 8,
+     "bytes": 110428
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 928,
+     "rendered_tris": 928,
+     "draws": 8,
+     "bytes": 38424
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 218,
+     "rendered_tris": 218,
+     "draws": 5,
+     "bytes": 15548
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 9084,
+     "rendered_tris": 9084,
+     "draws": 9,
+     "bytes": 236580
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 8428,
+     "rendered_tris": 8428,
+     "draws": 8,
+     "bytes": 237904
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 9042,
+   "lod0_draws": 9
+  },
+  {
+   "id": "staff_figure",
+   "category": "people",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 3016,
+     "rendered_tris": 3016,
+     "draws": 10,
+     "bytes": 109788
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1536,
+     "rendered_tris": 1536,
+     "draws": 9,
+     "bytes": 75704
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 554,
+     "rendered_tris": 554,
+     "draws": 8,
+     "bytes": 49312
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 299,
+     "rendered_tris": 299,
+     "draws": 7,
+     "bytes": 38500
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 2504,
+     "rendered_tris": 2504,
+     "draws": 8,
+     "bytes": 94076
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 2953,
+     "rendered_tris": 2953,
+     "draws": 9,
+     "bytes": 111396
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 3016,
+   "lod0_draws": 10,
+   "clips": [
+    {
+     "clip": "float_back",
+     "ok": true,
+     "ms": 17,
+     "motion": 0.1541
+    },
+    {
+     "clip": "float_ring",
+     "ok": true,
+     "ms": 30,
+     "motion": 0.2378
+    },
+    {
+     "clip": "idle_lookup",
+     "ok": true,
+     "ms": 30,
+     "motion": 0.1238
+    },
+    {
+     "clip": "idle_shift",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.3834
+    },
+    {
+     "clip": "idle_talk",
+     "ok": true,
+     "ms": 30,
+     "motion": 0.2364
+    },
+    {
+     "clip": "sit_bench",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.0627
+    },
+    {
+     "clip": "sit_lounger",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.0834
+    },
+    {
+     "clip": "sit_seiza",
+     "ok": true,
+     "ms": 30,
+     "motion": 0.0369
+    },
+    {
+     "clip": "sit_stool_eat",
+     "ok": true,
+     "ms": 30,
+     "motion": 0.1158
+    },
+    {
+     "clip": "soak_free",
+     "ok": true,
+     "ms": 30,
+     "motion": 0.5893
+    },
+    {
+     "clip": "soak_rim",
+     "ok": true,
+     "ms": 31,
+     "motion": 0.1706
+    },
+    {
+     "clip": "walk",
+     "ok": true,
+     "ms": 32,
+     "motion": 4.0626
+    },
+    {
+     "clip": "walk_slow",
+     "ok": true,
+     "ms": 28,
+     "motion": 1.0996
+    }
+   ]
+  },
+  {
+   "id": "stair",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 30,
+     "tris": 1622,
+     "rendered_tris": 1622,
+     "draws": 6,
+     "bytes": 53672
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 528,
+     "rendered_tris": 528,
+     "draws": 6,
+     "bytes": 23384
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 188,
+     "rendered_tris": 188,
+     "draws": 4,
+     "bytes": 11940
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 44,
+     "rendered_tris": 44,
+     "draws": 2,
+     "bytes": 4848
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 1455,
+     "rendered_tris": 1455,
+     "draws": 6,
+     "bytes": 50516
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1552,
+     "rendered_tris": 1552,
+     "draws": 6,
+     "bytes": 51860
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 30,
+   "lod0_tris": 1622,
+   "lod0_draws": 6
+  },
+  {
+   "id": "stair_cascade",
+   "category": "structure",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 5070,
+     "rendered_tris": 6960,
+     "draws": 9,
+     "bytes": 116196
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2030,
+     "rendered_tris": 2504,
+     "draws": 9,
+     "bytes": 63660
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 438,
+     "rendered_tris": 562,
+     "draws": 6,
+     "bytes": 17768
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 88,
+     "rendered_tris": 114,
+     "draws": 5,
+     "bytes": 9064
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 5860,
+     "rendered_tris": 8224,
+     "draws": 9,
+     "bytes": 125188
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 5494,
+     "rendered_tris": 7384,
+     "draws": 9,
+     "bytes": 125140
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 5070,
+   "lod0_draws": 9
+  },
+  {
+   "id": "stalactite_cluster",
+   "category": "rock",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1602,
+     "rendered_tris": 1602,
+     "draws": 3,
+     "bytes": 41836
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 626,
+     "rendered_tris": 626,
+     "draws": 3,
+     "bytes": 24440
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 282,
+     "rendered_tris": 282,
+     "draws": 3,
+     "bytes": 15256
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 74,
+     "rendered_tris": 74,
+     "draws": 3,
+     "bytes": 8732
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1830,
+     "rendered_tris": 1830,
+     "draws": 3,
+     "bytes": 47340
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 1346,
+     "rendered_tris": 1346,
+     "draws": 3,
+     "bytes": 36956
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1602,
+   "lod0_draws": 3
+  },
+  {
+   "id": "steam_room",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 4705,
+     "rendered_tris": 4705,
+     "draws": 11,
+     "bytes": 116516
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1710,
+     "rendered_tris": 1710,
+     "draws": 11,
+     "bytes": 60560
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 541,
+     "rendered_tris": 541,
+     "draws": 11,
+     "bytes": 33128
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 120,
+     "rendered_tris": 120,
+     "draws": 7,
+     "bytes": 14388
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 4750,
+     "rendered_tris": 4750,
+     "draws": 11,
+     "bytes": 118212
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 4728,
+     "rendered_tris": 4728,
+     "draws": 11,
+     "bytes": 119044
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 4705,
+   "lod0_draws": 11
+  },
+  {
+   "id": "stele_stone",
+   "category": "signage",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1394,
+     "rendered_tris": 1394,
+     "draws": 4,
+     "bytes": 31748
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 492,
+     "rendered_tris": 492,
+     "draws": 4,
+     "bytes": 16176
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 190,
+     "rendered_tris": 190,
+     "draws": 4,
+     "bytes": 11672
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 36,
+     "rendered_tris": 36,
+     "draws": 2,
+     "bytes": 5036
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1406,
+     "rendered_tris": 1406,
+     "draws": 4,
+     "bytes": 31872
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1576,
+     "rendered_tris": 1576,
+     "draws": 5,
+     "bytes": 36140
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1394,
+   "lod0_draws": 4
+  },
+  {
+   "id": "stepping_stone",
+   "category": "rock",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 972,
+     "rendered_tris": 972,
+     "draws": 3,
+     "bytes": 17456
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 240,
+     "rendered_tris": 240,
+     "draws": 3,
+     "bytes": 9484
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 60,
+     "rendered_tris": 60,
+     "draws": 2,
+     "bytes": 5336
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 20,
+     "rendered_tris": 20,
+     "draws": 2,
+     "bytes": 4644
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 972,
+     "rendered_tris": 972,
+     "draws": 3,
+     "bytes": 17548
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 972,
+     "rendered_tris": 972,
+     "draws": 3,
+     "bytes": 17160
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 972,
+   "lod0_draws": 3
+  },
+  {
+   "id": "stone_tub",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 3539,
+     "rendered_tris": 3633,
+     "draws": 9,
+     "bytes": 58716
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1137,
+     "rendered_tris": 1183,
+     "draws": 7,
+     "bytes": 28276
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 374,
+     "rendered_tris": 396,
+     "draws": 6,
+     "bytes": 16560
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 85,
+     "rendered_tris": 85,
+     "draws": 4,
+     "bytes": 9628
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 3536,
+     "rendered_tris": 3630,
+     "draws": 9,
+     "bytes": 58004
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 3535,
+     "rendered_tris": 3629,
+     "draws": 9,
+     "bytes": 58428
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 3539,
+   "lod0_draws": 9
+  },
+  {
+   "id": "stool",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1016,
+     "rendered_tris": 1016,
+     "draws": 3,
+     "bytes": 25120
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 736,
+     "rendered_tris": 736,
+     "draws": 3,
+     "bytes": 20660
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 208,
+     "rendered_tris": 208,
+     "draws": 2,
+     "bytes": 9168
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 128,
+     "rendered_tris": 128,
+     "draws": 1,
+     "bytes": 5556
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 1016,
+     "rendered_tris": 1016,
+     "draws": 3,
+     "bytes": 25404
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1016,
+     "rendered_tris": 1016,
+     "draws": 3,
+     "bytes": 25172
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1016,
+   "lod0_draws": 3
+  },
+  {
+   "id": "stream_channel",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 757,
+     "rendered_tris": 757,
+     "draws": 4,
+     "bytes": 26200
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 217,
+     "rendered_tris": 217,
+     "draws": 4,
+     "bytes": 13632
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 74,
+     "rendered_tris": 74,
+     "draws": 4,
+     "bytes": 9776
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 18,
+     "rendered_tris": 18,
+     "draws": 3,
+     "bytes": 6340
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 708,
+     "rendered_tris": 708,
+     "draws": 7,
+     "bytes": 30584
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 664,
+     "rendered_tris": 664,
+     "draws": 6,
+     "bytes": 26924
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 757,
+   "lod0_draws": 4
+  },
+  {
+   "id": "suite_module",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 11109,
+     "rendered_tris": 11109,
+     "draws": 11,
+     "bytes": 297364
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3201,
+     "rendered_tris": 3201,
+     "draws": 11,
+     "bytes": 91992
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1130,
+     "rendered_tris": 1130,
+     "draws": 10,
+     "bytes": 44356
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 89,
+     "rendered_tris": 89,
+     "draws": 5,
+     "bytes": 11120
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 10299,
+     "rendered_tris": 10299,
+     "draws": 11,
+     "bytes": 273640
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 14150,
+     "rendered_tris": 14150,
+     "draws": 11,
+     "bytes": 379976
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 11109,
+   "lod0_draws": 11
+  },
+  {
+   "id": "summit_lodge",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 12520,
+     "rendered_tris": 12524,
+     "draws": 14,
+     "bytes": 309652
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 4796,
+     "rendered_tris": 4800,
+     "draws": 14,
+     "bytes": 122644
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1434,
+     "rendered_tris": 1436,
+     "draws": 11,
+     "bytes": 47488
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 146,
+     "rendered_tris": 146,
+     "draws": 8,
+     "bytes": 17808
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 12288,
+     "rendered_tris": 12292,
+     "draws": 14,
+     "bytes": 308048
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 10404,
+     "rendered_tris": 10408,
+     "draws": 14,
+     "bytes": 261080
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 12520,
+   "lod0_draws": 14
+  },
+  {
+   "id": "table_low",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 720,
+     "rendered_tris": 720,
+     "draws": 2,
+     "bytes": 22000
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 272,
+     "rendered_tris": 272,
+     "draws": 2,
+     "bytes": 11144
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 84,
+     "rendered_tris": 84,
+     "draws": 2,
+     "bytes": 6008
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 28,
+     "rendered_tris": 28,
+     "draws": 2,
+     "bytes": 4536
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 612,
+     "rendered_tris": 612,
+     "draws": 2,
+     "bytes": 19464
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 396,
+     "rendered_tris": 396,
+     "draws": 2,
+     "bytes": 14432
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 720,
+   "lod0_draws": 2
+  },
+  {
+   "id": "tableware",
+   "category": "props",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1444,
+     "rendered_tris": 1444,
+     "draws": 8,
+     "bytes": 40712
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 646,
+     "rendered_tris": 646,
+     "draws": 8,
+     "bytes": 27940
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 156,
+     "rendered_tris": 156,
+     "draws": 5,
+     "bytes": 12472
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 40,
+     "rendered_tris": 40,
+     "draws": 3,
+     "bytes": 6988
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1488,
+     "rendered_tris": 1488,
+     "draws": 4,
+     "bytes": 33292
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 1104,
+     "rendered_tris": 1104,
+     "draws": 2,
+     "bytes": 24076
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1444,
+   "lod0_draws": 8
+  },
+  {
+   "id": "tansu_chest",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 944,
+     "rendered_tris": 944,
+     "draws": 6,
+     "bytes": 34120
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 404,
+     "rendered_tris": 404,
+     "draws": 6,
+     "bytes": 20352
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 118,
+     "rendered_tris": 118,
+     "draws": 5,
+     "bytes": 11640
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 32,
+     "rendered_tris": 32,
+     "draws": 3,
+     "bytes": 6476
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1172,
+     "rendered_tris": 1172,
+     "draws": 4,
+     "bytes": 36120
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 1308,
+     "rendered_tris": 1308,
+     "draws": 5,
+     "bytes": 41576
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 944,
+   "lod0_draws": 6
+  },
+  {
+   "id": "tea_set",
+   "category": "props",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1420,
+     "rendered_tris": 1420,
+     "draws": 3,
+     "bytes": 30472
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 544,
+     "rendered_tris": 544,
+     "draws": 3,
+     "bytes": 17780
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 180,
+     "rendered_tris": 180,
+     "draws": 3,
+     "bytes": 9840
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 43,
+     "rendered_tris": 43,
+     "draws": 2,
+     "bytes": 5312
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1316,
+     "rendered_tris": 1316,
+     "draws": 3,
+     "bytes": 27508
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 1328,
+     "rendered_tris": 1328,
+     "draws": 3,
+     "bytes": 28764
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1420,
+   "lod0_draws": 3
+  },
+  {
+   "id": "timber_passage",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 2936,
+     "rendered_tris": 2936,
+     "draws": 3,
+     "bytes": 83200
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 1480,
+     "rendered_tris": 1480,
+     "draws": 3,
+     "bytes": 42064
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 316,
+     "rendered_tris": 316,
+     "draws": 3,
+     "bytes": 13112
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 96,
+     "rendered_tris": 96,
+     "draws": 2,
+     "bytes": 6524
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1756,
+     "rendered_tris": 1756,
+     "draws": 2,
+     "bytes": 51060
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 2384,
+     "rendered_tris": 2384,
+     "draws": 3,
+     "bytes": 70600
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 2936,
+   "lod0_draws": 3
+  },
+  {
+   "id": "torii_basalt",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 11856,
+     "rendered_tris": 11856,
+     "draws": 5,
+     "bytes": 168988
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 4628,
+     "rendered_tris": 4628,
+     "draws": 4,
+     "bytes": 76216
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1236,
+     "rendered_tris": 1236,
+     "draws": 3,
+     "bytes": 26052
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 200,
+     "rendered_tris": 200,
+     "draws": 3,
+     "bytes": 8908
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 11856,
+     "rendered_tris": 11856,
+     "draws": 5,
+     "bytes": 169308
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 11856,
+     "rendered_tris": 11856,
+     "draws": 5,
+     "bytes": 165312
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 11856,
+   "lod0_draws": 5
+  },
+  {
+   "id": "torii_small",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 3292,
+     "rendered_tris": 3292,
+     "draws": 4,
+     "bytes": 56968
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1445,
+     "rendered_tris": 1445,
+     "draws": 4,
+     "bytes": 34000
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 423,
+     "rendered_tris": 423,
+     "draws": 4,
+     "bytes": 16976
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 64,
+     "rendered_tris": 64,
+     "draws": 2,
+     "bytes": 5696
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 3880,
+     "rendered_tris": 3880,
+     "draws": 4,
+     "bytes": 64292
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 2348,
+     "rendered_tris": 2348,
+     "draws": 3,
+     "bytes": 37304
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 3292,
+   "lod0_draws": 4
+  },
+  {
+   "id": "toro_tall",
+   "category": "lighting",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 3974,
+     "rendered_tris": 3974,
+     "draws": 4,
+     "bytes": 75192
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 36,
+     "tris": 2016,
+     "rendered_tris": 2016,
+     "draws": 4,
+     "bytes": 47672
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 560,
+     "rendered_tris": 560,
+     "draws": 3,
+     "bytes": 18184
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 90,
+     "rendered_tris": 90,
+     "draws": 3,
+     "bytes": 8492
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 4010,
+     "rendered_tris": 4010,
+     "draws": 4,
+     "bytes": 85472
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 4294,
+     "rendered_tris": 4294,
+     "draws": 4,
+     "bytes": 81624
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 3974,
+   "lod0_draws": 4
+  },
+  {
+   "id": "towel_folded",
+   "category": "props",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 33,
+     "tris": 420,
+     "rendered_tris": 420,
+     "draws": 2,
+     "bytes": 12008
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 204,
+     "rendered_tris": 204,
+     "draws": 2,
+     "bytes": 9076
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 140,
+     "rendered_tris": 140,
+     "draws": 2,
+     "bytes": 7596
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 60,
+     "rendered_tris": 60,
+     "draws": 2,
+     "bytes": 5268
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 516,
+     "rendered_tris": 516,
+     "draws": 2,
+     "bytes": 13736
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 516,
+     "rendered_tris": 516,
+     "draws": 2,
+     "bytes": 13812
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 33,
+   "lod0_tris": 420,
+   "lod0_draws": 2
+  },
+  {
+   "id": "treatment_room",
+   "category": "architecture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 8126,
+     "rendered_tris": 8126,
+     "draws": 15,
+     "bytes": 205316
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2826,
+     "rendered_tris": 2826,
+     "draws": 15,
+     "bytes": 86680
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 958,
+     "rendered_tris": 958,
+     "draws": 14,
+     "bytes": 46076
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 42,
+     "rendered_tris": 42,
+     "draws": 4,
+     "bytes": 7780
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 36,
+     "tris": 6370,
+     "rendered_tris": 6370,
+     "draws": 15,
+     "bytes": 170668
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 34,
+     "tris": 7046,
+     "rendered_tris": 7046,
+     "draws": 14,
+     "bytes": 179032
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 8126,
+   "lod0_draws": 15
+  },
+  {
+   "id": "tsuboniwa",
+   "category": "nature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 5783,
+     "rendered_tris": 5783,
+     "draws": 9,
+     "bytes": 134820
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2614,
+     "rendered_tris": 2614,
+     "draws": 9,
+     "bytes": 74244
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 760,
+     "rendered_tris": 760,
+     "draws": 8,
+     "bytes": 30932
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 135,
+     "rendered_tris": 135,
+     "draws": 8,
+     "bytes": 17836
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 5829,
+     "rendered_tris": 5829,
+     "draws": 9,
+     "bytes": 134296
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 5739,
+     "rendered_tris": 5739,
+     "draws": 9,
+     "bytes": 132788
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 5783,
+   "lod0_draws": 9
+  },
+  {
+   "id": "vanity_counter",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 4942,
+     "rendered_tris": 5390,
+     "draws": 13,
+     "bytes": 114572
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 2004,
+     "rendered_tris": 2172,
+     "draws": 13,
+     "bytes": 63652
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 490,
+     "rendered_tris": 522,
+     "draws": 10,
+     "bytes": 24756
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 70,
+     "rendered_tris": 70,
+     "draws": 5,
+     "bytes": 10264
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 5108,
+     "rendered_tris": 5684,
+     "draws": 14,
+     "bytes": 109908
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 3394,
+     "rendered_tris": 3874,
+     "draws": 13,
+     "bytes": 82732
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 4942,
+   "lod0_draws": 13
+  },
+  {
+   "id": "wall_trickle",
+   "category": "water_feature",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 1432,
+     "rendered_tris": 1626,
+     "draws": 6,
+     "bytes": 43760
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 468,
+     "rendered_tris": 518,
+     "draws": 6,
+     "bytes": 20964
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 114,
+     "rendered_tris": 138,
+     "draws": 5,
+     "bytes": 10188
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 44,
+     "rendered_tris": 48,
+     "draws": 4,
+     "bytes": 6948
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 35,
+     "tris": 1520,
+     "rendered_tris": 1666,
+     "draws": 6,
+     "bytes": 45440
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 1558,
+     "rendered_tris": 1800,
+     "draws": 6,
+     "bytes": 45192
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 1432,
+   "lod0_draws": 6
+  },
+  {
+   "id": "yukata_shelves",
+   "category": "furniture",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 7056,
+     "rendered_tris": 7056,
+     "draws": 10,
+     "bytes": 156836
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 3724,
+     "rendered_tris": 3724,
+     "draws": 10,
+     "bytes": 95604
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 404,
+     "rendered_tris": 404,
+     "draws": 8,
+     "bytes": 23552
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 108,
+     "rendered_tris": 108,
+     "draws": 6,
+     "bytes": 12764
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 5874,
+     "rendered_tris": 5874,
+     "draws": 8,
+     "bytes": 129584
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 35,
+     "tris": 5774,
+     "rendered_tris": 5774,
+     "draws": 8,
+     "bytes": 127908
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 34,
+   "lod0_tris": 7056,
+   "lod0_draws": 10
+  },
+  {
+   "id": "zabuton_cushion",
+   "category": "textile",
+   "variants": [
+    {
+     "lod": 0,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 234,
+     "rendered_tris": 234,
+     "draws": 2,
+     "bytes": 8260
+    },
+    {
+     "lod": 1,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 102,
+     "rendered_tris": 102,
+     "draws": 2,
+     "bytes": 5804
+    },
+    {
+     "lod": 2,
+     "seed": 1,
+     "ok": true,
+     "ms": 34,
+     "tris": 40,
+     "rendered_tris": 40,
+     "draws": 1,
+     "bytes": 3036
+    },
+    {
+     "lod": 3,
+     "seed": 1,
+     "ok": true,
+     "ms": 35,
+     "tris": 12,
+     "rendered_tris": 12,
+     "draws": 1,
+     "bytes": 2572
+    },
+    {
+     "lod": 0,
+     "seed": 2,
+     "ok": true,
+     "ms": 34,
+     "tris": 258,
+     "rendered_tris": 258,
+     "draws": 2,
+     "bytes": 8480
+    },
+    {
+     "lod": 0,
+     "seed": 3,
+     "ok": true,
+     "ms": 36,
+     "tris": 234,
+     "rendered_tris": 234,
+     "draws": 3,
+     "bytes": 10572
+    }
+   ],
+   "ok": true,
+   "lod0_ms": 35,
+   "lod0_tris": 234,
+   "lod0_draws": 2
+  }
+ ]
+}
