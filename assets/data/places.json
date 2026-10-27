@@ -58,12 +58,12 @@
    "kind": "place",
    "number": null,
    "pos": [
-    42,
-    55,
+    82,
+    71,
     1.6
    ],
-   "yaw_deg": 52.3,
-   "pitch_deg": 0,
+   "yaw_deg": 251.1,
+   "pitch_deg": 4.8,
    "label": {
     "text": "Arrival hall (lava window)",
     "pos": [
@@ -72,7 +72,7 @@
      2.6
     ]
    },
-   "source": "place-camera-entry"
+   "source": "place-camera-concept"
   },
   {
    "id": "g_changing",
@@ -250,14 +250,14 @@
    "kind": "place",
    "number": null,
    "pos": [
-    67.4,
-    91.2,
+    70.4,
+    91.55,
     -18.4
    ],
-   "yaw_deg": 88.2,
-   "pitch_deg": 0,
+   "yaw_deg": 87.9,
+   "pitch_deg": -0.5,
    "label": null,
-   "source": "place-camera-entry"
+   "source": "place-camera-concept"
   },
   {
    "id": "b1_junction_w",
@@ -301,12 +301,12 @@
    "kind": "attraction",
    "number": 5,
    "pos": [
-    95,
-    92,
+    99.2,
+    91.4,
     -18.4
    ],
-   "yaw_deg": 90,
-   "pitch_deg": 0,
+   "yaw_deg": 92.6,
+   "pitch_deg": 1.8,
    "label": {
     "text": "Obsidian Mirror Float Pool",
     "pos": [
@@ -315,7 +315,7 @@
      -17.4
     ]
    },
-   "source": "place-camera-entry"
+   "source": "place-camera-concept"
   },
   {
    "id": "b1_grotto",

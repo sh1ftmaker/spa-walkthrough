@@ -1,28 +1,35 @@
 {
- "generated": "2026-10-27T16:11:38.604Z",
+ "generated": "2026-10-27T16:43:36.425Z",
  "places": {
   "b1_cor_mirror": {
    "package": "/home/agent-tom/Desktop/volcanospa/3d/bake/b1_cor_mirror/low/pkg",
-   "generated": "2026-10-27T15:58:16.453Z",
+   "generated": "2026-10-27T16:36:31.026Z",
    "tris": 77964,
-   "bytes": 6853187,
-   "lightmap": "1024^2 rgbm",
+   "bytes": 6842261,
+   "lightmaps": [
+    "lm_b1_cor_mirror 1024^2 rgbm 5.9 cm"
+   ],
    "probes": 6
   },
   "b1_mirror": {
    "package": "/home/agent-tom/Desktop/volcanospa/3d/bake/b1_mirror/low/pkg",
-   "generated": "2026-10-27T15:57:37.365Z",
+   "generated": "2026-10-27T16:35:51.328Z",
    "tris": 164820,
-   "bytes": 11713888,
-   "lightmap": "2048^2 rgbm",
+   "bytes": 11740747,
+   "lightmaps": [
+    "lm_b1_mirror 2048^2 rgbm 5.7 cm"
+   ],
    "probes": 3
   },
   "g_arrival": {
    "package": "/home/agent-tom/Desktop/volcanospa/3d/bake/g_arrival/low/pkg",
-   "generated": "2026-10-27T15:56:48.459Z",
+   "generated": "2026-10-27T16:34:54.608Z",
    "tris": 266169,
-   "bytes": 13504957,
-   "lightmap": "2048^2 rgbm",
+   "bytes": 14711123,
+   "lightmaps": [
+    "lm_g_arrival 2048^2 rgbm 7.3 cm",
+    "lm_g_arrival_upper 1024^2 rgbm 16.9 cm"
+   ],
    "probes": 3
   }
  },

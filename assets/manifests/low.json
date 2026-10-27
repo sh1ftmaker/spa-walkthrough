@@ -2,7 +2,7 @@
  "contract": 1,
  "tier": "low",
  "source": "mixed",
- "generated": "2026-10-27T16:12:16.471Z",
+ "generated": "2026-10-27T16:44:13.780Z",
  "layout_sha": null,
  "coords": {
   "gltf": "three Y-up (X=x, Y=z, Z=-y)",
@@ -14,7 +14,7 @@
   "lightMapIntensity": 3.141592653589793
  },
  "start": {
-  "place": "g_gate"
+  "place": "g_arrival"
  },
  "textures": {
   "stone_floor": {
@@ -455,18 +455,6 @@
    "codec": "uastc",
    "source": "materials/tex/pl_Rope001_nh.ktx2"
   },
-  "lib:pl_tile_sinter_base": {
-   "uri": "tex/64cb56a66bfc123b.ktx2",
-   "colorSpace": "srgb",
-   "codec": "uastc",
-   "source": "materials/tex/pl_tile_sinter_base.ktx2"
-  },
-  "lib:pl_tile_sinter_nh": {
-   "uri": "tex/c85bfface485bf43.ktx2",
-   "colorSpace": "linear",
-   "codec": "uastc",
-   "source": "materials/tex/pl_tile_sinter_nh.ktx2"
-  },
   "lib:pl_seaside_rock_base": {
    "uri": "tex/f5ab50bd9ad8521e.ktx2",
    "colorSpace": "srgb",
@@ -478,6 +466,18 @@
    "colorSpace": "linear",
    "codec": "uastc",
    "source": "materials/tex/pl_seaside_rock_nh.ktx2"
+  },
+  "lib:pl_tile_sinter_base": {
+   "uri": "tex/64cb56a66bfc123b.ktx2",
+   "colorSpace": "srgb",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_sinter_base.ktx2"
+  },
+  "lib:pl_tile_sinter_nh": {
+   "uri": "tex/c85bfface485bf43.ktx2",
+   "colorSpace": "linear",
+   "codec": "uastc",
+   "source": "materials/tex/pl_tile_sinter_nh.ktx2"
   },
   "lib:blossom_base": {
    "uri": "tex/8dada81b25cb14c6.ktx2",
@@ -3624,51 +3624,6 @@
     "roughness": 0.804
    }
   },
-  "sinter~870a2205": {
-   "type": "kz",
-   "id": "sinter",
-   "params": {
-    "tint": [
-     1,
-     0.66,
-     0.34
-    ],
-    "wetness": 0.9,
-    "wear": 0,
-    "roughness_offset": -0.1,
-    "scale": 2,
-    "normal_strength": 1,
-    "emissive_level": 0
-   },
-   "lightmap": true,
-   "maps": {},
-   "kit": {
-    "base": "lib:pl_tile_sinter_base",
-    "nh": "lib:pl_tile_sinter_nh",
-    "noise": "lib:kz_noise"
-   },
-   "lib": {
-    "tiling": 2,
-    "aspect": 1,
-    "uv_mode": "metric",
-    "tech": "antitile",
-    "porosity": 0.5,
-    "worn": {
-     "color": [
-      0.8,
-      0.75,
-      0.65
-     ],
-     "rough": 0.3
-    },
-    "emissive": null,
-    "alphaTest": null,
-    "doubleSided": false,
-    "transparent": false,
-    "envMapIntensity": 0.7,
-    "roughness": 0.482
-   }
-  },
   "stepping_stone~e4436660": {
    "type": "kz",
    "id": "stepping_stone",
@@ -3712,6 +3667,51 @@
     "transparent": false,
     "envMapIntensity": 1,
     "roughness": 0.187
+   }
+  },
+  "sinter~870a2205": {
+   "type": "kz",
+   "id": "sinter",
+   "params": {
+    "tint": [
+     1,
+     0.66,
+     0.34
+    ],
+    "wetness": 0.9,
+    "wear": 0,
+    "roughness_offset": -0.1,
+    "scale": 2,
+    "normal_strength": 1,
+    "emissive_level": 0
+   },
+   "lightmap": true,
+   "maps": {},
+   "kit": {
+    "base": "lib:pl_tile_sinter_base",
+    "nh": "lib:pl_tile_sinter_nh",
+    "noise": "lib:kz_noise"
+   },
+   "lib": {
+    "tiling": 2,
+    "aspect": 1,
+    "uv_mode": "metric",
+    "tech": "antitile",
+    "porosity": 0.5,
+    "worn": {
+     "color": [
+      0.8,
+      0.75,
+      0.65
+     ],
+     "rough": 0.3
+    },
+    "emissive": null,
+    "alphaTest": null,
+    "doubleSided": false,
+    "transparent": false,
+    "envMapIntensity": 0.7,
+    "roughness": 0.482
    }
   },
   "blossom~13bdc80f": {
@@ -6487,8 +6487,8 @@
    ],
    "parts": [
     {
-     "uri": "parts/0bf9a61c1f31374c.glb",
-     "bytes": 1353136,
+     "uri": "parts/7cc913dea9c759cb.glb",
+     "bytes": 1355188,
      "tris": 70854
     },
     {
@@ -6533,8 +6533,8 @@
    "lightmaps": [
     {
      "id": "lm_b1_cor_mirror",
-     "uri": "tex/4d51485123995ce5.ktx2",
-     "bytes": 1323887,
+     "uri": "tex/fe31e2bab96f3881.ktx2",
+     "bytes": 1328617,
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -6542,7 +6542,7 @@
      "width": 1024,
      "height": 1024,
      "uv": 1,
-     "texel_m": 0.06681702631520546
+     "texel_m": 0.05862437904931963
     }
    ],
    "probes": [
@@ -6564,14 +6564,14 @@
       77.15436553955078,
       -16.9
      ],
-     "cubemap": "tex/0705642aeb4c4bab.ktx2",
+     "cubemap": "tex/d1a0a2458dfff7c6.ktx2",
      "projection": "equirect",
-     "bytes": 604903,
+     "bytes": 601061,
      "intensity": 1,
      "mean": [
-      0.028823159635066986,
-      0.013022647239267826,
-      0.003690213430672884
+      0.08327586203813553,
+      0.0452917255461216,
+      0.014532195404171944
      ]
     },
     {
@@ -6592,14 +6592,14 @@
       87.79191589355469,
       -16.9
      ],
-     "cubemap": "tex/ac9a5d6905c1c881.ktx2",
+     "cubemap": "tex/277de3f02fae1454.ktx2",
      "projection": "equirect",
-     "bytes": 634388,
+     "bytes": 633754,
      "intensity": 1,
      "mean": [
-      0.003807881847023964,
-      0.0028593121096491814,
-      0.0018694208702072501
+      0.06277894973754883,
+      0.041984595358371735,
+      0.020823996514081955
      ]
     },
     {
@@ -6620,14 +6620,14 @@
       94.25352478027344,
       -16.9
      ],
-     "cubemap": "tex/0135b9c11f3e031b.ktx2",
+     "cubemap": "tex/66352b9fe5f22fe8.ktx2",
      "projection": "equirect",
-     "bytes": 646248,
+     "bytes": 641555,
      "intensity": 1,
      "mean": [
-      0.007076331879943609,
-      0.004198228009045124,
-      0.00172332301735878
+      0.0649590939283371,
+      0.039441127330064774,
+      0.014844700694084167
      ]
     },
     {
@@ -6648,14 +6648,14 @@
       96.5,
       -16.9
      ],
-     "cubemap": "tex/8c504f1dcb81f586.ktx2",
+     "cubemap": "tex/2b4bff22983db715.ktx2",
      "projection": "equirect",
-     "bytes": 649496,
+     "bytes": 647565,
      "intensity": 1,
      "mean": [
-      0.005746390670537949,
-      0.0036758705973625183,
-      0.001666120020672679
+      0.05656733363866806,
+      0.03449207916855812,
+      0.013374135829508305
      ]
     },
     {
@@ -6676,14 +6676,14 @@
       96.5,
       -16.9
      ],
-     "cubemap": "tex/cb28917967adf799.ktx2",
+     "cubemap": "tex/f7b6e8e6fb2045e5.ktx2",
      "projection": "equirect",
-     "bytes": 648466,
+     "bytes": 645402,
      "intensity": 1,
      "mean": [
-      0.00557716004550457,
-      0.003517321776598692,
-      0.001746476162225008
+      0.09387452900409698,
+      0.06190113723278046,
+      0.02976580150425434
      ]
     },
     {
@@ -6704,18 +6704,1261 @@
       96.5,
       -16.9
      ],
-     "cubemap": "tex/82ef336709f14846.ktx2",
+     "cubemap": "tex/72a7fa0d316760d1.ktx2",
      "projection": "equirect",
-     "bytes": 645139,
+     "bytes": 641595,
      "intensity": 1,
      "mean": [
-      0.0024474526289850473,
-      0.001515122945420444,
-      0.0008658567094244063
+      0.03470849618315697,
+      0.02558949589729309,
+      0.00971740111708641
      ]
     }
    ],
-   "lights": [],
+   "lights": [
+    {
+     "name": "L_shoji_bay_1_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.882,
+      93.555,
+      -19.17
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_shoji_bay_1_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.298,
+      93.555,
+      -19.17
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_shoji_bay_2_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      83.1589,
+      93.555,
+      -19.191
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_shoji_bay_2_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      82.3299,
+      93.555,
+      -19.191
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_trickle_n_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      65.1007,
+      84.5279,
+      -19.169
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.55,
+      0.85,
+      1
+     ],
+     "intensity": 0.7958,
+     "distance": 19.95,
+     "spot_deg": null
+    },
+    {
+     "name": "L_trickle_s_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      78.746,
+      90.278,
+      -19.128
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.55,
+      0.85,
+      1
+     ],
+     "intensity": 0.7958,
+     "distance": 19.95,
+     "spot_deg": null
+    },
+    {
+     "name": "L_mouth_niches_0_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      76.9643,
+      70.4741,
+      -19.585
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_mouth_niches_1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77.442,
+      73.8472,
+      -19.5976
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_w_0_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      75.0002,
+      70.8721,
+      -19.57
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_w_1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.9766,
+      74.5377,
+      -19.585
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_n_0_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      65.2185,
+      83.6221,
+      -19.5976
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_n_1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      65.0719,
+      85.0099,
+      -19.57
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_n_2_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      68.1974,
+      87.6124,
+      -19.585
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_e_0_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      72.791,
+      90.2981,
+      -19.5976
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_e_1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      74.0021,
+      90.3057,
+      -19.57
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_e_2_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77.5979,
+      93.6994,
+      -19.585
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_e_3_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      79.5925,
+      90.2981,
+      -19.5976
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_e_4_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      80.8036,
+      90.3057,
+      -19.57
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_e_x0_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      84.0082,
+      93.6994,
+      -19.585
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_e_x1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      86.1861,
+      90.2981,
+      -19.5976
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_niches_n_x0_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      64.6259,
+      89.0242,
+      -19.57
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_corner_lantern_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      64.6,
+      93.3,
+      -19.5917
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 2.3873,
+     "distance": 34.55,
+     "spot_deg": null
+    },
+    {
+     "name": "L_mouth_lantern_0_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      76.8,
+      70.75,
+      -19.5021
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 2.3873,
+     "distance": 34.55,
+     "spot_deg": null
+    },
+    {
+     "name": "L_mouth_lantern_1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77.2,
+      73.55,
+      -19.5021
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 2.3873,
+     "distance": 34.55,
+     "spot_deg": null
+    },
+    {
+     "name": "L_shoji_glow_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.6,
+      93.15,
+      -19.75
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 0.7958,
+     "distance": 19.95,
+     "spot_deg": null
+    },
+    {
+     "name": "L_shoji_glow_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      82.7,
+      93.15,
+      -19.75
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 0.7958,
+     "distance": 19.95,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      75.7643,
+      73.059,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      75.5289,
+      71.8823,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.2148,
+      73.5689,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      72.9794,
+      72.3922,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      67.9394,
+      79.979,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_5",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      66.7467,
+      79.8465,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_6",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      67.6522,
+      82.5631,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_7",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      66.4596,
+      82.4305,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_8",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      67.3651,
+      85.1472,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_9",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      66.1725,
+      85.0146,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_10",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      67.078,
+      87.7313,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_11",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      65.8853,
+      87.5987,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_12",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      66.9187,
+      90.1052,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_13",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      65.7533,
+      90.3912,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_14",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      68.2325,
+      91.3662,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_15",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      67.9944,
+      92.5424,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_16",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      70.7104,
+      91.4,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_17",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      70.7104,
+      92.6,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_18",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.3104,
+      91.4,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_19",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.3104,
+      92.6,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_20",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      75.9104,
+      91.4,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_21",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      75.9104,
+      92.6,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_22",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      78.5104,
+      91.4,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_23",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      78.5104,
+      92.6,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_24",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      81.1104,
+      91.4,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_25",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      81.1104,
+      92.6,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_26",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      83.7104,
+      91.4,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    },
+    {
+     "name": "L_poolglow_27",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      83.7104,
+      92.6,
+      -20.14
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.06,
+      0.78,
+      0.72
+     ],
+     "intensity": 0.0279,
+     "distance": 4,
+     "spot_deg": null
+    }
+   ],
    "fx": [
     {
      "name": "fx_mist_00",
@@ -7105,13 +8348,13 @@
    ],
    "parts": [
     {
-     "uri": "parts/be5e8eab6cec77a7.glb",
-     "bytes": 2168476,
+     "uri": "parts/87f4455683e503e5.glb",
+     "bytes": 2170868,
      "tris": 110592
     },
     {
-     "uri": "parts/8d0ab08daf35075f.glb",
-     "bytes": 1039944,
+     "uri": "parts/e3116ca31ff4bb7f.glb",
+     "bytes": 1040236,
      "tris": 47756
     },
     {
@@ -7165,8 +8408,8 @@
    "lightmaps": [
     {
      "id": "lm_b1_mirror",
-     "uri": "tex/e38b358272d69b59.ktx2",
-     "bytes": 4995865,
+     "uri": "tex/bb9b569d18e7642e.ktx2",
+     "bytes": 5005950,
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -7174,7 +8417,7 @@
      "width": 2048,
      "height": 2048,
      "uv": 1,
-     "texel_m": 0.062153476399388785
+     "texel_m": 0.05658215580316238
     }
    ],
    "probes": [
@@ -7196,14 +8439,14 @@
       111,
       -6.5
      ],
-     "cubemap": "tex/2c021a0994b51440.ktx2",
+     "cubemap": "tex/eeb1cd047bd8b065.ktx2",
      "projection": "equirect",
-     "bytes": 613214,
+     "bytes": 631510,
      "intensity": 1,
      "mean": [
-      0.008063655346632004,
-      0.0036991641391068697,
-      0.0010388597147539258
+      0.022275680676102638,
+      0.013816882856190205,
+      0.004985768347978592
      ]
     },
     {
@@ -7224,14 +8467,14 @@
       111,
       -14
      ],
-     "cubemap": "tex/31286f2d77d5423a.ktx2",
+     "cubemap": "tex/0617cb457117b651.ktx2",
      "projection": "equirect",
-     "bytes": 638967,
+     "bytes": 638724,
      "intensity": 1,
      "mean": [
-      0.039395496249198914,
-      0.015384729951620102,
-      0.002875730162486434
+      0.36521920561790466,
+      0.208344966173172,
+      0.06819678843021393
      ]
     },
     {
@@ -7252,18 +8495,824 @@
       85,
       -14
      ],
-     "cubemap": "tex/51926c08756004cb.ktx2",
+     "cubemap": "tex/79f3e84ec2754702.ktx2",
      "projection": "equirect",
-     "bytes": 641086,
+     "bytes": 637123,
      "intensity": 1,
      "mean": [
-      0.057534314692020416,
-      0.021744191646575928,
-      0.0035278259310871363
+      0.11509092897176743,
+      0.05670071393251419,
+      0.017055582255125046
      ]
     }
    ],
-   "lights": [],
+   "lights": [
+    {
+     "name": "L_pavilion_nw_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      118.6538,
+      106.1263,
+      -18.8213
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pavilion_nw_5",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      116.8711,
+      106.9014,
+      -18.8213
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pavilion_nw_6",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      119.4233,
+      106.1177,
+      -18.3713
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pavilion_nw_7",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      116.3401,
+      107.4583,
+      -18.3713
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pavilion_se_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      120.461,
+      79.1173,
+      -18.82
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pavilion_se_5",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      122.0158,
+      80.206,
+      -18.82
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pavilion_se_6",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      119.9527,
+      78.3195,
+      -18.37
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pavilion_se_7",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      122.9394,
+      80.4108,
+      -18.37
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool_steps_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      104.0715,
+      95.7475,
+      -20.3
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.62,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool_steps_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      101.0751,
+      97.4775,
+      -18.9
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.62,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool_steps_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      104.7915,
+      96.9946,
+      -20.3
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.62,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool_steps_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      101.7951,
+      98.7246,
+      -18.9
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.62,
+      0.3
+     ],
+     "intensity": 0.9549,
+     "distance": 21.85,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_00_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      115.6137,
+      104.1653,
+      -19.822
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_01_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      118.4448,
+      102.9379,
+      -19.8276
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_02_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      120.4941,
+      82.5712,
+      -19.8011
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_03_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      117.9595,
+      80.7894,
+      -19.822
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_04_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      99.9243,
+      95.9307,
+      -19.8276
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_05_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      100.5964,
+      97.5514,
+      -19.8211
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_06_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      107.6561,
+      80.0747,
+      -19.822
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_07_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      102.2733,
+      83.8433,
+      -19.8276
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_08_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      117.9634,
+      80.7993,
+      -19.8011
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_09_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      120.1564,
+      82.2726,
+      -19.822
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_10_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      122.0031,
+      84.1802,
+      -19.8276
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_11_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      123.3094,
+      86.2453,
+      -19.8011
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_12_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      124.3184,
+      95.0667,
+      -19.822
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_13_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      123.5088,
+      97.3627,
+      -19.8276
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_14_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      122.2618,
+      99.4642,
+      -19.8011
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_15_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      120.6608,
+      101.281,
+      -19.822
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_16_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      118.5425,
+      102.8815,
+      -19.8276
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_17_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      115.9146,
+      104.0704,
+      -19.8011
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_18_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      109.5822,
+      104.462,
+      -19.822
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_rim_lamp_19_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      105.0878,
+      102.6505,
+      -19.8276
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 1.9894,
+     "distance": 31.54,
+     "spot_deg": null
+    },
+    {
+     "name": "L_shoji_glow_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      117.9446,
+      105.6614,
+      -19.2
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 0.7958,
+     "distance": 19.95,
+     "spot_deg": null
+    },
+    {
+     "name": "L_shoji_glow_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      120.43,
+      79.96,
+      -19.2
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 0.7958,
+     "distance": 19.95,
+     "spot_deg": null
+    },
+    {
+     "name": "L_east_spill",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      130.8,
+      91.4,
+      -19.9
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.9965,
+      0.9806
+     ],
+     "intensity": 3.1831,
+     "distance": 39.89,
+     "spot_deg": null
+    }
+   ],
    "fx": [
     {
      "name": "fx_mist_00",
@@ -7486,19 +9535,19 @@
    ],
    "parts": [
     {
-     "uri": "parts/0266e5b296840c09.glb",
-     "bytes": 2465360,
-     "tris": 112517
+     "uri": "parts/62f0e6783375abe0.glb",
+     "bytes": 2916704,
+     "tris": 119210
     },
     {
-     "uri": "parts/9f509ed1a230d420.glb",
-     "bytes": 3103592,
-     "tris": 119635
+     "uri": "parts/ae2bb2bc94d30c22.glb",
+     "bytes": 2814948,
+     "tris": 115478
     },
     {
-     "uri": "parts/b981e81a266a35a8.glb",
-     "bytes": 320876,
-     "tris": 13307
+     "uri": "parts/093b05485d9091dc.glb",
+     "bytes": 228340,
+     "tris": 10771
     },
     {
      "uri": "parts/a8edc036bc5fc8dc.glb",
@@ -7590,8 +9639,8 @@
    "lightmaps": [
     {
      "id": "lm_g_arrival",
-     "uri": "tex/4fbb750251db46c6.ktx2",
-     "bytes": 4481352,
+     "uri": "tex/92617eaa1426ff24.ktx2",
+     "bytes": 4427392,
      "encoding": "rgbm",
      "range": 16,
      "gamma": 2,
@@ -7599,7 +9648,20 @@
      "width": 2048,
      "height": 2048,
      "uv": 1,
-     "texel_m": 0.12593530441645323
+     "texel_m": 0.07298308945293995
+    },
+    {
+     "id": "lm_g_arrival_upper",
+     "uri": "tex/7fbb977b1ab61af3.ktx2",
+     "bytes": 1174174,
+     "encoding": "rgbm",
+     "range": 16,
+     "gamma": 2,
+     "intensity": 3.141592653589793,
+     "width": 1024,
+     "height": 1024,
+     "uv": 1,
+     "texel_m": 0.16943797550173587
     }
    ],
    "probes": [
@@ -7621,14 +9683,14 @@
       80,
       16
      ],
-     "cubemap": "tex/78142fecc283a5c9.ktx2",
+     "cubemap": "tex/7f942141f2226399.ktx2",
      "projection": "equirect",
-     "bytes": 633020,
+     "bytes": 644133,
      "intensity": 1,
      "mean": [
-      0.04043719545006752,
-      0.012643023394048214,
-      0.00209288252517581
+      0.06420031934976578,
+      0.030081886798143387,
+      0.012872575782239437
      ]
     },
     {
@@ -7649,14 +9711,14 @@
       80,
       16
      ],
-     "cubemap": "tex/8d6c52cc13ad62a6.ktx2",
+     "cubemap": "tex/44505b39e3b02ce3.ktx2",
      "projection": "equirect",
-     "bytes": 644978,
+     "bytes": 647924,
      "intensity": 1,
      "mean": [
-      0.062077563256025314,
-      0.03103928454220295,
-      0.01509309746325016
+      0.12365635484457016,
+      0.15854643285274506,
+      0.1271677017211914
      ]
     },
     {
@@ -7677,21 +9739,91 @@
       80,
       16
      ],
-     "cubemap": "tex/f895cc3b9fbe9b1f.ktx2",
+     "cubemap": "tex/5a89bb6efc18c079.ktx2",
      "projection": "equirect",
-     "bytes": 644567,
+     "bytes": 646296,
      "intensity": 1,
      "mean": [
-      0.06557434797286987,
-      0.026775207370519638,
-      0.003919136244803667
+      0.09844117611646652,
+      0.049676600843667984,
+      0.017483752220869064
      ]
     }
    ],
    "lights": [
     {
+     "name": "L_lava_deep.0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      48,
+      95,
+      4
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.3,
+      0.04
+     ],
+     "intensity": 1989.4368,
+     "distance": 997.36,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lava_deep.1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      61,
+      100,
+      4
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.3,
+      0.04
+     ],
+     "intensity": 1989.4368,
+     "distance": 997.36,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lava_deep.2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      74,
+      95,
+      4
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.3,
+      0.04
+     ],
+     "intensity": 1989.4368,
+     "distance": 997.36,
+     "spot_deg": null
+    },
+    {
      "name": "L_hero_lava_window_0",
      "type": "point",
+     "baked": false,
      "pos": [
       61,
       79,
@@ -7707,9 +9839,3275 @@
       0.4497,
       0
      ],
-     "intensity": 321.5805,
-     "distance": 400.99,
+     "intensity": 643.1611,
+     "distance": 567.08,
      "spot_deg": null
+    },
+    {
+     "name": "L_lava_backdrop_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      79.4763,
+      110.1581,
+      6.4393
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.4733,
+      0
+     ],
+     "intensity": 34.2501,
+     "distance": 130.86,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lava_backdrop_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      61.4554,
+      109.2418,
+      9.0592
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.4733,
+      0
+     ],
+     "intensity": 19.1782,
+     "distance": 97.92,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lava_backdrop_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      41.8509,
+      110.714,
+      8.6271
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.4733,
+      0
+     ],
+     "intensity": 34.0512,
+     "distance": 130.48,
+     "spot_deg": null
+    },
+    {
+     "name": "L_hall_bridge_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      63.529,
+      63.376,
+      1.184
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.25
+     ],
+     "intensity": 1.1937,
+     "distance": 24.43,
+     "spot_deg": null
+    },
+    {
+     "name": "L_hall_bridge_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      63.529,
+      60.624,
+      1.184
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.25
+     ],
+     "intensity": 1.1937,
+     "distance": 24.43,
+     "spot_deg": null
+    },
+    {
+     "name": "L_hall_bridge_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      68.471,
+      63.376,
+      1.184
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.25
+     ],
+     "intensity": 1.1937,
+     "distance": 24.43,
+     "spot_deg": null
+    },
+    {
+     "name": "L_hall_bridge_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      68.471,
+      60.624,
+      1.184
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.25
+     ],
+     "intensity": 1.1937,
+     "distance": 24.43,
+     "spot_deg": null
+    },
+    {
+     "name": "L_reception_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      54.9987,
+      47.53,
+      0.22
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.2
+     ],
+     "intensity": 0.3979,
+     "distance": 14.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_reception_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      55.8563,
+      47.53,
+      0.22
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.2
+     ],
+     "intensity": 0.3979,
+     "distance": 14.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_reception_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      56.7137,
+      47.53,
+      0.22
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.2
+     ],
+     "intensity": 0.3979,
+     "distance": 14.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_reception_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      57.5713,
+      47.53,
+      0.22
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.2
+     ],
+     "intensity": 0.3979,
+     "distance": 14.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_reception_5",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      58.4287,
+      47.53,
+      0.22
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.2
+     ],
+     "intensity": 0.3979,
+     "distance": 14.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_reception_6",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      59.2863,
+      47.53,
+      0.22
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.2
+     ],
+     "intensity": 0.3979,
+     "distance": 14.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_reception_7",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      60.1437,
+      47.53,
+      0.22
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.2
+     ],
+     "intensity": 0.3979,
+     "distance": 14.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_reception_8",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      61.0013,
+      47.53,
+      0.22
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.2
+     ],
+     "intensity": 0.3979,
+     "distance": 14.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lift_core_0",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      88.395,
+      72.013,
+      2.61
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.22
+     ],
+     "intensity": 2.3873,
+     "distance": 34.55,
+     "spot_deg": 84.00000233751295
+    },
+    {
+     "name": "L_lift_core_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      90.815,
+      72.242,
+      1.85
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.45,
+      0.12
+     ],
+     "intensity": 1.5915,
+     "distance": 28.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lift_core_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      89.185,
+      72.242,
+      1.85
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.45,
+      0.12
+     ],
+     "intensity": 1.5915,
+     "distance": 28.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lift_core_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      90,
+      70,
+      1.3
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.22
+     ],
+     "intensity": 20.6901,
+     "distance": 101.71,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lift_core_5",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      90,
+      70,
+      4.07
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.55,
+      0.22
+     ],
+     "intensity": 20.6901,
+     "distance": 101.71,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      42.4,
+      43.55,
+      4.7427
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.2_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      44.2,
+      44,
+      4.1585
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.3_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      46,
+      43.55,
+      5.3188
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.4_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      47.8,
+      44,
+      4.4725
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.5_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      49.6,
+      43.55,
+      4.4943
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.6_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      51.4,
+      44,
+      4.6284
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.7_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      53.2,
+      43.55,
+      5.1498
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.8_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      55,
+      44,
+      3.9617
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      88,
+      61.4,
+      0.4979
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.002_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      92,
+      61.4,
+      0.4979
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.003_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      88.4,
+      79.3,
+      0.4979
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.004_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      91.6,
+      79.3,
+      0.4979
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.11_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      96.6,
+      50,
+      2.7406
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.12_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      96.6,
+      52,
+      3.0388
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.13_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      96.6,
+      54,
+      2.7908
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 15.9155,
+     "distance": 89.21,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.2_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      81,
+      46.5,
+      0.4725
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.005_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      86.5,
+      49.5,
+      0.4725
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.4_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      47.8241,
+      54.6272,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.006_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      54.7613,
+      56.4447,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.007_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      61.494,
+      58.4832,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.008_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.1699,
+      63.5784,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.009_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      79.6692,
+      60.9787,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.010_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      85.7297,
+      59.9,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_stone.1_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      60.6999,
+      63.4587,
+      0.9913
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 9.5493,
+     "distance": 69.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_stone.002_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      70.4006,
+      64.7989,
+      0.9913
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 9.5493,
+     "distance": 69.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_stone.003_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      70.9005,
+      59.5188,
+      0.9913
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 9.5493,
+     "distance": 69.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.011_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      54,
+      48.6,
+      0.6679
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.012_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      62,
+      48.6,
+      0.6679
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_stone.2_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.002,
+      75.6017,
+      1.004
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.5912,
+      0.1971
+     ],
+     "intensity": 9.5493,
+     "distance": 69.1,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.013_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      49.8381,
+      58.9351,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.014_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      55.5851,
+      60.6592,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.015_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      61.2883,
+      62.4072,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.016_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      73.6155,
+      59.3074,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.017_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      79.1864,
+      57.0791,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_lantern_floor.018_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      85.7297,
+      56.1,
+      0.4624
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.6078,
+      0.2373
+     ],
+     "intensity": 19.0986,
+     "distance": 97.72,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.21_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      47.5,
+      64,
+      6.3649
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.21_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      47.5,
+      64,
+      12.9061
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.21_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      47.5,
+      64,
+      19.4472
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.21_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      47.5,
+      64,
+      25.9884
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.21_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      47.5,
+      64,
+      32.5295
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.22_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      53,
+      70.5,
+      7.1746
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.22_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      53,
+      70.5,
+      13.7352
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.22_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      53,
+      70.5,
+      20.2957
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.22_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      53,
+      70.5,
+      26.8563
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.22_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      53,
+      70.5,
+      33.4168
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.23_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      58.5,
+      52.5,
+      6.7805
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.23_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      58.5,
+      52.5,
+      9.8528
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.23_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      58.5,
+      52.5,
+      12.925
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.23_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      58.5,
+      52.5,
+      15.9973
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.23_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      58.5,
+      52.5,
+      19.0695
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.24_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      64.5,
+      69,
+      6.3791
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.24_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      64.5,
+      69,
+      14.1385
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.24_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      64.5,
+      69,
+      21.8979
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.24_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      64.5,
+      69,
+      29.6573
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.24_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      64.5,
+      69,
+      37.4167
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.25_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      71.5,
+      57,
+      7.1809
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.25_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      71.5,
+      57,
+      10.8641
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.25_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      71.5,
+      57,
+      14.5472
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.25_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      71.5,
+      57,
+      18.2304
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.25_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      71.5,
+      57,
+      21.9135
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.26_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77,
+      66,
+      6.7755
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.26_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77,
+      66,
+      13.1579
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.26_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77,
+      66,
+      19.5402
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.26_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77,
+      66,
+      25.9226
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.26_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77,
+      66,
+      32.3049
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.27_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      52,
+      48.5,
+      6.3725
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.27_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      52,
+      48.5,
+      9.8889
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.27_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      52,
+      48.5,
+      13.4052
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.27_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      52,
+      48.5,
+      16.9215
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.27_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      52,
+      48.5,
+      20.4378
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.28_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      84,
+      53,
+      7.1766
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.28_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      84,
+      53,
+      10.8611
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.28_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      84,
+      53,
+      14.5456
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.28_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      84,
+      53,
+      18.2301
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.28_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      84,
+      53,
+      21.9146
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.29_0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      44.5,
+      52,
+      6.7777
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.29_1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      44.5,
+      52,
+      10.4143
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.29_2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      44.5,
+      52,
+      14.051
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.29_3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      44.5,
+      52,
+      17.6876
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_chochin.29_4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      44.5,
+      52,
+      21.3242
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      1,
+      0.42,
+      0.11
+     ],
+     "intensity": 7.6394,
+     "distance": 61.8,
+     "spot_deg": null
+    },
+    {
+     "name": "L_cove.0",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      46,
+      43,
+      9.7
+     ],
+     "dir": [
+      0,
+      0.4819,
+      0.8762
+     ],
+     "color": [
+      1,
+      0.6538,
+      0.3428
+     ],
+     "intensity": 795.7747,
+     "distance": 630.78,
+     "spot_deg": 120.00000333930423
+    },
+    {
+     "name": "L_cove.1",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      56,
+      43,
+      9.7
+     ],
+     "dir": [
+      0,
+      0.4819,
+      0.8762
+     ],
+     "color": [
+      1,
+      0.6538,
+      0.3428
+     ],
+     "intensity": 795.7747,
+     "distance": 630.78,
+     "spot_deg": 120.00000333930423
+    },
+    {
+     "name": "L_cove.2",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      66,
+      43,
+      9.7
+     ],
+     "dir": [
+      0,
+      0.4819,
+      0.8762
+     ],
+     "color": [
+      1,
+      0.6538,
+      0.3428
+     ],
+     "intensity": 795.7747,
+     "distance": 630.78,
+     "spot_deg": 120.00000333930423
+    },
+    {
+     "name": "L_cove.3",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      76,
+      43,
+      9.7
+     ],
+     "dir": [
+      0,
+      0.4819,
+      0.8762
+     ],
+     "color": [
+      1,
+      0.6538,
+      0.3428
+     ],
+     "intensity": 795.7747,
+     "distance": 630.78,
+     "spot_deg": 120.00000333930423
+    },
+    {
+     "name": "L_cove.4",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      86,
+      43,
+      9.7
+     ],
+     "dir": [
+      0,
+      0.4819,
+      0.8762
+     ],
+     "color": [
+      1,
+      0.6538,
+      0.3428
+     ],
+     "intensity": 795.7747,
+     "distance": 630.78,
+     "spot_deg": 120.00000333930423
+    },
+    {
+     "name": "L_cove.5",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      95,
+      43,
+      9.7
+     ],
+     "dir": [
+      0,
+      0.4819,
+      0.8762
+     ],
+     "color": [
+      1,
+      0.6538,
+      0.3428
+     ],
+     "intensity": 795.7747,
+     "distance": 630.78,
+     "spot_deg": 120.00000333930423
+    },
+    {
+     "name": "L_wash.0",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      41,
+      49.6,
+      0.3
+     ],
+     "dir": [
+      -0.2873,
+      0,
+      0.9578
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 99.4718,
+     "distance": 223.02,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.1",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      41,
+      60.4,
+      0.3
+     ],
+     "dir": [
+      -0.2873,
+      0,
+      0.9578
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 99.4718,
+     "distance": 223.02,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.2",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      41.2,
+      66.5,
+      0.3
+     ],
+     "dir": [
+      -0.3289,
+      0.094,
+      0.9397
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 179.0493,
+     "distance": 299.21,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.3",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      41.2,
+      73,
+      0.3
+     ],
+     "dir": [
+      -0.3246,
+      0.1855,
+      0.9275
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 179.0493,
+     "distance": 299.21,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.4",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      43,
+      78.9,
+      0.3
+     ],
+     "dir": [
+      -0.094,
+      0.3289,
+      0.9397
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 179.0493,
+     "distance": 299.21,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.5",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      79.2,
+      78.9,
+      0.3
+     ],
+     "dir": [
+      0.094,
+      0.3289,
+      0.9397
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 179.0493,
+     "distance": 299.21,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.6",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      83,
+      79,
+      0.3
+     ],
+     "dir": [
+      0,
+      0.3304,
+      0.9439
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 139.2606,
+     "distance": 263.88,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.7",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      97,
+      79,
+      0.3
+     ],
+     "dir": [
+      0,
+      0.3304,
+      0.9439
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 139.2606,
+     "distance": 263.88,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.8",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      98.9,
+      44.5,
+      0.3
+     ],
+     "dir": [
+      0.3289,
+      -0.094,
+      0.9397
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 179.0493,
+     "distance": 299.21,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.9",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      98.9,
+      58,
+      0.3
+     ],
+     "dir": [
+      0.3304,
+      0,
+      0.9439
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 179.0493,
+     "distance": 299.21,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.10",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      98.9,
+      66,
+      0.3
+     ],
+     "dir": [
+      0.3304,
+      0,
+      0.9439
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 139.2606,
+     "distance": 263.88,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_wash.11",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      98.9,
+      74,
+      0.3
+     ],
+     "dir": [
+      0.3289,
+      0.094,
+      0.9397
+     ],
+     "color": [
+      1,
+      0.6238,
+      0.2748
+     ],
+     "intensity": 139.2606,
+     "distance": 263.88,
+     "spot_deg": 74.99999867197056
+    },
+    {
+     "name": "L_pool.0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      47.272,
+      76.205,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      49.816,
+      74.615,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      52.36,
+      73.025,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.3",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      54.853,
+      71.361,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.4",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      57.253,
+      69.561,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.5",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      59.653,
+      67.761,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.6",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      62.047,
+      65.954,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.7",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      64.168,
+      63.832,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.8",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      66.227,
+      61.66,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.9",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      67.891,
+      59.164,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.10",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      69.555,
+      56.668,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.11",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      70.431,
+      53.845,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.12",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      71.02,
+      50.903,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_pool.13",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      71.608,
+      47.962,
+      -0.5
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 35.8099,
+     "distance": 133.81,
+     "spot_deg": null
+    },
+    {
+     "name": "L_basin.0",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      77.7,
+      45.3,
+      0.05
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 19.8944,
+     "distance": 99.74,
+     "spot_deg": null
+    },
+    {
+     "name": "L_basin.1",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      75.5932,
+      46.5085,
+      0.05
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 19.8944,
+     "distance": 99.74,
+     "spot_deg": null
+    },
+    {
+     "name": "L_basin.2",
+     "type": "point",
+     "baked": true,
+     "pos": [
+      75.6136,
+      44.0798,
+      0.05
+     ],
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "color": [
+      0.25,
+      0.85,
+      0.8
+     ],
+     "intensity": 19.8944,
+     "distance": 99.74,
+     "spot_deg": null
+    },
+    {
+     "name": "L_post.0",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      44.5,
+      43,
+      0.15
+     ],
+     "dir": [
+      0,
+      -0.1191,
+      0.9929
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 119.3662,
+     "distance": 244.3,
+     "spot_deg": 34.99999983559887
+    },
+    {
+     "name": "L_post.1",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      53,
+      43,
+      0.15
+     ],
+     "dir": [
+      0,
+      -0.1191,
+      0.9929
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 119.3662,
+     "distance": 244.3,
+     "spot_deg": 34.99999983559887
+    },
+    {
+     "name": "L_post.2",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      62.85,
+      43,
+      0.15
+     ],
+     "dir": [
+      0,
+      -0.1191,
+      0.9929
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 119.3662,
+     "distance": 244.3,
+     "spot_deg": 34.99999983559887
+    },
+    {
+     "name": "L_post.3",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      71.2,
+      43,
+      0.15
+     ],
+     "dir": [
+      0,
+      -0.1191,
+      0.9929
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 119.3662,
+     "distance": 244.3,
+     "spot_deg": 34.99999983559887
+    },
+    {
+     "name": "L_post.4",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      79.6,
+      43,
+      0.15
+     ],
+     "dir": [
+      0,
+      -0.1191,
+      0.9929
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 119.3662,
+     "distance": 244.3,
+     "spot_deg": 34.99999983559887
+    },
+    {
+     "name": "L_post.5",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      88,
+      43,
+      0.15
+     ],
+     "dir": [
+      0,
+      -0.1191,
+      0.9929
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 119.3662,
+     "distance": 244.3,
+     "spot_deg": 34.99999983559887
+    },
+    {
+     "name": "L_post.6",
+     "type": "spot",
+     "baked": true,
+     "pos": [
+      96,
+      43,
+      0.15
+     ],
+     "dir": [
+      0,
+      -0.1191,
+      0.9929
+     ],
+     "color": [
+      1,
+      0.6391,
+      0.3099
+     ],
+     "intensity": 119.3662,
+     "distance": 244.3,
+     "spot_deg": 34.99999983559887
     }
    ],
    "fx": [
@@ -8133,9 +13531,9 @@
    ],
    "flow": 0,
    "scatter": [
-    0.00066,
-    0.00328,
-    0.00306
+    0.00539,
+    0.02695,
+    0.02516
    ]
   },
   {
@@ -8162,9 +13560,9 @@
    "normal_strength": 0.025,
    "reflect_gain": 1.25,
    "scatter": [
-    0.00208,
-    0.01041,
-    0.00972
+    0,
+    0,
+    0
    ]
   },
   {
@@ -8188,9 +13586,9 @@
    ],
    "flow": 0.35,
    "scatter": [
-    0.00351,
-    0.01753,
-    0.01636
+    0.006,
+    0.03,
+    0.028
    ]
   },
   {
@@ -8214,9 +13612,9 @@
    ],
    "flow": 0.35,
    "scatter": [
-    0.00351,
-    0.01753,
-    0.01636
+    0.006,
+    0.03,
+    0.028
    ]
   }
  ],
