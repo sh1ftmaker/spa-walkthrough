@@ -2,7 +2,7 @@
  "contract": 1,
  "tier": "high",
  "source": "mixed",
- "generated": "2026-10-27T17:05:55.588Z",
+ "generated": "2026-10-27T19:20:41.846Z",
  "layout_sha": null,
  "coords": {
   "gltf": "three Y-up (X=x, Y=z, Z=-y)",
